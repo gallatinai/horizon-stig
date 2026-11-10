@@ -470,22 +470,22 @@
     {
       "vuln_id": "V-222637",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Attach an accepted platform data-backup/restore service or configure PostgreSQL/PVC data protection and secure restore verification."
+      "next_step": "In the post-classification verification pass, locate existing MPN/Gallatin backup services, procedures, ownership agreements and execution/restore records. Credit supported existing coverage and assign only confirmed residuals to the responsible operator. Confirm the site disaster recovery plan includes Horizon-specific secure and verifiable recovery instructions, actual application-data restore coverage and special considerations inhibiting trusted recovery. Verify restore evidence and complete only missing procedures or mechanisms. Retain the applicable procedure, configuration and verification evidence, coordinated with V-222636."
     },
     {
       "vuln_id": "V-222638",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Attach an accepted platform data-backup/restore service or configure PostgreSQL/PVC data protection and secure restore verification."
+      "next_step": "In the post-classification verification pass, locate existing MPN/Gallatin backup services, procedures, ownership agreements and execution/restore records. Credit supported existing coverage and assign only confirmed residuals to the responsible operator. Confirm the application risk level and verify the exact required backup frequency, sampled successful execution, protected off-site storage, restoration testing and any required geographically separated redundancy/testing. Preserve the rule-specific weekly/daily/annual/six-month conditions rather than assuming a daily resource backup satisfies all cases. Retain the applicable procedure, configuration and verification evidence, coordinated with V-222636."
     },
     {
       "vuln_id": "V-222640",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Document actual backup/restore storage, IAM/encryption, recovery tooling and asset-protection responsibilities."
+      "next_step": "In the post-classification verification pass, locate existing MPN/Gallatin backup services, procedures, ownership agreements and execution/restore records. Credit supported existing coverage and assign only confirmed residuals to the responsible operator. Verify procedures cover physical and technical protection of backup data, media/directories, backup software and restoration equipment/system software. Complete only missing asset/protection coverage and retain accepted procedures. Retain the applicable procedure, configuration and verification evidence, coordinated with V-222636."
     },
     {
       "vuln_id": "V-204771",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Add a backup export wrapper that collects consistent PostgreSQL backup/WAL and SeaweedFS data+filer metadata, writes only to encrypted scratch, then produces an authenticated AES256-GCM CMS envelope plus signed version/hash manifest using a pinned approved provider before any offline copy. Store recovery private keys separately under a recoverable offline key/HSM procedure; verify/decrypt into isolated encrypted scratch on restore. ProviderSSE alone does not keep downloaded files encrypted."
+      "next_step": "In the post-classification verification pass, locate existing MPN/Gallatin backup services, procedures, ownership agreements and execution/restore records. Credit supported existing coverage and assign only confirmed residuals to the responsible operator. Confirm whether offline/exported application-server data copies exist and identify their actual cryptographic confidentiality and integrity protection and recovery-key custody. Verify protection remains effective outside live platform storage; implement only confirmed export/offline gaps rather than assume a new encryption wrapper is needed. Retain the applicable procedure, configuration and verification evidence, coordinated with V-222636."
     }
   ],
   "data-label-policy": [
