@@ -4187,13 +4187,13 @@
       "CCI-000382"
     ],
     "status": "Needs work",
-    "justification": "UDS supplies enforceable service/network authorizations, but the delivered general profile permits hosted LLM endpoints while the MPN meeting requirement selects local inference. Remaining work is choosing and encoding the accepted MPN flow/model profile, not building an API-local network control.",
+    "justification": "UDS supplies default-deny networking and explicit permitted connections, but the saved evidence does not establish the actual MPN functions, ports and protocols against their permitted PPSM Category Assurance List use. The final MPN network/model profile remains to be selected. Human review on 2026-11-10 confirmed Needs work: inventory the actual MPN services and flows, confirm permitted CAL use with the responsible authority, and verify deployed configuration matches. Local inference selection alone does not establish CAL compliance.",
     "evidence_ids": [
       "re-asd-release",
       "re-asd-network",
       "re-asd-package"
     ],
-    "next_step": "Select the local model service and approved destination/port profile, then encode it in the existing UDS Package policies or document accepted changed scope.",
+    "next_step": "Inventory the actual MPN application functions, services, TCP/UDP ports and protocols from the selected deployment profile and observed configuration. Confirm applicable PPSM CAL entries and permitted-use conditions with the responsible MPN network/PPSM authority. Record the mapping and any required approvals, remove or restrict nonpermitted services, and verify deployment matches the accepted inventory. Reuse existing UDS default-deny policies and the interface-register procedure; coordinate local model flows with V-222428.",
     "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
     "category": "MPN profile configuration",
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",

@@ -707,7 +707,7 @@
     {
       "vuln_id": "V-222519",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Select the local model service and approved destination/port profile, then encode it in the existing UDS Package policies or document accepted changed scope."
+      "next_step": "Inventory the actual MPN application functions, services, TCP/UDP ports and protocols from the selected deployment profile and observed configuration. Confirm applicable PPSM CAL entries and permitted-use conditions with the responsible MPN network/PPSM authority. Record the mapping and any required approvals, remove or restrict nonpermitted services, and verify deployment matches the accepted inventory. Reuse existing UDS default-deny policies and the interface-register procedure; coordinate local model flows with V-222428."
     }
   ],
   "mpn-storage-integrity": [
