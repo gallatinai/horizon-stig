@@ -87,14 +87,14 @@
       "CCI-001683"
     ],
     "status": "Needs work",
-    "justification": "UDS identity supplies the source account-change records and optional alert templates, but detailed alert routing is disabled/default unspecified. Audit records alone do not notify required SA/ISSO recipients. The remaining action belongs in central alerting, not duplicated application account code.",
+    "justification": "UDS identity supplies the source account-change records and optional alert templates, but detailed alert routing is disabled/default unspecified. Audit records alone do not notify required SA/ISSO recipients. The remaining action belongs in central alerting, not duplicated application account code. Human review on 2026-11-10 confirmed Needs work because the available evidence does not establish STIG compliance for the deployed UDS user-management configuration and therefore does not support the enterprise user-management N/A exception. Known session-limit and inactivity-setting gaps remain; upstream capability alone is insufficient.",
     "evidence_ids": [
       "re-asd-release",
       "re-asd-id-events",
       "re-asd-id-alerts",
       "re-asd-core-id"
     ],
-    "next_step": "Enable the relevant centralized account-change alerts and map named SA/ISSO routes, or retain existing accepted operator routing evidence.",
+    "next_step": "Enable centralized account-creation alerts, configure named SA and ISSO recipients, and create a test account to verify both recipients receive notification. Retain the routing configuration and delivery-test evidence. Do not claim the enterprise user-management N/A exception without evidence that the assessed deployment satisfies that condition.",
     "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
     "category": "central monitoring configuration",
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
