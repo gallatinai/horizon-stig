@@ -25528,14 +25528,14 @@
       "CCI-000366"
     ],
     "status": "Needs work",
-    "justification": "The candidate PII elements are identifiable in the delivered identity schema, and file/chunk tag propagation already exists. The missing processing purposes association is a bounded policy/configuration integration, not a reason to invent a new general tagging subsystem. Tenant_id and security classification do not encode this semantic purpose by themselves.",
+    "justification": "Existing metadata/tag propagation provides a possible implementation mechanism, but the saved evidence does not establish approved processing-purpose definitions attached to the organization-defined PII elements. Human review on 2026-11-10 confirmed Needs work with verification first for this and similar PII metadata requirements. Share V-278962 privacy-owner scope review while preserving the distinction between why PII is processed and which processing is authorized; implement only confirmed association/propagation gaps.",
     "evidence_ids": [
       "re-mission-user-fields",
       "re-mission-upload-tags",
       "re-mission-ingestion-tags",
       "re-docs-classification-policy"
     ],
-    "next_step": "Have the privacy/mission data owner approve the PII element/purpose matrix below. Reuse files.tags and propagated chunk metadata for document-level tags such as privacy.profile, privacy.authorized_processing and privacy.processing_purpose. Attach a versioned schema-level privacy profile to account identity fields in the API/schema data dictionary; implement and validate only the missing association/propagation needed by the approved scope. If field-level tags are required, add narrow schema metadata or a field-to-policy mapping, not a wholesale per-row schema rewrite. Verify the exact data-tag interpretation with the assessor before treating a standalone document as an attached tag.",
+    "next_step": "In the post-classification verification pass, share V-278962 PII-scope and existing-metadata inspection. Have the privacy/mission data owner confirm organization-defined processing purposes and the assessor confirm the required attached-tag interpretation. Credit existing purpose associations, implement only missing links/propagation through relevant data paths and verify purpose tags remain associated with the applicable PII. Retain approved scope, metadata/configuration and test evidence without inventing legal processing purposes.",
     "owner": "Gallatin privacy/security lead + mission data owner; API/ingestion maintainers",
     "category": "bounded metadata/policy configuration",
     "components": "Delivered Horizon API, workers, chat, ingestion and storage; delegated UDS identity/gateway/mesh",
