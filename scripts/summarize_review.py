@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Build concise review entry points from the authoritative rule list."""
-import json
+import html,json
 from collections import Counter,defaultdict
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
@@ -16,11 +16,19 @@ for task,group in sorted(work.items()):
 (ROOT/'mpn/review/workstreams.md').write_text('\n'.join(lines)+'\n')
 (ROOT/'mpn/review/workstreams.json').write_text(json.dumps({t:[{'vuln_id':r['vuln_id'],'benchmark':r['benchmark'],'next_step':r['next_step']} for r in g] for t,g in sorted(work.items())},indent=2)+'\n')
 unknown=[r for r in rows if r['status']=='Unclear']
-lines=['# Remaining evidence decisions','','Resolve the listed infrastructure selections, policy decisions and approval records to determine these requirements.','','| Rule | Evidence needed | Why source does not settle it |','|---|---|---|']
+benchmarks={p['package']:p for p in json.loads((ROOT/'mpn/benchmarks/manifest.json').read_text())}
+lines=['# Remaining evidence decisions','','Each decision includes the exact STIG/SRG requirement and official check that establish the evidence needed.','']
 for r in unknown:
- clean=lambda x:x.replace('|','\\|').replace('\n',' ')
- lines.append('| '+' | '.join(clean(x) for x in [r['vuln_id'],r['next_step'],r['justification']])+' |')
-(ROOT/'mpn/review/remaining-evidence.md').write_text('\n'.join(lines)+'\n')
+ package=benchmarks[r['benchmark']]
+ lines += [f"## {r['vuln_id']} — {r['version']}",'',
+           f"**Benchmark:** {package['title']} — {r['benchmark'].removeprefix('U_').replace('_',' ')} ([official XCCDF](../benchmarks/{r['benchmark']}/benchmark.xml)).",'',
+           f"**Requirement:** {r['title']}",'',
+           f"**Decision / action needed:** {r['next_step']}",'',
+           f"**Reason:** {r['justification']}",'',
+           '<details>',f"<summary>Official check — {r['rule_id']}</summary>",'']
+ lines += [('> '+html.escape(line.rstrip(),quote=False)).rstrip() for line in r['check'].splitlines()]
+ lines += ['','</details>','']
+(ROOT/'mpn/review/remaining-evidence.md').write_text('\n'.join(lines).rstrip()+'\n')
 lines=['# Horizon STIG tracking','','Suggested statuses and reasons for all **1,048 rules across seven benchmarks**, updated 10 November 2026. The OS benchmark is an eighth family pending MPN distribution/version selection. Gallatin manages this UDS Core deployment on MPN.','','| Benchmark | Rules | Needs work | Likely covered | Unclear | N/A justification | Source-only Compliant |','|---|---:|---:|---:|---:|---:|---:|']
 for name in dict.fromkeys(r['benchmark'] for r in rows):
  group=[r for r in rows if r['benchmark']==name];c=Counter(r['status'] for r in group)
