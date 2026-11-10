@@ -8,12 +8,15 @@ from collections import Counter
 from pathlib import Path
 from xml.etree import ElementTree as ET
 
+from generate_cklb import generate
+
 ROOT = Path(__file__).resolve().parents[1]
 N = {'x': 'http://checklists.nist.gov/xccdf/1.1'}
 ALLOWED = {'Compliant', 'Likely covered', 'Needs work', 'Needs N/A justification', 'Unclear'}
 
 
 def main():
+    generate(check=True)
     manifest = json.loads((ROOT / 'mpn/benchmarks/manifest.json').read_text())
     rows = json.loads((ROOT / 'mpn/review/suggested-statuses.json').read_text())
     evidence = json.loads((ROOT / 'mpn/evidence/catalog.json').read_text())

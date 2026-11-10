@@ -29,11 +29,13 @@ The 188 needs-work recommendations group into **36 shared workstreams**. Every r
 
 The package baseline is **2026.45.4-uds.1**, from the successful UDS push pipeline: **UDS shared identity, Core 1.14.0, 12 digest-pinned images, no bundled Keycloak**. Image SBOMs, FIPS configuration and release verification support the control mappings. Gallatin manages UDS Core on MPN and owns its platform configuration. Controls may be supplied by the gateway, mesh, IdP, database, host or organizational procedure. MPN-specific local inference, selected host/storage and mission applicability remain distinct from the generic UDS release.
 
-Rebuild saved decisions with `python3 scripts/build_review.py`, `python3 scripts/summarize_review.py`, then `python3 scripts/validate.py`. [current-assessment.json](mpn/evidence/current-assessment.json) stores the status decisions and evidence references. `python3 scripts/render_delivered.py <pinned-bundle-checkout>` reproduces the 12 delivered-profile chart captures from saved release metadata (Helm and PyYAML required).
+Rebuild saved decisions with `python3 scripts/build_review.py`, `python3 scripts/summarize_review.py`, `python3 scripts/generate_cklb.py`, then `python3 scripts/validate.py`. [current-assessment.json](mpn/evidence/current-assessment.json) stores the status decisions and evidence references. `python3 scripts/render_delivered.py <pinned-bundle-checkout>` reproduces the 12 delivered-profile chart captures from saved release metadata (Helm and PyYAML required).
 
 ## Updating a STIG in a PR
 
-Use Python 3 and run commands from the repository root. The assessment JSON files are the editable source; the rule tables, CSVs, counts and solution pages are generated.
+Use Python 3.9 or later and run commands from the repository root. The assessment JSON files are the editable source; the rule tables, CSVs, counts, solution pages and CKLB files are generated.
+
+[Download the seven CKLB checklists](mpn/cklb/). The [Update CKLB checklists workflow](.github/workflows/update-cklb.yml) regenerates and commits them after every push to `main`. Each file contains one benchmark and its current findings, evidence and next actions. See [CKLB status mapping and explicit dispositions](mpn/cklb/README.md) for how recommendations become checklist statuses. Edit the assessment sources; do not edit CKLB files directly.
 
 ### 1. Create a branch
 
@@ -83,12 +85,14 @@ Edit [mpn/evidence/implementation-plans.json](mpn/evidence/implementation-plans.
 ```sh
 python3 scripts/build_review.py
 python3 scripts/summarize_review.py
+python3 scripts/generate_cklb.py
 python3 scripts/validate.py
+python3 -m unittest discover -s tests -v
 git diff --check
 git diff --stat
 ```
 
-Review the regenerated tables, counts, evidence decisions and workstreams. Do not edit `mpn/review/`, `mpn/solutions/` or `mpn/EVIDENCE-ACTIONS.md` directly: rebuild them from their sources. Preserve the official benchmark ZIPs, XCCDF and normalized rules in `mpn/benchmarks/`.
+Review the regenerated tables, counts, evidence decisions, workstreams and CKLB findings. Do not edit `mpn/review/`, `mpn/solutions/`, `mpn/EVIDENCE-ACTIONS.md` or `mpn/cklb/*.cklb` directly: rebuild them from their sources. Preserve the official benchmark ZIPs, XCCDF and normalized rules in `mpn/benchmarks/`. After merge, the workflow refreshes the CKLB files even if the PR did not regenerate them locally.
 
 The README is also generated. To change this tutorial or its surrounding text, edit `scripts/summarize_review.py` and regenerate it.
 

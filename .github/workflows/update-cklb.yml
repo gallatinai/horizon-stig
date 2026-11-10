@@ -1,0 +1,60 @@
+name: Update CKLB checklists
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: update-cklb-main
+  cancel-in-progress: false
+
+jobs:
+  update:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: main
+          fetch-depth: 1
+      - name: Configure commit author
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+      - name: Generate, validate and commit checklists
+        shell: bash
+        run: |
+          set -euo pipefail
+          for attempt in 1 2 3; do
+            # This is a disposable runner checkout. Rebuild from the latest main
+            # on each attempt rather than rebasing files made from older inputs.
+            git fetch origin main
+            git checkout -B main origin/main
+            git reset --hard origin/main
+            python3 scripts/build_review.py
+            python3 scripts/summarize_review.py
+            python3 scripts/generate_cklb.py
+            python3 scripts/validate.py
+            python3 -m unittest discover -s tests -v
+            python3 scripts/generate_cklb.py --check
+            git add --all -- 'mpn/cklb/*.cklb'
+            git diff --cached --check
+            if git diff --cached --quiet; then
+              echo 'CKLB files already match the current source.'
+              exit 0
+            fi
+            git commit -m 'chore: refresh CKLB checklists'
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "Push failed on attempt ${attempt}; rebuilding from latest main."
+          done
+          echo 'Could not publish CKLB files after three attempts.' >&2
+          exit 1
