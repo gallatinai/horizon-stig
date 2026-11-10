@@ -889,7 +889,7 @@
     {
       "vuln_id": "V-222570",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Use a verified validated/approved-mode signing implementation or record approved signing-scope/risk tailoring; retain tool module provenance."
+      "next_step": "In the post-classification verification pass, inspect the assessed release's exact Witness binary/build provenance, cryptographic module validation and approved-mode configuration, wrapper environment and actual signing path. Determine whether an existing validated provider or remote signing service already supplies the required boundary. Retain evidence and change the recommendation to Likely covered if supported. Recommend signing-path changes only if verification confirms a gap; preserve working artifact signing."
     },
     {
       "vuln_id": "V-222571",

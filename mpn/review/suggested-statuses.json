@@ -5799,13 +5799,13 @@
       "CCI-002450"
     ],
     "status": "Needs work",
-    "justification": "The actual app runtime crypto is covered by FIPS images, but the separate package signing path uses upstream static Go Witness0.12.0 with no GOFIPS140 build selection; the wrapper strips GODEBUG. Go documents that approved-mode operation defaults off. Successful P256/SHA256 signature verification does not make the signing implementation FIPS validated. This is a narrow release-signing-provider issue, not a missing application TLS feature.",
+    "justification": "The release already signs artifacts with Witness, and human review on 2026-11-10 expressed the expectation that this may be sufficient while confirming Needs work pending verification. The saved assessment identifies an unresolved FIPS-module/approved-mode question for the separate Witness signing binary and wrapper; application runtime FIPS images and successful signature verification do not establish this signing-process requirement. Verify the exact signing path before recommending replacement or implementation changes. This remains a verification action rather than a confirmed requirement to replace Witness.",
     "evidence_ids": [
       "re-images-signer",
       "re-images-witness-binary",
       "re-images-go-fips"
     ],
-    "next_step": "Use a verified validated/approved-mode signing implementation or record approved signing-scope/risk tailoring; retain tool module provenance.",
+    "next_step": "In the post-classification verification pass, inspect the assessed release's exact Witness binary/build provenance, cryptographic module validation and approved-mode configuration, wrapper environment and actual signing path. Determine whether an existing validated provider or remote signing service already supplies the required boundary. Retain evidence and change the recommendation to Likely covered if supported. Recommend signing-path changes only if verification confirms a gap; preserve working artifact signing.",
     "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
     "category": "release-tool configuration",
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
