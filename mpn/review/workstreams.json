@@ -807,7 +807,7 @@
     {
       "vuln_id": "V-222628",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Ian/Gallatin SRE derives the external-enclave flow rows from the selected MPN overlay and existing System Impact Assessment; the security lead routes them to the MPN network/PPSM authority for CAL compliance review and approval."
+      "next_step": "In the post-classification verification pass, locate the actual current MPN submission/System Impact Assessment and its submission or approval references. Compare its interface rows against the assessed deployment and the V-222519 inventory, confirm the local-enclave boundary, and check external addresses, services, ports and protocols are included. Credit existing submitted coverage and update the recommendation where supported; supply only missing or changed Horizon interface details through the established MPN authority route. Do not treat every internal pod port as an external interface or duplicate a complete submission."
     },
     {
       "vuln_id": "V-222629",

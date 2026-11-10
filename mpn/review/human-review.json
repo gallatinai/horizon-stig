@@ -1706,14 +1706,14 @@
       "CCI-000388"
     ],
     "status": "Needs work",
-    "justification": "Delivered configuration and existing System Impact Assessment identify the network flows. Complete the MPN-specific external-enclave ports/protocols classification and authority submission; reuse the flow inventory and default-deny policy rather than redesign networking or register every pod port as external.",
+    "justification": "Existing deployment documentation and the System Impact Assessment identify application interfaces and supply a basis for the MPN submission. Human review on 2026-11-10 selected Needs work pending verification and stated the expectation that the current interfaces are already included in the existing submission. Verify that package before assigning a new submission action; no missing submission is established by the saved evidence gap alone. The official check focuses on interfaces accessed from outside the local enclave. Gallatin supplies application details; the appropriate MPN authority owns approval and onward routing.",
     "evidence_ids": [
       "solution-governance-mpn-scope",
       "solution-governance-ppsm-routing",
       "core-network",
       "core-gateway"
     ],
-    "next_step": "Ian/Gallatin SRE derives the external-enclave flow rows from the selected MPN overlay and existing System Impact Assessment; the security lead routes them to the MPN network/PPSM authority for CAL compliance review and approval.",
+    "next_step": "In the post-classification verification pass, locate the actual current MPN submission/System Impact Assessment and its submission or approval references. Compare its interface rows against the assessed deployment and the V-222519 inventory, confirm the local-enclave boundary, and check external addresses, services, ports and protocols are included. Credit existing submitted coverage and update the recommendation where supported; supply only missing or changed Horizon interface details through the established MPN authority route. Do not treat every internal pod port as an external interface or duplicate a complete submission.",
     "owner": "Gallatin SRE/Ian; security lead; MPN network/PPSM approving authority",
     "category": "operational procedure/certification",
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
