@@ -441,22 +441,22 @@
     {
       "vuln_id": "V-233273",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Complete or tailor the linked platform/package residuals and retain component hardening evidence. Do not create a duplicate roll-up remediation ticket."
+      "next_step": "Verify the assessed component inventory and applicable hardening guidance, responsibility boundaries and accepted inherited-control mappings. Link the specific configuration, implementation and verification residuals already tracked in this assessment, complete or formally disposition them with evidence, and retain the component-specific checklist. Do not create duplicate remediation work for this umbrella requirement or treat source-level inherited recommendations as final accepted compliance."
     },
     {
       "vuln_id": "V-206445",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Complete component-specific control mapping and close or tailor the remaining concrete findings."
+      "next_step": "Verify the assessed component inventory and applicable hardening guidance, responsibility boundaries and accepted inherited-control mappings. Link the specific configuration, implementation and verification residuals already tracked in this assessment, complete or formally disposition them with evidence, and retain the component-specific checklist. Do not create duplicate remediation work for this umbrella requirement or treat source-level inherited recommendations as final accepted compliance."
     },
     {
       "vuln_id": "V-206643",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Close the verified native audit/session-limit deltas and retain the full component mapping/tailoring package."
+      "next_step": "Verify the assessed component inventory and applicable hardening guidance, responsibility boundaries and accepted inherited-control mappings. Link the specific configuration, implementation and verification residuals already tracked in this assessment, complete or formally disposition them with evidence, and retain the component-specific checklist. Do not create duplicate remediation work for this umbrella requirement or treat source-level inherited recommendations as final accepted compliance."
     },
     {
       "vuln_id": "V-204704",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Complete the specific sharedidentity residuals and accepted tailoring, then finalize this rollup."
+      "next_step": "Verify the assessed component inventory and applicable hardening guidance, responsibility boundaries and accepted inherited-control mappings. Link the specific configuration, implementation and verification residuals already tracked in this assessment, complete or formally disposition them with evidence, and retain the component-specific checklist. Do not create duplicate remediation work for this umbrella requirement or treat source-level inherited recommendations as final accepted compliance."
     }
   ],
   "continuous-vulnerability-management": [

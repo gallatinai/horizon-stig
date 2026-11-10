@@ -3012,7 +3012,7 @@
       "CCI-000366"
     ],
     "status": "Needs work",
-    "justification": "The delivered profile inherits many actual Core mechanisms and removes the false bundled-identity gaps, but concrete Core configuration residuals remain (disabled consent/inactivity/account notifications, password-rule tailoring). Treat this roll-up as links to those existing operator/package tasks; it is not another independent full-platform implementation project.",
+    "justification": "The delivered profile inherits many actual Core mechanisms and removes the false bundled-identity gaps, but concrete Core configuration residuals remain (disabled consent/inactivity/account notifications, password-rule tailoring). Treat this roll-up as links to those existing operator/package tasks; it is not another independent full-platform implementation project. Human review on 2026-11-10 confirmed Needs work with partial coverage for this and similar umbrella hardening requirements. Verify component-specific control mappings, inherited protections and accountable ownership, then resolve or formally disposition the linked residuals. Treat this as a closure/mapping check, not a duplicate implementation project or a claim that every component control fails.",
     "evidence_ids": [
       "re-platform-delivered-profile",
       "re-platform-realm",
@@ -3020,7 +3020,7 @@
       "re-platform-monitor",
       "re-platform-init-resource"
     ],
-    "next_step": "Complete or tailor the linked platform/package residuals and retain component hardening evidence. Do not create a duplicate roll-up remediation ticket.",
+    "next_step": "Verify the assessed component inventory and applicable hardening guidance, responsibility boundaries and accepted inherited-control mappings. Link the specific configuration, implementation and verification residuals already tracked in this assessment, complete or formally disposition them with evidence, and retain the component-specific checklist. Do not create duplicate remediation work for this umbrella requirement or treat source-level inherited recommendations as final accepted compliance.",
     "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
     "category": "evidence/tailoring roll-up",
     "components": "UDS platform: registry, runtime, Pepr, Istio, logging; delivered workloads",
@@ -3432,14 +3432,14 @@
       "CCI-000366"
     ],
     "status": "Needs work",
-    "justification": "The correct UDS platform and hardened-image inheritance eliminate several presumed gaps, but specific remaining audit/session/alert/web-body settings still require disposition and the component checklist must record accepted inheritance/equivalences. This is compliance-package closure, not an independent blanket web rewrite.",
+    "justification": "The correct UDS platform and hardened-image inheritance eliminate several presumed gaps, but specific remaining audit/session/alert/web-body settings still require disposition and the component checklist must record accepted inheritance/equivalences. This is compliance-package closure, not an independent blanket web rewrite. Human review on 2026-11-10 confirmed Needs work with partial coverage for this and similar umbrella hardening requirements. Verify component-specific control mappings, inherited protections and accountable ownership, then resolve or formally disposition the linked residuals. Treat this as a closure/mapping check, not a duplicate implementation project or a claim that every component control fails.",
     "evidence_ids": [
       "re-web-actual-release",
       "re-web-package",
       "re-web-web-values",
       "re-web-logs"
     ],
-    "next_step": "Complete component-specific control mapping and close or tailor the remaining concrete findings.",
+    "next_step": "Verify the assessed component inventory and applicable hardening guidance, responsibility boundaries and accepted inherited-control mappings. Link the specific configuration, implementation and verification residuals already tracked in this assessment, complete or formally disposition them with evidence, and retain the component-specific checklist. Do not create duplicate remediation work for this umbrella requirement or treat source-level inherited recommendations as final accepted compliance.",
     "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
     "category": "documentation and residual configuration",
     "components": "Delivered static nginx-FIPS, Istio ingress and shared UDS identity (separate roles)",
@@ -5272,14 +5272,14 @@
       "CCI-000366"
     ],
     "status": "Needs work",
-    "justification": "Native session limits and selected native audit events require configuration. This roll-up stays linked to those verified shared tasks; it is not another implementation or a claim every DB requirement fails.",
+    "justification": "Native session limits and selected native audit events require configuration. This roll-up stays linked to those verified shared tasks; it is not another implementation or a claim every DB requirement fails. Human review on 2026-11-10 confirmed Needs work with partial coverage for this and similar umbrella hardening requirements. Verify component-specific control mappings, inherited protections and accountable ownership, then resolve or formally disposition the linked residuals. Treat this as a closure/mapping check, not a duplicate implementation project or a claim that every component control fails.",
     "evidence_ids": [
       "re-database-release",
       "re-database-postgres-values",
       "re-database-role",
       "re-database-actual-image"
     ],
-    "next_step": "Close the verified native audit/session-limit deltas and retain the full component mapping/tailoring package.",
+    "next_step": "Verify the assessed component inventory and applicable hardening guidance, responsibility boundaries and accepted inherited-control mappings. Link the specific configuration, implementation and verification residuals already tracked in this assessment, complete or formally disposition them with evidence, and retain the component-specific checklist. Do not create duplicate remediation work for this umbrella requirement or treat source-level inherited recommendations as final accepted compliance.",
     "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
     "category": "product-boundary source review",
     "components": "Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database",
@@ -5774,7 +5774,7 @@
       "CCI-000366"
     ],
     "status": "Needs work",
-    "justification": "The delivered UDS profile removes bundled-realm falsepositives and supplies many hardening controls, but the reviewed sharedprovider still has specific inactivity, minimum-age/change-distance, requiredsmartcard and alert/cache residuals. This rollup must link those exact configuration/tailoring workstreams, rather than invent another implementation.",
+    "justification": "The delivered UDS profile removes bundled-realm falsepositives and supplies many hardening controls, but the reviewed sharedprovider still has specific inactivity, minimum-age/change-distance, requiredsmartcard and alert/cache residuals. This rollup must link those exact configuration/tailoring workstreams, rather than invent another implementation. Human review on 2026-11-10 confirmed Needs work with partial coverage for this and similar umbrella hardening requirements. Verify component-specific control mappings, inherited protections and accountable ownership, then resolve or formally disposition the linked residuals. Treat this as a closure/mapping check, not a duplicate implementation project or a claim that every component control fails.",
     "evidence_ids": [
       "re-aaa-release",
       "re-aaa-realm",
@@ -5783,7 +5783,7 @@
       "mpn-identity-values",
       "mpn-identity-override"
     ],
-    "next_step": "Complete the specific sharedidentity residuals and accepted tailoring, then finalize this rollup.",
+    "next_step": "Verify the assessed component inventory and applicable hardening guidance, responsibility boundaries and accepted inherited-control mappings. Link the specific configuration, implementation and verification residuals already tracked in this assessment, complete or formally disposition them with evidence, and retain the component-specific checklist. Do not create duplicate remediation work for this umbrella requirement or treat source-level inherited recommendations as final accepted compliance.",
     "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
     "category": "documentation/rollup",
     "components": "UDS Core 1.14 shared Keycloak realm and Horizon OIDC clients; no bundled application Keycloak",
