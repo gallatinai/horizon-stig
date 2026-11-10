@@ -554,7 +554,7 @@
       "CCI-000172"
     ],
     "status": "Needs work",
-    "justification": "Credit existing UDS identity/admin events, append-only actor-aware role grants/revocations and database change provenance. Remaining gap is selected app-domain successful/denied protected operations: the permission enforcer throws403 without emitting a structured actor/target/operation event, and generic HTTP logs omit actor. Central proxy identity records do not carry all tenant/object decisions. This is a targeted event-catalog/attribution integration, not an absence of auditing or a requirement to add actors to every diagnostic/request log.",
+    "justification": "Security-object access auditing is partially implemented through existing identity, role-audit and database-provenance records, but those records do not establish coverage of successful and unsuccessful access attempts to all relevant protected objects. Human review on 2026-11-10 confirmed Needs work: identify protected objects and required access events, map existing coverage, add missing audit records, and test successful and denied access. This shares the application audit-control work for V-222431; it is not a claim that all auditing is absent.",
     "evidence_ids": [
       "re-asd-release",
       "re-asd-id-events",
@@ -562,7 +562,7 @@
       "re-asd-logging",
       "re-asd-guard"
     ],
-    "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover.",
+    "next_step": "Identify permission-protected application objects and the access-attempt events required by this control. Map existing records to successful and unsuccessful access coverage, implement missing records with the relevant user, object, action and outcome, and verify both successful and denied access to the in-scope objects. Reuse existing audit mechanisms and retain verification evidence.",
     "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
     "category": "targeted application-domain audit coverage",
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",

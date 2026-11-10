@@ -64,7 +64,7 @@
     {
       "vuln_id": "V-222451",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
+      "next_step": "Identify permission-protected application objects and the access-attempt events required by this control. Map existing records to successful and unsuccessful access coverage, implement missing records with the relevant user, object, action and outcome, and verify both successful and denied access to the in-scope objects. Reuse existing audit mechanisms and retain verification evidence."
     },
     {
       "vuln_id": "V-222452",
