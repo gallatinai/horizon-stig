@@ -4305,7 +4305,7 @@
       "CCI-002450"
     ],
     "status": "Needs work",
-    "justification": "Core already terminates application TLS using operator-supplied Secrets. Provision a mission-approved DoW/CNSS Class 3 or Class 4 NPE/server certificate, or an explicitly accepted equivalent, for the actual tenant/admin SANs; deliver its chain/key through protected gateway Secrets and set tls.credentialName. The app release does not select that production issuance/assurance profile. This is an actionable Gallatin PKI provisioning task, not an unresolved software behavior or a finding that an unseen deployed certificate is bad.",
+    "justification": "UDS supports operator-provided certificates at its gateways, but the saved evidence does not establish the actual MPN certificates' issuer, policy/assurance profile or approval. A configured Secret reference alone establishes neither compliance nor failure of an unseen certificate. Human review on 2026-11-10 confirmed Needs work with verification first: confirm the required approved profile, deployed certificate details and ownership/approval evidence before assigning replacement work. Reuse existing gateway termination rather than introduce duplicate application TLS.",
     "evidence_ids": [
       "solution-topology-tls-doc",
       "solution-topology-tls-template",
@@ -4314,7 +4314,7 @@
       "solution-topology-dod-commercial",
       "solution-topology-dod-npe"
     ],
-    "next_step": "Approve the mission certificate issuance profile; provision gateway Secrets; retain issuer, certificate policy/assurance, SANs, validity, public fingerprints and rotation owner.",
+    "next_step": "In the post-classification verification pass, confirm certificate issuance/deployment ownership and the applicable DoW/CNSS Class 3/Class 4 or explicitly accepted profile. Inspect public certificate chains, issuer/policy identifiers, SANs, validity and approval records for applicable gateway/application-server uses. Credit supported existing certificates; arrange issuance or replacements only for confirmed gaps through the authorized mission process. Retain public fingerprints, approval and rotation-owner references without exporting private keys.",
     "owner": "Gallatin SRE / Gallatin-operated MPN Core platform; mission authority only for mission applicability and CA issuance approval",
     "category": "PKI issuance and deployment configuration",
     "components": "Delivered Horizon API, workers, chat, ingestion and storage; delegated UDS identity/gateway/mesh",

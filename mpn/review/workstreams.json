@@ -795,7 +795,7 @@
     {
       "vuln_id": "V-204832",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Approve the mission certificate issuance profile; provision gateway Secrets; retain issuer, certificate policy/assurance, SANs, validity, public fingerprints and rotation owner."
+      "next_step": "In the post-classification verification pass, confirm certificate issuance/deployment ownership and the applicable DoW/CNSS Class 3/Class 4 or explicitly accepted profile. Inspect public certificate chains, issuer/policy identifiers, SANs, validity and approval records for applicable gateway/application-server uses. Credit supported existing certificates; arrange issuance or replacements only for confirmed gaps through the authorized mission process. Retain public fingerprints, approval and rotation-owner references without exporting private keys."
     },
     {
       "vuln_id": "V-263538",
