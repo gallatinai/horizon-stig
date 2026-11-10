@@ -3095,13 +3095,13 @@
       "CCI-001858"
     ],
     "status": "Needs work",
-    "justification": "UDS supplies storage/resource monitoring and centralized log buffers, but source defaults do not encode the exact audit-repository75percent threshold and all required audit-failure notifications to SA/ISSO. Configure that outcome centrally rather than in each API service.",
+    "justification": "UDS provides centralized logging, monitoring and persistent buffering, but the saved evidence does not establish real-time SA/ISSO alerts for all applicable audit failure events. Buffering alone does not establish notification. Human review on 2026-11-10 confirmed Needs work: confirm the application impact categorization, configure central audit-failure alerts and test coverage and prompt delivery to both recipients. The official check permits application-level N/A when centralized logging provides the required real-time alarms; that condition remains unestablished.",
     "evidence_ids": [
       "re-asd-alerts",
       "re-asd-vector",
       "re-asd-id-alerts"
     ],
-    "next_step": "Add/tune the central audit capacity/failure alerts and named required recipients or retain an accepted existing operator rule/route.",
+    "next_step": "Confirm and retain the application security impact categorization. For the applicable moderate/high-impact scope, identify audit capture, collector/backend, hardware/software and storage-exhaustion failure conditions; configure central alerts to named SA and ISSO recipients. Use controlled failure tests to verify coverage and delivery within the required real-time interval, and retain rules, routes and results. Reassess application-level N/A once the central alarm condition is established.",
     "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
     "category": "central monitoring configuration",
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
