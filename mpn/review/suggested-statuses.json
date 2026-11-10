@@ -1157,13 +1157,13 @@
       "CCI-002346"
     ],
     "status": "Needs work",
-    "justification": "Architecture and corporate classification/handling documents exist, so this is not missing all data-protection documentation. However the authoritative policy backlog explicitly leaves contract CUI categories and boundary unresolved; the candidate lacks the MPN-specific data-element/protection mapping requested by this check.",
+    "justification": "Architecture and corporate classification/handling documents exist, so this is not missing all data-protection documentation. However the authoritative policy backlog explicitly leaves contract CUI categories and boundary unresolved; the candidate lacks the MPN-specific data-element/protection mapping requested by this check. Human review on 2026-11-10 confirmed Needs work: complete the MPN-specific data-element, protection-requirement and control mapping using the existing architecture and classification policies.",
     "evidence_ids": [
       "re-governance-architecture",
       "re-governance-policy-classification",
       "re-governance-policy-backlog"
     ],
-    "next_step": "Complete the MPN data-element/protection requirements by applying the contract-specific categories to existing architecture/security design.",
+    "next_step": "Document MPN application data elements and categories, the protection requirements for each, and the controls that implement those requirements. Apply mission/contract-specific classification and handling decisions to the existing architecture and corporate policies; retain the completed mapping and mission-owner confirmation.",
     "owner": "Gallatin engineering/security; MPN mission owner for site approvals",
     "category": "documentation",
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",

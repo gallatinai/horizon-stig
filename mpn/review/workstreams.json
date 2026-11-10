@@ -431,7 +431,7 @@
     {
       "vuln_id": "V-222423",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Complete the MPN data-element/protection requirements by applying the contract-specific categories to existing architecture/security design."
+      "next_step": "Document MPN application data elements and categories, the protection requirements for each, and the controls that implement those requirements. Apply mission/contract-specific classification and handling decisions to the existing architecture and corporate policies; retain the completed mapping and mission-owner confirmation."
     },
     {
       "vuln_id": "V-222636",
