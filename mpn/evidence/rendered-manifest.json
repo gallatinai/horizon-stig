@@ -1,0 +1,24 @@
+{
+  "date": "2026-11-09",
+  "source_repo": "https://github.com/gallatinai/horizon-uds-bundle",
+  "source_commit": "d528b7febf1ce8bb5ccf99661dade6ae09a84381",
+  "helm_version": "v4.0.4+g8650e1d",
+  "files": [
+    {
+      "path": "mpn/evidence/rendered/keycloak.yaml",
+      "sha256": "a426ae79e07f19e85ee6cfed16487fd38b601c68cba84c99ebf63d7911b60ad9"
+    },
+    {
+      "path": "mpn/evidence/rendered/package.yaml",
+      "sha256": "26b453e0256dc042c31fb655f5d19089010ef2123603cba79bf37794153f9484"
+    },
+    {
+      "path": "mpn/evidence/rendered/postgres.yaml",
+      "sha256": "49071c064d3933b51957bb824abc2552c78e7c06759d545333875f84203d2cd4"
+    },
+    {
+      "path": "mpn/evidence/rendered/seaweedfs.yaml",
+      "sha256": "8d72e083d1f0329c0406f01f85adb5e8976da892ddba4bde3d5fc44252a0fa48"
+    }
+  ]
+}

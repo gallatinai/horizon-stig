@@ -1,0 +1,37 @@
+{
+  "total": 1048,
+  "by_status": {
+    "Likely covered": 368,
+    "Unclear": 662,
+    "Needs work": 11,
+    "Needs N/A justification": 7
+  },
+  "by_benchmark": {
+    "U_ASD_V6R5_STIG": {
+      "Likely covered": 286
+    },
+    "U_Kubernetes_V2R6_STIG": {
+      "Likely covered": 82,
+      "Unclear": 8,
+      "Needs work": 2
+    },
+    "U_Container_Platform_V2R5_SRG": {
+      "Unclear": 188
+    },
+    "U_Web_Server_V4R5_SRG": {
+      "Unclear": 126
+    },
+    "U_Application_Server_V4R6_SRG": {
+      "Unclear": 135,
+      "Needs N/A justification": 2
+    },
+    "U_Database_V4R6_SRG": {
+      "Unclear": 142
+    },
+    "U_AAA_Services_V2R3_SRG": {
+      "Unclear": 63,
+      "Needs work": 9,
+      "Needs N/A justification": 5
+    }
+  }
+}

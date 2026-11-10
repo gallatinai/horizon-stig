@@ -1,0 +1,86 @@
+[
+  {
+    "benchmark": "U_Kubernetes_V2R6_STIG",
+    "vuln_id": "V-242383",
+    "before": "Unclear",
+    "after": "Likely covered",
+    "reason": "Zarf chart declarations target horizon-uds and an explicit namespace manifest exists. Likely source coverage; inventory actual admitted resources to exclude default-namespace exceptions."
+  },
+  {
+    "benchmark": "U_Kubernetes_V2R6_STIG",
+    "vuln_id": "V-242415",
+    "before": "Unclear",
+    "after": "Needs work",
+    "reason": "Rendered PostgreSQL injects POSTGRES_PASSWORD through secretKeyRef into an environment variable. The official check explicitly treats this pattern as a finding. This is a candidate-manifest gap, not a live-cluster finding."
+  },
+  {
+    "benchmark": "U_Kubernetes_V2R6_STIG",
+    "vuln_id": "V-274883",
+    "before": "Unclear",
+    "after": "Needs work",
+    "reason": "SeaweedFS renders accessKey and secretKey inside s3.json in a ConfigMap. The official rule requires sensitive values in Secrets or an approved external store. S3 authentication already exists; credential placement is the gap."
+  },
+  {
+    "benchmark": "U_AAA_Services_V2R3_SRG",
+    "vuln_id": "V-204644",
+    "before": "Unclear",
+    "after": "Needs work",
+    "reason": "Bundled Keycloak realm sets failureFactor=5; the official AAA check requires locking after three consecutive failures within 15 minutes. Bundled mode/local users are the candidate default. UDS SSO inheritance does not fix this realm."
+  },
+  {
+    "benchmark": "U_AAA_Services_V2R3_SRG",
+    "vuln_id": "V-204664",
+    "before": "Unclear",
+    "after": "Needs work",
+    "reason": "Candidate bundled Keycloak uses local users and its explicit passwordPolicy specifies only hash algorithm/iterations; it lacks the length, character-class or lifetime constraint required by this exact rule. An inherited directory exception has not been established."
+  },
+  {
+    "benchmark": "U_AAA_Services_V2R3_SRG",
+    "vuln_id": "V-204666",
+    "before": "Unclear",
+    "after": "Needs work",
+    "reason": "Candidate bundled Keycloak uses local users and its explicit passwordPolicy specifies only hash algorithm/iterations; it lacks the length, character-class or lifetime constraint required by this exact rule. An inherited directory exception has not been established."
+  },
+  {
+    "benchmark": "U_AAA_Services_V2R3_SRG",
+    "vuln_id": "V-204667",
+    "before": "Unclear",
+    "after": "Needs work",
+    "reason": "Candidate bundled Keycloak uses local users and its explicit passwordPolicy specifies only hash algorithm/iterations; it lacks the length, character-class or lifetime constraint required by this exact rule. An inherited directory exception has not been established."
+  },
+  {
+    "benchmark": "U_AAA_Services_V2R3_SRG",
+    "vuln_id": "V-204668",
+    "before": "Unclear",
+    "after": "Needs work",
+    "reason": "Candidate bundled Keycloak uses local users and its explicit passwordPolicy specifies only hash algorithm/iterations; it lacks the length, character-class or lifetime constraint required by this exact rule. An inherited directory exception has not been established."
+  },
+  {
+    "benchmark": "U_AAA_Services_V2R3_SRG",
+    "vuln_id": "V-204669",
+    "before": "Unclear",
+    "after": "Needs work",
+    "reason": "Candidate bundled Keycloak uses local users and its explicit passwordPolicy specifies only hash algorithm/iterations; it lacks the length, character-class or lifetime constraint required by this exact rule. An inherited directory exception has not been established."
+  },
+  {
+    "benchmark": "U_AAA_Services_V2R3_SRG",
+    "vuln_id": "V-204673",
+    "before": "Unclear",
+    "after": "Needs work",
+    "reason": "Candidate bundled Keycloak uses local users and its explicit passwordPolicy specifies only hash algorithm/iterations; it lacks the length, character-class or lifetime constraint required by this exact rule. An inherited directory exception has not been established."
+  },
+  {
+    "benchmark": "U_AAA_Services_V2R3_SRG",
+    "vuln_id": "V-204674",
+    "before": "Unclear",
+    "after": "Needs work",
+    "reason": "Candidate bundled Keycloak uses local users and its explicit passwordPolicy specifies only hash algorithm/iterations; it lacks the length, character-class or lifetime constraint required by this exact rule. An inherited directory exception has not been established."
+  },
+  {
+    "benchmark": "U_AAA_Services_V2R3_SRG",
+    "vuln_id": "V-204689",
+    "before": "Unclear",
+    "after": "Needs work",
+    "reason": "Bundled Keycloak realm has permanentLockout=false, while the official AAA check requires locks maintained until administrator release when accounts are managed locally."
+  }
+]

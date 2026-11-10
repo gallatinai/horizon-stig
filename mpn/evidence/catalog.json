@@ -1,0 +1,72 @@
+{
+  "host": {
+    "title": "MPN ownership",
+    "observation": "Current scope assigns control plane/node OS to MPN; no host assessment or live configuration was supplied.",
+    "url": "https://gallatin.atlassian.net/wiki/spaces/GG/pages/733085804/WIP+STIG+SRG+Compliance+Scope+MPN"
+  },
+  "uds": {
+    "title": "UDS architecture",
+    "observation": "Current scope names Pepr, Istio, Falco, Velero and centralized logging; architecture supplies a mechanism, not observed enforcement.",
+    "url": "https://gallatin.atlassian.net/wiki/spaces/GG/pages/733085804/WIP+STIG+SRG+Compliance+Scope+MPN"
+  },
+  "identity": {
+    "title": "Identity selection",
+    "observation": "The active package chart supports bundled or UDS identity; source/values/uds-package.yaml selects bundled by default. UDS SSO cannot be assumed for this path.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/values/uds-package.yaml"
+  },
+  "realm": {
+    "title": "Bundled realm",
+    "observation": "Realm defaults: failureFactor=5, permanentLockout=false, idle=900s, max=28800s, password policy includes hashing only, events/admin events enabled with 90-day local event retention.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/keycloak/realms/horizon-realm.json"
+  },
+  "mesh": {
+    "title": "Mesh and policy",
+    "observation": "Package chart declares ambient mesh and generated network policy. Disabled chart-local NetworkPolicy and plaintext application URLs do not establish missing mesh enforcement.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-uds-package/templates/package.yaml"
+  },
+  "logging": {
+    "title": "API logging",
+    "observation": "Current HTTP logger includes service, request/trace IDs, event, remote address and response status, with secret redaction. Its common bindings do not add authenticated actor identity; other records/correlation must be checked.",
+    "url": "https://github.com/gallatinai/horizon/blob/3f3b51d454197c077b33896caf93de72b94eafda/apps/api/src/core/observability/logging.ts"
+  },
+  "db": {
+    "title": "Database audit",
+    "observation": "Candidate PostgreSQL preloads pgaudit; migration creates extension but catches failures. This does not establish effective event classes, connection logging, retention, or collection.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/values/postgres.yaml"
+  },
+  "secrets": {
+    "title": "Secret environment variables",
+    "observation": "Rendered PostgreSQL StatefulSet injects POSTGRES_PASSWORD via secretKeyRef; secret-as-environment is expressly disallowed by Kubernetes V-242415.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-postgres/templates/statefulset.yaml"
+  },
+  "s3": {
+    "title": "SeaweedFS credential ConfigMap",
+    "observation": "Rendered SeaweedFS chart places S3 accessKey/secretKey in s3.json in a ConfigMap and mounts that ConfigMap. Zarf supplies secrets at deployment; stored candidate placeholders are not actual leaked credentials.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/seaweedfs/templates/configmap.yaml"
+  },
+  "web": {
+    "title": "Frontend nginx",
+    "observation": "Frontend config serves a SPA with try_files; ingress security, complete image config, effective HTTP versions, headers and enabled modules remain unobserved.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/values/web.yaml"
+  },
+  "logout": {
+    "title": "Browser logout",
+    "observation": "Current auth store wipes local auth state then invokes OIDC signout. Local storage use alone is not proof that logout fails; replay/expiry/server-side invalidation need tests.",
+    "url": "https://github.com/gallatinai/horizon/blob/3f3b51d454197c077b33896caf93de72b94eafda/apps/web/src/auth/auth-store.ts"
+  },
+  "authz": {
+    "title": "Application access control",
+    "observation": "API guard validates identity and sets tenant/user context; permission guard invokes a permission enforcer when route metadata is present. This is source support, not complete route/tenant coverage.",
+    "url": "https://github.com/gallatinai/horizon/blob/3f3b51d454197c077b33896caf93de72b94eafda/apps/api/src/api/auth/auth.guard.ts"
+  },
+  "images": {
+    "title": "Image release process",
+    "observation": "Builder verifies source digests and produces archive hashes; sample values with empty digests do not establish that a built release is unpinned. Assessed release/SBOM/scans still needed.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/scripts/build-bundle.py"
+  },
+  "local": {
+    "title": "MPN inference mismatch",
+    "observation": "The MPN notes require local inference. Candidate package still permits Anywhere:443 egress for hosted LLM consumers; it is a demo/general candidate, not proof of deployed MPN behavior.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-uds-package/templates/package.yaml"
+  }
+}

@@ -1,0 +1,72 @@
+[
+  {
+    "package": "U_ASD_V6R5_STIG",
+    "title": "Application Security and Development Security Technical Implementation Guide",
+    "version": "6",
+    "rule_count": 286,
+    "source_url": "https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_ASD_V6R5_STIG.zip",
+    "sha256": "b73e8a74d591982d49cdc9e0c5c0023b37ab87d91f3f3f150d6dab8baa23c435",
+    "xml_sha256": "34e8dfa6841229735082e341a1cf6c5a48eec84ce0e7e5d3f03ab02355fe066d",
+    "retrieved_date": "2026-11-09"
+  },
+  {
+    "package": "U_Kubernetes_V2R6_STIG",
+    "title": "Kubernetes Security Technical Implementation Guide",
+    "version": "2",
+    "rule_count": 92,
+    "source_url": "https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_Kubernetes_V2R6_STIG.zip",
+    "sha256": "2e66cc46e19889f337b40a7827745146c40c7b532529c03d826ba7462419876a",
+    "xml_sha256": "0ca995078bd987a153f5a3238d0812b331883809d11547882bf0cedf0b110e50",
+    "retrieved_date": "2026-11-09"
+  },
+  {
+    "package": "U_Container_Platform_V2R5_SRG",
+    "title": "Container Platform Security Requirements Guide",
+    "version": "2",
+    "rule_count": 188,
+    "source_url": "https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_Container_Platform_V2R5_SRG.zip",
+    "sha256": "01a2782958b6f4d8084f179d2aa84e94d496aad6f11f8cbb3bc16921a0e542cd",
+    "xml_sha256": "b45697a19dd0ede9818659f8d836d9d758baa870c928171f34db45ee8d24272d",
+    "retrieved_date": "2026-11-09"
+  },
+  {
+    "package": "U_Web_Server_V4R5_SRG",
+    "title": "Web Server Security Requirements Guide",
+    "version": "4",
+    "rule_count": 126,
+    "source_url": "https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_Web_Server_V4R5_SRG.zip",
+    "sha256": "e7936ed668282a5536b1be9713fc6d69d2be3338c7728e8c2e701c5e5f64d4bd",
+    "xml_sha256": "c4f66f0744fa06ddd571a0aaaf462e6e97cf587827a33fc8be69208e8b86a8f9",
+    "retrieved_date": "2026-11-09"
+  },
+  {
+    "package": "U_Application_Server_V4R6_SRG",
+    "title": "Application Server Security Requirements Guide",
+    "version": "4",
+    "rule_count": 137,
+    "source_url": "https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_Application_Server_V4R6_SRG.zip",
+    "sha256": "7527c3b2b42a8608650c27b3db7be2bcfbf39512859b814076eefe29f1c87aaa",
+    "xml_sha256": "a63458c6279a6c71e8b1f2bb981455645fb8d6841424194be69b3065656ae157",
+    "retrieved_date": "2026-11-09"
+  },
+  {
+    "package": "U_Database_V4R6_SRG",
+    "title": "Database Security Requirements Guide",
+    "version": "4",
+    "rule_count": 142,
+    "source_url": "https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_Database_V4R6_SRG.zip",
+    "sha256": "bdf25263c41554ff276b7aa0704850ec442bdefd6283ddc5ab2c9ad7b3330bb0",
+    "xml_sha256": "e10f071573d6a9259e5467d8cea8945d79a43e5fc3a88372027aa5b4d3fda545",
+    "retrieved_date": "2026-11-09"
+  },
+  {
+    "package": "U_AAA_Services_V2R3_SRG",
+    "title": "AAA Services Security Requirements Guide",
+    "version": "2",
+    "rule_count": 77,
+    "source_url": "https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_AAA_Services_V2R3_SRG.zip",
+    "sha256": "7488baa625397d9f768a6150fea20b59b18296906a31dcc2b597f9dd1d81d70d",
+    "xml_sha256": "a0cf4a3bc9188a79a9841c1af0ca506d0e3f4f40b65df9637e316ef69dadf204",
+    "retrieved_date": "2026-11-09"
+  }
+]
