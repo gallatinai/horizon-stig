@@ -38,7 +38,78 @@ lines += ['',f"**Totals:** {counts['Needs work']} Needs work; {counts['Likely co
 '- [Gallatin UDS configuration actions](mpn/UDS-CONFIGURATION.md)',
 '- [NSA-approved cryptography: applying the STIG wording](mpn/NSA-CRYPTOGRAPHY.md) · [Checked components and protection options](mpn/NSA-COMPONENT-CHECK.md)',
 '- [Assessment decisions](mpn/evidence/current-assessment.json)','- [Requirements found in Slack and Gemini meeting notes](mpn/REQUIREMENTS.md)','- [Improvement priorities and effort estimate](mpn/FINDINGS.md)','- [Evidence boundaries and exact source versions](mpn/evidence/README.md)','- [John’s human-review queue](mpn/review/human-review.csv) · [Official packages and hashes](mpn/benchmarks/manifest.json)','','The package baseline is **2026.45.4-uds.1**, from the successful UDS push pipeline: **UDS shared identity, Core 1.14.0, 12 digest-pinned images, no bundled Keycloak**. Image SBOMs, FIPS configuration and release verification support the control mappings. Gallatin manages UDS Core on MPN and owns its platform configuration. Controls may be supplied by the gateway, mesh, IdP, database, host or organizational procedure. MPN-specific local inference, selected host/storage and mission applicability remain distinct from the generic UDS release.','','Rebuild saved decisions with `python3 scripts/build_review.py`, `python3 scripts/summarize_review.py`, then `python3 scripts/validate.py`. [current-assessment.json](mpn/evidence/current-assessment.json) stores the status decisions and evidence references. `python3 scripts/render_delivered.py <pinned-bundle-checkout>` reproduces the 12 delivered-profile chart captures from saved release metadata (Helm and PyYAML required).']
-(ROOT/'README.md').write_text('\n'.join(lines)+'\n')
+lines += ['', '''## Updating a STIG in a PR
+
+Use Python 3 and run commands from the repository root. The assessment JSON files are the editable source; the rule tables, CSVs, counts and solution pages are generated.
+
+### 1. Create a branch
+
+```sh
+git switch main
+git pull --ff-only
+git switch -c stig/v206414-session-lifetime
+```
+
+### 2. Add evidence for the fix
+
+Add an entry to [mpn/evidence/catalog.json](mpn/evidence/catalog.json). Give it a stable ID, describe what the implementation/configuration establishes, and link to the exact commit or retained evidence. Replace the placeholders in this example:
+
+```json
+"uds-session-eight-hours": {
+  "title": "UDS eight-hour session limit",
+  "observation": "The Core override sets SSO_SESSION_MAX_LIFESPAN to 28800 seconds; the existing realm is updated to match.",
+  "url": "https://github.com/gallatinai/<deployment-repo>/blob/<full-commit>/<core-overrides-file>"
+}
+```
+
+Only record settings, test results and approvals that the evidence actually supports. Link configuration and public fingerprints; keep secrets and restricted records in their appropriate controlled systems.
+
+### 3. Update the rule's decision
+
+Find the V-ID under `decisions` in [mpn/evidence/current-assessment.json](mpn/evidence/current-assessment.json). Update its status, justification, evidence IDs and next action; preserve the other fields.
+
+For example, after implementing the eight-hour limit required by `V-206414`, the relevant fields could be:
+
+```json
+"status": "Likely covered",
+"justification": "The UDS realm maximum session lifetime is configured to 28800 seconds (eight hours).",
+"evidence_ids": ["uds-session-eight-hours"],
+"next_step": "Confirm the assessed release applies these realm settings."
+```
+
+These snippets illustrate edits, not completed fixes. Use `Likely covered` for supported source/configuration coverage that still needs confirmation; use `Compliant` only when the complete requirement is supported for the assessed component. This repository's Compliant recommendations use `evidence_state: "source-inferred"`; final CKLB acceptance is separate. Keep `Needs work`, `Unclear` or `Needs N/A justification` where the corresponding work, decision or applicability justification remains.
+
+Check related rules sharing the same `task`, and update each only where the fix covers it. A merged source fix does not prove it is included in the assessed deployment. Cite its release/configuration scope accurately; update the top-level baseline and corresponding release artifacts only when assessing a new release.
+
+### 4. Update the implementation plan if needed
+
+Edit [mpn/evidence/implementation-plans.json](mpn/evidence/implementation-plans.json) when the solution instructions change. It generates `mpn/solutions/` and the implementation-plan index. Edit prose guides such as `mpn/UDS-CONFIGURATION.md` directly when their instructions change.
+
+### 5. Rebuild and validate
+
+```sh
+python3 scripts/build_review.py
+python3 scripts/summarize_review.py
+python3 scripts/validate.py
+git diff --check
+git diff --stat
+```
+
+Review the regenerated tables, counts, evidence decisions and workstreams. Do not edit `mpn/review/`, `mpn/solutions/` or `mpn/EVIDENCE-ACTIONS.md` directly: rebuild them from their sources. Preserve the official benchmark ZIPs, XCCDF and normalized rules in `mpn/benchmarks/`.
+
+The README is also generated. To change this tutorial or its surrounding text, edit `scripts/summarize_review.py` and regenerate it.
+
+### 6. Commit the sources and generated outputs
+
+```sh
+git add mpn README.md
+git commit -m "Update V-206414 session-limit assessment"
+git push -u origin stig/v206414-session-lifetime
+```
+
+Include `scripts/` in the commit if you changed a generator. Open a PR stating the affected V-IDs, the implementation/configuration commit or PR, the assessed release scope, the recommended statuses and the validation result.
+''']
+(ROOT/'README.md').write_text('\n'.join(lines).rstrip()+'\n')
 print(dict(counts));print('Needs-work streams:',len(work))
 
 plans_path=ROOT/'mpn/evidence/implementation-plans.json'
