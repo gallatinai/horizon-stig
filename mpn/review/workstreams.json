@@ -42,7 +42,7 @@
     {
       "vuln_id": "V-222433",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Adopt the prepared identity-verification, authorized-unlock and audit-record procedure for Gallatin-operated UDS; obtain named MPN ISSO/ISSM acceptance and retain its version."
+      "next_step": "Finalize and adopt the prepared identity-verification, authorized-unlock and audit-record procedure for Gallatin-operated UDS. Obtain documented MPN ISSO and ISSM approval and retain the approved version. Use the approved procedure for account unlocks and retain records showing identity verification and authorized recovery."
     }
   ],
   "application-auditing": [

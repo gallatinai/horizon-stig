@@ -349,13 +349,13 @@
       "CCI-002238"
     ],
     "status": "Needs work",
-    "justification": "UDS Keycloak already provides account lockout and administrator recovery, and corporate policy requires identity verification. Complete the short operational unlock procedure and its explicit ISSO/ISSM approval; do not build a second unlock API.",
+    "justification": "UDS Keycloak already provides account lockout and administrator recovery, and corporate policy requires identity verification. Complete the short operational unlock procedure and its explicit ISSO/ISSM approval; do not build a second unlock API. Human review on 2026-11-10 confirmed Needs work: finalize and adopt the existing account-unlock procedure, obtain documented MPN ISSO and ISSM approval, and retain records showing the approved process is followed. Existing Keycloak recovery capability is credited; no new Horizon unlock functionality is required.",
     "evidence_ids": [
       "solution-governance-recovery-policy",
       "core-keycloak",
       "core-id-realm"
     ],
-    "next_step": "Adopt the prepared identity-verification, authorized-unlock and audit-record procedure for Gallatin-operated UDS; obtain named MPN ISSO/ISSM acceptance and retain its version.",
+    "next_step": "Finalize and adopt the prepared identity-verification, authorized-unlock and audit-record procedure for Gallatin-operated UDS. Obtain documented MPN ISSO and ISSM approval and retain the approved version. Use the approved procedure for account unlocks and retain records showing identity verification and authorized recovery.",
     "owner": "Gallatin UDS identity administrator; MPN ISSO and ISSM",
     "category": "operational procedure/certification",
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
