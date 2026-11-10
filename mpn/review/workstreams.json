@@ -608,7 +608,7 @@
     {
       "vuln_id": "V-222437",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Gallatin adds a supported shared-Keycloak theme/event-backed previous-successful-logon display or records accepted tailoring. Core0.32 has login events but no shipped previous-logon display switch; a generic provider-proof request cannot close this item."
+      "next_step": "Implement a supported previous-successful-logon date/time display through the shared UDS identity flow or Horizon UI, using existing login events where appropriate. Verify with successive successful logins that the displayed value identifies the preceding successful application access rather than the current login. Retain implementation and verification evidence."
     },
     {
       "vuln_id": "V-222541",

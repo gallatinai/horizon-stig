@@ -1614,7 +1614,7 @@
       "CCI-000052"
     ],
     "status": "Needs work",
-    "justification": "UDS logs successful logons, but reviewed realm/theme/plugin source and Horizon sign-in views do not implement displaying the previous successful login time to the user. Storage of an event is not display; this is a small IdP/theme integration concern. Review identified the source-known UI residual; operator ownership is Gallatin rather than DU managedservice.",
+    "justification": "UDS logs successful logons, but reviewed realm/theme/plugin source and Horizon sign-in views do not implement displaying the previous successful login time to the user. Storage of an event is not display; this is a small IdP/theme integration concern. Review identified the source-known UI residual; operator ownership is Gallatin rather than DU managedservice. Human review on 2026-11-10 confirmed Needs work: display the previous successful login date/time through the shared identity flow or Horizon UI and verify it across successive logins. Existing login-event logging is credited but does not establish user-visible display.",
     "evidence_ids": [
       "re-asd-release",
       "re-asd-realm",
@@ -1624,7 +1624,7 @@
       "mpn-identity-override",
       "mpn-identity-realm"
     ],
-    "next_step": "Gallatin adds a supported shared-Keycloak theme/event-backed previous-successful-logon display or records accepted tailoring. Core0.32 has login events but no shipped previous-logon display switch; a generic provider-proof request cannot close this item.",
+    "next_step": "Implement a supported previous-successful-logon date/time display through the shared UDS identity flow or Horizon UI, using existing login events where appropriate. Verify with successive successful logins that the displayed value identifies the preceding successful application access rather than the current login. Retain implementation and verification evidence.",
     "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
     "category": "provider UI configuration",
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
