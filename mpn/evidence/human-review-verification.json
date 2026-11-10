@@ -831,6 +831,11 @@
       "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-IA-identification-and-authentication.md",
       "sha256": "52c7fcbed25d61829e184a5ba263c3bbab7b7f756cf033c1a314c4b80436543a",
       "inspection": "Read pinned policy/evidence document; draft text is not completed operational evidence."
+    },
+    "core-inactivity-guide": {
+      "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/how-to-guides/identity-and-authorization/configure-account-inactivity-disable.mdx",
+      "sha256": "7c41532ccd829627b6adecfac041ac53fe7fd98c9e4f040efe2eedd0e0218c47",
+      "inspection": "Read pinned guide: first-authentication trigger, no retroactive evaluation, realm-admin exclusion and initial-import-only setting are source-level limits, not runtime test results."
     }
   },
   "external_evidence": {
@@ -909,11 +914,12 @@
       "sources_checked": [
         "core-values",
         "realm",
+        "core-inactivity-guide",
         "browser-logout",
         "jwt"
       ],
-      "finding": "35-day workflow is present but enabled only by the inactivity setting. A disabled source default is a configuration gap in this candidate, not proof about an installation. Offboarding/group/device lifecycle requires the chosen authority and process; a human inactivity workflow does not cover all identifier types.",
-      "deployment_or_owner_acceptance": "Confirm permitted account-type exceptions and authoritative offboarding source. Exercise inactivity/deassociation with controlled identities after candidate configuration."
+      "finding": "35-day workflow is present but enabled only by the inactivity setting and unconditionally excludes users with realm-management/realm-admin. Enabling it covers only non-realm-admin users after a user-authenticated event; never-authenticated accounts never start an instance, and accounts predating enablement are not retroactively evaluated. An administrator role alone does not qualify for the exact rule's exceptions. A disabled source default and gaps in excluded-administrator and never-authenticated-account coverage are candidate configuration/control gaps, not proof about an installation. Offboarding/group/device lifecycle requires the chosen authority and process; a human inactivity workflow does not cover all identifier types.",
+      "deployment_or_owner_acceptance": "Inventory excluded realm-admin accounts and justify any exceptions against each exact rule. Verify an existing compliant automatic 35-day inactivity control or a supported controlled shared-provider workflow change for every non-exempt administrator. For never-authenticated non-exempt accounts, verify an existing compliant automatic 35-day inactivity control or implement a supported, controlled shared-provider change that measures inactivity from an approved creation/enablement baseline. If enabling the workflow on an existing realm, reconcile pre-enable accounts and place every non-exempt account under automatic inactivity control. Exercise 35-day inactivity disablement for controlled authenticated ordinary, never-authenticated non-exempt and non-exempt administrator identities and preservation of justified exceptions. Confirm the authoritative offboarding source and exercise deassociation separately after candidate configuration."
     },
     "account-access-certification": {
       "source_result": "operational-records-required",
