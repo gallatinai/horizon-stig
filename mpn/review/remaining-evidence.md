@@ -51,3 +51,22 @@ Each decision includes the exact STIG/SRG requirement and official check that es
 > If the application server is not part of an HA cluster, this is a finding.
 
 </details>
+
+## V-233495 — SRG-APP-000416-DB-000380
+
+**Benchmark:** Database Security Requirements Guide — Database V4R6 SRG ([official XCCDF](../benchmarks/U_Database_V4R6_SRG/benchmark.xml)).
+
+**Requirement:** The DBMS must use NSA-approved cryptography to protect classified information in accordance with the data owner's requirements.
+
+**Decision / action needed:** Identify the NSA-approved encryption protecting PostgreSQL and confirm the DB paths use it. Credit that protection here; add database crypto work only if an actual gap is found.
+
+**Reason:** The deployment is classified, so this rule applies. Its discussion specifically addresses DBMS compatibility with NSA-approved encryption devices; it does not require a separate NSA certificate for PostgreSQL. The actual MPN encryption-device/control coverage is not identified in this package. FIPS5132 establishes the software module validation but does not determine whether that infrastructure requirement is met.
+
+<details>
+<summary>Official check — SV-233495r1117186_rule</summary>
+
+> If the DBMS is deployed in an unclassified environment, this is not applicable (NA).
+>
+> If the DBMS is not configured to use NSA-approved cryptography to protect classified information in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, and standards, this is a finding.
+
+</details>

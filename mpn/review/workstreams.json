@@ -430,11 +430,6 @@
       "vuln_id": "V-240925",
       "benchmark": "U_Application_Server_V4R6_SRG",
       "next_step": "Check the encryption protecting application-server data against the NSA-approved requirement and configure any missing protection. Record the approved implementation and settings."
-    },
-    {
-      "vuln_id": "V-233495",
-      "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Verify or configure NSA-approved encryption for database files, backups and connections. Record the implementation approval and required settings. Reuse approved platform/storage encryption that already protects PostgreSQL."
     }
   ],
   "compliance-package": [

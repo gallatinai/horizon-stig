@@ -9,17 +9,18 @@ Suggested statuses and reasons for all **1,048 rules across seven benchmarks**, 
 | [Container_Platform_V2R5_SRG](mpn/review/U_Container_Platform_V2R5_SRG.md) | 188 | 34 | 152 | 0 | 2 | 0 |
 | [Web_Server_V4R5_SRG](mpn/review/U_Web_Server_V4R5_SRG.md) | 126 | 16 | 102 | 0 | 6 | 2 |
 | [Application_Server_V4R6_SRG](mpn/review/U_Application_Server_V4R6_SRG.md) | 137 | 25 | 107 | 1 | 4 | 0 |
-| [Database_V4R6_SRG](mpn/review/U_Database_V4R6_SRG.md) | 142 | 28 | 95 | 0 | 18 | 1 |
+| [Database_V4R6_SRG](mpn/review/U_Database_V4R6_SRG.md) | 142 | 27 | 95 | 1 | 18 | 1 |
 | [AAA_Services_V2R3_SRG](mpn/review/U_AAA_Services_V2R3_SRG.md) | 77 | 16 | 50 | 0 | 11 | 0 |
 
-**Totals:** 189 Needs work; 781 Likely covered; 2 Unclear; 72 Needs N/A justification; 4 source-only Compliant.
+**Totals:** 188 Needs work; 781 Likely covered; 3 Unclear; 72 Needs N/A justification; 4 source-only Compliant.
 
-The 189 needs-work recommendations group into **36 shared workstreams**. Every rule has a suggested status, justification, evidence links and next action. Final component checklists require acceptance of the stated evidence and applicability.
+The 188 needs-work recommendations group into **36 shared workstreams**. Every rule has a suggested status, justification, evidence links and next action. Final component checklists require acceptance of the stated evidence and applicability.
 
 - [All rules and reasons (CSV)](mpn/review/suggested-statuses.csv) · [JSON with complete official check/fix](mpn/review/suggested-statuses.json)
 - [Suggested workstreams](mpn/review/workstreams.md) · [Remaining evidence decisions](mpn/review/remaining-evidence.md)
 - [Implementation plans and operating procedures](mpn/EVIDENCE-ACTIONS.md)
 - [Gallatin UDS configuration actions](mpn/UDS-CONFIGURATION.md)
+- [NSA-approved cryptography: applying the STIG wording](mpn/NSA-CRYPTOGRAPHY.md)
 - [Assessment decisions](mpn/evidence/current-assessment.json)
 - [Requirements found in Slack and Gemini meeting notes](mpn/REQUIREMENTS.md)
 - [Improvement priorities and effort estimate](mpn/FINDINGS.md)

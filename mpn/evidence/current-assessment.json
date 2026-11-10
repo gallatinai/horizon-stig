@@ -14933,17 +14933,16 @@
       "evidence_state": "source-inferred"
     },
     "V-233495": {
-      "status": "Needs work",
-      "justification": "The deployment is classified, so this rule applies. The PostgreSQL image contains the FIPS-validated OpenSSL provider (CMVP5132), but that does not establish NSA approval for the database encryption. The package also does not select approved data-volume encryption.",
+      "status": "Unclear",
+      "justification": "The deployment is classified, so this rule applies. Its discussion specifically addresses DBMS compatibility with NSA-approved encryption devices; it does not require a separate NSA certificate for PostgreSQL. The actual MPN encryption-device/control coverage is not identified in this package. FIPS5132 establishes the software module validation but does not determine whether that infrastructure requirement is met.",
       "evidence_ids": [
+        "db-nsa-rule-discussion",
         "postgres-delivered-crypto",
-        "postgres-volume-selection",
-        "postgres-cmvp-5132",
         "classified-crypto-definition"
       ],
-      "next_step": "Verify or configure NSA-approved encryption for database files, backups and connections. Record the implementation approval and required settings. Reuse approved platform/storage encryption that already protects PostgreSQL.",
+      "next_step": "Identify the NSA-approved encryption protecting PostgreSQL and confirm the DB paths use it. Credit that protection here; add database crypto work only if an actual gap is found.",
       "owner": "Gallatin SRE/security",
-      "category": "classified encryption implementation/configuration",
+      "category": "NSA-approved infrastructure coverage",
       "components": "Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database",
       "task": "classified-crypto",
       "evidence_state": "source-inferred",

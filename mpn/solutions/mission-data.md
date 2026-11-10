@@ -6,7 +6,7 @@
 | [V-265634 / APSC-DV-002010](../review/U_ASD_V6R5_STIG.md) | The application must implement NSA-approved cryptography to protect classified information in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, and standards. | Needs work |
 | [V-233211 / SRG-APP-000416-CTR-001015](../review/U_Container_Platform_V2R5_SRG.md) | The container platform must implement NSA-approved cryptography to protect classified information in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, and standards. | Needs work |
 | [V-240925 / SRG-APP-000416-AS-000140](../review/U_Application_Server_V4R6_SRG.md) | The application server must implement NSA-approved cryptography to protect classified information in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, and standards. | Needs work |
-| [V-233495 / SRG-APP-000416-DB-000380](../review/U_Database_V4R6_SRG.md) | The DBMS must use NSA-approved cryptography to protect classified information in accordance with the data owner's requirements. | Needs work |
+| [V-233495 / SRG-APP-000416-DB-000380](../review/U_Database_V4R6_SRG.md) | The DBMS must use NSA-approved cryptography to protect classified information in accordance with the data owner's requirements. | Unclear |
 | [V-239371 / SRG-APP-000416-WSR-000118](../review/U_Web_Server_V4R5_SRG.md) | The web server must implement required cryptographic protections using cryptographic modules complying with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance when encrypting data that must be compartmentalized. | Needs work |
 | [V-278962 / SRG-APP-001045-AS-000325](../review/U_Application_Server_V4R6_SRG.md) | The application server must attach data tags containing organization-defined authorized processing to organization-defined elements of personally identifiable information. | Needs work |
 | [V-278963 / SRG-APP-001050-AS-000326](../review/U_Application_Server_V4R6_SRG.md) | The application server must attach data tags containing organization-defined processing purposes to organization-defined elements of personally identifiable information. | Needs work |
@@ -17,7 +17,7 @@ MPN will process classified data. The classified-encryption rules apply.
 
 For each relevant component, identify the encryption implementation protecting its data, check whether it meets the rule's NSA-approved requirement, and configure missing protection. Record the product/module, approval reference and required settings. Reuse approved encryption already supplied by the host, storage or network; no duplicate application crypto is required.
 
-For PostgreSQL, the delivered image uses the Chainguard OpenSSL FIPS provider, CMVP5132. That establishes FIPS validation, not NSA classified-use approval. The package does not select an NSA-approved database-volume encryption configuration. Verify or configure the database files, backups and connection protection against the actual requirement.
+For PostgreSQL V-233495, read the discussion as well as the title: it addresses DBMS compatibility with NSA-approved encryption devices. Identify the MPN encryption protecting PostgreSQL and confirm the database paths use it. Credit that protection rather than requiring a separate NSA certificate for the PostgreSQL container. CMVP5132 establishes its software module validation; it does not by itself answer the infrastructure-coverage check. See [the requirement interpretation](../NSA-CRYPTOGRAPHY.md).
 
 The ASD V-265634 check has a specific non-SAMI/SAMI distinction: it permits NIST-certified cryptography for stored non-SAMI data as required by the owner and requires NSA-validated Type1 for stored SAMI. Use that wording when checking the implementation; do not impose Type1 on every component merely because the environment is classified.
 
@@ -40,9 +40,8 @@ Use the mission-data protection record template for the field/purpose associatio
 - [re-mission-nsa-registration](https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/solution-registration/)
 - [re-mission-nsa-cp](https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/Capability-Packages/)
 - [classified-crypto-definition](https://csrc.nist.gov/glossary/term/NSA_approved_cryptography)
+- [db-nsa-rule-discussion](https://github.com/gallatinai/horizon-stig/blob/main/mpn/benchmarks/U_Database_V4R6_SRG/benchmark.xml)
 - [postgres-delivered-crypto](https://github.com/gallatinai/horizon-stig/blob/main/mpn/evidence/database-image-provenance.json)
-- [postgres-volume-selection](https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-postgres/templates/statefulset.yaml)
-- [postgres-cmvp-5132](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5132)
 - [re-mission-user-fields](https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/api/users/users.schema.ts)
 - [re-mission-upload-tags](https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/api/files/files.schema.ts)
 - [re-mission-ingestion-tags](https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/workers/artifact-ingestion/artifact_ingestion/processor.py)

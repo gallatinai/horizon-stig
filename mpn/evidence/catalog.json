@@ -1709,5 +1709,13 @@
   "postgres-volume-selection": {
     "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-postgres/templates/statefulset.yaml",
     "observation": "The database template mounts PGDATA on a persistent volume and optionally selects persistence.storageClassName. It does not itself configure an NSA-approved volume-encryption implementation."
+  },
+  "db-nsa-rule-discussion": {
+    "url": "https://github.com/gallatinai/horizon-stig/blob/main/mpn/benchmarks/U_Database_V4R6_SRG/benchmark.xml",
+    "observation": "V233495 discussion explicitly addresses DBMS compatibility with NSA-approved encryption devices for classified networks. The fix permits the DBMS and related system components to supply the protection. The approval need not attach to the PostgreSQL container itself."
+  },
+  "db-nsa-postgres-example": {
+    "url": "https://www.crunchydata.com/files/stig/PGSQL_16_STIG_V1R1.pdf",
+    "observation": "The PostgreSQL16 implementation of SRG-APP-000416-DB-000380 repeats the device-compatibility discussion; its check verifies PostgreSQL SSL and protection by NSA-approved encrypting devices. This is an implementation example, not a substitute baseline for the delivered PostgreSQL18."
   }
 }

@@ -12,7 +12,7 @@ Repeated requirements are grouped here; each linked benchmark table has the full
 | audit-review-procedure | 1 | Gallatin SRE and the designated security reviewer perform the prepared Loki/Grafana event review, disposition exceptions, record its date and set the next review due under the quarterly policy. |
 | central-log-integrity | 1 | Map an accepted immutable/authenticated centralized storage or log hash/sign control to the record lifecycle, or enable it centrally; do not implement per-API duplicate log signing. |
 | classification-guide | 1 | Identify the existing program/mission classification guide and the sections covering Horizon data. Add application-specific guidance only for uncovered data elements, then record the guide reference. |
-| classified-crypto | 5 | Check the actual encryption against the official non-SAMI/SAMI requirements. Credit the delivered validated modules where allowed; use NSA-validated Type1 protection where the check requires it. |
+| classified-crypto | 4 | Check the actual encryption against the official non-SAMI/SAMI requirements. Credit the delivered validated modules where allowed; use NSA-validated Type1 protection where the check requires it. |
 | compliance-package | 7 | Complete the MPN data-element/protection requirements by applying the contract-specific categories to existing architecture/security design. |
 | continuous-vulnerability-management | 1 | Map Gallatin’s recurring MPN scanning service to the fixed delivered image inventory, or configure a scheduled rescan/cadence with retained results; do not duplicate the existing build scans. |
 | data-backup-restore | 4 | Attach an accepted platform data-backup/restore service or configure PostgreSQL/PVC data protection and secure restore verification. |

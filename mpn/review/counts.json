@@ -1,10 +1,10 @@
 {
   "total": 1048,
   "by_status": {
-    "Needs work": 189,
+    "Needs work": 188,
     "Likely covered": 781,
     "Needs N/A justification": 72,
-    "Unclear": 2,
+    "Unclear": 3,
     "Compliant": 4
   },
   "by_benchmark": {
@@ -37,10 +37,11 @@
       "Unclear": 1
     },
     "U_Database_V4R6_SRG": {
-      "Needs work": 28,
+      "Needs work": 27,
       "Likely covered": 95,
       "Needs N/A justification": 18,
-      "Compliant": 1
+      "Compliant": 1,
+      "Unclear": 1
     },
     "U_AAA_Services_V2R3_SRG": {
       "Likely covered": 50,
