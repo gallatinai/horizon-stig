@@ -761,7 +761,7 @@
       "CCI-000017"
     ],
     "status": "Needs work",
-    "justification": "UDS has the needed35-day inactivity workflow, but it is opt-in and ACCOUNT_INACTIVITY_DAYS is unset/default disabled in Core. This is a delegated provider setting, not missing application code. Inactivity implementation already exists in Core and is Gallatin-operated; the source-known disabled default needs Gallatin configuration, not documentation from an external provider.",
+    "justification": "UDS has the needed35-day inactivity workflow, but it is opt-in and ACCOUNT_INACTIVITY_DAYS is unset/default disabled in Core. This is a delegated provider setting, not missing application code. Inactivity implementation already exists in Core and is Gallatin-operated; the source-known disabled default needs Gallatin configuration, not documentation from an external provider. Human review on 2026-11-10 confirmed Needs work and selected 35 days as the required inactivity threshold; this decision does not establish that the setting is applied.",
     "evidence_ids": [
       "re-asd-realm",
       "re-asd-core-id",
