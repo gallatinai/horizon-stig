@@ -19289,14 +19289,14 @@
       "CCI-001312"
     ],
     "status": "Needs work",
-    "justification": "UDS ingress strips server/x-envoy-upstream-service-time headers. The exact nginx base/main/server configuration still has no server_tokens off/custom generic error body; built-in nginx error bodies can disclose version even when ingress removes the Server header. Narrow the change to residual body/version minimization instead of claiming the product has no header protection.",
+    "justification": "Client-visible disclosure minimization is partially implemented: UDS ingress strips identifying response headers. The saved assessment identifies a possible residual in nginx-generated error bodies, which may disclose version information despite header removal. Human review on 2026-11-10 confirmed Needs work with verification first for this and similar disclosure issues: inspect actual external responses and deployed configuration, then suppress only confirmed identifying details. Do not infer complete error-body protection from header stripping alone.",
     "evidence_ids": [
       "re-web-headers",
       "re-web-base-config",
       "re-web-web-values",
       "re-web-web-source"
     ],
-    "next_step": "Disable nginx version disclosure in error bodies or use a generic error response while retaining existing gateway header stripping.",
+    "next_step": "In the post-classification verification pass, inspect the assessed nginx/gateway configuration and representative externally visible warning/error responses. Check server/version, patch/module and internal path disclosures in both headers and bodies. Credit existing minimization; address confirmed residuals with supported settings or generic error responses while preserving useful client diagnostics. Retain configuration and response evidence; avoid claiming default behavior proves the actual external response.",
     "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
     "category": "configuration",
     "components": "Delivered static nginx-FIPS, Istio ingress and shared UDS identity (separate roles)",

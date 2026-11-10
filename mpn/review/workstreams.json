@@ -935,7 +935,7 @@
     {
       "vuln_id": "V-206412",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Disable nginx version disclosure in error bodies or use a generic error response while retaining existing gateway header stripping."
+      "next_step": "In the post-classification verification pass, inspect the assessed nginx/gateway configuration and representative externally visible warning/error responses. Check server/version, patch/module and internal path disclosures in both headers and bodies. Credit existing minimization; address confirmed residuals with supported settings or generic error responses while preserving useful client diagnostics. Retain configuration and response evidence; avoid claiming default behavior proves the actual external response."
     }
   ],
   "web-http-protocol": [
