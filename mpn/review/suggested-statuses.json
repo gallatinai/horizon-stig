@@ -7919,12 +7919,12 @@
       "CCI-000445"
     ],
     "status": "Needs work",
-    "justification": "A corporate continuity policy was located, but it explicitly leaves per-system RTO/RPO, actual BCP/DRP and recovery configuration TBD. This is evidence of an unfinished application/site recovery plan, not an unknowable code behavior. Existing UDS resilience can be referenced in the missing MPN plan.",
+    "justification": "A corporate continuity policy and platform resilience/backup mechanisms exist, but the saved evidence does not establish a complete accepted Horizon-on-MPN contingency plan meeting application availability requirements. MPN may already supply parts of that plan. Human review on 2026-11-10 confirmed Needs work with verification first: locate existing plans, confirm availability requirements and the MPN/Gallatin responsibility boundary, and complete only missing Horizon recovery procedures and approvals. Platform backup capability alone is not a contingency plan.",
     "evidence_ids": [
       "re-governance-policy-cp",
       "core-velero"
     ],
-    "next_step": "Complete the MPN-specific contingency/recovery plan with availability objectives, operator roles and existing platform mechanisms.",
+    "next_step": "In the post-classification verification pass, locate current MPN and Gallatin contingency/recovery plans and their acceptance records. Confirm the application availability category, recovery objectives, essential mission functions, operator roles and inherited platform recovery services. Check plan provisions against the exact STIG availability-category requirements; complete only missing Horizon procedures and approvals and retain the accepted plan references. Do not duplicate platform-owned recovery services or infer database-data recovery from resource-only backup settings.",
     "owner": "Gallatin engineering/security; MPN mission owner for site approvals",
     "category": "documentation/procedure",
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
