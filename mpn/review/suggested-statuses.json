@@ -5830,7 +5830,7 @@
       "CCI-002450"
     ],
     "status": "Needs work",
-    "justification": "Runtime application SHA256 uses the actual node-fips/OpenSSL5132 provider, resolving that part. The official check also covers component hashes; release tooling hashes/signs artifacts with Python/OpenSSL and Witness on a CI runner whose module selection is not the application FIPS runtime. The selected Witness binary/default environment has no approved-mode selection, so the package-hashing process still needs the same release-tool provider configuration. This component-hash assessment is separate from NATS JWT authentication signature hashing, which is scoped to V204758.",
+    "justification": "Hashing coverage is partially established by the assessed application runtime FIPS-provider evidence. Release/component hashing through Witness and Python/OpenSSL uses a separate CI cryptographic environment whose validated module and approved-mode boundary require verification. Human review on 2026-11-10 confirmed Needs work with verification first, coordinated with V-222570, and confirmation of the official NSS algorithm requirement. Existing runtime FIPS-module evidence alone does not establish an algorithm-specific NSS pass; recommend changes only for confirmed gaps.",
     "evidence_ids": [
       "re-images-api-sbom",
       "re-images-node-mode",
@@ -5839,7 +5839,7 @@
       "re-images-witness-binary",
       "re-images-go-fips"
     ],
-    "next_step": "Bind release component hashing/signing to a validated approved-mode provider and retain its exact tool/module evidence; do not change already-FIPS application hashing.",
+    "next_step": "In the post-classification verification pass, map application and release/component cryptographic hashing to exact module provenance, validation and operating mode. Verify Witness and Python/OpenSSL release hashing alongside V-222570. Confirm NSS applicability and, where applicable, assess the official SHA-384 minimum for in-scope hashes rather than inferring coverage from a FIPS label. Retain scope and tool/module evidence, update the recommendation where supported, and implement only confirmed gaps.",
     "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
     "category": "release-tool configuration",
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",

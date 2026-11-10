@@ -894,7 +894,7 @@
     {
       "vuln_id": "V-222571",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Bind release component hashing/signing to a validated approved-mode provider and retain its exact tool/module evidence; do not change already-FIPS application hashing."
+      "next_step": "In the post-classification verification pass, map application and release/component cryptographic hashing to exact module provenance, validation and operating mode. Verify Witness and Python/OpenSSL release hashing alongside V-222570. Confirm NSS applicability and, where applicable, assess the official SHA-384 minimum for in-scope hashes rather than inferring coverage from a FIPS label. Retain scope and tool/module evidence, update the recommendation where supported, and implement only confirmed gaps."
     }
   ],
   "runtime-response": [
