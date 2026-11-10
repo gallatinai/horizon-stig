@@ -463,7 +463,7 @@
     {
       "vuln_id": "V-233275",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Map Gallatin\u2019s recurring MPN scanning service to the fixed delivered image inventory, or configure a scheduled rescan/cadence with retained results; do not duplicate the existing build scans."
+      "next_step": "In the post-classification verification pass, identify the actual deployed image/component inventory and responsible MPN/Gallatin vulnerability-management services. Inspect recurring scan configuration, coverage and dated results, including unchanged release images and applicable platform components. Credit existing services and CI scans; configure only confirmed recurring-coverage gaps, retain findings/results and link the existing remediation process. Do not infer continuous coverage from build scans alone or absence from a separate source ECR setting."
     }
   ],
   "data-backup-restore": [

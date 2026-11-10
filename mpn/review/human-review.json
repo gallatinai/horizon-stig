@@ -3043,13 +3043,13 @@
       "CCI-000366"
     ],
     "status": "Needs work",
-    "justification": "Real Grype/SBOM/ClamAV checks run for delivered images and are not absent. However those scans are tied to image builds; source ECR metadata is BASIC with no registry rules and scanOnPush=false for the delivered API/web/PostgreSQL repositories. No recurring rescan of the unchanged fixed release image inventory/container components was found in the selected delivery source. Keep only this ongoing-rescan/cadence residual, which an existing DU/MPN continuous scanning service may satisfy.",
+    "justification": "Vulnerability scanning is partially implemented through actual CI image/build scans. The saved evidence does not establish recurring vulnerability scanning of unchanged deployed images and all applicable platform components as new vulnerabilities emerge. Existing MPN scanning services may provide this coverage; source-registry metadata alone does not establish their absence. Human review on 2026-11-10 confirmed Needs work with verification first: confirm recurring scanning scope, ownership and results against the actual deployed inventory before assigning additional scanning work.",
     "evidence_ids": [
       "re-images-release",
       "re-images-scans",
       "re-images-registry-check"
     ],
-    "next_step": "Map Gallatin\u2019s recurring MPN scanning service to the fixed delivered image inventory, or configure a scheduled rescan/cadence with retained results; do not duplicate the existing build scans.",
+    "next_step": "In the post-classification verification pass, identify the actual deployed image/component inventory and responsible MPN/Gallatin vulnerability-management services. Inspect recurring scan configuration, coverage and dated results, including unchanged release images and applicable platform components. Credit existing services and CI scans; configure only confirmed recurring-coverage gaps, retain findings/results and link the existing remediation process. Do not infer continuous coverage from build scans alone or absence from a separate source ECR setting.",
     "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
     "category": "continuous release-inventory scanning",
     "components": "UDS platform: registry, runtime, Pepr, Istio, logging; delivered workloads",
