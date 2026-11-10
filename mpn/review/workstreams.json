@@ -845,7 +845,7 @@
     {
       "vuln_id": "V-278964",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Configure an accepted Falco/security event-to-access-control response or record approvedtailoring for the exactautomated integration."
+      "next_step": "In the post-classification verification pass, identify the platform/security response owner and inspect actual intrusion-detection event routes and automated access-control responders. Map approved detection conditions to permitted response actions and verify existing integration with controlled tests. Credit supported MPN/platform automation; configure only confirmed gaps under an approved response policy and retain configuration/results. Do not introduce unapproved automatic lockout/quarantine actions or build a duplicate application IDS."
     }
   ],
   "secret-delivery": [

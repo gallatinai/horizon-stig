@@ -12970,13 +12970,13 @@
     },
     "V-278964": {
       "status": "Needs work",
-      "justification": "Wholeproduct review credits existing Pepr prevention/networkpolicies and Falco detection, but code routes Falco events toLoki only and does not connect detectedintrusions to automatic access-control response. Independent prevention and detection are not the specified automated integration. Resolve through platform responder/integration or accepted policytailoring, not an API-specificIDSrewrite.",
+      "justification": "Existing Falco intrusion detection and Pepr/network-policy enforcement provide partial capabilities, but the saved configuration does not establish automated detection-to-access-control response. Existing MPN security integrations may supply that connection. Human review on 2026-11-10 confirmed Needs work with verification first: confirm response ownership, approved policy and existing automation, then configure only missing integration. Independent prevention/detection or alert delivery alone does not establish the required automated access-control connection.",
       "evidence_ids": [
         "re-appserver-release",
         "re-appserver-falco",
         "re-appserver-podsecurity"
       ],
-      "next_step": "Configure an accepted Falco/security event-to-access-control response or record approvedtailoring for the exactautomated integration.",
+      "next_step": "In the post-classification verification pass, identify the platform/security response owner and inspect actual intrusion-detection event routes and automated access-control responders. Map approved detection conditions to permitted response actions and verify existing integration with controlled tests. Credit supported MPN/platform automation; configure only confirmed gaps under an approved response policy and retain configuration/results. Do not introduce unapproved automatic lockout/quarantine actions or build a duplicate application IDS.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "platform security integration",
       "components": "Delivered Horizon API, workers, chat, ingestion and storage; delegated UDS identity/gateway/mesh",
