@@ -24351,7 +24351,7 @@
       "CCI-002470"
     ],
     "status": "Needs work",
-    "justification": "This check restricts the CAs accepted when verifying protected sessions; it is not solely a question about the gateway leaf certificate class. UDS supplies approved DoD identity trust and configurable trust distribution. Complete the MPN profile with an approved root allow-list at the actual client/gateway verification boundaries, including API JWKS HTTPS. Replace default Node trust rather than only adding CAs. This is a defined Gallatin-owned configuration task; it requires no new TLS implementation inside each API and no DU-managed cluster.",
+    "justification": "This check restricts the CAs accepted when verifying protected sessions; it is not solely a question about the gateway leaf certificate class. UDS supplies approved DoD identity trust and configurable trust distribution. Complete the MPN profile with an approved root allow-list at the actual client/gateway verification boundaries, including API JWKS HTTPS. Replace default Node trust rather than only adding CAs. This is a defined Gallatin-owned configuration task; it requires no new TLS implementation inside each API and no DU-managed cluster. Human review on 2026-11-10 confirmed Needs work with verification first: inspect effective trust stores and actual protected-session verifier boundaries, confirm ownership and approved CA scope, then restrict only confirmed gaps and test unrelated-CA rejection. Configured UDS identity trust or additive trust-bundle distribution alone does not establish all applicable verifier restrictions.",
     "evidence_ids": [
       "solution-topology-trust-doc",
       "solution-topology-trust-source",
@@ -24360,7 +24360,7 @@
       "solution-topology-istio-secret",
       "solution-topology-dod-ca"
     ],
-    "next_step": "Implement the documented approved-root profile and restrictive verifier settings. Retain CA fingerprints/approval and tests showing an unrelated CA is rejected.",
+    "next_step": "In the post-classification verification pass, inventory applicable protected-session verifiers, including shared identity/gateway and Horizon outbound signing-key HTTPS. Confirm approved CA scope and ownership, inspect actual effective trust stores and client settings, and test rejection of an unrelated CA. Credit existing restrictive configuration; replace or restrict trust sources only where required rather than merely adding approved roots. Retain public CA fingerprints/approval, configuration and test evidence; reuse supported UDS/runtime trust configuration.",
     "owner": "Gallatin SRE / Gallatin-operated MPN Core platform; mission authority only for mission applicability and CA issuance approval",
     "category": "deployment trust configuration",
     "components": "Delivered Horizon API, workers, chat, ingestion and storage; delegated UDS identity/gateway/mesh",

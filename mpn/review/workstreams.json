@@ -790,7 +790,7 @@
     {
       "vuln_id": "V-204811",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Implement the documented approved-root profile and restrictive verifier settings. Retain CA fingerprints/approval and tests showing an unrelated CA is rejected."
+      "next_step": "In the post-classification verification pass, inventory applicable protected-session verifiers, including shared identity/gateway and Horizon outbound signing-key HTTPS. Confirm approved CA scope and ownership, inspect actual effective trust stores and client settings, and test rejection of an unrelated CA. Credit existing restrictive configuration; replace or restrict trust sources only where required rather than merely adding approved roots. Retain public CA fingerprints/approval, configuration and test evidence; reuse supported UDS/runtime trust configuration."
     },
     {
       "vuln_id": "V-204832",
