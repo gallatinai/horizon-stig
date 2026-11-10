@@ -1,0 +1,256 @@
+---
+# Source: horizon-service/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: horizon-api
+  labels:
+    helm.sh/chart: horizon-service-0.18.0
+    app.kubernetes.io/name: horizon-api
+    app.kubernetes.io/instance: horizon-api
+    app.kubernetes.io/version: "0.1.0"
+    app.kubernetes.io/managed-by: Helm
+automountServiceAccountToken: false
+---
+# Source: horizon-service/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: horizon-api
+  labels:
+    helm.sh/chart: horizon-service-0.18.0
+    app.kubernetes.io/name: horizon-api
+    app.kubernetes.io/instance: horizon-api
+    app.kubernetes.io/version: "0.1.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    com.palantir.rubix.service/pod-cert: '{}'
+spec:
+  type: ClusterIP
+  ports:
+    - port: 3001
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: horizon-api
+    app.kubernetes.io/instance: horizon-api
+---
+# Source: horizon-service/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: horizon-api
+  labels:
+    helm.sh/chart: horizon-service-0.18.0
+    app.kubernetes.io/name: horizon-api
+    app.kubernetes.io/instance: horizon-api
+    app.kubernetes.io/version: "0.1.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: horizon-api
+      app.kubernetes.io/instance: horizon-api
+  template:
+    metadata:
+      labels:
+        helm.sh/chart: horizon-service-0.18.0
+        app.kubernetes.io/name: horizon-api
+        app.kubernetes.io/instance: horizon-api
+        app.kubernetes.io/version: "0.1.0"
+        app.kubernetes.io/managed-by: Helm
+    spec:
+      serviceAccountName: horizon-api
+      automountServiceAccountToken: false
+      securityContext:
+        fsGroup: 65532
+        runAsGroup: 65532
+        runAsNonRoot: true
+        runAsUser: 65532
+        seccompProfile:
+          type: RuntimeDefault
+      
+      containers:
+        - name: horizon-api
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+          image: 334883685015.dkr.ecr.us-west-2.amazonaws.com/horizon-api:main-dc55bd44c7cb58b18b6bb7c7cdbdf4dcdd5fa2c6-15637
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 3001
+              protocol: TCP
+          env:
+            - name: TILES_BASE_URL
+              value: "https://###ZARF_VAR_PUBLIC_HOST###"
+            - name: TILES_SATELLITE_TILE_SIZE
+              value: "256"
+            - name: TILES_SATELLITE_ATTRIBUTION
+              value: ""
+            - name: TILES_SATELLITE_REVISION
+              value: "v0"
+            - name: DATABASE_HOST
+              value: "horizon-postgres"
+            - name: DATABASE_PORT
+              value: "5432"
+            - name: DATABASE_NAME
+              value: "horizon"
+            - name: DATABASE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-postgres-secret
+                  key: horizon-app-username
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-postgres-secret
+                  key: horizon-app-password
+            - name: DATABASE_URL
+              value: "postgresql://$(DATABASE_USERNAME):$(DATABASE_PASSWORD)@$(DATABASE_HOST):$(DATABASE_PORT)/$(DATABASE_NAME)"
+            # App credentials for RLS-enabled database connections
+            - name: POSTGRES_HOST
+              value: "horizon-postgres"
+            - name: POSTGRES_PORT
+              value: "5432"
+            - name: POSTGRES_DB
+              value: "horizon"
+            - name: POSTGRES_HORIZON_APP_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-postgres-secret
+                  key: horizon-app-username
+            - name: POSTGRES_HORIZON_APP_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-postgres-secret
+                  key: horizon-app-password
+            - name: POSTGRES_SSLMODE
+              value: "disable"
+            - name: NATS_URL
+              value: "nats://nats:4222"
+            # NATS user credentials for internal messaging (operator mode)
+            - name: NATS_USER_SEED
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-nats-secret
+                  key: user-seed
+            - name: NATS_USER_JWT
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-nats-secret
+                  key: user-jwt
+            # Auth callout credentials (API server only)
+            - name: NATS_OPERATOR_SEED
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-nats-secret
+                  key: operator-seed
+            - name: NATS_SIGNING_ACCOUNT_SEED
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-nats-secret
+                  key: signing-account-seed
+            - name: NATS_AUTH_ACCOUNT_SEED
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-nats-secret
+                  key: auth-account-seed
+            - name: NATS_AUTH_CALLOUT_SEED
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-nats-secret
+                  key: auth-callout-seed
+            - name: NATS_AUTH_CALLOUT_JWT
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-nats-secret
+                  key: auth-callout-jwt
+            - name: NATS_SYS_ADMIN_SEED
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-nats-secret
+                  key: sys-admin-seed
+            - name: NATS_SYS_ADMIN_JWT
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-nats-secret
+                  key: sys-admin-jwt
+            - name: NATS_INTERNAL_ACCOUNT_PUBLIC_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-nats-secret
+                  key: internal-account-public-key
+            - name: STORAGE_BACKEND
+              value: "s3"
+            - name: S3_BUCKET
+              value: "horizon-uploads"
+            - name: S3_REGION
+              value: "us-west-2"
+            - name: S3_ENDPOINT
+              value: "http://seaweedfs:8333"
+            - name: S3_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-s3-secret
+                  key: access-key-id
+            - name: S3_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-s3-secret
+                  key: secret-access-key
+            - name: OPENFGA_API_URL
+              value: "http://horizon-openfga:8080"
+            - name: OPENFGA_API_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-openfga-secret
+                  key: api-token
+            - name: AUTH_TENANT_GROUP_PREFIX
+              value: "/tenants/"
+            - name: LOG_FORMAT
+              value: "json"
+            - name: NODE_ENV
+              value: "production"
+            - name: OIDC_AUDIENCE
+              value: "urn:gallatin:horizon"
+            - name: OIDC_ISSUER_URL
+              value: "https://###ZARF_VAR_PUBLIC_HOST###/auth/realms/horizon"
+            - name: OIDC_JWKS_URL
+              value: "http://horizon-keycloak-http.horizon-uds.svc.cluster.local/auth/realms/horizon"
+          startupProbe:
+            httpGet:
+              path: /api/v1/livez
+              port: 3001
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            failureThreshold: 30
+            timeoutSeconds: 3
+          livenessProbe:
+            httpGet:
+              path: /api/v1/livez
+              port: 3001
+            initialDelaySeconds: 0
+            periodSeconds: 10
+            failureThreshold: 3
+            timeoutSeconds: 3
+          readinessProbe:
+            httpGet:
+              path: /api/v1/readyz
+              port: 3001
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            failureThreshold: 3
+            timeoutSeconds: 5
+          resources:
+            limits:
+              memory: 1Gi
+            requests:
+              cpu: 250m
+              memory: 512Mi

@@ -1,27 +1,28 @@
 # Horizon STIG tracking
 
-Provisional MPN recommendations, 9 November 2026. Start with the list below; each link opens the complete rule list with a suggested status, justification, source evidence, and next check.
+Suggested statuses and reasons for all **1,048 rules across seven benchmarks**, updated 9 November 2026. The OS benchmark is an eighth family pending MPN distribution/version selection.
 
-| Benchmark | Rules | Suggested designation | Why |
-|---|---:|---|---|
-| [ASD V6R5](mpn/review/U_ASD_V6R5_STIG.md) | 286 | Likely covered, subject to inheritance evidence | Austin's current scope asserts UDS Core coverage. Obtain the attestation and identify Horizon-specific residuals; UDS presence is not a blanket application pass. |
-| [Kubernetes V2R6](mpn/review/U_Kubernetes_V2R6_STIG.md) | 92 | Likely covered for host controls; mixed for workloads | MPN owns cluster/nodes. Candidate manifests show secret-delivery gaps that remain Gallatin's responsibility. |
-| [Container Platform SRG V2R5](mpn/review/U_Container_Platform_V2R5_SRG.md) | 188 | Unclear | UDS supplies mechanisms, but effective configuration, exemptions, operational evidence and inheritance are still needed. |
-| OS STIG, distribution/version TBD | — | Likely covered; baseline selection outstanding | MPN owns the node OS. Do not substitute an old Amazon Linux or other baseline without confirming the actual host. |
-| [Web Server SRG V4R5](mpn/review/U_Web_Server_V4R5_SRG.md) | 126 | Unclear | Evaluate the tenant gateway and nginx separately; image/runtime settings and accepted delegation remain unverified. |
-| [Application Server SRG V4R6](mpn/review/U_Application_Server_V4R6_SRG.md) | 137 | Unclear | Navigator services, storage and model serving need individual mappings and runtime checks. Largest expected workstream. |
-| [Database SRG V4R6](mpn/review/U_Database_V4R6_SRG.md) | 142 | Unclear | pgaudit is preloaded, but effective audit settings, roles, protection, retention and recovery are unverified. |
-| [AAA Services SRG V2R3](mpn/review/U_AAA_Services_V2R3_SRG.md) | 77 | Needs work in bundled candidate; other rules unresolved | The source default uses Horizon's own Keycloak. Its lockout/password settings do not match several explicit checks. UDS SSO cannot be assumed. |
+| Benchmark | Rules | Needs work | Likely covered | Unclear | N/A justification | Source-only Compliant |
+|---|---:|---:|---:|---:|---:|---:|
+| [ASD_V6R5_STIG](mpn/review/U_ASD_V6R5_STIG.md) | 286 | 90 | 105 | 70 | 21 | 0 |
+| [Kubernetes_V2R6_STIG](mpn/review/U_Kubernetes_V2R6_STIG.md) | 92 | 2 | 87 | 2 | 0 | 1 |
+| [Container_Platform_V2R5_SRG](mpn/review/U_Container_Platform_V2R5_SRG.md) | 188 | 28 | 139 | 20 | 1 | 0 |
+| [Web_Server_V4R5_SRG](mpn/review/U_Web_Server_V4R5_SRG.md) | 126 | 28 | 80 | 10 | 6 | 2 |
+| [Application_Server_V4R6_SRG](mpn/review/U_Application_Server_V4R6_SRG.md) | 137 | 34 | 74 | 23 | 6 | 0 |
+| [Database_V4R6_SRG](mpn/review/U_Database_V4R6_SRG.md) | 142 | 41 | 71 | 25 | 4 | 1 |
+| [AAA_Services_V2R3_SRG](mpn/review/U_AAA_Services_V2R3_SRG.md) | 77 | 34 | 30 | 4 | 9 | 0 |
 
-**1,048 rules inventoried:** 368 Likely covered, 662 Unclear, 11 Needs work, 7 Needs N/A justification, 0 Compliant. These are recommended triage designations, not formal STIG results. Likely covered still needs evidence; Unclear is not a defect count. The missing OS baseline is tracked separately and is not part of 1,048.
+**Totals:** 257 Needs work; 586 Likely covered; 154 Unclear; 47 Needs N/A justification; 4 source-only Compliant.
 
-- [All recommendations (CSV)](mpn/review/suggested-statuses.csv) · [JSON with complete official check/fix text](mpn/review/suggested-statuses.json)
-- [Candidate changes and second-pass corrections](mpn/FINDINGS.md)
-- [Requirements found in Slack, Drive and the linked task](mpn/REQUIREMENTS.md)
-- [Evidence scope and limitations](mpn/evidence/README.md)
-- [Human-review queue](mpn/review/human-review.csv)
-- [Official benchmark sources, hashes and counts](mpn/benchmarks/manifest.json)
+The 257 needs-work recommendations group into **25 workstreams**, not 257 separate implementations. Unclear fell from 662 to 154 after source investigation. Every rule has a suggested status, justification, evidence links and next action. These are recommendations, not assessor sign-off or executed runtime checks.
 
-This run completed an initial evidence-routing pass and a bounded second source/configuration pass. It did not run every official check or access a live MPN cluster. Many recommendations are explicitly unresolved; final component checklists, accepted N/A/inheritance, remediation and sign-off remain separate work. The two passes generated here are not the earlier first-pass output mentioned in Slack, which was not available as a separate artifact.
+- [All rules and reasons (CSV)](mpn/review/suggested-statuses.csv) · [JSON with complete official check/fix](mpn/review/suggested-statuses.json)
+- [Suggested workstreams](mpn/review/workstreams.md) · [Remaining evidence decisions](mpn/review/remaining-evidence.md)
+- [Requirements found in Slack and Gemini meeting notes](mpn/REQUIREMENTS.md)
+- [Findings, two-pass plan and lift estimate](mpn/FINDINGS.md)
+- [Evidence boundaries and exact source versions](mpn/evidence/README.md)
+- [John’s human-review queue](mpn/review/human-review.csv) · [Official packages and hashes](mpn/benchmarks/manifest.json)
 
-Rebuild locally with Python 3: `python3 scripts/import_benchmarks.py`, `python3 scripts/build_review.py`, then `python3 scripts/validate.py`. The importer retains cached source packages and does not silently update the selected versions. No application code or runtime configuration is modified.
+UDS Core **1.14.0** was inspected at the candidate’s pinned baseline, including Pepr, Istio, identity, logging, monitoring, backups and hardened offerings. Horizon’s candidate selects **its own bundled Keycloak**; platform identity defaults do not automatically apply to it. Hardened/FIPS platform recommendations depend on the actual supported flavor. The selected MPN release, image/module certificates, host inheritance and operational approval/test records remain external inputs.
+
+Rebuild saved decisions with `python3 scripts/build_review.py`, `python3 scripts/summarize_review.py`, then `python3 scripts/validate.py`. The deeper decision log is preserved in [source-investigation.json](mpn/evidence/source-investigation.json). `scripts/investigate.py` refreshes it against the pinned local source snapshots; `scripts/render_candidate.py <bundle-checkout>` reproduces the 13 candidate chart captures (Helm and PyYAML required). No application remediation or deployment is performed.

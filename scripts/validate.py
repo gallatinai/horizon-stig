@@ -52,7 +52,13 @@ def main():
             assert all(r.get(k) for k in ['justification', 'components', 'owner', 'next_step', 'evidence'])
             assert all(k in evidence for k in r['evidence_ids'])
             assert r['human_review'] == (r['status'] in {'Needs work', 'Unclear'})
-    assert not any(r['status'] == 'Compliant' for r in rows), 'No runtime/formal passes expected'
+    assert all(r.get('evidence_state') == 'source-inferred' for r in rows if r['status'] == 'Compliant'), 'Source-only compliant recommendations must be explicitly labelled'
+    investigation = json.loads((ROOT / 'mpn/evidence/source-investigation.json').read_text())
+    indexed = {r['vuln_id']: r for r in rows}
+    for key, decision in investigation['explicit_rule_decisions'].items():
+        assert indexed[key]['status'] == decision['status'], key
+    for item in json.loads((ROOT / 'mpn/evidence/rendered-manifest.json').read_text())['files']:
+        assert hashlib.sha256((ROOT / item['path']).read_bytes()).hexdigest() == item['sha256'], item['path']
     for name, batch in [('suggested-statuses', rows), ('pass-1', first)]:
         with (ROOT / 'mpn/review' / (name + '.csv')).open() as f:
             exported = list(csv.DictReader(f))

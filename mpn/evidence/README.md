@@ -1,38 +1,24 @@
 # Evidence scope
 
-Assessment date: 9 November 2026. This is provisional source/configuration triage, not certification or a live MPN assessment.
+Provisional source/configuration assessment, 9 November 2026. No live MPN tests or assessor sign-off are claimed.
 
-| Input | Exact snapshot |
+| Source | Exact version/commit |
 |---|---|
-| Horizon `origin/main` fetched for this review | `3f3b51d454197c077b33896caf93de72b94eafda` |
-| horizon-uds-bundle `origin/main` fetched for this review | `d528b7febf1ce8bb5ccf99661dade6ae09a84381` |
-| Historical ASD review | Horizon `3361610361b80eabd08527b2cd640b696edda4d5`; UDS candidate `204caa2657434dcb9d3217ae7ea4dc5c894a2d38`, updated Oct 27 |
-| Official content | Original DISA packages, XCCDF and SHA-256 recorded in [manifest](../benchmarks/manifest.json) |
+| Horizon | `3f3b51d454197c077b33896caf93de72b94eafda` |
+| horizon-uds-bundle | `d528b7febf1ce8bb5ccf99661dade6ae09a84381` |
+| UDS Core | `1.14.0`, `c15677633cffa17e99656a7d7ccd1f98d7cb6e4d` |
+| UDS identity-config | `0.32.0`, `74480722e1cc8405b5e9b65ac7d7086ab7f4056d` |
+| Keycloak cookie implementation | `26.7.2`, linked exact tagged upstream source |
+| Historical ASD review | Horizon `3361610361b80eabd08527b2cd640b696edda4d5`; bundle `204caa2657434dcb9d3217ae7ea4dc5c894a2d38`, October review |
 
-The current source heads and image tags embedded in the candidate are different baselines. No claim is made that current Horizon source has been built into those candidate images or deployed on MPN. No MPN release digest was supplied.
+[catalog.json](catalog.json) links evidence to exact source files. [source-investigation.json](source-investigation.json) preserves 949 explicit deeper decisions and observations. [asd-october-review.json](asd-october-review.json) retains the older rule-level notes as historical context, not refreshed test results. The original 1,048-row published review is frozen in [initial-source-pass.json](../review/initial-source-pass.json).
 
-[catalog.json](catalog.json) links observations to exact GitHub commits or dated scope. [asd-october-review.json](asd-october-review.json) preserves earlier per-rule observations with their original commit references; it does not silently refresh those conclusions to current source.
+The selected candidate is a general/demo profile with bundled Keycloak and hosted LLM assumptions; it is not an established MPN release. Current Horizon source and embedded candidate image tags are different baselines. Recommendations based on current source do not establish that it was built into those images. The deployed release digest, overrides, host OS baseline, exceptions, CA/storage settings and operational approval/test records remain external inputs.
 
-## Rendered candidate evidence
+## Render captures
 
-The files in `rendered/` were produced using Helm with chart defaults plus the corresponding `source/values/*.yaml` from the pinned UDS candidate. Namespace: `horizon-uds`. Deploy-time Zarf substitutions remain placeholders; no real credential values were read or captured.
+`rendered/` retains the original four chart captures. `rendered-all/` captures all 13 candidate charts and summarizes 21 main/init containers. [rendered-manifest.json](rendered-manifest.json) records hashes, source commit and reproduction commands. Helm uses pinned source values with Zarf placeholders retained; the chat/ingestion provider placeholder is resolved to the package's `openai` default for rendering only. No deployment or provider request occurs and no live credential was captured.
 
-Example (substitute a checkout at the pinned commit):
+Reproduce with `python3 scripts/render_candidate.py <pinned-bundle-checkout>` from the repository root (Helm and PyYAML required). These are pre-admission candidate manifests, without actual MPN overrides or observed behavior. Kubernetes inheritance recommendations identify MPN ownership; they do not prove an unseen host setting. Source-only Compliant recommendations are limited to four narrow layout/configuration checks and require confirmation against the selected release.
 
-```sh
-helm template seaweedfs source/charts/seaweedfs -n horizon-uds -f source/values/seaweedfs.yaml
-helm template postgres source/charts/horizon-postgres -n horizon-uds -f source/values/postgres.yaml
-helm template keycloak source/charts/keycloak -n horizon-uds -f source/values/keycloak.yaml
-helm template package source/charts/horizon-uds-package -n horizon-uds -f source/values/uds-package.yaml
-```
-
-These renders verify candidate template behavior. They do not include a final MPN override set, Zarf deployment, UDS admission mutations, the host's effective policies or observed workload behavior.
-
-## Method and limits
-
-1. Parse every official rule with ID, severity, title, description, complete check and fix. Retain original packages.
-2. Route all requirements to provisional ownership/evidence categories. Keep this generated initial pass.
-3. Inspect current source and four rendered charts for high-risk candidate concerns; compare exact Kubernetes/AAA checks, inspect conditional applicability, and record supported corrections.
-4. Leave unsupported outcomes Unclear or conditional Likely covered. No Compliant designation is generated. Flag Needs work/Unclear for John.
-
-The second pass is bounded source validation, not 1,048 completed manual/runtime tests. Generic rows describe what evidence is missing. Final results require the official checks applied separately to each component, actual release configuration, host/inheritance records and assessor decisions. Human approval fields are deliberately not fabricated.
+The official ZIP/XCCDF and full normalized checks/fixes are preserved with [hashes](../benchmarks/manifest.json). Rebuild the saved disposition with `python3 scripts/build_review.py`; run `python3 scripts/summarize_review.py` and `python3 scripts/validate.py` for summaries and inventory/export/provenance checks. Refreshing the deeper investigation additionally requires the pinned checkouts at the paths described in `scripts/investigate.py`.

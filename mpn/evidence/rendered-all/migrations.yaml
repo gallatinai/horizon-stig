@@ -1,0 +1,398 @@
+---
+# Source: horizon-migrations/templates/revision-configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: horizon-migrations-revision
+  namespace: horizon-uds
+  labels:
+    helm.sh/chart: horizon-migrations-0.10.1
+    app.kubernetes.io/name: horizon-migrations
+    app.kubernetes.io/instance: migrations
+    app.kubernetes.io/version: "0.1.0"
+    app.kubernetes.io/managed-by: Helm
+data:
+  image-ref-sha256: "246da9a539bd08bd62c64b1977f26c4e7ac35343c9e3e2eb844260284c8adfad"
+  node-projection-config-sha256: "a05c0fad302d43b52342e6f2fd89760fc9ca22eac3459d0798b633c892822a76"
+---
+# Source: horizon-migrations/templates/job.yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: horizon-migrations-migrate
+  namespace: horizon-uds
+  labels:
+    helm.sh/chart: horizon-migrations-0.10.1
+    app.kubernetes.io/name: horizon-migrations
+    app.kubernetes.io/instance: migrations
+    app.kubernetes.io/version: "0.1.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    # Argo CD ignores Helm hooks when native hooks are present; Flux uses the
+    # Helm annotations to replace the stable named Job before rerunning it.
+    helm.sh/hook: pre-install,pre-upgrade
+    helm.sh/hook-delete-policy: before-hook-creation
+    helm.sh/hook-weight: "-5"
+    argocd.argoproj.io/hook: PreSync
+    # Clean up only after Argo observes a terminal result. BeforeHookCreation
+    # can leave retries stuck Pending deletion after Kubernetes removes a hook.
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded,HookFailed
+    argocd.argoproj.io/sync-wave: "-1"
+spec:
+  backoffLimit: 3
+  completions: 1
+  parallelism: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: horizon-migrations
+        app.kubernetes.io/instance: migrations
+    spec:
+      restartPolicy: OnFailure
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65532
+        runAsGroup: 65532
+        fsGroup: 65532
+        seccompProfile:
+          type: RuntimeDefault
+      
+      initContainers:
+        # Native sidecar (restartPolicy: Always) must come before
+        # create-databases so stunnel is running when create-databases
+        # tries to reach 127.0.0.1:5432.
+        - name: create-databases
+          image: "334883685015.dkr.ecr.us-west-2.amazonaws.com/horizon-postgres:main-979715f603cb3e07a921a8caffd32b4c456bb789-15160"
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            runAsUser: 70
+            runAsGroup: 70
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+          env:
+            - name: PGHOST
+              value: "horizon-postgres"
+            - name: PGPORT
+              value: "5432"
+            - name: PGUSER
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-postgres-secret
+                  key: admin-username
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-postgres-secret
+                  key: admin-password
+          command:
+            - sh
+            - -ce
+            - |
+              if psql -d postgres -Atc "SELECT 1 FROM pg_database WHERE datname = 'keycloak'" | read _; then
+                echo 'Database "keycloak" already exists — skipping'
+              else
+                createdb -T template0 'keycloak'
+                echo 'Created database "keycloak"'
+              fi
+        - name: atlas-migrate
+          image: 334883685015.dkr.ecr.us-west-2.amazonaws.com/horizon-migrations:main-dc55bd44c7cb58b18b6bb7c7cdbdf4dcdd5fa2c6-15637
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+          command:
+            - /atlas
+          args:
+            - migrate
+            - apply
+            - --env
+            - docker
+          env:
+            - name: POSTGRES_ADMIN_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-postgres-secret
+                  key: admin-username
+            - name: POSTGRES_ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-postgres-secret
+                  key: admin-password
+            - name: POSTGRES_HOST
+              value: "horizon-postgres"
+            - name: POSTGRES_PORT
+              value: "5432"
+            - name: POSTGRES_DB
+              value: "horizon"
+            - name: POSTGRES_SSLMODE
+              value: "disable"
+            - name: POSTGRES_HORIZON_APP_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-postgres-secret
+                  key: horizon-app-username
+            - name: POSTGRES_HORIZON_APP_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-postgres-secret
+                  key: horizon-app-password
+            - name: POSTGRES_OPENFGA_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-postgres-secret
+                  key: openfga-username
+            - name: POSTGRES_OPENFGA_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-postgres-secret
+                  key: openfga-password
+          resources:
+            limits:
+              memory: 512Mi
+            requests:
+              cpu: 50m
+              memory: 512Mi
+          volumeMounts:
+            - name: cache
+              mountPath: /.cache
+            - name: tmp
+              mountPath: /tmp
+        # Reloads the template tenant from the seed JSON baked into the image.
+        # Runs after every full apply so schema and template data land in the
+        # same Job; a failed load rolls back only the reload.
+        - name: foundational-loader
+          image: 334883685015.dkr.ecr.us-west-2.amazonaws.com/horizon-migrations:main-dc55bd44c7cb58b18b6bb7c7cdbdf4dcdd5fa2c6-15637
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+          command:
+            - /foundational-loader
+          env:
+            - name: POSTGRES_ADMIN_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-postgres-secret
+                  key: admin-username
+            - name: POSTGRES_ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-postgres-secret
+                  key: admin-password
+            - name: POSTGRES_HOST
+              value: "horizon-postgres"
+            - name: POSTGRES_PORT
+              value: "5432"
+            - name: POSTGRES_DB
+              value: "horizon"
+            - name: POSTGRES_SSLMODE
+              value: "disable"
+          resources:
+            limits:
+              memory: 512Mi
+            requests:
+              cpu: 50m
+              memory: 512Mi
+        - name: road-graph-loader
+          image: "334883685015.dkr.ecr.us-west-2.amazonaws.com/horizon-road-graph:main-dc55bd44c7cb58b18b6bb7c7cdbdf4dcdd5fa2c6-15637"
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+          command:
+            - /road-graph-loader
+          env:
+            - name: POSTGRES_ADMIN_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-postgres-secret
+                  key: admin-username
+            - name: POSTGRES_ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-postgres-secret
+                  key: admin-password
+            - name: POSTGRES_HOST
+              value: "horizon-postgres"
+            - name: POSTGRES_PORT
+              value: "5432"
+            - name: POSTGRES_DB
+              value: "horizon"
+            - name: POSTGRES_SSLMODE
+              value: "disable"
+          resources:
+            limits:
+              memory: 512Mi
+            requests:
+              cpu: 50m
+              memory: 512Mi
+      containers:
+        - name: node-projection-rollout
+          image: 334883685015.dkr.ecr.us-west-2.amazonaws.com/horizon-migrations:main-dc55bd44c7cb58b18b6bb7c7cdbdf4dcdd5fa2c6-15637
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+          command:
+            - /node-projection-rollout
+          env:
+            - name: POSTGRES_ADMIN_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-postgres-secret
+                  key: admin-username
+            - name: POSTGRES_ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-postgres-secret
+                  key: admin-password
+            - name: POSTGRES_HOST
+              value: "horizon-postgres"
+            - name: POSTGRES_PORT
+              value: "5432"
+            - name: POSTGRES_DB
+              value: "horizon"
+            - name: POSTGRES_SSLMODE
+              value: "disable"
+            - name: NODE_PROJECTION_READER_MODE
+              value: "replay"
+            - name: NODE_PROJECTION_ENQUEUE_BATCH_SIZE
+              value: "1000"
+            - name: NODE_PROJECTION_INITIAL_BATCH_SIZE
+              value: "1000"
+            - name: NODE_PROJECTION_CATCHUP_BATCH_SIZE
+              value: "1000"
+            - name: NODE_PROJECTION_RESIDUAL_LIMIT
+              value: "1000"
+          resources:
+            limits:
+              memory: 512Mi
+            requests:
+              cpu: 50m
+              memory: 512Mi
+      volumes:
+        - name: cache
+          emptyDir: {}
+        - name: tmp
+          emptyDir: {}
+---
+# Source: horizon-migrations/templates/tenant-bootstrap-job.yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: horizon-migrations-tenant-bootstrap
+  namespace: horizon-uds
+  labels:
+    helm.sh/chart: horizon-migrations-0.10.1
+    app.kubernetes.io/name: horizon-migrations
+    app.kubernetes.io/instance: migrations
+    app.kubernetes.io/version: "0.1.0"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    # This runs after the migration hook (weight -5), before application charts.
+    # Keep the completed Job until a subsequent Helm hook run for deployment evidence.
+    helm.sh/hook: pre-install,pre-upgrade
+    helm.sh/hook-delete-policy: before-hook-creation
+    helm.sh/hook-weight: "0"
+spec:
+  backoffLimit: 3
+  completions: 1
+  parallelism: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: horizon-migrations
+        app.kubernetes.io/instance: migrations
+    spec:
+      restartPolicy: OnFailure
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65532
+        runAsGroup: 65532
+        fsGroup: 65532
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: tenant-bootstrap
+          image: "334883685015.dkr.ecr.us-west-2.amazonaws.com/horizon-api:main-dc55bd44c7cb58b18b6bb7c7cdbdf4dcdd5fa2c6-15637"
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+          command: [node]
+          args:
+            - --input-type=module
+            - -e
+            - |
+              import postgres from 'postgres';
+              import { createAccount } from '@nats-io/nkeys';
+
+              const sql = postgres({
+                host: process.env.POSTGRES_HOST,
+                port: Number(process.env.POSTGRES_PORT),
+                database: process.env.POSTGRES_DB,
+                username: process.env.POSTGRES_ADMIN_USERNAME,
+                password: process.env.POSTGRES_ADMIN_PASSWORD,
+                ssl: false,
+                max: 1,
+                connection: {
+                  search_path: 'app,public',
+                  statement_timeout: 0,
+                },
+                onnotice: () => {},
+              });
+              try {
+                const natsAccountPublicKey = createAccount().getPublicKey();
+                await sql`SELECT tenant_id FROM app.find_or_create_tenant_by_slug(${process.env.TENANT_SLUG}, ${process.env.TENANT_SLUG}, ${natsAccountPublicKey})`;
+                await sql.unsafe('ANALYZE;');
+                console.log('Tenant bootstrap and PostgreSQL statistics refresh completed');
+              } finally {
+                await sql.end({ timeout: 5 });
+              }
+          env:
+            - name: POSTGRES_ADMIN_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-postgres-secret
+                  key: admin-username
+            - name: POSTGRES_ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-postgres-secret
+                  key: admin-password
+            - name: POSTGRES_HOST
+              value: "horizon-postgres"
+            - name: POSTGRES_PORT
+              value: "5432"
+            - name: POSTGRES_DB
+              value: "horizon"
+            - name: POSTGRES_SSLMODE
+              value: "disable"
+            - name: TENANT_SLUG
+              value: "gallatin"
+          resources:
+            limits:
+              memory: 512Mi
+            requests:
+              cpu: 50m
+              memory: 512Mi

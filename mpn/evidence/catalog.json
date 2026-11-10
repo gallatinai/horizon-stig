@@ -68,5 +68,265 @@
     "title": "MPN inference mismatch",
     "observation": "The MPN notes require local inference. Candidate package still permits Anywhere:443 egress for hosted LLM consumers; it is a demo/general candidate, not proof of deployed MPN behavior.",
     "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-uds-package/templates/package.yaml"
+  },
+  "core-policy": {
+    "title": "core-policy",
+    "observation": "Pepr mutates/validates non-root execution, no privilege escalation and dropped capabilities, including init and ephemeral containers; exemptions are explicit.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/pepr/policies/security.ts"
+  },
+  "core-network": {
+    "title": "core-network",
+    "observation": "Operator generates namespace ingress/egress default-deny NetworkPolicy; connectivity requires declared allow rules.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/pepr/operator/controllers/network/defaults/default-deny-all.ts"
+  },
+  "core-mtls": {
+    "title": "core-mtls",
+    "observation": "Root-namespace PeerAuthentication requires STRICT mTLS. Horizon opts into ambient mesh; in-mesh plaintext-looking URLs are protected by mesh rather than application TLS.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/istio/common/chart/templates/peer-authentication.yaml"
+  },
+  "core-gateway": {
+    "title": "core-gateway",
+    "observation": "Gateway redirects HTTP to HTTPS and requires TLS 1.3 by default, optionally TLS 1.2; credentialName references Kubernetes TLS secrets.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/istio/charts/uds-istio-config/templates/gateway.yaml"
+  },
+  "core-accesslog": {
+    "title": "core-accesslog",
+    "observation": "Istio access logs go to stdout; path normalization merges slashes, proxies are held until ready, and forwarded certificate details are sanitized.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/istio/values/base-istiod.yaml"
+  },
+  "core-vector": {
+    "title": "core-vector",
+    "observation": "Vector Agent collects Kubernetes pod and node log files, labels namespace/container/host, uses acknowledged disk buffers, and ships continuously to Loki; metrics are exported.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/vector/values/values.yaml"
+  },
+  "core-loki": {
+    "title": "core-loki",
+    "observation": "Loki uses ambient mesh; ingress is limited to Grafana, Vector, FalcoSidekick and monitoring service identities; object-store egress is declared separately.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/loki/chart/templates/uds-package.yaml"
+  },
+  "core-grafana": {
+    "title": "core-grafana",
+    "observation": "Grafana disables local login, uses UDS OAuth, maps Admin group to Admin and Auditor to Viewer, and rejects unmatched groups. OAuth secrets are file-mounted.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/grafana/values/values.yaml"
+  },
+  "core-retention": {
+    "title": "core-retention",
+    "observation": "Loki default retains logs indefinitely; configured compactor retention and external bucket lifecycle can change this. Retention capacity and required archive policy remain deployment responsibilities.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/how-to-guides/logging/configure-log-retention.mdx"
+  },
+  "core-velero": {
+    "title": "core-velero",
+    "observation": "Velero schedules daily backups at 03:00 with 240-hour TTL, but snapshotVolumes=false and snapshotsEnabled=false; default resource backups do not establish PostgreSQL PVC data recovery.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/velero/values/values.yaml"
+  },
+  "core-falco": {
+    "title": "core-falco",
+    "observation": "Falco loads shipped rule sets, detects runtime behavior and ships Sidekick events to Loki. Alertmanager delivery is commented out; detection is not automatic access revocation.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/falco/values/values.yaml"
+  },
+  "core-alerts": {
+    "title": "core-alerts",
+    "observation": "Default cluster/workload/storage alert rules are enabled. Those mechanisms do not establish a configured 75-percent audit capacity threshold or an SA/ISSO notification receiver.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/prometheus-stack/values/kube-prometheus-stack-values.yaml"
+  },
+  "core-keycloak": {
+    "title": "core-keycloak",
+    "observation": "Core uses identity-config 0.32.0, supports X509 and OTP by default; inactivity auto-disable is opt-in, and concurrent-session limit defaults to unlimited (0). This is platform SSO, not Horizon bundled Keycloak.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/values.yaml"
+  },
+  "core-id-realm": {
+    "title": "core-id-realm",
+    "observation": "UDS realm defines three-failure lockout, permanentLockout=true, 600-second idle, PBKDF2-SHA256 password policy with 15 characters and classes/history/expiry; JSON event listener is enabled. Some controls remain optional.",
+    "url": "https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/realm.json5"
+  },
+  "core-id-audit": {
+    "title": "core-id-audit",
+    "observation": "UDS event listener prints user/admin events to stdout with event fields and UTC timestamps. Vector can collect these without a separately configured app forwarding agent.",
+    "url": "https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/plugin/src/main/java/com/defenseunicorns/uds/keycloak/plugin/eventListeners/JSONLogEventListenerProvider.java"
+  },
+  "core-id-notify": {
+    "title": "core-id-notify",
+    "observation": "Optional detailed-observability alerts detect user/realm/admin changes via Loki-derived metrics; enablement and receivers must be configured.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/templates/keycloak-logging-alerting-rules.yaml"
+  },
+  "app-namespace": {
+    "title": "app-namespace",
+    "observation": "All declared workload charts target horizon-uds; package supplies dedicated namespace, distinct workload charts and generated deployment credentials.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/zarf.yaml"
+  },
+  "app-pods": {
+    "title": "app-pods",
+    "observation": "Candidate service chart applies non-root/read-only/no-escalation contexts, Secret references, probes and resource settings. Rendered app pods corroborate those settings; some init containers lack explicit resources.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-service/templates/deployment.yaml"
+  },
+  "app-web": {
+    "title": "app-web",
+    "observation": "nginx serves a static SPA at /usr/share/nginx/html on port 3000, with try_files fallback, stdout/stderr logs and no configured proxy_pass, CGI or WebDAV locations.",
+    "url": "https://github.com/gallatinai/horizon/blob/3f3b51d454197c077b33896caf93de72b94eafda/apps/web/nginx.conf"
+  },
+  "app-web-image": {
+    "title": "app-web-image",
+    "observation": "Multistage image copies only built Vue assets into the nginx runtime; source maps are removed. No application/OS user-management endpoint is implemented by the static nginx layer.",
+    "url": "https://github.com/gallatinai/horizon/blob/3f3b51d454197c077b33896caf93de72b94eafda/apps/web/Dockerfile"
+  },
+  "app-validation": {
+    "title": "app-validation",
+    "observation": "Global interceptor validates declared params/query/headers/JSON with Zod, enforces Content-Type, and fails routes missing a documented exemption/schema; binary/multipart paths are handled separately.",
+    "url": "https://github.com/gallatinai/horizon/blob/3f3b51d454197c077b33896caf93de72b94eafda/apps/api/src/common/openapi/openapi.validation.interceptor.ts"
+  },
+  "app-error": {
+    "title": "app-error",
+    "observation": "Unknown/DB errors map to generic 500 problem details; HTTP transport and internal NATS dispatcher use the same mapper. Explicit application exceptions retain their supplied detail.",
+    "url": "https://github.com/gallatinai/horizon/blob/3f3b51d454197c077b33896caf93de72b94eafda/apps/api/src/common/errors/problem.mapper.ts"
+  },
+  "app-enforcer": {
+    "title": "app-enforcer",
+    "observation": "Permission enforcement resolves user/target and fails closed on missing authorization or unexpected resolution errors. Individual route metadata remains part of coverage.",
+    "url": "https://github.com/gallatinai/horizon/blob/3f3b51d454197c077b33896caf93de72b94eafda/apps/api/src/core/authorization/permission-enforcer.service.ts"
+  },
+  "app-db-role": {
+    "title": "app-db-role",
+    "observation": "horizon_app is a distinct LOGIN role granted application DML and schema usage, not superuser/DDL by this migration; migrations/admin credentials are separate.",
+    "url": "https://github.com/gallatinai/horizon/blob/3f3b51d454197c077b33896caf93de72b94eafda/packages/database/migrations/00000000000003_provision_app_role.sql"
+  },
+  "app-db-values": {
+    "title": "app-db-values",
+    "observation": "DB runs under UID70 with non-root/read-only/no-escalation and dedicated PGDATA PVC; default replica count is one. Only pgaudit preload is configured, not event classes.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-postgres/values.yaml"
+  },
+  "app-db-identity": {
+    "title": "app-db-identity",
+    "observation": "Separate admin, horizon_app and openfga_app credentials exist. Bundled Keycloak is configured to connect using the admin DB role, a least-privilege candidate gap.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/manifests/secrets.yaml"
+  },
+  "app-db-extensions": {
+    "title": "app-db-extensions",
+    "observation": "Migration installs pgvector/PostGIS and attempts pgaudit, catching pgaudit failures as warnings; installation and effective audit classes must not be assumed from preload.",
+    "url": "https://github.com/gallatinai/horizon/blob/3f3b51d454197c077b33896caf93de72b94eafda/packages/database/migrations/00000000000002_create_extensions.sql"
+  },
+  "app-permission-audit": {
+    "title": "app-permission-audit",
+    "observation": "Database functions record permission changes with actor/context fields; domain audit records exist but do not cover all DBMS native logon/DDL/failed operation audit requirements.",
+    "url": "https://github.com/gallatinai/horizon/blob/3f3b51d454197c077b33896caf93de72b94eafda/packages/database/schema/permission_audit_functions.pg.hcl"
+  },
+  "app-auth-service": {
+    "title": "app-auth-service",
+    "observation": "Browser uses OIDC authorization-code flow, PKCE, automatic silent renew and localStorage user state. Local storage is not evidence of missing explicit logout, but idle semantics depend on the IdP.",
+    "url": "https://github.com/gallatinai/horizon/blob/3f3b51d454197c077b33896caf93de72b94eafda/apps/web/src/auth/auth-service.ts"
+  },
+  "app-logged-out": {
+    "title": "app-logged-out",
+    "observation": "Dedicated logged-out view displays an explicit logout message and return-to-login action.",
+    "url": "https://github.com/gallatinai/horizon/blob/3f3b51d454197c077b33896caf93de72b94eafda/apps/web/src/views/LoggedOutView.vue"
+  },
+  "app-model-profile": {
+    "title": "app-model-profile",
+    "observation": "Candidate default permits intra-namespace traffic and broad external HTTPS for chat/ingestion. MPN local inference needs a narrowed, selected model profile; model runtime is not selected here.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-uds-package/templates/package.yaml"
+  },
+  "pg-logging": {
+    "title": "pg-logging",
+    "observation": "PostgreSQL18 defaults connection logging disabled and disconnection logging off; failed authentication is always logged. stderr is the default server-log destination.",
+    "url": "https://www.postgresql.org/docs/18/runtime-config-logging.html"
+  },
+  "pgaudit-default": {
+    "title": "pgaudit-default",
+    "observation": "pgAudit18 session audit classes default to none. Preload/CREATE EXTENSION alone does not enable READ/WRITE/ROLE/DDL auditing; log prefix supplies contextual identity fields.",
+    "url": "https://github.com/pgaudit/pgaudit/blob/REL_18_STABLE/README.md"
+  },
+  "pg-roles": {
+    "title": "pg-roles",
+    "observation": "PostgreSQL role attributes govern LOGIN, privilege grants and connection limits; default per-role connection limit is unlimited. Superuser bypasses permission checks.",
+    "url": "https://www.postgresql.org/docs/18/role-attributes.html"
+  },
+  "pg-password": {
+    "title": "pg-password",
+    "observation": "PostgreSQL18 defaults password_encryption to SCRAM-SHA-256. Existing persistent data/configuration can override defaults; generated new credentials and selected image must be distinguished from existing volumes.",
+    "url": "https://www.postgresql.org/docs/18/runtime-config-connection.html"
+  },
+  "pg-encryption": {
+    "title": "pg-encryption",
+    "observation": "PostgreSQL supports password hashing and transport protection; volume/block encryption requires storage-layer configuration and is not established by creating a PVC.",
+    "url": "https://www.postgresql.org/docs/18/encryption-options.html"
+  },
+  "core-flavors": {
+    "title": "core-flavors",
+    "observation": "Core distinguishes unicorn (curated FIPS-validated images), registry1 (Iron Bank hardening) and upstream (development/community images). The production hardened offering exists; actual selected flavor/digests and module mapping remain explicit deployment inputs.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/concepts/platform/flavors.mdx"
+  },
+  "app-jwt": {
+    "title": "app-jwt",
+    "observation": "API uses jose jwtVerify with fixed issuer/audience/JWKS and expiry validation. It performs no online token introspection or logout/session revocation lookup; expected JWT failures are logged at debug level.",
+    "url": "https://github.com/gallatinai/horizon/blob/3f3b51d454197c077b33896caf93de72b94eafda/apps/api/src/api/auth/auth.oidc-jwt.service.ts"
+  },
+  "app-permission-table": {
+    "title": "app-permission-table",
+    "observation": "Append-only role-grant/revocation table includes actor user, subject user, tenant, role, action and timestamp; it does not record every request or failed authorization.",
+    "url": "https://github.com/gallatinai/horizon/blob/3f3b51d454197c077b33896caf93de72b94eafda/packages/database/schema/permission_audit.pg.hcl"
+  },
+  "core-hardened-mesh": {
+    "title": "core-hardened-mesh",
+    "observation": "Unicorn flavor selects curated istio-pilot-fips and istio-proxy-fips images; ambient ztunnel has its own FIPS image override. This proves the offered implementation, not the flavor of a deployed MPN cluster.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/istio/values/unicorn/istiod.yaml"
+  },
+  "core-strict-keycloak": {
+    "title": "core-strict-keycloak",
+    "observation": "Core Keycloak starts with --features=fips and --fips-mode=strict; cgr image handling adds the FIPS JCE security setup. Bundled Horizon Keycloak is a different chart and must not inherit these flags by name alone.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/templates/statefulset.yaml"
+  },
+  "core-provision": {
+    "title": "core-provision",
+    "observation": "Production requires externally supplied gateway TLS chains, Loki/Velero object stores and a Keycloak database/user. Core cannot determine the supplied CA approvals, storage encryption or bucket lifecycle by itself.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/getting-started/production/provision-services.mdx"
+  },
+  "core-tests": {
+    "title": "core-tests",
+    "observation": "Core supplies automated validation/integration tasks; the source demonstrates available checks but cannot demonstrate an MPN operator ran or scheduled them.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/tasks/test.yaml"
+  },
+  "core-notify-default": {
+    "title": "core-notify-default",
+    "observation": "detailedObservability.alerts.enabled=false by default; user/admin modification alert templates are not enabled simply by deploying the default Core chart.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/values.yaml"
+  },
+  "core-consent": {
+    "title": "core-consent",
+    "observation": "UDS theme implements the USG notice and an explicit acceptance action, but realm TERMS_AND_CONDITIONS required action is disabled by default. Enablement must be configured for the actual entry path.",
+    "url": "https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/theme/login/terms.ftl"
+  },
+  "kc-cookie-provider": {
+    "title": "kc-cookie-provider",
+    "observation": "Keycloak26.7.2 cookie builder sets realm/request path, secure flag from the effective request context and HttpOnly/SameSite from CookieScope. It does not set a cross-host Domain attribute.",
+    "url": "https://github.com/keycloak/keycloak/blob/26.7.2/services/src/main/java/org/keycloak/cookie/DefaultCookieProvider.java"
+  },
+  "kc-cookie-types": {
+    "title": "kc-cookie-types",
+    "observation": "AUTH_SESSION_ID and KEYCLOAK_IDENTITY use FEDERATION (HttpOnly) scope; KEYCLOAK_SESSION intentionally uses FEDERATION_JS scope and is JavaScript-readable for session status.",
+    "url": "https://github.com/keycloak/keycloak/blob/26.7.2/server-spi-private/src/main/java/org/keycloak/cookie/CookieType.java"
+  },
+  "kc-cookie-scope": {
+    "title": "kc-cookie-scope",
+    "observation": "FEDERATION scope is SameSite=None/HttpOnly=true; FEDERATION_JS is SameSite=None/HttpOnly=false. Not all product cookies are authentication bearer secrets.",
+    "url": "https://github.com/keycloak/keycloak/blob/26.7.2/server-spi-private/src/main/java/org/keycloak/cookie/CookieScope.java"
+  },
+  "app-ci": {
+    "title": "app-ci",
+    "observation": "Build workflow defines image scanning, unit/integration/E2E gates, coverage report artifacts and digest-bound releases. Configured jobs do not prove execution for an unspecified delivered release.",
+    "url": "https://github.com/gallatinai/horizon/blob/3f3b51d454197c077b33896caf93de72b94eafda/.github/workflows/build.yml"
+  },
+  "app-codeql": {
+    "title": "app-codeql",
+    "observation": "CodeQL runs for code changes and on a weekly schedule with SARIF artifacts and reviewed suppression processing.",
+    "url": "https://github.com/gallatinai/horizon/blob/3f3b51d454197c077b33896caf93de72b94eafda/.github/workflows/codeql.yml"
+  },
+  "app-updates": {
+    "title": "app-updates",
+    "observation": "Weekly automation resolves security advisories and opens labelled security-update PRs; a PR is not proof of delivered patch currency.",
+    "url": "https://github.com/gallatinai/horizon/blob/3f3b51d454197c077b33896caf93de72b94eafda/.github/workflows/pnpm-security-updates.yml"
+  },
+  "app-review-process": {
+    "title": "app-review-process",
+    "observation": "Scanner findings/suppressions require justification, reviewer approval and linked tracking with expiry/review criteria.",
+    "url": "https://github.com/gallatinai/horizon/blob/3f3b51d454197c077b33896caf93de72b94eafda/docs/security/scanner-suppression-review-process.md"
   }
 }

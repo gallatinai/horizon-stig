@@ -124,10 +124,16 @@ for v in ['V-204664','V-204666','V-204667','V-204668','V-204669','V-204673','V-2
 def write_rows(path, rows):
  path.write_text(json.dumps(rows,indent=2)+'\n')
  with path.with_suffix('.csv').open('w',newline='') as f:
-  fields=['benchmark','vuln_id','rule_id','version','severity','title','components','status','justification','evidence','next_step','owner','category','human_review','task']
+  fields=['benchmark','vuln_id','rule_id','version','severity','title','components','status','justification','evidence','next_step','owner','category','human_review','task','evidence_state','investigation']
   writer=csv.DictWriter(f,fieldnames=fields,extrasaction='ignore',lineterminator='\n');writer.writeheader();writer.writerows(rows)
 
 def main():
+ investigation=ROOT/'mpn/evidence/source-investigation.json'
+ if investigation.exists():
+  saved=json.loads(investigation.read_text())
+  for k,f in saved['facts'].items():E[k]=(k,f['observation'],f['url'])
+  # Explicit caller decisions win when refreshing the investigation.
+  for k,v in saved['explicit_rule_decisions'].items():OVERRIDES.setdefault(k,v)
  history=json.loads((ROOT/'mpn/evidence/asd-october-review.json').read_text())
  first=[];second=[]
  for package in json.loads((BENCH/'manifest.json').read_text()):
@@ -141,7 +147,7 @@ def main():
    row=dict(initial)
    if r['vuln_id'] in OVERRIDES:row.update(OVERRIDES[r['vuln_id']])
    # Second pass corrections prevent blanket inherited/authentication passes.
-   if name=='U_Kubernetes_V2R6_STIG' and r['vuln_id']=='V-242383':
+   if name=='U_Kubernetes_V2R6_STIG' and r['vuln_id']=='V-242383' and r['vuln_id'] not in OVERRIDES:
     row.update(status='Likely covered',justification='Zarf chart declarations target horizon-uds and an explicit namespace manifest exists. Likely source coverage; inventory actual admitted resources to exclude default-namespace exceptions.',evidence_ids=['mesh'],next_step='Capture actual workload namespaces and check all user-managed resources per the official check.',category='workload verification')
    if name=='U_ASD_V6R5_STIG':
     row['justification']+=' The existing October per-rule evidence/test notes are preserved as historical context only.'
@@ -149,7 +155,7 @@ def main():
     entry['evidence']='; '.join(E[k][2] for k in entry['evidence_ids'])
     entry['human_review']=entry['status'] in ['Needs work','Unclear']
     entry.setdefault('task','')
-   row['second_pass_note']='Exact official check and rendered candidate compared.' if r['vuln_id'] in OVERRIDES else 'Conservative evidence/applicability review; unresolved operational checks remain explicit.'
+   row['second_pass_note']='Official rule compared with the cited pinned source/configuration or explicit applicability evidence; no live test claimed.' if r['vuln_id'] in OVERRIDES else 'Conservative evidence/applicability review; unresolved operational checks remain explicit.'
    first.append(initial);second.append(row);final.append(row)
   title=package['title']
   lines=[f'# {title}: suggested statuses','', 'Provisional recommendations for the identified candidate/source snapshots. No live MPN assessment or formal sign-off. Evaluate each component listed separately before final checklists.','', '| Rule | Requirement | Suggested status | Justification | Evidence / next step |','|---|---|---|---|---|']

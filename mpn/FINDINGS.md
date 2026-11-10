@@ -1,35 +1,28 @@
-# Candidate changes and second-pass corrections
+# Findings and suggested next steps
 
-The source assessment uses Horizon `3f3b51d454197c077b33896caf93de72b94eafda` and horizon-uds-bundle `d528b7febf1ce8bb5ccf99661dade6ae09a84381`. The bundle is a general/demo candidate with bundled identity selected by default, not a verified MPN release. A change recommendation means this candidate needs correction or an evidenced replacement/delegation before use under the corresponding check. It is not a claim about deployed MPN behavior.
+**1,048 rules: 257 Needs work, 586 Likely covered, 154 Unclear, 47 Needs N/A justification and 4 source-only Compliant recommendations.** The 257 needs-work rows group into [25 workstreams](review/workstreams.md). This is a candidate assessment, not 257 independent bugs or a finding against a running MPN system.
 
-| Candidate change | Rules | Recommendation and justification |
-|---|---|---|
-| Secret delivery | Kubernetes V-242415; V-274883 | Rendered PostgreSQL sets a secret password environment variable, which V-242415 expressly prohibits. Rendered SeaweedFS stores S3 credentials in a ConfigMap, which V-274883 prohibits. Use protected file/Secret or approved vault delivery and update consumers. The SeaweedFS S3 API already has authentication; do not report that it has none. |
-| Bundled identity policy | AAA V-204644; V-204689; V-204664; V-204666–V-204669; V-204673–V-204674 | The selected candidate uses local Keycloak users, five-failure threshold, nonpermanent lockout, and a password policy specifying only hashing. The respective rules require three-failure lockout, administrator release, and explicit password constraints. Review the official check for account-type and directory-delegation exceptions before changing the selected MPN identity path. Lifetime rules exclude service accounts and the account of last resort. |
+The original review left 662 unclear. The deeper investigation inspected pinned Horizon, bundle, UDS Core 1.14.0 and identity-config 0.32.0 source, upstream PostgreSQL/pgAudit/Keycloak behavior, and all 13 candidate chart renders. There are 949 explicit deeper rule decisions, plus retained exact candidate checks and MPN-owned Kubernetes inheritance recommendations. All 286 ASD rules now have explicit decisions; the scope's broad UDS inheritance assertion is not used to pass application training, governance or vulnerability testing requirements.
 
-Eleven rule recommendations group into these two change areas. They are not eleven independent implementations. The missing runtime/organizational evidence can reveal additional work; it must not be silently counted as passing or as a confirmed defect.
+| Area | Recommendation and reason |
+|---|---|
+| Application and database audit | Complete actor-attributed success/denial events, required event/context selection and central forwarding. API trace IDs and selected role-change records provide partial coverage. PostgreSQL preloads pgAudit but does not configure audit classes; its default is none. Bundled Keycloak stores events locally without the UDS JSON listener. |
+| Identity, sessions and PKI | Choose the actual MPN provider. Bundled Keycloak defaults differ from platform UDS: five-failure lockout, nonpermanent lockout, hashing-only password policy, no configured CAC/PIV flow. Configure lifecycle, administrator idle/session limits, notice and trust/revocation requirements. Offline API JWT verification leaves a revocation window; explicit logout already exists. |
+| Secrets and database privilege | Remove secret environment delivery and SeaweedFS credential ConfigMap placement; S3 authentication already exists. Give bundled Keycloak a restricted database identity instead of the database administrator role. |
+| Platform integration | Configure actual security/audit alert routes and recipients, image/component allow-list and approved-signer enforcement. Signed CI attestations and hashes alone do not require signer verification at deployment. Falco detection alone does not revoke access. |
+| MPN profile and data recovery | Replace hosted-model egress with approved local inference flows and select the model-serving product. Configure database/data backup and demonstrate secure restore; Core Velero defaults do not snapshot data volumes. |
+| Workload/web configuration | Supply missing init-container resources. Resolve explicit nginx binding, HTTP protocol requirements, trusted original-client audit context and other generic web hardening/tailoring. Keycloak's JavaScript-readable session-status cookie requires product-specific HttpOnly tailoring, not a blanket assertion that all cookies comply. |
 
-## Important unresolved requirements
+UDS source supports concrete controls previously left unclear: Pepr privilege restrictions, namespace default-deny policies, STRICT mesh mutual TLS, HTTPS ingress, Vector/Loki collection, protected Grafana access and supported hardened/FIPS offerings. These recommendations remain conditional on the selected release/flavor, policies and exemptions. Platform FIPS support does not prove the Node, bundled Keycloak or signing-runner cryptographic modules are validated.
 
-- **Identity:** The active chart supports both bundled and UDS identity; the default is bundled. Choose and record the actual MPN mode and test CAC/PIV, revocation, privileged MFA, account lifecycle and session termination along that path. The platform's identity and application's identity are distinct.
-- **Audit logging:** Current Horizon logging includes request/trace IDs, event names, remote address, response status and secret redaction. Common bindings do not supply actor identity, but additional records may supply correlation. Capture end-to-end user-attributed security events before declaring the entire audit path deficient. Agree the event set, retention, access, alerting and capacity/performance requirements with John/security.
-- **Database:** Preloading/installing pgaudit does not establish event coverage. Capture effective settings and sample allowed/denied event records, connection records and collection/retention evidence. Extension creation catches failures, so observe whether it is installed. Do not solve this by indiscriminately logging every statement without performance and secret-exposure review.
-- **Local inference:** The October MPN decision requires local inference, but the general candidate still allows external hosted-LLM egress. Produce an MPN profile with the selected model runtime and permitted destinations. This is a deployment-requirement mismatch, not proof of an MPN production violation.
-- **Model serving:** No selected self-hosted serving implementation is established by this source snapshot. Keep its Application Server mapping open instead of assessing hosted OpenAI/Anthropic as if it were the intended local service.
-- **Host inheritance:** Obtain MPN's actual Kubernetes/OS checklist and UDS ASD coverage record, tied to versions and boundaries. The scope page marks scope confirmation complete but still leaves the OS unspecified; that remains unresolved here.
+## First and second pass tonight
 
-## False-positive controls applied in the second pass
+1. **First pass — inventory and source disposition:** preserve official packages, full check/fix text and source versions; assign a proposed status and justification to every rule. Completed in this repository; the frozen original review is retained separately from the deeper decisions.
+2. **Second pass — exact-check challenge:** test candidate assumptions against rendered charts, current application source and the pinned UDS mechanisms/defaults. Correct false positives and inherited overclaims, group repeated gaps, and leave an explicit evidence request for each remaining unknown. Completed as a source/configuration review; no live official MPN checks are claimed.
+3. **Review handoff:** John reviews the [411 Needs work/Unclear rows](review/human-review.csv), with identity choice, audit event/retention policy, local model selection and host inheritance as the first decisions. Confirm the actual release and deployment overrides before converting recommendations into component CKLB results. No application remediation has been performed.
 
-- Plain HTTP/Postgres URLs and `sslmode=disable` do not prove unprotected wire traffic under ambient mesh. Require effective hop-by-hop protection evidence.
-- Chart-local `networkPolicy.enabled=false` does not prove no network control: UDS Package resources declare generated policy. Inspect admitted policies/exemptions.
-- Empty digest fields in sample values do not prove release images lack provenance: the builder verifies source digests. Assess the actual generated release.
-- Browser localStorage does not by itself prove logout fails. Current code wipes auth state and invokes IdP signout; test termination and token replay.
-- A FIPS image name does not prove approved validated operation. Conversely, a disabled, unused stunnel sidecar is not proof that the active mesh lacks protection.
-- A single replica is not automatically an HA violation. Application Server V-204814 explicitly depends on MAC I designation.
-- The older ASD worksheet is retained as historical evidence and is not attributed to today's Horizon commit.
+## Lift estimate
 
-See [second-pass changes](review/second-pass-changes.json) for recorded designation changes. The remaining broad evidence-routing recommendations were not individually validated against live runtime behavior.
+Allow **20–40 engineer-days, roughly 3–6 elapsed weeks with two engineers**, with low confidence until identity delegation, audit acceptance and the actual MPN release are selected. Straightforward chart/policy fixes should take days; actor-aware audit coverage, session/revocation behavior, PKI integration and tested data recovery can take weeks. Evidence/checklist assembly and assessor/platform-owner turnaround add elapsed time. The 154 unclear items are specific deployment, organizational approval or targeted test evidence requests; they are not all code work. Losing the assumed platform/host inheritance or introducing a new local model runtime materially increases this estimate.
 
-## Lift
-
-The two candidate change areas look bounded. Overall completion is still dominated by mapping, evidence and possible application/audit changes. Retain **20–40 engineer-days / approximately 3–6 weeks with two engineers** only as a low-confidence planning allowance, not a measured estimate or commitment. The present results do not validate a total remediation backlog. Re-estimate after the Unclear queue is dispositioned with component owners and John. Host/assessor turnaround is additional elapsed time; losing the assumed platform inheritance would materially expand scope.
+See [requirements and source links](REQUIREMENTS.md), [all workstreams](review/workstreams.md), and [remaining evidence decisions](review/remaining-evidence.md).
