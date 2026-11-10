@@ -506,97 +506,97 @@
     {
       "vuln_id": "V-206523",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Enable the required native connection/disconnection/privileged/direct-access event selection and contextual fields, with data/performance/redaction review; one shared audit workstream covers these rows."
+      "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Enable the required native connection/disconnection/privileged/direct-access event selection and contextual fields, with data/performance/redaction review; one shared audit workstream covers these rows. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream."
     },
     {
       "vuln_id": "V-206531",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Configure required native session/user/database/remote context and correlate application actor where shared service roles are used."
+      "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Configure required native session/user/database/remote context and correlate application actor where shared service roles are used. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream."
     },
     {
       "vuln_id": "V-206533",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Configure required native session/user/database/remote context and correlate application actor where shared service roles are used."
+      "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Configure required native session/user/database/remote context and correlate application actor where shared service roles are used. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream."
     },
     {
       "vuln_id": "V-206612",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Enable targeted native security-object audit selection or establish an accepted equivalent event mapping."
+      "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Enable targeted native security-object audit selection or establish an accepted equivalent event mapping. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream."
     },
     {
       "vuln_id": "V-206614",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Add or evidence category-specific read/change/delete success/denial events in the shared application/DB audit stream; preserve individual actor and classification context."
+      "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Add or evidence category-specific read/change/delete success/denial events in the shared application/DB audit stream; preserve individual actor and classification context. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream."
     },
     {
       "vuln_id": "V-206615",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Add or evidence category-specific read/change/delete success/denial events in the shared application/DB audit stream; preserve individual actor and classification context."
+      "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Add or evidence category-specific read/change/delete success/denial events in the shared application/DB audit stream; preserve individual actor and classification context. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream."
     },
     {
       "vuln_id": "V-206616",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Enable native ROLE/privilege event selection or retain accepted equivalent administrative change records; keep application records as existing coverage."
+      "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Enable native ROLE/privilege event selection or retain accepted equivalent administrative change records; keep application records as existing coverage. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream."
     },
     {
       "vuln_id": "V-206620",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Select DDL/ROLE security-object audit events or attach an equivalent privileged deployment/change trail with required event fields."
+      "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Select DDL/ROLE security-object audit events or attach an equivalent privileged deployment/change trail with required event fields. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream."
     },
     {
       "vuln_id": "V-206622",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Add or evidence category-specific read/change/delete success/denial events in the shared application/DB audit stream; preserve individual actor and classification context."
+      "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Add or evidence category-specific read/change/delete success/denial events in the shared application/DB audit stream; preserve individual actor and classification context. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream."
     },
     {
       "vuln_id": "V-206623",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Add or evidence category-specific read/change/delete success/denial events in the shared application/DB audit stream; preserve individual actor and classification context."
+      "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Add or evidence category-specific read/change/delete success/denial events in the shared application/DB audit stream; preserve individual actor and classification context. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream."
     },
     {
       "vuln_id": "V-206624",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Enable native ROLE/privilege event selection or retain accepted equivalent administrative change records; keep application records as existing coverage."
+      "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Enable native ROLE/privilege event selection or retain accepted equivalent administrative change records; keep application records as existing coverage. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream."
     },
     {
       "vuln_id": "V-206626",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Select DDL/ROLE security-object audit events or attach an equivalent privileged deployment/change trail with required event fields."
+      "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Select DDL/ROLE security-object audit events or attach an equivalent privileged deployment/change trail with required event fields. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream."
     },
     {
       "vuln_id": "V-206628",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Add or evidence category-specific read/change/delete success/denial events in the shared application/DB audit stream; preserve individual actor and classification context."
+      "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Add or evidence category-specific read/change/delete success/denial events in the shared application/DB audit stream; preserve individual actor and classification context. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream."
     },
     {
       "vuln_id": "V-206629",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Add or evidence category-specific read/change/delete success/denial events in the shared application/DB audit stream; preserve individual actor and classification context."
+      "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Add or evidence category-specific read/change/delete success/denial events in the shared application/DB audit stream; preserve individual actor and classification context. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream."
     },
     {
       "vuln_id": "V-206630",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Enable the required native connection/disconnection/privileged/direct-access event selection and contextual fields, with data/performance/redaction review; one shared audit workstream covers these rows."
+      "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Enable the required native connection/disconnection/privileged/direct-access event selection and contextual fields, with data/performance/redaction review; one shared audit workstream covers these rows. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream."
     },
     {
       "vuln_id": "V-206632",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Enable the required native connection/disconnection/privileged/direct-access event selection and contextual fields, with data/performance/redaction review; one shared audit workstream covers these rows."
+      "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Enable the required native connection/disconnection/privileged/direct-access event selection and contextual fields, with data/performance/redaction review; one shared audit workstream covers these rows. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream."
     },
     {
       "vuln_id": "V-206634",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Enable the required native connection/disconnection/privileged/direct-access event selection and contextual fields, with data/performance/redaction review; one shared audit workstream covers these rows."
+      "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Enable the required native connection/disconnection/privileged/direct-access event selection and contextual fields, with data/performance/redaction review; one shared audit workstream covers these rows. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream."
     },
     {
       "vuln_id": "V-206635",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Enable the required native connection/disconnection/privileged/direct-access event selection and contextual fields, with data/performance/redaction review; one shared audit workstream covers these rows."
+      "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Enable the required native connection/disconnection/privileged/direct-access event selection and contextual fields, with data/performance/redaction review; one shared audit workstream covers these rows. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream."
     },
     {
       "vuln_id": "V-206638",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Enable the required native connection/disconnection/privileged/direct-access event selection and contextual fields, with data/performance/redaction review; one shared audit workstream covers these rows."
+      "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Enable the required native connection/disconnection/privileged/direct-access event selection and contextual fields, with data/performance/redaction review; one shared audit workstream covers these rows. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream."
     }
   ],
   "identity-policy": [

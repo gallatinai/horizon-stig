@@ -4563,7 +4563,7 @@
       "CCI-000169"
     ],
     "status": "Needs work",
-    "justification": "The delivered code preloads pgAudit but does not select session event classes or enable successful native connection/disconnection records. Vector centralizes emitted logs; optional SQL tracing defaults off and cannot account for direct administrator connections. Therefore the specific required native DB event coverage remains a real shared configuration gap, despite existing product-level audit mechanisms.",
+    "justification": "The delivered code preloads pgAudit but does not select session event classes or enable successful native connection/disconnection records. Vector centralizes emitted logs; optional SQL tracing defaults off and cannot account for direct administrator connections. Therefore the specific required native DB event coverage remains a real shared configuration gap, despite existing product-level audit mechanisms. Human review on 2026-11-10 confirmed Needs work with partial implementation, under the agreed treatment for similar audit-coverage issues. Verify effective database settings and actual event records first, map this exact event/field requirement to native and application coverage, and implement only confirmed gaps. Preserve native database scope rather than assume application logs cover direct administrative SQL.",
     "evidence_ids": [
       "re-database-postgres-values",
       "re-database-extension",
@@ -4573,7 +4573,7 @@
       "re-database-pg-log",
       "re-database-actual-image"
     ],
-    "next_step": "Enable the required native connection/disconnection/privileged/direct-access event selection and contextual fields, with data/performance/redaction review; one shared audit workstream covers these rows.",
+    "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Enable the required native connection/disconnection/privileged/direct-access event selection and contextual fields, with data/performance/redaction review; one shared audit workstream covers these rows. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream.",
     "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
     "category": "product-boundary source review",
     "components": "Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database",
@@ -4598,7 +4598,7 @@
       "CCI-000133"
     ],
     "status": "Needs work",
-    "justification": "Collector labels identify the DB container but do not identify every original native SQL caller. Default native prefix is not configured with complete user/database/remote/session context; application actor-aware records cover only selected actions. Complete native audit origin/identity context is still missing for required DB/admin operations.",
+    "justification": "Collector labels identify the DB container but do not identify every original native SQL caller. Default native prefix is not configured with complete user/database/remote/session context; application actor-aware records cover only selected actions. Complete native audit origin/identity context is still missing for required DB/admin operations. Human review on 2026-11-10 confirmed Needs work with partial implementation, under the agreed treatment for similar audit-coverage issues. Verify effective database settings and actual event records first, map this exact event/field requirement to native and application coverage, and implement only confirmed gaps. Preserve native database scope rather than assume application logs cover direct administrative SQL.",
     "evidence_ids": [
       "re-database-postgres-values",
       "re-database-pg-log",
@@ -4606,7 +4606,7 @@
       "re-database-permission-audit",
       "re-database-actual-image"
     ],
-    "next_step": "Configure required native session/user/database/remote context and correlate application actor where shared service roles are used.",
+    "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Configure required native session/user/database/remote context and correlate application actor where shared service roles are used. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream.",
     "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
     "category": "product-boundary source review",
     "components": "Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database",
@@ -4631,7 +4631,7 @@
       "CCI-001487"
     ],
     "status": "Needs work",
-    "justification": "Collector labels identify the DB container but do not identify every original native SQL caller. Default native prefix is not configured with complete user/database/remote/session context; application actor-aware records cover only selected actions. Complete native audit origin/identity context is still missing for required DB/admin operations.",
+    "justification": "Collector labels identify the DB container but do not identify every original native SQL caller. Default native prefix is not configured with complete user/database/remote/session context; application actor-aware records cover only selected actions. Complete native audit origin/identity context is still missing for required DB/admin operations. Human review on 2026-11-10 confirmed Needs work with partial implementation, under the agreed treatment for similar audit-coverage issues. Verify effective database settings and actual event records first, map this exact event/field requirement to native and application coverage, and implement only confirmed gaps. Preserve native database scope rather than assume application logs cover direct administrative SQL.",
     "evidence_ids": [
       "re-database-postgres-values",
       "re-database-pg-log",
@@ -4639,7 +4639,7 @@
       "re-database-permission-audit",
       "re-database-actual-image"
     ],
-    "next_step": "Configure required native session/user/database/remote context and correlate application actor where shared service roles are used.",
+    "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Configure required native session/user/database/remote context and correlate application actor where shared service roles are used. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream.",
     "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
     "category": "product-boundary source review",
     "components": "Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database",
@@ -4726,7 +4726,7 @@
       "CCI-000172"
     ],
     "status": "Needs work",
-    "justification": "pgAudit can audit security-object access, but source selects no corresponding classes/object policy. Application permission/feature-flag records are useful partial coverage; they do not audit every successful read/change/execution of native security objects. This exact check includes actual event generation, not capability alone.",
+    "justification": "pgAudit can audit security-object access, but source selects no corresponding classes/object policy. Application permission/feature-flag records are useful partial coverage; they do not audit every successful read/change/execution of native security objects. This exact check includes actual event generation, not capability alone. Human review on 2026-11-10 confirmed Needs work with partial implementation, under the agreed treatment for similar audit-coverage issues. Verify effective database settings and actual event records first, map this exact event/field requirement to native and application coverage, and implement only confirmed gaps. Preserve native database scope rather than assume application logs cover direct administrative SQL.",
     "evidence_ids": [
       "re-database-extension",
       "re-database-pgaudit",
@@ -4734,7 +4734,7 @@
       "re-database-permission-audit",
       "re-database-actual-image"
     ],
-    "next_step": "Enable targeted native security-object audit selection or establish an accepted equivalent event mapping.",
+    "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Enable targeted native security-object audit selection or establish an accepted equivalent event mapping. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream.",
     "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
     "category": "product-boundary source review",
     "components": "Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database",
@@ -4759,7 +4759,7 @@
       "CCI-000172"
     ],
     "status": "Needs work",
-    "justification": "Classification categories are real product fields, not an unspecified nonexistent taxonomy. Files metadata can be read/reclassified/deleted, but those code paths do not emit a complete actor/object/old-new/outcome category audit trail, and native pgAudit classes are unset. For denials, RLS invisibility/404 is not always a PostgreSQL ERROR. Reuse one application/DB audit integration instead of implementing a second classification model.",
+    "justification": "Classification categories are real product fields, not an unspecified nonexistent taxonomy. Files metadata can be read/reclassified/deleted, but those code paths do not emit a complete actor/object/old-new/outcome category audit trail, and native pgAudit classes are unset. For denials, RLS invisibility/404 is not always a PostgreSQL ERROR. Reuse one application/DB audit integration instead of implementing a second classification model. Human review on 2026-11-10 confirmed Needs work with partial implementation, under the agreed treatment for similar audit-coverage issues. Verify effective database settings and actual event records first, map this exact event/field requirement to native and application coverage, and implement only confirmed gaps. Preserve native database scope rather than assume application logs cover direct administrative SQL.",
     "evidence_ids": [
       "re-database-labels",
       "re-database-label-writes",
@@ -4768,7 +4768,7 @@
       "re-database-pg-log",
       "re-database-actual-image"
     ],
-    "next_step": "Add or evidence category-specific read/change/delete success/denial events in the shared application/DB audit stream; preserve individual actor and classification context.",
+    "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Add or evidence category-specific read/change/delete success/denial events in the shared application/DB audit stream; preserve individual actor and classification context. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream.",
     "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
     "category": "product-boundary source review",
     "components": "Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database",
@@ -4793,7 +4793,7 @@
       "CCI-000172"
     ],
     "status": "Needs work",
-    "justification": "Classification categories are real product fields, not an unspecified nonexistent taxonomy. Files metadata can be read/reclassified/deleted, but those code paths do not emit a complete actor/object/old-new/outcome category audit trail, and native pgAudit classes are unset. For denials, RLS invisibility/404 is not always a PostgreSQL ERROR. Reuse one application/DB audit integration instead of implementing a second classification model.",
+    "justification": "Classification categories are real product fields, not an unspecified nonexistent taxonomy. Files metadata can be read/reclassified/deleted, but those code paths do not emit a complete actor/object/old-new/outcome category audit trail, and native pgAudit classes are unset. For denials, RLS invisibility/404 is not always a PostgreSQL ERROR. Reuse one application/DB audit integration instead of implementing a second classification model. Human review on 2026-11-10 confirmed Needs work with partial implementation, under the agreed treatment for similar audit-coverage issues. Verify effective database settings and actual event records first, map this exact event/field requirement to native and application coverage, and implement only confirmed gaps. Preserve native database scope rather than assume application logs cover direct administrative SQL.",
     "evidence_ids": [
       "re-database-labels",
       "re-database-label-writes",
@@ -4802,7 +4802,7 @@
       "re-database-pg-log",
       "re-database-actual-image"
     ],
-    "next_step": "Add or evidence category-specific read/change/delete success/denial events in the shared application/DB audit stream; preserve individual actor and classification context.",
+    "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Add or evidence category-specific read/change/delete success/denial events in the shared application/DB audit stream; preserve individual actor and classification context. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream.",
     "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
     "category": "product-boundary source review",
     "components": "Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database",
@@ -4827,7 +4827,7 @@
       "CCI-000172"
     ],
     "status": "Needs work",
-    "justification": "Product permission grant/revoke actions already have append-only actor audit records, but this exact DBMS control also covers native SQL role/privilege changes. Those native successful GRANT/REVOKE operations are not selected for logging by current pgAudit configuration. Do not claim the whole product has no privilege audit, and do not count duplicate native event tasks separately.",
+    "justification": "Product permission grant/revoke actions already have append-only actor audit records, but this exact DBMS control also covers native SQL role/privilege changes. Those native successful GRANT/REVOKE operations are not selected for logging by current pgAudit configuration. Do not claim the whole product has no privilege audit, and do not count duplicate native event tasks separately. Human review on 2026-11-10 confirmed Needs work with partial implementation, under the agreed treatment for similar audit-coverage issues. Verify effective database settings and actual event records first, map this exact event/field requirement to native and application coverage, and implement only confirmed gaps. Preserve native database scope rather than assume application logs cover direct administrative SQL.",
     "evidence_ids": [
       "re-database-permission-audit",
       "re-database-role",
@@ -4835,7 +4835,7 @@
       "re-database-pgaudit",
       "re-database-actual-image"
     ],
-    "next_step": "Enable native ROLE/privilege event selection or retain accepted equivalent administrative change records; keep application records as existing coverage.",
+    "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Enable native ROLE/privilege event selection or retain accepted equivalent administrative change records; keep application records as existing coverage. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream.",
     "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
     "category": "product-boundary source review",
     "components": "Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database",
@@ -4860,7 +4860,7 @@
       "CCI-000172"
     ],
     "status": "Needs work",
-    "justification": "PostgreSQL built-in catalogs are protected, but the application also defines local security objects (roles, RLS policies and authorization/audit functions). Thus the built-in-only exemption does not cover the entire product; successful changes/drops of those objects still need selected native or equivalent audit records.",
+    "justification": "PostgreSQL built-in catalogs are protected, but the application also defines local security objects (roles, RLS policies and authorization/audit functions). Thus the built-in-only exemption does not cover the entire product; successful changes/drops of those objects still need selected native or equivalent audit records. Human review on 2026-11-10 confirmed Needs work with partial implementation, under the agreed treatment for similar audit-coverage issues. Verify effective database settings and actual event records first, map this exact event/field requirement to native and application coverage, and implement only confirmed gaps. Preserve native database scope rather than assume application logs cover direct administrative SQL.",
     "evidence_ids": [
       "re-database-role",
       "re-database-rls",
@@ -4869,7 +4869,7 @@
       "re-database-pgaudit",
       "re-database-actual-image"
     ],
-    "next_step": "Select DDL/ROLE security-object audit events or attach an equivalent privileged deployment/change trail with required event fields.",
+    "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Select DDL/ROLE security-object audit events or attach an equivalent privileged deployment/change trail with required event fields. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream.",
     "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
     "category": "product-boundary source review",
     "components": "Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database",
@@ -4894,7 +4894,7 @@
       "CCI-000172"
     ],
     "status": "Needs work",
-    "justification": "Classification categories are real product fields, not an unspecified nonexistent taxonomy. Files metadata can be read/reclassified/deleted, but those code paths do not emit a complete actor/object/old-new/outcome category audit trail, and native pgAudit classes are unset. For denials, RLS invisibility/404 is not always a PostgreSQL ERROR. Reuse one application/DB audit integration instead of implementing a second classification model.",
+    "justification": "Classification categories are real product fields, not an unspecified nonexistent taxonomy. Files metadata can be read/reclassified/deleted, but those code paths do not emit a complete actor/object/old-new/outcome category audit trail, and native pgAudit classes are unset. For denials, RLS invisibility/404 is not always a PostgreSQL ERROR. Reuse one application/DB audit integration instead of implementing a second classification model. Human review on 2026-11-10 confirmed Needs work with partial implementation, under the agreed treatment for similar audit-coverage issues. Verify effective database settings and actual event records first, map this exact event/field requirement to native and application coverage, and implement only confirmed gaps. Preserve native database scope rather than assume application logs cover direct administrative SQL.",
     "evidence_ids": [
       "re-database-labels",
       "re-database-label-writes",
@@ -4903,7 +4903,7 @@
       "re-database-pg-log",
       "re-database-actual-image"
     ],
-    "next_step": "Add or evidence category-specific read/change/delete success/denial events in the shared application/DB audit stream; preserve individual actor and classification context.",
+    "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Add or evidence category-specific read/change/delete success/denial events in the shared application/DB audit stream; preserve individual actor and classification context. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream.",
     "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
     "category": "product-boundary source review",
     "components": "Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database",
@@ -4928,7 +4928,7 @@
       "CCI-000172"
     ],
     "status": "Needs work",
-    "justification": "Classification categories are real product fields, not an unspecified nonexistent taxonomy. Files metadata can be read/reclassified/deleted, but those code paths do not emit a complete actor/object/old-new/outcome category audit trail, and native pgAudit classes are unset. For denials, RLS invisibility/404 is not always a PostgreSQL ERROR. Reuse one application/DB audit integration instead of implementing a second classification model.",
+    "justification": "Classification categories are real product fields, not an unspecified nonexistent taxonomy. Files metadata can be read/reclassified/deleted, but those code paths do not emit a complete actor/object/old-new/outcome category audit trail, and native pgAudit classes are unset. For denials, RLS invisibility/404 is not always a PostgreSQL ERROR. Reuse one application/DB audit integration instead of implementing a second classification model. Human review on 2026-11-10 confirmed Needs work with partial implementation, under the agreed treatment for similar audit-coverage issues. Verify effective database settings and actual event records first, map this exact event/field requirement to native and application coverage, and implement only confirmed gaps. Preserve native database scope rather than assume application logs cover direct administrative SQL.",
     "evidence_ids": [
       "re-database-labels",
       "re-database-label-writes",
@@ -4937,7 +4937,7 @@
       "re-database-pg-log",
       "re-database-actual-image"
     ],
-    "next_step": "Add or evidence category-specific read/change/delete success/denial events in the shared application/DB audit stream; preserve individual actor and classification context.",
+    "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Add or evidence category-specific read/change/delete success/denial events in the shared application/DB audit stream; preserve individual actor and classification context. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream.",
     "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
     "category": "product-boundary source review",
     "components": "Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database",
@@ -4962,7 +4962,7 @@
       "CCI-000172"
     ],
     "status": "Needs work",
-    "justification": "Product permission grant/revoke actions already have append-only actor audit records, but this exact DBMS control also covers native SQL role/privilege changes. Those native successful GRANT/REVOKE operations are not selected for logging by current pgAudit configuration. Do not claim the whole product has no privilege audit, and do not count duplicate native event tasks separately.",
+    "justification": "Product permission grant/revoke actions already have append-only actor audit records, but this exact DBMS control also covers native SQL role/privilege changes. Those native successful GRANT/REVOKE operations are not selected for logging by current pgAudit configuration. Do not claim the whole product has no privilege audit, and do not count duplicate native event tasks separately. Human review on 2026-11-10 confirmed Needs work with partial implementation, under the agreed treatment for similar audit-coverage issues. Verify effective database settings and actual event records first, map this exact event/field requirement to native and application coverage, and implement only confirmed gaps. Preserve native database scope rather than assume application logs cover direct administrative SQL.",
     "evidence_ids": [
       "re-database-permission-audit",
       "re-database-role",
@@ -4970,7 +4970,7 @@
       "re-database-pgaudit",
       "re-database-actual-image"
     ],
-    "next_step": "Enable native ROLE/privilege event selection or retain accepted equivalent administrative change records; keep application records as existing coverage.",
+    "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Enable native ROLE/privilege event selection or retain accepted equivalent administrative change records; keep application records as existing coverage. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream.",
     "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
     "category": "product-boundary source review",
     "components": "Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database",
@@ -4995,7 +4995,7 @@
       "CCI-000172"
     ],
     "status": "Needs work",
-    "justification": "PostgreSQL built-in catalogs are protected, but the application also defines local security objects (roles, RLS policies and authorization/audit functions). Thus the built-in-only exemption does not cover the entire product; successful changes/drops of those objects still need selected native or equivalent audit records.",
+    "justification": "PostgreSQL built-in catalogs are protected, but the application also defines local security objects (roles, RLS policies and authorization/audit functions). Thus the built-in-only exemption does not cover the entire product; successful changes/drops of those objects still need selected native or equivalent audit records. Human review on 2026-11-10 confirmed Needs work with partial implementation, under the agreed treatment for similar audit-coverage issues. Verify effective database settings and actual event records first, map this exact event/field requirement to native and application coverage, and implement only confirmed gaps. Preserve native database scope rather than assume application logs cover direct administrative SQL.",
     "evidence_ids": [
       "re-database-role",
       "re-database-rls",
@@ -5004,7 +5004,7 @@
       "re-database-pgaudit",
       "re-database-actual-image"
     ],
-    "next_step": "Select DDL/ROLE security-object audit events or attach an equivalent privileged deployment/change trail with required event fields.",
+    "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Select DDL/ROLE security-object audit events or attach an equivalent privileged deployment/change trail with required event fields. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream.",
     "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
     "category": "product-boundary source review",
     "components": "Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database",
@@ -5029,7 +5029,7 @@
       "CCI-000172"
     ],
     "status": "Needs work",
-    "justification": "Classification categories are real product fields, not an unspecified nonexistent taxonomy. Files metadata can be read/reclassified/deleted, but those code paths do not emit a complete actor/object/old-new/outcome category audit trail, and native pgAudit classes are unset. For denials, RLS invisibility/404 is not always a PostgreSQL ERROR. Reuse one application/DB audit integration instead of implementing a second classification model.",
+    "justification": "Classification categories are real product fields, not an unspecified nonexistent taxonomy. Files metadata can be read/reclassified/deleted, but those code paths do not emit a complete actor/object/old-new/outcome category audit trail, and native pgAudit classes are unset. For denials, RLS invisibility/404 is not always a PostgreSQL ERROR. Reuse one application/DB audit integration instead of implementing a second classification model. Human review on 2026-11-10 confirmed Needs work with partial implementation, under the agreed treatment for similar audit-coverage issues. Verify effective database settings and actual event records first, map this exact event/field requirement to native and application coverage, and implement only confirmed gaps. Preserve native database scope rather than assume application logs cover direct administrative SQL.",
     "evidence_ids": [
       "re-database-labels",
       "re-database-label-writes",
@@ -5038,7 +5038,7 @@
       "re-database-pg-log",
       "re-database-actual-image"
     ],
-    "next_step": "Add or evidence category-specific read/change/delete success/denial events in the shared application/DB audit stream; preserve individual actor and classification context.",
+    "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Add or evidence category-specific read/change/delete success/denial events in the shared application/DB audit stream; preserve individual actor and classification context. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream.",
     "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
     "category": "product-boundary source review",
     "components": "Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database",
@@ -5063,7 +5063,7 @@
       "CCI-000172"
     ],
     "status": "Needs work",
-    "justification": "Classification categories are real product fields, not an unspecified nonexistent taxonomy. Files metadata can be read/reclassified/deleted, but those code paths do not emit a complete actor/object/old-new/outcome category audit trail, and native pgAudit classes are unset. For denials, RLS invisibility/404 is not always a PostgreSQL ERROR. Reuse one application/DB audit integration instead of implementing a second classification model.",
+    "justification": "Classification categories are real product fields, not an unspecified nonexistent taxonomy. Files metadata can be read/reclassified/deleted, but those code paths do not emit a complete actor/object/old-new/outcome category audit trail, and native pgAudit classes are unset. For denials, RLS invisibility/404 is not always a PostgreSQL ERROR. Reuse one application/DB audit integration instead of implementing a second classification model. Human review on 2026-11-10 confirmed Needs work with partial implementation, under the agreed treatment for similar audit-coverage issues. Verify effective database settings and actual event records first, map this exact event/field requirement to native and application coverage, and implement only confirmed gaps. Preserve native database scope rather than assume application logs cover direct administrative SQL.",
     "evidence_ids": [
       "re-database-labels",
       "re-database-label-writes",
@@ -5072,7 +5072,7 @@
       "re-database-pg-log",
       "re-database-actual-image"
     ],
-    "next_step": "Add or evidence category-specific read/change/delete success/denial events in the shared application/DB audit stream; preserve individual actor and classification context.",
+    "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Add or evidence category-specific read/change/delete success/denial events in the shared application/DB audit stream; preserve individual actor and classification context. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream.",
     "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
     "category": "product-boundary source review",
     "components": "Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database",
@@ -5097,7 +5097,7 @@
       "CCI-000172"
     ],
     "status": "Needs work",
-    "justification": "The delivered code preloads pgAudit but does not select session event classes or enable successful native connection/disconnection records. Vector centralizes emitted logs; optional SQL tracing defaults off and cannot account for direct administrator connections. Therefore the specific required native DB event coverage remains a real shared configuration gap, despite existing product-level audit mechanisms.",
+    "justification": "The delivered code preloads pgAudit but does not select session event classes or enable successful native connection/disconnection records. Vector centralizes emitted logs; optional SQL tracing defaults off and cannot account for direct administrator connections. Therefore the specific required native DB event coverage remains a real shared configuration gap, despite existing product-level audit mechanisms. Human review on 2026-11-10 confirmed Needs work with partial implementation, under the agreed treatment for similar audit-coverage issues. Verify effective database settings and actual event records first, map this exact event/field requirement to native and application coverage, and implement only confirmed gaps. Preserve native database scope rather than assume application logs cover direct administrative SQL.",
     "evidence_ids": [
       "re-database-postgres-values",
       "re-database-extension",
@@ -5107,7 +5107,7 @@
       "re-database-pg-log",
       "re-database-actual-image"
     ],
-    "next_step": "Enable the required native connection/disconnection/privileged/direct-access event selection and contextual fields, with data/performance/redaction review; one shared audit workstream covers these rows.",
+    "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Enable the required native connection/disconnection/privileged/direct-access event selection and contextual fields, with data/performance/redaction review; one shared audit workstream covers these rows. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream.",
     "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
     "category": "product-boundary source review",
     "components": "Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database",
@@ -5132,7 +5132,7 @@
       "CCI-000172"
     ],
     "status": "Needs work",
-    "justification": "The delivered code preloads pgAudit but does not select session event classes or enable successful native connection/disconnection records. Vector centralizes emitted logs; optional SQL tracing defaults off and cannot account for direct administrator connections. Therefore the specific required native DB event coverage remains a real shared configuration gap, despite existing product-level audit mechanisms.",
+    "justification": "The delivered code preloads pgAudit but does not select session event classes or enable successful native connection/disconnection records. Vector centralizes emitted logs; optional SQL tracing defaults off and cannot account for direct administrator connections. Therefore the specific required native DB event coverage remains a real shared configuration gap, despite existing product-level audit mechanisms. Human review on 2026-11-10 confirmed Needs work with partial implementation, under the agreed treatment for similar audit-coverage issues. Verify effective database settings and actual event records first, map this exact event/field requirement to native and application coverage, and implement only confirmed gaps. Preserve native database scope rather than assume application logs cover direct administrative SQL.",
     "evidence_ids": [
       "re-database-postgres-values",
       "re-database-extension",
@@ -5142,7 +5142,7 @@
       "re-database-pg-log",
       "re-database-actual-image"
     ],
-    "next_step": "Enable the required native connection/disconnection/privileged/direct-access event selection and contextual fields, with data/performance/redaction review; one shared audit workstream covers these rows.",
+    "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Enable the required native connection/disconnection/privileged/direct-access event selection and contextual fields, with data/performance/redaction review; one shared audit workstream covers these rows. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream.",
     "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
     "category": "product-boundary source review",
     "components": "Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database",
@@ -5167,7 +5167,7 @@
       "CCI-000172"
     ],
     "status": "Needs work",
-    "justification": "The delivered code preloads pgAudit but does not select session event classes or enable successful native connection/disconnection records. Vector centralizes emitted logs; optional SQL tracing defaults off and cannot account for direct administrator connections. Therefore the specific required native DB event coverage remains a real shared configuration gap, despite existing product-level audit mechanisms.",
+    "justification": "The delivered code preloads pgAudit but does not select session event classes or enable successful native connection/disconnection records. Vector centralizes emitted logs; optional SQL tracing defaults off and cannot account for direct administrator connections. Therefore the specific required native DB event coverage remains a real shared configuration gap, despite existing product-level audit mechanisms. Human review on 2026-11-10 confirmed Needs work with partial implementation, under the agreed treatment for similar audit-coverage issues. Verify effective database settings and actual event records first, map this exact event/field requirement to native and application coverage, and implement only confirmed gaps. Preserve native database scope rather than assume application logs cover direct administrative SQL.",
     "evidence_ids": [
       "re-database-postgres-values",
       "re-database-extension",
@@ -5177,7 +5177,7 @@
       "re-database-pg-log",
       "re-database-actual-image"
     ],
-    "next_step": "Enable the required native connection/disconnection/privileged/direct-access event selection and contextual fields, with data/performance/redaction review; one shared audit workstream covers these rows.",
+    "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Enable the required native connection/disconnection/privileged/direct-access event selection and contextual fields, with data/performance/redaction review; one shared audit workstream covers these rows. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream.",
     "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
     "category": "product-boundary source review",
     "components": "Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database",
@@ -5202,7 +5202,7 @@
       "CCI-000172"
     ],
     "status": "Needs work",
-    "justification": "The delivered code preloads pgAudit but does not select session event classes or enable successful native connection/disconnection records. Vector centralizes emitted logs; optional SQL tracing defaults off and cannot account for direct administrator connections. Therefore the specific required native DB event coverage remains a real shared configuration gap, despite existing product-level audit mechanisms.",
+    "justification": "The delivered code preloads pgAudit but does not select session event classes or enable successful native connection/disconnection records. Vector centralizes emitted logs; optional SQL tracing defaults off and cannot account for direct administrator connections. Therefore the specific required native DB event coverage remains a real shared configuration gap, despite existing product-level audit mechanisms. Human review on 2026-11-10 confirmed Needs work with partial implementation, under the agreed treatment for similar audit-coverage issues. Verify effective database settings and actual event records first, map this exact event/field requirement to native and application coverage, and implement only confirmed gaps. Preserve native database scope rather than assume application logs cover direct administrative SQL.",
     "evidence_ids": [
       "re-database-postgres-values",
       "re-database-extension",
@@ -5212,7 +5212,7 @@
       "re-database-pg-log",
       "re-database-actual-image"
     ],
-    "next_step": "Enable the required native connection/disconnection/privileged/direct-access event selection and contextual fields, with data/performance/redaction review; one shared audit workstream covers these rows.",
+    "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Enable the required native connection/disconnection/privileged/direct-access event selection and contextual fields, with data/performance/redaction review; one shared audit workstream covers these rows. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream.",
     "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
     "category": "product-boundary source review",
     "components": "Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database",
@@ -5237,7 +5237,7 @@
       "CCI-000172"
     ],
     "status": "Needs work",
-    "justification": "The delivered code preloads pgAudit but does not select session event classes or enable successful native connection/disconnection records. Vector centralizes emitted logs; optional SQL tracing defaults off and cannot account for direct administrator connections. Therefore the specific required native DB event coverage remains a real shared configuration gap, despite existing product-level audit mechanisms.",
+    "justification": "The delivered code preloads pgAudit but does not select session event classes or enable successful native connection/disconnection records. Vector centralizes emitted logs; optional SQL tracing defaults off and cannot account for direct administrator connections. Therefore the specific required native DB event coverage remains a real shared configuration gap, despite existing product-level audit mechanisms. Human review on 2026-11-10 confirmed Needs work with partial implementation, under the agreed treatment for similar audit-coverage issues. Verify effective database settings and actual event records first, map this exact event/field requirement to native and application coverage, and implement only confirmed gaps. Preserve native database scope rather than assume application logs cover direct administrative SQL.",
     "evidence_ids": [
       "re-database-postgres-values",
       "re-database-extension",
@@ -5247,7 +5247,7 @@
       "re-database-pg-log",
       "re-database-actual-image"
     ],
-    "next_step": "Enable the required native connection/disconnection/privileged/direct-access event selection and contextual fields, with data/performance/redaction review; one shared audit workstream covers these rows.",
+    "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Enable the required native connection/disconnection/privileged/direct-access event selection and contextual fields, with data/performance/redaction review; one shared audit workstream covers these rows. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream.",
     "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
     "category": "product-boundary source review",
     "components": "Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database",
