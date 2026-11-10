@@ -2136,13 +2136,13 @@
       "CCI-004062"
     ],
     "status": "Needs work",
-    "justification": "Actual pushed UDS profile retains SeaweedFS credential-bearing s3.json in a ConfigMap, mounted read-only into the service. S3 authentication is already implemented. The remaining gap is Kubernetes storage/access classification: ConfigMap read permission is broader than Secret read permission and etcd Secret encryption does not transform this ConfigMap into a Secret. Mesh, non-root execution and read-only mounts do not supply the missing secret-store boundary.",
+    "justification": "Actual pushed UDS profile retains SeaweedFS credential-bearing s3.json in a ConfigMap, mounted read-only into the service. S3 authentication is already implemented. The remaining gap is Kubernetes storage/access classification: ConfigMap read permission is broader than Secret read permission and etcd Secret encryption does not transform this ConfigMap into a Secret. Mesh, non-root execution and read-only mounts do not supply the missing secret-store boundary. Human review on 2026-11-10 confirmed Needs work with current-configuration verification first for this and similar secret storage/delivery issues. Coordinate with V-242415 and verify the recalled potential customer requirements conflict before changing shared defaults. File mounting does not resolve the underlying ConfigMap storage classification; preserve existing authentication and address only confirmed scope-specific gaps.",
     "evidence_ids": [
       "re-kubernetes-release",
       "re-kubernetes-s3-configmap",
       "re-kubernetes-profile-transform"
     ],
-    "next_step": "Store the S3 configuration in a protected Secret/external store and mount it as needed, or document an accepted compensating-control exception. No new S3 authentication implementation is required.",
+    "next_step": "In the post-classification verification pass, confirm whether the assessed/current profile still stores credential-bearing SeaweedFS s3.json in a ConfigMap. Check applicable customer constraints alongside V-242415 without assuming the recalled delivery conflict also requires ConfigMap storage. Move confirmed sensitive configuration into a protected Kubernetes Secret/external secret store and preserve file mounting and S3 authentication, or retain a formally accepted exception. Credit existing fixes where present, scope shared-default changes appropriately and retain configuration/test evidence.",
     "owner": "Gallatin SRE (UDS Core); MPN node/control-plane owner for host configuration",
     "category": "configuration / credential storage",
     "components": "MPN cluster and nodes; Gallatin horizon-uds workloads",

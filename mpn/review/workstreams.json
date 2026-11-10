@@ -857,7 +857,7 @@
     {
       "vuln_id": "V-274883",
       "benchmark": "U_Kubernetes_V2R6_STIG",
-      "next_step": "Store the S3 configuration in a protected Secret/external store and mount it as needed, or document an accepted compensating-control exception. No new S3 authentication implementation is required."
+      "next_step": "In the post-classification verification pass, confirm whether the assessed/current profile still stores credential-bearing SeaweedFS s3.json in a ConfigMap. Check applicable customer constraints alongside V-242415 without assuming the recalled delivery conflict also requires ConfigMap storage. Move confirmed sensitive configuration into a protected Kubernetes Secret/external secret store and preserve file mounting and S3 authentication, or retain a formally accepted exception. Credit existing fixes where present, scope shared-default changes appropriately and retain configuration/test evidence."
     }
   ],
   "secure-development-training": [
