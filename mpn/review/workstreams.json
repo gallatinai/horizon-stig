@@ -780,7 +780,7 @@
     {
       "vuln_id": "V-222435",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Gallatin sets Core realmInitEnv.TERMS_AND_CONDITIONS_ENABLED=true and enables the existing TermsAndConditions required action on an already-created uds realm. Use/review the shipped USG notice and acknowledgement theme; no new API/frontend banner. Persist desired values plus controlled realm migration."
+      "next_step": "Enable Core realmInitEnv.TERMS_AND_CONDITIONS_ENABLED=true and apply the equivalent TermsAndConditions required-action setting to the existing uds realm through a controlled update, shared with V-222434. Verify the notice remains displayed until explicit acceptance, that users cannot proceed without accepting, and that declining does not grant application access. Retain configuration and verification evidence; no new Horizon consent page is required."
     },
     {
       "vuln_id": "V-233032",
