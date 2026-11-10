@@ -761,7 +761,7 @@
     },
     "V-222434": {
       "status": "Needs work",
-      "justification": "UDS includes a consent theme and per-session Terms mechanism, so no new Horizon login page is necessary. Core REALM_TERMS_AND_CONDITIONS_ENABLED defaults false; without an override the required acknowledgement is not active on the actual IdP entry flow. Core ships the USG notice and acknowledgement UI; its terms action defaults off. Gallatin owns enabling the existing control.",
+      "justification": "UDS includes a consent theme and per-session Terms mechanism, so no new Horizon login page is necessary. Core REALM_TERMS_AND_CONDITIONS_ENABLED defaults false; without an override the required acknowledgement is not active on the actual IdP entry flow. Core ships the USG notice and acknowledgement UI; its terms action defaults off. Gallatin owns enabling the existing control. Human review on 2026-11-10 confirmed Needs work: enable the existing UDS notice/consent banner, verify its wording against the official requirement and confirm it appears before application access. This decision does not establish that the banner is enabled in the deployment.",
       "evidence_ids": [
         "re-asd-release",
         "re-asd-realm",
@@ -772,7 +772,7 @@
         "mpn-identity-init-only",
         "mpn-core-known-identity-settings"
       ],
-      "next_step": "Gallatin sets Core realmInitEnv.TERMS_AND_CONDITIONS_ENABLED=true and enables the existing TermsAndConditions required action on an already-created uds realm. Use/review the shipped USG notice and acknowledgement theme; no new API/frontend banner. Persist desired values plus controlled realm migration.",
+      "next_step": "Enable Core realmInitEnv.TERMS_AND_CONDITIONS_ENABLED=true and apply the equivalent TermsAndConditions required-action setting to the existing uds realm through a controlled update. Persist the desired configuration. Compare the shipped notice text with the official required wording and verify the banner is displayed before access through the assessed interactive login paths. Retain configuration and verification evidence; no new Horizon banner page is required.",
       "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
       "category": "delegated provider configuration",
       "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
