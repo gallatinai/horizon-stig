@@ -499,7 +499,7 @@
     {
       "vuln_id": "V-206519",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Set approved service/admin per-role connection limits, with service-pool allowances; do not force2 if approved service-account limits differ."
+      "next_step": "In the post-classification verification pass, inspect effective PostgreSQL role connection limits and identify all relevant account types and enforcement limitations. Obtain documented organization-approved administrator/service/user limits sized for actual pool and operational needs, applying the official defaults only where documentation is absent. Configure missing native limits where technically enforceable, verify behavior and retain policy/configuration/test evidence. Do not rely on application pooling alone or choose an arbitrary service-role maximum."
     }
   ],
   "database-auditing": [

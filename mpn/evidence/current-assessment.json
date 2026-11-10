@@ -13034,13 +13034,13 @@
     },
     "V-206519": {
       "status": "Needs work",
-      "justification": "The actual service role has no CONNECTION LIMIT. Pooling limits application connections but this official check explicitly requires DB enforcement when technically available, even when applications limit sessions. PostgreSQL can enforce the missing role limit.",
+      "justification": "Saved PostgreSQL role provisioning does not set a per-role connection limit, while application pooling and shared IdP login-session limits do not establish native database enforcement. Human review on 2026-11-10 confirmed Needs work: verify effective role limits and define approved limits by account type, including service-pool requirements, then enforce missing limits in PostgreSQL. The official check assumes 10 administrator and 2 other-user sessions if documentation specifies none. The proposed one-browser-session policy must not be applied blindly to database service roles.",
       "evidence_ids": [
         "re-database-role",
         "re-database-query-context",
         "re-database-pg-roles"
       ],
-      "next_step": "Set approved service/admin per-role connection limits, with service-pool allowances; do not force2 if approved service-account limits differ.",
+      "next_step": "In the post-classification verification pass, inspect effective PostgreSQL role connection limits and identify all relevant account types and enforcement limitations. Obtain documented organization-approved administrator/service/user limits sized for actual pool and operational needs, applying the official defaults only where documentation is absent. Configure missing native limits where technically enforceable, verify behavior and retain policy/configuration/test evidence. Do not rely on application pooling alone or choose an arbitrary service-role maximum.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "product-boundary source review",
       "components": "Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database",
