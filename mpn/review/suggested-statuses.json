@@ -12255,7 +12255,7 @@
       "CCI-000048"
     ],
     "status": "Needs work",
-    "justification": "Shared UDS identity supplies a USG terms/consent page and a defaultAction, so application-local banner code is unnecessary. However, its required action enabled flag defaults false; the actual application UDS profile does not select a Core terms override. Thus the remaining action is enable/attest the platform entry-point notice, not build another Horizon banner. Core ships the USG notice and acknowledgement UI; its terms action defaults off. Gallatin owns enabling the existing control.",
+    "justification": "Shared UDS identity supplies a USG terms/consent page and a defaultAction, so application-local banner code is unnecessary. However, its required action enabled flag defaults false; the actual application UDS profile does not select a Core terms override. Thus the remaining action is enable/attest the platform entry-point notice, not build another Horizon banner. Core ships the USG notice and acknowledgement UI; its terms action defaults off. Gallatin owns enabling the existing control. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the same decision to similar notice/consent banner requirements. Share the existing V-222434/V-222435 configuration and verification actions, but verify the exact component and management entry points; Horizon login alone does not establish every platform entry path.",
     "evidence_ids": [
       "re-platform-delivered-profile",
       "re-platform-realm",
@@ -12266,7 +12266,7 @@
       "mpn-identity-init-only",
       "mpn-core-known-identity-settings"
     ],
-    "next_step": "Gallatin sets Core realmInitEnv.TERMS_AND_CONDITIONS_ENABLED=true and enables the existing TermsAndConditions required action on an already-created uds realm. Use/review the shipped USG notice and acknowledgement theme; no new API/frontend banner. Persist desired values plus controlled realm migration.",
+    "next_step": "Verify current UDS notice/consent settings and inventory applicable interactive entry points for this exact component or management interface. Reuse V-222434/V-222435 configuration: persist the approved Core terms setting and update the existing realm through a controlled change if needed. Verify the required banner text and display before access. Test each applicable entry path, retain configuration/results and credit existing coverage. Do not create a duplicate Horizon banner or assume one login test covers all interfaces.",
     "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
     "category": "platform configuration/delegation",
     "components": "UDS platform: registry, runtime, Pepr, Istio, logging; delivered workloads",
@@ -12289,7 +12289,7 @@
       "CCI-000050"
     ],
     "status": "Needs work",
-    "justification": "Shared UDS identity supplies a USG terms/consent page and a defaultAction, so application-local banner code is unnecessary. However, its required action enabled flag defaults false; the actual application UDS profile does not select a Core terms override. Thus the remaining action is enable/attest the platform entry-point notice, not build another Horizon banner. Core ships the USG notice and acknowledgement UI; its terms action defaults off. Gallatin owns enabling the existing control.",
+    "justification": "Shared UDS identity supplies a USG terms/consent page and a defaultAction, so application-local banner code is unnecessary. However, its required action enabled flag defaults false; the actual application UDS profile does not select a Core terms override. Thus the remaining action is enable/attest the platform entry-point notice, not build another Horizon banner. Core ships the USG notice and acknowledgement UI; its terms action defaults off. Gallatin owns enabling the existing control. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the same decision to similar notice/consent banner requirements. Share the existing V-222434/V-222435 configuration and verification actions, but verify the exact component and management entry points; Horizon login alone does not establish every platform entry path.",
     "evidence_ids": [
       "re-platform-delivered-profile",
       "re-platform-realm",
@@ -12300,7 +12300,7 @@
       "mpn-identity-init-only",
       "mpn-core-known-identity-settings"
     ],
-    "next_step": "Gallatin sets Core realmInitEnv.TERMS_AND_CONDITIONS_ENABLED=true and enables the existing TermsAndConditions required action on an already-created uds realm. Use/review the shipped USG notice and acknowledgement theme; no new API/frontend banner. Persist desired values plus controlled realm migration.",
+    "next_step": "Verify current UDS notice/consent settings and inventory applicable interactive entry points for this exact component or management interface. Reuse V-222434/V-222435 configuration: persist the approved Core terms setting and update the existing realm through a controlled change if needed. Verify the required banner text and display before access. Verify the banner remains until explicit acceptance and users cannot proceed without acknowledgement. Test each applicable entry path, retain configuration/results and credit existing coverage. Do not create a duplicate Horizon banner or assume one login test covers all interfaces.",
     "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
     "category": "platform configuration/delegation",
     "components": "UDS platform: registry, runtime, Pepr, Istio, logging; delivered workloads",
@@ -21451,7 +21451,7 @@
       "CCI-000048"
     ],
     "status": "Needs work",
-    "justification": "UDS owns authentication and already supplies the complete mandatory USGnotice plus acknowledgement UI. However its TERMS_AND_CONDITIONS required action is disabled by default and the release profile supplies no override. No custom API/banner implementation is needed; enable the existing provider action. Core ships the USG notice and acknowledgement UI; its terms action defaults off. Gallatin owns enabling the existing control.",
+    "justification": "UDS owns authentication and already supplies the complete mandatory USGnotice plus acknowledgement UI. However its TERMS_AND_CONDITIONS required action is disabled by default and the release profile supplies no override. No custom API/banner implementation is needed; enable the existing provider action. Core ships the USG notice and acknowledgement UI; its terms action defaults off. Gallatin owns enabling the existing control. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the same decision to similar notice/consent banner requirements. Share the existing V-222434/V-222435 configuration and verification actions, but verify the exact component and management entry points; Horizon login alone does not establish every platform entry path.",
     "evidence_ids": [
       "re-appserver-release",
       "re-appserver-coreidentity",
@@ -21463,7 +21463,7 @@
       "mpn-identity-init-only",
       "mpn-core-known-identity-settings"
     ],
-    "next_step": "Gallatin sets Core realmInitEnv.TERMS_AND_CONDITIONS_ENABLED=true and enables the existing TermsAndConditions required action on an already-created uds realm. Use/review the shipped USG notice and acknowledgement theme; no new API/frontend banner. Persist desired values plus controlled realm migration.",
+    "next_step": "Verify current UDS notice/consent settings and inventory applicable interactive entry points for this exact component or management interface. Reuse V-222434/V-222435 configuration: persist the approved Core terms setting and update the existing realm through a controlled change if needed. Verify the required banner text and display before access. Test each applicable entry path, retain configuration/results and credit existing coverage. Do not create a duplicate Horizon banner or assume one login test covers all interfaces.",
     "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
     "category": "provider configuration",
     "components": "Delivered Horizon API, workers, chat, ingestion and storage; delegated UDS identity/gateway/mesh",
@@ -21488,7 +21488,7 @@
       "CCI-000050"
     ],
     "status": "Needs work",
-    "justification": "UDS owns authentication and already supplies the complete mandatory USGnotice plus acknowledgement UI. However its TERMS_AND_CONDITIONS required action is disabled by default and the release profile supplies no override. No custom API/banner implementation is needed; enable the existing provider action. Core ships the USG notice and acknowledgement UI; its terms action defaults off. Gallatin owns enabling the existing control.",
+    "justification": "UDS owns authentication and already supplies the complete mandatory USGnotice plus acknowledgement UI. However its TERMS_AND_CONDITIONS required action is disabled by default and the release profile supplies no override. No custom API/banner implementation is needed; enable the existing provider action. Core ships the USG notice and acknowledgement UI; its terms action defaults off. Gallatin owns enabling the existing control. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the same decision to similar notice/consent banner requirements. Share the existing V-222434/V-222435 configuration and verification actions, but verify the exact component and management entry points; Horizon login alone does not establish every platform entry path.",
     "evidence_ids": [
       "re-appserver-release",
       "re-appserver-coreidentity",
@@ -21500,7 +21500,7 @@
       "mpn-identity-init-only",
       "mpn-core-known-identity-settings"
     ],
-    "next_step": "Gallatin sets Core realmInitEnv.TERMS_AND_CONDITIONS_ENABLED=true and enables the existing TermsAndConditions required action on an already-created uds realm. Use/review the shipped USG notice and acknowledgement theme; no new API/frontend banner. Persist desired values plus controlled realm migration.",
+    "next_step": "Verify current UDS notice/consent settings and inventory applicable interactive entry points for this exact component or management interface. Reuse V-222434/V-222435 configuration: persist the approved Core terms setting and update the existing realm through a controlled change if needed. Verify the required banner text and display before access. Verify the banner remains until explicit acceptance and users cannot proceed without acknowledgement. Test each applicable entry path, retain configuration/results and credit existing coverage. Do not create a duplicate Horizon banner or assume one login test covers all interfaces.",
     "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
     "category": "provider configuration",
     "components": "Delivered Horizon API, workers, chat, ingestion and storage; delegated UDS identity/gateway/mesh",

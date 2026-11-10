@@ -724,22 +724,22 @@
     {
       "vuln_id": "V-233032",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Gallatin sets Core realmInitEnv.TERMS_AND_CONDITIONS_ENABLED=true and enables the existing TermsAndConditions required action on an already-created uds realm. Use/review the shipped USG notice and acknowledgement theme; no new API/frontend banner. Persist desired values plus controlled realm migration."
+      "next_step": "Verify current UDS notice/consent settings and inventory applicable interactive entry points for this exact component or management interface. Reuse V-222434/V-222435 configuration: persist the approved Core terms setting and update the existing realm through a controlled change if needed. Verify the required banner text and display before access. Test each applicable entry path, retain configuration/results and credit existing coverage. Do not create a duplicate Horizon banner or assume one login test covers all interfaces."
     },
     {
       "vuln_id": "V-233033",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Gallatin sets Core realmInitEnv.TERMS_AND_CONDITIONS_ENABLED=true and enables the existing TermsAndConditions required action on an already-created uds realm. Use/review the shipped USG notice and acknowledgement theme; no new API/frontend banner. Persist desired values plus controlled realm migration."
+      "next_step": "Verify current UDS notice/consent settings and inventory applicable interactive entry points for this exact component or management interface. Reuse V-222434/V-222435 configuration: persist the approved Core terms setting and update the existing realm through a controlled change if needed. Verify the required banner text and display before access. Verify the banner remains until explicit acceptance and users cannot proceed without acknowledgement. Test each applicable entry path, retain configuration/results and credit existing coverage. Do not create a duplicate Horizon banner or assume one login test covers all interfaces."
     },
     {
       "vuln_id": "V-204713",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Gallatin sets Core realmInitEnv.TERMS_AND_CONDITIONS_ENABLED=true and enables the existing TermsAndConditions required action on an already-created uds realm. Use/review the shipped USG notice and acknowledgement theme; no new API/frontend banner. Persist desired values plus controlled realm migration."
+      "next_step": "Verify current UDS notice/consent settings and inventory applicable interactive entry points for this exact component or management interface. Reuse V-222434/V-222435 configuration: persist the approved Core terms setting and update the existing realm through a controlled change if needed. Verify the required banner text and display before access. Test each applicable entry path, retain configuration/results and credit existing coverage. Do not create a duplicate Horizon banner or assume one login test covers all interfaces."
     },
     {
       "vuln_id": "V-204714",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Gallatin sets Core realmInitEnv.TERMS_AND_CONDITIONS_ENABLED=true and enables the existing TermsAndConditions required action on an already-created uds realm. Use/review the shipped USG notice and acknowledgement theme; no new API/frontend banner. Persist desired values plus controlled realm migration."
+      "next_step": "Verify current UDS notice/consent settings and inventory applicable interactive entry points for this exact component or management interface. Reuse V-222434/V-222435 configuration: persist the approved Core terms setting and update the existing realm through a controlled change if needed. Verify the required banner text and display before access. Verify the banner remains until explicit acceptance and users cannot proceed without acknowledgement. Test each applicable entry path, retain configuration/results and credit existing coverage. Do not create a duplicate Horizon banner or assume one login test covers all interfaces."
     }
   ],
   "pii-processing-metadata": [
