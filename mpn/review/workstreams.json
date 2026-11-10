@@ -826,7 +826,7 @@
     {
       "vuln_id": "V-233015",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "In Gallatin\u2019s MPN bootstrap, choose Zarf init v0.86.0 proxy mode via uds zarf init --registry-mode=proxy (with the pinned init artifact); this enables built-in cross-node mTLS with minimumTLS1.2. If alpha proxy mode is unsuitable, configure an external trusted TLS1.2+ registry explicitly. Do not deploy the unchanged HTTP NodePort default. Plan an initialization migration for an existing cluster instead of treating this as an in-place harmless flag flip."
+      "next_step": "In the post-classification verification pass, identify the actual MPN image sources, staging/registry and node image-pull paths and their owners. Inspect deployed registry/runtime/bootstrap settings and verify TLS 1.2 or newer for the applicable transport paths from trusted sources. Credit an existing approved MPN registry. Configure only confirmed gaps using an appropriate supported secure path; assess migration impact before changing an initialized registry/bootstrap. Retain configuration and transport-verification evidence."
     }
   ],
   "release-crypto-provider": [
