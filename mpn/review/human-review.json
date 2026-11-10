@@ -316,7 +316,7 @@
       "CCI-002234"
     ],
     "status": "Needs work",
-    "justification": "Credit existing UDS identity/admin events, append-only actor-aware role grants/revocations and database change provenance. Remaining gap is selected app-domain successful/denied protected operations: the permission enforcer throws403 without emitting a structured actor/target/operation event, and generic HTTP logs omit actor. Central proxy identity records do not carry all tenant/object decisions. This is a targeted event-catalog/attribution integration, not an absence of auditing or a requirement to add actors to every diagnostic/request log.",
+    "justification": "Privileged-function auditing is partially implemented through UDS identity/admin events, append-only actor-aware role grants/revocations and database change provenance. Human review on 2026-11-10 confirmed Needs work: first confirm the desired audit controls and privileged operations in scope, map the existing coverage, then implement only the missing desired controls. The saved source assessment identifies gaps for selected application-domain protected operations; generic HTTP logs do not establish actor-attributed coverage for every privileged action. This is an extension and verification of existing auditing, not a new auditing system.",
     "evidence_ids": [
       "re-asd-release",
       "re-asd-id-events",
@@ -324,7 +324,7 @@
       "re-asd-logging",
       "re-asd-guard"
     ],
-    "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover.",
+    "next_step": "Confirm the desired privileged-function audit controls and event catalog, including the STIG minimum of the specific action and event date/time. Map each selected operation to existing UDS, role-audit and database-provenance records. Implement missing desired controls and actor/target/outcome records where required, correlate them with central collection, and verify the selected privileged operations produce the required records.",
     "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
     "category": "targeted application-domain audit coverage",
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
