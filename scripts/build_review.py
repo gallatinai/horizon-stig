@@ -134,6 +134,9 @@ def main():
   for k,f in saved['facts'].items():E[k]=(k,f['observation'],f['url'])
   # Explicit caller decisions win when refreshing the investigation.
   for k,v in saved['explicit_rule_decisions'].items():OVERRIDES.setdefault(k,v)
+ product_path=ROOT/'mpn/evidence/product-boundary-review.json'
+ product=json.loads(product_path.read_text()) if product_path.exists() else {'facts':{},'decisions':{}}
+ for k,f in product['facts'].items():E[k]=(k,f['observation'],f['url'])
  history=json.loads((ROOT/'mpn/evidence/asd-october-review.json').read_text())
  first=[];second=[]
  for package in json.loads((BENCH/'manifest.json').read_text()):
@@ -145,9 +148,19 @@ def main():
     initial['historical_review_reference']='../evidence/asd-october-review.json#'+r['vuln_id']
     initial['historical_review_warning']='October source snapshots only; not current-release validation and not a formal compliance result.'
    row=dict(initial)
+   if product['decisions']:
+    current_components={
+     'U_ASD_V6R5_STIG':'Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary',
+     'U_AAA_Services_V2R3_SRG':'UDS Core 1.14 shared Keycloak realm and Horizon OIDC clients; no bundled application Keycloak',
+     'U_Application_Server_V4R6_SRG':'Delivered Horizon API, workers, chat, ingestion and storage; delegated UDS identity/gateway/mesh',
+     'U_Database_V4R6_SRG':'Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database',
+     'U_Web_Server_V4R5_SRG':'Delivered static nginx-FIPS, Istio ingress and shared UDS identity (separate roles)',
+    }
+    row['components']=current_components.get(name,row['components'])
    if r['vuln_id'] in OVERRIDES:row.update(OVERRIDES[r['vuln_id']])
+   if r['vuln_id'] in product['decisions']:row.update(product['decisions'][r['vuln_id']])
    # Second pass corrections prevent blanket inherited/authentication passes.
-   if name=='U_Kubernetes_V2R6_STIG' and r['vuln_id']=='V-242383' and r['vuln_id'] not in OVERRIDES:
+   if name=='U_Kubernetes_V2R6_STIG' and r['vuln_id']=='V-242383' and r['vuln_id'] not in OVERRIDES and r['vuln_id'] not in product['decisions']:
     row.update(status='Likely covered',justification='Zarf chart declarations target horizon-uds and an explicit namespace manifest exists. Likely source coverage; inventory actual admitted resources to exclude default-namespace exceptions.',evidence_ids=['mesh'],next_step='Capture actual workload namespaces and check all user-managed resources per the official check.',category='workload verification')
    if name=='U_ASD_V6R5_STIG':
     row['justification']+=' The existing October per-rule evidence/test notes are preserved as historical context only.'
@@ -155,6 +168,7 @@ def main():
     entry['evidence']='; '.join(E[k][2] for k in entry['evidence_ids'])
     entry['human_review']=entry['status'] in ['Needs work','Unclear']
     entry.setdefault('task','')
+   if r['vuln_id'] in product['decisions']:row['product_review_baseline']=product['baseline']['version']
    row['second_pass_note']='Official rule compared with the cited pinned source/configuration or explicit applicability evidence; no live test claimed.' if r['vuln_id'] in OVERRIDES else 'Conservative evidence/applicability review; unresolved operational checks remain explicit.'
    first.append(initial);second.append(row);final.append(row)
   title=package['title']

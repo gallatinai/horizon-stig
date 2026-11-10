@@ -1,0 +1,183 @@
+---
+# Source: horizon-postgres/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: horizon-postgres
+  labels:
+    helm.sh/chart: horizon-postgres-0.10.2
+    app.kubernetes.io/name: horizon-postgres
+    app.kubernetes.io/instance: postgres
+    app.kubernetes.io/version: "18.4"
+    app.kubernetes.io/managed-by: Helm
+automountServiceAccountToken: false
+---
+# Source: horizon-postgres/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: horizon-postgres
+  labels:
+    helm.sh/chart: horizon-postgres-0.10.2
+    app.kubernetes.io/name: horizon-postgres
+    app.kubernetes.io/instance: postgres
+    app.kubernetes.io/version: "18.4"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    com.palantir.rubix.service/pod-cert: '{"secretName": "horizon-postgres", "staticReplicaCount":
+      1}'
+spec:
+  type: ClusterIP
+  ports:
+    - port: 5432
+      targetPort: 5432
+      protocol: TCP
+      name: postgres
+  selector:
+    app.kubernetes.io/name: horizon-postgres
+    app.kubernetes.io/instance: postgres
+---
+# Source: horizon-postgres/templates/statefulset.yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: horizon-postgres
+  labels:
+    helm.sh/chart: horizon-postgres-0.10.2
+    app.kubernetes.io/name: horizon-postgres
+    app.kubernetes.io/instance: postgres
+    app.kubernetes.io/version: "18.4"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    # Postgres file ownership requires UID 70.
+    checkov.io/skip1: CKV_K8S_40=postgres UID pinned to 70 by chainguard postgres image
+spec:
+  serviceName: horizon-postgres
+  replicas: 1
+  updateStrategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: horizon-postgres
+      app.kubernetes.io/instance: postgres
+  template:
+    metadata:
+      labels:
+        helm.sh/chart: horizon-postgres-0.10.2
+        app.kubernetes.io/name: horizon-postgres
+        app.kubernetes.io/instance: postgres
+        app.kubernetes.io/version: "18.4"
+        app.kubernetes.io/managed-by: Helm
+    spec:
+      serviceAccountName: horizon-postgres
+      automountServiceAccountToken: false
+      securityContext:
+        fsGroup: 70
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile:
+          type: RuntimeDefault
+      
+      containers:
+        - name: postgres
+          image: 334883685015.dkr.ecr.us-west-2.amazonaws.com/horizon-postgres@sha256:3431665ea7f0c2dfe4bef9673aac6221a58bdf910251857123b7fb363cbb030e
+          imagePullPolicy: IfNotPresent
+          args:
+              - -c
+              - shared_preload_libraries=pgaudit
+              - -c
+              - jit=off
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
+            readOnlyRootFilesystem: true
+            runAsGroup: 70
+            runAsNonRoot: true
+            runAsUser: 70
+          ports:
+            - containerPort: 5432
+              name: postgres
+              protocol: TCP
+          env:
+            - name: PGPORT
+              value: "5432"
+            - name: PGDATA
+              value: /var/lib/postgresql/data/pgdata
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-postgres-secret
+                  key: admin-username
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-postgres-secret
+                  key: admin-password
+            - name: POSTGRES_DB
+              value: "horizon"
+            - name: POSTGRES_INITDB_ARGS
+              value: "--locale-provider=icu --icu-locale=en-US"
+          volumeMounts:
+            - name: postgres-data
+              mountPath: /var/lib/postgresql/data
+            - name: postgres-run
+              mountPath: /var/run/postgresql
+            - name: postgres-tmp
+              mountPath: /tmp
+          resources:
+            limits:
+              memory: 2560Mi
+            requests:
+              cpu: 250m
+              memory: 2560Mi
+          startupProbe:
+            exec:
+              command:
+                - sh
+                - -c
+                - pg_isready -U $POSTGRES_USER -d $POSTGRES_DB -p $PGPORT
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 30
+            successThreshold: 1
+          livenessProbe:
+            exec:
+              command:
+                - sh
+                - -c
+                - pg_isready -U $POSTGRES_USER -d $POSTGRES_DB -p $PGPORT
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 5
+            successThreshold: 1
+          readinessProbe:
+            exec:
+              command:
+                - sh
+                - -c
+                - pg_isready -U $POSTGRES_USER -d $POSTGRES_DB -p $PGPORT
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            timeoutSeconds: 5
+            failureThreshold: 5
+            successThreshold: 1
+      volumes:
+        - name: postgres-run
+          emptyDir: {}
+        - name: postgres-tmp
+          emptyDir: {}
+  volumeClaimTemplates:
+    - metadata:
+        name: postgres-data
+        labels:
+          app.kubernetes.io/name: horizon-postgres
+          app.kubernetes.io/instance: postgres
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 50Gi

@@ -1,0 +1,149 @@
+---
+# Source: seaweedfs/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: seaweedfs-config
+  labels:
+    app.kubernetes.io/name: seaweedfs
+    app.kubernetes.io/instance: seaweedfs
+data:
+  s3.json: |
+    {
+      "identities": [
+        {
+          "name": "horizon",
+          "credentials": [
+            {
+              "accessKey": "###ZARF_VAR_S3_ACCESS_KEY_ID###",
+              "secretKey": "###ZARF_VAR_S3_SECRET_ACCESS_KEY###"
+            }
+          ],
+          "actions": ["Admin", "Read", "Write", "List", "Tagging"]
+        }
+      ]
+    }
+---
+# Source: seaweedfs/templates/pvc.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: seaweedfs-data
+  labels:
+    app.kubernetes.io/name: seaweedfs
+    app.kubernetes.io/instance: seaweedfs
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+---
+# Source: seaweedfs/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: seaweedfs
+  labels:
+    app.kubernetes.io/name: seaweedfs
+    app.kubernetes.io/instance: seaweedfs
+spec:
+  type: ClusterIP
+  ports:
+    - name: s3
+      port: 8333
+      targetPort: s3
+      protocol: TCP
+    - name: filer
+      port: 8888
+      targetPort: filer
+      protocol: TCP
+  selector:
+    app.kubernetes.io/name: seaweedfs
+    app.kubernetes.io/instance: seaweedfs
+---
+# Source: seaweedfs/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: seaweedfs
+  labels:
+    app.kubernetes.io/name: seaweedfs
+    app.kubernetes.io/instance: seaweedfs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: seaweedfs
+      app.kubernetes.io/instance: seaweedfs
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: seaweedfs
+        app.kubernetes.io/instance: seaweedfs
+    spec:
+      automountServiceAccountToken: false
+      securityContext:
+        fsGroup: 65532
+        runAsGroup: 65532
+        runAsNonRoot: true
+        runAsUser: 65532
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: seaweedfs
+          image: "334883685015.dkr.ecr.us-west-2.amazonaws.com/cgr.dev/gallatin.ai/seaweedfs-fips@sha256:de137817b16c0d1711c3b9a9075325cd6b6bd5fd8eaed5eebdb5d3032871313b"
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            runAsUser: 65532
+          args:
+            - server
+            - -s3
+            - -s3.config=/etc/seaweedfs/s3.json
+          ports:
+            - name: s3
+              containerPort: 8333
+              protocol: TCP
+            - name: filer
+              containerPort: 8888
+              protocol: TCP
+          resources:
+            limits:
+              memory: 256Mi
+            requests:
+              cpu: 50m
+              memory: 128Mi
+          volumeMounts:
+            - name: data
+              mountPath: /data
+            - name: s3-config
+              mountPath: /etc/seaweedfs/s3.json
+              subPath: s3.json
+              readOnly: true
+            - name: tmp
+              mountPath: /tmp
+          readinessProbe:
+            tcpSocket:
+              port: s3
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            tcpSocket:
+              port: s3
+            initialDelaySeconds: 15
+            periodSeconds: 20
+      volumes:
+        - name: s3-config
+          configMap:
+            name: seaweedfs-config
+        - name: tmp
+          emptyDir: {}
+        - name: data
+          persistentVolumeClaim:
+            claimName: seaweedfs-data

@@ -1,1337 +1,843 @@
 {
   "account-lifecycle": [
     {
-      "vuln_id": "V-222409",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Configure or document the accepted delegated lifecycle policy and account-type exceptions."
-    },
-    {
       "vuln_id": "V-222411",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Configure or document the accepted delegated lifecycle policy and account-type exceptions."
-    },
-    {
-      "vuln_id": "V-222547",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Configure accepted provider recovery/lifecycle behavior and authoritative account-event integration."
-    },
-    {
-      "vuln_id": "V-222619",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Configure accepted provider recovery/lifecycle behavior and authoritative account-event integration."
-    },
-    {
-      "vuln_id": "V-233020",
-      "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Configure the temporary-account workflow or obtain accepted no-temporary-account applicability."
+      "next_step": "Enable35-day inactivity enforcement for applicable nonexempt UDS accounts or supply the actual authoritative-directory setting."
     },
     {
       "vuln_id": "V-233021",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Enable the 35-day inactivity workflow for relevant accounts or document the actual inherited directory control."
+      "next_step": "Have the MPN identity operator enable the35-day workflow or attach the selected upstream-directory inactivity enforcement; no duplicate API implementation is needed."
     },
     {
       "vuln_id": "V-233087",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Enable the 35-day inactivity workflow for relevant accounts or document the actual inherited directory control."
-    },
-    {
-      "vuln_id": "V-264337",
-      "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Define the authoritative account source and automatic disable/offboarding workflow with emergency exceptions; UDS directory integration is one implementation option."
-    },
-    {
-      "vuln_id": "V-264338",
-      "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Define the authoritative account source and automatic disable/offboarding workflow with emergency exceptions; UDS directory integration is one implementation option."
-    },
-    {
-      "vuln_id": "V-264350",
-      "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Configure required password update on recovery or accepted provider delegation."
+      "next_step": "Have the MPN identity operator enable the35-day workflow or attach the selected upstream-directory inactivity enforcement; no duplicate API implementation is needed."
     },
     {
       "vuln_id": "V-204750",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Configure account inactivity disablement in the actual selected provider and preserve emergency-account exceptions."
+      "next_step": "Enable/configure the approved35-day inactivitypolicy and account-type exceptions in UDS/directory or attach current override."
     },
     {
       "vuln_id": "V-263549",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Define the authoritative account source and automatic disable/offboarding workflow with emergency exceptions; UDS directory integration is one implementation option."
-    },
-    {
-      "vuln_id": "V-204637",
-      "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Configure the temporary-account workflow or obtain accepted no-temporary-account applicability."
+      "next_step": "Select/evidence authoritative account deassociation disablement in UDS/directory and record service/emergencyexceptions."
     },
     {
       "vuln_id": "V-204639",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Configure the selected identity-provider lifecycle policy and emergency exceptions."
-    },
-    {
-      "vuln_id": "V-263527",
-      "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Define the authoritative account source and automatic disable/offboarding workflow with emergency exceptions; UDS directory integration is one implementation option."
-    },
-    {
-      "vuln_id": "V-263528",
-      "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Define the authoritative account source and automatic disable/offboarding workflow with emergency exceptions; UDS directory integration is one implementation option."
-    },
-    {
-      "vuln_id": "V-263529",
-      "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Define the authoritative account source and automatic disable/offboarding workflow with emergency exceptions; UDS directory integration is one implementation option."
-    },
-    {
-      "vuln_id": "V-263535",
-      "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Implement/document required-action UPDATE_PASSWORD on account recovery or the selected provider's equivalent."
+      "next_step": "Set ACCOUNT_INACTIVITY_DAYS=35 on sharedidentity or attach its accepted directory/operator enforcement."
     }
   ],
   "application-auditing": [
     {
-      "vuln_id": "V-222413",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Complete the shared audit event catalog, actor attribution and forwarding; verify each required event rather than enabling indiscriminate payload logging."
-    },
-    {
-      "vuln_id": "V-222414",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Complete the shared audit event catalog, actor attribution and forwarding; verify each required event rather than enabling indiscriminate payload logging."
-    },
-    {
-      "vuln_id": "V-222415",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Complete the shared audit event catalog, actor attribution and forwarding; verify each required event rather than enabling indiscriminate payload logging."
-    },
-    {
-      "vuln_id": "V-222416",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Complete the shared audit event catalog, actor attribution and forwarding; verify each required event rather than enabling indiscriminate payload logging."
-    },
-    {
-      "vuln_id": "V-222421",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Complete the shared audit event catalog, actor attribution and forwarding; verify each required event rather than enabling indiscriminate payload logging."
-    },
-    {
       "vuln_id": "V-222431",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Implement the shared actor-aware application audit stream."
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
     },
     {
       "vuln_id": "V-222438",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Complete event-specific audit coverage and trusted source context under the shared audit workstream."
-    },
-    {
-      "vuln_id": "V-222441",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Complete the shared audit event catalog, actor attribution and forwarding; verify each required event rather than enabling indiscriminate payload logging."
-    },
-    {
-      "vuln_id": "V-222442",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Complete the shared audit event catalog, actor attribution and forwarding; verify each required event rather than enabling indiscriminate payload logging."
-    },
-    {
-      "vuln_id": "V-222443",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Complete the shared audit event catalog, actor attribution and forwarding; verify each required event rather than enabling indiscriminate payload logging."
-    },
-    {
-      "vuln_id": "V-222444",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Complete the shared audit event catalog, actor attribution and forwarding; verify each required event rather than enabling indiscriminate payload logging."
-    },
-    {
-      "vuln_id": "V-222445",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Complete the shared audit event catalog, actor attribution and forwarding; verify each required event rather than enabling indiscriminate payload logging."
-    },
-    {
-      "vuln_id": "V-222447",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Complete event-specific audit coverage and trusted source context under the shared audit workstream."
-    },
-    {
-      "vuln_id": "V-222448",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Complete event-specific audit coverage and trusted source context under the shared audit workstream."
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
     },
     {
       "vuln_id": "V-222449",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Implement the shared actor-aware application audit stream."
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
     },
     {
       "vuln_id": "V-222450",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Complete event-specific audit coverage and trusted source context under the shared audit workstream."
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
     },
     {
       "vuln_id": "V-222451",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Complete event-specific audit coverage and trusted source context under the shared audit workstream."
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
+    },
+    {
+      "vuln_id": "V-222452",
+      "benchmark": "U_ASD_V6R5_STIG",
+      "next_step": "Add targeted classification/security-domain access/change/delete audit events with actor/outcome and accepted N/A for nonexistent operations. This shares the domain audit workstream."
+    },
+    {
+      "vuln_id": "V-222453",
+      "benchmark": "U_ASD_V6R5_STIG",
+      "next_step": "Add targeted classification/security-domain access/change/delete audit events with actor/outcome and accepted N/A for nonexistent operations. This shares the domain audit workstream."
     },
     {
       "vuln_id": "V-222454",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Complete event-specific audit coverage and trusted source context under the shared audit workstream."
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
     },
     {
       "vuln_id": "V-222455",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Complete event-specific audit coverage and trusted source context under the shared audit workstream."
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
+    },
+    {
+      "vuln_id": "V-222456",
+      "benchmark": "U_ASD_V6R5_STIG",
+      "next_step": "Add targeted classification/security-domain access/change/delete audit events with actor/outcome and accepted N/A for nonexistent operations. This shares the domain audit workstream."
+    },
+    {
+      "vuln_id": "V-222457",
+      "benchmark": "U_ASD_V6R5_STIG",
+      "next_step": "Add targeted classification/security-domain access/change/delete audit events with actor/outcome and accepted N/A for nonexistent operations. This shares the domain audit workstream."
     },
     {
       "vuln_id": "V-222458",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Complete event-specific audit coverage and trusted source context under the shared audit workstream."
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
+    },
+    {
+      "vuln_id": "V-222459",
+      "benchmark": "U_ASD_V6R5_STIG",
+      "next_step": "Add targeted classification/security-domain access/change/delete audit events with actor/outcome and accepted N/A for nonexistent operations. This shares the domain audit workstream."
     },
     {
       "vuln_id": "V-222460",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Complete event-specific audit coverage and trusted source context under the shared audit workstream."
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
     },
     {
-      "vuln_id": "V-222462",
+      "vuln_id": "V-222461",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Complete event-specific audit coverage and trusted source context under the shared audit workstream."
+      "next_step": "Add targeted classification/security-domain access/change/delete audit events with actor/outcome and accepted N/A for nonexistent operations. This shares the domain audit workstream."
     },
     {
       "vuln_id": "V-222463",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Complete event-specific audit coverage and trusted source context under the shared audit workstream."
-    },
-    {
-      "vuln_id": "V-222464",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Complete event-specific audit coverage and trusted source context under the shared audit workstream."
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
     },
     {
       "vuln_id": "V-222465",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Complete event-specific audit coverage and trusted source context under the shared audit workstream."
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
     },
     {
       "vuln_id": "V-222466",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Complete event-specific audit coverage and trusted source context under the shared audit workstream."
-    },
-    {
-      "vuln_id": "V-222467",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Complete event-specific audit coverage and trusted source context under the shared audit workstream."
-    },
-    {
-      "vuln_id": "V-222470",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Complete event-specific audit coverage and trusted source context under the shared audit workstream."
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
     },
     {
       "vuln_id": "V-222471",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Complete event-specific audit coverage and trusted source context under the shared audit workstream."
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
     },
     {
       "vuln_id": "V-222472",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Complete event-specific audit coverage and trusted source context under the shared audit workstream."
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
     },
     {
       "vuln_id": "V-222477",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Complete the shared audit event catalog, actor attribution and forwarding; verify each required event rather than enabling indiscriminate payload logging."
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
     },
     {
       "vuln_id": "V-222478",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Complete the shared audit event catalog, actor attribution and forwarding; verify each required event rather than enabling indiscriminate payload logging."
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
     },
     {
       "vuln_id": "V-222512",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Complete the shared audit event catalog, actor attribution and forwarding; verify each required event rather than enabling indiscriminate payload logging."
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
     },
     {
-      "vuln_id": "V-222672",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Complete the shared audit event catalog, actor attribution and forwarding; verify each required event rather than enabling indiscriminate payload logging."
+      "vuln_id": "V-233038",
+      "benchmark": "U_Container_Platform_V2R5_SRG",
+      "next_step": "Complete the shared event-source map and missing domain/DB events; credit existing UDS user/admin/runtime sources and avoid a duplicate remediation ticket."
+    },
+    {
+      "vuln_id": "V-233253",
+      "benchmark": "U_Container_Platform_V2R5_SRG",
+      "next_step": "Map each security-level/category operation to application or database audit events; reuse the central stream and existing classification fields. Apply scoped N/A only to platform components that perform no such operation."
+    },
+    {
+      "vuln_id": "V-233254",
+      "benchmark": "U_Container_Platform_V2R5_SRG",
+      "next_step": "Map each security-level/category operation to application or database audit events; reuse the central stream and existing classification fields. Apply scoped N/A only to platform components that perform no such operation."
+    },
+    {
+      "vuln_id": "V-233257",
+      "benchmark": "U_Container_Platform_V2R5_SRG",
+      "next_step": "Map each security-level/category operation to application or database audit events; reuse the central stream and existing classification fields. Apply scoped N/A only to platform components that perform no such operation."
+    },
+    {
+      "vuln_id": "V-233258",
+      "benchmark": "U_Container_Platform_V2R5_SRG",
+      "next_step": "Map each security-level/category operation to application or database audit events; reuse the central stream and existing classification fields. Apply scoped N/A only to platform components that perform no such operation."
+    },
+    {
+      "vuln_id": "V-233260",
+      "benchmark": "U_Container_Platform_V2R5_SRG",
+      "next_step": "Map each security-level/category operation to application or database audit events; reuse the central stream and existing classification fields. Apply scoped N/A only to platform components that perform no such operation."
+    },
+    {
+      "vuln_id": "V-233262",
+      "benchmark": "U_Container_Platform_V2R5_SRG",
+      "next_step": "Map each security-level/category operation to application or database audit events; reuse the central stream and existing classification fields. Apply scoped N/A only to platform components that perform no such operation."
     },
     {
       "vuln_id": "V-206365",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Add/forward authenticated actor context at the appropriate gateway/API audit point and correlate it with the final event stream."
-    },
-    {
-      "vuln_id": "V-204715",
-      "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Define and emit the security-event set with actor/tenant/action/target/outcome/correlation, including denied and privileged operations, and ship to the protected store."
+      "next_step": "Complete actor-attributed protected API/security-event records and their correlation in the existing UDS log pipeline."
     },
     {
       "vuln_id": "V-204719",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Define and emit the security-event set with actor/tenant/action/target/outcome/correlation, including denied and privileged operations, and ship to the protected store."
-    },
-    {
-      "vuln_id": "V-204726",
-      "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Define and emit the security-event set with actor/tenant/action/target/outcome/correlation, including denied and privileged operations, and ship to the protected store."
-    },
-    {
-      "vuln_id": "V-204727",
-      "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Define and emit the security-event set with actor/tenant/action/target/outcome/correlation, including denied and privileged operations, and ship to the protected store."
-    },
-    {
-      "vuln_id": "V-204785",
-      "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Define and emit the security-event set with actor/tenant/action/target/outcome/correlation, including denied and privileged operations, and ship to the protected store."
+      "next_step": "Add narrowly-scoped actor-attributed denied/failed privilege events and forward them through the existing logging path; reuse existing successful audit."
     },
     {
       "vuln_id": "V-204824",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Define and emit the security-event set with actor/tenant/action/target/outcome/correlation, including denied and privileged operations, and ship to the protected store."
+      "next_step": "Add narrowly-scoped actor-attributed denied/failed privilege events and forward them through the existing logging path; reuse existing successful audit."
     },
     {
       "vuln_id": "V-204825",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Define and emit the security-event set with actor/tenant/action/target/outcome/correlation, including denied and privileged operations, and ship to the protected store."
-    },
-    {
-      "vuln_id": "V-204827",
-      "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Define and emit the security-event set with actor/tenant/action/target/outcome/correlation, including denied and privileged operations, and ship to the protected store."
-    }
-  ],
-  "approved-image-policy": [
-    {
-      "vuln_id": "V-222517",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Implement or evidence an accepted approved-image/component allow-list."
-    },
-    {
-      "vuln_id": "V-233192",
-      "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Configure the approved image/component execution allow-list or accepted MPN RBAC/registry enforcement evidence for the exact rule."
+      "next_step": "Add narrowly-scoped actor-attributed denied/failed privilege events and forward them through the existing logging path; reuse existing successful audit."
     }
   ],
   "audit-alert-routing": [
     {
       "vuln_id": "V-222417",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Configure the shared identity/security alert routing and named recipients."
+      "next_step": "Enable the relevant centralized account-change alerts and map named SA/ISSO routes, or retain existing accepted operator routing evidence."
     },
     {
       "vuln_id": "V-222418",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Configure the shared identity/security alert routing and named recipients."
+      "next_step": "Enable the relevant centralized account-change alerts and map named SA/ISSO routes, or retain existing accepted operator routing evidence."
     },
     {
       "vuln_id": "V-222419",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Configure the shared identity/security alert routing and named recipients."
+      "next_step": "Enable the relevant centralized account-change alerts and map named SA/ISSO routes, or retain existing accepted operator routing evidence."
     },
     {
       "vuln_id": "V-222420",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Configure the shared identity/security alert routing and named recipients."
+      "next_step": "Enable the relevant centralized account-change alerts and map named SA/ISSO routes, or retain existing accepted operator routing evidence."
     },
     {
       "vuln_id": "V-222422",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Configure the shared identity/security alert routing and named recipients."
+      "next_step": "Enable the relevant centralized account-change alerts and map named SA/ISSO routes, or retain existing accepted operator routing evidence."
     },
     {
       "vuln_id": "V-222483",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Configure required alert rules and named routes."
+      "next_step": "Add/tune the central audit capacity/failure alerts and named required recipients or retain an accepted existing operator rule/route."
     },
     {
       "vuln_id": "V-222484",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Configure required alert rules and named routes."
+      "next_step": "Add/tune the central audit capacity/failure alerts and named required recipients or retain an accepted existing operator rule/route."
     },
     {
       "vuln_id": "V-222485",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Configure required alert rules and named routes."
-    },
-    {
-      "vuln_id": "V-222617",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Configure required alert rules and named routes."
-    },
-    {
-      "vuln_id": "V-222668",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Configure required alert rules and named routes."
+      "next_step": "Add/tune the central audit capacity/failure alerts and named required recipients or retain an accepted existing operator rule/route."
     },
     {
       "vuln_id": "V-233143",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Enable the event alerts and configure required recipients, or attach an actual inherited operational route."
+      "next_step": "Enable existing Core account-event alerts and bind their notification route to the authorized SA/ISSO recipients, or attach the already-selected platform override."
     },
     {
       "vuln_id": "V-233144",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Enable the event alerts and configure required recipients, or attach an actual inherited operational route."
+      "next_step": "Enable existing Core account-event alerts and bind their notification route to the authorized SA/ISSO recipients, or attach the already-selected platform override."
     },
     {
       "vuln_id": "V-233145",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Enable the event alerts and configure required recipients, or attach an actual inherited operational route."
+      "next_step": "Enable existing Core account-event alerts and bind their notification route to the authorized SA/ISSO recipients, or attach the already-selected platform override."
     },
     {
       "vuln_id": "V-233146",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Enable the event alerts and configure required recipients, or attach an actual inherited operational route."
+      "next_step": "Enable existing Core account-event alerts and bind their notification route to the authorized SA/ISSO recipients, or attach the already-selected platform override."
     },
     {
       "vuln_id": "V-233158",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Enable the event alerts and configure required recipients, or attach an actual inherited operational route."
+      "next_step": "Enable existing Core account-event alerts and bind their notification route to the authorized SA/ISSO recipients, or attach the already-selected platform override."
     },
     {
       "vuln_id": "V-233170",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Configure audit-specific thresholds/failures and actual receivers; use one shared routing/alert policy across the affected benchmarks."
+      "next_step": "Configure or attach the platform audit-capacity/failure alert definitions and authorized notification route."
     },
     {
       "vuln_id": "V-233171",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Configure audit-specific thresholds/failures and actual receivers; use one shared routing/alert policy across the affected benchmarks."
+      "next_step": "Configure or attach the platform audit-capacity/failure alert definitions and authorized notification route."
     },
     {
       "vuln_id": "V-233244",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Enable/tune the applicable detections and route them to named operator/security recipients; reuse the shared alert-routing workstream."
+      "next_step": "Use the existing Core alert stack to route applicable security/tampering anomalies to assigned operators/security personnel."
     },
     {
       "vuln_id": "V-263588",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Enable/tune the applicable detections and route them to named operator/security recipients; reuse the shared alert-routing workstream."
+      "next_step": "Use the existing Core alert stack to route applicable security/tampering anomalies to assigned operators/security personnel."
     },
     {
       "vuln_id": "V-206366",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Configure audit-specific thresholds/failures and actual receivers; use one shared routing/alert policy across the affected benchmarks."
+      "next_step": "Configure required logging health/capacity thresholds and platform alert recipients, or attach the selected existing platform override."
     },
     {
       "vuln_id": "V-206424",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Configure audit-specific thresholds/failures and actual receivers; use one shared routing/alert policy across the affected benchmarks."
+      "next_step": "Configure required logging health/capacity thresholds and platform alert recipients, or attach the selected existing platform override."
     },
     {
       "vuln_id": "V-264340",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Enable/tune the applicable detections and route them to named operator/security recipients; reuse the shared alert-routing workstream."
+      "next_step": "Complete audit tamper detection/notification routing in the platform policy."
     },
     {
       "vuln_id": "V-204728",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Configure audit-specific thresholds/failures and actual receivers; use one shared routing/alert policy across the affected benchmarks."
+      "next_step": "Configure the required audit failure/tampering/capacity rules and named receiver routes in existing UDS monitoring, or attach the selected override."
     },
     {
       "vuln_id": "V-204790",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Configure audit-specific thresholds/failures and actual receivers; use one shared routing/alert policy across the affected benchmarks."
+      "next_step": "Configure the required audit failure/tampering/capacity rules and named receiver routes in existing UDS monitoring, or attach the selected override."
     },
     {
       "vuln_id": "V-204791",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Configure audit-specific thresholds/failures and actual receivers; use one shared routing/alert policy across the affected benchmarks."
+      "next_step": "Configure the required audit failure/tampering/capacity rules and named receiver routes in existing UDS monitoring, or attach the selected override."
     },
     {
       "vuln_id": "V-263550",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Enable/tune the applicable detections and route them to named operator/security recipients; reuse the shared alert-routing workstream."
+      "next_step": "Configure the required audit failure/tampering/capacity rules and named receiver routes in existing UDS monitoring, or attach the selected override."
     },
     {
       "vuln_id": "V-206592",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Configure the exact audit storage threshold/failure alerts and receivers; share the routing work with other benchmark audit alerts."
+      "next_step": "Configure or attach operator-owned audit capacity/failure/tamper rules and recipients in the shared platform alert routing; no separate DB alert product required."
     },
     {
       "vuln_id": "V-206593",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Configure the exact audit storage threshold/failure alerts and receivers; share the routing work with other benchmark audit alerts."
+      "next_step": "Configure or attach operator-owned audit capacity/failure/tamper rules and recipients in the shared platform alert routing; no separate DB alert product required."
     },
     {
       "vuln_id": "V-263605",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Enable/tune the applicable detections and route them to named operator/security recipients; reuse the shared alert-routing workstream."
+      "next_step": "Configure or attach operator-owned audit capacity/failure/tamper rules and recipients in the shared platform alert routing; no separate DB alert product required."
     },
     {
       "vuln_id": "V-204652",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Configure audit-specific thresholds/failures and actual receivers; use one shared routing/alert policy across the affected benchmarks."
+      "next_step": "Configure/identify shared audit-pipeline failure alerts and required recipient routing."
     },
     {
       "vuln_id": "V-204682",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Forward bundled identity admin events and configure notification receivers, or use the approved UDS identity integration."
+      "next_step": "Enable required sharedUDS account-event alerts and route to designated SA/ISSO recipients, or attach accepted managedservice routing evidence."
     },
     {
       "vuln_id": "V-204683",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Forward bundled identity admin events and configure notification receivers, or use the approved UDS identity integration."
+      "next_step": "Enable required sharedUDS account-event alerts and route to designated SA/ISSO recipients, or attach accepted managedservice routing evidence."
     },
     {
       "vuln_id": "V-204684",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Forward bundled identity admin events and configure notification receivers, or use the approved UDS identity integration."
+      "next_step": "Enable required sharedUDS account-event alerts and route to designated SA/ISSO recipients, or attach accepted managedservice routing evidence."
     },
     {
       "vuln_id": "V-204685",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Forward bundled identity admin events and configure notification receivers, or use the approved UDS identity integration."
+      "next_step": "Enable required sharedUDS account-event alerts and route to designated SA/ISSO recipients, or attach accepted managedservice routing evidence."
     },
     {
       "vuln_id": "V-204687",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Forward bundled identity admin events and configure notification receivers, or use the approved UDS identity integration."
+      "next_step": "Enable required sharedUDS account-event alerts and route to designated SA/ISSO recipients, or attach accepted managedservice routing evidence."
     }
   ],
-  "audit-retention": [
+  "central-log-integrity": [
     {
-      "vuln_id": "V-222621",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Complete identity audit forwarding and define/implement the required active/archive retention and capacity policy."
+      "vuln_id": "V-204739",
+      "benchmark": "U_Application_Server_V4R6_SRG",
+      "next_step": "Map an accepted immutable/authenticated centralized storage or log hash/sign control to the record lifecycle, or enable it centrally; do not implement per-API duplicate log signing."
     }
   ],
   "compliance-package": [
     {
-      "vuln_id": "V-222627",
+      "vuln_id": "V-222423",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Complete the shared compliance package with chosen product guidance and component evidence."
+      "next_step": "Complete the MPN data-element/protection requirements by applying the contract-specific categories to existing architecture/security design."
+    },
+    {
+      "vuln_id": "V-222636",
+      "benchmark": "U_ASD_V6R5_STIG",
+      "next_step": "Complete the MPN-specific contingency/recovery plan with availability objectives, operator roles and existing platform mechanisms."
+    },
+    {
+      "vuln_id": "V-222660",
+      "benchmark": "U_ASD_V6R5_STIG",
+      "next_step": "Document who authorizes retirement, affected-user notification channels/timing and migration/support handoff; reuse existing release communications."
     },
     {
       "vuln_id": "V-233273",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Finish grouped changes and preserve per-component accepted tailoring/inheritance."
+      "next_step": "Complete or tailor the linked platform/package residuals and retain component hardening evidence. Do not create a duplicate roll-up remediation ticket."
     },
     {
       "vuln_id": "V-206445",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Close the source-backed tasks and package the per-component mapping; this roll-up rule is not an additional independent code change."
-    },
-    {
-      "vuln_id": "V-204834",
-      "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Close the source-backed tasks and package the per-component mapping; this roll-up rule is not an additional independent code change."
+      "next_step": "Complete component-specific control mapping and close or tailor the remaining concrete findings."
     },
     {
       "vuln_id": "V-206643",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Close database task groups and retain approved tailoring/inheritance in the component checklist."
+      "next_step": "Close the verified native audit/session-limit deltas and retain the full component mapping/tailoring package."
     },
     {
       "vuln_id": "V-204704",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Finish grouped changes and preserve per-component accepted tailoring/inheritance."
+      "next_step": "Complete the specific sharedidentity residuals and accepted tailoring, then finalize this rollup."
     }
   ],
   "continuous-vulnerability-management": [
     {
       "vuln_id": "V-233275",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Attach the actual DU/CAT/MPN continuous scanning service and cadence, or configure one and document its scope."
+      "next_step": "Map an existing accepted DU/MPN recurring scanning service to the fixed delivered image inventory, or configure a scheduled rescan/cadence with retained results; do not duplicate the existing build scans."
     }
   ],
   "data-backup-restore": [
     {
       "vuln_id": "V-222637",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Configure database/data backup and secure restore verification."
+      "next_step": "Attach an accepted platform data-backup/restore service or configure PostgreSQL/PVC data protection and secure restore verification."
     },
     {
       "vuln_id": "V-222638",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Configure database/data backup and secure restore verification."
+      "next_step": "Attach an accepted platform data-backup/restore service or configure PostgreSQL/PVC data protection and secure restore verification."
     },
     {
-      "vuln_id": "V-206569",
-      "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Configure a database-consistent backup/recovery procedure and exercise restore; include SeaweedFS/PVC recovery scope."
+      "vuln_id": "V-222640",
+      "benchmark": "U_ASD_V6R5_STIG",
+      "next_step": "Document actual backup/restore storage, IAM/encryption, recovery tooling and asset-protection responsibilities."
+    }
+  ],
+  "data-label-policy": [
+    {
+      "vuln_id": "V-222643",
+      "benchmark": "U_ASD_V6R5_STIG",
+      "next_step": "Set the MPN data classification and provide the required application/report markings or exact permitted manual procedure/tailoring."
     }
   ],
   "database-account-policy": [
     {
       "vuln_id": "V-206519",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Set approved per-role concurrent-connection limits (including service-account/pool allowances) and verify the selected database configuration."
-    },
-    {
-      "vuln_id": "V-206555",
-      "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Define interactive/noninteractive account policy; configure enforcement or an accepted provider/credential-management control with the rule-specific exceptions."
-    },
-    {
-      "vuln_id": "V-206580",
-      "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Configure role/account-type timeouts matching the approved disconnect policy and ensure pool/maintenance compatibility."
-    },
-    {
-      "vuln_id": "V-263602",
-      "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Document account owners, disable/expire human/native accounts as required, and define service-account rotation/offboarding."
-    },
-    {
-      "vuln_id": "V-263603",
-      "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Document account owners, disable/expire human/native accounts as required, and define service-account rotation/offboarding."
-    },
-    {
-      "vuln_id": "V-263610",
-      "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Define native-role account types and enforce/justify each required password/recovery control through approved credential management or DB integration."
-    },
-    {
-      "vuln_id": "V-263611",
-      "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Define native-role account types and enforce/justify each required password/recovery control through approved credential management or DB integration."
-    },
-    {
-      "vuln_id": "V-263612",
-      "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Define native-role account types and enforce/justify each required password/recovery control through approved credential management or DB integration."
-    },
-    {
-      "vuln_id": "V-263613",
-      "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Define native-role account types and enforce/justify each required password/recovery control through approved credential management or DB integration."
-    },
-    {
-      "vuln_id": "V-263614",
-      "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Define native-role account types and enforce/justify each required password/recovery control through approved credential management or DB integration."
-    },
-    {
-      "vuln_id": "V-263616",
-      "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Define native-role account types and enforce/justify each required password/recovery control through approved credential management or DB integration."
+      "next_step": "Set approved service/admin per-role connection limits, with service-pool allowances; do not force2 if approved service-account limits differ."
     }
   ],
   "database-auditing": [
     {
-      "vuln_id": "V-206522",
-      "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Define the approved event set, enable targeted pgaudit/native connection/context settings, forward to Loki and validate records plus performance/secret redaction. One audit configuration workstream covers these rules."
-    },
-    {
       "vuln_id": "V-206523",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Define the approved event set, enable targeted pgaudit/native connection/context settings, forward to Loki and validate records plus performance/secret redaction. One audit configuration workstream covers these rules."
-    },
-    {
-      "vuln_id": "V-206525",
-      "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Define required objects/access types and enable targeted audit classes/object settings; reuse the shared database-auditing workstream."
-    },
-    {
-      "vuln_id": "V-206527",
-      "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Define the approved event set, enable targeted pgaudit/native connection/context settings, forward to Loki and validate records plus performance/secret redaction. One audit configuration workstream covers these rules."
-    },
-    {
-      "vuln_id": "V-206528",
-      "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Define the approved event set, enable targeted pgaudit/native connection/context settings, forward to Loki and validate records plus performance/secret redaction. One audit configuration workstream covers these rules."
-    },
-    {
-      "vuln_id": "V-206530",
-      "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Define the approved event set, enable targeted pgaudit/native connection/context settings, forward to Loki and validate records plus performance/secret redaction. One audit configuration workstream covers these rules."
+      "next_step": "Enable the required native connection/disconnection/privileged/direct-access event selection and contextual fields, with data/performance/redaction review; one shared audit workstream covers these rows."
     },
     {
       "vuln_id": "V-206531",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Define the approved event set, enable targeted pgaudit/native connection/context settings, forward to Loki and validate records plus performance/secret redaction. One audit configuration workstream covers these rules."
-    },
-    {
-      "vuln_id": "V-206532",
-      "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Define the approved event set, enable targeted pgaudit/native connection/context settings, forward to Loki and validate records plus performance/secret redaction. One audit configuration workstream covers these rules."
+      "next_step": "Configure required native session/user/database/remote context and correlate application actor where shared service roles are used."
     },
     {
       "vuln_id": "V-206533",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Define the approved event set, enable targeted pgaudit/native connection/context settings, forward to Loki and validate records plus performance/secret redaction. One audit configuration workstream covers these rules."
-    },
-    {
-      "vuln_id": "V-206534",
-      "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Define the approved event set, enable targeted pgaudit/native connection/context settings, forward to Loki and validate records plus performance/secret redaction. One audit configuration workstream covers these rules."
-    },
-    {
-      "vuln_id": "V-206598",
-      "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Define the approved event set, enable targeted pgaudit/native connection/context settings, forward to Loki and validate records plus performance/secret redaction. One audit configuration workstream covers these rules."
+      "next_step": "Configure required native session/user/database/remote context and correlate application actor where shared service roles are used."
     },
     {
       "vuln_id": "V-206612",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Define required objects/access types and enable targeted audit classes/object settings; reuse the shared database-auditing workstream."
+      "next_step": "Enable targeted native security-object audit selection or establish an accepted equivalent event mapping."
+    },
+    {
+      "vuln_id": "V-206614",
+      "benchmark": "U_Database_V4R6_SRG",
+      "next_step": "Add or evidence category-specific read/change/delete success/denial events in the shared application/DB audit stream; preserve individual actor and classification context."
+    },
+    {
+      "vuln_id": "V-206615",
+      "benchmark": "U_Database_V4R6_SRG",
+      "next_step": "Add or evidence category-specific read/change/delete success/denial events in the shared application/DB audit stream; preserve individual actor and classification context."
     },
     {
       "vuln_id": "V-206616",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Define the approved event set, enable targeted pgaudit/native connection/context settings, forward to Loki and validate records plus performance/secret redaction. One audit configuration workstream covers these rules."
-    },
-    {
-      "vuln_id": "V-206618",
-      "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Define the approved event set, enable targeted pgaudit/native connection/context settings, forward to Loki and validate records plus performance/secret redaction. One audit configuration workstream covers these rules."
+      "next_step": "Enable native ROLE/privilege event selection or retain accepted equivalent administrative change records; keep application records as existing coverage."
     },
     {
       "vuln_id": "V-206620",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Define the approved event set, enable targeted pgaudit/native connection/context settings, forward to Loki and validate records plus performance/secret redaction. One audit configuration workstream covers these rules."
+      "next_step": "Select DDL/ROLE security-object audit events or attach an equivalent privileged deployment/change trail with required event fields."
+    },
+    {
+      "vuln_id": "V-206622",
+      "benchmark": "U_Database_V4R6_SRG",
+      "next_step": "Add or evidence category-specific read/change/delete success/denial events in the shared application/DB audit stream; preserve individual actor and classification context."
+    },
+    {
+      "vuln_id": "V-206623",
+      "benchmark": "U_Database_V4R6_SRG",
+      "next_step": "Add or evidence category-specific read/change/delete success/denial events in the shared application/DB audit stream; preserve individual actor and classification context."
     },
     {
       "vuln_id": "V-206624",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Define the approved event set, enable targeted pgaudit/native connection/context settings, forward to Loki and validate records plus performance/secret redaction. One audit configuration workstream covers these rules."
+      "next_step": "Enable native ROLE/privilege event selection or retain accepted equivalent administrative change records; keep application records as existing coverage."
     },
     {
       "vuln_id": "V-206626",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Define the approved event set, enable targeted pgaudit/native connection/context settings, forward to Loki and validate records plus performance/secret redaction. One audit configuration workstream covers these rules."
+      "next_step": "Select DDL/ROLE security-object audit events or attach an equivalent privileged deployment/change trail with required event fields."
+    },
+    {
+      "vuln_id": "V-206628",
+      "benchmark": "U_Database_V4R6_SRG",
+      "next_step": "Add or evidence category-specific read/change/delete success/denial events in the shared application/DB audit stream; preserve individual actor and classification context."
+    },
+    {
+      "vuln_id": "V-206629",
+      "benchmark": "U_Database_V4R6_SRG",
+      "next_step": "Add or evidence category-specific read/change/delete success/denial events in the shared application/DB audit stream; preserve individual actor and classification context."
     },
     {
       "vuln_id": "V-206630",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Define the approved event set, enable targeted pgaudit/native connection/context settings, forward to Loki and validate records plus performance/secret redaction. One audit configuration workstream covers these rules."
+      "next_step": "Enable the required native connection/disconnection/privileged/direct-access event selection and contextual fields, with data/performance/redaction review; one shared audit workstream covers these rows."
     },
     {
       "vuln_id": "V-206632",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Define the approved event set, enable targeted pgaudit/native connection/context settings, forward to Loki and validate records plus performance/secret redaction. One audit configuration workstream covers these rules."
+      "next_step": "Enable the required native connection/disconnection/privileged/direct-access event selection and contextual fields, with data/performance/redaction review; one shared audit workstream covers these rows."
     },
     {
       "vuln_id": "V-206634",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Define the approved event set, enable targeted pgaudit/native connection/context settings, forward to Loki and validate records plus performance/secret redaction. One audit configuration workstream covers these rules."
+      "next_step": "Enable the required native connection/disconnection/privileged/direct-access event selection and contextual fields, with data/performance/redaction review; one shared audit workstream covers these rows."
     },
     {
       "vuln_id": "V-206635",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Define the approved event set, enable targeted pgaudit/native connection/context settings, forward to Loki and validate records plus performance/secret redaction. One audit configuration workstream covers these rules."
-    },
-    {
-      "vuln_id": "V-206636",
-      "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Define required objects/access types and enable targeted audit classes/object settings; reuse the shared database-auditing workstream."
+      "next_step": "Enable the required native connection/disconnection/privileged/direct-access event selection and contextual fields, with data/performance/redaction review; one shared audit workstream covers these rows."
     },
     {
       "vuln_id": "V-206638",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Define the approved event set, enable targeted pgaudit/native connection/context settings, forward to Loki and validate records plus performance/secret redaction. One audit configuration workstream covers these rules."
-    }
-  ],
-  "database-service-privilege": [
-    {
-      "vuln_id": "V-222430",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Provision a restricted Keycloak database role."
-    },
-    {
-      "vuln_id": "V-206564",
-      "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Provision a dedicated least-privilege Keycloak database owner/user and remove admin credentials from its runtime deployment."
-    }
-  ],
-  "identity-audit-forwarding": [
-    {
-      "vuln_id": "V-204690",
-      "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Enable a suitable event listener/forwarder for bundled Keycloak or consume the UDS identity service."
+      "next_step": "Enable the required native connection/disconnection/privileged/direct-access event selection and contextual fields, with data/performance/redaction review; one shared audit workstream covers these rows."
     }
   ],
   "identity-policy": [
     {
-      "vuln_id": "V-222432",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Configure/test the three-failure policy at the actual login provider."
-    },
-    {
       "vuln_id": "V-222437",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Implement previous-logon display or retain an accepted provider-specific equivalent."
-    },
-    {
-      "vuln_id": "V-222536",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Enforce the exact rule in the actual provider, or preserve accepted account/directory-specific applicability."
-    },
-    {
-      "vuln_id": "V-222537",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Enforce the exact rule in the actual provider, or preserve accepted account/directory-specific applicability."
-    },
-    {
-      "vuln_id": "V-222538",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Enforce the exact rule in the actual provider, or preserve accepted account/directory-specific applicability."
-    },
-    {
-      "vuln_id": "V-222539",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Enforce the exact rule in the actual provider, or preserve accepted account/directory-specific applicability."
-    },
-    {
-      "vuln_id": "V-222540",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Enforce the exact rule in the actual provider, or preserve accepted account/directory-specific applicability."
+      "next_step": "Enable a supported previous-logon display/theme extension at the provider, or document accepted tailoring."
     },
     {
       "vuln_id": "V-222541",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Enforce the exact rule in the actual provider, or preserve accepted account/directory-specific applicability."
+      "next_step": "Configure at the actual provider or document accepted authentication-method/account-type tailoring."
     },
     {
       "vuln_id": "V-222544",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Enforce the exact rule in the actual provider, or preserve accepted account/directory-specific applicability."
-    },
-    {
-      "vuln_id": "V-222545",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Enforce the exact rule in the actual provider, or preserve accepted account/directory-specific applicability."
-    },
-    {
-      "vuln_id": "V-222546",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Enforce the exact rule in the actual provider, or preserve accepted account/directory-specific applicability."
+      "next_step": "Configure at the actual provider or document accepted authentication-method/account-type tailoring."
     },
     {
       "vuln_id": "V-233094",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Resolve the exact password-change rules for relevant accounts with the identity operator; do not count general password complexity as coverage."
+      "next_step": "Resolve provider password-policy or accepted certificate/directory tailoring for the account types actually permitted."
     },
     {
       "vuln_id": "V-233097",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Resolve the exact password-change rules for relevant accounts with the identity operator; do not count general password complexity as coverage."
+      "next_step": "Resolve provider password-policy or accepted certificate/directory tailoring for the account types actually permitted."
     },
     {
       "vuln_id": "V-263591",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Configure a maintained blacklist/provider service and update process, or attach accepted delegated identity evidence."
+      "next_step": "Configure an approved maintained password blacklist at the actual password provider or document accepted certificate-only/upstream delegation scope."
     },
     {
       "vuln_id": "V-263592",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Configure a maintained blacklist/provider service and update process, or attach accepted delegated identity evidence."
+      "next_step": "Configure an approved maintained password blacklist at the actual password provider or document accepted certificate-only/upstream delegation scope."
     },
     {
       "vuln_id": "V-263593",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Configure a maintained blacklist/provider service and update process, or attach accepted delegated identity evidence."
+      "next_step": "Configure an approved maintained password blacklist at the actual password provider or document accepted certificate-only/upstream delegation scope."
     },
     {
       "vuln_id": "V-263594",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Configure a maintained blacklist/provider service and update process, or attach accepted delegated identity evidence."
+      "next_step": "Configure an approved maintained password blacklist at the actual password provider or document accepted certificate-only/upstream delegation scope."
     },
     {
       "vuln_id": "V-264345",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Implement the shared identity-policy controls at the actual login provider and map that evidence to the web checklist."
+      "next_step": "Configure the approved shared-provider blacklist/update/check service, or record accepted password-authentication scope/delegation."
     },
     {
       "vuln_id": "V-264346",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Implement the shared identity-policy controls at the actual login provider and map that evidence to the web checklist."
+      "next_step": "Configure the approved shared-provider blacklist/update/check service, or record accepted password-authentication scope/delegation."
     },
     {
       "vuln_id": "V-264347",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Implement the shared identity-policy controls at the actual login provider and map that evidence to the web checklist."
+      "next_step": "Configure the approved shared-provider blacklist/update/check service, or record accepted password-authentication scope/delegation."
     },
     {
       "vuln_id": "V-264348",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Implement the shared identity-policy controls at the actual login provider and map that evidence to the web checklist."
-    },
-    {
-      "vuln_id": "V-264352",
-      "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Implement the shared identity-policy controls at the actual login provider and map that evidence to the web checklist."
-    },
-    {
-      "vuln_id": "V-264353",
-      "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Implement the shared identity-policy controls at the actual login provider and map that evidence to the web checklist."
-    },
-    {
-      "vuln_id": "V-204644",
-      "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Choose the MPN identity path. For bundled local accounts, configure and demonstrate the required threshold/window; if delegated, obtain directory evidence and supported rule-specific applicability."
-    },
-    {
-      "vuln_id": "V-204664",
-      "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Agree the MPN identity model; encode and demonstrate this rule's exact constraint for applicable local accounts, or retain accepted directory delegation evidence."
-    },
-    {
-      "vuln_id": "V-204666",
-      "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Agree the MPN identity model; encode and demonstrate this rule's exact constraint for applicable local accounts, or retain accepted directory delegation evidence."
-    },
-    {
-      "vuln_id": "V-204667",
-      "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Agree the MPN identity model; encode and demonstrate this rule's exact constraint for applicable local accounts, or retain accepted directory delegation evidence."
-    },
-    {
-      "vuln_id": "V-204668",
-      "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Agree the MPN identity model; encode and demonstrate this rule's exact constraint for applicable local accounts, or retain accepted directory delegation evidence."
-    },
-    {
-      "vuln_id": "V-204669",
-      "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Agree the MPN identity model; encode and demonstrate this rule's exact constraint for applicable local accounts, or retain accepted directory delegation evidence."
+      "next_step": "Configure the approved shared-provider blacklist/update/check service, or record accepted password-authentication scope/delegation."
     },
     {
       "vuln_id": "V-204670",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Provide an enforcing provider policy/custom validator or accepted rule-specific directory/applicability disposition."
+      "next_step": "Configure accepted central identity policy/plugin or retain approved account-specific/delegated applicability."
     },
     {
       "vuln_id": "V-204673",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Agree the MPN identity model; encode and demonstrate this rule's exact constraint for applicable local accounts, or retain accepted directory delegation evidence."
-    },
-    {
-      "vuln_id": "V-204674",
-      "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Agree the MPN identity model; encode and demonstrate this rule's exact constraint for applicable local accounts, or retain accepted directory delegation evidence."
-    },
-    {
-      "vuln_id": "V-204689",
-      "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Set and test administrator-release lockout for applicable local accounts, or document the selected directory delegation with its corresponding evidence."
+      "next_step": "Configure accepted central identity policy/plugin or retain approved account-specific/delegated applicability."
     },
     {
       "vuln_id": "V-263532",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Configure a maintained provider/blacklist integration for local accounts or accepted delegated provider control."
+      "next_step": "Attach existing provider compromisedpassword service or configure central blacklist validation and update cadence/incidentevents."
     },
     {
       "vuln_id": "V-263533",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Configure a maintained provider/blacklist integration for local accounts or accepted delegated provider control."
+      "next_step": "Attach existing provider compromisedpassword service or configure central blacklist validation and update cadence/incidentevents."
     },
     {
       "vuln_id": "V-263534",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Configure a maintained provider/blacklist integration for local accounts or accepted delegated provider control."
-    },
-    {
-      "vuln_id": "V-263537",
-      "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Configure the selected provider's password-strength guidance/validation or use accepted delegated enforcement."
+      "next_step": "Attach existing provider compromisedpassword service or configure central blacklist validation and update cadence/incidentevents."
     }
   ],
   "mpn-network-profile": [
     {
-      "vuln_id": "V-222427",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Approve and implement the MPN-specific flow allow-list."
-    },
-    {
       "vuln_id": "V-222428",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Approve and implement the MPN-specific flow allow-list."
+      "next_step": "Select the local model service and approved destination/port profile, then encode it in the existing UDS Package policies or document accepted changed scope."
     },
     {
       "vuln_id": "V-222519",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Build and approve the MPN flow profile."
-    },
+      "next_step": "Select the local model service and approved destination/port profile, then encode it in the existing UDS Package policies or document accepted changed scope."
+    }
+  ],
+  "nats-auth-crypto-module": [
     {
-      "vuln_id": "V-233029",
-      "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Create the MPN allow-list/profile for selected model/storage/API flows and map it to the approved boundary."
-    },
-    {
-      "vuln_id": "V-233030",
-      "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Create the MPN allow-list/profile for selected model/storage/API flows and map it to the approved boundary."
+      "vuln_id": "V-204758",
+      "benchmark": "U_Application_Server_V4R6_SRG",
+      "next_step": "Route the NATS client/callout authentication signature operations through a validated approved-mode implementation, or obtain explicit accepted cryptographic-boundary tailoring for the existing protected mesh path. Credit current UDS/OIDC FIPS controls."
     }
   ],
   "notice-banner": [
     {
       "vuln_id": "V-222434",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Configure the notice and explicit acknowledgement on the actual application entry point."
+      "next_step": "Enable and supply the approved notice text/acknowledgement in UDS identity; document any accepted inherited entry-point banner."
     },
     {
       "vuln_id": "V-222435",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Configure the notice and explicit acknowledgement on the actual application entry point."
+      "next_step": "Enable and supply the approved notice text/acknowledgement in UDS identity; document any accepted inherited entry-point banner."
     },
     {
       "vuln_id": "V-233032",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Enable and verify the notice/acknowledgement on each actual platform/application entry path, or map an approved inherited enforcement point."
+      "next_step": "Enable TERMS_AND_CONDITIONS_ENABLED at the actual shared login boundary, or attach the MPN platform configuration that already enables the required consent."
     },
     {
       "vuln_id": "V-233033",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Enable and verify the notice/acknowledgement on each actual platform/application entry path, or map an approved inherited enforcement point."
+      "next_step": "Enable TERMS_AND_CONDITIONS_ENABLED at the actual shared login boundary, or attach the MPN platform configuration that already enables the required consent."
     },
     {
       "vuln_id": "V-204713",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Add the required management notice and acknowledgement to the selected admin entry path, or document inherited enforcement at that exact path."
+      "next_step": "Enable the UDS terms/consent required action and retain the approved notice; use existing UI."
     },
     {
       "vuln_id": "V-204714",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Add the required management notice and acknowledgement to the selected admin entry path, or document inherited enforcement at that exact path."
+      "next_step": "Enable the UDS terms/consent required action and retain the approved notice; use existing UI."
     }
   ],
   "pki-authentication": [
     {
-      "vuln_id": "V-264343",
-      "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Adopt the approved UDS/MPN identity profile or configure equivalent controls in bundled mode; record account/path applicability."
-    },
-    {
-      "vuln_id": "V-264344",
-      "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Adopt the approved UDS/MPN identity profile or configure equivalent controls in bundled mode; record account/path applicability."
-    },
-    {
-      "vuln_id": "V-204745",
-      "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Adopt the approved UDS/MPN identity profile or configure equivalent controls in bundled mode; record account/path applicability."
-    },
-    {
-      "vuln_id": "V-204746",
-      "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Adopt the approved UDS/MPN identity profile or configure equivalent controls in bundled mode; record account/path applicability."
-    },
-    {
-      "vuln_id": "V-204747",
-      "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Adopt the approved UDS/MPN identity profile or configure equivalent controls in bundled mode; record account/path applicability."
-    },
-    {
-      "vuln_id": "V-204756",
-      "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Configure/inherit the approved certificate identity mapper in the selected provider."
-    },
-    {
-      "vuln_id": "V-204800",
-      "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Adopt the approved UDS/MPN identity profile or configure equivalent controls in bundled mode; record account/path applicability."
-    },
-    {
-      "vuln_id": "V-204801",
-      "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Adopt the approved UDS/MPN identity profile or configure equivalent controls in bundled mode; record account/path applicability."
-    },
-    {
-      "vuln_id": "V-204806",
-      "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Adopt the approved UDS/MPN identity profile or configure equivalent controls in bundled mode; record account/path applicability."
-    },
-    {
-      "vuln_id": "V-204807",
-      "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Adopt the approved UDS/MPN identity profile or configure equivalent controls in bundled mode; record account/path applicability."
-    },
-    {
-      "vuln_id": "V-204808",
-      "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Adopt the approved UDS/MPN identity profile or configure equivalent controls in bundled mode; record account/path applicability."
-    },
-    {
-      "vuln_id": "V-204809",
-      "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Adopt the approved UDS/MPN identity profile or configure equivalent controls in bundled mode; record account/path applicability."
-    },
-    {
-      "vuln_id": "V-263551",
-      "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Adopt the approved UDS/MPN identity profile or configure equivalent controls in bundled mode; record account/path applicability."
-    },
-    {
-      "vuln_id": "V-263552",
-      "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Adopt the approved UDS/MPN identity profile or configure equivalent controls in bundled mode; record account/path applicability."
-    },
-    {
       "vuln_id": "V-204661",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Select UDS/federated CAC identity or configure the bundled authentication flow/trust; validate privileged and ordinary paths."
+      "next_step": "Select/enforce required PIV/CAC identity flows and privileged-card policy at sharedUDS, or record accepted externalprovider enforcement."
     },
     {
       "vuln_id": "V-204662",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Select UDS/federated CAC identity or configure the bundled authentication flow/trust; validate privileged and ordinary paths."
-    },
-    {
-      "vuln_id": "V-204675",
-      "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Configure the selected CAC/X509 path, approved trust anchors, user mapping and fail-closed revocation behavior; UDS-mode inheritance is an alternative implementation."
-    },
-    {
-      "vuln_id": "V-204676",
-      "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Configure the selected CAC/X509 path, approved trust anchors, user mapping and fail-closed revocation behavior; UDS-mode inheritance is an alternative implementation."
-    },
-    {
-      "vuln_id": "V-204678",
-      "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Configure the selected CAC/X509 path, approved trust anchors, user mapping and fail-closed revocation behavior; UDS-mode inheritance is an alternative implementation."
+      "next_step": "Select/enforce required PIV/CAC identity flows and privileged-card policy at sharedUDS, or record accepted externalprovider enforcement."
     }
   ],
   "pki-trust": [
     {
-      "vuln_id": "V-222523",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Select and configure the accepted MPN identity/trust path, including required federal issuers and offline revocation policy."
-    },
-    {
-      "vuln_id": "V-222524",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Select and configure the accepted MPN identity/trust path, including required federal issuers and offline revocation policy."
-    },
-    {
-      "vuln_id": "V-222525",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Select and configure the accepted MPN identity/trust path, including required federal issuers and offline revocation policy."
-    },
-    {
-      "vuln_id": "V-222526",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Select and configure the accepted MPN identity/trust path, including required federal issuers and offline revocation policy."
-    },
-    {
-      "vuln_id": "V-222527",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Select and configure the accepted MPN identity/trust path, including required federal issuers and offline revocation policy."
-    },
-    {
-      "vuln_id": "V-222528",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Select and configure the accepted MPN identity/trust path, including required federal issuers and offline revocation policy."
-    },
-    {
-      "vuln_id": "V-222550",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Select and configure the accepted MPN identity/trust path, including required federal issuers and offline revocation policy."
-    },
-    {
-      "vuln_id": "V-222552",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Select and configure the accepted MPN identity/trust path, including required federal issuers and offline revocation policy."
-    },
-    {
       "vuln_id": "V-222553",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Select and configure the accepted MPN identity/trust path, including required federal issuers and offline revocation policy."
-    },
-    {
-      "vuln_id": "V-222557",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Select and configure the accepted MPN identity/trust path, including required federal issuers and offline revocation policy."
-    },
-    {
-      "vuln_id": "V-222558",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Select and configure the accepted MPN identity/trust path, including required federal issuers and offline revocation policy."
-    },
-    {
-      "vuln_id": "V-222559",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Select and configure the accepted MPN identity/trust path, including required federal issuers and offline revocation policy."
-    },
-    {
-      "vuln_id": "V-222560",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Select and configure the accepted MPN identity/trust path, including required federal issuers and offline revocation policy."
+      "next_step": "Enable and refresh approved local CRL/cache at UDS identity or record the official SIPR/CA-access applicability exception."
     },
     {
       "vuln_id": "V-233201",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Enable and distribute/refesh the approved CRL/cache on the actual certificate-authentication boundary, with fail-closed behavior as required."
+      "next_step": "Enable/distribute the approved CRL cache at the provider, or retain the accepted provider-specific revocation/offline policy tailoring."
     },
     {
       "vuln_id": "V-264354",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Configure approved CRL/cache distribution/refresh and fail-closed handling in the actual CAC/PKI path."
+      "next_step": "Enable/distribute/refesh the approved local CRL/cache or document accepted applicability for the selected authentication method."
     },
     {
       "vuln_id": "V-204805",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Configure approved CRL/cache distribution/refresh and fail-closed handling in the actual CAC/PKI path."
+      "next_step": "Enable/distribute the approved local CRL cache or record accepted delegated/offline applicability."
     },
     {
       "vuln_id": "V-263538",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Configure supported local CRL/cache refresh for disconnected operation or an accepted equivalent at the actual certificate-authentication boundary."
+      "next_step": "Configure/distribute approved localCRL cache and freshness policy on sharedUDS, or retain accepted tailoring."
     }
   ],
-  "release-signature-enforcement": [
+  "release-crypto-provider": [
     {
-      "vuln_id": "V-222513",
+      "vuln_id": "V-222570",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Enforce approved-signer verification or accepted signed-package equivalent."
+      "next_step": "Use a verified validated/approved-mode signing implementation or record approved signing-scope/risk tailoring; retain tool module provenance."
     },
     {
-      "vuln_id": "V-233065",
-      "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Bind the deployment path to required approved-signer package/image verification or an accepted signed-package equivalent; document and enforce the trust policy."
-    },
-    {
-      "vuln_id": "V-204740",
-      "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Bind the deployment path to required approved-signer package/image verification or an accepted signed-package equivalent; document and enforce the trust policy."
-    },
-    {
-      "vuln_id": "V-263606",
-      "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Bind the deployment path to required approved-signer package/image verification or an accepted signed-package equivalent; document and enforce the trust policy."
+      "vuln_id": "V-222571",
+      "benchmark": "U_ASD_V6R5_STIG",
+      "next_step": "Bind release component hashing/signing to a validated approved-mode provider and retain its exact tool/module evidence; do not change already-FIPS application hashing."
     }
   ],
   "runtime-response": [
     {
       "vuln_id": "V-278964",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Define the approved automated response/integration or obtain assessor tailoring; do not treat a dashboard alert as an access-control action."
+      "next_step": "Configure an accepted Falco/security event-to-access-control response or record approvedtailoring for the exactautomated integration."
     }
   ],
   "secret-delivery": [
     {
       "vuln_id": "V-242415",
       "benchmark": "U_Kubernetes_V2R6_STIG",
-      "next_step": "Move credentials to protected mounted files/vault-supported delivery and adapt consumers; rerender and verify admitted pods. Review with John before implementation."
+      "next_step": "Move affected secret consumers to protected file/vault delivery, or retain a formally accepted environment-delivery exception with the corresponding protection rationale. Reuse the shared secret-delivery workstream."
     },
     {
       "vuln_id": "V-274883",
       "benchmark": "U_Kubernetes_V2R6_STIG",
-      "next_step": "Render S3 credential configuration as a Secret or approved external-store mount, restrict access, and verify deployment with substituted test credentials. Review with John."
+      "next_step": "Store the S3 configuration in a protected Secret/external store and mount it as needed, or document an accepted compensating-control exception. No new S3 authentication implementation is required."
+    }
+  ],
+  "security-assessment-coverage": [
+    {
+      "vuln_id": "V-222624",
+      "benchmark": "U_ASD_V6R5_STIG",
+      "next_step": "Add or attach a scoped active/fuzz security assessment for web/API and relevant parsers, reusing the existing CI artifacts and defect process."
+    },
+    {
+      "vuln_id": "V-222647",
+      "benchmark": "U_ASD_V6R5_STIG",
+      "next_step": "Extend/map existing test cases to initialization/shutdown/abort unauthorized access conditions, or attach an existing dated annual assessment covering those conditions."
     }
   ],
   "session-policy": [
     {
       "vuln_id": "V-222387",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Configure approved per-user/admin session limits."
+      "next_step": "Set the approved per-user maximum in UDS identity, or document an accepted unlimited policy/tailoring. No Horizon session-limiter code is needed."
     },
     {
-      "vuln_id": "V-222390",
+      "vuln_id": "V-222520",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Set/admin-scope the600-second idle policy on the actual provider and verify silent-renew/refresh behavior."
+      "next_step": "Set the organization-defined sensitive-role-change/privilege-use reauthenticationpolicy and enforce a recent-auth/step-up requirement at the appropriate IdP/client/API boundary, or obtain explicit role-model tailoring for no user-selected active role. Reuse the shared session-policy workstream."
     },
     {
       "vuln_id": "V-222549",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Configure effective revocation/session termination for the protected API path."
+      "next_step": "Decide accepted token-revocation window; configure a central session/introspection/revocation mechanism or implement minimal relevant API/stream enforcement. Do not replace working IdP logout."
     },
     {
       "vuln_id": "V-222568",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Complete the shared termination/revocation design and test outstanding API/stream connections."
-    },
-    {
-      "vuln_id": "V-222575",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Document the noncredential cookie and accepted tailoring or change the design."
+      "next_step": "Decide accepted token-revocation window; configure a central session/introspection/revocation mechanism or implement minimal relevant API/stream enforcement. Do not replace working IdP logout."
     },
     {
       "vuln_id": "V-222578",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Use an approved session-state/storage lifecycle and test browser-close/reopen plus old-token reuse."
+      "next_step": "Use approved session-bound state/credential lifetime or accepted browser-close tailoring and verify reopen behavior."
     },
     {
-      "vuln_id": "V-206350",
-      "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Set approved per-user session/concurrency limits at the effective IdP/gateway; capacity-related connection limits are separate."
+      "vuln_id": "V-233193",
+      "benchmark": "U_Container_Platform_V2R5_SRG",
+      "next_step": "Configure/document fresh authentication for role changes and privilege escalation at the shared IdP/administrative transition boundary; link the shared session-policy workstream."
     },
     {
       "vuln_id": "V-206396",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Agree the required termination boundary and add session/revocation enforcement or an approved equivalent at the actual API/gateway path; test old-token replay."
+      "next_step": "Resolve the accepted revocation window or add effective session/token revocation at API/gateway; retain delegated logout behavior."
     },
     {
-      "vuln_id": "V-206437",
+      "vuln_id": "V-206414",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Document the noncredential session-status cookie purpose and obtain accepted tailoring, or configure/redesign the affected cookie behavior without breaking logout status."
-    },
-    {
-      "vuln_id": "V-264360",
-      "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Implement/enable accepted gateway/IdP session IP binding, or obtain approved tailoring for NAT/mobile client behavior."
+      "next_step": "Set the applicable shared-provider/client absolute session lifetime to8hours or less, or attach the selected existing override."
     },
     {
       "vuln_id": "V-264361",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Implement/enable accepted gateway/IdP session IP binding, or obtain approved tailoring for NAT/mobile client behavior."
+      "next_step": "Obtain accepted source-IP-binding equivalence/tailoring or enforce it at the actual session/gateway boundary."
     },
     {
       "vuln_id": "V-204708",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Set approved per-user session/concurrency limits at the effective IdP/gateway; capacity-related connection limits are separate."
-    },
-    {
-      "vuln_id": "V-204763",
-      "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Agree the required termination boundary and add session/revocation enforcement or an approved equivalent at the actual API/gateway path; test old-token replay."
-    }
-  ],
-  "web-audit-context": [
-    {
-      "vuln_id": "V-206363",
-      "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Configure a trusted forwarding chain and original-client-IP audit field; do not trust arbitrary user-supplied X-Forwarded-For."
+      "next_step": "Set the organization-approved concurrent-session limit in the UDS provider, or attach the existing selected override."
     }
   ],
   "web-hardening": [
     {
-      "vuln_id": "V-206386",
-      "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Bind the approved interface or document/obtain accepted container-network tailoring; this corrects the earlier overbroad source-pass designation."
-    },
-    {
-      "vuln_id": "V-206408",
-      "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Use a dedicated content mount/volume or obtain accepted container-specific tailoring for the separate-partition requirement."
-    },
-    {
       "vuln_id": "V-206412",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Add and verify nginx disclosure controls or equivalent gateway filtering for the selected image/config."
+      "next_step": "Disable nginx version disclosure in error bodies or use a generic error response while retaining existing gateway header stripping."
     }
   ],
   "web-http-protocol": [
     {
-      "vuln_id": "V-264362",
-      "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Configure the required protocol path or seek the explicit permitted downgrade disposition using the official check, including ambiguity/smuggling controls."
-    },
-    {
       "vuln_id": "V-264363",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Configure the required protocol path or seek the explicit permitted downgrade disposition using the official check, including ambiguity/smuggling controls."
-    }
-  ],
-  "workload-resource-policy": [
-    {
-      "vuln_id": "V-270875",
-      "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Set the required resource requests/limits on all application/init containers or record approved exceptions."
+      "next_step": "Document operationally necessary translation, HTTP1 request validation/smuggling controls and CATIII/accepted tailoring, or configure end-to-endH2 if required."
     }
   ]
 }

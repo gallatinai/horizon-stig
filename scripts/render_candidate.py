@@ -2,12 +2,17 @@
 """Capture candidate Helm manifests without deployment or live credentials.
 Requires Helm and PyYAML. Argument: bundle checkout at recorded commit.
 """
-import hashlib,json,subprocess,sys
+import argparse,hashlib,json,subprocess,sys
 from pathlib import Path
 import yaml
 ROOT=Path(__file__).resolve().parents[1]
-src=Path(sys.argv[1]).resolve()/'source'
-out=ROOT/'mpn/evidence/rendered-all';out.mkdir(exist_ok=True)
+parser=argparse.ArgumentParser()
+parser.add_argument('checkout',type=Path)
+parser.add_argument('--source-path',action='store_true')
+parser.add_argument('--output',default='mpn/evidence/rendered-all')
+args=parser.parse_args()
+src=args.checkout.resolve() if args.source_path else args.checkout.resolve()/'source'
+out=ROOT/args.output;out.mkdir(exist_ok=True)
 entries=[];summary=[]
 for component in yaml.safe_load((src/'zarf.yaml').read_text())['components']:
  for chart in component.get('charts',[]):
@@ -26,5 +31,5 @@ for component in yaml.safe_load((src/'zarf.yaml').read_text())['components']:
     for container in pod.get(kind,[]):
      summary.append({'component':component['name'],'workload':doc['metadata']['name'],'container':container['name'],'kind':kind,'namespace':doc['metadata'].get('namespace',chart['namespace']),'image':container.get('image'),'securityContext':container.get('securityContext',{}),'resources':container.get('resources',{}),'secret_env':[e['name'] for e in container.get('env',[]) if 'secretKeyRef' in e.get('valueFrom',{})]})
 (out/'workload-summary.json').write_text(json.dumps(summary,indent=2)+'\n')
-m=ROOT/'mpn/evidence/rendered-manifest.json';manifest=json.loads(m.read_text());manifest['files']=[x for x in manifest['files'] if '/rendered-all/' not in x['path']]+entries;m.write_text(json.dumps(manifest,indent=2)+'\n')
+m=ROOT/'mpn/evidence/rendered-manifest.json';manifest=json.loads(m.read_text());manifest['files']=[x for x in manifest['files'] if not x['path'].startswith(args.output+'/')]+entries;m.write_text(json.dumps(manifest,indent=2)+'\n')
 print(f'Captured {len(entries)} charts, {len(summary)} workload containers; placeholders only.')

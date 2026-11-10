@@ -1,0 +1,505 @@
+{
+  "image": "334883685015.dkr.ecr.us-west-2.amazonaws.com/horizon-postgres@sha256:3431665ea7f0c2dfe4bef9673aac6221a58bdf910251857123b7fb363cbb030e",
+  "method": "crane config/export; static filesystem inspection only, image was not executed",
+  "files": [
+    {
+      "path": "etc/ssl/fipsmodule.cnf",
+      "sha256": "2a20fc7eaf2d63ec00b73b06ef5d19f2bb7e93dd58c97b81014f873448020e97"
+    },
+    {
+      "path": "etc/ssl/openssl.cnf",
+      "sha256": "bfbddf97cf2b23d66d7b5323ded670ede1bbcd8e05d60b5bc300eb6a061035bb"
+    },
+    {
+      "path": "usr/libexec/postgresql18/docker-entrypoint.sh",
+      "sha256": "2bd9ddfb3de161c4435d6d72dc807309de76a2c534d31ce1a5909c136d05d391"
+    },
+    {
+      "path": "usr/share/postgresql18/postgresql.conf.sample",
+      "sha256": "c7cf2dabfcb30f91cf083681298662d5554cf869a0fb5ecd872f935852bbec05"
+    }
+  ],
+  "packages": [
+    {
+      "path": "var/lib/db/sbom/NIST-CMVP-5132-1-r3.spdx.json",
+      "sha256": "663e87df789fff9ffc44acdcd072933796a28597df0222d569a54518c26fd452",
+      "packages": [
+        {
+          "name": "NIST-CMVP-5132",
+          "version": "1-r3"
+        },
+        {
+          "name": "NIST-CMVP-5132.yaml",
+          "version": "e5e56c2e92d439ad1652fcc5618dbf0a317a7c28"
+        },
+        {
+          "name": "NIST-CMVP-5132",
+          "version": "1"
+        },
+        {
+          "name": "NIST-CMVP-5132",
+          "version": "1-r3"
+        },
+        {
+          "name": "NIST-CMVP-5132",
+          "version": "1-r3"
+        }
+      ]
+    },
+    {
+      "path": "var/lib/db/sbom/NIST-CMVP-5247-1-r0.spdx.json",
+      "sha256": "e8c60e4e46b12447711fc96573613ada862b4da6b2f921fd38de888b1322ce38",
+      "packages": [
+        {
+          "name": "NIST-CMVP-5247",
+          "version": "1-r0"
+        },
+        {
+          "name": "NIST-CMVP-5247.yaml",
+          "version": "e1f7aa49a4817118691f606c6078f91ef1fd4244"
+        },
+        {
+          "name": "NIST-CMVP-5247",
+          "version": "1"
+        },
+        {
+          "name": "NIST-CMVP-5247",
+          "version": "1-r0"
+        },
+        {
+          "name": "NIST-CMVP-5247",
+          "version": "1-r0"
+        }
+      ]
+    },
+    {
+      "path": "var/lib/db/sbom/NIST-CMVP-5523-optin-1-r2.spdx.json",
+      "sha256": "3bfde8adb817622f4f55691f87084ec52c4a31be7a1e1aaef982ec7d21d34e4b",
+      "packages": [
+        {
+          "name": "NIST-CMVP-5523-optin",
+          "version": "1-r2"
+        },
+        {
+          "name": "NIST-CMVP-5523.yaml",
+          "version": "f48107d6b0cf42f0af498a07030ddc1d3090088a"
+        },
+        {
+          "name": "NIST-CMVP-5523",
+          "version": "1"
+        },
+        {
+          "name": "NIST-CMVP-5523-optin",
+          "version": "1-r2"
+        },
+        {
+          "name": "NIST-CMVP-5523-optin",
+          "version": "1-r2"
+        }
+      ]
+    },
+    {
+      "path": "var/lib/db/sbom/NIST-ESV-191-1-r3.spdx.json",
+      "sha256": "025e47a60c388f32cfe662acaa54e1d2f1f63454e5869ab98c6c4052077b1271",
+      "packages": [
+        {
+          "name": "NIST-ESV-191",
+          "version": "1-r3"
+        },
+        {
+          "name": "NIST-ESV-191.yaml",
+          "version": "77a6037d46ae1ab8a7c260c2ab3361caed491486"
+        },
+        {
+          "name": "NIST-ESV-191",
+          "version": "1"
+        },
+        {
+          "name": "NIST-ESV-191",
+          "version": "1-r3"
+        },
+        {
+          "name": "NIST-ESV-191",
+          "version": "1-r3"
+        }
+      ]
+    },
+    {
+      "path": "var/lib/db/sbom/NIST-ESV-318-1-r0.spdx.json",
+      "sha256": "0c5071c264f237bd120f20aa546ca8f7acd3ab4f68dd8102e1ba738013e137e4",
+      "packages": [
+        {
+          "name": "NIST-ESV-318",
+          "version": "1-r0"
+        },
+        {
+          "name": "NIST-ESV-318.yaml",
+          "version": "83b8b683042facac901be0356eb89042e6e797f1"
+        },
+        {
+          "name": "NIST-ESV-318",
+          "version": "1"
+        },
+        {
+          "name": "NIST-ESV-318",
+          "version": "1-r0"
+        },
+        {
+          "name": "NIST-ESV-318",
+          "version": "1-r0"
+        }
+      ]
+    },
+    {
+      "path": "var/lib/db/sbom/openssl-fips-test-1.1-r1.spdx.json",
+      "sha256": "377f7d29f8f401a1caf3e7b83a3b9c263b31e2e06c73cb2cefae54f2c2f4b143",
+      "packages": [
+        {
+          "name": "openssl-fips-test",
+          "version": "1.1-r1"
+        },
+        {
+          "name": "openssl-fips-test.yaml",
+          "version": "5a0b9131cd3c554bb9de57ee2f1419d834c5d15e"
+        },
+        {
+          "name": "openssl-fips-test",
+          "version": "v1.1"
+        },
+        {
+          "name": "openssl-fips-test",
+          "version": "1.1-r1"
+        },
+        {
+          "name": "openssl-fips-test",
+          "version": "1.1-r1"
+        }
+      ]
+    },
+    {
+      "path": "var/lib/db/sbom/openssl-provider-fips-3.4.0-3.4.0-r5.spdx.json",
+      "sha256": "404d618a2adbec31ec223e93e6cf5b380e30d3999d294aa5c19d1b26c880d30b",
+      "packages": [
+        {
+          "name": "openssl-provider-fips-3.4.0",
+          "version": "3.4.0-r5"
+        },
+        {
+          "name": "openssl-provider-fips-3.4.0.yaml",
+          "version": "c52f5444d8c0c10760324a2213dcb9c8b0ce185c"
+        },
+        {
+          "name": "openssl",
+          "version": "3.4.0-r5"
+        },
+        {
+          "name": "openssl-provider-fips-3.4.0",
+          "version": "3.4.0-r5"
+        },
+        {
+          "name": "openssl-provider-fips-3.4.0",
+          "version": "3.4.0-r5"
+        }
+      ]
+    },
+    {
+      "path": "var/lib/db/sbom/openssl-provider-legacy-allowed-4.1.0-r0.spdx.json",
+      "sha256": "2fd1018d072e96786452d14acb6a278a5618f1d736c09e87181764a1bfd10547",
+      "packages": [
+        {
+          "name": "openssl-provider-legacy-allowed",
+          "version": "4.1.0-r0"
+        },
+        {
+          "name": "openssl-provider-legacy-allowed.yaml",
+          "version": "aeae4801330be6fd269d5ed5640dc37b58ccab09"
+        },
+        {
+          "name": "openssl",
+          "version": "openssl-4.1.0"
+        },
+        {
+          "name": "openssl-provider-legacy-allowed",
+          "version": "4.1.0-r0"
+        },
+        {
+          "name": "openssl-provider-legacy-allowed",
+          "version": "4.1.0-r0"
+        }
+      ]
+    },
+    {
+      "path": "var/lib/db/sbom/openssl-config-fipshardened-3.6.0-optin-4.1.0-r1.spdx.json",
+      "sha256": "10fa108f5af9543c4fa78f197be299365f3ce915ccc071e791fe989929c20c39",
+      "packages": [
+        {
+          "name": "openssl-config-fipshardened-3.6.0-optin",
+          "version": "4.1.0-r1"
+        },
+        {
+          "name": "openssl-config-fipshardened-3.6.0.yaml",
+          "version": "4a81e0d362ed06c1def7b95b9fcc2a8eba29343c"
+        },
+        {
+          "name": "openssl-config-fipshardened-3.6.0-optin",
+          "version": "4.1.0-r1"
+        },
+        {
+          "name": "openssl-config-fipshardened-3.6.0-optin",
+          "version": "4.1.0-r1"
+        }
+      ]
+    },
+    {
+      "path": "var/lib/db/sbom/openssl-4.0-libcrypto-4.0.3-r8.spdx.json",
+      "sha256": "10925e232a3f13553a553a5f6c11328b64591c5ac21650e7522d475e7047021f",
+      "packages": [
+        {
+          "name": "openssl-4.0-libcrypto",
+          "version": "4.0.3-r8"
+        },
+        {
+          "name": "openssl-4.0.yaml",
+          "version": "53fb2f6751f832fa61ddba06cb8a40dbba5f409f"
+        },
+        {
+          "name": "openssl",
+          "version": "openssl-4.0.3"
+        },
+        {
+          "name": "openssl-4.0-libcrypto",
+          "version": "4.0.3-r8"
+        },
+        {
+          "name": "openssl-4.0-libcrypto",
+          "version": "4.0.3-r8"
+        }
+      ]
+    },
+    {
+      "path": "var/lib/db/sbom/openssl-4.0-libssl-4.0.3-r8.spdx.json",
+      "sha256": "001db2fa4a911549311097e4143e7b79d3cda194f7eb943f0cd579028642b98d",
+      "packages": [
+        {
+          "name": "openssl-4.0-libssl",
+          "version": "4.0.3-r8"
+        },
+        {
+          "name": "openssl-4.0.yaml",
+          "version": "53fb2f6751f832fa61ddba06cb8a40dbba5f409f"
+        },
+        {
+          "name": "openssl",
+          "version": "openssl-4.0.3"
+        },
+        {
+          "name": "openssl-4.0-libssl",
+          "version": "4.0.3-r8"
+        },
+        {
+          "name": "openssl-4.0-libssl",
+          "version": "4.0.3-r8"
+        }
+      ]
+    },
+    {
+      "path": "var/lib/db/sbom/openssl-config-fipshardened-4.1.0-r0.spdx.json",
+      "sha256": "056adee9ba93ade751f7abbf6d5f067ab2464f9e98ae59f843ff76456d3e2c54",
+      "packages": [
+        {
+          "name": "openssl-config-fipshardened",
+          "version": "4.1.0-r0"
+        },
+        {
+          "name": "openssl-config-fipshardened.yaml",
+          "version": "3a74df95283e2f75312370327d1c24af34a7c4b8"
+        },
+        {
+          "name": "openssl-config-fipshardened",
+          "version": "4.1.0-r0"
+        },
+        {
+          "name": "openssl-config-fipshardened",
+          "version": "4.1.0-r0"
+        }
+      ]
+    },
+    {
+      "path": "var/lib/db/sbom/postgresql-18-18.6-r7.spdx.json",
+      "sha256": "9e525266a9d12d4436b0576424d62bfd9b49d0e25f3db347ee3080451f3db4db",
+      "packages": [
+        {
+          "name": "postgresql-18",
+          "version": "18.6-r7"
+        },
+        {
+          "name": "postgresql-18.yaml",
+          "version": "908da0eb48aefa270d76f90cb19557819aa72cbd"
+        },
+        {
+          "name": "postgresql-18",
+          "version": "18.6-r7"
+        },
+        {
+          "name": "postgresql-18",
+          "version": "18.6-r7"
+        }
+      ]
+    },
+    {
+      "path": "var/lib/db/sbom/postgresql-18-base-18.6-r7.spdx.json",
+      "sha256": "f9ba297b22fab11d8e9d39963de7f69d83cb48641ffad447a7d399afcd992ba0",
+      "packages": [
+        {
+          "name": "postgresql-18-base",
+          "version": "18.6-r7"
+        },
+        {
+          "name": "postgresql-18.yaml",
+          "version": "908da0eb48aefa270d76f90cb19557819aa72cbd"
+        },
+        {
+          "name": "postgresql-18-base",
+          "version": "18.6-r7"
+        },
+        {
+          "name": "postgresql-18-base",
+          "version": "18.6-r7"
+        }
+      ]
+    },
+    {
+      "path": "var/lib/db/sbom/postgresql-18-client-18.6-r7.spdx.json",
+      "sha256": "21201eb640682a3476f649fe4cf61caf35642102ef25cc31e8a70ddefc9e0081",
+      "packages": [
+        {
+          "name": "postgresql-18-client",
+          "version": "18.6-r7"
+        },
+        {
+          "name": "postgresql-18.yaml",
+          "version": "908da0eb48aefa270d76f90cb19557819aa72cbd"
+        },
+        {
+          "name": "postgresql-18-client",
+          "version": "18.6-r7"
+        },
+        {
+          "name": "postgresql-18-client",
+          "version": "18.6-r7"
+        }
+      ]
+    },
+    {
+      "path": "var/lib/db/sbom/postgresql-18-client-base-18.6-r7.spdx.json",
+      "sha256": "53d16cbfd0a45d8543e15f7f0128d1c987537bc1ec7d8bbf7c98199ce33e9b1e",
+      "packages": [
+        {
+          "name": "postgresql-18-client-base",
+          "version": "18.6-r7"
+        },
+        {
+          "name": "postgresql-18.yaml",
+          "version": "908da0eb48aefa270d76f90cb19557819aa72cbd"
+        },
+        {
+          "name": "postgresql-18-client-base",
+          "version": "18.6-r7"
+        },
+        {
+          "name": "postgresql-18-client-base",
+          "version": "18.6-r7"
+        }
+      ]
+    },
+    {
+      "path": "var/lib/db/sbom/postgresql-18-contrib-18.6-r7.spdx.json",
+      "sha256": "85c2dfdcf0bd1069b4dc13fe8c9b029ace89fa6e959796fca2efe518e12602fe",
+      "packages": [
+        {
+          "name": "postgresql-18-contrib",
+          "version": "18.6-r7"
+        },
+        {
+          "name": "postgresql-18.yaml",
+          "version": "908da0eb48aefa270d76f90cb19557819aa72cbd"
+        },
+        {
+          "name": "postgresql-18-contrib",
+          "version": "18.6-r7"
+        },
+        {
+          "name": "postgresql-18-contrib",
+          "version": "18.6-r7"
+        }
+      ]
+    },
+    {
+      "path": "var/lib/db/sbom/postgresql-18-contrib-base-18.6-r7.spdx.json",
+      "sha256": "92939da273b4563982848fb42cf4b45afe9ef35dcbf3b79fc3561ff9a232549f",
+      "packages": [
+        {
+          "name": "postgresql-18-contrib-base",
+          "version": "18.6-r7"
+        },
+        {
+          "name": "postgresql-18.yaml",
+          "version": "908da0eb48aefa270d76f90cb19557819aa72cbd"
+        },
+        {
+          "name": "postgresql-18-contrib-base",
+          "version": "18.6-r7"
+        },
+        {
+          "name": "postgresql-18-contrib-base",
+          "version": "18.6-r7"
+        }
+      ]
+    },
+    {
+      "path": "var/lib/db/sbom/postgresql-18-oci-entrypoint-18.6-r7.spdx.json",
+      "sha256": "c69ebb87190d40c65f438e64b113f3098b47f5400a6eb28213497b3506a4ed11",
+      "packages": [
+        {
+          "name": "postgresql-18-oci-entrypoint",
+          "version": "18.6-r7"
+        },
+        {
+          "name": "postgresql-18.yaml",
+          "version": "908da0eb48aefa270d76f90cb19557819aa72cbd"
+        },
+        {
+          "name": "postgresql-18-oci-entrypoint",
+          "version": "18.6-r7"
+        },
+        {
+          "name": "postgresql-18-oci-entrypoint",
+          "version": "18.6-r7"
+        }
+      ]
+    },
+    {
+      "path": "var/lib/db/sbom/postgresql-18-oci-entrypoint-base-18.6-r7.spdx.json",
+      "sha256": "85e5b61dcaee526124db462dd181c13b12bab8a5bdd7d5fddeb5fb16a7caaf9f",
+      "packages": [
+        {
+          "name": "postgresql-18-oci-entrypoint-base",
+          "version": "18.6-r7"
+        },
+        {
+          "name": "postgresql-18.yaml",
+          "version": "908da0eb48aefa270d76f90cb19557819aa72cbd"
+        },
+        {
+          "name": "postgresql-18-oci-entrypoint-base",
+          "version": "18.6-r7"
+        },
+        {
+          "name": "postgresql-18-oci-entrypoint-base",
+          "version": "18.6-r7"
+        }
+      ]
+    }
+  ],
+  "note": "Only file identities and relevant package inventory retained; no filesystem layers or credentials committed. Detailed interpretations and source links are in product-boundary-review.json."
+}

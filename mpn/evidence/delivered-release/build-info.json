@@ -1,0 +1,168 @@
+{
+  "sourceQualification": {
+    "state": "trusted-main-build",
+    "repository": "gallatinai/horizon",
+    "workflowId": 219977478,
+    "sourceSha": "b84b9afcd6983d553b6b8406317b6592ec90cb7c",
+    "imageTag": "main-b84b9afcd6983d553b6b8406317b6592ec90cb7c-19710",
+    "runId": 42109769948,
+    "runNumber": 19710,
+    "runAttempt": 1
+  },
+  "platformContract": {
+    "schemaVersion": 1,
+    "identity": {
+      "browserOrigin": "https://horizon.uds.dev",
+      "cliClientId": "gallatin-horizon-cli",
+      "coreVersion": "1.14.0",
+      "issuer": "https://sso.uds.dev/realms/uds",
+      "mode": "uds",
+      "tenant": "gallatin",
+      "tenantGroupPrefix": "/gallatin/tenants/",
+      "webClientId": "gallatin-horizon-web",
+      "network": {
+        "host": "sso.uds.dev",
+        "port": 443
+      },
+      "audience": "urn:gallatin:horizon"
+    }
+  },
+  "platformContractSha256": "1cbe33ee4b899db5a86b06afd2d83d5ac9020bd2cffd20dcd56acbf9ace6e5ff",
+  "version": "2026.45.4-uds.1",
+  "horizonCommit": "b84b9afcd6983d553b6b8406317b6592ec90cb7c",
+  "ciBuildNumber": 19710,
+  "imageTag": "main-b84b9afcd6983d553b6b8406317b6592ec90cb7c-19710",
+  "architecture": "amd64",
+  "packageCommit": "d528b7febf1ce8bb5ccf99661dade6ae09a84381",
+  "udsVersion": "v0.38.0",
+  "helmVersion": "v3.16.4+g7877b45",
+  "resolverSha256": "fdaea69627e660b720f33c0c2d60f49ebbbb5c58cc8c20aa30f95baf5a627a21",
+  "images": [
+    "334883685015.dkr.ecr.us-west-2.amazonaws.com/cgr.dev/gallatin.ai/nats-fips@sha256:c0cd0d790b60eaad988aa1f62f34efdb6394058c99ff363fc16d740ff57ffac1",
+    "334883685015.dkr.ecr.us-west-2.amazonaws.com/cgr.dev/gallatin.ai/openfga-fips@sha256:d4ecc30f25ffc3e564bf94cc74819b373366662b6942acca648f7216444ae7c6",
+    "334883685015.dkr.ecr.us-west-2.amazonaws.com/cgr.dev/gallatin.ai/seaweedfs-fips@sha256:de137817b16c0d1711c3b9a9075325cd6b6bd5fd8eaed5eebdb5d3032871313b",
+    "334883685015.dkr.ecr.us-west-2.amazonaws.com/horizon-api@sha256:0e20f5f1f91490a175f9615a692bbfbcec4f6d88b2ff63825f8ce4d09a8ceb25",
+    "334883685015.dkr.ecr.us-west-2.amazonaws.com/horizon-artifact-ingestion@sha256:49e4b26c72ab53ad479faf25cf960bd51578a9f9ea8f588ca18cb45a3b8306cc",
+    "334883685015.dkr.ecr.us-west-2.amazonaws.com/horizon-chat-agent@sha256:ad2e4850eb61ea1d9b378c4a7e8b61b9d8892bdd803ff8b262c391b3e0129519",
+    "334883685015.dkr.ecr.us-west-2.amazonaws.com/horizon-migrations@sha256:b49e112313a93a92a1e49dbc69d46f63472af63bd881ce7caea0f3c74a9ed270",
+    "334883685015.dkr.ecr.us-west-2.amazonaws.com/horizon-ops-readiness@sha256:0e6d720db834e6b8fc92b0fb0c72ed5212b94b23d9210ad911e86da61de50f41",
+    "334883685015.dkr.ecr.us-west-2.amazonaws.com/horizon-postgres@sha256:3431665ea7f0c2dfe4bef9673aac6221a58bdf910251857123b7fb363cbb030e",
+    "334883685015.dkr.ecr.us-west-2.amazonaws.com/horizon-road-graph@sha256:98e6c783f1929b36e212cbc9bd1f69f3c5da4b886efa5826558a38965838c987",
+    "334883685015.dkr.ecr.us-west-2.amazonaws.com/horizon-simulation@sha256:d574ce4a38fb780f6986526f86d6b61399cd378c27c4d2209f39db17ebcf648b",
+    "334883685015.dkr.ecr.us-west-2.amazonaws.com/horizon-web@sha256:76d8dfbca65b27221b6a3c2588763b14dc058e965ea62507fa71130067522ae6"
+  ],
+  "imageDigests": {
+    "334883685015.dkr.ecr.us-west-2.amazonaws.com/horizon-api@sha256:0e20f5f1f91490a175f9615a692bbfbcec4f6d88b2ff63825f8ce4d09a8ceb25": "sha256:0e20f5f1f91490a175f9615a692bbfbcec4f6d88b2ff63825f8ce4d09a8ceb25",
+    "334883685015.dkr.ecr.us-west-2.amazonaws.com/horizon-artifact-ingestion@sha256:49e4b26c72ab53ad479faf25cf960bd51578a9f9ea8f588ca18cb45a3b8306cc": "sha256:49e4b26c72ab53ad479faf25cf960bd51578a9f9ea8f588ca18cb45a3b8306cc",
+    "334883685015.dkr.ecr.us-west-2.amazonaws.com/horizon-chat-agent@sha256:ad2e4850eb61ea1d9b378c4a7e8b61b9d8892bdd803ff8b262c391b3e0129519": "sha256:ad2e4850eb61ea1d9b378c4a7e8b61b9d8892bdd803ff8b262c391b3e0129519",
+    "334883685015.dkr.ecr.us-west-2.amazonaws.com/horizon-migrations@sha256:b49e112313a93a92a1e49dbc69d46f63472af63bd881ce7caea0f3c74a9ed270": "sha256:b49e112313a93a92a1e49dbc69d46f63472af63bd881ce7caea0f3c74a9ed270",
+    "334883685015.dkr.ecr.us-west-2.amazonaws.com/horizon-ops-readiness@sha256:0e6d720db834e6b8fc92b0fb0c72ed5212b94b23d9210ad911e86da61de50f41": "sha256:0e6d720db834e6b8fc92b0fb0c72ed5212b94b23d9210ad911e86da61de50f41",
+    "334883685015.dkr.ecr.us-west-2.amazonaws.com/horizon-road-graph@sha256:98e6c783f1929b36e212cbc9bd1f69f3c5da4b886efa5826558a38965838c987": "sha256:98e6c783f1929b36e212cbc9bd1f69f3c5da4b886efa5826558a38965838c987",
+    "334883685015.dkr.ecr.us-west-2.amazonaws.com/horizon-simulation@sha256:d574ce4a38fb780f6986526f86d6b61399cd378c27c4d2209f39db17ebcf648b": "sha256:d574ce4a38fb780f6986526f86d6b61399cd378c27c4d2209f39db17ebcf648b",
+    "334883685015.dkr.ecr.us-west-2.amazonaws.com/horizon-web@sha256:76d8dfbca65b27221b6a3c2588763b14dc058e965ea62507fa71130067522ae6": "sha256:76d8dfbca65b27221b6a3c2588763b14dc058e965ea62507fa71130067522ae6",
+    "334883685015.dkr.ecr.us-west-2.amazonaws.com/cgr.dev/gallatin.ai/nats-fips@sha256:c0cd0d790b60eaad988aa1f62f34efdb6394058c99ff363fc16d740ff57ffac1": "sha256:c0cd0d790b60eaad988aa1f62f34efdb6394058c99ff363fc16d740ff57ffac1",
+    "334883685015.dkr.ecr.us-west-2.amazonaws.com/cgr.dev/gallatin.ai/openfga-fips@sha256:d4ecc30f25ffc3e564bf94cc74819b373366662b6942acca648f7216444ae7c6": "sha256:d4ecc30f25ffc3e564bf94cc74819b373366662b6942acca648f7216444ae7c6",
+    "334883685015.dkr.ecr.us-west-2.amazonaws.com/cgr.dev/gallatin.ai/seaweedfs-fips@sha256:de137817b16c0d1711c3b9a9075325cd6b6bd5fd8eaed5eebdb5d3032871313b": "sha256:de137817b16c0d1711c3b9a9075325cd6b6bd5fd8eaed5eebdb5d3032871313b",
+    "334883685015.dkr.ecr.us-west-2.amazonaws.com/horizon-postgres@sha256:3431665ea7f0c2dfe4bef9673aac6221a58bdf910251857123b7fb363cbb030e": "sha256:3431665ea7f0c2dfe4bef9673aac6221a58bdf910251857123b7fb363cbb030e"
+  },
+  "prepareOnly": false,
+  "runtimeSource": {
+    "sourceSha": "b84b9afcd6983d553b6b8406317b6592ec90cb7c",
+    "sourceInputs": {
+      "composeSha256": "7006d66d7403ff5168bd633a442958b5a7faf90c0fc74e5f7b90d76d80bec035",
+      "bakeSha256": "6d40eb11a0b08aefe38773163aa64f11cb5e3aa341153418488d60b52d8c0622",
+      "postgresContextTree": "11de8a6c8159903d06c2696ccd77e53e0fc6eea5",
+      "postgresDefinitionSha256": "07646bf559e1c6170a2db18f2b28fd0ab7b7cdcb53649d0a32d5e04d2513c6f9"
+    },
+    "postgresBuild": {
+      "sourceSha": "9d3725b0ccbfbfc404bb84de948f369c95bd805c",
+      "runId": 41699186459,
+      "runAttempt": 1,
+      "tag": "postgres-candidate-9d3725b0ccbfbfc404bb84de948f369c95bd805c-r41699186459-a1"
+    },
+    "images": {
+      "horizon-api": {
+        "repository": "334883685015.dkr.ecr.us-west-2.amazonaws.com/horizon-api",
+        "tag": "main-b84b9afcd6983d553b6b8406317b6592ec90cb7c-19710",
+        "digest": "sha256:a3b0e62816ecc225fffe72ae7e35e8db7ed3f02dc038b4db5deb9e8c87ab1064",
+        "platformDigest": "sha256:0e20f5f1f91490a175f9615a692bbfbcec4f6d88b2ff63825f8ce4d09a8ceb25"
+      },
+      "horizon-artifact-ingestion": {
+        "repository": "334883685015.dkr.ecr.us-west-2.amazonaws.com/horizon-artifact-ingestion",
+        "tag": "main-b84b9afcd6983d553b6b8406317b6592ec90cb7c-19710",
+        "digest": "sha256:c66064f8a1bf45b3a43ff8e3d8bfb965d10aeedeb01198e69ca2e724e2c3d70c",
+        "platformDigest": "sha256:49e4b26c72ab53ad479faf25cf960bd51578a9f9ea8f588ca18cb45a3b8306cc"
+      },
+      "horizon-chat-agent": {
+        "repository": "334883685015.dkr.ecr.us-west-2.amazonaws.com/horizon-chat-agent",
+        "tag": "main-b84b9afcd6983d553b6b8406317b6592ec90cb7c-19710",
+        "digest": "sha256:e8d5557861cfa2a0411ff4b03b7b8db44d2a7996ea95654427ac48b1cb51794f",
+        "platformDigest": "sha256:ad2e4850eb61ea1d9b378c4a7e8b61b9d8892bdd803ff8b262c391b3e0129519"
+      },
+      "horizon-migrations": {
+        "repository": "334883685015.dkr.ecr.us-west-2.amazonaws.com/horizon-migrations",
+        "tag": "main-b84b9afcd6983d553b6b8406317b6592ec90cb7c-19710",
+        "digest": "sha256:76277f7f3c567d67e4acb6532b273ba5a5d73bd6227fefc14048a228aa5dc2fa",
+        "platformDigest": "sha256:b49e112313a93a92a1e49dbc69d46f63472af63bd881ce7caea0f3c74a9ed270"
+      },
+      "horizon-ops-readiness": {
+        "repository": "334883685015.dkr.ecr.us-west-2.amazonaws.com/horizon-ops-readiness",
+        "tag": "main-b84b9afcd6983d553b6b8406317b6592ec90cb7c-19710",
+        "digest": "sha256:a594da856f03de9ba7cbae6d17cdd89e9d376e9e4482f3c533ee8bd3338327e5",
+        "platformDigest": "sha256:0e6d720db834e6b8fc92b0fb0c72ed5212b94b23d9210ad911e86da61de50f41"
+      },
+      "horizon-road-graph": {
+        "repository": "334883685015.dkr.ecr.us-west-2.amazonaws.com/horizon-road-graph",
+        "tag": "main-b84b9afcd6983d553b6b8406317b6592ec90cb7c-19710",
+        "digest": "sha256:b667371d54154fdc0cd8dce2773e447c9c720b227b720e09d26b27af87e73605",
+        "platformDigest": "sha256:98e6c783f1929b36e212cbc9bd1f69f3c5da4b886efa5826558a38965838c987"
+      },
+      "horizon-simulation": {
+        "repository": "334883685015.dkr.ecr.us-west-2.amazonaws.com/horizon-simulation",
+        "tag": "main-b84b9afcd6983d553b6b8406317b6592ec90cb7c-19710",
+        "digest": "sha256:ef4d6e4b34af842b1ec79539dd99e537a9efae552cf1d06162b8da9255d21d3e",
+        "platformDigest": "sha256:d574ce4a38fb780f6986526f86d6b61399cd378c27c4d2209f39db17ebcf648b"
+      },
+      "horizon-web": {
+        "repository": "334883685015.dkr.ecr.us-west-2.amazonaws.com/horizon-web",
+        "tag": "main-b84b9afcd6983d553b6b8406317b6592ec90cb7c-19710",
+        "digest": "sha256:2a04e5f9708f0195fe666f9e295da60fcbc6101a90f7ab016df7c8f9f9112a07",
+        "platformDigest": "sha256:76d8dfbca65b27221b6a3c2588763b14dc058e965ea62507fa71130067522ae6"
+      },
+      "nats": {
+        "repository": "334883685015.dkr.ecr.us-west-2.amazonaws.com/cgr.dev/gallatin.ai/nats-fips",
+        "tag": "2.15.2",
+        "digest": "sha256:223a728c769f6a535124f55188264bc76925ab2fe9cef020ed3e1b7e9c7da6a4",
+        "platformDigest": "sha256:c0cd0d790b60eaad988aa1f62f34efdb6394058c99ff363fc16d740ff57ffac1"
+      },
+      "openfga": {
+        "repository": "334883685015.dkr.ecr.us-west-2.amazonaws.com/cgr.dev/gallatin.ai/openfga-fips",
+        "tag": "1.22.1",
+        "digest": "sha256:26ff761a43ba883f048e343d0dcd6a942700b6797cff4b6af03d905fb9c8c7a6",
+        "platformDigest": "sha256:d4ecc30f25ffc3e564bf94cc74819b373366662b6942acca648f7216444ae7c6"
+      },
+      "seaweedfs": {
+        "repository": "334883685015.dkr.ecr.us-west-2.amazonaws.com/cgr.dev/gallatin.ai/seaweedfs-fips",
+        "tag": "4.52",
+        "digest": "sha256:ae1d6956e80d92f8bd3ac8b7975095a1908805e00df25b174e92d7ebe0f66a43",
+        "platformDigest": "sha256:de137817b16c0d1711c3b9a9075325cd6b6bd5fd8eaed5eebdb5d3032871313b"
+      },
+      "postgres": {
+        "repository": "334883685015.dkr.ecr.us-west-2.amazonaws.com/horizon-postgres",
+        "tag": "postgres-candidate-9d3725b0ccbfbfc404bb84de948f369c95bd805c-r41699186459-a1",
+        "digest": "sha256:f619c32b172669e4a359b09649ab5c47bc8b64dc8fb58a0c598ca5289ce253a3",
+        "platformDigest": "sha256:3431665ea7f0c2dfe4bef9673aac6221a58bdf910251857123b7fb363cbb030e"
+      }
+    }
+  },
+  "archives": {
+    "zarf-package-horizon-amd64-2026.45.4-uds.1.tar.zst": {
+      "sha256": "4b0f4ce89625b7c3fd0b926c85b43c34aa0f2153a16c374ce507a0b0726ed6c5",
+      "size": 21939723325
+    },
+    "uds-bundle-horizon-amd64-2026.45.4-uds.1.tar.zst": {
+      "sha256": "b63034509f6efc837c74b2ba9f8bce16ddddbf1eec85b6c94fb823da990bc16d",
+      "size": 21936408640
+    }
+  }
+}

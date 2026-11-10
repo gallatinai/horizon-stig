@@ -1,0 +1,8 @@
+{
+  "bundleReference": "registry.uds-mil.us/gallatin/horizon:2026.45.4-uds.1@sha256:486f55939f94ab081d2a12ecade5439512f8f7c4b3119c40b027c711d386adc9",
+  "digest": "sha256:486f55939f94ab081d2a12ecade5439512f8f7c4b3119c40b027c711d386adc9",
+  "digestReference": "registry.uds-mil.us/gallatin/horizon@sha256:486f55939f94ab081d2a12ecade5439512f8f7c4b3119c40b027c711d386adc9",
+  "expectedDigest": "sha256:486f55939f94ab081d2a12ecade5439512f8f7c4b3119c40b027c711d386adc9",
+  "packageSha256": "4b0f4ce89625b7c3fd0b926c85b43c34aa0f2153a16c374ce507a0b0726ed6c5",
+  "reference": "registry.uds-mil.us/gallatin/horizon:2026.45.4-uds.1"
+}

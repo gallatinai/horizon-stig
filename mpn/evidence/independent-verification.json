@@ -1,0 +1,103 @@
+{
+  "purpose": "Independent read-only verification of actual shipped profile, digest closure and approved-signer-equivalence claims; not replacement of image-owner decisions.",
+  "artifact_run_url": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685",
+  "baseline": {
+    "version": "2026.45.4-uds.1",
+    "source": "b84b9afcd6983d553b6b8406317b6592ec90cb7c",
+    "package": "d528b7febf1ce8bb5ccf99661dade6ae09a84381",
+    "identity_mode": "uds",
+    "core": "1.14.0",
+    "images": 12
+  },
+  "artifact_assertions": {
+    "manifest_exact_buildinfo_and_validation": true,
+    "buildinfo_hash": true,
+    "identity_contract_exact": true,
+    "identity_uds": true,
+    "core_version": true,
+    "source_sha": true,
+    "package_sha": true,
+    "image_count12": true,
+    "image_digest_keys_exact": true,
+    "runtime_source_exact_imageclosure": true,
+    "no_bundled_keycloak_image": true,
+    "archive_validation_same": true,
+    "vouch_publication_same_digest": true,
+    "vouch_publication_same_packagehash": true,
+    "passed_validation_vouch": true
+  },
+  "source_verification": [
+    {
+      "source": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/scripts/ci/platform_identity.py",
+      "supported": "UDS profile removes keycloak component, bootstrap variables, local realm chart/values, localKeycloak database/adminSecrets and extraDatabases. Applies actual issuer/audience/web/CLIclient/group settings and packages typed identity contract/preflight.",
+      "limit": "Not proof of a live deployment; profile transformation is fully source-reproducible."
+    },
+    {
+      "source": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/scripts/ci/runtime_source.py",
+      "supported": "Stage sets every declared Zarf and chart image to authenticated inventory platformDigest; rejects duplicate/unrecognized/unreferenced inventory. Build/verify re-resolve source provenance.",
+      "limit": "Producer-image individual signature verification not established by this module; image identity/digest closure is established."
+    },
+    {
+      "source": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/scripts/ci/verify_attestation.py",
+      "supported": "Production verification requires exact configured certificate subject,SAN,issuer; pinned closed Fulcio/TSA CA stores and fingerprints; validcodeSigning leaf withP256 key; DSSEPAE SHA256 signature; RFC3161 timestamp signature/imprint/chain; signer validity at authenticatedtimestamp; throws on any mismatch. This is cryptographic recognized-signer verification, not merely hashes.",
+      "limit": "Actual four phase DSSEenvelopes are not retained in downloaded smallpublication artifact; we did not rerun cryptoverification on actual release envelopes."
+    },
+    {
+      "source": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/scripts/ci/release.py",
+      "supported": "verify() checks actual archive contents,images and packed OCI manifests against selectedsource inventory and transforms. check_evidence() verifies every signedphase and exact archive/buildInfo/manifest bindings. vouch(),publish(),release_record() each require/revalidate this chain; publish ties remote digest toexact vouched package. Smallartifact validated record must match observed package and profile.",
+      "limit": "Approvedpublication path is proven by code and successfulrecord. It is not universal Kubernetesadmission enforcement or blanket prevention of administrator bypass outside approvedrelease path."
+    },
+    {
+      "source": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/.github/workflows/release.yaml",
+      "supported": "Main-only releaseenvironment workflow runs archiveverify,manifestattest,check-evidence,vouch,publish,release-record sequentially, then preserves smallpublicationrecord. ExpectedFulcioidentity pins come from releaseenvironmentvariables, not inferred from untrusted envelope.",
+      "limit": "Workflow configuration plus observedsuccessfulpublication supports source-inferred recommendation; no new registrywrite/deployment occurred during this review."
+    }
+  ],
+  "official_rule_conclusions": [
+    {
+      "vuln_id": "V-222513",
+      "supported_recommendation": "Likely covered through controlled signed-package delivery",
+      "reason": "Officialcheck looks for unsignedpatch prevention capability and manuallyverifiable vendorhash. Releasecryptographically verifies approvedsigner evidence bound toexactpackage and publishes SHA256SUMS; imagebundles are immutable upgrades. Prior Needswork justification thatonlydigestchecks exist is contradicted by releasecode.",
+      "tailoring": "Record approvedrelease/installprocedure and trustpins; do not claim arbitrary administrator installation paths are technicallyimpossible."
+    },
+    {
+      "vuln_id": "V-204740",
+      "supported_recommendation": "Likely covered through controlled signed-package delivery",
+      "reason": "Applicationserver upgrades arrive as exactdigest-bound packagedimages only after approvedcertificate/signature verification and vouch. This satisfies the control objective at deliverylayer without requiring Node/nginx to duplicate signaturechecks.",
+      "tailoring": "Bind componentupgradeprocess toapprovedpackage path; no universaladmission claim."
+    },
+    {
+      "vuln_id": "V-263606",
+      "supported_recommendation": "Likely covered through controlled signed-package delivery",
+      "reason": "DeliveredPostgreSQL component is digest-bound inexactpackage whose release evidence/signature approvedidentity is verifiedbeforepublication. DBMS need not implement itsown softwareinstaller if immutablecomponent upgrades use controlledplatform path.",
+      "tailoring": "Document organization-defined upgradecomponents and approvedpackage boundary; dynamicallyinstalled DB extensions/other unmanaged paths require separatepolicy if allowed."
+    },
+    {
+      "vuln_id": "V-233065",
+      "supported_recommendation": "Likely covered only as explicit approved signed-package equivalent; do not state literal individual image signing enforcement",
+      "reason": "All12packagedimage digests are bound into cryptographicallyverifiedrelease evidence, so product-level verification mechanism exists and generic noverification finding iswrong. Literalcheck specifically mentions signedcontainerimages recognizedfromapprovedsource; evidence proves thearchive-and-release mechanism rather than individualproducer signatures or admissioncosign verification.",
+      "tailoring": "Record accepted signed-package transitiveimageverification boundary and enforcedapproveddeploymentprocedure. If assessor requires individual image signatures/universaladmission, this is a specific tailoring or additionalenforcement requirement, not an unexploredunknown."
+    }
+  ],
+  "tests": [
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -p test_keyless_crypto.py -q",
+      "result": "PASS 16tests, actualofflineOpenSSL3.6.5 PKI/signature/timestamp trustnegativecases"
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -p test_platform_archive.py -q",
+      "result": "PASS 9tests, profile/archivetampernegativecases"
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -p test_release.py -q",
+      "result": "PASS 25tests, vouch/publication exactbindings/failurepropagation syntheticfixtures; mocked externalservices"
+    }
+  ],
+  "blockers": [],
+  "caveats": [
+    "Do not describe observed12image manifest as13image oldcandidate.",
+    "Do not retain bundledKeycloak findings onactual UDSprofile.",
+    "Do not claim literal per-image signatureadmission; describe controlled signedpackageequivalent and requiredacceptance.",
+    "Do not claim actual DSSEcryptosignatures independentlyreplayed; original phaseenvelopes are absentfromsmallartifact, though pipelineenforces verification and successrecordsupports inference."
+  ]
+}

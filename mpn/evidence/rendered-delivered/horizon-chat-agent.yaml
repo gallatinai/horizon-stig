@@ -1,0 +1,161 @@
+---
+# Source: horizon-service/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: horizon-chat-agent
+  labels:
+    helm.sh/chart: horizon-service-0.18.0
+    app.kubernetes.io/name: horizon-chat-agent
+    app.kubernetes.io/instance: horizon-chat-agent
+    app.kubernetes.io/version: "0.1.0"
+    app.kubernetes.io/managed-by: Helm
+automountServiceAccountToken: false
+---
+# Source: horizon-service/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: horizon-chat-agent
+  labels:
+    helm.sh/chart: horizon-service-0.18.0
+    app.kubernetes.io/name: horizon-chat-agent
+    app.kubernetes.io/instance: horizon-chat-agent
+    app.kubernetes.io/version: "0.1.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: horizon-chat-agent
+      app.kubernetes.io/instance: horizon-chat-agent
+  template:
+    metadata:
+      labels:
+        helm.sh/chart: horizon-service-0.18.0
+        app.kubernetes.io/name: horizon-chat-agent
+        app.kubernetes.io/instance: horizon-chat-agent
+        app.kubernetes.io/version: "0.1.0"
+        app.kubernetes.io/managed-by: Helm
+    spec:
+      serviceAccountName: horizon-chat-agent
+      automountServiceAccountToken: false
+      securityContext:
+        fsGroup: 65532
+        runAsGroup: 65532
+        runAsNonRoot: true
+        runAsUser: 65532
+        seccompProfile:
+          type: RuntimeDefault
+      
+      containers:
+        - name: horizon-chat-agent
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+          image: 334883685015.dkr.ecr.us-west-2.amazonaws.com/horizon-chat-agent@sha256:ad2e4850eb61ea1d9b378c4a7e8b61b9d8892bdd803ff8b262c391b3e0129519
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          env:
+            - name: TILES_SATELLITE_TILE_SIZE
+              value: "256"
+            - name: TILES_SATELLITE_ATTRIBUTION
+              value: ""
+            - name: TILES_SATELLITE_REVISION
+              value: "v0"
+            - name: DATABASE_HOST
+              value: "horizon-postgres"
+            - name: DATABASE_PORT
+              value: "5432"
+            - name: DATABASE_NAME
+              value: "horizon"
+            - name: DATABASE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-postgres-secret
+                  key: horizon-app-username
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-postgres-secret
+                  key: horizon-app-password
+            - name: DATABASE_URL
+              value: "postgresql://$(DATABASE_USERNAME):$(DATABASE_PASSWORD)@$(DATABASE_HOST):$(DATABASE_PORT)/$(DATABASE_NAME)"
+            # App credentials for RLS-enabled database connections
+            - name: POSTGRES_HOST
+              value: "horizon-postgres"
+            - name: POSTGRES_PORT
+              value: "5432"
+            - name: POSTGRES_DB
+              value: "horizon"
+            - name: POSTGRES_HORIZON_APP_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-postgres-secret
+                  key: horizon-app-username
+            - name: POSTGRES_HORIZON_APP_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-postgres-secret
+                  key: horizon-app-password
+            - name: POSTGRES_SSLMODE
+              value: "disable"
+            - name: NATS_URL
+              value: "nats://nats:4222"
+            # NATS user credentials for internal messaging (operator mode)
+            - name: NATS_USER_SEED
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-nats-secret
+                  key: user-seed
+            - name: NATS_USER_JWT
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-nats-secret
+                  key: user-jwt
+            - name: LLM_PROVIDER
+              value: "openai"
+            - name: LLM_MODEL_ID
+              value: "gpt-5.2"
+            - name: OPENAI_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-openai-secret
+                  key: api-key
+            - name: STORAGE_BACKEND
+              value: "s3"
+            - name: S3_BUCKET
+              value: "horizon-uploads"
+            - name: S3_REGION
+              value: "us-west-2"
+            - name: S3_ENDPOINT
+              value: "http://seaweedfs:8333"
+            - name: S3_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-s3-secret
+                  key: access-key-id
+            - name: S3_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: horizon-s3-secret
+                  key: secret-access-key
+          resources:
+            limits:
+              memory: 3Gi
+            requests:
+              cpu: 100m
+              memory: 2Gi
+          volumeMounts:
+            - mountPath: /tmp
+              name: tmp
+      volumes:
+        - emptyDir: {}
+          name: tmp

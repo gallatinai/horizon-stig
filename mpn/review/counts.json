@@ -1,56 +1,54 @@
 {
   "total": 1048,
   "by_status": {
-    "Needs work": 257,
-    "Likely covered": 586,
-    "Unclear": 154,
-    "Needs N/A justification": 47,
+    "Needs work": 159,
+    "Likely covered": 779,
+    "Needs N/A justification": 72,
+    "Unclear": 34,
     "Compliant": 4
   },
   "by_benchmark": {
     "U_ASD_V6R5_STIG": {
-      "Needs work": 90,
-      "Likely covered": 105,
-      "Unclear": 70,
-      "Needs N/A justification": 21
+      "Needs work": 56,
+      "Likely covered": 184,
+      "Needs N/A justification": 31,
+      "Unclear": 15
     },
     "U_Kubernetes_V2R6_STIG": {
-      "Likely covered": 87,
+      "Likely covered": 89,
       "Compliant": 1,
-      "Needs work": 2,
-      "Unclear": 2
+      "Needs work": 2
     },
     "U_Container_Platform_V2R5_SRG": {
-      "Unclear": 20,
-      "Likely covered": 139,
-      "Needs work": 28,
-      "Needs N/A justification": 1
+      "Unclear": 4,
+      "Likely covered": 152,
+      "Needs N/A justification": 2,
+      "Needs work": 30
     },
     "U_Web_Server_V4R5_SRG": {
-      "Needs work": 28,
-      "Likely covered": 80,
+      "Likely covered": 102,
+      "Needs work": 15,
       "Compliant": 2,
-      "Unclear": 10,
-      "Needs N/A justification": 6
+      "Needs N/A justification": 6,
+      "Unclear": 1
     },
     "U_Application_Server_V4R6_SRG": {
-      "Needs work": 34,
-      "Likely covered": 74,
-      "Unclear": 23,
-      "Needs N/A justification": 6
+      "Needs work": 16,
+      "Likely covered": 107,
+      "Needs N/A justification": 4,
+      "Unclear": 10
     },
     "U_Database_V4R6_SRG": {
-      "Needs work": 41,
-      "Unclear": 25,
-      "Likely covered": 71,
+      "Needs work": 24,
+      "Likely covered": 95,
+      "Needs N/A justification": 18,
       "Compliant": 1,
-      "Needs N/A justification": 4
+      "Unclear": 4
     },
     "U_AAA_Services_V2R3_SRG": {
-      "Likely covered": 30,
-      "Needs work": 34,
-      "Needs N/A justification": 9,
-      "Unclear": 4
+      "Likely covered": 50,
+      "Needs N/A justification": 11,
+      "Needs work": 16
     }
   }
 }

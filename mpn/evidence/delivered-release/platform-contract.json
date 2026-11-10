@@ -1,0 +1,1 @@
+{"identity":{"audience":"urn:gallatin:horizon","browserOrigin":"https://horizon.uds.dev","cliClientId":"gallatin-horizon-cli","coreVersion":"1.14.0","issuer":"https://sso.uds.dev/realms/uds","mode":"uds","network":{"host":"sso.uds.dev","port":443},"tenant":"gallatin","tenantGroupPrefix":"/gallatin/tenants/","webClientId":"gallatin-horizon-web"},"schemaVersion":1}

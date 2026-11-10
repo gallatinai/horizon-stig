@@ -55,8 +55,30 @@ def main():
     assert all(r.get('evidence_state') == 'source-inferred' for r in rows if r['status'] == 'Compliant'), 'Source-only compliant recommendations must be explicitly labelled'
     investigation = json.loads((ROOT / 'mpn/evidence/source-investigation.json').read_text())
     indexed = {r['vuln_id']: r for r in rows}
-    for key, decision in investigation['explicit_rule_decisions'].items():
+    product_path = ROOT / 'mpn/evidence/product-boundary-review.json'
+    product = json.loads(product_path.read_text()) if product_path.exists() else {'decisions': {}}
+    for key, decision in {**investigation['explicit_rule_decisions'], **product['decisions']}.items():
         assert indexed[key]['status'] == decision['status'], key
+    if product['decisions']:
+        prior = json.loads((ROOT / 'mpn/review/pre-rereview-20261109.json').read_text())
+        opened = {r['vuln_id'] for r in prior if r['status'] in {'Unclear', 'Needs work'}}
+        assigned = [key for batch in product['assignments'].values() for key in batch]
+        assert len(assigned) == len(set(assigned)) == 411 and set(assigned) == opened
+        assert opened <= set(product['decisions'])
+        for key, decision in product['decisions'].items():
+            assert indexed[key]['justification'].startswith(decision['justification']), key
+            assert indexed[key]['investigation']
+        release_dir = ROOT / 'mpn/evidence/delivered-release'
+        release = json.loads((release_dir / 'build-info.json').read_text())
+        assert release['horizonCommit'] == product['baseline']['horizon_commit']
+        assert release['platformContract']['identity']['mode'] == 'uds'
+        assert len(release['images']) == 12
+        workloads = json.loads((ROOT / 'mpn/evidence/rendered-delivered/workload-summary.json').read_text())
+        assert {w['image'] for w in workloads} == set(release['images'])
+        assert not (ROOT / 'mpn/evidence/rendered-delivered/keycloak.yaml').exists()
+        assert all(w['resources'] for w in workloads)
+        for item in json.loads((release_dir / 'provenance.json').read_text())['files']:
+            assert hashlib.sha256((release_dir / item['path']).read_bytes()).hexdigest() == item['sha256']
     for item in json.loads((ROOT / 'mpn/evidence/rendered-manifest.json').read_text())['files']:
         assert hashlib.sha256((ROOT / item['path']).read_bytes()).hexdigest() == item['sha256'], item['path']
     for name, batch in [('suggested-statuses', rows), ('pass-1', first)]:

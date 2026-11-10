@@ -1,0 +1,30 @@
+{
+  "retrieved": "2026-11-10",
+  "artifact_source": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685",
+  "source_build": "https://github.com/gallatinai/horizon/actions/runs/42109769948",
+  "package_commit": "d528b7febf1ce8bb5ccf99661dade6ae09a84381",
+  "horizon_commit": "b84b9afcd6983d553b6b8406317b6592ec90cb7c",
+  "files": [
+    {
+      "path": "build-info.json",
+      "sha256": "4097df7a4183a22c3e76cb7e26bcf2c68c69d30ea4c86146165d08c913ad928f"
+    },
+    {
+      "path": "platform-contract.json",
+      "sha256": "1cbe33ee4b899db5a86b06afd2d83d5ac9020bd2cffd20dcd56acbf9ace6e5ff"
+    },
+    {
+      "path": "publication.json",
+      "sha256": "f2f0ec028bf28df5c5041fd0a0a72a181c46f53466befdc2481c24d085ee6aee"
+    },
+    {
+      "path": "artifact-validation.json",
+      "sha256": "841cbddc7b63a59c296f0e25c4f4951430e01eb7493957cb4809772edd574d52"
+    },
+    {
+      "path": "vouch-result.json",
+      "sha256": "c5c313d96334c0905fee5646ec8609802dd673ad1e6621a6ef5265ea2493e401"
+    }
+  ],
+  "scope": "Latest successful published UDS candidate; MPN-specific mission/storage/local-model choices are tracked separately."
+}

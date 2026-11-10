@@ -328,5 +328,1295 @@
     "title": "app-review-process",
     "observation": "Scanner findings/suppressions require justification, reviewer approval and linked tracking with expiry/review criteria.",
     "url": "https://github.com/gallatinai/horizon/blob/3f3b51d454197c077b33896caf93de72b94eafda/docs/security/scanner-suppression-review-process.md"
+  },
+  "re-images-release": {
+    "title": "re-images-release",
+    "observation": "Successful Nov5 trusted release2026.45.4-uds.1 binds Horizonb84b9af/build19710/run42109769948, package d528b7f, Core1.14.0, actual identity.mode=uds issuer https://sso.uds.dev/realms/uds. Twelve delivered image platform digests are explicit; no bundled Keycloak is shipped. Published package digest sha256:486f55939f94ab081d2a12ecade5439512f8f7c4b3119c40b027c711d386adc9. Read build-info/platform-contract/publication metadata artifact13464284834, not just example chart defaults.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685"
+  },
+  "re-images-compose": {
+    "title": "re-images-compose",
+    "observation": "Actual selected source pins node-fips24.22.1-slim@b61e57c2..., nginx-fips1.31.8@72d1e862..., postgres-fips18.6@9760ae95..., python-fips3.13.18; release runtimeSource binds exact platform manifests and PostgreSQL source/build definition.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/compose.yml"
+  },
+  "re-images-api-sbom": {
+    "title": "re-images-api-sbom",
+    "observation": "Actual built API SBOM contains nodejs24.22.1-r2, NIST-CMVP-5132, openssl-provider-fips-3.4.0 version3.4.0-r5, openssl-config-fipshardened4.1.0-r0. NIST-CMVP-5523-optin is also present but is not the default provider.",
+    "url": "https://github.com/gallatinai/horizon/actions/runs/42109769948/artifacts/13453332302"
+  },
+  "re-images-web-sbom": {
+    "title": "re-images-web-sbom",
+    "observation": "Actual web SBOM contains nginx-mainline1.31.8-r1, NIST-CMVP-5132, openssl-provider-fips-3.4.0-r5 and fipshardened configuration. Exact pinned base filesystem /etc/nginx/nginx.conf has worker_connections1024 and main log format with Referer, User-Agent and X-Forwarded-For; SHA256 bae65e6ef1d653fe5077c4c3dd66bcc6f6e8417ff1ae59825c9c2ae8bb2cb7b3. No live process execution needed.",
+    "url": "https://github.com/gallatinai/horizon/actions/runs/42109769948/artifacts/13455115354"
+  },
+  "re-images-pg-sbom": {
+    "title": "re-images-pg-sbom",
+    "observation": "Actual selected PostgreSQL build source9d3725b/run41699186459 SBOM contains postgresql18.6-r7, NIST-CMVP-5132, OpenSSL FIPS provider3.4.0-r5 and fipshardened configuration. The multistage extension copy deliberately excludes/reuses runtime libcrypto/libssl, preserving base module. Release verifies selected PostgreSQL definition/context hashes and exact platform digest3431665e....",
+    "url": "https://github.com/gallatinai/horizon/actions/runs/41699186459/artifacts/13263507123"
+  },
+  "re-images-vendor": {
+    "title": "re-images-vendor",
+    "observation": "Vendor documents FIPS images configured in approved-only mode; using these images is concrete enabled configuration, not an unconfigured capability. FIPS apps do not require host kernel FIPS because validated user-space entropy is included.",
+    "url": "https://www.chainguard.dev/docs/platform/fips/faqs"
+  },
+  "re-images-node-mode": {
+    "title": "re-images-node-mode",
+    "observation": "Vendor explicitly says node-fips Crypto APIs are configured into approved mode at image build time through openssl-config-fipshardened, without application code changes.",
+    "url": "https://images.chainguard.dev/directory/image/node-fips/overview"
+  },
+  "re-images-nist5132": {
+    "title": "re-images-nist5132",
+    "observation": "NIST lists Chainguard FIPS Provider for OpenSSL, FIPS140-3 certificate5132, Active, sunset2031-01-13, approved-mode caveat. Exact API/web/Postgres SBOM markers map to this certificate; no certificate number guessed from generic FIPS naming.",
+    "url": "https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5132"
+  },
+  "re-images-verify": {
+    "title": "re-images-verify",
+    "observation": "Real signer verification uses pinned DU Fulcio/Sigstore TSA anchors, expected subject/SAN/issuer, P256/SHA256 DSSE signature, code-signing EKU and RFC3161 timestamp. release.py check_evidence calls verify_production for all required phases and binds exact archives/build-info/packed image digests; CAT vouch gates publication. Actual delivery run succeeded these gates.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/scripts/ci/verify_attestation.py"
+  },
+  "re-images-publish": {
+    "title": "re-images-publish",
+    "observation": "The main-only protected release workflow selects qualified successful main source, validates image inventory/source digests against packed OCI manifests, binds archive SHA256SUMS, requires cryptographically verified Witness evidence and CAT vouch before registry publication; digest-qualified registry bundle fixes installation content.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/scripts/ci/release.py"
+  },
+  "re-images-core-identity": {
+    "title": "re-images-core-identity",
+    "observation": "Core1.14 always starts Keycloak --features=fips --fips-mode=strict. identity-config0.32 stages bc-fips/bctls/bcutil jars via keycloak-crypto-fips1402 and syncs these providers; supported hardened flavors exist. Actual contract selects this shared identity, so web/API session and authentication crypto belongs here, not missing bundled Keycloak settings. Actual Horizon contract does not select the Core distribution flavor.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/templates/statefulset.yaml"
+  },
+  "re-images-identity-libs": {
+    "title": "re-images-identity-libs",
+    "observation": "Identity-config stages required BouncyCastle FIPS provider jars from its version-matched Keycloak FIPS dependency; sync.sh copies these into Keycloak provider directory when FIPS_ENABLED.",
+    "url": "https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/Dockerfile"
+  },
+  "re-images-keycloak-fips": {
+    "title": "re-images-keycloak-fips",
+    "observation": "Upstream documents that --features=fips --fips-mode=strict uses BouncyCastle FIPS approved mode; session generation/authentication crypto can be delegated to the actual UDS identity service.",
+    "url": "https://www.keycloak.org/server/fips"
+  },
+  "re-images-scans": {
+    "title": "re-images-scans",
+    "observation": "Actual qualified run42109769948 succeeded per-image Grype/SBOM and ClamAV jobs, with retained API/web reports; reused PostgreSQL has its own verified prior build/scan evidence. Weekly dependency security-update automation exists. This corrects any assertion that source/application image scanning is wholly absent; release packaging scans alone are narrower.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/.github/workflows/build.yml"
+  },
+  "re-images-maintained": {
+    "title": "re-images-maintained",
+    "observation": "Vendor states FIPS product variants are maintained with daily rebuilds and CVE SLA. Selected delivery is Nov5 (five days before this review) with explicit supported product versions and recent scan records, rather than an unknown model-server implementation substituted for delivered products.",
+    "url": "https://www.chainguard.dev/docs/platform/fips/fips-images"
+  },
+  "re-images-signer": {
+    "title": "re-images-signer",
+    "observation": "Production signs exact artifacts with downloaded Witness0.12.0; wrapper creates local capture using OpenSSL and invokes Witness keyless signer. Its closed environment excludes GODEBUG. Upstream exact Linux binary inspected with go version -m: go1.26.5, CGO_ENABLED=0, no GOFIPS140 build setting. Application FIPS image SBOMs do not cover this separate CI signing/hash process.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/scripts/ci/attest.py"
+  },
+  "re-images-witness-binary": {
+    "title": "re-images-witness-binary",
+    "observation": "Pinned UDM setup source downloads upstream Witness0.12.0 Linux amd64 and verifies its Sigstore release signature. That exact binary was downloaded read-only and inspected (not executed) with go version -m; no GOFIPS140/GODEBUG FIPS build setting is recorded. It uses native Go crypto rather than the application OpenSSL provider.",
+    "url": "https://github.com/in-toto/witness/releases/tag/v0.12.0"
+  },
+  "re-images-go-fips": {
+    "title": "re-images-go-fips",
+    "observation": "Go documentation says GOFIPS140 default is off and fips140 GODEBUG defaults off unless enabled at build time; approved algorithms alone are not proof of validated approved-mode operation. This is separate from successful DSSE signature verification.",
+    "url": "https://go.dev/doc/security/fips140"
+  },
+  "re-images-logging": {
+    "title": "re-images-logging",
+    "observation": "Core centralizes logs and supplies TLS/network/access controls. No log record/batch cryptographic hash-and-sign configuration was found in the shipped Loki/Vector settings; transport integrity alone does not implement the exact retained-log signing alternative asked by V204739.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/loki/values/values.yaml"
+  },
+  "re-images-registry-check": {
+    "title": "re-images-registry-check",
+    "observation": "Read-only ECR metadata Nov10: registry scanType BASIC, rules[]; horizon-api/web/postgres repository scanOnPush=false. CI supplies actual per-build scanning, but no configured continuous rescan of the fixed delivered inventory was found in these settings. This source ECR evidence is not a statement about a separate DU/MPN scanner.",
+    "url": "https://github.com/gallatinai/horizon/actions/runs/42109769948"
+  },
+  "re-images-nats-purejs": {
+    "title": "re-images-nats-purejs",
+    "observation": "Actual delivered API image0e20f5f... was exported read-only. Runtime package@nats-io/nkeys2.0.3 lib/nacl.js imports tweetnacl1.0.3; kp.js sign() calls nacl.sign.detached. Actual tweetnacl nacl-fast.js contains pureJavaScript crypto_sign/crypto_hash (SHA512) rather than delegating signatures to NodeOpenSSL; Nodecrypto is used only for randombytes. File hashes: nkeys kp.js95678dc5fee2f88470cdb1dd8131f9275a359198e794b31563bc2bcb2ea267e2; nacl.js85bbc7f2b9c47265dc3e50c390f8a84104e7f2f37ef772ffd03af9a659492834; tweetnacl-fast6bcd37a3b20dce913f82d4b23e4e2b661058b4b953df8a3f8c45d56ac4f72447. Source uses these keys to sign NATS user/account authenticationJWTs and nonce authenticators. FIPS OpenSSL image does not validate this pureJS implementation.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/core/nats-auth/nats-auth.jwt.service.ts"
+  },
+  "re-images-jose-webcrypto": {
+    "title": "re-images-jose-webcrypto",
+    "observation": "Actual delivered jose6.2.13 implementation dist/webapi/lib/jws_verify.js calls crypto.subtle.verify; OIDC JWT verification therefore uses NodeWebCrypto in the validated FIPS image. The separate NATS JWT signature path uses @nats-io/nkeys/tweetnacl and must not be conflated with this OIDC implementation.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/api/auth/auth.oidc-jwt.service.ts"
+  },
+  "re-governance-scm": {
+    "title": "re-governance-scm",
+    "observation": "Version-controlled release/SCM process identifies ticket-to-PR-to-SHA-to-release/digest traceability, roles, approval gates, release tracks, immutable artifacts and impact classification. Document is a draft RFC; implemented workflows and live rules corroborate specific mechanisms rather than assuming every planned phase is delivered.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/docs/rfcs/RFC-057-release-management-and-change-tracking.md"
+  },
+  "re-governance-change": {
+    "title": "re-governance-change",
+    "observation": "Executable workflow classifies changed security-sensitive paths plus mandatory author ATO-impact declaration; resolves higher impact, requires significant control-family rationale, labels changes and rejects declaration mismatch.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/.github/workflows/change-class.yml"
+  },
+  "re-governance-rules": {
+    "title": "re-governance-rules",
+    "observation": "Read live active main ruleset Nov10:1approving review, CODEOWNERS review, stale-approval dismissal, integration/unit/E2E tests, CodeQL both languages, impact classifier and change metadata checks. Admin role has configured bypass; legacy branch-protection404 was not lack of protection.",
+    "url": "https://github.com/gallatinai/horizon/rules/11323811"
+  },
+  "re-governance-review-example": {
+    "title": "re-governance-review-example",
+    "observation": "Merged Nov10 after independent member approval and recorded ATO-impact/class labels; concrete code-review and change-control evidence, not merely an unexecuted policy.",
+    "url": "https://github.com/gallatinai/horizon/pull/2726"
+  },
+  "re-governance-review": {
+    "title": "re-governance-review",
+    "observation": "Security findings/suppressions require source-controlled justification, named reviewer approval, linked defect tickets and accepted expiry/classification. Security sensitive paths are CODEOWNERS routed.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/docs/security/scanner-suppression-review-process.md"
+  },
+  "re-governance-owners": {
+    "title": "re-governance-owners",
+    "observation": "Security/compliance/supply-chain paths route to horizon-security; database changes route to horizon-infra. This is concrete security-review responsibility assignment, not proof of annual training.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/.github/CODEOWNERS"
+  },
+  "re-governance-release-build": {
+    "title": "re-governance-release-build",
+    "observation": "Actual delivered appb84 build19710 completed successfully Nov5. Read/downloaded11Grype SARIF artifacts and APIintegration coverage. Integration and E2E gates succeeded. Grype artifacts contain tracked high-severity findings; successful build is not a claim of zero vulnerabilities.",
+    "url": "https://github.com/gallatinai/horizon/actions/runs/42109769948"
+  },
+  "re-governance-release-codeql": {
+    "title": "re-governance-release-codeql",
+    "observation": "Successful CodeQL at actual delivered b84SHA. Downloaded rawSARIF:JavaScript/TypeScript0results,Python11sensitive-logging results; matching source allowlist explicitly classifies correlationUUID false positives with reviewer/ticket references.",
+    "url": "https://github.com/gallatinai/horizon/actions/runs/42102523542"
+  },
+  "re-governance-allowlist": {
+    "title": "re-governance-allowlist",
+    "observation": "Eleven Python logging findings are individually hash-bound false-positive dispositions with rationale, approved_by and linked GALtickets; not blanket UI dismissal.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/.github/codeql/sarif-allowlist.json"
+  },
+  "re-governance-source-coverage": {
+    "title": "re-governance-source-coverage",
+    "observation": "API tests enable v8source coverage with text/lcov reports, four80percent thresholds and specified report directory. Other packages have analogous coverage settings. Actual APIintegration artifact separately retains operation/status coverage; those are different metrics.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/vitest.config.mts"
+  },
+  "re-governance-updates": {
+    "title": "re-governance-updates",
+    "observation": "Scheduled weekly advisory updates create labelled securityPRs and tracking through maintained release branches, corroborated by scan/release pipeline; formal exception/SLA decisions remain reviewable inputs.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/.github/workflows/pnpm-security-updates.yml"
+  },
+  "re-governance-flows": {
+    "title": "re-governance-flows",
+    "observation": "Sequence/data-flow design documents15second request deadlines,3attempt retry/backoff, circuit breaker after5failed calls, independent transactions and bounded concurrency. Specific mitigations address unbounded waits and service recursion risk.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/docs/rfcs/RFC-023-internal-service-api-over-nats.md"
+  },
+  "re-governance-db-timeout": {
+    "title": "re-governance-db-timeout",
+    "observation": "Application database pool startup sets statement_timeout12000ms under the documented15second transport timeout; implementation corroborates the bounded-wait design.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/core/database/database.service.ts"
+  },
+  "re-governance-architecture": {
+    "title": "re-governance-architecture",
+    "observation": "Architecture/data model documentation describes application elements, service boundaries and storage; does not itself supply a contract-specific CUI taxonomy or a complete approved MPN disaster-recovery plan.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/docs/architecture.md"
+  },
+  "re-governance-policy-ia": {
+    "title": "re-governance-policy-ia",
+    "observation": "Corporate draft identity policy prohibits shared interactive CUI accounts, mandates unique users and identity-verified administrator recovery; header Draft / Effective TBD means no approval or completed recovery event is asserted.",
+    "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-IA-identification-and-authentication.md"
+  },
+  "re-governance-policy-ac": {
+    "title": "re-governance-policy-ac",
+    "observation": "Corporate draft access policy defines quarterly access certification and retained review evidence; it does not provide a dated GitHub repository certification result.",
+    "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-AC-access-control.md"
+  },
+  "re-governance-policy-ir": {
+    "title": "re-governance-policy-ir",
+    "observation": "Written corporate incident/violation reporting procedure defines severity, reporting, containment, preservation, responsibilities and review; draft header and follow-on runbook/contact-sheetTBD retained as limitations.",
+    "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-IR-incident-response.md"
+  },
+  "re-governance-policy-cp": {
+    "title": "re-governance-policy-cp",
+    "observation": "Corporate draft explicitly leaves per-system RTO/RPO, backup configuration/test schedule and actual BCP/DRP TBD. A general commitment is not an application recovery plan or protected-assets procedure.",
+    "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-CP-business-continuity-disaster-recovery.md"
+  },
+  "re-governance-policy-au": {
+    "title": "re-governance-policy-au",
+    "observation": "Draft corporate audit policy specifies quarterly review, retained reports and responsible security roles; no completed MPN audit-review report/date found.",
+    "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-AU-audit-and-accountability.md"
+  },
+  "re-governance-policy-classification": {
+    "title": "re-governance-policy-classification",
+    "observation": "Written corporate classification policy defines broad sensitivity tiers and handling/marking obligations; approved systems list isTODO and contract-specific CUI categories remain an open SSP decision.",
+    "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-CUI-data-classification.md"
+  },
+  "re-governance-policy-training": {
+    "title": "re-governance-policy-training",
+    "observation": "Corporate policy identifies recurring security/awareness courses in ThreatSwitch and annual/role-based training requirements. It does not establish annual SDLC security-course completion by every application manager/designer/developer/tester.",
+    "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-AT-awareness-and-training.md"
+  },
+  "re-governance-policy-backlog": {
+    "title": "re-governance-policy-backlog",
+    "observation": "Company controlled policy backlog explicitly distinguishes written procedures from operational adoption; CUIcategories/boundary and some access/training evidence remain open. Only concise control observations are reproduced here; no personnel roster.",
+    "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/BACKLOG.md"
+  },
+  "re-governance-policy-asset": {
+    "title": "re-governance-policy-asset",
+    "observation": "Draft corporate asset policy requires retired asset records/integrations/identity entries to be removed. This is lifecycle policy, not a completed application-specific user decommissioning notice procedure.",
+    "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-AM-asset-management.md"
+  },
+  "re-governance-delivered-contract": {
+    "title": "re-governance-delivered-contract",
+    "observation": "Downloaded successful Nov5publication run42114745685 actual2026.45.4-uds.1 build-info/platform-contract: appb84SHA/build19710, packagecommitd528b7f, Core1.14, identity.mode=uds, issuerhttps://sso.uds.dev/realms/uds; package inventory excludes bundled Keycloak. This is pushed artifact evidence, not inferred from chart defaults.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685"
+  },
+  "re-governance-vendor-support": {
+    "title": "re-governance-vendor-support",
+    "observation": "Primary vendor documentation describes maintained FIPS image delivery and CVE remediation support. Actual release inventory uses curated paid FIPS vendor images and custom actively maintained Horizon images; exact release/support entitlements remain retained release documentation.",
+    "url": "https://www.chainguard.dev/docs/platform/fips/fips-images"
+  },
+  "re-asd-release": {
+    "title": "re-asd-release",
+    "observation": "Successful UDS push artifact 2026.45.4-uds.1 build-info/platform-contract identifies delivered Horizon b84b9af build19710, package d528b7f and identity.mode=uds; issuer sso.uds.dev/realms/uds; bundled Keycloak is not delivered.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685"
+  },
+  "re-asd-realm": {
+    "title": "re-asd-realm",
+    "observation": "Actual delegated UDS realm: idle600s; three-failure permanent lockout; length15/classes/history5/expiry60d; JSON event listener/user+admin auditing enabled; X509 certificate mapping+OCSP failclosed; session max-per-user0, CRLdisabled and termsdisabled by default; password alternative remains enabled.",
+    "url": "https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/realm.json5"
+  },
+  "re-asd-core-id": {
+    "title": "re-asd-core-id",
+    "observation": "SSO session limit0/unlimited; account inactivity35day workflow is opt-in; X509/OTP enabled, username/password remains enabled, X509_MFA false; detailed security alert delivery disabled by default.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/values.yaml"
+  },
+  "re-asd-id-events": {
+    "title": "re-asd-id-events",
+    "observation": "User/admin event listener serializes all received event fields including actor/client/IP/session/operation and timestamp as JSON stdout; Vector collects that stream centrally.",
+    "url": "https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/plugin/src/main/java/com/defenseunicorns/uds/keycloak/plugin/eventListeners/JSONLogEventListenerProvider.java"
+  },
+  "re-asd-id-server": {
+    "title": "re-asd-id-server",
+    "observation": "UDS Keycloak explicitly enables Quarkus access logging, requests client certificates and configures forwarded Istio client certificate lookup; provider is a separate product component supplying app identity controls.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/templates/statefulset.yaml"
+  },
+  "re-asd-trust": {
+    "title": "re-asd-trust",
+    "observation": "Imports hash-pinned official DoD approved-external PKI trust chains, filters unwanted certificate classes and excludes expired certificates; Dockerfile/sync install truststores.",
+    "url": "https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/truststore/ca-to-jks.sh"
+  },
+  "re-asd-logging": {
+    "title": "re-asd-logging",
+    "observation": "API request logs have method/outcome/time/service/trace/remoteAddress and recursive field/text secret redaction; common binding has no actor and does not include User-Agent/Referer.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/core/observability/logging.ts"
+  },
+  "re-asd-logging-tests": {
+    "title": "re-asd-logging-tests",
+    "observation": "Tests cover nested headers/payload/error/message credential redaction, HTTP cycles, authorization schemes and correlation IDs.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/core/observability/logging.spec.ts"
+  },
+  "re-asd-roles": {
+    "title": "re-asd-roles",
+    "observation": "App authorization role changes have append-only actor/subject/tenant/action audit records; this does not cover all denied/object access operations.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/schema/permission_audit.pg.hcl"
+  },
+  "re-asd-guard": {
+    "title": "re-asd-guard",
+    "observation": "API authenticates from explicit Authorization Bearer header rather than ambient browser cookies; validated user context precedes domain permissions.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/api/auth/auth.guard.ts"
+  },
+  "re-asd-jwt": {
+    "title": "re-asd-jwt",
+    "observation": "jose verifies JWT issuer/audience/signature/expiry offline; no token introspection/session or account revocation lookup for already-issued tokens.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/api/auth/auth.oidc-jwt.service.ts"
+  },
+  "re-asd-auth": {
+    "title": "re-asd-auth",
+    "observation": "Browser uses OIDC authorization code/PKCE and persistent localStorage userStore with automatic silent renew.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/web/src/auth/auth-service.ts"
+  },
+  "re-asd-logout": {
+    "title": "re-asd-logout",
+    "observation": "Explicit logout removes user/stale OIDC state, clears persisted app data and queries and invokes IdP logout; browser-close persistence/revocation remain separate questions.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/web/src/auth/auth-store.ts"
+  },
+  "re-asd-files": {
+    "title": "re-asd-files",
+    "observation": "File security classification enum persists with each file; fields include unclassified/classified/secret/top_secret. This is a real security attribute, distinct from document-type classifier tags.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/schema/files.pg.hcl"
+  },
+  "re-asd-file-dto": {
+    "title": "re-asd-file-dto",
+    "observation": "File create/update/response schema carries classification; fileToDto includes classification for API transmission and list filtering.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/api/files/files.schema.ts"
+  },
+  "re-asd-worker-attrs": {
+    "title": "re-asd-worker-attrs",
+    "observation": "Ingestion carries effective security classification through config hashes, jobs, chunks, extracted assertions and output envelope; source classification floor is preserved.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/workers/artifact-ingestion/artifact_ingestion/processor.py"
+  },
+  "re-asd-assertions": {
+    "title": "re-asd-assertions",
+    "observation": "Assertions persist classification and expressly ratchet up from source floor, never down; producer enforces that rule.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/schema/assertions.pg.hcl"
+  },
+  "re-asd-markdown": {
+    "title": "re-asd-markdown",
+    "observation": "Only production v-html sink strips all input HTML with DOMPurify, parses markdown then sanitizes the generated HTML again; Vue templates otherwise escape bindings.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/web/src/components/shared/MarkdownView.vue"
+  },
+  "re-asd-validation": {
+    "title": "re-asd-validation",
+    "observation": "Global Zod/OpenAPI validation constrains API inputs; unsupported or unconfigured JSON routes fail; binary/multipart gets explicit handling.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/common/openapi/openapi.validation.interceptor.ts"
+  },
+  "re-asd-file-bounds": {
+    "title": "re-asd-file-bounds",
+    "observation": "Upload rejects excessive declared Content-Length and uses configured multipart maximum; content is not passed as an OS shell command.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/api/files/files.controller.ts"
+  },
+  "re-asd-race": {
+    "title": "re-asd-race",
+    "observation": "Atomic compare-and-set uploading-to-uploaded ensures only one concurrent finalize emits an event; corresponding repository tests explicitly exercise two concurrent finalizers.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/api/files/files.repository.ts"
+  },
+  "re-asd-race-worker": {
+    "title": "re-asd-race-worker",
+    "observation": "Job ownership/idempotency uses INSERT ON CONFLICT and conditional updates; workers do not rely on unprotected check-then-write for ownership.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/workers/artifact-ingestion/artifact_ingestion/processor.py"
+  },
+  "re-asd-sql": {
+    "title": "re-asd-sql",
+    "observation": "Drizzle array/data values are bound parameters; raw type identifiers are closed literal unions. Reviewed raw SQL function names in zone/units repositories are fixed internal allowlists.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/core/database/sql-arrays.ts"
+  },
+  "re-asd-sql-mcp": {
+    "title": "re-asd-sql-mcp",
+    "observation": "LLM tools expose only catalog mcp_allowed functions; names/types come from fixed metadata, values use SQLAlchemy bind params and tenant is injected/UUID validated, not arbitrary model SQL.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/workers/chat-agent/chat_agent/sql_mcp/tools.py"
+  },
+  "re-asd-parser-lock": {
+    "title": "re-asd-parser-lock",
+    "observation": "Delivered image dependency lock pins ingestion pipeline6010a2, Docling2.142.0, python-docx1.2.0, python-pptx1.0.2, openpyxl3.1.5, lxml6.1.3 and defusedxml0.7.1.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/workers/artifact-ingestion/uv.lock"
+  },
+  "re-asd-codeql-config": {
+    "title": "re-asd-codeql-config",
+    "observation": "CodeQL JS/TS+Python default security suite; exclusion paths are generated/dependency/fixture files, not a blanket application exclusion.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/.github/codeql/codeql-config.yml"
+  },
+  "re-asd-codeql-allow": {
+    "title": "re-asd-codeql-allow",
+    "observation": "All eleven raw Python sensitive-log alerts are explicitly reviewed false positives for casualty-plan/run correlation UUIDs, with @schwing approvals and Jira references; inspected representative source flows.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/.github/codeql/sarif-allowlist.json"
+  },
+  "re-asd-codeql-run": {
+    "title": "re-asd-codeql-run",
+    "observation": "Successful CodeQL analysis of exact delivered b84b9af. Downloaded both raw SARIF artifacts: JavaScript/TypeScript0 results; Python11 reviewed sensitive-UUID false positives matching source allowlist; no reported SQL/command/XSS/XML result.",
+    "url": "https://github.com/gallatinai/horizon/actions/runs/42102523542"
+  },
+  "re-asd-ci-run": {
+    "title": "re-asd-ci-run",
+    "observation": "Successful exact b84b9af build; emitted API coverage/request artifact, E2E results and per-image SBOM/Grype/ClamAV evidence. Separate CI run42102523383 also succeeds at this commit.",
+    "url": "https://github.com/gallatinai/horizon/actions/runs/42109769948"
+  },
+  "re-asd-vector": {
+    "title": "re-asd-vector",
+    "observation": "Pod/node JSON collection has separate Loki sinks, persistent on-disk1GiB buffers and acknowledgement machinery; product logging survives collector backend disruption by buffering rather than requiring API-local spooling.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/vector/values/values.yaml"
+  },
+  "re-asd-retention": {
+    "title": "re-asd-retention",
+    "observation": "Loki default retention is indefinite; central UDS identity stdout is included. Finite retention/bucket lifecycle overrides must preserve the stated minimum30months/5years policy.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/how-to-guides/logging/configure-log-retention.mdx"
+  },
+  "re-asd-alerts": {
+    "title": "re-asd-alerts",
+    "observation": "Default Prometheus Kubernetes/workload/storage rules provide low-resource monitoring. Rule-specific audit75percent and named SA/ISSO receivers are separate configuration obligations.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/prometheus-stack/values/kube-prometheus-stack-values.yaml"
+  },
+  "re-asd-id-alerts": {
+    "title": "re-asd-id-alerts",
+    "observation": "Optional account/user/realm admin change alert templates exist, but detailedObservability alerts defaults off; mechanisms do not establish routing recipients.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/templates/keycloak-logging-alerting-rules.yaml"
+  },
+  "re-asd-network": {
+    "title": "re-asd-network",
+    "observation": "UDS generates namespace ingress/egress default deny; app UDS Package declares authorized service and external flows rather than relying on each API to enforce network decisions.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/pepr/operator/controllers/network/defaults/default-deny-all.ts"
+  },
+  "re-asd-package": {
+    "title": "re-asd-package",
+    "observation": "UDS Package declaratively authorizes app/model/storage communication. Hosted model egress exists in actual candidate; local-only model requirement needs its selected profile.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-uds-package/templates/package.yaml"
+  },
+  "re-asd-backup": {
+    "title": "re-asd-backup",
+    "observation": "Velero resources scheduled daily, but snapshotsEnabled and snapshotVolumes false; this does not backup PostgreSQL/PVC application data.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/velero/values/values.yaml"
+  },
+  "re-asd-db": {
+    "title": "re-asd-db",
+    "observation": "Application database runtime uses dedicated PostgreSQL/PVC; source does not configure data backup/PITR or storage encryption. Bundled Keycloak database privilege is irrelevant to actual UDS-identity release.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/values/postgres.yaml"
+  },
+  "re-asd-tests": {
+    "title": "re-asd-tests",
+    "observation": "Core ships security validation/integration tasks; they are package tests rather than Navigator providing an in-product security-function verification service.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/tasks.yaml"
+  },
+  "re-asd-xml-docling": {
+    "title": "re-asd-xml-docling",
+    "observation": "Locked Docling MSWord parser defines safe XML parser with resolve_entities=False, load_dtd=False, no_network=True and no DTD validation for chart XML.",
+    "url": "https://github.com/docling-project/docling/blob/v2.142.0/docling/backend/msword_backend.py"
+  },
+  "re-asd-xml-docx": {
+    "title": "re-asd-xml-docx",
+    "observation": "Locked python-docx sets XMLParser(resolve_entities=False). Locked python-pptx1.0.2 wheel inspected with same setting; no huge_tree override.",
+    "url": "https://github.com/python-openxml/python-docx/blob/v1.2.0/src/docx/oxml/parser.py"
+  },
+  "re-asd-xml-openpyxl": {
+    "title": "re-asd-xml-openpyxl",
+    "observation": "Official security guidance uses defusedxml to mitigate XML expansion; delivered lock includes it. Inspected exact3.1.5 wheel: optional defusedxml enabled default, replaces iterparse/fromstring; lxml parser also disables entities.",
+    "url": "https://openpyxl.readthedocs.io/en/stable/index.html"
+  },
+  "re-asd-xml-lxml": {
+    "title": "re-asd-xml-lxml",
+    "observation": "lxml default huge_tree=False retains depth/text security restrictions and no_network=True. Inspected locked consumers do not opt into huge_tree.",
+    "url": "https://lxml.de/apidoc/lxml.etree.html"
+  },
+  "re-asd-parser": {
+    "title": "re-asd-parser",
+    "observation": "Actual locked pipeline routes PDF/DOCX/PPTX/HTML/text/XLSX/tabular/JSON; no arbitrary XML/XPath/signature endpoint. OfficeXML is still considered; parsers are secure upstream implementations.",
+    "url": "https://github.com/gallatinai/ingestion-chunking-pipeline/blob/6010a2c5bae9cbfb9a94d3826aad8507546df74f/ingestion_chunking_pipeline/router.py"
+  },
+  "re-asd-cookie": {
+    "title": "re-asd-cookie",
+    "observation": "Verified actual sharedCore Keycloak26.7.4: AUTH_SESSION_ID/KEYCLOAK_IDENTITY are FEDERATION/HttpOnly; KEYCLOAK_SESSION and AUTH_SESSION_ID_HASH are FEDERATION_JS noncredential sessioncoordination markers. These do not supply the authenticator.",
+    "url": "https://github.com/keycloak/keycloak/blob/26.7.4/server-spi-private/src/main/java/org/keycloak/cookie/CookieType.java"
+  },
+  "re-asd-realm-env": {
+    "title": "re-asd-realm-env",
+    "observation": "Core OTP_ENABLED=true renders OTP_FLOW_ENABLED and MFA_FLOW_ENABLED=REQUIRED in realm env; username/password subflow therefore requires the OTP flow. The raw realm placeholder fallback DISABLED is not the effective Helm default.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/templates/secret-kc-realm.yaml"
+  },
+  "re-asd-artifact-frame": {
+    "title": "re-asd-artifact-frame",
+    "observation": "Untrusted model HTML is isolated in sandbox=allow-scripts with NO allow-same-origin, denying access to parent DOM, cookies and storage; no browser plugin permissions granted.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/web/src/components/communications/WebArtifactFrame.vue"
+  },
+  "re-asd-artifact-csp": {
+    "title": "re-asd-artifact-csp",
+    "observation": "CSP is injected before any script: default-src none, object-src none, form-action none, base-uri none; browser artifact execution is isolated. Same-frame navigation residual is explicitly documented and is not parent-origin script execution.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/web/src/utils/webArtifactSrcdoc.ts"
+  },
+  "re-asd-asd-overview": {
+    "title": "re-asd-asd-overview",
+    "observation": "Official cached ASD V6R5 Overview.pdf inside retained original DISA ZIP categorizes browser JavaScript/JScript/ECMAScript as Category3 mobile code allowed in browser; inspected extracted page8 text, not inferred modern mobile-code policy.",
+    "url": "https://public.cyber.mil/stigs/downloads/"
+  },
+  "re-asd-pods": {
+    "title": "re-asd-pods",
+    "observation": "Services use nonroot/read-only security contexts, config mounts/envSecret references and distinct runtime paths; actual release renderer selects UDS identity, not bundledKeycloak.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-service/templates/deployment.yaml"
+  },
+  "re-asd-web-image": {
+    "title": "re-asd-web-image",
+    "observation": "Multistage runtime ships compiled frontend assets only, deletes source maps, uses nginx runtime rather than development server; application source/build toolchain is separate.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/web/Dockerfile"
+  },
+  "re-asd-secret-generation": {
+    "title": "re-asd-secret-generation",
+    "observation": "Deployment generates database admin/app/OpenFGA passwords with openssl rand-hex24 when absent and preserves existingSecret values; actual credentials are external substitutions, not committed sampledefaults.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/zarf.yaml"
+  },
+  "re-asd-id-admin-secret": {
+    "title": "re-asd-id-admin-secret",
+    "observation": "When enabled Core generates32character random admin password and retains existingSecret, rather than shipping a universal knownadminpassword.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/templates/secret-admin-password.yaml"
+  },
+  "re-asd-mtls": {
+    "title": "re-asd-mtls",
+    "observation": "Root namespace PeerAuthentication requires STRICT mutualTLS; certificates supply workload/device identity and periodic TLS reauthentication/rotation at mesh boundary.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/istio/common/chart/templates/peer-authentication.yaml"
+  },
+  "re-asd-cookie-actual": {
+    "title": "re-asd-cookie-actual",
+    "observation": "Verified actual sharedCore Keycloak26.7.4 source: cookie builder sets Secure from effective HTTPS/proxy context and HttpOnly from CookieScope; realm/request path-scoped. Core passes xforwarded proxy headers under HTTPSgateway.",
+    "url": "https://github.com/keycloak/keycloak/blob/26.7.4/services/src/main/java/org/keycloak/cookie/DefaultCookieProvider.java"
+  },
+  "re-asd-role-grants": {
+    "title": "re-asd-role-grants",
+    "observation": "grantRole inserts actor audit then writes an OpenFGA role tuple; it does not require recentauthentication or change current JWT/session. Subject obtains the live role through future permissionchecks.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/api/users/user-roles.service.ts"
+  },
+  "re-asd-live-authz": {
+    "title": "re-asd-live-authz",
+    "observation": "Permissionchecks query OpenFGA for currentuser,target andrelation; memoization is request-scopedCLS only. An existing validtoken can use newlygranted rights on subsequentrequests; noauth_time/max_age constraint is checked.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/core/authorization/authorization.service.ts"
+  },
+  "re-kubernetes-release": {
+    "title": "re-kubernetes-release",
+    "observation": "Latest successful Nov5 UDS push artifact2026.45.4-uds.1 identifies package commit d528b7f, Horizon b84b9af, Core1.14 and identity.mode=uds. Its build-info supplies immutable runtimeSource images; this supersedes the bundled-identity default candidate for this review.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685"
+  },
+  "re-kubernetes-postgres-env": {
+    "title": "re-kubernetes-postgres-env",
+    "observation": "POSTGRES_USER and POSTGRES_PASSWORD are injected with env.valueFrom.secretKeyRef. Re-rendering after actual release apply_identity/stage transformations preserves both environment references; supported mesh or Secret RBAC does not change this delivery mechanism.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-postgres/templates/statefulset.yaml"
+  },
+  "re-kubernetes-s3-configmap": {
+    "title": "re-kubernetes-s3-configmap",
+    "observation": "SeaweedFS s3.json contains accessKey/secretKey in a Kubernetes ConfigMap. Deployment mounts that ConfigMap read-only. Re-rendering actual UDS identity/runtime-image profile preserves this resource kind and sensitive fields; the eventual Zarf substitutions populate credentials.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/seaweedfs/templates/configmap.yaml"
+  },
+  "re-kubernetes-profile-transform": {
+    "title": "re-kubernetes-profile-transform",
+    "observation": "UDS identity transformation removes the bundled Keycloak component/secrets and edits OIDC/profile values, but does not replace the PostgreSQL secret-as-environment template or SeaweedFS credential ConfigMap. runtime_source.stage pins image fields and leaves those templates unchanged.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/scripts/ci/platform_identity.py"
+  },
+  "re-kubernetes-policy-code": {
+    "title": "re-kubernetes-policy-code",
+    "observation": "UDS Pepr mutates and validates non-root execution, no privilege escalation, restricted capabilities, seccomp/proc/SELinux settings for pod/main/init/ephemeral security contexts. Workload policy admission supplies actual least-privilege enforcement independently of a native PodSecurity configuration file.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/pepr/policies/security.ts"
+  },
+  "re-kubernetes-policy-reference": {
+    "title": "re-kubernetes-policy-reference",
+    "observation": "UDS documents Pepr admission as aligned with Pod Security Standards restricted profile plus mesh controls. It also lists specific not-yet-implemented Big Bang policies, so this is evidence of the implemented policy set, not an assertion that Pepr exactly equals every PSS/native-controller behavior.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/reference/operator-and-crds/policy-engine.mdx"
+  },
+  "re-kubernetes-fail-closed": {
+    "title": "re-kubernetes-fail-closed",
+    "observation": "UDS Pepr onError=reject; zarf admission/watch namespace is excluded, and istio-system has an additional Ignore-failure webhook for bootstrap availability. Ordinary mission namespaces do not share that fail-open exception.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/package.json"
+  },
+  "re-kubernetes-removed-gate": {
+    "title": "re-kubernetes-removed-gate",
+    "observation": "Upstream Kubernetes lists PodSecurity feature gate stable/default true from1.25 through1.27; it is removed after1.27. A removed feature gate is not a valid setting, so requiring PodSecurity=true literally on1.28+ is obsolete, not a remediation action.",
+    "url": "https://kubernetes.io/docs/reference/command-line-tools-reference/feature-gates-removed/"
+  },
+  "re-kubernetes-native-admission": {
+    "title": "re-kubernetes-native-admission",
+    "observation": "PodSecurity is the built-in validating admission controller stable since1.25 and among default-enabled admission plugins. Native enablement can still be explicitly overridden; source of a separate app package does not prove the exact host override or static-pod configuration.",
+    "url": "https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/"
+  },
+  "re-kubernetes-supported-versions": {
+    "title": "re-kubernetes-supported-versions",
+    "observation": "Pinned Core1.14 documentation covers supported non-EOL CNCF-conformant clusters and tests1.34/1.35/1.36 variants. This supports modern-version tailoring; it does not identify the actual MPN host version.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/concepts/platform/supported-distributions.mdx"
+  },
+  "re-kubernetes-workload-sa": {
+    "title": "re-kubernetes-workload-sa",
+    "observation": "Application chart creates named service accounts and explicitly controls automountServiceAccountToken. That supports workload isolation but does not establish the separate controller-manager --use-service-account-credentials flag.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-service/templates/serviceaccount.yaml"
+  },
+  "re-platform-delivered-profile": {
+    "title": "re-platform-delivered-profile",
+    "observation": "Successful UDS publication2026.45.4-uds.1 records package d528, app b84b9af, Core1.14.0, identity.mode=uds issuer https://sso.uds.dev/realms/uds and12 digest-pinned images; no bundled Keycloak image. This is delivered artifact evidence, not assumed default profile.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685"
+  },
+  "re-platform-realm": {
+    "title": "re-platform-realm",
+    "observation": "UDS realm provides user/admin event logging and JSON event listener, native enabled/account roles, strong default password policy. Inactivity disable workflow defaults false; terms required-action enablement defaults false; CRL checking defaults false with OCSP checking true. No password blacklist or24h-min-age/eight-character-distance in passwordPolicy.",
+    "url": "https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/realm.json5"
+  },
+  "re-platform-realm-params": {
+    "title": "re-platform-realm-params",
+    "observation": "Core exposes realmInitEnv overrides for ACCOUNT_INACTIVITY_DAYS, TERMS_AND_CONDITIONS_ENABLED and X509_CRL_CHECKING_ENABLED; these are commented/unset in shipped defaults. detailedObservability.alerts.enabled defaults false.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/values.yaml"
+  },
+  "re-platform-flow": {
+    "title": "re-platform-flow",
+    "observation": "Application Package CR specifies ambient mesh, explicit ingress, IntraNamespace allows and workload-scoped external egress, including shared UDS issuer rules in uds mode. Those are enforceable declared policies; hosted inference requirement mismatch does not mean no platform flow control exists.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-uds-package/templates/package.yaml"
+  },
+  "re-platform-notify": {
+    "title": "re-platform-notify",
+    "observation": "Account/admin modification alert PrometheusRules are emitted only if detailedObservability.alerts.enabled; source includes alerts but requires enablement.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/templates/keycloak-logging-alerting-rules.yaml"
+  },
+  "re-platform-falco": {
+    "title": "re-platform-falco",
+    "observation": "Falco/Sidekick sends findings to stdout/Loki; direct Alertmanager delivery is commented out. No required recipient delivery is established by the pipeline profile.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/falco/values/values.yaml"
+  },
+  "re-platform-monitor": {
+    "title": "re-platform-monitor",
+    "observation": "Default Kubernetes storage/system alerts enabled; alertmanager exists but no SA/ISSO receiver routes or exact75percent audit repository rule are set in this file.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/prometheus-stack/values/kube-prometheus-stack-values.yaml"
+  },
+  "re-platform-verify": {
+    "title": "re-platform-verify",
+    "observation": "Privileged UDS tasks include validate-packages and e2e-tests; the latter exercises live Keycloak account setup, network policies and Pepr controls. Source establishes an on-demand verification implementation, not merely health endpoints. No new execution claimed.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/tasks/test.yaml"
+  },
+  "re-platform-verify-security": {
+    "title": "re-platform-verify-security",
+    "observation": "Executable security verification asserts unsafe privileged/root pod requests are denied and safe security contexts work. Such tests are callable by operator, satisfying an on-demand verification path rather than requiring a distinct app test subsystem.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/test/vitest/pepr-policies/security.spec.ts"
+  },
+  "re-platform-trust": {
+    "title": "re-platform-trust",
+    "observation": "Actual default IdP trust source is official DoD approved external PKI chains ZIP, with required SHA256 check and expired-certificate rejection before populating truststore. It is not an unspecified empty mechanism.",
+    "url": "https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/truststore/ca-to-jks.sh"
+  },
+  "re-platform-trust-boundary": {
+    "title": "re-platform-trust-boundary",
+    "observation": "Core documents default DoD UNCLASS IdP certificate bundle and explicit custom-image process to replace it. Shared platform trust defaults are inspectable; gateway/custom trust overrides are separately owner-managed.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/how-to-guides/identity-and-authorization/configure-truststore.mdx"
+  },
+  "re-platform-trust-distribution": {
+    "title": "re-platform-trust-distribution",
+    "observation": "Operator distributes selected custom/DoD/curated public trust to UDS components. Custom/public global trust-bundle inclusion is opt-in; default identity DoD truststore is a separate mechanism.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/how-to-guides/networking/manage-trust-bundles.mdx"
+  },
+  "re-platform-init-resource": {
+    "title": "re-platform-init-resource",
+    "observation": "UDS identity transformation clears migrations.extraDatabases and removes bundled Keycloak/provisioner components, thereby removing create-databases and wait-for-Keycloak init containers. Reproduced delivered chart captures contain16 main/init containers, all with nonempty resource settings.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/scripts/ci/platform_identity.py"
+  },
+  "re-platform-external-storage": {
+    "title": "re-platform-external-storage",
+    "observation": "Production UDS requires operator-provisioned storage, TLS and identity database. The Horizon profile does not specify MPN cluster datastore/keystore disk encryption or Zarf-init settings; commercial Gallatin AWS IaC is a different deployment boundary.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/getting-started/production/provision-services.mdx"
+  },
+  "re-platform-id-audit": {
+    "title": "re-platform-id-audit",
+    "observation": "JSON listener emits platform user/admin events to stdout for Vector/Loki collection. UDS identity selected by delivered artifact makes this applicable to Horizon rather than requiring its own duplicated forwarding.",
+    "url": "https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/plugin/src/main/java/com/defenseunicorns/uds/keycloak/plugin/eventListeners/JSONLogEventListenerProvider.java"
+  },
+  "re-platform-audit-selector": {
+    "title": "re-platform-audit-selector",
+    "observation": "Platform Grafana requires UDS SSO and maps /UDS Core/Admin to Admin, /UDS Core/Auditor to Viewer and unmatched users to Unauthorized; platform configuration is separated from ordinary Horizon tenant users.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/grafana/values/values.yaml"
+  },
+  "re-platform-zarf-transport": {
+    "title": "re-platform-zarf-transport",
+    "observation": "Exact Zarf0.86 state.RegistryInfo.ShouldUseMTLS/transport mode explicitly distinguishes zarf-managedmTLS from default internalregistry plainHTTP; mTLSStrategy defaultsnone. Registry values substitute deployment-selected ZARF_REGISTRY_MTLS_ENABLED. Therefore mesh/browser TLS alone cannot establish node registry TLS.",
+    "url": "https://github.com/zarf-dev/zarf/blob/v0.86.0/src/pkg/state/state.go"
+  },
+  "re-platform-source-registry-lifecycle": {
+    "title": "re-platform-source-registry-lifecycle",
+    "observation": "Gallatin source ECR has attached lifecycle policies expiring main/PR/cache/untagged images and AES256 encryption. Mirror-tag retention is deliberate. This proves source registry management code but does not select MPN Zarf registry prune/retention policy.",
+    "url": "https://github.com/gallatinai/horizon-iac/blob/74d3781cc1489e1fc3b9ea153c548f2433cd663f/modules/ecr/main.tf"
+  },
+  "re-platform-classification-fields": {
+    "title": "re-platform-classification-fields",
+    "observation": "Delivered app source defines classification_level enum and files.classification field; chunks/assertions reuse it. A real data-security taxonomy exists; API/database audit coverage, not taxonomy discovery, is the remaining concern.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/schema/files.pg.hcl"
+  },
+  "re-platform-revocation-cache": {
+    "title": "re-platform-revocation-cache",
+    "observation": "Exact Core Keycloak26.7.4 CertificateValidator CRLFileLoader uses CrlStorageProvider cache, but checkRevocationStatus invokes it only when CRL checking enabled. OCSP path invokes online provider check. Pinned UDS realm defaults CRL checkingfalse, OCSPtrue; therefore a cache exists in product, but its required disconnected validation path is not selected by that default.",
+    "url": "https://github.com/keycloak/keycloak/blob/26.7.4/services/src/main/java/org/keycloak/authentication/authenticators/x509/CertificateValidator.java"
+  },
+  "re-platform-delivered-jwt": {
+    "title": "re-platform-delivered-jwt",
+    "observation": "Delivered API uses jose jwtVerify against selected issuer/audience/JWKS; expiration verification is enabled. It does not introspect each token or implement role-change/privilege-escalation step-up triggers.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/api/auth/auth.oidc-jwt.service.ts"
+  },
+  "re-platform-delivered-browser-auth": {
+    "title": "re-platform-delivered-browser-auth",
+    "observation": "Delivered browser OIDC client follows provider session/token lifecycle with code/PKCE automatic silent renewal; no role-change/privilege-escalation prompt=login/max_age policy is configured here.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/web/src/auth/auth-service.ts"
+  },
+  "re-web-actual-release": {
+    "title": "re-web-actual-release",
+    "observation": "Successful UDS push release2026.45.4-uds.1 build-info and platform-contract bind application b84b9af/build19710, package d528b7f, Core1.14.0, identity.mode=uds issuerhttps://sso.uds.dev/realms/uds. No bundled Keycloak is delivered. Web delivered platform digest76d8dfbca65b27221b6a3c2588763b14dc058e965ea62507fa71130067522ae6.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685"
+  },
+  "re-web-base-pin": {
+    "title": "re-web-base-pin",
+    "observation": "Web uses nginx-fips:1.31.8 pinnedsha256:72d1e862659a14e95b0a47cd85e1cfc3ecd44ce890215be1ea4a3bcc961b0d7f. Dockerfile replaces conf.d/default.conf but inherits /etc/nginx/nginx.conf.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/compose.yml"
+  },
+  "re-web-base-config": {
+    "title": "re-web-base-config",
+    "observation": "Exact pinned nginx base filesystem exported without executing image: root nginx.conf worker_processes auto, worker_connections1024, keepalive_timeout65, sendfile on, main accesslog includes remote_addr/remote_user/request/status/Referer/UserAgent/XForwardedFor. Access/error log paths are symlinks to stdout/stderr. Root config contains no server_tokens off. Image-build SBOM identifies nginx-mainline/config1.31.8-r1 and CMVP5132 materials.",
+    "url": "https://github.com/gallatinai/horizon/actions/runs/42109769948"
+  },
+  "re-web-web-values": {
+    "title": "re-web-web-values",
+    "observation": "Delivered web chart exposes port3000, mounts conf.d static server block and public runtime config read-only; separate scratch emptyDirs; no application data PVC. Runtime CPU50m request,memory64Mi request/128Mi limit; immutable assets1year cache,gzip. ConfigMap server block leaves inherited main nginx connection/log settings intact.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/values/web.yaml"
+  },
+  "re-web-web-source": {
+    "title": "re-web-web-source",
+    "observation": "Static nginx serves compiled SPA, try_files index fallback; no proxy_pass, administrative/account endpoint, CGI or upload write handler. Source server block does not set server_tokens off; runtime chart replaces only the server config.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/web/nginx.conf"
+  },
+  "re-web-web-image": {
+    "title": "re-web-web-image",
+    "observation": "Multistage final web image copies only built frontend distribution and nginx server config; source maps removed. Runtime main config and logging/worker defaults inherited from pinned nginx base.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/web/Dockerfile"
+  },
+  "re-web-web-runtime": {
+    "title": "re-web-web-runtime",
+    "observation": "Dedicated pod/container has non-root, read-only root filesystem and serviceaccount/no escalation settings, explicit containerPort. Static config/data layouts are immutable and runtime scratch mounts are separated.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-service/templates/deployment.yaml"
+  },
+  "re-web-service": {
+    "title": "re-web-service",
+    "observation": "ClusterIP Service binds explicitly selected service port and named target port http to dedicated pod label selectors; neither hostNetwork nor wildcard hostPort is introduced.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-service/templates/service.yaml"
+  },
+  "re-web-package": {
+    "title": "re-web-package",
+    "observation": "UDS ambient Package routes /api to API,/ws to NATS,static root to web through tenant gateway. Actual UDS identity branch declares shared issuer/client registration and omits local Keycloak exposure; selected namespace horizon-uds.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-uds-package/templates/package.yaml"
+  },
+  "re-web-gateway": {
+    "title": "re-web-gateway",
+    "observation": "Dedicated tenant gateway binds HTTPS443, HTTP80 redirect, TLS1.3 default; separate route roles and downstream/upstream protocols. Static nginx is not also the gateway proxy.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/istio/charts/uds-istio-config/templates/gateway.yaml"
+  },
+  "re-web-headers": {
+    "title": "re-web-headers",
+    "observation": "Core removes server and x-envoy-upstream-service-time response headers at ingress. It does not rewrite nginx default error response bodies, so body version disclosure remains a narrower configuration issue.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/istio/common/chart/templates/envoy-filters.yaml"
+  },
+  "re-web-accesslog": {
+    "title": "re-web-accesslog",
+    "observation": "Mesh/gateway access logging is enabled tostdout, path normalization and sanitized certificate details configured. Default log format includes client-chain and network endpoints.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/istio/values/base-istiod.yaml"
+  },
+  "re-web-istio-log-format": {
+    "title": "re-web-istio-log-format",
+    "observation": "Official default access-log fields include X-Forwarded-For, request ID, User-Agent, upstream host and both downstream network endpoints when accessLogFormat is not overridden.",
+    "url": "https://istio.io/latest/docs/tasks/observability/logs/access-log/"
+  },
+  "re-web-http2": {
+    "title": "re-web-http2",
+    "observation": "Official Istio protocol-selection docs: HTTPS gateways advertiseHTTP/1.1 and HTTP/2. Without explicit upstream protocol selection, gateway forwards upstream usingHTTP/1.1. Client-facing HTTP2 and backend translation are separate control questions.",
+    "url": "https://istio.io/latest/docs/ops/configuration/traffic-management/protocol-selection/"
+  },
+  "re-web-realm": {
+    "title": "re-web-realm",
+    "observation": "Shared UDS realm uses 15character/class/history/expiry password policy, enabled UPDATE_PASSWORD/reset-password flows, X509/OTP and account enabled/disabled mechanisms. No password blacklist provider/update policy is selected; local CRL checking defaultsfalse (OCSPtrue).",
+    "url": "https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/realm.json5"
+  },
+  "re-web-realm-flows": {
+    "title": "re-web-realm-flows",
+    "observation": "Chart maps OTP_ENABLED=true into OTP_FLOW_ENABLED=REQUIRED and MFA_FLOW_ENABLED=REQUIRED. Reading raw realm placeholder defaultDISABLED without Helm substitution would miss mandatory username/password MFA. Chart also maps optional account-inactivity workflow only if configured.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/templates/secret-kc-realm.yaml"
+  },
+  "re-web-identity-values": {
+    "title": "re-web-identity-values",
+    "observation": "Selected Core realmAuthFlows defaults OTPtrue,X509true,USERNAME_PASSWORDtrue; account inactivity workflow opt-in, detailedObservability alerts off. Provider administration/flow settings\u2014not static nginx\u2014own identity security controls.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/values.yaml"
+  },
+  "re-web-identity-doc": {
+    "title": "re-web-identity-doc",
+    "observation": "Core docs identify defaultOTP as required MFA for username/password and CAC certificate+PIN as normal MFA path. OTP software may run on a separate approved authenticator device; exact device strength is mission policy.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/how-to-guides/identity-and-authorization/configure-authentication-flows.mdx"
+  },
+  "re-web-trust": {
+    "title": "re-web-trust",
+    "observation": "Truststore build downloads approved DoD external-PKI archive with required pinned SHA verification, filters email/software certs and rejects expired certs; copies only selected CA material for Keycloak. Trust material is not an unspecified empty mechanism.",
+    "url": "https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/truststore/ca-to-jks.sh"
+  },
+  "re-web-trust-build": {
+    "title": "re-web-trust-build",
+    "observation": "Default CA ZIP URL is dl.dod.cyber.mil DoD approved external PKI chains. The generated DoD CA material, realm and FIPS libraries are packaged into identity-config image consumed by Core.",
+    "url": "https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/Dockerfile"
+  },
+  "re-web-logs": {
+    "title": "re-web-logs",
+    "observation": "Delivered b84 API root bindings have request/trace/span identifiers but no authenticated user subject; serializer records status and network address with secret redaction. Some domain audit tables have actor but do not cover every web/API event.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/core/observability/logging.ts"
+  },
+  "re-web-jwt": {
+    "title": "re-web-jwt",
+    "observation": "Delivered API uses jose jwtVerify with issuer/audience/signature/expiry; no per-request introspection/session-revocation lookup or initial-source-IP binding. Delegated IdP logout ends SSO but not validation of an already issued bearer token.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/api/auth/auth.oidc-jwt.service.ts"
+  },
+  "re-web-auth": {
+    "title": "re-web-auth",
+    "observation": "Explicit logout wipes user/local auth state and calls IdP signout. It is implemented; residual is outstanding-token revocation rather than a missing logout button.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/web/src/auth/auth-store.ts"
+  },
+  "re-web-vector": {
+    "title": "re-web-vector",
+    "observation": "Central collector ships pod/node logs to Loki with buffering. No actual75percent audit-capacity/processing-failure SA/ISSO route is declared by this Horizon package.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/vector/values/values.yaml"
+  },
+  "re-web-alerts": {
+    "title": "re-web-alerts",
+    "observation": "Account/admin-modification alert templates are conditional on detailedObservability.alerts.enabled; they do not automatically prove audit-tampering/processing-failure notifications to named roles.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/templates/keycloak-logging-alerting-rules.yaml"
+  },
+  "re-web-cookie-types": {
+    "title": "re-web-cookie-types",
+    "observation": "Correct CoreKeycloak26.7.4 marks AUTH_SESSION_ID and KEYCLOAK_IDENTITY FEDERATION(HttpOnly), while KEYCLOAK_SESSION and short-lived KC_AUTH_SESSION_HASH are FEDERATION_JS for session coordination. They are not credential bearer cookies; generic blanket all-cookie remediation would break product behavior.",
+    "url": "https://github.com/keycloak/keycloak/blob/26.7.4/server-spi-private/src/main/java/org/keycloak/cookie/CookieType.java"
+  },
+  "re-web-cookie-provider": {
+    "title": "re-web-cookie-provider",
+    "observation": "Cookie builder obtains Secure from effective HTTPS context, HttpOnly from cookie scope and realm/request path; credential and noncredential scopes are deliberate upstream product distinctions.",
+    "url": "https://github.com/keycloak/keycloak/blob/26.7.4/services/src/main/java/org/keycloak/cookie/DefaultCookieProvider.java"
+  },
+  "re-web-mobile-policy": {
+    "title": "re-web-mobile-policy",
+    "observation": "Official included ASD V6R5 Overview.pdf page8 explicitly classifies browser JavaScript/ECMAScript as permitted Category3 mobile code. This resolves the earlier assumption that all browser JS required an unidentified new technology authorization.",
+    "url": "https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_ASD_V6R5_STIG.zip"
+  },
+  "re-web-artifact-csp": {
+    "title": "re-web-artifact-csp",
+    "observation": "Model-authored HTML receives CSP default-src none,object-src none,form-action none; scripts execute in sandbox allow-scripts iframe without same-origin access. No unmediated plugin/ActiveX execution. Same-frame navigation is a documented residual, not evidence that browserJS is uncategorized.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/web/src/utils/webArtifactSrcdoc.ts"
+  },
+  "re-web-artifact-frame": {
+    "title": "re-web-artifact-frame",
+    "observation": "Iframe sandbox lacks allow-same-origin and denies permissions/referrers; browser mediates code execution and isolates from parent cookies/storage.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/web/src/components/communications/WebArtifactFrame.vue"
+  },
+  "re-web-cookie-scope": {
+    "title": "re-web-cookie-scope",
+    "observation": "Exact26.7.4 FEDERATION is SameSiteNone/HttpOnlytrue; FEDERATION_JS is SameSiteNone/HttpOnlyfalse. Credential and session-coordination cookie scopes are deliberate upstream distinctions.",
+    "url": "https://github.com/keycloak/keycloak/blob/26.7.4/server-spi-private/src/main/java/org/keycloak/cookie/CookieScope.java"
+  },
+  "re-web-id-statefulset": {
+    "title": "re-web-id-statefulset",
+    "observation": "CoreKeycloak26.7.4 startup enables featuresfips, fips-modestrict, proxy-headersxforwarded, http-enabledtrue behind selected HTTPSgateway; selected truststore paths mounted separately.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/templates/statefulset.yaml"
+  },
+  "re-web-secure-generator": {
+    "title": "re-web-secure-generator",
+    "observation": "Session id generator uses SecureRandom with SESSION_ID_BYTES18 and URL-safe base64 output. This is144raw entropybits before optional affinity filtering; comment explicitly preserves128bits after filtering. Output alphabet includes upper/lower/digits; no caller-selected IDs.",
+    "url": "https://github.com/keycloak/keycloak/blob/26.7.4/common/src/main/java/org/keycloak/common/util/SecretGenerator.java"
+  },
+  "re-web-session-factory": {
+    "title": "re-web-session-factory",
+    "observation": "The actual user-session cache factory selects SecretGenerator.SECURE_ID_GENERATOR for persistent/cache or volatile variants. Source ties high-entropy generator to session creation, rather than infer from a generic unused utility.",
+    "url": "https://github.com/keycloak/keycloak/blob/26.7.4/model/infinispan/src/main/java/org/keycloak/models/sessions/infinispan/InfinispanUserSessionProviderFactory.java"
+  },
+  "re-web-api-auth": {
+    "title": "re-web-api-auth",
+    "observation": "Delivered API validates named OIDCsubject, resolves tenant and JITprovisions individualuser before protected operations. Resource grants remain separate from shared service principals.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/api/auth/auth.guard.ts"
+  },
+  "re-appserver-release": {
+    "title": "re-appserver-release",
+    "observation": "The successful UDS push packaged2026.45.4-uds.1 records trusted Horizonb84b9af/build19710, packagecommitd528b7f, UDS Core 1.14.0 and platformContract identity.mode=uds, issuerhttps://sso.uds.dev/realms/uds. The actual delivered profile omits bundled Keycloak. Source-default bundled realm is not the delivered identity boundary.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685"
+  },
+  "re-appserver-coreidentity": {
+    "title": "re-appserver-coreidentity",
+    "observation": "Core 1.14 default enables OTP and X509, sets concurrent per-user limit0(unlimited), leaves inactivity workflow opt-in, includes explicit truststorepaths and optional alert enablement.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/values.yaml"
+  },
+  "re-appserver-flowrender": {
+    "title": "re-appserver-flowrender",
+    "observation": "Chart maps OTP_ENABLED=true to OTP_FLOW_ENABLED=REQUIRED and MFA_FLOW_ENABLED=REQUIRED, and maps X509 auth to enabled alternate flow. Raw realm interpolation fallbacks alone are not the final rendered flow.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/templates/secret-kc-realm.yaml"
+  },
+  "re-appserver-realm": {
+    "title": "re-appserver-realm",
+    "observation": "Realm provides X509UPN/custom-attribute mapping, OCSP checking defaulttrue/failclosed, localCRLfalse, OTP browser flow, user/admin events, ten-minute idle. Consent required action defaultsdisabled; inactivity workflow disabled unless configured; sessionsunlimited default.",
+    "url": "https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/realm.json5"
+  },
+  "re-appserver-trust": {
+    "title": "re-appserver-trust",
+    "observation": "Image trust builder defaults officialDoD approved externalPKI trust chains ZIP, requires SHA256 verification, converts .cer files, excludes configured certificate categories, and includes non-expired certificates. This is actual source provisioning, not a generic claim that trust is unknowable.",
+    "url": "https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/truststore/ca-to-jks.sh"
+  },
+  "re-appserver-trustsync": {
+    "title": "re-appserver-trustsync",
+    "observation": "Identityconfig sync copies generated certs into Keycloak conf/truststores and installs realm/plugin/theme configuration. FIPS libraries are copied when configured.",
+    "url": "https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/sync.sh"
+  },
+  "re-appserver-identitygateway": {
+    "title": "re-appserver-identitygateway",
+    "observation": "UDS routes privateKeycloak paths away from public tenantgateway, exposes admin access separately, strips user-supplied clientcertificate header and injects downstreamcert for delegated X509 handling.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/templates/uds-package.yaml"
+  },
+  "re-appserver-terms": {
+    "title": "re-appserver-terms",
+    "observation": "UDS theme includes mandatory USG notice and explicit acknowledgement UI, but this template is reached only when the terms required action is enabled.",
+    "url": "https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/theme/login/terms.ftl"
+  },
+  "re-appserver-auth": {
+    "title": "re-appserver-auth",
+    "observation": "Every protected request validates OIDC claims and single tenantgroup, resolves stable sub->localuser/tenant, and sets trusted userId/tenantId CLS context. Pending/no-role users are denied.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/api/auth/auth.guard.ts"
+  },
+  "re-appserver-authorization": {
+    "title": "re-appserver-authorization",
+    "observation": "Authorization derives user, objecttype/relation/objectId and contextual tuples, passes the pinned model to OpenFGA and uses a per-request cache keyed by user+object+relation+tuples.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/core/authorization/authorization.service.ts"
+  },
+  "re-appserver-tenantresolver": {
+    "title": "re-appserver-tenantresolver",
+    "observation": "Tenant-scoped authorization targets derive from authenticated tenantId CLS rather than caller-selected arbitrary tenancy.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/core/authorization/tenant-permission-context.resolver.ts"
+  },
+  "re-appserver-schemaattributes": {
+    "title": "re-appserver-schemaattributes",
+    "observation": "Branch records automatically derive tenant_id from trusted app.tenant_id context; composite ancestry/tenantkeys and user audit fields preserve objectsecurity context. Application tenancy is an actual security attribute, not merely an arbitrary label.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/schema/branches.pg.hcl"
+  },
+  "re-appserver-piiprofile": {
+    "title": "re-appserver-piiprofile",
+    "observation": "Users have tenant/identity and ordinary profile fields under RLS. No explicit per-PII-element authorized-processing or processing-purpose tag is configured in this schema.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/schema/users.pg.hcl"
+  },
+  "re-appserver-roleaudit": {
+    "title": "re-appserver-roleaudit",
+    "observation": "Role grant/revocation writes an actor+subject+tenant+action+role audit record, transactionally coupled with mutation. Failed preconditions throw before insert; failed transaction paths do not retain successful audit rows.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/api/users/user-roles.service.ts"
+  },
+  "re-appserver-auditfields": {
+    "title": "re-appserver-auditfields",
+    "observation": "Appendonly permission audit table records actor_user_id, subject_user_id, tenant_id, action, role and timestamp. This is valid audit evidence even though it is a database record rather than Pino JSON.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/schema/permission_audit.pg.hcl"
+  },
+  "re-appserver-logger": {
+    "title": "re-appserver-logger",
+    "observation": "Pino records stable serviceidentity, trace/requestIDs, requestmethod/URL and outcome, with secretredaction. Its commonbindings do not attach authenticated userId; not every per-domain failure can be assigned to a user from that record alone.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/core/observability/logging.ts"
+  },
+  "re-appserver-denials": {
+    "title": "re-appserver-denials",
+    "observation": "Deniedpermissions return403; unexpected resolutionfailures log permission/error but do not attach actor. Source distinguishes missing denied-domain audit from existing successful role change audit.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/core/authorization/permission-enforcer.service.ts"
+  },
+  "re-appserver-logaccess": {
+    "title": "re-appserver-logaccess",
+    "observation": "Grafana local login disabled; UDSgroups map Admin/Auditor to Admin/Viewer and unmatched groups are rejected. Runtime log configuration is Kubernetes-managed outside application users.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/grafana/values/values.yaml"
+  },
+  "re-appserver-logging": {
+    "title": "re-appserver-logging",
+    "observation": "Vector collects pod/node records with namespace/app/container/host identifiers, acknowledged diskbuffers and Loki sinks, exports internal metrics and is monitored. It collects process/container identity independent of Horizonrequest actors.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/vector/values/values.yaml"
+  },
+  "re-appserver-alerts": {
+    "title": "re-appserver-alerts",
+    "observation": "Core enables storage/workload/Prometheus defaultalerts and Alertmanager. This baseline does not configure a dedicated 75 percent audit storage threshold or actual SA/ISSO receiver.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/prometheus-stack/values/kube-prometheus-stack-values.yaml"
+  },
+  "re-appserver-identityalerts": {
+    "title": "re-appserver-identityalerts",
+    "observation": "Identity realm/user/admin alert definitions exist behind detailedObservability.alerts.enabled; they do not automatically enable alerts or define operational receivers.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/templates/keycloak-logging-alerting-rules.yaml"
+  },
+  "re-appserver-falco": {
+    "title": "re-appserver-falco",
+    "observation": "Falco/Sidekick detects runtime behavior and sends events toLoki, but Alertmanager routing is commented and no direct automated permissionrevocation/responsetrigger is configured.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/falco/values/values.yaml"
+  },
+  "re-appserver-podsecurity": {
+    "title": "re-appserver-podsecurity",
+    "observation": "Admission restricts privileges/non-root/escalation/capabilities with explicitexemptions. This supplies secureapplication server operation and a preventionmechanism, but does not itself integrate Falcointrusionevents into accesscontrol.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/pepr/policies/security.ts"
+  },
+  "re-appserver-logout": {
+    "title": "re-appserver-logout",
+    "observation": "Explicitlogout captures IdP signoutcontext, wipes localOIDC/sessionstate then invokes signoutRedirect. This is a delegated interactive logout implementation, not an absence of logout.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/web/src/auth/auth-store.ts"
+  },
+  "re-appserver-jwt": {
+    "title": "re-appserver-jwt",
+    "observation": "ProtectedAPI verifies JWTsignature/issuer/audience/expiry offline. There is no per-request session revocation check; immediate bearer credential invalidation is a residual beyond ending the IdP/browser interactive session.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/api/auth/auth.oidc-jwt.service.ts"
+  },
+  "re-appserver-storage": {
+    "title": "re-appserver-storage",
+    "observation": "Application package requests a persistentvolume with empty/default storageClass; this source does not choose the MPN host disk/CSI encryption or offline backupimplementation.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/values/postgres.yaml"
+  },
+  "re-appserver-gwtls": {
+    "title": "re-appserver-gwtls",
+    "observation": "UDS HTTPS ingress uses operator-supplied TLS Secret and rootminimumTLS; actual leaf certificate issuer/class is supplied outside Horizon package.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/istio/charts/uds-istio-config/templates/gateway.yaml"
+  },
+  "re-appserver-webmobile": {
+    "title": "re-appserver-webmobile",
+    "observation": "Multistage immutable frontend image copies compiled assets; clientJavaScript is served to browser, not installed/executed by an application server plugin/mobile code interface.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/web/Dockerfile"
+  },
+  "re-appserver-clustering": {
+    "title": "re-appserver-clustering",
+    "observation": "The generic service chart implements Kubernetes Deployment replicaCount, optional autoscaling/v2 HPA, readiness/liveness probes and Service routing. This is a clustering/failover capability; MAC I actual redundancy requires its selected deployment configuration.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-service/templates/hpa.yaml"
+  },
+  "re-appserver-privateinputs": {
+    "title": "re-appserver-privateinputs",
+    "observation": "Delivered platform-contract defines Core and identity but no data classification/MAC designation, MPN storage provider or gateway certificate chain. These organizational/provider selections cannot be recovered by treating the unused source template as the final deployment.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685"
+  },
+  "re-appserver-idlistener": {
+    "title": "re-appserver-idlistener",
+    "observation": "Actual UDS identity listener handles both UserEvent and AdminEvent, serializes original event fields plus event type and UTC timestamp, and prints JSON to stdout. Vector can collect the actual provider records directly; no bundled identity database forwarder is needed.",
+    "url": "https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/plugin/src/main/java/com/defenseunicorns/uds/keycloak/plugin/eventListeners/JSONLogEventListenerProvider.java"
+  },
+  "re-appserver-loginmask": {
+    "title": "re-appserver-loginmask",
+    "observation": "The delegated UDS login theme renders the credential input with type=password and autocomplete=off. Masking is implemented at the actual interactive authentication boundary.",
+    "url": "https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/theme/login/login.ftl"
+  },
+  "re-database-release": {
+    "title": "re-database-release",
+    "observation": "Successful UDS push42114745685 packages2026.45.4-uds.1; platform-contract selects shared UDS identity/Core1.14.0, no bundled Keycloak image. Build-info identifies appb84b9af/build19710 and Postgres digest3431665ea7f0c2dfe4bef9673aac6221a58bdf910251857123b7fb363cbb030e from source9d3725b0/run41699186459.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685"
+  },
+  "re-database-postgres-values": {
+    "title": "re-database-postgres-values",
+    "observation": "Postgres chart args preload pgaudit and disable JIT; no pgaudit.log, native connection/disconnection logging, full log prefix, password policy hooks, session disconnect policy or encryption StorageClass selected. PVC uses host default StorageClass.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/values/postgres.yaml"
+  },
+  "re-database-postgres-pod": {
+    "title": "re-database-postgres-pod",
+    "observation": "Dedicated PostgreSQL container/PVC and ClusterIP SQL service; PGDATA persists separately from read-only image. Native credentials from a managed Secret; generated initdb config in PGDATA. No human SQL login route is publicly exposed by Package.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-postgres/templates/statefulset.yaml"
+  },
+  "re-database-machine-secrets": {
+    "title": "re-database-machine-secrets",
+    "observation": "Service/admin DB passwords generated with openssl rand -hex24 when not supplied, retained from existing Secrets on upgrade; app/openfga/admin are explicit deployment identities, not per-human accounts.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/zarf.yaml"
+  },
+  "re-database-package-network": {
+    "title": "re-database-package-network",
+    "observation": "UDS ambient mesh enrolls horizon namespace and controls SQL connectivity through namespace policy. Public exposes API/web/NATS and bundledKeycloak only when selected; no public PostgreSQL endpoint.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-uds-package/templates/package.yaml"
+  },
+  "re-database-role": {
+    "title": "re-database-role",
+    "observation": "Creates/updates separate horizon_app LOGIN password role; grants DML/schema usage, no superuser or BYPASSRLS. No CONNECTION LIMIT, VALID UNTIL, password-check hook or SET ROLE escalation path.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/migrations/00000000000003_provision_app_role.sql"
+  },
+  "re-database-extension": {
+    "title": "re-database-extension",
+    "observation": "Migration creates pgAudit extension but catches unavailable errors; no session/object audit event settings are enabled by this migration.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/migrations/00000000000002_create_extensions.sql"
+  },
+  "re-database-cls": {
+    "title": "re-database-cls",
+    "observation": "Authenticated tenant and user are set transaction-locally as app.tenant_id/app.user_id. Pool reuse does not retain another request identity.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/core/cls/cls.adapter.ts"
+  },
+  "re-database-rls": {
+    "title": "re-database-rls",
+    "observation": "RLS predicates bind rows to transaction tenant context; tenant labels are separate from the persisted classification labels.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/schema/rls_policies.pg.hcl"
+  },
+  "re-database-permission-audit": {
+    "title": "re-database-permission-audit",
+    "observation": "Append-only role-change records carry tenant, individual actor/subject, grant/revoke action and timestamp; database-specific admin auditing remains distinct.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/schema/permission_audit.pg.hcl"
+  },
+  "re-database-flag-audit": {
+    "title": "re-database-flag-audit",
+    "observation": "Security-definer feature flag audit triggers record actor from app.user_id, action/old/new values and reason; demonstrates application/database-trigger auditing can meet a defined event requirement without pgAudit for that event.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/schema/feature_flag_functions.pg.hcl"
+  },
+  "re-database-labels": {
+    "title": "re-database-labels",
+    "observation": "Actual product taxonomy exists: classification_level enum unclassified/classified/secret/top_secret; files.classification persists labels. Prior claim that source had no taxonomy was wrong.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/schema/files.pg.hcl"
+  },
+  "re-database-chunk-labels": {
+    "title": "re-database-chunk-labels",
+    "observation": "Derived chunks persist classification metadata; assertion schema also persists classification with producer no-downgrade intent.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/schema/chunks.pg.hcl"
+  },
+  "re-database-label-transport": {
+    "title": "re-database-label-transport",
+    "observation": "Typed request/response schemas expose, validate and return classification values; labels remain bound to returned file objects rather than being dropped on transit.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/api/files/files.schema.ts"
+  },
+  "re-database-label-writes": {
+    "title": "re-database-label-writes",
+    "observation": "Metadata update/replace writes classification via repository and returns resulting row; no independent append-only classification-change audit event is emitted here. Ordinary access/status logging is not a before/after label audit.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/api/files/files.service.ts"
+  },
+  "re-database-query-context": {
+    "title": "re-database-query-context",
+    "observation": "API service uses database pool with12-second statement_timeout and logs startup/close. This limits query duration, not DB per-role concurrent sessions or all connection idle lifetime.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/core/database/database.service.ts"
+  },
+  "re-database-tracing": {
+    "title": "re-database-tracing",
+    "observation": "Optional SQL tracing carries parameterized query identity, db.namespace and outcome, excluding bind values. Config defaults tracing off, so it is not an enabled universal SQL audit equivalent.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/core/observability/database-telemetry.ts"
+  },
+  "re-database-config": {
+    "title": "re-database-config",
+    "observation": "OpenTelemetry tracing defaults false, and SQL SSL default disabled under intended ambient mesh. No native DB certificate-auth/cache mechanism is configured.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/core/config/config.schema.ts"
+  },
+  "re-database-vector": {
+    "title": "re-database-vector",
+    "observation": "Vector offloads container/node logs with workload labels to centralized Loki. Collection preserves emitted records; it does not create absent successful SQL events.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/vector/values/values.yaml"
+  },
+  "re-database-log-access": {
+    "title": "re-database-log-access",
+    "observation": "UDS Grafana disables local login and maps identity groups to Admin/Viewer; protected logs can supply privileged review without DBMS-local audit dashboard.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/grafana/values/values.yaml"
+  },
+  "re-database-mtls": {
+    "title": "re-database-mtls",
+    "observation": "UDS root STRICT mesh policy authenticates/encrypts enrolled workload hops independently of PostgreSQL native TLS.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/istio/common/chart/templates/peer-authentication.yaml"
+  },
+  "re-database-alerts": {
+    "title": "re-database-alerts",
+    "observation": "Core enables general cluster/storage monitoring; candidate source does not add a DB audit-volume75% rule or specific audit-failure/tamper notification receiver.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/prometheus-stack/values/kube-prometheus-stack-values.yaml"
+  },
+  "re-database-storage": {
+    "title": "re-database-storage",
+    "observation": "UDS provisions external storage/operator services and supplied trust material; source does not identify actual MPN disk encryption settings or approved roots. Do not substitute unrelated Gallatin AWS infrastructure for MPN.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/getting-started/production/provision-services.mdx"
+  },
+  "re-database-pgaudit": {
+    "title": "re-database-pgaudit",
+    "observation": "pgAudit supports selectable session/object events and role/DDL/read/write classes; preloading/extension creation alone does not select classes. Default session audit setting is none.",
+    "url": "https://github.com/pgaudit/pgaudit/blob/REL_18_STABLE/README.md"
+  },
+  "re-database-pg-log": {
+    "title": "re-database-pg-log",
+    "observation": "PostgreSQL emits server errors to stderr by default; ERROR severity identifies failed/denied SQL and log_min_error_statement includes the failing command. Successful connection/disconnection logging requires explicit settings.",
+    "url": "https://www.postgresql.org/docs/18/runtime-config-logging.html"
+  },
+  "re-database-actual-image": {
+    "title": "re-database-actual-image",
+    "observation": "Static export of exact delivered PostgreSQL image confirms inherited entrypoint has no audit override, PostgreSQL18 sample defaults connection logging empty/disconnections off/prefix timestampPID; actual image has FIPS provider and enabled OpenSSL configuration. File hashes and SBOM details preserved in database-image-inspection.json.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685"
+  },
+  "re-database-pg-wal": {
+    "title": "re-database-pg-wal",
+    "observation": "Native WAL preserves crash-recovery state in durable data storage; independent backup/PITR is a separate recovery capability and not required merely to preserve diagnostics/state on a process failure.",
+    "url": "https://www.postgresql.org/docs/18/wal-intro.html"
+  },
+  "re-database-pg-roles": {
+    "title": "re-database-pg-roles",
+    "observation": "PostgreSQL roles support per-role connection limits and password expiration; unset lifetime/connection limits are not inherited from Keycloak.",
+    "url": "https://www.postgresql.org/docs/18/sql-createrole.html"
+  },
+  "re-aaa-release": {
+    "title": "re-aaa-release",
+    "observation": "Successful UDS publication artifact horizon-release-2026.45.4-uds.1 platform-contract.json selects identity.mode=uds, issuer https://sso.uds.dev/realms/uds, Core1.14.0; build-info.json enumerates12 deliveredimages and no bundled Keycloak. The prior general bundled-source default is not this delivered release.",
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685"
+  },
+  "re-aaa-realm": {
+    "title": "re-aaa-realm",
+    "observation": "Realm has failureFactor3, permanentLockout true, maxTemporaryLockouts0; password length15,upper/lower/digit,special2,history5 and expiry60days; jsonlog listener emits user/admin events. Browser has password and X509 alternative authentication; X509MFA defaultdisabled. Account-inactivity workflow optionaldisabled; no minimum-age/difference/blacklist policy selected. Recovery flow requires reset-password.",
+    "url": "https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/realm.json5"
+  },
+  "re-aaa-values": {
+    "title": "re-aaa-values",
+    "observation": "Core uses identity-config0.32, X509/OTP enabled, username/password enabled; X509_MFA false, inactivity flag unset, detailed-observability alertingdisabled. Insecure admin password generation disabled. Truststore includes UDS bundle and serviceaccount CA separately from configimage truststore.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/values.yaml"
+  },
+  "re-aaa-ca-build": {
+    "title": "re-aaa-ca-build",
+    "observation": "Build imports official unclass-dod_approved_external_pkis_trust_chains.zip only after pinned SHA256 verification; excludes EMAIL/SW authorities and expiredcertificates.",
+    "url": "https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/truststore/ca-to-jks.sh"
+  },
+  "re-aaa-ca-image": {
+    "title": "re-aaa-ca-image",
+    "observation": "Identity config image builds official DoDCA trust bundle/cert directory and copies it into delivered image, along with realm/theme/plugins.",
+    "url": "https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/Dockerfile"
+  },
+  "re-aaa-ca-sync": {
+    "title": "re-aaa-ca-sync",
+    "observation": "Config init sync copies certs into /opt/keycloak/conf/truststores plus realm/plugin/theme; when FIPS enabled also copies FIPS libraries. Thus approvedCA defaults have executable source, not an unspecified empty trust mechanism.",
+    "url": "https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/sync.sh"
+  },
+  "re-aaa-json-events": {
+    "title": "re-aaa-json-events",
+    "observation": "Listener serializes user/admin identity events to stdout with actor/source/time/detail, suitable for UDS Vector collection; does not itself pushSA/ISSO notification messages.",
+    "url": "https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/plugin/src/main/java/com/defenseunicorns/uds/keycloak/plugin/eventListeners/JSONLogEventListenerProvider.java"
+  },
+  "re-aaa-alerts": {
+    "title": "re-aaa-alerts",
+    "observation": "Optional PrometheusRules alert on realm/user/admin modifications only if detailedObservability.alerts.enabled; rule availability is not configured delivery toSA/ISSO.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/templates/keycloak-logging-alerting-rules.yaml"
+  },
+  "re-aaa-recovery-ui": {
+    "title": "re-aaa-recovery-ui",
+    "observation": "Recovery/update-password UI requires new password and confirmation; renders provider policy errors and defaults logout-other-sessions checked.",
+    "url": "https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/theme/login/login-update-password.ftl"
+  },
+  "re-aaa-sso-boundary": {
+    "title": "re-aaa-sso-boundary",
+    "observation": "PlatformKeycloak admin/public ingress is separate, sanitized clientcertificate header forwarded from gateway; certificate access available but optional at default browser boundary.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/templates/uds-package.yaml"
+  },
+  "re-aaa-security-isolation": {
+    "title": "re-aaa-security-isolation",
+    "observation": "Keycloak runtime configured strictFIPS, dedicated serviceidentity and file/volume paths; sensitive data stored within protected service/persistent/externalDB boundary. OS/storage protection is inherited, not a requirement to add independent application encryption.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/templates/statefulset.yaml"
+  },
+  "re-aaa-flow-env": {
+    "title": "re-aaa-flow-env",
+    "observation": "Default OTP_ENABLED=true generates OTP_FLOW_ENABLED and MFA_FLOW_ENABLED REQUIRED; X509 remains ALTERNATIVE and X509_MFA disabled. Do not infer OTPbypass solely from conditional-flow name or CONFIGURE_TOTP defaultActionfalse.",
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/templates/secret-kc-realm.yaml"
+  },
+  "re-docs-policy-register": {
+    "title": "re-docs-policy-register",
+    "observation": "Authoritative company policy register identifies all company policies as DRAFT with no effective date; remaining ratification and some required decision artifacts are explicitly tracked. Written policy existence is supported, approved/effective status is not inferred.",
+    "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/00-POLICY-REGISTER.md"
+  },
+  "re-docs-training-process": {
+    "title": "re-docs-training-process",
+    "observation": "Written company training process covers hire and annual security training, role-based privileged training, retained completion records and assigned accountability; it identifies ThreatSwitch as completion record system. This supports existence of a training program, not completion for every application role.",
+    "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-AT-awareness-and-training.md"
+  },
+  "re-docs-incident-procedure": {
+    "title": "re-docs-incident-procedure",
+    "observation": "Written organization-wide incident response procedure defines reporting, triage severity/response targets, forensic preservation and review responsibilities. Deployment-specific contact/playbook details are still marked pending; this is a draft policy, not evidence of exercised MPN application response.",
+    "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-IR-incident-response.md"
+  },
+  "re-docs-contingency-policy": {
+    "title": "re-docs-contingency-policy",
+    "observation": "Written continuity policy requires offsite backup and annual restore testing, but per-system RTO/RPO, backup configurations/test schedule, BCP and DRP are explicitly pending. It cannot establish MPN backup or tested restore by itself.",
+    "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-CP-business-continuity-disaster-recovery.md"
+  },
+  "re-docs-configuration-process": {
+    "title": "re-docs-configuration-process",
+    "observation": "Written company change process requires approval, security-impact assessment before implementation and reconstructable change history. Application-specific workflow implementation must be checked in Horizon; corporate endpoint policy does not itself operate the MPN cluster.",
+    "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-CM-configuration-management.md"
+  },
+  "re-docs-audit-policy": {
+    "title": "re-docs-audit-policy",
+    "observation": "Written company audit policy defines actor/time/event/source/destination/outcome fields, review responsibilities, protected central aggregation and a default retention floor; longer contractual/STIG requirements take precedence. The policy is not proof that each MPN source is forwarded or that a particular review occurred.",
+    "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-AU-audit-and-accountability.md"
+  },
+  "re-docs-classification-policy": {
+    "title": "re-docs-classification-policy",
+    "observation": "Company data-classification guidance exists; contract-specific applicable CUI categories and approved systems by tier remain explicit decision inputs. This is distinct from source-level classification enums or enforcement mechanisms and does not justify claiming no taxonomy exists.",
+    "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-CUI-data-classification.md"
+  },
+  "re-docs-account-review-process": {
+    "title": "re-docs-account-review-process",
+    "observation": "Company access policy documents quarterly access reviews, removal of unneeded privileges, review-record retention, incident reporting and controlled exceptions. An actual dated source-repository access review was not found in connected-source searches.",
+    "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-AC-access-control.md"
+  },
+  "re-docs-personnel-lifecycle": {
+    "title": "re-docs-personnel-lifecycle",
+    "observation": "Company personnel procedure specifies onboarding and termination notification, immediate privileged-access revocation and deprovisioning obligations. This supports a procedural lifecycle mechanism, but application-directory integration remains a separate implementation check.",
+    "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-PS-personnel-security.md"
+  },
+  "re-docs-mpn-description": {
+    "title": "re-docs-mpn-description",
+    "observation": "October27 proposed containerized MPN description requires local inference and expected Azure/UDS architecture, assigns application operations to Gallatin SREs and host platform/network services to MPN, and records hardened images as intended. It is an older design/candidate, not the current delivery pipeline identity configuration.",
+    "url": "https://docs.google.com/document/d/1RzBd9YPzJSYk8LDI126LbvRBiaF3uJjfN4T5V8-0Pbw/edit"
+  },
+  "re-docs-mpn-decision-boundary": {
+    "title": "re-docs-mpn-decision-boundary",
+    "observation": "October27 MPN deployment/assessment record explicitly distinguishes proposed architecture from selected/approved boundary, capacity, trust/storage/local model settings and release evidence. Host/Government decisions are recorded when made; these cannot be invented from generic application code.",
+    "url": "https://drive.google.com/file/d/1p5zQe7lko71bWNfBd2B6clzJK52Rl0U5/view"
+  },
+  "re-docs-initial-edc-deferred": {
+    "title": "re-docs-initial-edc-deferred",
+    "observation": "October28 infrastructure discussion records mission-owner decision to defer MSS/Scale external data connections and remove them from initial MPN ABD; release should be latest before TEM. Do not count planned future connectors as required implementation for initial MPN release.",
+    "url": "https://grid-gallatin-ai.enterprise.slack.com/archives/C0AL2QNMGG3/p1793201190378669"
+  },
+  "re-docs-mpn-separate-authorization": {
+    "title": "re-docs-mpn-separate-authorization",
+    "observation": "October20 deployment owner explicitly distinguishes MPN assess-only/STIG-hardening authorization from separate DU/2F IL5/IL6 full ATO packages. Broad unrelated NIST control backlog is not automatically this MPN remediation scope.",
+    "url": "https://grid-gallatin-ai.enterprise.slack.com/archives/C0CAQ7T9M6J/p1792526328331559"
+  },
+  "re-docs-mpn-scope-not-unclassified": {
+    "title": "re-docs-mpn-scope-not-unclassified",
+    "observation": "October28 source discussion describes MPN as NATO-partner network with IL6-equivalent discussion; no source here establishes an unclassified-only MPN designation. Any classified-only N/A must remain conditional on the actual mission/data boundary.",
+    "url": "https://grid-gallatin-ai.enterprise.slack.com/archives/C0AL2QNMGG3/p1793201707357709"
+  },
+  "re-docs-rfc057": {
+    "title": "re-docs-rfc057",
+    "observation": "Source-generated RFC057 documents release and change traceability, approval gates, security review and ATO-impact classification. The RFC is labelled Draft and some workflow sections distinguish proposed future implementation; source/live workflow evidence is needed to infer each implemented control.",
+    "url": "https://gallatin.atlassian.net/wiki/spaces/GG/pages/625147947/RFC-057+Release+Management+and+Change+Tracking+for+Multi-Environment+ATO+Compliance"
   }
 }

@@ -1,0 +1,16 @@
+{
+  "archives": {
+    "uds-bundle-horizon-amd64-2026.45.4-uds.1.tar.zst": {
+      "sha256": "b63034509f6efc837c74b2ba9f8bce16ddddbf1eec85b6c94fb823da990bc16d",
+      "size": 21936408640
+    },
+    "zarf-package-horizon-amd64-2026.45.4-uds.1.tar.zst": {
+      "sha256": "4b0f4ce89625b7c3fd0b926c85b43c34aa0f2153a16c374ce507a0b0726ed6c5",
+      "size": 21939723325
+    }
+  },
+  "buildInfoSha256": "4097df7a4183a22c3e76cb7e26bcf2c68c69d30ea4c86146165d08c913ad928f",
+  "packageOciDigest": "sha256:486f55939f94ab081d2a12ecade5439512f8f7c4b3119c40b027c711d386adc9",
+  "passed": true,
+  "version": "2026.45.4-uds.1"
+}

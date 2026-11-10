@@ -218,6 +218,190 @@
         "llm.provider=openai"
       ],
       "cwd": "<pinned bundle>/source"
+    },
+    {
+      "path": "mpn/evidence/rendered-delivered/namespace-and-secrets.yaml",
+      "sha256": "4fe723138e66e447897ecbbf0096b2d88d04500a74abaefe82e1c41302f0073d",
+      "command": [
+        "helm",
+        "template",
+        "zarf-c4dc45b8689000bed9137d75522f99ee020e7442",
+        "charts/horizon-uds-package",
+        "-n",
+        "horizon-uds",
+        "-f",
+        "values/uds-package.yaml"
+      ],
+      "cwd": "<pinned bundle>/source"
+    },
+    {
+      "path": "mpn/evidence/rendered-delivered/postgres.yaml",
+      "sha256": "b87e656c5ebf143b04e6d1a3f016c8fb1a9bd720b02d5241890a161d8b1a3b9c",
+      "command": [
+        "helm",
+        "template",
+        "postgres",
+        "charts/horizon-postgres",
+        "-n",
+        "horizon-uds",
+        "-f",
+        "values/postgres.yaml"
+      ],
+      "cwd": "<pinned bundle>/source"
+    },
+    {
+      "path": "mpn/evidence/rendered-delivered/migrations.yaml",
+      "sha256": "b7411a50897eeb4fd129584045a37dcc89d2d95ac7f8f3a55261a6a2f4a1b3a9",
+      "command": [
+        "helm",
+        "template",
+        "migrations",
+        "charts/horizon-migrations",
+        "-n",
+        "horizon-uds",
+        "-f",
+        "values/migrations.yaml"
+      ],
+      "cwd": "<pinned bundle>/source"
+    },
+    {
+      "path": "mpn/evidence/rendered-delivered/nats.yaml",
+      "sha256": "85961946cb2144076dc5146b217f172b27eeae4c24e036e64023b64d39d68506",
+      "command": [
+        "helm",
+        "template",
+        "nats",
+        "charts/nats",
+        "-n",
+        "horizon-uds",
+        "-f",
+        "values/nats.yaml"
+      ],
+      "cwd": "<pinned bundle>/source"
+    },
+    {
+      "path": "mpn/evidence/rendered-delivered/openfga.yaml",
+      "sha256": "186f519c19a683412d5f06d564ef1b00126efc91fe5dc89a25f4140dddd7d853",
+      "command": [
+        "helm",
+        "template",
+        "openfga",
+        "charts/openfga",
+        "-n",
+        "horizon-uds",
+        "-f",
+        "values/openfga.yaml"
+      ],
+      "cwd": "<pinned bundle>/source"
+    },
+    {
+      "path": "mpn/evidence/rendered-delivered/seaweedfs.yaml",
+      "sha256": "0a6b93eb2b4eed6ba5225132cca390a803d79f7a99a94dc9471016d911c02c44",
+      "command": [
+        "helm",
+        "template",
+        "seaweedfs",
+        "charts/seaweedfs",
+        "-n",
+        "horizon-uds",
+        "-f",
+        "values/seaweedfs.yaml"
+      ],
+      "cwd": "<pinned bundle>/source"
+    },
+    {
+      "path": "mpn/evidence/rendered-delivered/horizon-api.yaml",
+      "sha256": "fd22b9d5671a92ba9ab55d54d80c8ad5a12702cb7f7c84efaf43691107226ffa",
+      "command": [
+        "helm",
+        "template",
+        "horizon-api",
+        "charts/horizon-service",
+        "-n",
+        "horizon-uds",
+        "-f",
+        "values/api.yaml"
+      ],
+      "cwd": "<pinned bundle>/source"
+    },
+    {
+      "path": "mpn/evidence/rendered-delivered/horizon-web.yaml",
+      "sha256": "bb9c310ac12e62ebd1b20de28c38ea9dfa1fb9c00a6e6d2531c56deea886ae03",
+      "command": [
+        "helm",
+        "template",
+        "horizon-web",
+        "charts/horizon-service",
+        "-n",
+        "horizon-uds",
+        "-f",
+        "values/web.yaml"
+      ],
+      "cwd": "<pinned bundle>/source"
+    },
+    {
+      "path": "mpn/evidence/rendered-delivered/horizon-chat-agent.yaml",
+      "sha256": "18c41f5e2a0d5d70cbc1025174fb10a4f8fbc58b7f4cd7234a688278453a898a",
+      "command": [
+        "helm",
+        "template",
+        "horizon-chat-agent",
+        "charts/horizon-service",
+        "-n",
+        "horizon-uds",
+        "-f",
+        "values/chat-agent.yaml",
+        "--set-string",
+        "llm.provider=openai"
+      ],
+      "cwd": "<pinned bundle>/source"
+    },
+    {
+      "path": "mpn/evidence/rendered-delivered/horizon-simulation.yaml",
+      "sha256": "a4921a335d8824a08467744d3efaf6932219101361d2a64783d600c1d854dab6",
+      "command": [
+        "helm",
+        "template",
+        "horizon-simulation",
+        "charts/horizon-service",
+        "-n",
+        "horizon-uds",
+        "-f",
+        "values/simulation.yaml"
+      ],
+      "cwd": "<pinned bundle>/source"
+    },
+    {
+      "path": "mpn/evidence/rendered-delivered/horizon-ops-readiness.yaml",
+      "sha256": "f91c8b5445bd5f04ee6204f5415100c063fa14ab382e6984bae57331dce8223e",
+      "command": [
+        "helm",
+        "template",
+        "horizon-ops-readiness",
+        "charts/horizon-service",
+        "-n",
+        "horizon-uds",
+        "-f",
+        "values/ops-readiness.yaml"
+      ],
+      "cwd": "<pinned bundle>/source"
+    },
+    {
+      "path": "mpn/evidence/rendered-delivered/horizon-artifact-ingestion.yaml",
+      "sha256": "28f824bbefcd103a5c772b3ab79ace016e806c3074e8e4afa654baa0c5c4bb81",
+      "command": [
+        "helm",
+        "template",
+        "horizon-artifact-ingestion",
+        "charts/horizon-service",
+        "-n",
+        "horizon-uds",
+        "-f",
+        "values/artifact-ingestion.yaml",
+        "--set-string",
+        "llm.provider=openai"
+      ],
+      "cwd": "<pinned bundle>/source"
     }
   ]
 }
