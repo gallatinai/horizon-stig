@@ -8623,7 +8623,7 @@
     },
     "V-263591": {
       "status": "Needs work",
-      "justification": "Actual password authentication occurs in UDS Keycloak, not bundled Horizon identity. Its pinned policy lacks a configured compromised-password dictionary/provider and update lifecycle; available password error messages/capability do not activate validation. This can be inherited from a selected upstream identity authority or enabled in the provider, without implementing password handling in Horizon. Native Keycloak already supplies password-denylist validation and reload. The source-known residual is Gallatin corpus delivery/policy/update configuration, not an unimplemented product capability.",
+      "justification": "Actual password authentication occurs in UDS Keycloak, not bundled Horizon identity. Its pinned policy lacks a configured compromised-password dictionary/provider and update lifecycle; available password error messages/capability do not activate validation. This can be inherited from a selected upstream identity authority or enabled in the provider, without implementing password handling in Horizon. Native Keycloak already supplies password-denylist validation and reload. The source-known residual is Gallatin corpus delivery/policy/update configuration, not an unimplemented product capability. Human review on 2026-11-10 confirmed Needs work for the shared password-list control, with prior authorization to apply the same remediation to matching counterparts. Verify actual upstream/shared identity-provider coverage first, then use one list/policy integration for applicable maintenance, updates and password checking rather than duplicate component implementations.",
       "evidence_ids": [
         "re-platform-delivered-profile",
         "re-platform-realm",
@@ -8633,7 +8633,7 @@
         "mpn-identity-denylist",
         "mpn-identity-init-only"
       ],
-      "next_step": "Gallatin mounts its approved maintained denylist at /opt/keycloak/data/password-blacklists, appends passwordBlacklist(filename) to the existing Core realmInitEnv.PASSWORD_POLICY without dropping current FIPS KDF/length/classes/history/expiry, and updates the live realm password policy if already imported. Configure Gallatin-owned corpus cadence/incident updates; Keycloak natively reloads changed files (default60s), so no new API or custom validator service is needed.",
+      "next_step": "Verify current password-authentication scope and existing upstream/shared-provider denylist coverage. Where missing, select an approved maintained list, establish organization-defined scheduled updates and updates on suspected compromise, and enable the existing central password-list validator without weakening other password controls. Verify list availability, scheduled/incident refresh and rejection of listed passwords during creation/change as required by this exact rule. Persist desired configuration and update existing realms through controlled changes. Retain policy, configuration and test evidence; scope exceptions per component and do not implement password handling in Horizon.",
       "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
       "category": "platform identity configuration/delegation",
       "components": "UDS platform: registry, runtime, Pepr, Istio, logging; delivered workloads",
@@ -8642,7 +8642,7 @@
     },
     "V-263592": {
       "status": "Needs work",
-      "justification": "Actual password authentication occurs in UDS Keycloak, not bundled Horizon identity. Its pinned policy lacks a configured compromised-password dictionary/provider and update lifecycle; available password error messages/capability do not activate validation. This can be inherited from a selected upstream identity authority or enabled in the provider, without implementing password handling in Horizon. Native Keycloak already supplies password-denylist validation and reload. The source-known residual is Gallatin corpus delivery/policy/update configuration, not an unimplemented product capability.",
+      "justification": "Actual password authentication occurs in UDS Keycloak, not bundled Horizon identity. Its pinned policy lacks a configured compromised-password dictionary/provider and update lifecycle; available password error messages/capability do not activate validation. This can be inherited from a selected upstream identity authority or enabled in the provider, without implementing password handling in Horizon. Native Keycloak already supplies password-denylist validation and reload. The source-known residual is Gallatin corpus delivery/policy/update configuration, not an unimplemented product capability. Human review on 2026-11-10 confirmed Needs work for the shared password-list control, with prior authorization to apply the same remediation to matching counterparts. Verify actual upstream/shared identity-provider coverage first, then use one list/policy integration for applicable maintenance, updates and password checking rather than duplicate component implementations.",
       "evidence_ids": [
         "re-platform-delivered-profile",
         "re-platform-realm",
@@ -8652,7 +8652,7 @@
         "mpn-identity-denylist",
         "mpn-identity-init-only"
       ],
-      "next_step": "Gallatin mounts its approved maintained denylist at /opt/keycloak/data/password-blacklists, appends passwordBlacklist(filename) to the existing Core realmInitEnv.PASSWORD_POLICY without dropping current FIPS KDF/length/classes/history/expiry, and updates the live realm password policy if already imported. Configure Gallatin-owned corpus cadence/incident updates; Keycloak natively reloads changed files (default60s), so no new API or custom validator service is needed.",
+      "next_step": "Verify current password-authentication scope and existing upstream/shared-provider denylist coverage. Where missing, select an approved maintained list, establish organization-defined scheduled updates and updates on suspected compromise, and enable the existing central password-list validator without weakening other password controls. Verify list availability, scheduled/incident refresh and rejection of listed passwords during creation/change as required by this exact rule. Persist desired configuration and update existing realms through controlled changes. Retain policy, configuration and test evidence; scope exceptions per component and do not implement password handling in Horizon.",
       "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
       "category": "platform identity configuration/delegation",
       "components": "UDS platform: registry, runtime, Pepr, Istio, logging; delivered workloads",
@@ -8661,7 +8661,7 @@
     },
     "V-263593": {
       "status": "Needs work",
-      "justification": "Actual password authentication occurs in UDS Keycloak, not bundled Horizon identity. Its pinned policy lacks a configured compromised-password dictionary/provider and update lifecycle; available password error messages/capability do not activate validation. This can be inherited from a selected upstream identity authority or enabled in the provider, without implementing password handling in Horizon. Native Keycloak already supplies password-denylist validation and reload. The source-known residual is Gallatin corpus delivery/policy/update configuration, not an unimplemented product capability.",
+      "justification": "Actual password authentication occurs in UDS Keycloak, not bundled Horizon identity. Its pinned policy lacks a configured compromised-password dictionary/provider and update lifecycle; available password error messages/capability do not activate validation. This can be inherited from a selected upstream identity authority or enabled in the provider, without implementing password handling in Horizon. Native Keycloak already supplies password-denylist validation and reload. The source-known residual is Gallatin corpus delivery/policy/update configuration, not an unimplemented product capability. Human review on 2026-11-10 confirmed Needs work for the shared password-list control, with prior authorization to apply the same remediation to matching counterparts. Verify actual upstream/shared identity-provider coverage first, then use one list/policy integration for applicable maintenance, updates and password checking rather than duplicate component implementations.",
       "evidence_ids": [
         "re-platform-delivered-profile",
         "re-platform-realm",
@@ -8671,7 +8671,7 @@
         "mpn-identity-denylist",
         "mpn-identity-init-only"
       ],
-      "next_step": "Gallatin mounts its approved maintained denylist at /opt/keycloak/data/password-blacklists, appends passwordBlacklist(filename) to the existing Core realmInitEnv.PASSWORD_POLICY without dropping current FIPS KDF/length/classes/history/expiry, and updates the live realm password policy if already imported. Configure Gallatin-owned corpus cadence/incident updates; Keycloak natively reloads changed files (default60s), so no new API or custom validator service is needed.",
+      "next_step": "Verify current password-authentication scope and existing upstream/shared-provider denylist coverage. Where missing, select an approved maintained list, establish organization-defined scheduled updates and updates on suspected compromise, and enable the existing central password-list validator without weakening other password controls. Verify list availability, scheduled/incident refresh and rejection of listed passwords during creation/change as required by this exact rule. Persist desired configuration and update existing realms through controlled changes. Retain policy, configuration and test evidence; scope exceptions per component and do not implement password handling in Horizon.",
       "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
       "category": "platform identity configuration/delegation",
       "components": "UDS platform: registry, runtime, Pepr, Istio, logging; delivered workloads",
@@ -8680,7 +8680,7 @@
     },
     "V-263594": {
       "status": "Needs work",
-      "justification": "Actual password authentication occurs in UDS Keycloak, not bundled Horizon identity. Its pinned policy lacks a configured compromised-password dictionary/provider and update lifecycle; available password error messages/capability do not activate validation. This can be inherited from a selected upstream identity authority or enabled in the provider, without implementing password handling in Horizon. Native Keycloak already supplies password-denylist validation and reload. The source-known residual is Gallatin corpus delivery/policy/update configuration, not an unimplemented product capability.",
+      "justification": "Actual password authentication occurs in UDS Keycloak, not bundled Horizon identity. Its pinned policy lacks a configured compromised-password dictionary/provider and update lifecycle; available password error messages/capability do not activate validation. This can be inherited from a selected upstream identity authority or enabled in the provider, without implementing password handling in Horizon. Native Keycloak already supplies password-denylist validation and reload. The source-known residual is Gallatin corpus delivery/policy/update configuration, not an unimplemented product capability. Human review on 2026-11-10 confirmed Needs work for the shared password-list control, with prior authorization to apply the same remediation to matching counterparts. Verify actual upstream/shared identity-provider coverage first, then use one list/policy integration for applicable maintenance, updates and password checking rather than duplicate component implementations.",
       "evidence_ids": [
         "re-platform-delivered-profile",
         "re-platform-realm",
@@ -8690,7 +8690,7 @@
         "mpn-identity-denylist",
         "mpn-identity-init-only"
       ],
-      "next_step": "Gallatin mounts its approved maintained denylist at /opt/keycloak/data/password-blacklists, appends passwordBlacklist(filename) to the existing Core realmInitEnv.PASSWORD_POLICY without dropping current FIPS KDF/length/classes/history/expiry, and updates the live realm password policy if already imported. Configure Gallatin-owned corpus cadence/incident updates; Keycloak natively reloads changed files (default60s), so no new API or custom validator service is needed.",
+      "next_step": "Verify current password-authentication scope and existing upstream/shared-provider denylist coverage. Where missing, select an approved maintained list, establish organization-defined scheduled updates and updates on suspected compromise, and enable the existing central password-list validator without weakening other password controls. Verify list availability, scheduled/incident refresh and rejection of listed passwords during creation/change as required by this exact rule. Persist desired configuration and update existing realms through controlled changes. Retain policy, configuration and test evidence; scope exceptions per component and do not implement password handling in Horizon.",
       "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
       "category": "platform identity configuration/delegation",
       "components": "UDS platform: registry, runtime, Pepr, Istio, logging; delivered workloads",
@@ -10420,7 +10420,7 @@
     },
     "V-264345": {
       "status": "Needs work",
-      "justification": "Actual UDS provider supplies strong length/classes/history/expiry, correcting the bundled-policy premise. Its selected passwordPolicy still has no compromised/common-password blacklist provider or maintained update process. This is one shared-provider blacklist integration/policy residual, not four web code changes. Native Keycloak already supplies password-denylist validation and reload. The source-known residual is Gallatin corpus delivery/policy/update configuration, not an unimplemented product capability.",
+      "justification": "Actual UDS provider supplies strong length/classes/history/expiry, correcting the bundled-policy premise. Its selected passwordPolicy still has no compromised/common-password blacklist provider or maintained update process. This is one shared-provider blacklist integration/policy residual, not four web code changes. Native Keycloak already supplies password-denylist validation and reload. The source-known residual is Gallatin corpus delivery/policy/update configuration, not an unimplemented product capability. Human review on 2026-11-10 confirmed Needs work for the shared password-list control, with prior authorization to apply the same remediation to matching counterparts. Verify actual upstream/shared identity-provider coverage first, then use one list/policy integration for applicable maintenance, updates and password checking rather than duplicate component implementations.",
       "evidence_ids": [
         "re-web-actual-release",
         "re-web-realm",
@@ -10430,7 +10430,7 @@
         "mpn-identity-denylist",
         "mpn-identity-init-only"
       ],
-      "next_step": "Gallatin mounts its approved maintained denylist at /opt/keycloak/data/password-blacklists, appends passwordBlacklist(filename) to the existing Core realmInitEnv.PASSWORD_POLICY without dropping current FIPS KDF/length/classes/history/expiry, and updates the live realm password policy if already imported. Configure Gallatin-owned corpus cadence/incident updates; Keycloak natively reloads changed files (default60s), so no new API or custom validator service is needed.",
+      "next_step": "Verify current password-authentication scope and existing upstream/shared-provider denylist coverage. Where missing, select an approved maintained list, establish organization-defined scheduled updates and updates on suspected compromise, and enable the existing central password-list validator without weakening other password controls. Verify list availability, scheduled/incident refresh and rejection of listed passwords during creation/change as required by this exact rule. Persist desired configuration and update existing realms through controlled changes. Retain policy, configuration and test evidence; scope exceptions per component and do not implement password handling in Horizon.",
       "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
       "category": "identity configuration/service",
       "components": "Delivered static nginx-FIPS, Istio ingress and shared UDS identity (separate roles)",
@@ -10439,7 +10439,7 @@
     },
     "V-264346": {
       "status": "Needs work",
-      "justification": "Actual UDS provider supplies strong length/classes/history/expiry, correcting the bundled-policy premise. Its selected passwordPolicy still has no compromised/common-password blacklist provider or maintained update process. This is one shared-provider blacklist integration/policy residual, not four web code changes. Native Keycloak already supplies password-denylist validation and reload. The source-known residual is Gallatin corpus delivery/policy/update configuration, not an unimplemented product capability.",
+      "justification": "Actual UDS provider supplies strong length/classes/history/expiry, correcting the bundled-policy premise. Its selected passwordPolicy still has no compromised/common-password blacklist provider or maintained update process. This is one shared-provider blacklist integration/policy residual, not four web code changes. Native Keycloak already supplies password-denylist validation and reload. The source-known residual is Gallatin corpus delivery/policy/update configuration, not an unimplemented product capability. Human review on 2026-11-10 confirmed Needs work for the shared password-list control, with prior authorization to apply the same remediation to matching counterparts. Verify actual upstream/shared identity-provider coverage first, then use one list/policy integration for applicable maintenance, updates and password checking rather than duplicate component implementations.",
       "evidence_ids": [
         "re-web-actual-release",
         "re-web-realm",
@@ -10449,7 +10449,7 @@
         "mpn-identity-denylist",
         "mpn-identity-init-only"
       ],
-      "next_step": "Gallatin mounts its approved maintained denylist at /opt/keycloak/data/password-blacklists, appends passwordBlacklist(filename) to the existing Core realmInitEnv.PASSWORD_POLICY without dropping current FIPS KDF/length/classes/history/expiry, and updates the live realm password policy if already imported. Configure Gallatin-owned corpus cadence/incident updates; Keycloak natively reloads changed files (default60s), so no new API or custom validator service is needed.",
+      "next_step": "Verify current password-authentication scope and existing upstream/shared-provider denylist coverage. Where missing, select an approved maintained list, establish organization-defined scheduled updates and updates on suspected compromise, and enable the existing central password-list validator without weakening other password controls. Verify list availability, scheduled/incident refresh and rejection of listed passwords during creation/change as required by this exact rule. Persist desired configuration and update existing realms through controlled changes. Retain policy, configuration and test evidence; scope exceptions per component and do not implement password handling in Horizon.",
       "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
       "category": "identity configuration/service",
       "components": "Delivered static nginx-FIPS, Istio ingress and shared UDS identity (separate roles)",
@@ -10458,7 +10458,7 @@
     },
     "V-264347": {
       "status": "Needs work",
-      "justification": "Actual UDS provider supplies strong length/classes/history/expiry, correcting the bundled-policy premise. Its selected passwordPolicy still has no compromised/common-password blacklist provider or maintained update process. This is one shared-provider blacklist integration/policy residual, not four web code changes. Native Keycloak already supplies password-denylist validation and reload. The source-known residual is Gallatin corpus delivery/policy/update configuration, not an unimplemented product capability.",
+      "justification": "Actual UDS provider supplies strong length/classes/history/expiry, correcting the bundled-policy premise. Its selected passwordPolicy still has no compromised/common-password blacklist provider or maintained update process. This is one shared-provider blacklist integration/policy residual, not four web code changes. Native Keycloak already supplies password-denylist validation and reload. The source-known residual is Gallatin corpus delivery/policy/update configuration, not an unimplemented product capability. Human review on 2026-11-10 confirmed Needs work for the shared password-list control, with prior authorization to apply the same remediation to matching counterparts. Verify actual upstream/shared identity-provider coverage first, then use one list/policy integration for applicable maintenance, updates and password checking rather than duplicate component implementations.",
       "evidence_ids": [
         "re-web-actual-release",
         "re-web-realm",
@@ -10468,7 +10468,7 @@
         "mpn-identity-denylist",
         "mpn-identity-init-only"
       ],
-      "next_step": "Gallatin mounts its approved maintained denylist at /opt/keycloak/data/password-blacklists, appends passwordBlacklist(filename) to the existing Core realmInitEnv.PASSWORD_POLICY without dropping current FIPS KDF/length/classes/history/expiry, and updates the live realm password policy if already imported. Configure Gallatin-owned corpus cadence/incident updates; Keycloak natively reloads changed files (default60s), so no new API or custom validator service is needed.",
+      "next_step": "Verify current password-authentication scope and existing upstream/shared-provider denylist coverage. Where missing, select an approved maintained list, establish organization-defined scheduled updates and updates on suspected compromise, and enable the existing central password-list validator without weakening other password controls. Verify list availability, scheduled/incident refresh and rejection of listed passwords during creation/change as required by this exact rule. Persist desired configuration and update existing realms through controlled changes. Retain policy, configuration and test evidence; scope exceptions per component and do not implement password handling in Horizon.",
       "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
       "category": "identity configuration/service",
       "components": "Delivered static nginx-FIPS, Istio ingress and shared UDS identity (separate roles)",
@@ -10477,7 +10477,7 @@
     },
     "V-264348": {
       "status": "Needs work",
-      "justification": "Actual UDS provider supplies strong length/classes/history/expiry, correcting the bundled-policy premise. Its selected passwordPolicy still has no compromised/common-password blacklist provider or maintained update process. This is one shared-provider blacklist integration/policy residual, not four web code changes. Native Keycloak already supplies password-denylist validation and reload. The source-known residual is Gallatin corpus delivery/policy/update configuration, not an unimplemented product capability.",
+      "justification": "Actual UDS provider supplies strong length/classes/history/expiry, correcting the bundled-policy premise. Its selected passwordPolicy still has no compromised/common-password blacklist provider or maintained update process. This is one shared-provider blacklist integration/policy residual, not four web code changes. Native Keycloak already supplies password-denylist validation and reload. The source-known residual is Gallatin corpus delivery/policy/update configuration, not an unimplemented product capability. Human review on 2026-11-10 confirmed Needs work for the shared password-list control, with prior authorization to apply the same remediation to matching counterparts. Verify actual upstream/shared identity-provider coverage first, then use one list/policy integration for applicable maintenance, updates and password checking rather than duplicate component implementations.",
       "evidence_ids": [
         "re-web-actual-release",
         "re-web-realm",
@@ -10487,7 +10487,7 @@
         "mpn-identity-denylist",
         "mpn-identity-init-only"
       ],
-      "next_step": "Gallatin mounts its approved maintained denylist at /opt/keycloak/data/password-blacklists, appends passwordBlacklist(filename) to the existing Core realmInitEnv.PASSWORD_POLICY without dropping current FIPS KDF/length/classes/history/expiry, and updates the live realm password policy if already imported. Configure Gallatin-owned corpus cadence/incident updates; Keycloak natively reloads changed files (default60s), so no new API or custom validator service is needed.",
+      "next_step": "Verify current password-authentication scope and existing upstream/shared-provider denylist coverage. Where missing, select an approved maintained list, establish organization-defined scheduled updates and updates on suspected compromise, and enable the existing central password-list validator without weakening other password controls. Verify list availability, scheduled/incident refresh and rejection of listed passwords during creation/change as required by this exact rule. Persist desired configuration and update existing realms through controlled changes. Retain policy, configuration and test evidence; scope exceptions per component and do not implement password handling in Horizon.",
       "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
       "category": "identity configuration/service",
       "components": "Delivered static nginx-FIPS, Istio ingress and shared UDS identity (separate roles)",
@@ -16505,7 +16505,7 @@
     },
     "V-263532": {
       "status": "Needs work",
-      "justification": "Shared UDS policy contains no maintained compromised/common-password blacklist validator or update integration. Length/classes/history are not the required corpus check. This belongs at sharedidentity, not the API. Native Keycloak already supplies password-denylist validation and reload. The source-known residual is Gallatin corpus delivery/policy/update configuration, not an unimplemented product capability.",
+      "justification": "Shared UDS policy contains no maintained compromised/common-password blacklist validator or update integration. Length/classes/history are not the required corpus check. This belongs at sharedidentity, not the API. Native Keycloak already supplies password-denylist validation and reload. The source-known residual is Gallatin corpus delivery/policy/update configuration, not an unimplemented product capability. Human review on 2026-11-10 confirmed Needs work for the shared password-list control, with prior authorization to apply the same remediation to matching counterparts. Verify actual upstream/shared identity-provider coverage first, then use one list/policy integration for applicable maintenance, updates and password checking rather than duplicate component implementations.",
       "evidence_ids": [
         "re-aaa-release",
         "re-aaa-realm",
@@ -16515,7 +16515,7 @@
         "mpn-identity-denylist",
         "mpn-identity-init-only"
       ],
-      "next_step": "Gallatin mounts its approved maintained denylist at /opt/keycloak/data/password-blacklists, appends passwordBlacklist(filename) to the existing Core realmInitEnv.PASSWORD_POLICY without dropping current FIPS KDF/length/classes/history/expiry, and updates the live realm password policy if already imported. Configure Gallatin-owned corpus cadence/incident updates; Keycloak natively reloads changed files (default60s), so no new API or custom validator service is needed.",
+      "next_step": "Verify current password-authentication scope and existing upstream/shared-provider denylist coverage. Where missing, select an approved maintained list, establish organization-defined scheduled updates and updates on suspected compromise, and enable the existing central password-list validator without weakening other password controls. Verify list availability, scheduled/incident refresh and rejection of listed passwords during creation/change as required by this exact rule. Persist desired configuration and update existing realms through controlled changes. Retain policy, configuration and test evidence; scope exceptions per component and do not implement password handling in Horizon.",
       "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
       "category": "source/configuration",
       "components": "UDS Core 1.14 shared Keycloak realm and Horizon OIDC clients; no bundled application Keycloak",
@@ -16524,7 +16524,7 @@
     },
     "V-263533": {
       "status": "Needs work",
-      "justification": "Shared UDS policy contains no maintained compromised/common-password blacklist validator or update integration. Length/classes/history are not the required corpus check. This belongs at sharedidentity, not the API. Native Keycloak already supplies password-denylist validation and reload. The source-known residual is Gallatin corpus delivery/policy/update configuration, not an unimplemented product capability.",
+      "justification": "Shared UDS policy contains no maintained compromised/common-password blacklist validator or update integration. Length/classes/history are not the required corpus check. This belongs at sharedidentity, not the API. Native Keycloak already supplies password-denylist validation and reload. The source-known residual is Gallatin corpus delivery/policy/update configuration, not an unimplemented product capability. Human review on 2026-11-10 confirmed Needs work for the shared password-list control, with prior authorization to apply the same remediation to matching counterparts. Verify actual upstream/shared identity-provider coverage first, then use one list/policy integration for applicable maintenance, updates and password checking rather than duplicate component implementations.",
       "evidence_ids": [
         "re-aaa-release",
         "re-aaa-realm",
@@ -16534,7 +16534,7 @@
         "mpn-identity-denylist",
         "mpn-identity-init-only"
       ],
-      "next_step": "Gallatin mounts its approved maintained denylist at /opt/keycloak/data/password-blacklists, appends passwordBlacklist(filename) to the existing Core realmInitEnv.PASSWORD_POLICY without dropping current FIPS KDF/length/classes/history/expiry, and updates the live realm password policy if already imported. Configure Gallatin-owned corpus cadence/incident updates; Keycloak natively reloads changed files (default60s), so no new API or custom validator service is needed.",
+      "next_step": "Verify current password-authentication scope and existing upstream/shared-provider denylist coverage. Where missing, select an approved maintained list, establish organization-defined scheduled updates and updates on suspected compromise, and enable the existing central password-list validator without weakening other password controls. Verify list availability, scheduled/incident refresh and rejection of listed passwords during creation/change as required by this exact rule. Persist desired configuration and update existing realms through controlled changes. Retain policy, configuration and test evidence; scope exceptions per component and do not implement password handling in Horizon.",
       "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
       "category": "source/configuration",
       "components": "UDS Core 1.14 shared Keycloak realm and Horizon OIDC clients; no bundled application Keycloak",
@@ -16543,7 +16543,7 @@
     },
     "V-263534": {
       "status": "Needs work",
-      "justification": "Shared UDS policy contains no maintained compromised/common-password blacklist validator or update integration. Length/classes/history are not the required corpus check. This belongs at sharedidentity, not the API. Native Keycloak already supplies password-denylist validation and reload. The source-known residual is Gallatin corpus delivery/policy/update configuration, not an unimplemented product capability.",
+      "justification": "Shared UDS policy contains no maintained compromised/common-password blacklist validator or update integration. Length/classes/history are not the required corpus check. This belongs at sharedidentity, not the API. Native Keycloak already supplies password-denylist validation and reload. The source-known residual is Gallatin corpus delivery/policy/update configuration, not an unimplemented product capability. Human review on 2026-11-10 confirmed Needs work for the shared password-list control, with prior authorization to apply the same remediation to matching counterparts. Verify actual upstream/shared identity-provider coverage first, then use one list/policy integration for applicable maintenance, updates and password checking rather than duplicate component implementations.",
       "evidence_ids": [
         "re-aaa-release",
         "re-aaa-realm",
@@ -16553,7 +16553,7 @@
         "mpn-identity-denylist",
         "mpn-identity-init-only"
       ],
-      "next_step": "Gallatin mounts its approved maintained denylist at /opt/keycloak/data/password-blacklists, appends passwordBlacklist(filename) to the existing Core realmInitEnv.PASSWORD_POLICY without dropping current FIPS KDF/length/classes/history/expiry, and updates the live realm password policy if already imported. Configure Gallatin-owned corpus cadence/incident updates; Keycloak natively reloads changed files (default60s), so no new API or custom validator service is needed.",
+      "next_step": "Verify current password-authentication scope and existing upstream/shared-provider denylist coverage. Where missing, select an approved maintained list, establish organization-defined scheduled updates and updates on suspected compromise, and enable the existing central password-list validator without weakening other password controls. Verify list availability, scheduled/incident refresh and rejection of listed passwords during creation/change as required by this exact rule. Persist desired configuration and update existing realms through controlled changes. Retain policy, configuration and test evidence; scope exceptions per component and do not implement password handling in Horizon.",
       "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
       "category": "source/configuration",
       "components": "UDS Core 1.14 shared Keycloak realm and Horizon OIDC clients; no bundled application Keycloak",
