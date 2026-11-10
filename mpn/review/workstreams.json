@@ -436,7 +436,7 @@
     {
       "vuln_id": "V-222660",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Document who authorizes retirement, affected-user notification channels/timing and migration/support handoff; reuse existing release communications."
+      "next_step": "In the post-classification verification pass, inspect existing Gallatin customer/application-retirement and MPN operational procedures for decommissioning authority, affected-user identification, notice channels/timing and support or migration handoff. Credit existing accepted coverage. Document and adopt only missing responsibilities and user-notification steps, reusing established communication channels, and retain the applicable procedure reference."
     },
     {
       "vuln_id": "V-233273",
