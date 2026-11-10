@@ -1630,39 +1630,6 @@
   },
   {
     "benchmark": "U_ASD_V6R5_STIG",
-    "vuln_id": "V-222588",
-    "rule_id": "SV-222588r1263593_rule",
-    "version": "APSC-DV-002340",
-    "title": "The application must implement approved cryptographic mechanisms to prevent unauthorized modification of organization-defined information at rest on organization-defined information system components.",
-    "severity": "high",
-    "description": "<VulnDiscussion>Applications handling data requiring \"data at rest\" protections must employ cryptographic mechanisms to prevent unauthorized disclosure and modification of the information at rest.\n\nSelection of a cryptographic mechanism is based on the need to protect the integrity of organizational information. The strength of the mechanism is commensurate with the security category and/or classification of the information. Organizations have the flexibility to either encrypt all information on storage devices (i.e., full disk encryption) or encrypt specific data structures (e.g., files, records, or fields).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
-    "check": "Review the documentation and interview the application administrator.\n\nIdentify the data processed by the application and the accompanying data protection requirements.\n\nDetermine if the data owner has specified data protection encryption requirements regarding modification of data.\n\nDetermine if the application is processing publicly releasable, CUI, or classified data.\n\nDetermine if the application configuration information contains sensitive information.\n\nIf the data is strictly publicly releasable information and system documentation specifies no data encryption is required for any hosted application data, this is not applicable.\n\nAccess the data repository and have the application administrator identify the encryption protections that are utilized.\n\nIf the application processes classified data or if the data owner has specified encryption requirements and the application administrator is unable to demonstrate how the data is encrypted, this is a finding.",
-    "fix": "Identify data elements that require protection.\n\nDocument the data types and specify encryption requirements.\n\nEncrypt data according to DoW policy or data owner requirements.",
-    "references": [
-      "SV-84849",
-      "V-70227",
-      "CCI-002475"
-    ],
-    "status": "Needs work",
-    "justification": "Cryptographic protection from modification needs authenticated integrity, not merely an unspecified encrypted disk. Existing object AES-GCM handles object ciphertext authentication; defined DB fields/labels need an integrity boundary . Gallatin operates MPN Core and storage. A concrete lower-layer solution can be specified now, so this is a shared configuration/implementation backlog item rather than an unknown UDS setting. No deployed compliance result is claimed.",
-    "evidence_ids": [
-      "sol-storage-seaweed-aead",
-      "sol-storage-dm-auth-integrity",
-      "sol-storage-pg-official",
-      "sol-storage-dm-auth-modes"
-    ],
-    "next_step": "Define the sensitive/PII/classification data scope and select an approved authenticated-integrity storage boundary for its live database volume; a supported host dm-crypt+dm-integrity authenticated mode is one existing implementation option, not an instruction to reformat the current disk. Use existing AES-GCM object storage for object ciphertext and signed authenticated backup manifests for offline archives. Retain DB role restrictions separately. Do not credit plain diskSSE/AES-XTS, PostgreSQL page checksums or RBAC as cryptographic integrity, and do not build custom encryption for every database page. Keep this work open until the selected provider/host integrity setting or accepted scope mapping is committed.",
-    "owner": "Gallatin SRE / MPN platform engineering; application security for integrity scope",
-    "category": "shared storage protection implementation",
-    "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
-    "task": "mpn-storage-integrity",
-    "evidence_state": "source-inferred",
-    "solution_ref": "../solutions/storage-protection.md",
-    "evidence": "https://github.com/seaweedfs/seaweedfs/blob/4.52/weed/util/cipher.go; https://www.kernel.org/doc/html/latest/admin-guide/device-mapper/dm-integrity.html; https://www.postgresql.org/docs/18/encryption-options.html; https://www.kernel.org/doc/html/latest/admin-guide/device-mapper/dm-crypt.html",
-    "human_review": true
-  },
-  {
-    "benchmark": "U_ASD_V6R5_STIG",
     "vuln_id": "V-222589",
     "rule_id": "SV-222589r1263595_rule",
     "version": "APSC-DV-002350",

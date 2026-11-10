@@ -712,11 +712,6 @@
   ],
   "mpn-storage-integrity": [
     {
-      "vuln_id": "V-222588",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Define the sensitive/PII/classification data scope and select an approved authenticated-integrity storage boundary for its live database volume; a supported host dm-crypt+dm-integrity authenticated mode is one existing implementation option, not an instruction to reformat the current disk. Use existing AES-GCM object storage for object ciphertext and signed authenticated backup manifests for offline archives. Retain DB role restrictions separately. Do not credit plain diskSSE/AES-XTS, PostgreSQL page checksums or RBAC as cryptographic integrity, and do not build custom encryption for every database page. Keep this work open until the selected provider/host integrity setting or accepted scope mapping is committed."
-    },
-    {
       "vuln_id": "V-204812",
       "benchmark": "U_Application_Server_V4R6_SRG",
       "next_step": "Define the sensitive/PII/classification data scope and select an approved authenticated-integrity storage boundary for its live database volume; a supported host dm-crypt+dm-integrity authenticated mode is one existing implementation option, not an instruction to reformat the current disk. Use existing AES-GCM object storage for object ciphertext and signed authenticated backup manifests for offline archives. Retain DB role restrictions separately. Do not credit plain diskSSE/AES-XTS, PostgreSQL page checksums or RBAC as cryptographic integrity, and do not build custom encryption for every database page. Keep this work open until the selected provider/host integrity setting or accepted scope mapping is committed."
