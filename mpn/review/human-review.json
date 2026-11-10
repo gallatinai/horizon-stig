@@ -2362,7 +2362,7 @@
       "CCI-004066"
     ],
     "status": "Needs work",
-    "justification": "The actual shared UDS realm supplies strong length/class/history/expiry defaults, but the inspected passwordPolicy still does not enforce this exact eight-character-change or24-hour minimum-age requirement for password users. These are IdP policy/tailoring decisions, not missing API features. Certificate-only/delegated account paths can justify rule-specific exceptions if they are the selected path. This is a known provider policy gap/tailoring decision, not missing proof of an existing Core flag or a reason to duplicate identity in Horizon.",
+    "justification": "The actual shared UDS realm supplies strong length/class/history/expiry defaults, but the inspected passwordPolicy still does not enforce this exact eight-character-change or24-hour minimum-age requirement for password users. These are IdP policy/tailoring decisions, not missing API features. Certificate-only/delegated account paths can justify rule-specific exceptions if they are the selected path. This is a known provider policy gap/tailoring decision, not missing proof of an existing Core flag or a reason to duplicate identity in Horizon. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the same decision to similar password-change requirements. Share V-222541 password-scope verification and central policy enforcement; existing complexity/history controls do not establish this exact requirement. Preserve component-specific exceptions and do not infer N/A merely because the application delegates passwords to UDS.",
     "evidence_ids": [
       "re-platform-delivered-profile",
       "re-platform-realm",
@@ -2372,7 +2372,7 @@
       "mpn-identity-realm",
       "mpn-identity-age"
     ],
-    "next_step": "Gallatin resolves the exact eight-character difference or24-hour minimum-change requirement for permitted human-password accounts: use an approved central provider policy extension or accepted certificate-only/account-type tailoring. Core supplies no matching defaultflag; native passwordAge is password-reuse age, not a minimum changeinterval. Do not weaken existing password constraints or invent a supported Helm switch.",
+    "next_step": "Confirm password-authentication scope, current effective policy and the responsible identity/directory provider for this assessed component. Share V-222541 verification and enforce changing at least eight characters centrally where passwords remain in use and the control is not already supplied. Verify the exact rejection behavior and retain evidence. Evaluate no-password or delegated-directory applicability only under the exact rule and actual configuration. Do not invent an unsupported Core flag or duplicate identity management in Horizon.",
     "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
     "category": "platform identity configuration/tailoring",
     "components": "UDS platform: registry, runtime, Pepr, Istio, logging; delivered workloads",
@@ -2395,7 +2395,7 @@
       "CCI-004066"
     ],
     "status": "Needs work",
-    "justification": "The actual shared UDS realm supplies strong length/class/history/expiry defaults, but the inspected passwordPolicy still does not enforce this exact eight-character-change or24-hour minimum-age requirement for password users. These are IdP policy/tailoring decisions, not missing API features. Certificate-only/delegated account paths can justify rule-specific exceptions if they are the selected path. This is a known provider policy gap/tailoring decision, not missing proof of an existing Core flag or a reason to duplicate identity in Horizon.",
+    "justification": "The actual shared UDS realm supplies strong length/class/history/expiry defaults, but the inspected passwordPolicy still does not enforce this exact eight-character-change or24-hour minimum-age requirement for password users. These are IdP policy/tailoring decisions, not missing API features. Certificate-only/delegated account paths can justify rule-specific exceptions if they are the selected path. This is a known provider policy gap/tailoring decision, not missing proof of an existing Core flag or a reason to duplicate identity in Horizon. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the same decision to similar password-change requirements. Share V-222544 password-scope verification and central policy enforcement; existing complexity/history controls do not establish this exact requirement. Preserve component-specific exceptions and do not infer N/A merely because the application delegates passwords to UDS.",
     "evidence_ids": [
       "re-platform-delivered-profile",
       "re-platform-realm",
@@ -2405,7 +2405,7 @@
       "mpn-identity-realm",
       "mpn-identity-age"
     ],
-    "next_step": "Gallatin resolves the exact eight-character difference or24-hour minimum-change requirement for permitted human-password accounts: use an approved central provider policy extension or accepted certificate-only/account-type tailoring. Core supplies no matching defaultflag; native passwordAge is password-reuse age, not a minimum changeinterval. Do not weaken existing password constraints or invent a supported Helm switch.",
+    "next_step": "Confirm password-authentication scope, current effective policy and the responsible identity/directory provider for this assessed component. Share V-222544 verification and enforce a 24-hour minimum password lifetime centrally where passwords remain in use and the control is not already supplied. Verify the exact rejection behavior and retain evidence. Evaluate no-password or delegated-directory applicability only under the exact rule and actual configuration. Do not invent an unsupported Core flag or duplicate identity management in Horizon. Historical-password reuse age is not the minimum interval before a new password change.",
     "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
     "category": "platform identity configuration/tailoring",
     "components": "UDS platform: registry, runtime, Pepr, Istio, logging; delivered workloads",
@@ -5514,7 +5514,7 @@
       "CCI-004066"
     ],
     "status": "Needs work",
-    "justification": "The actual UDS policy provides length/classes/history/60-day expiry, but neither eight-character password change-distance nor24-hour minimum-age enforcement. Passwordhistory does not enforce these distinct controls. Resolve policy/tailoring centrally for applicable human passwords; service/lastresort exemptions remain as the official check permits. This is a known provider policy gap/tailoring decision, not missing proof of an existing Core flag or a reason to duplicate identity in Horizon.",
+    "justification": "The actual UDS policy provides length/classes/history/60-day expiry, but neither eight-character password change-distance nor24-hour minimum-age enforcement. Passwordhistory does not enforce these distinct controls. Resolve policy/tailoring centrally for applicable human passwords; service/lastresort exemptions remain as the official check permits. This is a known provider policy gap/tailoring decision, not missing proof of an existing Core flag or a reason to duplicate identity in Horizon. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the same decision to similar password-change requirements. Share V-222541 password-scope verification and central policy enforcement; existing complexity/history controls do not establish this exact requirement. Preserve component-specific exceptions and do not infer N/A merely because the application delegates passwords to UDS.",
     "evidence_ids": [
       "re-aaa-release",
       "re-aaa-realm",
@@ -5524,7 +5524,7 @@
       "mpn-identity-realm",
       "mpn-identity-age"
     ],
-    "next_step": "Gallatin resolves the exact eight-character difference or24-hour minimum-change requirement for permitted human-password accounts: use an approved central provider policy extension or accepted certificate-only/account-type tailoring. Core supplies no matching defaultflag; native passwordAge is password-reuse age, not a minimum changeinterval. Do not weaken existing password constraints or invent a supported Helm switch.",
+    "next_step": "Confirm password-authentication scope, current effective policy and the responsible identity/directory provider for this assessed component. Share V-222541 verification and enforce changing at least eight characters centrally where passwords remain in use and the control is not already supplied. Verify the exact rejection behavior and retain evidence. Evaluate no-password or delegated-directory applicability only under the exact rule and actual configuration. Do not invent an unsupported Core flag or duplicate identity management in Horizon.",
     "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
     "category": "source/configuration",
     "components": "UDS Core 1.14 shared Keycloak realm and Horizon OIDC clients; no bundled application Keycloak",
@@ -5549,7 +5549,7 @@
       "CCI-004066"
     ],
     "status": "Needs work",
-    "justification": "The actual UDS policy provides length/classes/history/60-day expiry, but neither eight-character password change-distance nor24-hour minimum-age enforcement. Passwordhistory does not enforce these distinct controls. Resolve policy/tailoring centrally for applicable human passwords; service/lastresort exemptions remain as the official check permits. This is a known provider policy gap/tailoring decision, not missing proof of an existing Core flag or a reason to duplicate identity in Horizon.",
+    "justification": "The actual UDS policy provides length/classes/history/60-day expiry, but neither eight-character password change-distance nor24-hour minimum-age enforcement. Passwordhistory does not enforce these distinct controls. Resolve policy/tailoring centrally for applicable human passwords; service/lastresort exemptions remain as the official check permits. This is a known provider policy gap/tailoring decision, not missing proof of an existing Core flag or a reason to duplicate identity in Horizon. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the same decision to similar password-change requirements. Share V-222544 password-scope verification and central policy enforcement; existing complexity/history controls do not establish this exact requirement. Preserve component-specific exceptions and do not infer N/A merely because the application delegates passwords to UDS.",
     "evidence_ids": [
       "re-aaa-release",
       "re-aaa-realm",
@@ -5559,7 +5559,7 @@
       "mpn-identity-realm",
       "mpn-identity-age"
     ],
-    "next_step": "Gallatin resolves the exact eight-character difference or24-hour minimum-change requirement for permitted human-password accounts: use an approved central provider policy extension or accepted certificate-only/account-type tailoring. Core supplies no matching defaultflag; native passwordAge is password-reuse age, not a minimum changeinterval. Do not weaken existing password constraints or invent a supported Helm switch.",
+    "next_step": "Confirm password-authentication scope, current effective policy and the responsible identity/directory provider for this assessed component. Share V-222544 verification and enforce a 24-hour minimum password lifetime centrally where passwords remain in use and the control is not already supplied. Verify the exact rejection behavior and retain evidence. Evaluate no-password or delegated-directory applicability only under the exact rule and actual configuration. Do not invent an unsupported Core flag or duplicate identity management in Horizon. Historical-password reuse age is not the minimum interval before a new password change.",
     "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
     "category": "source/configuration",
     "components": "UDS Core 1.14 shared Keycloak realm and Horizon OIDC clients; no bundled application Keycloak",

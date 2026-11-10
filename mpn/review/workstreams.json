@@ -618,12 +618,12 @@
     {
       "vuln_id": "V-233094",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Gallatin resolves the exact eight-character difference or24-hour minimum-change requirement for permitted human-password accounts: use an approved central provider policy extension or accepted certificate-only/account-type tailoring. Core supplies no matching defaultflag; native passwordAge is password-reuse age, not a minimum changeinterval. Do not weaken existing password constraints or invent a supported Helm switch."
+      "next_step": "Confirm password-authentication scope, current effective policy and the responsible identity/directory provider for this assessed component. Share V-222541 verification and enforce changing at least eight characters centrally where passwords remain in use and the control is not already supplied. Verify the exact rejection behavior and retain evidence. Evaluate no-password or delegated-directory applicability only under the exact rule and actual configuration. Do not invent an unsupported Core flag or duplicate identity management in Horizon."
     },
     {
       "vuln_id": "V-233097",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Gallatin resolves the exact eight-character difference or24-hour minimum-change requirement for permitted human-password accounts: use an approved central provider policy extension or accepted certificate-only/account-type tailoring. Core supplies no matching defaultflag; native passwordAge is password-reuse age, not a minimum changeinterval. Do not weaken existing password constraints or invent a supported Helm switch."
+      "next_step": "Confirm password-authentication scope, current effective policy and the responsible identity/directory provider for this assessed component. Share V-222544 verification and enforce a 24-hour minimum password lifetime centrally where passwords remain in use and the control is not already supplied. Verify the exact rejection behavior and retain evidence. Evaluate no-password or delegated-directory applicability only under the exact rule and actual configuration. Do not invent an unsupported Core flag or duplicate identity management in Horizon. Historical-password reuse age is not the minimum interval before a new password change."
     },
     {
       "vuln_id": "V-263591",
@@ -668,12 +668,12 @@
     {
       "vuln_id": "V-204670",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Gallatin resolves the exact eight-character difference or24-hour minimum-change requirement for permitted human-password accounts: use an approved central provider policy extension or accepted certificate-only/account-type tailoring. Core supplies no matching defaultflag; native passwordAge is password-reuse age, not a minimum changeinterval. Do not weaken existing password constraints or invent a supported Helm switch."
+      "next_step": "Confirm password-authentication scope, current effective policy and the responsible identity/directory provider for this assessed component. Share V-222541 verification and enforce changing at least eight characters centrally where passwords remain in use and the control is not already supplied. Verify the exact rejection behavior and retain evidence. Evaluate no-password or delegated-directory applicability only under the exact rule and actual configuration. Do not invent an unsupported Core flag or duplicate identity management in Horizon."
     },
     {
       "vuln_id": "V-204673",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Gallatin resolves the exact eight-character difference or24-hour minimum-change requirement for permitted human-password accounts: use an approved central provider policy extension or accepted certificate-only/account-type tailoring. Core supplies no matching defaultflag; native passwordAge is password-reuse age, not a minimum changeinterval. Do not weaken existing password constraints or invent a supported Helm switch."
+      "next_step": "Confirm password-authentication scope, current effective policy and the responsible identity/directory provider for this assessed component. Share V-222544 verification and enforce a 24-hour minimum password lifetime centrally where passwords remain in use and the control is not already supplied. Verify the exact rejection behavior and retain evidence. Evaluate no-password or delegated-directory applicability only under the exact rule and actual configuration. Do not invent an unsupported Core flag or duplicate identity management in Horizon. Historical-password reuse age is not the minimum interval before a new password change."
     },
     {
       "vuln_id": "V-263532",
