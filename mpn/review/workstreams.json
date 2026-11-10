@@ -226,7 +226,7 @@
     {
       "vuln_id": "V-222418",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Enable the relevant centralized account-change alerts and map named SA/ISSO routes, or retain existing accepted operator routing evidence."
+      "next_step": "Enable centralized account-modification alerts and configure named SA and ISSO recipients. Modify a test account and verify both recipients receive notification. Retain routing configuration and delivery-test evidence. Do not claim the enterprise user-management N/A exception without evidence that the assessed deployment satisfies that condition."
     },
     {
       "vuln_id": "V-222419",
