@@ -1441,7 +1441,7 @@
       "CCI-001991"
     ],
     "status": "Needs work",
-    "justification": "UDS supplies online OCSP with fail-closed behavior, but its local CRL cache/import support defaults disabled. Official check explicitly asks for cached CRL operation during unavailable OCSP except stated SIPR applicability. Provider support resolves ownership, but online checking alone is not the requested disconnected behavior. The cache implementation and delivery recipe already exist in Core; the shipped checking flag is off and Gallatin owns mounting/enabling/refreshing it.",
+    "justification": "UDS supplies online OCSP with fail-closed behavior, but its local CRL cache/import support defaults disabled. Official check explicitly asks for cached CRL operation during unavailable OCSP except stated SIPR applicability. Provider support resolves ownership, but online checking alone is not the requested disconnected behavior. The cache implementation and delivery recipe already exist in Core; the shipped checking flag is off and Gallatin owns mounting/enabling/refreshing it. Human review on 2026-11-10 confirmed Needs work: enable existing local CRL support, establish refresh before expiry and verify revocation checking during online-service unavailability. Confirm the official SIPRnet/root-CA-access exception before final applicability; no new Horizon revocation implementation is required.",
     "evidence_ids": [
       "re-asd-release",
       "re-asd-realm",
@@ -1453,7 +1453,7 @@
       "mpn-identity-init-only",
       "mpn-core-known-identity-settings"
     ],
-    "next_step": "Gallatin uses Core CRL packaging/mount support, sets realmInitEnv.X509_CRL_CHECKING_ENABLED=\"true\", X509_CRL_ABORT_IF_NON_UPDATED=\"true\" and X509_CRL_RELATIVE_PATH to mounted approved files, and updates the existing dod-cac authenticator where necessary. Refresh the CRL data image/volume before expiry. Keep OCSP fail-closed; disable OCSP only for an approved disconnected CRL alternative. No custom Keycloak cache or API code.",
+    "next_step": "Confirm PKI-authentication scope and whether the exact SIPRnet/no-root-CA-access exception applies. For applicable scope, use existing Core CRL packaging/mount support, enable X509_CRL_CHECKING_ENABLED, configure approved local CRL paths and strict freshness, and update the existing realm authenticator through a controlled change. Establish CRL refresh before expiry. Verify valid, revoked and stale-CRL behavior during network/OCSP unavailability using an approved disconnected profile; preserve fail-closed protections and retain configuration and test evidence.",
     "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
     "category": "delegated provider configuration",
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",

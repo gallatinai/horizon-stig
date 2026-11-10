@@ -826,7 +826,7 @@
     {
       "vuln_id": "V-222553",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Gallatin uses Core CRL packaging/mount support, sets realmInitEnv.X509_CRL_CHECKING_ENABLED=\"true\", X509_CRL_ABORT_IF_NON_UPDATED=\"true\" and X509_CRL_RELATIVE_PATH to mounted approved files, and updates the existing dod-cac authenticator where necessary. Refresh the CRL data image/volume before expiry. Keep OCSP fail-closed; disable OCSP only for an approved disconnected CRL alternative. No custom Keycloak cache or API code."
+      "next_step": "Confirm PKI-authentication scope and whether the exact SIPRnet/no-root-CA-access exception applies. For applicable scope, use existing Core CRL packaging/mount support, enable X509_CRL_CHECKING_ENABLED, configure approved local CRL paths and strict freshness, and update the existing realm authenticator through a controlled change. Establish CRL refresh before expiry. Verify valid, revoked and stale-CRL behavior during network/OCSP unavailability using an approved disconnected profile; preserve fail-closed protections and retain configuration and test evidence."
     },
     {
       "vuln_id": "V-233201",
