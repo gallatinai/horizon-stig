@@ -4511,11 +4511,11 @@
     },
     "V-222673": {
       "status": "Needs work",
-      "justification": "The corporate annual training platform and general awareness courses exist. Assign and record role-appropriate secure-development instruction for every application manager, designer, developer and tester; general awareness or CAC/SIPR training alone does not meet this explicit SDLC requirement.",
+      "justification": "Corporate policy requires annual and role-based training and ThreatSwitch tracks completion, but the saved evidence does not establish annual secure-development coverage for every applicable program-management, design, development and test role. Human review on 2026-11-10 confirmed Needs work with verification first for this and similar training requirements: inspect existing course content, role coverage and completion records before assigning new training. General awareness or CAC/SIPR training alone does not establish the required secure-SDLC coverage; this is not a Horizon product change.",
       "evidence_ids": [
         "solution-governance-training-policy"
       ],
-      "next_step": "Program management and security training owners add the prepared role-specific secure-SDLC module to ThreatSwitch, assign all application roles, record completion/assessment and refresh annually.",
+      "next_step": "In the post-classification verification pass, confirm the applicable development-team/program roles with the program manager and training owner. Map existing annual courses to role-appropriate secure-development/SDLC content and check dated completion evidence for each required role. Credit qualifying existing training, assign only missing content or overdue completions, and retain controlled completion references and the annual refresh schedule. Do not publish personnel training records in the tracker.",
       "owner": "Program manager; security training owner/FSO; engineering managers",
       "category": "operational procedure/certification",
       "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",

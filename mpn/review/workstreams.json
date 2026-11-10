@@ -864,7 +864,7 @@
     {
       "vuln_id": "V-222673",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Program management and security training owners add the prepared role-specific secure-SDLC module to ThreatSwitch, assign all application roles, record completion/assessment and refresh annually."
+      "next_step": "In the post-classification verification pass, confirm the applicable development-team/program roles with the program manager and training owner. Map existing annual courses to role-appropriate secure-development/SDLC content and check dated completion evidence for each required role. Credit qualifying existing training, assign only missing content or overdue completions, and retain controlled completion references and the annual refresh schedule. Do not publish personnel training records in the tracker."
     }
   ],
   "security-assessment-coverage": [
