@@ -4187,13 +4187,13 @@
       "CCI-000382"
     ],
     "status": "Needs work",
-    "justification": "UDS supplies default-deny networking and explicit permitted connections, but the saved evidence does not establish the actual MPN functions, ports and protocols against their permitted PPSM Category Assurance List use. The final MPN network/model profile remains to be selected. Human review on 2026-11-10 confirmed Needs work: inventory the actual MPN services and flows, confirm permitted CAL use with the responsible authority, and verify deployed configuration matches. Local inference selection alone does not establish CAL compliance.",
+    "justification": "UDS supplies default-deny networking and explicit permitted connections, but the saved evidence does not establish the actual MPN functions, ports and protocols against their permitted PPSM Category Assurance List use. The final MPN network/model profile remains to be selected. Human review on 2026-11-10 confirmed Needs work: inventory the actual MPN services and flows, confirm permitted CAL use with the responsible authority, and verify deployed configuration matches. Local inference selection alone does not establish CAL compliance. Human review further directed verification of existing submission coverage before assigning new PPSM work.",
     "evidence_ids": [
       "re-asd-release",
       "re-asd-network",
       "re-asd-package"
     ],
-    "next_step": "Inventory the actual MPN application functions, services, TCP/UDP ports and protocols from the selected deployment profile and observed configuration. Confirm applicable PPSM CAL entries and permitted-use conditions with the responsible MPN network/PPSM authority. Record the mapping and any required approvals, remove or restrict nonpermitted services, and verify deployment matches the accepted inventory. Reuse existing UDS default-deny policies and the interface-register procedure; coordinate local model flows with V-222428.",
+    "next_step": "First inspect the existing MPN submission/System Impact Assessment for its interface inventory and CAL mapping; credit current submitted coverage before creating new documentation. Inventory the actual MPN application functions, services, TCP/UDP ports and protocols from the selected deployment profile and observed configuration. Confirm applicable PPSM CAL entries and permitted-use conditions with the responsible MPN network/PPSM authority. Record the mapping and any required approvals, remove or restrict nonpermitted services, and verify deployment matches the accepted inventory. Reuse existing UDS default-deny policies and the interface-register procedure; coordinate local model flows with V-222428.",
     "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
     "category": "MPN profile configuration",
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
@@ -7696,12 +7696,12 @@
       "CCI-000388"
     ],
     "status": "Needs work",
-    "justification": "A source-controlled flow table cannot itself create the production registration required by this check. Complete a concrete MPN registration action using the same approved flow set; retain an authority-issued registration identifier or explicit exemption, without treating a draft from another program as completion.",
+    "justification": "Human review on 2026-11-10 selected Needs work pending verification and directed the same verification-first treatment for similar submission/registration requirements. The existing MPN submission may already establish registration coverage; the saved evidence does not identify the production registration reference or an authority-confirmed exemption. A submission and a completed registration are distinct, so verify the actual status rather than assume either a gap or completion. The responsible MPN/PPSM authority controls registration; Gallatin supplies application details.",
     "evidence_ids": [
       "solution-governance-ppsm-routing",
       "solution-governance-mpn-scope"
     ],
-    "next_step": "The Gallatin security lead and MPN sponsor submit the approved Horizon MPN flow set through the applicable PPSM/eMASS process and record the resulting identifier or written registration exemption in the controlled authorization packet.",
+    "next_step": "In the post-classification verification pass, inspect the existing MPN submission and confirm production registration status with the responsible authority. Retain the registration identifier/record and confirm it covers the assessed application and required ports, or retain an authority-confirmed registration exemption. Credit existing coverage and update the recommendation where supported. Supply only missing or changed details through the established authority route; do not duplicate an existing registration.",
     "owner": "Gallatin security lead and MPN Government sponsor/PPSM authority",
     "category": "operational procedure/certification",
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",

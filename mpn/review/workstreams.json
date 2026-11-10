@@ -700,7 +700,7 @@
     {
       "vuln_id": "V-222519",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Inventory the actual MPN application functions, services, TCP/UDP ports and protocols from the selected deployment profile and observed configuration. Confirm applicable PPSM CAL entries and permitted-use conditions with the responsible MPN network/PPSM authority. Record the mapping and any required approvals, remove or restrict nonpermitted services, and verify deployment matches the accepted inventory. Reuse existing UDS default-deny policies and the interface-register procedure; coordinate local model flows with V-222428."
+      "next_step": "First inspect the existing MPN submission/System Impact Assessment for its interface inventory and CAL mapping; credit current submitted coverage before creating new documentation. Inventory the actual MPN application functions, services, TCP/UDP ports and protocols from the selected deployment profile and observed configuration. Confirm applicable PPSM CAL entries and permitted-use conditions with the responsible MPN network/PPSM authority. Record the mapping and any required approvals, remove or restrict nonpermitted services, and verify deployment matches the accepted inventory. Reuse existing UDS default-deny policies and the interface-register procedure; coordinate local model flows with V-222428."
     }
   ],
   "nats-auth-crypto-module": [
@@ -812,7 +812,7 @@
     {
       "vuln_id": "V-222629",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "The Gallatin security lead and MPN sponsor submit the approved Horizon MPN flow set through the applicable PPSM/eMASS process and record the resulting identifier or written registration exemption in the controlled authorization packet."
+      "next_step": "In the post-classification verification pass, inspect the existing MPN submission and confirm production registration status with the responsible authority. Retain the registration identifier/record and confirm it covers the assessed application and required ports, or retain an authority-confirmed registration exemption. Credit existing coverage and update the recommendation where supported. Supply only missing or changed details through the established authority route; do not duplicate an existing registration."
     }
   ],
   "registry-lifecycle": [
