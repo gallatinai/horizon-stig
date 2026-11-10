@@ -3,32 +3,32 @@
     {
       "vuln_id": "V-222411",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Enable35-day inactivity enforcement for applicable nonexempt UDS accounts or supply the actual authoritative-directory setting."
+      "next_step": "Gallatin sets Core Keycloak realmInitEnv.ACCOUNT_INACTIVITY_DAYS=\"35\" in its MPN Core override. For an existing uds realm, enable Workflows > disable-inactive-users and set disable-user.after=35d through a controlled AdminConsole/API migration; redeploying the import Secret alone does not apply it. Preserve approved emergency/service exceptions; no duplicate Horizon lifecycle service."
     },
     {
       "vuln_id": "V-233021",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Have the MPN identity operator enable the35-day workflow or attach the selected upstream-directory inactivity enforcement; no duplicate API implementation is needed."
+      "next_step": "Gallatin sets Core Keycloak realmInitEnv.ACCOUNT_INACTIVITY_DAYS=\"35\" in its MPN Core override. For an existing uds realm, enable Workflows > disable-inactive-users and set disable-user.after=35d through a controlled AdminConsole/API migration; redeploying the import Secret alone does not apply it. Preserve approved emergency/service exceptions; no duplicate Horizon lifecycle service."
     },
     {
       "vuln_id": "V-233087",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Have the MPN identity operator enable the35-day workflow or attach the selected upstream-directory inactivity enforcement; no duplicate API implementation is needed."
+      "next_step": "Gallatin sets Core Keycloak realmInitEnv.ACCOUNT_INACTIVITY_DAYS=\"35\" in its MPN Core override. For an existing uds realm, enable Workflows > disable-inactive-users and set disable-user.after=35d through a controlled AdminConsole/API migration; redeploying the import Secret alone does not apply it. Preserve approved emergency/service exceptions; no duplicate Horizon lifecycle service."
     },
     {
       "vuln_id": "V-204750",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Enable/configure the approved35-day inactivitypolicy and account-type exceptions in UDS/directory or attach current override."
+      "next_step": "Gallatin sets Core Keycloak realmInitEnv.ACCOUNT_INACTIVITY_DAYS=\"35\" in its MPN Core override. For an existing uds realm, enable Workflows > disable-inactive-users and set disable-user.after=35d through a controlled AdminConsole/API migration; redeploying the import Secret alone does not apply it. Preserve approved emergency/service exceptions; no duplicate Horizon lifecycle service."
     },
     {
       "vuln_id": "V-263549",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Select/evidence authoritative account deassociation disablement in UDS/directory and record service/emergencyexceptions."
+      "next_step": "Gallatin records its authoritative user-deassociation/offboarding source and uses the existing UDS user enabled-state/group-entitlement controls for the required disablement. Add an integration only if the chosen policy requires automation; do not duplicate account management in Horizon or await DU operations."
     },
     {
       "vuln_id": "V-204639",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Set ACCOUNT_INACTIVITY_DAYS=35 on sharedidentity or attach its accepted directory/operator enforcement."
+      "next_step": "Gallatin sets Core Keycloak realmInitEnv.ACCOUNT_INACTIVITY_DAYS=\"35\" in its MPN Core override. For an existing uds realm, enable Workflows > disable-inactive-users and set disable-user.after=35d through a controlled AdminConsole/API migration; redeploying the import Secret alone does not apply it. Preserve approved emergency/service exceptions; no duplicate Horizon lifecycle service."
     }
   ],
   "application-auditing": [
@@ -247,27 +247,27 @@
     {
       "vuln_id": "V-233143",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Enable existing Core account-event alerts and bind their notification route to the authorized SA/ISSO recipients, or attach the already-selected platform override."
+      "next_step": "Gallatin enables Keycloak detailedObservability.alerts.enabled=true, keeps existing structured logging, and sets its own Alertmanager receiver/routes for responsible security/operations staff."
     },
     {
       "vuln_id": "V-233144",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Enable existing Core account-event alerts and bind their notification route to the authorized SA/ISSO recipients, or attach the already-selected platform override."
+      "next_step": "Gallatin enables Keycloak detailedObservability.alerts.enabled=true, keeps existing structured logging, and sets its own Alertmanager receiver/routes for responsible security/operations staff."
     },
     {
       "vuln_id": "V-233145",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Enable existing Core account-event alerts and bind their notification route to the authorized SA/ISSO recipients, or attach the already-selected platform override."
+      "next_step": "Gallatin enables Keycloak detailedObservability.alerts.enabled=true, keeps existing structured logging, and sets its own Alertmanager receiver/routes for responsible security/operations staff."
     },
     {
       "vuln_id": "V-233146",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Enable existing Core account-event alerts and bind their notification route to the authorized SA/ISSO recipients, or attach the already-selected platform override."
+      "next_step": "Gallatin enables Keycloak detailedObservability.alerts.enabled=true, keeps existing structured logging, and sets its own Alertmanager receiver/routes for responsible security/operations staff."
     },
     {
       "vuln_id": "V-233158",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Enable existing Core account-event alerts and bind their notification route to the authorized SA/ISSO recipients, or attach the already-selected platform override."
+      "next_step": "Gallatin enables Keycloak detailedObservability.alerts.enabled=true, keeps existing structured logging, and sets its own Alertmanager receiver/routes for responsible security/operations staff."
     },
     {
       "vuln_id": "V-233170",
@@ -282,12 +282,12 @@
     {
       "vuln_id": "V-233244",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Use the existing Core alert stack to route applicable security/tampering anomalies to assigned operators/security personnel."
+      "next_step": "Use Gallatin\u2019s existing Core Prometheus/Alertmanager. Enable falcosidekick.config.alertmanager.hostport/endpoint for Falco delivery where appropriate, define required audit failure/capacity rules (not just generic uptime) and set receiver routes."
     },
     {
       "vuln_id": "V-263588",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Use the existing Core alert stack to route applicable security/tampering anomalies to assigned operators/security personnel."
+      "next_step": "Use Gallatin\u2019s existing Core Prometheus/Alertmanager. Enable falcosidekick.config.alertmanager.hostport/endpoint for Falco delivery where appropriate, define required audit failure/capacity rules (not just generic uptime) and set receiver routes."
     },
     {
       "vuln_id": "V-206366",
@@ -307,22 +307,22 @@
     {
       "vuln_id": "V-204728",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Configure the required audit failure/tampering/capacity rules and named receiver routes in existing UDS monitoring, or attach the selected override."
+      "next_step": "Use Gallatin\u2019s existing Core Prometheus/Alertmanager. Enable falcosidekick.config.alertmanager.hostport/endpoint for Falco delivery where appropriate, define required audit failure/capacity rules (not just generic uptime) and set receiver routes."
     },
     {
       "vuln_id": "V-204790",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Configure the required audit failure/tampering/capacity rules and named receiver routes in existing UDS monitoring, or attach the selected override."
+      "next_step": "Use Gallatin\u2019s existing Core Prometheus/Alertmanager. Enable falcosidekick.config.alertmanager.hostport/endpoint for Falco delivery where appropriate, define required audit failure/capacity rules (not just generic uptime) and set receiver routes."
     },
     {
       "vuln_id": "V-204791",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Configure the required audit failure/tampering/capacity rules and named receiver routes in existing UDS monitoring, or attach the selected override."
+      "next_step": "Use Gallatin\u2019s existing Core Prometheus/Alertmanager. Enable falcosidekick.config.alertmanager.hostport/endpoint for Falco delivery where appropriate, define required audit failure/capacity rules (not just generic uptime) and set receiver routes."
     },
     {
       "vuln_id": "V-263550",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Configure the required audit failure/tampering/capacity rules and named receiver routes in existing UDS monitoring, or attach the selected override."
+      "next_step": "Use Gallatin\u2019s existing Core Prometheus/Alertmanager. Enable falcosidekick.config.alertmanager.hostport/endpoint for Falco delivery where appropriate, define required audit failure/capacity rules (not just generic uptime) and set receiver routes."
     },
     {
       "vuln_id": "V-206592",
@@ -342,32 +342,32 @@
     {
       "vuln_id": "V-204652",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Configure/identify shared audit-pipeline failure alerts and required recipient routing."
+      "next_step": "Gallatin enables Core Keycloak detailedObservability.alerts.enabled=true and configures kube-prometheus-stack alertmanager.config.receivers/route plus matching notification egress. Gallatin security selects actual SA/ISSO recipients; do not put webhook credentials in this tracker. For audit-processing failure, also define the required pipeline-health alert; modification rules alone are insufficient."
     },
     {
       "vuln_id": "V-204682",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Enable required sharedUDS account-event alerts and route to designated SA/ISSO recipients, or attach accepted managedservice routing evidence."
+      "next_step": "Gallatin enables Core Keycloak detailedObservability.alerts.enabled=true and configures kube-prometheus-stack alertmanager.config.receivers/route plus matching notification egress. Gallatin security selects actual SA/ISSO recipients; do not put webhook credentials in this tracker. For audit-processing failure, also define the required pipeline-health alert; modification rules alone are insufficient."
     },
     {
       "vuln_id": "V-204683",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Enable required sharedUDS account-event alerts and route to designated SA/ISSO recipients, or attach accepted managedservice routing evidence."
+      "next_step": "Gallatin enables Core Keycloak detailedObservability.alerts.enabled=true and configures kube-prometheus-stack alertmanager.config.receivers/route plus matching notification egress. Gallatin security selects actual SA/ISSO recipients; do not put webhook credentials in this tracker. For audit-processing failure, also define the required pipeline-health alert; modification rules alone are insufficient."
     },
     {
       "vuln_id": "V-204684",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Enable required sharedUDS account-event alerts and route to designated SA/ISSO recipients, or attach accepted managedservice routing evidence."
+      "next_step": "Gallatin enables Core Keycloak detailedObservability.alerts.enabled=true and configures kube-prometheus-stack alertmanager.config.receivers/route plus matching notification egress. Gallatin security selects actual SA/ISSO recipients; do not put webhook credentials in this tracker. For audit-processing failure, also define the required pipeline-health alert; modification rules alone are insufficient."
     },
     {
       "vuln_id": "V-204685",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Enable required sharedUDS account-event alerts and route to designated SA/ISSO recipients, or attach accepted managedservice routing evidence."
+      "next_step": "Gallatin enables Core Keycloak detailedObservability.alerts.enabled=true and configures kube-prometheus-stack alertmanager.config.receivers/route plus matching notification egress. Gallatin security selects actual SA/ISSO recipients; do not put webhook credentials in this tracker. For audit-processing failure, also define the required pipeline-health alert; modification rules alone are insufficient."
     },
     {
       "vuln_id": "V-204687",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Enable required sharedUDS account-event alerts and route to designated SA/ISSO recipients, or attach accepted managedservice routing evidence."
+      "next_step": "Gallatin enables Core Keycloak detailedObservability.alerts.enabled=true and configures kube-prometheus-stack alertmanager.config.receivers/route plus matching notification egress. Gallatin security selects actual SA/ISSO recipients; do not put webhook credentials in this tracker. For audit-processing failure, also define the required pipeline-health alert; modification rules alone are insufficient."
     }
   ],
   "central-log-integrity": [
@@ -418,7 +418,7 @@
     {
       "vuln_id": "V-233275",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Map an existing accepted DU/MPN recurring scanning service to the fixed delivered image inventory, or configure a scheduled rescan/cadence with retained results; do not duplicate the existing build scans."
+      "next_step": "Map Gallatin\u2019s recurring MPN scanning service to the fixed delivered image inventory, or configure a scheduled rescan/cadence with retained results; do not duplicate the existing build scans."
     }
   ],
   "data-backup-restore": [
@@ -553,92 +553,92 @@
     {
       "vuln_id": "V-222437",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Enable a supported previous-logon display/theme extension at the provider, or document accepted tailoring."
+      "next_step": "Gallatin adds a supported shared-Keycloak theme/event-backed previous-successful-logon display or records accepted tailoring. Core0.32 has login events but no shipped previous-logon display switch; a generic provider-proof request cannot close this item."
     },
     {
       "vuln_id": "V-222541",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Configure at the actual provider or document accepted authentication-method/account-type tailoring."
+      "next_step": "Gallatin resolves the exact eight-character difference or24-hour minimum-change requirement for permitted human-password accounts: use an approved central provider policy extension or accepted certificate-only/account-type tailoring. Core supplies no matching defaultflag; native passwordAge is password-reuse age, not a minimum changeinterval. Do not weaken existing password constraints or invent a supported Helm switch."
     },
     {
       "vuln_id": "V-222544",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Configure at the actual provider or document accepted authentication-method/account-type tailoring."
+      "next_step": "Gallatin resolves the exact eight-character difference or24-hour minimum-change requirement for permitted human-password accounts: use an approved central provider policy extension or accepted certificate-only/account-type tailoring. Core supplies no matching defaultflag; native passwordAge is password-reuse age, not a minimum changeinterval. Do not weaken existing password constraints or invent a supported Helm switch."
     },
     {
       "vuln_id": "V-233094",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Resolve provider password-policy or accepted certificate/directory tailoring for the account types actually permitted."
+      "next_step": "Gallatin resolves the exact eight-character difference or24-hour minimum-change requirement for permitted human-password accounts: use an approved central provider policy extension or accepted certificate-only/account-type tailoring. Core supplies no matching defaultflag; native passwordAge is password-reuse age, not a minimum changeinterval. Do not weaken existing password constraints or invent a supported Helm switch."
     },
     {
       "vuln_id": "V-233097",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Resolve provider password-policy or accepted certificate/directory tailoring for the account types actually permitted."
+      "next_step": "Gallatin resolves the exact eight-character difference or24-hour minimum-change requirement for permitted human-password accounts: use an approved central provider policy extension or accepted certificate-only/account-type tailoring. Core supplies no matching defaultflag; native passwordAge is password-reuse age, not a minimum changeinterval. Do not weaken existing password constraints or invent a supported Helm switch."
     },
     {
       "vuln_id": "V-263591",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Configure an approved maintained password blacklist at the actual password provider or document accepted certificate-only/upstream delegation scope."
+      "next_step": "Gallatin mounts its approved maintained denylist at /opt/keycloak/data/password-blacklists, appends passwordBlacklist(filename) to the existing Core realmInitEnv.PASSWORD_POLICY without dropping current FIPS KDF/length/classes/history/expiry, and updates the live realm password policy if already imported. Configure Gallatin-owned corpus cadence/incident updates; Keycloak natively reloads changed files (default60s), so no new API or custom validator service is needed."
     },
     {
       "vuln_id": "V-263592",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Configure an approved maintained password blacklist at the actual password provider or document accepted certificate-only/upstream delegation scope."
+      "next_step": "Gallatin mounts its approved maintained denylist at /opt/keycloak/data/password-blacklists, appends passwordBlacklist(filename) to the existing Core realmInitEnv.PASSWORD_POLICY without dropping current FIPS KDF/length/classes/history/expiry, and updates the live realm password policy if already imported. Configure Gallatin-owned corpus cadence/incident updates; Keycloak natively reloads changed files (default60s), so no new API or custom validator service is needed."
     },
     {
       "vuln_id": "V-263593",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Configure an approved maintained password blacklist at the actual password provider or document accepted certificate-only/upstream delegation scope."
+      "next_step": "Gallatin mounts its approved maintained denylist at /opt/keycloak/data/password-blacklists, appends passwordBlacklist(filename) to the existing Core realmInitEnv.PASSWORD_POLICY without dropping current FIPS KDF/length/classes/history/expiry, and updates the live realm password policy if already imported. Configure Gallatin-owned corpus cadence/incident updates; Keycloak natively reloads changed files (default60s), so no new API or custom validator service is needed."
     },
     {
       "vuln_id": "V-263594",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Configure an approved maintained password blacklist at the actual password provider or document accepted certificate-only/upstream delegation scope."
+      "next_step": "Gallatin mounts its approved maintained denylist at /opt/keycloak/data/password-blacklists, appends passwordBlacklist(filename) to the existing Core realmInitEnv.PASSWORD_POLICY without dropping current FIPS KDF/length/classes/history/expiry, and updates the live realm password policy if already imported. Configure Gallatin-owned corpus cadence/incident updates; Keycloak natively reloads changed files (default60s), so no new API or custom validator service is needed."
     },
     {
       "vuln_id": "V-264345",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Configure the approved shared-provider blacklist/update/check service, or record accepted password-authentication scope/delegation."
+      "next_step": "Gallatin mounts its approved maintained denylist at /opt/keycloak/data/password-blacklists, appends passwordBlacklist(filename) to the existing Core realmInitEnv.PASSWORD_POLICY without dropping current FIPS KDF/length/classes/history/expiry, and updates the live realm password policy if already imported. Configure Gallatin-owned corpus cadence/incident updates; Keycloak natively reloads changed files (default60s), so no new API or custom validator service is needed."
     },
     {
       "vuln_id": "V-264346",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Configure the approved shared-provider blacklist/update/check service, or record accepted password-authentication scope/delegation."
+      "next_step": "Gallatin mounts its approved maintained denylist at /opt/keycloak/data/password-blacklists, appends passwordBlacklist(filename) to the existing Core realmInitEnv.PASSWORD_POLICY without dropping current FIPS KDF/length/classes/history/expiry, and updates the live realm password policy if already imported. Configure Gallatin-owned corpus cadence/incident updates; Keycloak natively reloads changed files (default60s), so no new API or custom validator service is needed."
     },
     {
       "vuln_id": "V-264347",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Configure the approved shared-provider blacklist/update/check service, or record accepted password-authentication scope/delegation."
+      "next_step": "Gallatin mounts its approved maintained denylist at /opt/keycloak/data/password-blacklists, appends passwordBlacklist(filename) to the existing Core realmInitEnv.PASSWORD_POLICY without dropping current FIPS KDF/length/classes/history/expiry, and updates the live realm password policy if already imported. Configure Gallatin-owned corpus cadence/incident updates; Keycloak natively reloads changed files (default60s), so no new API or custom validator service is needed."
     },
     {
       "vuln_id": "V-264348",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Configure the approved shared-provider blacklist/update/check service, or record accepted password-authentication scope/delegation."
+      "next_step": "Gallatin mounts its approved maintained denylist at /opt/keycloak/data/password-blacklists, appends passwordBlacklist(filename) to the existing Core realmInitEnv.PASSWORD_POLICY without dropping current FIPS KDF/length/classes/history/expiry, and updates the live realm password policy if already imported. Configure Gallatin-owned corpus cadence/incident updates; Keycloak natively reloads changed files (default60s), so no new API or custom validator service is needed."
     },
     {
       "vuln_id": "V-204670",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Configure accepted central identity policy/plugin or retain approved account-specific/delegated applicability."
+      "next_step": "Gallatin resolves the exact eight-character difference or24-hour minimum-change requirement for permitted human-password accounts: use an approved central provider policy extension or accepted certificate-only/account-type tailoring. Core supplies no matching defaultflag; native passwordAge is password-reuse age, not a minimum changeinterval. Do not weaken existing password constraints or invent a supported Helm switch."
     },
     {
       "vuln_id": "V-204673",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Configure accepted central identity policy/plugin or retain approved account-specific/delegated applicability."
+      "next_step": "Gallatin resolves the exact eight-character difference or24-hour minimum-change requirement for permitted human-password accounts: use an approved central provider policy extension or accepted certificate-only/account-type tailoring. Core supplies no matching defaultflag; native passwordAge is password-reuse age, not a minimum changeinterval. Do not weaken existing password constraints or invent a supported Helm switch."
     },
     {
       "vuln_id": "V-263532",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Attach existing provider compromisedpassword service or configure central blacklist validation and update cadence/incidentevents."
+      "next_step": "Gallatin mounts its approved maintained denylist at /opt/keycloak/data/password-blacklists, appends passwordBlacklist(filename) to the existing Core realmInitEnv.PASSWORD_POLICY without dropping current FIPS KDF/length/classes/history/expiry, and updates the live realm password policy if already imported. Configure Gallatin-owned corpus cadence/incident updates; Keycloak natively reloads changed files (default60s), so no new API or custom validator service is needed."
     },
     {
       "vuln_id": "V-263533",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Attach existing provider compromisedpassword service or configure central blacklist validation and update cadence/incidentevents."
+      "next_step": "Gallatin mounts its approved maintained denylist at /opt/keycloak/data/password-blacklists, appends passwordBlacklist(filename) to the existing Core realmInitEnv.PASSWORD_POLICY without dropping current FIPS KDF/length/classes/history/expiry, and updates the live realm password policy if already imported. Configure Gallatin-owned corpus cadence/incident updates; Keycloak natively reloads changed files (default60s), so no new API or custom validator service is needed."
     },
     {
       "vuln_id": "V-263534",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Attach existing provider compromisedpassword service or configure central blacklist validation and update cadence/incidentevents."
+      "next_step": "Gallatin mounts its approved maintained denylist at /opt/keycloak/data/password-blacklists, appends passwordBlacklist(filename) to the existing Core realmInitEnv.PASSWORD_POLICY without dropping current FIPS KDF/length/classes/history/expiry, and updates the live realm password policy if already imported. Configure Gallatin-owned corpus cadence/incident updates; Keycloak natively reloads changed files (default60s), so no new API or custom validator service is needed."
     }
   ],
   "mpn-network-profile": [
@@ -664,71 +664,85 @@
     {
       "vuln_id": "V-222434",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Enable and supply the approved notice text/acknowledgement in UDS identity; document any accepted inherited entry-point banner."
+      "next_step": "Gallatin sets Core realmInitEnv.TERMS_AND_CONDITIONS_ENABLED=true and enables the existing TermsAndConditions required action on an already-created uds realm. Use/review the shipped USG notice and acknowledgement theme; no new API/frontend banner. Persist desired values plus controlled realm migration."
     },
     {
       "vuln_id": "V-222435",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Enable and supply the approved notice text/acknowledgement in UDS identity; document any accepted inherited entry-point banner."
+      "next_step": "Gallatin sets Core realmInitEnv.TERMS_AND_CONDITIONS_ENABLED=true and enables the existing TermsAndConditions required action on an already-created uds realm. Use/review the shipped USG notice and acknowledgement theme; no new API/frontend banner. Persist desired values plus controlled realm migration."
     },
     {
       "vuln_id": "V-233032",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Enable TERMS_AND_CONDITIONS_ENABLED at the actual shared login boundary, or attach the MPN platform configuration that already enables the required consent."
+      "next_step": "Gallatin sets Core realmInitEnv.TERMS_AND_CONDITIONS_ENABLED=true and enables the existing TermsAndConditions required action on an already-created uds realm. Use/review the shipped USG notice and acknowledgement theme; no new API/frontend banner. Persist desired values plus controlled realm migration."
     },
     {
       "vuln_id": "V-233033",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Enable TERMS_AND_CONDITIONS_ENABLED at the actual shared login boundary, or attach the MPN platform configuration that already enables the required consent."
+      "next_step": "Gallatin sets Core realmInitEnv.TERMS_AND_CONDITIONS_ENABLED=true and enables the existing TermsAndConditions required action on an already-created uds realm. Use/review the shipped USG notice and acknowledgement theme; no new API/frontend banner. Persist desired values plus controlled realm migration."
     },
     {
       "vuln_id": "V-204713",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Enable the UDS terms/consent required action and retain the approved notice; use existing UI."
+      "next_step": "Gallatin sets Core realmInitEnv.TERMS_AND_CONDITIONS_ENABLED=true and enables the existing TermsAndConditions required action on an already-created uds realm. Use/review the shipped USG notice and acknowledgement theme; no new API/frontend banner. Persist desired values plus controlled realm migration."
     },
     {
       "vuln_id": "V-204714",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Enable the UDS terms/consent required action and retain the approved notice; use existing UI."
+      "next_step": "Gallatin sets Core realmInitEnv.TERMS_AND_CONDITIONS_ENABLED=true and enables the existing TermsAndConditions required action on an already-created uds realm. Use/review the shipped USG notice and acknowledgement theme; no new API/frontend banner. Persist desired values plus controlled realm migration."
     }
   ],
   "pki-authentication": [
     {
       "vuln_id": "V-204661",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Select/enforce required PIV/CAC identity flows and privileged-card policy at sharedUDS, or record accepted externalprovider enforcement."
+      "next_step": "Gallatin configures the approved required-card authentication path in Core: X509_AUTH_ENABLED=true and, for a certificate-only policy, USERNAME_PASSWORD_AUTH_ENABLED=false and SOCIAL_AUTH_ENABLED=false; apply equivalent existing-realm flow changes through controlled AdminConsole/API. Preserve approved emergency access and distinguish privileged PIV-card eligibility from personal CAC. These are existing provider flows, not new Horizon authentication features."
     },
     {
       "vuln_id": "V-204662",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Select/enforce required PIV/CAC identity flows and privileged-card policy at sharedUDS, or record accepted externalprovider enforcement."
+      "next_step": "Gallatin configures the approved required-card authentication path in Core: X509_AUTH_ENABLED=true and, for a certificate-only policy, USERNAME_PASSWORD_AUTH_ENABLED=false and SOCIAL_AUTH_ENABLED=false; apply equivalent existing-realm flow changes through controlled AdminConsole/API. Preserve approved emergency access and distinguish privileged PIV-card eligibility from personal CAC. These are existing provider flows, not new Horizon authentication features."
     }
   ],
   "pki-trust": [
     {
       "vuln_id": "V-222553",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Enable and refresh approved local CRL/cache at UDS identity or record the official SIPR/CA-access applicability exception."
+      "next_step": "Gallatin uses Core CRL packaging/mount support, sets realmInitEnv.X509_CRL_CHECKING_ENABLED=\"true\", X509_CRL_ABORT_IF_NON_UPDATED=\"true\" and X509_CRL_RELATIVE_PATH to mounted approved files, and updates the existing dod-cac authenticator where necessary. Refresh the CRL data image/volume before expiry. Keep OCSP fail-closed; disable OCSP only for an approved disconnected CRL alternative. No custom Keycloak cache or API code."
     },
     {
       "vuln_id": "V-233201",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Enable/distribute the approved CRL cache at the provider, or retain the accepted provider-specific revocation/offline policy tailoring."
+      "next_step": "Gallatin uses Core CRL packaging/mount support, sets realmInitEnv.X509_CRL_CHECKING_ENABLED=\"true\", X509_CRL_ABORT_IF_NON_UPDATED=\"true\" and X509_CRL_RELATIVE_PATH to mounted approved files, and updates the existing dod-cac authenticator where necessary. Refresh the CRL data image/volume before expiry. Keep OCSP fail-closed; disable OCSP only for an approved disconnected CRL alternative. No custom Keycloak cache or API code."
     },
     {
       "vuln_id": "V-264354",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Enable/distribute/refesh the approved local CRL/cache or document accepted applicability for the selected authentication method."
+      "next_step": "Gallatin uses Core CRL packaging/mount support, sets realmInitEnv.X509_CRL_CHECKING_ENABLED=\"true\", X509_CRL_ABORT_IF_NON_UPDATED=\"true\" and X509_CRL_RELATIVE_PATH to mounted approved files, and updates the existing dod-cac authenticator where necessary. Refresh the CRL data image/volume before expiry. Keep OCSP fail-closed; disable OCSP only for an approved disconnected CRL alternative. No custom Keycloak cache or API code."
     },
     {
       "vuln_id": "V-204805",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Enable/distribute the approved local CRL cache or record accepted delegated/offline applicability."
+      "next_step": "Gallatin uses Core CRL packaging/mount support, sets realmInitEnv.X509_CRL_CHECKING_ENABLED=\"true\", X509_CRL_ABORT_IF_NON_UPDATED=\"true\" and X509_CRL_RELATIVE_PATH to mounted approved files, and updates the existing dod-cac authenticator where necessary. Refresh the CRL data image/volume before expiry. Keep OCSP fail-closed; disable OCSP only for an approved disconnected CRL alternative. No custom Keycloak cache or API code."
     },
     {
       "vuln_id": "V-263538",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Configure/distribute approved localCRL cache and freshness policy on sharedUDS, or retain accepted tailoring."
+      "next_step": "Gallatin uses Core CRL packaging/mount support, sets realmInitEnv.X509_CRL_CHECKING_ENABLED=\"true\", X509_CRL_ABORT_IF_NON_UPDATED=\"true\" and X509_CRL_RELATIVE_PATH to mounted approved files, and updates the existing dod-cac authenticator where necessary. Refresh the CRL data image/volume before expiry. Keep OCSP fail-closed; disable OCSP only for an approved disconnected CRL alternative. No custom Keycloak cache or API code."
+    }
+  ],
+  "registry-lifecycle": [
+    {
+      "vuln_id": "V-233231",
+      "benchmark": "U_Container_Platform_V2R5_SRG",
+      "next_step": "Add uds zarf tools registry prune to Gallatin\u2019s MPN post-upgrade maintenance procedure/job after successful deployment, with a deliberate retained rollback-package/image policy and explicit confirmation before deletion. The tool preserves images referenced by current Zarf packages; do not blindly prune unreferenced images still needed for rollback. Track this as one shared registry lifecycle task."
+    }
+  ],
+  "registry-transport": [
+    {
+      "vuln_id": "V-233015",
+      "benchmark": "U_Container_Platform_V2R5_SRG",
+      "next_step": "In Gallatin\u2019s MPN bootstrap, choose Zarf init v0.86.0 proxy mode via uds zarf init --registry-mode=proxy (with the pinned init artifact); this enables built-in cross-node mTLS with minimumTLS1.2. If alpha proxy mode is unsuitable, configure an external trusted TLS1.2+ registry explicitly. Do not deploy the unchanged HTTP NodePort default. Plan an initialization migration for an existing cluster instead of treating this as an in-place harmless flag flip."
     }
   ],
   "release-crypto-provider": [
@@ -778,52 +792,52 @@
     {
       "vuln_id": "V-222387",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Set the approved per-user maximum in UDS identity, or document an accepted unlimited policy/tailoring. No Horizon session-limiter code is needed."
+      "next_step": "Gallatin security selects the positive concurrent-session maximum; Gallatin SRE sets realmInitEnv.SSO_SESSION_MAX_PER_USER to that value and updates the existing uds-user-session-count authenticator config through AdminConsole/API where needed. Default0 is unlimited; do not copy an arbitrary examplemaximum. No Horizon session-limiter code."
     },
     {
       "vuln_id": "V-222520",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Set the organization-defined sensitive-role-change/privilege-use reauthenticationpolicy and enforce a recent-auth/step-up requirement at the appropriate IdP/client/API boundary, or obtain explicit role-model tailoring for no user-selected active role. Reuse the shared session-policy workstream."
+      "next_step": "Set the organization-defined sensitive-role-change/privilege-use reauthenticationpolicy and enforce a recent-auth/step-up requirement at the appropriate IdP/client/API boundary, or obtain explicit role-model tailoring for no user-selected active role. Reuse the shared session-policy workstream. Gallatin owns this policy/integration; Core default settings are source-known."
     },
     {
       "vuln_id": "V-222549",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Decide accepted token-revocation window; configure a central session/introspection/revocation mechanism or implement minimal relevant API/stream enforcement. Do not replace working IdP logout."
+      "next_step": "Decide accepted token-revocation window; configure a central session/introspection/revocation mechanism or implement minimal relevant API/stream enforcement. Do not replace working IdP logout. Gallatin owns this policy/integration; Core default settings are source-known."
     },
     {
       "vuln_id": "V-222568",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Decide accepted token-revocation window; configure a central session/introspection/revocation mechanism or implement minimal relevant API/stream enforcement. Do not replace working IdP logout."
+      "next_step": "Decide accepted token-revocation window; configure a central session/introspection/revocation mechanism or implement minimal relevant API/stream enforcement. Do not replace working IdP logout. Gallatin owns this policy/integration; Core default settings are source-known."
     },
     {
       "vuln_id": "V-222578",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Use approved session-bound state/credential lifetime or accepted browser-close tailoring and verify reopen behavior."
+      "next_step": "Use approved session-bound state/credential lifetime or accepted browser-close tailoring and verify reopen behavior. Gallatin owns this policy/integration; Core default settings are source-known."
     },
     {
       "vuln_id": "V-233193",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Configure/document fresh authentication for role changes and privilege escalation at the shared IdP/administrative transition boundary; link the shared session-policy workstream."
+      "next_step": "Configure/document fresh authentication for role changes and privilege escalation at the Gallatin-operated shared IdP/administrative transition boundary; link the shared session-policy workstream. Gallatin owns this policy/integration; Core default settings are source-known."
     },
     {
       "vuln_id": "V-206396",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Resolve the accepted revocation window or add effective session/token revocation at API/gateway; retain delegated logout behavior."
+      "next_step": "Resolve the accepted revocation window or add effective session/token revocation at API/gateway; retain delegated logout behavior. Gallatin owns this policy/integration; Core default settings are source-known."
     },
     {
       "vuln_id": "V-206414",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Set the applicable shared-provider/client absolute session lifetime to8hours or less, or attach the selected existing override."
+      "next_step": "Gallatin sets realmInitEnv.SSO_SESSION_MAX_LIFESPAN=\"28800\" (eight hours) while retaining idle600, and updates RealmSettings > Sessions on an existing uds realm via controlled AdminConsole/API migration. Keep client limits <=realm. No vendor proof or new application timer is required."
     },
     {
       "vuln_id": "V-264361",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Obtain accepted source-IP-binding equivalence/tailoring or enforce it at the actual session/gateway boundary."
+      "next_step": "Obtain accepted source-IP-binding equivalence/tailoring or enforce it at the actual session/gateway boundary. Gallatin owns this policy/integration; Core default settings are source-known."
     },
     {
       "vuln_id": "V-204708",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Set the organization-approved concurrent-session limit in the UDS provider, or attach the existing selected override."
+      "next_step": "Gallatin security selects the positive concurrent-session maximum; Gallatin SRE sets realmInitEnv.SSO_SESSION_MAX_PER_USER to that value and updates the existing uds-user-session-count authenticator config through AdminConsole/API where needed. Default0 is unlimited; do not copy an arbitrary examplemaximum. No Horizon session-limiter code."
     }
   ],
   "web-hardening": [

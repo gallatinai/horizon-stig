@@ -1,6 +1,4 @@
 # Preserve third-party XCCDF bytes, including upstream whitespace.
 mpn/benchmarks/**/benchmark.xml -whitespace
 # Helm render output is captured byte-for-byte for provenance.
-mpn/evidence/rendered/*.yaml -whitespace
-mpn/evidence/rendered-all/*.yaml -whitespace
 mpn/evidence/rendered-delivered/*.yaml -whitespace

@@ -9,11 +9,6 @@
     "observation": "Current scope names Pepr, Istio, Falco, Velero and centralized logging; architecture supplies a mechanism, not observed enforcement.",
     "url": "https://gallatin.atlassian.net/wiki/spaces/GG/pages/733085804/WIP+STIG+SRG+Compliance+Scope+MPN"
   },
-  "identity": {
-    "title": "Identity selection",
-    "observation": "The active package chart supports bundled or UDS identity; source/values/uds-package.yaml selects bundled by default. UDS SSO cannot be assumed for this path.",
-    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/values/uds-package.yaml"
-  },
   "realm": {
     "title": "Bundled realm",
     "observation": "Realm defaults: failureFactor=5, permanentLockout=false, idle=900s, max=28800s, password policy includes hashing only, events/admin events enabled with 90-day local event retention.",
@@ -29,26 +24,6 @@
     "observation": "Current HTTP logger includes service, request/trace IDs, event, remote address and response status, with secret redaction. Its common bindings do not add authenticated actor identity; other records/correlation must be checked.",
     "url": "https://github.com/gallatinai/horizon/blob/3f3b51d454197c077b33896caf93de72b94eafda/apps/api/src/core/observability/logging.ts"
   },
-  "db": {
-    "title": "Database audit",
-    "observation": "Candidate PostgreSQL preloads pgaudit; migration creates extension but catches failures. This does not establish effective event classes, connection logging, retention, or collection.",
-    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/values/postgres.yaml"
-  },
-  "secrets": {
-    "title": "Secret environment variables",
-    "observation": "Rendered PostgreSQL StatefulSet injects POSTGRES_PASSWORD via secretKeyRef; secret-as-environment is expressly disallowed by Kubernetes V-242415.",
-    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-postgres/templates/statefulset.yaml"
-  },
-  "s3": {
-    "title": "SeaweedFS credential ConfigMap",
-    "observation": "Rendered SeaweedFS chart places S3 accessKey/secretKey in s3.json in a ConfigMap and mounts that ConfigMap. Zarf supplies secrets at deployment; stored candidate placeholders are not actual leaked credentials.",
-    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/seaweedfs/templates/configmap.yaml"
-  },
-  "web": {
-    "title": "Frontend nginx",
-    "observation": "Frontend config serves a SPA with try_files; ingress security, complete image config, effective HTTP versions, headers and enabled modules remain unobserved.",
-    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/values/web.yaml"
-  },
   "logout": {
     "title": "Browser logout",
     "observation": "Current auth store wipes local auth state then invokes OIDC signout. Local storage use alone is not proof that logout fails; replay/expiry/server-side invalidation need tests.",
@@ -63,11 +38,6 @@
     "title": "Image release process",
     "observation": "Builder verifies source digests and produces archive hashes; sample values with empty digests do not establish that a built release is unpinned. Assessed release/SBOM/scans still needed.",
     "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/scripts/build-bundle.py"
-  },
-  "local": {
-    "title": "MPN inference mismatch",
-    "observation": "The MPN notes require local inference. Candidate package still permits Anywhere:443 egress for hosted LLM consumers; it is a demo/general candidate, not proof of deployed MPN behavior.",
-    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-uds-package/templates/package.yaml"
   },
   "core-policy": {
     "title": "core-policy",
@@ -109,11 +79,6 @@
     "observation": "Grafana disables local login, uses UDS OAuth, maps Admin group to Admin and Auditor to Viewer, and rejects unmatched groups. OAuth secrets are file-mounted.",
     "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/grafana/values/values.yaml"
   },
-  "core-retention": {
-    "title": "core-retention",
-    "observation": "Loki default retains logs indefinitely; configured compactor retention and external bucket lifecycle can change this. Retention capacity and required archive policy remain deployment responsibilities.",
-    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/how-to-guides/logging/configure-log-retention.mdx"
-  },
   "core-velero": {
     "title": "core-velero",
     "observation": "Velero schedules daily backups at 03:00 with 240-hour TTL, but snapshotVolumes=false and snapshotsEnabled=false; default resource backups do not establish PostgreSQL PVC data recovery.",
@@ -123,11 +88,6 @@
     "title": "core-falco",
     "observation": "Falco loads shipped rule sets, detects runtime behavior and ships Sidekick events to Loki. Alertmanager delivery is commented out; detection is not automatic access revocation.",
     "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/falco/values/values.yaml"
-  },
-  "core-alerts": {
-    "title": "core-alerts",
-    "observation": "Default cluster/workload/storage alert rules are enabled. Those mechanisms do not establish a configured 75-percent audit capacity threshold or an SA/ISSO notification receiver.",
-    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/prometheus-stack/values/kube-prometheus-stack-values.yaml"
   },
   "core-keycloak": {
     "title": "core-keycloak",
@@ -143,11 +103,6 @@
     "title": "core-id-audit",
     "observation": "UDS event listener prints user/admin events to stdout with event fields and UTC timestamps. Vector can collect these without a separately configured app forwarding agent.",
     "url": "https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/plugin/src/main/java/com/defenseunicorns/uds/keycloak/plugin/eventListeners/JSONLogEventListenerProvider.java"
-  },
-  "core-id-notify": {
-    "title": "core-id-notify",
-    "observation": "Optional detailed-observability alerts detect user/realm/admin changes via Loki-derived metrics; enablement and receivers must be configured.",
-    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/templates/keycloak-logging-alerting-rules.yaml"
   },
   "app-namespace": {
     "title": "app-namespace",
@@ -204,11 +159,6 @@
     "observation": "Migration installs pgvector/PostGIS and attempts pgaudit, catching pgaudit failures as warnings; installation and effective audit classes must not be assumed from preload.",
     "url": "https://github.com/gallatinai/horizon/blob/3f3b51d454197c077b33896caf93de72b94eafda/packages/database/migrations/00000000000002_create_extensions.sql"
   },
-  "app-permission-audit": {
-    "title": "app-permission-audit",
-    "observation": "Database functions record permission changes with actor/context fields; domain audit records exist but do not cover all DBMS native logon/DDL/failed operation audit requirements.",
-    "url": "https://github.com/gallatinai/horizon/blob/3f3b51d454197c077b33896caf93de72b94eafda/packages/database/schema/permission_audit_functions.pg.hcl"
-  },
   "app-auth-service": {
     "title": "app-auth-service",
     "observation": "Browser uses OIDC authorization-code flow, PKCE, automatic silent renew and localStorage user state. Local storage is not evidence of missing explicit logout, but idle semantics depend on the IdP.",
@@ -244,11 +194,6 @@
     "observation": "PostgreSQL18 defaults password_encryption to SCRAM-SHA-256. Existing persistent data/configuration can override defaults; generated new credentials and selected image must be distinguished from existing volumes.",
     "url": "https://www.postgresql.org/docs/18/runtime-config-connection.html"
   },
-  "pg-encryption": {
-    "title": "pg-encryption",
-    "observation": "PostgreSQL supports password hashing and transport protection; volume/block encryption requires storage-layer configuration and is not established by creating a PVC.",
-    "url": "https://www.postgresql.org/docs/18/encryption-options.html"
-  },
   "core-flavors": {
     "title": "core-flavors",
     "observation": "Core distinguishes unicorn (curated FIPS-validated images), registry1 (Iron Bank hardening) and upstream (development/community images). The production hardened offering exists; actual selected flavor/digests and module mapping remain explicit deployment inputs.",
@@ -278,36 +223,6 @@
     "title": "core-provision",
     "observation": "Production requires externally supplied gateway TLS chains, Loki/Velero object stores and a Keycloak database/user. Core cannot determine the supplied CA approvals, storage encryption or bucket lifecycle by itself.",
     "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/getting-started/production/provision-services.mdx"
-  },
-  "core-tests": {
-    "title": "core-tests",
-    "observation": "Core supplies automated validation/integration tasks; the source demonstrates available checks but cannot demonstrate an MPN operator ran or scheduled them.",
-    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/tasks/test.yaml"
-  },
-  "core-notify-default": {
-    "title": "core-notify-default",
-    "observation": "detailedObservability.alerts.enabled=false by default; user/admin modification alert templates are not enabled simply by deploying the default Core chart.",
-    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/values.yaml"
-  },
-  "core-consent": {
-    "title": "core-consent",
-    "observation": "UDS theme implements the USG notice and an explicit acceptance action, but realm TERMS_AND_CONDITIONS required action is disabled by default. Enablement must be configured for the actual entry path.",
-    "url": "https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/theme/login/terms.ftl"
-  },
-  "kc-cookie-provider": {
-    "title": "kc-cookie-provider",
-    "observation": "Keycloak26.7.2 cookie builder sets realm/request path, secure flag from the effective request context and HttpOnly/SameSite from CookieScope. It does not set a cross-host Domain attribute.",
-    "url": "https://github.com/keycloak/keycloak/blob/26.7.2/services/src/main/java/org/keycloak/cookie/DefaultCookieProvider.java"
-  },
-  "kc-cookie-types": {
-    "title": "kc-cookie-types",
-    "observation": "AUTH_SESSION_ID and KEYCLOAK_IDENTITY use FEDERATION (HttpOnly) scope; KEYCLOAK_SESSION intentionally uses FEDERATION_JS scope and is JavaScript-readable for session status.",
-    "url": "https://github.com/keycloak/keycloak/blob/26.7.2/server-spi-private/src/main/java/org/keycloak/cookie/CookieType.java"
-  },
-  "kc-cookie-scope": {
-    "title": "kc-cookie-scope",
-    "observation": "FEDERATION scope is SameSite=None/HttpOnly=true; FEDERATION_JS is SameSite=None/HttpOnly=false. Not all product cookies are authentication bearer secrets.",
-    "url": "https://github.com/keycloak/keycloak/blob/26.7.2/server-spi-private/src/main/java/org/keycloak/cookie/CookieScope.java"
   },
   "app-ci": {
     "title": "app-ci",
@@ -396,7 +311,7 @@
   },
   "re-images-scans": {
     "title": "re-images-scans",
-    "observation": "Actual qualified run42109769948 succeeded per-image Grype/SBOM and ClamAV jobs, with retained API/web reports; reused PostgreSQL has its own verified prior build/scan evidence. Weekly dependency security-update automation exists. This corrects any assertion that source/application image scanning is wholly absent; release packaging scans alone are narrower.",
+    "observation": "Actual qualified run42109769948 succeeded per-image Grype/SBOM and ClamAV jobs, with retained API/web reports; reused PostgreSQL has its own verified prior build/scan evidence. Weekly dependency security-update automation exists. Release packaging scans have a narrower scope than source and application-image scans.",
     "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/.github/workflows/build.yml"
   },
   "re-images-maintained": {
@@ -689,11 +604,6 @@
     "observation": "Delivered image dependency lock pins ingestion pipeline6010a2, Docling2.142.0, python-docx1.2.0, python-pptx1.0.2, openpyxl3.1.5, lxml6.1.3 and defusedxml0.7.1.",
     "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/workers/artifact-ingestion/uv.lock"
   },
-  "re-asd-codeql-config": {
-    "title": "re-asd-codeql-config",
-    "observation": "CodeQL JS/TS+Python default security suite; exclusion paths are generated/dependency/fixture files, not a blanket application exclusion.",
-    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/.github/codeql/codeql-config.yml"
-  },
   "re-asd-codeql-allow": {
     "title": "re-asd-codeql-allow",
     "observation": "All eleven raw Python sensitive-log alerts are explicitly reviewed false positives for casualty-plan/run correlation UUIDs, with @schwing approvals and Jira references; inspected representative source flows.",
@@ -979,16 +889,6 @@
     "observation": "Platform Grafana requires UDS SSO and maps /UDS Core/Admin to Admin, /UDS Core/Auditor to Viewer and unmatched users to Unauthorized; platform configuration is separated from ordinary Horizon tenant users.",
     "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/grafana/values/values.yaml"
   },
-  "re-platform-zarf-transport": {
-    "title": "re-platform-zarf-transport",
-    "observation": "Exact Zarf0.86 state.RegistryInfo.ShouldUseMTLS/transport mode explicitly distinguishes zarf-managedmTLS from default internalregistry plainHTTP; mTLSStrategy defaultsnone. Registry values substitute deployment-selected ZARF_REGISTRY_MTLS_ENABLED. Therefore mesh/browser TLS alone cannot establish node registry TLS.",
-    "url": "https://github.com/zarf-dev/zarf/blob/v0.86.0/src/pkg/state/state.go"
-  },
-  "re-platform-source-registry-lifecycle": {
-    "title": "re-platform-source-registry-lifecycle",
-    "observation": "Gallatin source ECR has attached lifecycle policies expiring main/PR/cache/untagged images and AES256 encryption. Mirror-tag retention is deliberate. This proves source registry management code but does not select MPN Zarf registry prune/retention policy.",
-    "url": "https://github.com/gallatinai/horizon-iac/blob/74d3781cc1489e1fc3b9ea153c548f2433cd663f/modules/ecr/main.tf"
-  },
   "re-platform-classification-fields": {
     "title": "re-platform-classification-fields",
     "observation": "Delivered app source defines classification_level enum and files.classification field; chunks/assertions reuse it. A real data-security taxonomy exists; API/database audit coverage, not taxonomy discovery, is the remaining concern.",
@@ -1146,7 +1046,7 @@
   },
   "re-web-mobile-policy": {
     "title": "re-web-mobile-policy",
-    "observation": "Official included ASD V6R5 Overview.pdf page8 explicitly classifies browser JavaScript/ECMAScript as permitted Category3 mobile code. This resolves the earlier assumption that all browser JS required an unidentified new technology authorization.",
+    "observation": "Official included ASD V6R5 Overview.pdf page8 explicitly classifies browser JavaScript/ECMAScript as permitted Category3 mobile code. Browser JavaScript follows the Category 3 applicability provisions.",
     "url": "https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_ASD_V6R5_STIG.zip"
   },
   "re-web-artifact-csp": {
@@ -1158,11 +1058,6 @@
     "title": "re-web-artifact-frame",
     "observation": "Iframe sandbox lacks allow-same-origin and denies permissions/referrers; browser mediates code execution and isolates from parent cookies/storage.",
     "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/web/src/components/communications/WebArtifactFrame.vue"
-  },
-  "re-web-cookie-scope": {
-    "title": "re-web-cookie-scope",
-    "observation": "Exact26.7.4 FEDERATION is SameSiteNone/HttpOnlytrue; FEDERATION_JS is SameSiteNone/HttpOnlyfalse. Credential and session-coordination cookie scopes are deliberate upstream distinctions.",
-    "url": "https://github.com/keycloak/keycloak/blob/26.7.4/server-spi-private/src/main/java/org/keycloak/cookie/CookieScope.java"
   },
   "re-web-id-statefulset": {
     "title": "re-web-id-statefulset",
@@ -1401,7 +1296,7 @@
   },
   "re-database-labels": {
     "title": "re-database-labels",
-    "observation": "Actual product taxonomy exists: classification_level enum unclassified/classified/secret/top_secret; files.classification persists labels. Prior claim that source had no taxonomy was wrong.",
+    "observation": "Actual product taxonomy exists: classification_level enum unclassified/classified/secret/top_secret; files.classification persists labels.",
     "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/schema/files.pg.hcl"
   },
   "re-database-chunk-labels": {
@@ -1486,7 +1381,7 @@
   },
   "re-aaa-release": {
     "title": "re-aaa-release",
-    "observation": "Successful UDS publication artifact horizon-release-2026.45.4-uds.1 platform-contract.json selects identity.mode=uds, issuer https://sso.uds.dev/realms/uds, Core1.14.0; build-info.json enumerates12 deliveredimages and no bundled Keycloak. The prior general bundled-source default is not this delivered release.",
+    "observation": "Successful UDS publication artifact horizon-release-2026.45.4-uds.1 platform-contract.json selects identity.mode=uds, issuer https://sso.uds.dev/realms/uds, Core1.14.0; build-info.json enumerates12 deliveredimages and no bundled Keycloak.",
     "url": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685"
   },
   "re-aaa-realm": {
@@ -1544,79 +1439,104 @@
     "observation": "Default OTP_ENABLED=true generates OTP_FLOW_ENABLED and MFA_FLOW_ENABLED REQUIRED; X509 remains ALTERNATIVE and X509_MFA disabled. Do not infer OTPbypass solely from conditional-flow name or CONFIGURE_TOTP defaultActionfalse.",
     "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/templates/secret-kc-realm.yaml"
   },
-  "re-docs-policy-register": {
-    "title": "re-docs-policy-register",
-    "observation": "Authoritative company policy register identifies all company policies as DRAFT with no effective date; remaining ratification and some required decision artifacts are explicitly tracked. Written policy existence is supported, approved/effective status is not inferred.",
-    "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/00-POLICY-REGISTER.md"
+  "mpn-identity-values": {
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/values.yaml",
+    "observation": "Core1.14 chart default fields: realmInitEnv.SSO_SESSION_MAX_PER_USER=\"0\"; ACCOUNT_INACTIVITY_DAYS unset; terms enabled unset; detailedObservability.alerts.enabled=false; realmAuthFlows username/password/X509/OTPtrue, X509MFAfalse. Gallatin owns these settings on MPN, independent of DU managedIL5/IL6 clusters."
   },
-  "re-docs-training-process": {
-    "title": "re-docs-training-process",
-    "observation": "Written company training process covers hire and annual security training, role-based privileged training, retained completion records and assigned accountability; it identifies ThreatSwitch as completion record system. This supports existence of a training program, not completion for every application role.",
-    "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-AT-awareness-and-training.md"
+  "mpn-identity-mapping": {
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/templates/secret-kc-realm.yaml",
+    "observation": "realmInitEnv keys are prefixed REALM_ into realm import environment; ACCOUNT_INACTIVITY_DAYS>0 sets enabled true. realmAuthFlows controls required/disabled MFA/password/X509 execution variables. No further vendor service is needed to set these controls."
   },
-  "re-docs-incident-procedure": {
-    "title": "re-docs-incident-procedure",
-    "observation": "Written organization-wide incident response procedure defines reporting, triage severity/response targets, forensic preservation and review responsibilities. Deployment-specific contact/playbook details are still marked pending; this is a draft policy, not evidence of exercised MPN application response.",
-    "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-IR-incident-response.md"
+  "mpn-identity-init-only": {
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/how-to-guides/identity-and-authorization/configure-keycloak-login-policies.mdx",
+    "observation": "realmInitEnv and realmAuthFlows are initial realm import inputs. Existing realm is persisted in DB; redeploying Secret does not change it. Core documents equivalent Keycloak AdminConsole settings. Use controlled non-destructive AdminAPI/console update and persist the desired bundle override; do not advise tearing down production identity."
   },
-  "re-docs-contingency-policy": {
-    "title": "re-docs-contingency-policy",
-    "observation": "Written continuity policy requires offsite backup and annual restore testing, but per-system RTO/RPO, backup configurations/test schedule, BCP and DRP are explicitly pending. It cannot establish MPN backup or tested restore by itself.",
-    "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-CP-business-continuity-disaster-recovery.md"
+  "mpn-identity-inactivity": {
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/how-to-guides/identity-and-authorization/configure-account-inactivity-disable.mdx",
+    "observation": "Set realmInitEnv.ACCOUNT_INACTIVITY_DAYS=\"35\" before firstimport. Existingrealm: uds Workflows >disable-inactive-users enabled=true, disable-user stepafter35d; realm-admin excluded by shipped workflow. Source establishes exact operator action without asking DU to prove it."
   },
-  "re-docs-configuration-process": {
-    "title": "re-docs-configuration-process",
-    "observation": "Written company change process requires approval, security-impact assessment before implementation and reconstructable change history. Application-specific workflow implementation must be checked in Horizon; corporate endpoint policy does not itself operate the MPN cluster.",
-    "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-CM-configuration-management.md"
+  "mpn-identity-realm": {
+    "url": "https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/realm.json5",
+    "observation": "Knowndefaults: idle600sec,maxlifespan36000sec; sessionlimit0; permanentlockout threshold3; default passwords length15/classes/history5/expiry60. CRL cachechecking disabled, OCSP checking enabled/failclosed; no eightcharacter-distance/24h minchange interval/selecteddenylist. Explicit source gaps are config/tailoring work, not Unknown."
   },
-  "re-docs-audit-policy": {
-    "title": "re-docs-audit-policy",
-    "observation": "Written company audit policy defines actor/time/event/source/destination/outcome fields, review responsibilities, protected central aggregation and a default retention floor; longer contractual/STIG requirements take precedence. The policy is not proof that each MPN source is forwarded or that a particular review occurred.",
-    "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-AU-audit-and-accountability.md"
+  "mpn-identity-banner": {
+    "url": "https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/theme/login/terms.ftl",
+    "observation": "Shipped theme already contains USG InformationSystem notice/consent text and acknowledgementUI. Enable realmInitEnv.TERMS_AND_CONDITIONS_ENABLED=true; review mission applicability rather than build another banner."
   },
-  "re-docs-classification-policy": {
-    "title": "re-docs-classification-policy",
-    "observation": "Company data-classification guidance exists; contract-specific applicable CUI categories and approved systems by tier remain explicit decision inputs. This is distinct from source-level classification enums or enforcement mechanisms and does not justify claiming no taxonomy exists.",
-    "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-CUI-data-classification.md"
+  "mpn-identity-crl": {
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/how-to-guides/identity-and-authorization/configure-x509-crl-airgap.mdx",
+    "observation": "Core includes an OCI CRL-volume packaging script and override example: mount current CRLs, set X509_CRL_CHECKING_ENABLED true and filepaths. Strictfreshness requires X509_CRL_ABORT_IF_NON_UPDATED=true; default examplefalse permits expiredCRLs. ImageVolume needs Kubernetes feature support; no customKeycloakcode/image required."
   },
-  "re-docs-account-review-process": {
-    "title": "re-docs-account-review-process",
-    "observation": "Company access policy documents quarterly access reviews, removal of unneeded privileges, review-record retention, incident reporting and controlled exceptions. An actual dated source-repository access review was not found in connected-source searches.",
-    "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-AC-access-control.md"
+  "mpn-identity-crl-script": {
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/scripts/keycloak-crl-airgap/create-keycloak-crl-oci-volume-package.sh",
+    "observation": "Gallatin can package approved CRLs with supplied script and deliver updated OCI dataimage beforeCoreidentity component; mountreadOnly via chart extraVolumes/extraVolumeMounts."
   },
-  "re-docs-personnel-lifecycle": {
-    "title": "re-docs-personnel-lifecycle",
-    "observation": "Company personnel procedure specifies onboarding and termination notification, immediate privileged-access revocation and deprovisioning obligations. This supports a procedural lifecycle mechanism, but application-directory integration remains a separate implementation check.",
-    "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-PS-personnel-security.md"
+  "mpn-identity-alerts": {
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/how-to-guides/identity-and-authorization/configure-keycloak-notifications-and-alerts.mdx",
+    "observation": "Set detailedObservability.alerts.enabled=true to create alreadyshipped Keycloak realm/user/admin modificationPrometheusRules. Logging/dashboards alreadyenabled. This is GallatinCoreconfiguration, not DU featuredevelopment."
   },
-  "re-docs-mpn-description": {
-    "title": "re-docs-mpn-description",
-    "observation": "October27 proposed containerized MPN description requires local inference and expected Azure/UDS architecture, assigns application operations to Gallatin SREs and host platform/network services to MPN, and records hardened images as intended. It is an older design/candidate, not the current delivery pipeline identity configuration.",
-    "url": "https://docs.google.com/document/d/1RzBd9YPzJSYk8LDI126LbvRBiaF3uJjfN4T5V8-0Pbw/edit"
+  "mpn-identity-routes": {
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/how-to-guides/monitoring-and-observability/route-alerts-to-notification-channels.mdx",
+    "observation": "Route via kube-prometheus-stack chart alertmanager.config.receivers/route, secretbacked notification credentials and uds-prometheus-config.additionalNetworkAllow matching endpoint. Gallatin must select actualSA/ISSO recipients; defaults cannot invent them."
   },
-  "re-docs-mpn-decision-boundary": {
-    "title": "re-docs-mpn-decision-boundary",
-    "observation": "October27 MPN deployment/assessment record explicitly distinguishes proposed architecture from selected/approved boundary, capacity, trust/storage/local model settings and release evidence. Host/Government decisions are recorded when made; these cannot be invented from generic application code.",
-    "url": "https://drive.google.com/file/d/1p5zQe7lko71bWNfBd2B6clzJK52Rl0U5/view"
+  "mpn-identity-override": {
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/common/zarf.yaml",
+    "observation": "Core value sourcePath .keycloak.keycloak maps to chart root; bundle override path is packages[core].overrides.keycloak.keycloak.values[].path (e.g.realmInitEnv), not Horizonpackageapplication values."
   },
-  "re-docs-initial-edc-deferred": {
-    "title": "re-docs-initial-edc-deferred",
-    "observation": "October28 infrastructure discussion records mission-owner decision to defer MSS/Scale external data connections and remove them from initial MPN ABD; release should be latest before TEM. Do not count planned future connectors as required implementation for initial MPN release.",
-    "url": "https://grid-gallatin-ai.enterprise.slack.com/archives/C0AL2QNMGG3/p1793201190378669"
+  "mpn-identity-denylist": {
+    "url": "https://github.com/keycloak/keycloak/blob/26.7.4/server-spi-private/src/main/java/org/keycloak/policy/DenylistPasswordPolicyProviderFactory.java",
+    "observation": "Native Keycloak26.7.4 passwordBlacklist(filename) policy reads newline-delimited corpus from $KC_HOME/data/password-blacklists (or configured SPI path) and hotreloads changed file at defaultcheckIntervalSeconds60. Mount/update approvedcorpus and addpolicy; no customstrengthmeter/passwordvalidator service required. Frequency/content remain Gallatinsecuritypolicy decisions."
   },
-  "re-docs-mpn-separate-authorization": {
-    "title": "re-docs-mpn-separate-authorization",
-    "observation": "October20 deployment owner explicitly distinguishes MPN assess-only/STIG-hardening authorization from separate DU/2F IL5/IL6 full ATO packages. Broad unrelated NIST control backlog is not automatically this MPN remediation scope.",
-    "url": "https://grid-gallatin-ai.enterprise.slack.com/archives/C0CAQ7T9M6J/p1792526328331559"
+  "mpn-identity-age": {
+    "url": "https://github.com/keycloak/keycloak/blob/26.7.4/server-spi-private/src/main/java/org/keycloak/policy/AgePasswordPolicyProvider.java",
+    "observation": "Native passwordAge policy is historical-password reuse-age validation, not24-hour minimum time before changing to a differentnewpassword. Do not falsely propose passwordAge(1) for minchangeinterval; no Coredefault/customvalidator implementing8characterdistance/24hminchange supplied."
   },
-  "re-docs-mpn-scope-not-unclassified": {
-    "title": "re-docs-mpn-scope-not-unclassified",
-    "observation": "October28 source discussion describes MPN as NATO-partner network with IL6-equivalent discussion; no source here establishes an unclassified-only MPN designation. Any classified-only N/A must remain conditional on the actual mission/data boundary.",
-    "url": "https://grid-gallatin-ai.enterprise.slack.com/archives/C0AL2QNMGG3/p1793201707357709"
+  "mpn-core-init-default": {
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/tasks/setup.yaml",
+    "observation": "Core1.14 local setup initializes from Zarf init v0.86.0 without a registry-mode override. bundles/k3d-standard likewise includes that init package without mTLS/proxy selection. Production Core explicitly assumes a separately provided cluster and init bundle, not a DU-operated cluster."
   },
-  "re-docs-rfc057": {
-    "title": "re-docs-rfc057",
-    "observation": "Source-generated RFC057 documents release and change traceability, approval gates, security review and ATO-impact classification. The RFC is labelled Draft and some workflow sections distinguish proposed future implementation; source/live workflow evidence is needed to infer each implemented control.",
-    "url": "https://gallatin.atlassian.net/wiki/spaces/GG/pages/625147947/RFC-057+Release+Management+and+Change+Tracking+for+Multi-Environment+ATO+Compliance"
+  "mpn-registry-mode": {
+    "url": "https://github.com/zarf-dev/zarf/blob/v0.86.0/src/pkg/state/state.go",
+    "observation": "Zarf0.86 FillInEmptyValues defaults internal registry mode to nodeport; MTLSStrategy defaults none. KnownPlainHTTP identifies internal registry without mTLS as HTTP. Proxy mode is a distinct configurable transport."
+  },
+  "mpn-registry-proxy": {
+    "url": "https://github.com/zarf-dev/zarf/blob/v0.86.0/site/src/content/docs/commands/zarf_init.md",
+    "observation": "Exact Zarf0.86 init reference documents --registry-mode=proxy as built-in cross-node mTLS. This is a Gallatin bootstrap choice, not unknown vendor behavior. Proxy mode is marked alpha."
+  },
+  "mpn-registry-tls-floor": {
+    "url": "https://github.com/zarf-dev/zarf/blob/v0.86.0/packages/zarf-registry/chart/templates/_helpers.tpl",
+    "observation": "The registry chart configData helper inserts server certificate/key/client CA settings with minimumtls tls1.2 when mtls.enabled. Proxy daemonset uses OPENSSL with client certificate and verified CA; clear node-side listener is local-loopback rather than cross-node plaintext."
+  },
+  "mpn-registry-prune": {
+    "url": "https://github.com/zarf-dev/zarf/blob/v0.86.0/site/src/content/docs/commands/zarf_tools_registry_prune.md",
+    "observation": "Zarf0.86 includes tools registry prune, which deletes images not referenced by any current Zarf package; --confirm explicitly authorizes pruning. It is an executable maintenance action, not a Core automatic upgrade hook."
+  },
+  "mpn-core-storage-boundary": {
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/getting-started/production/prerequisites.mdx",
+    "observation": "Core production prerequisites require an existing Kubernetes cluster and default storage class. Core does not select the MPN control-plane distribution, storage encryption provider or node volume encryption implementation."
+  },
+  "mpn-core-keycloak-pvc": {
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/templates/pvc.yaml",
+    "observation": "Keycloak PVCs set storageClassName only if persistence.storageClassName is selected; templates configure capacity/access but not storage encryption or host datastore encryption. Default Core cannot establish MPN keystore/data volume protection without a host-storage choice."
+  },
+  "mpn-core-inactivity-setting": {
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/how-to-guides/identity-and-authorization/configure-account-inactivity-disable.mdx",
+    "observation": "Gallatin can set keycloak realmInitEnv.ACCOUNT_INACTIVITY_DAYS=35 to enable initial realm workflow. Source warns realm import is initial-only; existing realm requires directly enabling/updating disable-inactive-users workflow with after35d. Admin accounts are excepted and never-used accounts require handling."
+  },
+  "mpn-core-known-identity-settings": {
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/values.yaml",
+    "observation": "Known Core settings: realmInitEnv.TERMS_AND_CONDITIONS_ENABLED and themeCustomizations.termsAndConditions.text.inline/configmap; realmInitEnv.SSO_SESSION_MAX_PER_USER (default0 unlimited); realmInitEnv.X509_CRL_CHECKING_ENABLED/RELATIVE_PATH/ABORT_IF_NON_UPDATED; detailedObservability.alerts.enabled(defaultfalse), logging.enabled/defaulttrue. These are Gallatin configuration choices."
+  },
+  "mpn-core-account-alerts": {
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/templates/keycloak-logging-alerting-rules.yaml",
+    "observation": "Core account/admin modification PrometheusRules are gated only on detailedObservability.alerts.enabled. Gallatin can enable them and configure recipients in its own Alertmanager deployment; vendor-provided proof is unnecessary."
+  },
+  "mpn-core-falco-notify": {
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/falco/values/values.yaml",
+    "observation": "Falco sends structured events to Loki by default. falcosidekick.config.alertmanager.hostport/endpoint are documented but commented; Gallatin can enable the route to monitoring Alertmanager and configure receivers itself."
+  },
+  "mpn-host-secret-encryption": {
+    "url": "https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/",
+    "observation": "Kubernetes API Secrets are plaintext in etcd unless the selected API-server --encryption-provider-config uses a nonidentity encryption provider first. This is a host/control-plane configuration, separate from Core workload manifests and encrypted PVC selection."
   }
 }

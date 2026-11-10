@@ -9,7 +9,7 @@ ROOT=Path(__file__).resolve().parents[1]
 parser=argparse.ArgumentParser()
 parser.add_argument('checkout',type=Path)
 parser.add_argument('--source-path',action='store_true')
-parser.add_argument('--output',default='mpn/evidence/rendered-all')
+parser.add_argument('--output',required=True)
 args=parser.parse_args()
 src=args.checkout.resolve() if args.source_path else args.checkout.resolve()/'source'
 out=ROOT/args.output;out.mkdir(exist_ok=True)

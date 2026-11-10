@@ -16,7 +16,6 @@ ALLOWED = {'Compliant', 'Likely covered', 'Needs work', 'Needs N/A justification
 def main():
     manifest = json.loads((ROOT / 'mpn/benchmarks/manifest.json').read_text())
     rows = json.loads((ROOT / 'mpn/review/suggested-statuses.json').read_text())
-    first = json.loads((ROOT / 'mpn/review/pass-1.json').read_text())
     evidence = json.loads((ROOT / 'mpn/evidence/catalog.json').read_text())
     expected = set()
     for package in manifest:
@@ -44,7 +43,7 @@ def main():
             reviewed = next(r for r in subset if r['rule_id'] == original_rule['rule_id'])
             for field in original_rule:
                 assert reviewed[field] == original_rule[field], (name, original_rule['rule_id'], field)
-    for batch in [rows, first]:
+    for batch in [rows]:
         keys = [(r['benchmark'], r['rule_id']) for r in batch]
         assert len(keys) == len(set(keys)) == len(expected) and set(keys) == expected
         for r in batch:
@@ -53,35 +52,26 @@ def main():
             assert all(k in evidence for k in r['evidence_ids'])
             assert r['human_review'] == (r['status'] in {'Needs work', 'Unclear'})
     assert all(r.get('evidence_state') == 'source-inferred' for r in rows if r['status'] == 'Compliant'), 'Source-only compliant recommendations must be explicitly labelled'
-    investigation = json.loads((ROOT / 'mpn/evidence/source-investigation.json').read_text())
+    assessment = json.loads((ROOT / 'mpn/evidence/current-assessment.json').read_text())
     indexed = {r['vuln_id']: r for r in rows}
-    product_path = ROOT / 'mpn/evidence/product-boundary-review.json'
-    product = json.loads(product_path.read_text()) if product_path.exists() else {'decisions': {}}
-    for key, decision in {**investigation['explicit_rule_decisions'], **product['decisions']}.items():
-        assert indexed[key]['status'] == decision['status'], key
-    if product['decisions']:
-        prior = json.loads((ROOT / 'mpn/review/pre-rereview-20261109.json').read_text())
-        opened = {r['vuln_id'] for r in prior if r['status'] in {'Unclear', 'Needs work'}}
-        assigned = [key for batch in product['assignments'].values() for key in batch]
-        assert len(assigned) == len(set(assigned)) == 411 and set(assigned) == opened
-        assert opened <= set(product['decisions'])
-        for key, decision in product['decisions'].items():
-            assert indexed[key]['justification'].startswith(decision['justification']), key
-            assert indexed[key]['investigation']
-        release_dir = ROOT / 'mpn/evidence/delivered-release'
-        release = json.loads((release_dir / 'build-info.json').read_text())
-        assert release['horizonCommit'] == product['baseline']['horizon_commit']
-        assert release['platformContract']['identity']['mode'] == 'uds'
-        assert len(release['images']) == 12
-        workloads = json.loads((ROOT / 'mpn/evidence/rendered-delivered/workload-summary.json').read_text())
-        assert {w['image'] for w in workloads} == set(release['images'])
-        assert not (ROOT / 'mpn/evidence/rendered-delivered/keycloak.yaml').exists()
-        assert all(w['resources'] for w in workloads)
-        for item in json.loads((release_dir / 'provenance.json').read_text())['files']:
-            assert hashlib.sha256((release_dir / item['path']).read_bytes()).hexdigest() == item['sha256']
+    assert set(indexed) == set(assessment['decisions'])
+    for key, decision in assessment['decisions'].items():
+        for field, value in decision.items():
+            assert indexed[key][field] == value, (key, field)
+    release_dir = ROOT / 'mpn/evidence/delivered-release'
+    release = json.loads((release_dir / 'build-info.json').read_text())
+    assert release['horizonCommit'] == assessment['baseline']['horizon_commit']
+    assert release['platformContract']['identity']['mode'] == 'uds'
+    assert len(release['images']) == 12
+    workloads = json.loads((ROOT / 'mpn/evidence/rendered-delivered/workload-summary.json').read_text())
+    assert {w['image'] for w in workloads} == set(release['images'])
+    assert not (ROOT / 'mpn/evidence/rendered-delivered/keycloak.yaml').exists()
+    assert all(w['resources'] for w in workloads)
+    for item in json.loads((release_dir / 'provenance.json').read_text())['files']:
+        assert hashlib.sha256((release_dir / item['path']).read_bytes()).hexdigest() == item['sha256']
     for item in json.loads((ROOT / 'mpn/evidence/rendered-manifest.json').read_text())['files']:
         assert hashlib.sha256((ROOT / item['path']).read_bytes()).hexdigest() == item['sha256'], item['path']
-    for name, batch in [('suggested-statuses', rows), ('pass-1', first)]:
+    for name, batch in [('suggested-statuses', rows)]:
         with (ROOT / 'mpn/review' / (name + '.csv')).open() as f:
             exported = list(csv.DictReader(f))
         assert [(r['benchmark'], r['rule_id'], r['status']) for r in exported] == [
@@ -91,14 +81,11 @@ def main():
     assert queue == [r for r in rows if r['human_review']]
     counts = json.loads((ROOT / 'mpn/review/counts.json').read_text())
     assert counts['total'] == len(rows) and counts['by_status'] == dict(Counter(r['status'] for r in rows))
-    rendered = ROOT / 'mpn/evidence/rendered'
+    rendered = ROOT / 'mpn/evidence/rendered-delivered'
     assert 'POSTGRES_PASSWORD' in (rendered / 'postgres.yaml').read_text()
     assert 'secretKeyRef:' in (rendered / 'postgres.yaml').read_text()
     s3 = (rendered / 'seaweedfs.yaml').read_text()
     assert 'kind: ConfigMap' in s3 and '"secretKey"' in s3 and 'ZARF_VAR_S3_SECRET_ACCESS_KEY' in s3
-    realm = (rendered / 'keycloak.yaml').read_text()
-    assert '"failureFactor": 5' in realm and '"permanentLockout": false' in realm
-    assert '"passwordPolicy": "hashAlgorithm(pbkdf2-sha512) and hashIterations(210000)"' in realm
     for path in ROOT.rglob('*.md'):
         if '.git' in path.parts:
             continue
