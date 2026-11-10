@@ -1642,14 +1642,14 @@
       "CCI-001872"
     ],
     "status": "Needs work",
-    "justification": "The review tooling and quarterly procedure exist. Establish and record the first scoped MPN audit review, then follow the same cadence and event-driven reviews. A Grafana dashboard is an enabling mechanism, not a dated security review.",
+    "justification": "Audit-review tooling and a documented quarterly review policy exist, but the saved evidence does not establish the latest scoped MPN audit review or its accountable owner. Human review on 2026-11-10 confirmed Needs work with ownership and existing review records checked first. If the designated MPN ISSO already performs the required reviews, document that coverage; otherwise establish the schedule and event-driven process and retain review records. This is an operational responsibility rather than a new Horizon code requirement.",
     "evidence_ids": [
       "solution-governance-audit-policy",
       "core-vector",
       "core-loki",
       "core-grafana"
     ],
-    "next_step": "Gallatin SRE and the designated security reviewer perform the prepared Loki/Grafana event review, disposition exceptions, record its date and set the next review due under the quarterly policy.",
+    "next_step": "In the post-classification verification pass, confirm the designated ISSO/reviewer and responsibility boundary, obtain the applicable documented review cadence and existing dated MPN review records, and check that reviews occur within that interval and immediately upon system security events as required. Credit an existing accepted process. If absent, establish the scoped schedule/event-driven process, perform the review and retain reviewer/date/results and next-due records. Do not assign platform review execution to Gallatin without confirming ownership.",
     "owner": "Gallatin SRE; designated MPN ISSO/security reviewer",
     "category": "operational procedure/certification",
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
