@@ -22228,12 +22228,12 @@
       "CCI-001350"
     ],
     "status": "Needs work",
-    "justification": "The rule expressly permits delegated centralized log integrity, so no API-native log signer is required. Core supplies centralized Vector/Loki and mesh transport protection, but no retained-record/batch cryptographic hash-and-sign policy was found in its selected source settings. Keep a narrow central-log integrity evidence/configuration residual; transport TLS and access control alone are not the exact retained-log hash/sign alternative.",
+    "justification": "UDS already centralizes logs and protects transport/access, but the saved evidence does not establish cryptographic hashing/signing of retained log records. The official check permits delegation to centralized logging or a SIEM that meets that requirement. Human review on 2026-11-10 confirmed Needs work with verification first: confirm central logging ownership and existing retained-log integrity coverage, or an explicitly accepted equivalent, before assigning changes. TLS and access restrictions alone do not establish the retained-record protection, and no duplicate per-application signer is inherently required.",
     "evidence_ids": [
       "re-images-logging",
       "re-images-core-identity"
     ],
-    "next_step": "Map an accepted immutable/authenticated centralized storage or log hash/sign control to the record lifecycle, or enable it centrally; do not implement per-API duplicate log signing.",
+    "next_step": "In the post-classification verification pass, identify the actual central log-management/SIEM owner and retained-record lifecycle. Inspect configured hashing/signing, verification and key-management evidence, or an explicitly accepted equivalent mapped to the exact check. Credit supported existing centralized protection; configure only confirmed gaps at the appropriate central boundary. Retain configuration, integrity-verification and any accepted-equivalence records; do not treat generic immutability or transport TLS as automatically satisfying hashing/signing.",
     "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
     "category": "central logging control/tailoring",
     "components": "Delivered Horizon API, workers, chat, ingestion and storage; delegated UDS identity/gateway/mesh",

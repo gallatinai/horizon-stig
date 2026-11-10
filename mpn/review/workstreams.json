@@ -390,7 +390,7 @@
     {
       "vuln_id": "V-204739",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Map an accepted immutable/authenticated centralized storage or log hash/sign control to the record lifecycle, or enable it centrally; do not implement per-API duplicate log signing."
+      "next_step": "In the post-classification verification pass, identify the actual central log-management/SIEM owner and retained-record lifecycle. Inspect configured hashing/signing, verification and key-management evidence, or an explicitly accepted equivalent mapped to the exact check. Credit supported existing centralized protection; configure only confirmed gaps at the appropriate central boundary. Retain configuration, integrity-verification and any accepted-equivalence records; do not treat generic immutability or transport TLS as automatically satisfying hashing/signing."
     }
   ],
   "classification-guide": [
