@@ -2104,7 +2104,7 @@
     },
     "V-222520": {
       "status": "Needs work",
-      "justification": "The app uses live OpenFGA roles rather than a user-selected active-role mode, but a grant writes the role tuple immediately and subsequent permissionchecks use those rights under the existing signedJWT. Reviewed rolegrant/authorization/auth code has no recent-authentication, auth_time/max_age or step-up requirement before changed/elevated privileges are exercised. General UDSidle/OTP does not supply this specificfresh-auth trigger. This matches the platform reauthentication gap and can be addressed through shared identity/client policy or accepted role-model tailoring rather than a duplicate authenticationimplementation.",
+      "justification": "The app uses live OpenFGA roles rather than a user-selected active-role mode, but a grant writes the role tuple immediately and subsequent permissionchecks use those rights under the existing signedJWT. Reviewed rolegrant/authorization/auth code has no recent-authentication, auth_time/max_age or step-up requirement before changed/elevated privileges are exercised. General UDSidle/OTP does not supply this specificfresh-auth trigger. This matches the platform reauthentication gap and can be addressed through shared identity/client policy or accepted role-model tailoring rather than a duplicate authenticationimplementation. Human review on 2026-11-10 confirmed Needs work: define the reauthentication policy and enforce fresh authentication for applicable role changes and privilege escalation. Reuse shared identity with application enforcement where needed; ordinary login, idle expiry or automatic token renewal alone does not establish this trigger.",
       "evidence_ids": [
         "re-asd-release",
         "re-asd-role-grants",
@@ -2114,7 +2114,7 @@
         "mpn-identity-values",
         "mpn-identity-override"
       ],
-      "next_step": "Set the organization-defined sensitive-role-change/privilege-use reauthenticationpolicy and enforce a recent-auth/step-up requirement at the appropriate IdP/client/API boundary, or obtain explicit role-model tailoring for no user-selected active role. Reuse the shared session-policy workstream. Gallatin owns this policy/integration; Core default settings are source-known.",
+      "next_step": "Define the organization-required reauthentication circumstances, including applicable role changes and privilege escalation required by the STIG. Enforce a fresh-authentication/step-up requirement through the shared identity flow and the appropriate client/API boundary before changed or elevated rights can be exercised. Verify an existing session cannot bypass the requirement after a role grant and retain policy, implementation and test evidence. Do not treat silent token renewal alone as user reauthentication.",
       "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
       "category": "cross-component reauthentication policy",
       "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
