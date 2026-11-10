@@ -731,7 +731,7 @@
     {
       "vuln_id": "V-222587",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Create one Gallatin-owned mpn-encrypted StorageClass backed by approved encrypted disks/volumes; set PostgreSQL persistence.storageClassName (not storageClass), bind SeaweedFS PVC explicitly and protect Core identity database/PVCs. Encrypt node OS/temp/cache and API Secret/datastore storage too. Keep the existing database/object-store products; use the selected host provider rather than a new storage cluster. Enable the existing SeaweedFS4.52 server flags -filer.encryptVolumeData and -s3.encryptVolumeData; retain filer metadata/keys on the encrypted protected volume. New writes use the existing AES-GCM path; migrate/rewrite existing objects deliberately. This supplements encrypted host/PVC storage and does not require every API to implement encryption. Apply the separate integrity step to the defined protected data set."
+      "next_step": "In the post-classification verification pass, map the V-222423 data-owner protection requirements to actual MPN PostgreSQL, object, identity, configuration/secret and temporary-storage controls. Inspect the selected host/storage provider, volume bindings, encryption configuration, key protection and required integrity mechanisms. Credit existing controls and implement only confirmed confidentiality/integrity gaps. Retain configuration, provider and verification evidence; do not assume a new storage class or object-encryption layer is needed before checking existing protection."
     },
     {
       "vuln_id": "V-222589",

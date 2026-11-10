@@ -1609,7 +1609,7 @@
       "CCI-001199"
     ],
     "status": "Needs work",
-    "justification": "The recommended baseline protects all persistent/scratch/configuration data through the shared encrypted-host/PVC layer, existing object AES-GCM and access-controlled database writes; application-local encryption is not universally required. Gallatin operates MPN Core and storage. A concrete lower-layer solution can be specified now, so this is a shared configuration/implementation backlog item rather than an unknown UDS setting. No deployed compliance result is claimed.",
+    "justification": "Stored-information protection is partially implemented through Horizon access controls and available platform/storage encryption mechanisms, but the saved evidence does not establish actual MPN confidentiality and integrity coverage across application, identity, configuration/secrets and temporary storage. Human review on 2026-11-10 confirmed Needs work with verification first: map data-owner requirements to existing storage protections and configure only confirmed gaps, coordinated with V-222423. Appropriate platform protection can satisfy the requirement without universal application-local encryption; encryption alone does not establish all integrity requirements.",
     "evidence_ids": [
       "sol-storage-postgres-pvc",
       "sol-storage-seaweed-chart",
@@ -1618,7 +1618,7 @@
       "sol-storage-seaweed-aead",
       "sol-storage-seaweed-flags"
     ],
-    "next_step": "Create one Gallatin-owned mpn-encrypted StorageClass backed by approved encrypted disks/volumes; set PostgreSQL persistence.storageClassName (not storageClass), bind SeaweedFS PVC explicitly and protect Core identity database/PVCs. Encrypt node OS/temp/cache and API Secret/datastore storage too. Keep the existing database/object-store products; use the selected host provider rather than a new storage cluster. Enable the existing SeaweedFS4.52 server flags -filer.encryptVolumeData and -s3.encryptVolumeData; retain filer metadata/keys on the encrypted protected volume. New writes use the existing AES-GCM path; migrate/rewrite existing objects deliberately. This supplements encrypted host/PVC storage and does not require every API to implement encryption. Apply the separate integrity step to the defined protected data set.",
+    "next_step": "In the post-classification verification pass, map the V-222423 data-owner protection requirements to actual MPN PostgreSQL, object, identity, configuration/secret and temporary-storage controls. Inspect the selected host/storage provider, volume bindings, encryption configuration, key protection and required integrity mechanisms. Credit existing controls and implement only confirmed confidentiality/integrity gaps. Retain configuration, provider and verification evidence; do not assume a new storage class or object-encryption layer is needed before checking existing protection.",
     "owner": "Gallatin SRE / MPN platform engineering; application security for integrity scope",
     "category": "shared storage protection implementation",
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
