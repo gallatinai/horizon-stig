@@ -4371,12 +4371,12 @@
     },
     "V-222664": {
       "status": "Needs work",
-      "justification": "The deployment processes classified data, so a security classification guide must cover its data elements. The official check allows an existing higher-level program guide; a new application-specific guide is unnecessary if that guide covers Horizon.",
+      "justification": "The intended deployment processes classified data, so an approved security classification guide must cover the application data elements. The official check permits a higher-level mission/program guide. Human review on 2026-11-10 confirmed Needs work pending verification of inherited guide coverage: identify the approved applicable guide and map Horizon data to it before requiring application-specific guidance. The mission classification authority owns classification decisions and approval; a missing reference in this tracker does not establish that no guide exists.",
       "evidence_ids": [
         "re-mission-classification-model",
         "solution-asd-scg-check"
       ],
-      "next_step": "Identify the existing program/mission classification guide and the sections covering Horizon data. Add application-specific guidance only for uncovered data elements, then record the guide reference.",
+      "next_step": "In the post-classification verification pass, identify the approved mission/program security classification guide and confirm with the classification authority that it covers Horizon data elements and the required classification, handling and declassification guidance. Retain an appropriate controlled reference and scope mapping. Ask the authority to resolve only uncovered elements; do not create or approve classification guidance on its behalf. Update the recommendation when coverage is supported.",
       "owner": "Mission classification authority; Gallatin security for the application reference",
       "category": "applicable classification guide",
       "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",

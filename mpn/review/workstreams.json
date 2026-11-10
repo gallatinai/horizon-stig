@@ -397,7 +397,7 @@
     {
       "vuln_id": "V-222664",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Identify the existing program/mission classification guide and the sections covering Horizon data. Add application-specific guidance only for uncovered data elements, then record the guide reference."
+      "next_step": "In the post-classification verification pass, identify the approved mission/program security classification guide and confirm with the classification authority that it covers Horizon data elements and the required classification, handling and declassification guidance. Retain an appropriate controlled reference and scope mapping. Ask the authority to resolve only uncovered elements; do not create or approve classification guidance on its behalf. Update the recommendation when coverage is supported."
     }
   ],
   "classified-crypto": [
