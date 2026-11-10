@@ -1845,5 +1845,32 @@
     "title": "Classifier sends a content sample to the configured model service",
     "observation": "ClassifierLLMClient.classify builds a prompt containing the content sample and selects its configured OpenAI or Anthropic-compatible call. Combined with the caller gate, this establishes a controlled transfer path; it does not establish approved MPN destinations or deployment configuration.",
     "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/workers/artifact-ingestion/artifact_ingestion/llm_client.py#L187"
+  },
+  "review-predeployment-verification": {
+    "title": "Follow-up verification of the original 188 Needs work rules",
+    "observation": "Per-rule coverage of the pinned source/document pass, findings, limitations and future acceptance tests. No MPN cluster exists and no live MPN checks are claimed.",
+    "path": "mpn/evidence/human-review-verification.json",
+    "url": "../evidence/human-review-verification.json"
+  },
+  "review-mpn-scope-v16": {
+    "title": "MPN scope draft version 16: ownership qualification",
+    "observation": "WIP scope assigns MPN node/control-plane but Gallatin application/database/UDS responsibilities; does not establish blanket storage inheritance.",
+    "url": "https://gallatin.atlassian.net/wiki/spaces/GG/pages/733085804/WIP+STIG+SRG+Compliance+Scope+MPN"
+  },
+  "review-existing-mpn-interfaces": {
+    "title": "Existing proposed MPN design interface table",
+    "observation": "Proposed design already documents principal interface protocols/ports and host-provided or approved services. It does not prove completed registration or a finalized deployed profile.",
+    "url": "https://docs.google.com/document/d/1RzBd9YPzJSYk8LDI126LbvRBiaF3uJjfN4T5V8-0Pbw/edit"
+  },
+  "review-witness-recheck": {
+    "title": "Exact Witness release checksum and build metadata recheck",
+    "observation": "Witness archive checksum matched; binary metadata and pinned wrapper do not establish approved FIPS mode. Existing signing is present; binary was not executed. See the follow-up report for hashes and scope.",
+    "path": "mpn/evidence/human-review-verification.json",
+    "url": "https://github.com/in-toto/witness/releases/tag/v0.12.0"
+  },
+  "review-existing-secret-task": {
+    "title": "Existing protected-file secret task in III Corps",
+    "observation": "Existing III Corps secret-to-projected-file task, hydrated read-only; no Jira mutation. Contrary customer requirement remains unconfirmed.",
+    "url": "https://gallatin.atlassian.net/browse/GAL-9426"
   }
 }

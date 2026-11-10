@@ -1,6 +1,6 @@
 # Horizon STIG tracking
 
-Suggested statuses and reasons for all **1,048 rules across seven benchmarks**, updated 10 November 2026. The OS benchmark is an eighth family pending MPN distribution/version selection. Gallatin manages this UDS Core deployment on MPN, which will process classified data.
+Suggested statuses and reasons for all **1,048 rules across seven benchmarks**, updated 10 November 2026. The OS benchmark is an eighth family pending MPN distribution/version selection. Gallatin proposes a self-managed UDS Core deployment on MPN for classified data. No MPN cluster exists yet; these recommendations support the pre-deployment submission.
 
 | Benchmark | Rules | Needs work | Likely covered | Unclear | N/A justification | Source-only Compliant |
 |---|---:|---:|---:|---:|---:|---:|
@@ -22,6 +22,7 @@ The 176 needs-work recommendations group into **33 shared workstreams**. Every r
 - [Gallatin UDS configuration actions](mpn/UDS-CONFIGURATION.md)
 - [NSA-approved cryptography: applying the STIG wording](mpn/NSA-CRYPTOGRAPHY.md) · [Checked components and protection options](mpn/NSA-COMPONENT-CHECK.md)
 - [Assessment decisions](mpn/evidence/current-assessment.json)
+- [Follow-up verification of the original 188 Needs work rules](mpn/evidence/human-review-verification.json)
 - [Requirements found in Slack and Gemini meeting notes](mpn/REQUIREMENTS.md)
 - [Improvement priorities and effort estimate](mpn/FINDINGS.md)
 - [Evidence boundaries and exact source versions](mpn/evidence/README.md)
