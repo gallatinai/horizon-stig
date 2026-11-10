@@ -1575,13 +1575,13 @@
     },
     "V-222485": {
       "status": "Needs work",
-      "justification": "UDS supplies storage/resource monitoring and centralized log buffers, but source defaults do not encode the exact audit-repository75percent threshold and all required audit-failure notifications to SA/ISSO. Configure that outcome centrally rather than in each API service.",
+      "justification": "Monitoring and logging capability is partially implemented. UDS supplies storage/resource monitoring and centralized log buffers, but source defaults do not encode the exact audit-repository75percent threshold and all required audit-failure notifications to SA/ISSO. Configure that outcome centrally rather than in each API service. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the recommendation where existing capabilities need alerting configuration. Credit existing sources and monitoring; configure and verify the specific required alert coverage and recipient delivery. This does not establish that every required detector or alert rule is already present.",
       "evidence_ids": [
         "re-asd-alerts",
         "re-asd-vector",
         "re-asd-id-alerts"
       ],
-      "next_step": "Add/tune the central audit capacity/failure alerts and named required recipients or retain an accepted existing operator rule/route.",
+      "next_step": "Identify the audit/log processing failures covered by this exact rule, including capture, hardware/software, collector/backend and storage failures as applicable. Configure the required alerts and named recipients using the existing central monitoring. Test coverage and delivery; verify real-time latency where the rule requires it. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine. Reassess the application-level centralized-logging N/A condition only after the required central alarms are established.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "central monitoring configuration",
       "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
@@ -7502,13 +7502,13 @@
     },
     "V-233170": {
       "status": "Needs work",
-      "justification": "Central logging, storage metrics and Alertmanager already exist outside the application. Inspected Core defaults do not define the specific75percent audit capacity threshold plus required audit-failure routes to SA/ISSO. Reuse/tune those shared monitors; this is not a requirement for every API/container to send email or maintain its own audit-volume monitor.",
+      "justification": "Monitoring and logging capability is partially implemented. Central logging, storage metrics and Alertmanager already exist outside the application. Inspected Core defaults do not define the specific75percent audit capacity threshold plus required audit-failure routes to SA/ISSO. Reuse/tune those shared monitors; this is not a requirement for every API/container to send email or maintain its own audit-volume monitor. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the recommendation where existing capabilities need alerting configuration. Credit existing sources and monitoring; configure and verify the specific required alert coverage and recipient delivery. This does not establish that every required detector or alert rule is already present.",
       "evidence_ids": [
         "core-vector",
         "re-platform-monitor",
         "re-platform-falco"
       ],
-      "next_step": "Configure or attach the platform audit-capacity/failure alert definitions and authorized notification route.",
+      "next_step": "Identify the assessed audit/log repository and capacity metric; configure an immediate warning at 75 percent utilization to the recipients specified by this exact rule. Use a different threshold only where this rule expressly permits it and the required approval is retained. Test threshold triggering and delivery. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "platform monitoring configuration",
       "components": "UDS platform: registry, runtime, Pepr, Istio, logging; delivered workloads",
@@ -7517,13 +7517,13 @@
     },
     "V-233171": {
       "status": "Needs work",
-      "justification": "Central logging, storage metrics and Alertmanager already exist outside the application. Inspected Core defaults do not define the specific75percent audit capacity threshold plus required audit-failure routes to SA/ISSO. Reuse/tune those shared monitors; this is not a requirement for every API/container to send email or maintain its own audit-volume monitor.",
+      "justification": "Monitoring and logging capability is partially implemented. Central logging, storage metrics and Alertmanager already exist outside the application. Inspected Core defaults do not define the specific75percent audit capacity threshold plus required audit-failure routes to SA/ISSO. Reuse/tune those shared monitors; this is not a requirement for every API/container to send email or maintain its own audit-volume monitor. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the recommendation where existing capabilities need alerting configuration. Credit existing sources and monitoring; configure and verify the specific required alert coverage and recipient delivery. This does not establish that every required detector or alert rule is already present.",
       "evidence_ids": [
         "core-vector",
         "re-platform-monitor",
         "re-platform-falco"
       ],
-      "next_step": "Configure or attach the platform audit-capacity/failure alert definitions and authorized notification route.",
+      "next_step": "Identify the audit/log processing failures covered by this exact rule, including capture, hardware/software, collector/backend and storage failures as applicable. Configure the required alerts and named recipients using the existing central monitoring. Test coverage and delivery; verify real-time latency where the rule requires it. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "platform monitoring configuration",
       "components": "UDS platform: registry, runtime, Pepr, Istio, logging; delivered workloads",
@@ -8058,14 +8058,14 @@
     },
     "V-233244": {
       "status": "Needs work",
-      "justification": "UDS Falco/logging/Prometheus provide security-function and tampering detection outside Horizon, but default Falco Alertmanager forwarding is commented out and no site security/operations recipient route is selected. Credit the shared detection stack; remaining configuration is active notification delivery, not duplication of detectors in the API.",
+      "justification": "Monitoring and logging capability is partially implemented. UDS Falco/logging/Prometheus provide security-function and tampering detection outside Horizon, but default Falco Alertmanager forwarding is commented out and no site security/operations recipient route is selected. Credit the shared detection stack; remaining configuration is active notification delivery, not duplication of detectors in the API. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the recommendation where existing capabilities need alerting configuration. Credit existing sources and monitoring; configure and verify the specific required alert coverage and recipient delivery. This does not establish that every required detector or alert rule is already present.",
       "evidence_ids": [
         "re-platform-falco",
         "re-platform-monitor",
         "core-vector",
         "mpn-core-falco-notify"
       ],
-      "next_step": "Use Gallatin\u2019s existing Core Prometheus/Alertmanager. Enable falcosidekick.config.alertmanager.hostport/endpoint for Falco delivery where appropriate, define required audit failure/capacity rules (not just generic uptime) and set receiver routes.",
+      "next_step": "Define the security-function anomalies and responsible system-administration/operations roles in the site security plan. Map existing detection sources, configure missing alert rules and routes, and test anomaly notifications to the designated roles. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "platform notification configuration",
       "components": "UDS platform: registry, runtime, Pepr, Istio, logging; delivered workloads",
@@ -8577,14 +8577,14 @@
     },
     "V-263588": {
       "status": "Needs work",
-      "justification": "UDS Falco/logging/Prometheus provide security-function and tampering detection outside Horizon, but default Falco Alertmanager forwarding is commented out and no site security/operations recipient route is selected. Credit the shared detection stack; remaining configuration is active notification delivery, not duplication of detectors in the API.",
+      "justification": "Monitoring and logging capability is partially implemented. UDS Falco/logging/Prometheus provide security-function and tampering detection outside Horizon, but default Falco Alertmanager forwarding is commented out and no site security/operations recipient route is selected. Credit the shared detection stack; remaining configuration is active notification delivery, not duplication of detectors in the API. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the recommendation where existing capabilities need alerting configuration. Credit existing sources and monitoring; configure and verify the specific required alert coverage and recipient delivery. This does not establish that every required detector or alert rule is already present.",
       "evidence_ids": [
         "re-platform-falco",
         "re-platform-monitor",
         "core-vector",
         "mpn-core-falco-notify"
       ],
-      "next_step": "Use Gallatin\u2019s existing Core Prometheus/Alertmanager. Enable falcosidekick.config.alertmanager.hostport/endpoint for Falco delivery where appropriate, define required audit failure/capacity rules (not just generic uptime) and set receiver routes.",
+      "next_step": "Identify detection sources for unauthorized access, modification and deletion of audit information. Configure missing detection/alert rules and route notifications to organization-defined personnel or roles. Test each required event type and recipient delivery; general uptime or account-change rules do not establish tamper coverage. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "platform notification configuration",
       "components": "UDS platform: registry, runtime, Pepr, Istio, logging; delivered workloads",
@@ -9083,14 +9083,14 @@
     },
     "V-206366": {
       "status": "Needs work",
-      "justification": "The product already delegates web logging to UDS Vector/Loki/Prometheus; nginx need not implement another logger. However the reviewed Core defaults/package do not select the required audit-processing-failure or75percent-capacity alerts with SA/ISSO delivery. This is one operator alert-routing configuration task, not separate web-server code.",
+      "justification": "Monitoring and logging capability is partially implemented. The product already delegates web logging to UDS Vector/Loki/Prometheus; nginx need not implement another logger. However the reviewed Core defaults/package do not select the required audit-processing-failure or75percent-capacity alerts with SA/ISSO delivery. This is one operator alert-routing configuration task, not separate web-server code. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the recommendation where existing capabilities need alerting configuration. Credit existing sources and monitoring; configure and verify the specific required alert coverage and recipient delivery. This does not establish that every required detector or alert rule is already present.",
       "evidence_ids": [
         "re-web-actual-release",
         "re-web-vector",
         "re-web-alerts",
         "re-web-identity-values"
       ],
-      "next_step": "Configure required logging health/capacity thresholds and platform alert recipients, or attach the selected existing platform override.",
+      "next_step": "Identify the audit/log processing failures covered by this exact rule, including capture, hardware/software, collector/backend and storage failures as applicable. Configure the required alerts and named recipients using the existing central monitoring. Test coverage and delivery; verify real-time latency where the rule requires it. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "platform configuration",
       "components": "Delivered static nginx-FIPS, Istio ingress and shared UDS identity (separate roles)",
@@ -9953,14 +9953,14 @@
     },
     "V-206424": {
       "status": "Needs work",
-      "justification": "The product already delegates web logging to UDS Vector/Loki/Prometheus; nginx need not implement another logger. However the reviewed Core defaults/package do not select the required audit-processing-failure or75percent-capacity alerts with SA/ISSO delivery. This is one operator alert-routing configuration task, not separate web-server code.",
+      "justification": "Monitoring and logging capability is partially implemented. The product already delegates web logging to UDS Vector/Loki/Prometheus; nginx need not implement another logger. However the reviewed Core defaults/package do not select the required audit-processing-failure or75percent-capacity alerts with SA/ISSO delivery. This is one operator alert-routing configuration task, not separate web-server code. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the recommendation where existing capabilities need alerting configuration. Credit existing sources and monitoring; configure and verify the specific required alert coverage and recipient delivery. This does not establish that every required detector or alert rule is already present.",
       "evidence_ids": [
         "re-web-actual-release",
         "re-web-vector",
         "re-web-alerts",
         "re-web-identity-values"
       ],
-      "next_step": "Configure required logging health/capacity thresholds and platform alert recipients, or attach the selected existing platform override.",
+      "next_step": "Identify the assessed audit/log repository and capacity metric; configure an immediate warning at 75 percent utilization to the recipients specified by this exact rule. Use a different threshold only where this rule expressly permits it and the required approval is retained. Test threshold triggering and delivery. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "platform configuration",
       "components": "Delivered static nginx-FIPS, Istio ingress and shared UDS identity (separate roles)",
@@ -10340,14 +10340,14 @@
     },
     "V-264340": {
       "status": "Needs work",
-      "justification": "Audit storage/protection/detection belong to isolated UDS logging/Falco/monitoring services, not static nginx. Their mechanisms exist, but the selected source defaults do not enable a complete tamper-event route to organization-defined roles. Attach an existing platform route or configure the shared detection/notification policy.",
+      "justification": "Monitoring and logging capability is partially implemented. Audit storage/protection/detection belong to isolated UDS logging/Falco/monitoring services, not static nginx. Their mechanisms exist, but the selected source defaults do not enable a complete tamper-event route to organization-defined roles. Attach an existing platform route or configure the shared detection/notification policy. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the recommendation where existing capabilities need alerting configuration. Credit existing sources and monitoring; configure and verify the specific required alert coverage and recipient delivery. This does not establish that every required detector or alert rule is already present.",
       "evidence_ids": [
         "re-web-actual-release",
         "re-web-vector",
         "re-web-alerts",
         "re-web-identity-values"
       ],
-      "next_step": "Complete audit tamper detection/notification routing in the platform policy.",
+      "next_step": "Identify detection sources for unauthorized access, modification and deletion of audit information. Configure missing detection/alert rules and route notifications to organization-defined personnel or roles. Test each required event type and recipient delivery; general uptime or account-change rules do not establish tamper coverage. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "platform configuration",
       "components": "Delivered static nginx-FIPS, Istio ingress and shared UDS identity (separate roles)",
@@ -11142,7 +11142,7 @@
     },
     "V-204728": {
       "status": "Needs work",
-      "justification": "The dedicated UDS logging/monitoring service is the correct implementationboundary and supplies Vectorinternal metrics, storage/Prometheus alerts, Falco and optional identity rules. Baseline configuration nevertheless does not establish all required processingfailure/tampering events, the 75 percent audit capacity threshold or SA/ISSO receiver. This is sharedmonitoring configuration/routing, not a new API alert engine.",
+      "justification": "Monitoring and logging capability is partially implemented. The dedicated UDS logging/monitoring service is the correct implementationboundary and supplies Vectorinternal metrics, storage/Prometheus alerts, Falco and optional identity rules. Baseline configuration nevertheless does not establish all required processingfailure/tampering events, the 75 percent audit capacity threshold or SA/ISSO receiver. This is sharedmonitoring configuration/routing, not a new API alert engine. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the recommendation where existing capabilities need alerting configuration. Credit existing sources and monitoring; configure and verify the specific required alert coverage and recipient delivery. This does not establish that every required detector or alert rule is already present.",
       "evidence_ids": [
         "re-appserver-release",
         "re-appserver-logging",
@@ -11151,7 +11151,7 @@
         "re-appserver-falco",
         "mpn-core-falco-notify"
       ],
-      "next_step": "Use Gallatin\u2019s existing Core Prometheus/Alertmanager. Enable falcosidekick.config.alertmanager.hostport/endpoint for Falco delivery where appropriate, define required audit failure/capacity rules (not just generic uptime) and set receiver routes.",
+      "next_step": "Identify the audit/log processing failures covered by this exact rule, including capture, hardware/software, collector/backend and storage failures as applicable. Configure the required alerts and named recipients using the existing central monitoring. Test coverage and delivery; verify real-time latency where the rule requires it. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "platform monitoring configuration",
       "components": "Delivered Horizon API, workers, chat, ingestion and storage; delegated UDS identity/gateway/mesh",
@@ -12048,7 +12048,7 @@
     },
     "V-204790": {
       "status": "Needs work",
-      "justification": "The dedicated UDS logging/monitoring service is the correct implementationboundary and supplies Vectorinternal metrics, storage/Prometheus alerts, Falco and optional identity rules. Baseline configuration nevertheless does not establish all required processingfailure/tampering events, the 75 percent audit capacity threshold or SA/ISSO receiver. This is sharedmonitoring configuration/routing, not a new API alert engine.",
+      "justification": "Monitoring and logging capability is partially implemented. The dedicated UDS logging/monitoring service is the correct implementationboundary and supplies Vectorinternal metrics, storage/Prometheus alerts, Falco and optional identity rules. Baseline configuration nevertheless does not establish all required processingfailure/tampering events, the 75 percent audit capacity threshold or SA/ISSO receiver. This is sharedmonitoring configuration/routing, not a new API alert engine. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the recommendation where existing capabilities need alerting configuration. Credit existing sources and monitoring; configure and verify the specific required alert coverage and recipient delivery. This does not establish that every required detector or alert rule is already present.",
       "evidence_ids": [
         "re-appserver-release",
         "re-appserver-logging",
@@ -12057,7 +12057,7 @@
         "re-appserver-falco",
         "mpn-core-falco-notify"
       ],
-      "next_step": "Use Gallatin\u2019s existing Core Prometheus/Alertmanager. Enable falcosidekick.config.alertmanager.hostport/endpoint for Falco delivery where appropriate, define required audit failure/capacity rules (not just generic uptime) and set receiver routes.",
+      "next_step": "Identify the assessed audit/log repository and capacity metric; configure an immediate warning at 75 percent utilization to the recipients specified by this exact rule. Use a different threshold only where this rule expressly permits it and the required approval is retained. Test threshold triggering and delivery. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "platform monitoring configuration",
       "components": "Delivered Horizon API, workers, chat, ingestion and storage; delegated UDS identity/gateway/mesh",
@@ -12066,7 +12066,7 @@
     },
     "V-204791": {
       "status": "Needs work",
-      "justification": "The dedicated UDS logging/monitoring service is the correct implementationboundary and supplies Vectorinternal metrics, storage/Prometheus alerts, Falco and optional identity rules. Baseline configuration nevertheless does not establish all required processingfailure/tampering events, the 75 percent audit capacity threshold or SA/ISSO receiver. This is sharedmonitoring configuration/routing, not a new API alert engine.",
+      "justification": "Monitoring and logging capability is partially implemented. The dedicated UDS logging/monitoring service is the correct implementationboundary and supplies Vectorinternal metrics, storage/Prometheus alerts, Falco and optional identity rules. Baseline configuration nevertheless does not establish all required processingfailure/tampering events, the 75 percent audit capacity threshold or SA/ISSO receiver. This is sharedmonitoring configuration/routing, not a new API alert engine. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the recommendation where existing capabilities need alerting configuration. Credit existing sources and monitoring; configure and verify the specific required alert coverage and recipient delivery. This does not establish that every required detector or alert rule is already present.",
       "evidence_ids": [
         "re-appserver-release",
         "re-appserver-logging",
@@ -12075,7 +12075,7 @@
         "re-appserver-falco",
         "mpn-core-falco-notify"
       ],
-      "next_step": "Use Gallatin\u2019s existing Core Prometheus/Alertmanager. Enable falcosidekick.config.alertmanager.hostport/endpoint for Falco delivery where appropriate, define required audit failure/capacity rules (not just generic uptime) and set receiver routes.",
+      "next_step": "Identify the audit/log processing failures covered by this exact rule, including capture, hardware/software, collector/backend and storage failures as applicable. Configure the required alerts and named recipients using the existing central monitoring. Test coverage and delivery; verify real-time latency where the rule requires it. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "platform monitoring configuration",
       "components": "Delivered Horizon API, workers, chat, ingestion and storage; delegated UDS identity/gateway/mesh",
@@ -12776,7 +12776,7 @@
     },
     "V-263550": {
       "status": "Needs work",
-      "justification": "The dedicated UDS logging/monitoring service is the correct implementationboundary and supplies Vectorinternal metrics, storage/Prometheus alerts, Falco and optional identity rules. Baseline configuration nevertheless does not establish all required processingfailure/tampering events, the 75 percent audit capacity threshold or SA/ISSO receiver. This is sharedmonitoring configuration/routing, not a new API alert engine.",
+      "justification": "Monitoring and logging capability is partially implemented. The dedicated UDS logging/monitoring service is the correct implementationboundary and supplies Vectorinternal metrics, storage/Prometheus alerts, Falco and optional identity rules. Baseline configuration nevertheless does not establish all required processingfailure/tampering events, the 75 percent audit capacity threshold or SA/ISSO receiver. This is sharedmonitoring configuration/routing, not a new API alert engine. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the recommendation where existing capabilities need alerting configuration. Credit existing sources and monitoring; configure and verify the specific required alert coverage and recipient delivery. This does not establish that every required detector or alert rule is already present.",
       "evidence_ids": [
         "re-appserver-release",
         "re-appserver-logging",
@@ -12785,7 +12785,7 @@
         "re-appserver-falco",
         "mpn-core-falco-notify"
       ],
-      "next_step": "Use Gallatin\u2019s existing Core Prometheus/Alertmanager. Enable falcosidekick.config.alertmanager.hostport/endpoint for Falco delivery where appropriate, define required audit failure/capacity rules (not just generic uptime) and set receiver routes.",
+      "next_step": "Identify detection sources for unauthorized access, modification and deletion of audit information. Configure missing detection/alert rules and route notifications to organization-defined personnel or roles. Test each required event type and recipient delivery; general uptime or account-change rules do not establish tamper coverage. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "platform monitoring configuration",
       "components": "Delivered Horizon API, workers, chat, ingestion and storage; delegated UDS identity/gateway/mesh",
@@ -14103,13 +14103,13 @@
     },
     "V-206592": {
       "status": "Needs work",
-      "justification": "UDS provides collector/storage monitoring and runtime detections, so no DB-local alert engine is inherently needed. However, the selected package source still does not configure the exact audit75% threshold and required real-time audit-failure/tamper routes to support roles. General metrics/detections alone do not identify a configured notification path.",
+      "justification": "Monitoring and logging capability is partially implemented. UDS provides collector/storage monitoring and runtime detections, so no DB-local alert engine is inherently needed. However, the selected package source still does not configure the exact audit75% threshold and required real-time audit-failure/tamper routes to support roles. General metrics/detections alone do not identify a configured notification path. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the recommendation where existing capabilities need alerting configuration. Credit existing sources and monitoring; configure and verify the specific required alert coverage and recipient delivery. This does not establish that every required detector or alert rule is already present.",
       "evidence_ids": [
         "re-database-alerts",
         "re-database-vector",
         "re-database-log-access"
       ],
-      "next_step": "Configure or attach operator-owned audit capacity/failure/tamper rules and recipients in the shared platform alert routing; no separate DB alert product required.",
+      "next_step": "Identify the assessed audit/log repository and capacity metric; configure an immediate warning at 75 percent utilization to the recipients specified by this exact rule. Use a different threshold only where this rule expressly permits it and the required approval is retained. Test threshold triggering and delivery. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "product-boundary source review",
       "components": "Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database",
@@ -14118,13 +14118,13 @@
     },
     "V-206593": {
       "status": "Needs work",
-      "justification": "UDS provides collector/storage monitoring and runtime detections, so no DB-local alert engine is inherently needed. However, the selected package source still does not configure the exact audit75% threshold and required real-time audit-failure/tamper routes to support roles. General metrics/detections alone do not identify a configured notification path.",
+      "justification": "Monitoring and logging capability is partially implemented. UDS provides collector/storage monitoring and runtime detections, so no DB-local alert engine is inherently needed. However, the selected package source still does not configure the exact audit75% threshold and required real-time audit-failure/tamper routes to support roles. General metrics/detections alone do not identify a configured notification path. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the recommendation where existing capabilities need alerting configuration. Credit existing sources and monitoring; configure and verify the specific required alert coverage and recipient delivery. This does not establish that every required detector or alert rule is already present.",
       "evidence_ids": [
         "re-database-alerts",
         "re-database-vector",
         "re-database-log-access"
       ],
-      "next_step": "Configure or attach operator-owned audit capacity/failure/tamper rules and recipients in the shared platform alert routing; no separate DB alert product required.",
+      "next_step": "Identify the audit/log processing failures covered by this exact rule, including capture, hardware/software, collector/backend and storage failures as applicable. Configure the required alerts and named recipients using the existing central monitoring. Test coverage and delivery; verify real-time latency where the rule requires it. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "product-boundary source review",
       "components": "Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database",
@@ -15003,13 +15003,13 @@
     },
     "V-263605": {
       "status": "Needs work",
-      "justification": "UDS provides collector/storage monitoring and runtime detections, so no DB-local alert engine is inherently needed. However, the selected package source still does not configure the exact audit75% threshold and required real-time audit-failure/tamper routes to support roles. General metrics/detections alone do not identify a configured notification path.",
+      "justification": "Monitoring and logging capability is partially implemented. UDS provides collector/storage monitoring and runtime detections, so no DB-local alert engine is inherently needed. However, the selected package source still does not configure the exact audit75% threshold and required real-time audit-failure/tamper routes to support roles. General metrics/detections alone do not identify a configured notification path. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the recommendation where existing capabilities need alerting configuration. Credit existing sources and monitoring; configure and verify the specific required alert coverage and recipient delivery. This does not establish that every required detector or alert rule is already present.",
       "evidence_ids": [
         "re-database-alerts",
         "re-database-vector",
         "re-database-log-access"
       ],
-      "next_step": "Configure or attach operator-owned audit capacity/failure/tamper rules and recipients in the shared platform alert routing; no separate DB alert product required.",
+      "next_step": "Identify detection sources for unauthorized access, modification and deletion of audit information. Configure missing detection/alert rules and route notifications to organization-defined personnel or roles. Test each required event type and recipient delivery; general uptime or account-change rules do not establish tamper coverage. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "product-boundary source review",
       "components": "Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database",
@@ -15560,7 +15560,7 @@
     },
     "V-204652": {
       "status": "Needs work",
-      "justification": "UDS provides independent Vector/Loki collection and monitoring, but the reviewed default sharedIdP/alerting configuration does not establish audit-processing-failure delivery to designated SA/ISSO. Treat this as sharedplatform alert integration, not an API-specific notification implementation. Gallatin operates UDS monitoring and can enable shipped rules/receivers directly; DU managedclusters are a different authorization boundary.",
+      "justification": "Monitoring and logging capability is partially implemented. UDS provides independent Vector/Loki collection and monitoring, but the reviewed default sharedIdP/alerting configuration does not establish audit-processing-failure delivery to designated SA/ISSO. Treat this as sharedplatform alert integration, not an API-specific notification implementation. Gallatin operates UDS monitoring and can enable shipped rules/receivers directly; DU managedclusters are a different authorization boundary. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the recommendation where existing capabilities need alerting configuration. Credit existing sources and monitoring; configure and verify the specific required alert coverage and recipient delivery. This does not establish that every required detector or alert rule is already present.",
       "evidence_ids": [
         "re-aaa-release",
         "re-aaa-json-events",
@@ -15571,7 +15571,7 @@
         "mpn-identity-alerts",
         "mpn-identity-routes"
       ],
-      "next_step": "Gallatin enables Core Keycloak detailedObservability.alerts.enabled=true and configures kube-prometheus-stack alertmanager.config.receivers/route plus matching notification egress. Gallatin security selects actual SA/ISSO recipients; do not put webhook credentials in this tracker. For audit-processing failure, also define the required pipeline-health alert; modification rules alone are insufficient.",
+      "next_step": "Identify the audit/log processing failures covered by this exact rule, including capture, hardware/software, collector/backend and storage failures as applicable. Configure the required alerts and named recipients using the existing central monitoring. Test coverage and delivery; verify real-time latency where the rule requires it. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine.",
       "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
       "category": "source/configuration",
       "components": "UDS Core 1.14 shared Keycloak realm and Horizon OIDC clients; no bundled application Keycloak",

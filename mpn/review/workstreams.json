@@ -251,7 +251,7 @@
     {
       "vuln_id": "V-222485",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Add/tune the central audit capacity/failure alerts and named required recipients or retain an accepted existing operator rule/route."
+      "next_step": "Identify the audit/log processing failures covered by this exact rule, including capture, hardware/software, collector/backend and storage failures as applicable. Configure the required alerts and named recipients using the existing central monitoring. Test coverage and delivery; verify real-time latency where the rule requires it. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine. Reassess the application-level centralized-logging N/A condition only after the required central alarms are established."
     },
     {
       "vuln_id": "V-233143",
@@ -281,77 +281,77 @@
     {
       "vuln_id": "V-233170",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Configure or attach the platform audit-capacity/failure alert definitions and authorized notification route."
+      "next_step": "Identify the assessed audit/log repository and capacity metric; configure an immediate warning at 75 percent utilization to the recipients specified by this exact rule. Use a different threshold only where this rule expressly permits it and the required approval is retained. Test threshold triggering and delivery. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine."
     },
     {
       "vuln_id": "V-233171",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Configure or attach the platform audit-capacity/failure alert definitions and authorized notification route."
+      "next_step": "Identify the audit/log processing failures covered by this exact rule, including capture, hardware/software, collector/backend and storage failures as applicable. Configure the required alerts and named recipients using the existing central monitoring. Test coverage and delivery; verify real-time latency where the rule requires it. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine."
     },
     {
       "vuln_id": "V-233244",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Use Gallatin\u2019s existing Core Prometheus/Alertmanager. Enable falcosidekick.config.alertmanager.hostport/endpoint for Falco delivery where appropriate, define required audit failure/capacity rules (not just generic uptime) and set receiver routes."
+      "next_step": "Define the security-function anomalies and responsible system-administration/operations roles in the site security plan. Map existing detection sources, configure missing alert rules and routes, and test anomaly notifications to the designated roles. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine."
     },
     {
       "vuln_id": "V-263588",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Use Gallatin\u2019s existing Core Prometheus/Alertmanager. Enable falcosidekick.config.alertmanager.hostport/endpoint for Falco delivery where appropriate, define required audit failure/capacity rules (not just generic uptime) and set receiver routes."
+      "next_step": "Identify detection sources for unauthorized access, modification and deletion of audit information. Configure missing detection/alert rules and route notifications to organization-defined personnel or roles. Test each required event type and recipient delivery; general uptime or account-change rules do not establish tamper coverage. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine."
     },
     {
       "vuln_id": "V-206366",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Configure required logging health/capacity thresholds and platform alert recipients, or attach the selected existing platform override."
+      "next_step": "Identify the audit/log processing failures covered by this exact rule, including capture, hardware/software, collector/backend and storage failures as applicable. Configure the required alerts and named recipients using the existing central monitoring. Test coverage and delivery; verify real-time latency where the rule requires it. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine."
     },
     {
       "vuln_id": "V-206424",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Configure required logging health/capacity thresholds and platform alert recipients, or attach the selected existing platform override."
+      "next_step": "Identify the assessed audit/log repository and capacity metric; configure an immediate warning at 75 percent utilization to the recipients specified by this exact rule. Use a different threshold only where this rule expressly permits it and the required approval is retained. Test threshold triggering and delivery. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine."
     },
     {
       "vuln_id": "V-264340",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Complete audit tamper detection/notification routing in the platform policy."
+      "next_step": "Identify detection sources for unauthorized access, modification and deletion of audit information. Configure missing detection/alert rules and route notifications to organization-defined personnel or roles. Test each required event type and recipient delivery; general uptime or account-change rules do not establish tamper coverage. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine."
     },
     {
       "vuln_id": "V-204728",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Use Gallatin\u2019s existing Core Prometheus/Alertmanager. Enable falcosidekick.config.alertmanager.hostport/endpoint for Falco delivery where appropriate, define required audit failure/capacity rules (not just generic uptime) and set receiver routes."
+      "next_step": "Identify the audit/log processing failures covered by this exact rule, including capture, hardware/software, collector/backend and storage failures as applicable. Configure the required alerts and named recipients using the existing central monitoring. Test coverage and delivery; verify real-time latency where the rule requires it. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine."
     },
     {
       "vuln_id": "V-204790",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Use Gallatin\u2019s existing Core Prometheus/Alertmanager. Enable falcosidekick.config.alertmanager.hostport/endpoint for Falco delivery where appropriate, define required audit failure/capacity rules (not just generic uptime) and set receiver routes."
+      "next_step": "Identify the assessed audit/log repository and capacity metric; configure an immediate warning at 75 percent utilization to the recipients specified by this exact rule. Use a different threshold only where this rule expressly permits it and the required approval is retained. Test threshold triggering and delivery. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine."
     },
     {
       "vuln_id": "V-204791",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Use Gallatin\u2019s existing Core Prometheus/Alertmanager. Enable falcosidekick.config.alertmanager.hostport/endpoint for Falco delivery where appropriate, define required audit failure/capacity rules (not just generic uptime) and set receiver routes."
+      "next_step": "Identify the audit/log processing failures covered by this exact rule, including capture, hardware/software, collector/backend and storage failures as applicable. Configure the required alerts and named recipients using the existing central monitoring. Test coverage and delivery; verify real-time latency where the rule requires it. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine."
     },
     {
       "vuln_id": "V-263550",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Use Gallatin\u2019s existing Core Prometheus/Alertmanager. Enable falcosidekick.config.alertmanager.hostport/endpoint for Falco delivery where appropriate, define required audit failure/capacity rules (not just generic uptime) and set receiver routes."
+      "next_step": "Identify detection sources for unauthorized access, modification and deletion of audit information. Configure missing detection/alert rules and route notifications to organization-defined personnel or roles. Test each required event type and recipient delivery; general uptime or account-change rules do not establish tamper coverage. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine."
     },
     {
       "vuln_id": "V-206592",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Configure or attach operator-owned audit capacity/failure/tamper rules and recipients in the shared platform alert routing; no separate DB alert product required."
+      "next_step": "Identify the assessed audit/log repository and capacity metric; configure an immediate warning at 75 percent utilization to the recipients specified by this exact rule. Use a different threshold only where this rule expressly permits it and the required approval is retained. Test threshold triggering and delivery. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine."
     },
     {
       "vuln_id": "V-206593",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Configure or attach operator-owned audit capacity/failure/tamper rules and recipients in the shared platform alert routing; no separate DB alert product required."
+      "next_step": "Identify the audit/log processing failures covered by this exact rule, including capture, hardware/software, collector/backend and storage failures as applicable. Configure the required alerts and named recipients using the existing central monitoring. Test coverage and delivery; verify real-time latency where the rule requires it. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine."
     },
     {
       "vuln_id": "V-263605",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Configure or attach operator-owned audit capacity/failure/tamper rules and recipients in the shared platform alert routing; no separate DB alert product required."
+      "next_step": "Identify detection sources for unauthorized access, modification and deletion of audit information. Configure missing detection/alert rules and route notifications to organization-defined personnel or roles. Test each required event type and recipient delivery; general uptime or account-change rules do not establish tamper coverage. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine."
     },
     {
       "vuln_id": "V-204652",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Gallatin enables Core Keycloak detailedObservability.alerts.enabled=true and configures kube-prometheus-stack alertmanager.config.receivers/route plus matching notification egress. Gallatin security selects actual SA/ISSO recipients; do not put webhook credentials in this tracker. For audit-processing failure, also define the required pipeline-health alert; modification rules alone are insufficient."
+      "next_step": "Identify the audit/log processing failures covered by this exact rule, including capture, hardware/software, collector/backend and storage failures as applicable. Configure the required alerts and named recipients using the existing central monitoring. Test coverage and delivery; verify real-time latency where the rule requires it. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine."
     },
     {
       "vuln_id": "V-204682",
