@@ -746,7 +746,7 @@
     {
       "vuln_id": "V-278962",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Have the privacy/mission data owner approve the PII element/purpose matrix below. Reuse files.tags and propagated chunk metadata for document-level tags such as privacy.profile, privacy.authorized_processing and privacy.processing_purpose. Attach a versioned schema-level privacy profile to account identity fields in the API/schema data dictionary; implement and validate only the missing association/propagation needed by the approved scope. If field-level tags are required, add narrow schema metadata or a field-to-policy mapping, not a wholesale per-row schema rewrite. Verify the exact data-tag interpretation with the assessor before treating a standalone document as an attached tag."
+      "next_step": "In the post-classification verification pass, confirm applicable PII elements and authorized-processing definitions with the privacy/mission data owner and inspect existing metadata/policy associations and propagation. Agree the required attached-tag interpretation with the assessor, credit supported existing coverage and reuse existing tags/schema metadata for confirmed gaps. Verify the association remains attached through relevant processing paths and retain the approved scope, implementation and test evidence. Do not invent processing authority or require a broad per-row schema rewrite before scope is established."
     },
     {
       "vuln_id": "V-278963",

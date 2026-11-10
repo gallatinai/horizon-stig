@@ -4437,14 +4437,14 @@
       "CCI-000366"
     ],
     "status": "Needs work",
-    "justification": "The candidate PII elements are identifiable in the delivered identity schema, and file/chunk tag propagation already exists. The missing authorized processing association is a bounded policy/configuration integration, not a reason to invent a new general tagging subsystem. Tenant_id and security classification do not encode this semantic purpose by themselves.",
+    "justification": "The assessed source contains candidate PII fields and existing file/tag propagation mechanisms, but the saved evidence does not establish attached authorized-processing metadata for organization-defined PII elements. Human review on 2026-11-10 confirmed Needs work with verification first: confirm PII scope, organization-defined authorized processing and existing metadata with the privacy/mission data owner before assigning tagging changes. Tenant identifiers or classification labels alone do not encode authorized processing; confirm the assessor's interpretation before prescribing field-level or per-record implementation.",
     "evidence_ids": [
       "re-mission-user-fields",
       "re-mission-upload-tags",
       "re-mission-ingestion-tags",
       "re-docs-classification-policy"
     ],
-    "next_step": "Have the privacy/mission data owner approve the PII element/purpose matrix below. Reuse files.tags and propagated chunk metadata for document-level tags such as privacy.profile, privacy.authorized_processing and privacy.processing_purpose. Attach a versioned schema-level privacy profile to account identity fields in the API/schema data dictionary; implement and validate only the missing association/propagation needed by the approved scope. If field-level tags are required, add narrow schema metadata or a field-to-policy mapping, not a wholesale per-row schema rewrite. Verify the exact data-tag interpretation with the assessor before treating a standalone document as an attached tag.",
+    "next_step": "In the post-classification verification pass, confirm applicable PII elements and authorized-processing definitions with the privacy/mission data owner and inspect existing metadata/policy associations and propagation. Agree the required attached-tag interpretation with the assessor, credit supported existing coverage and reuse existing tags/schema metadata for confirmed gaps. Verify the association remains attached through relevant processing paths and retain the approved scope, implementation and test evidence. Do not invent processing authority or require a broad per-row schema rewrite before scope is established.",
     "owner": "Gallatin privacy/security lead + mission data owner; API/ingestion maintainers",
     "category": "bounded metadata/policy configuration",
     "components": "Delivered Horizon API, workers, chat, ingestion and storage; delegated UDS identity/gateway/mesh",
