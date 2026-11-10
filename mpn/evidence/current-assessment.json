@@ -3758,13 +3758,13 @@
     },
     "V-222624": {
       "status": "Needs work",
-      "justification": "Real SAST/container scans and functional/security tests are present and executed, but the exact official check additionally requires active vulnerability and fuzz testing. Reviewed workflows/source/evidence do not define or retain an architecture-relevant active DAST/fuzz assessment. Scanner execution alone does not cover this explicit distinct activity.",
+      "justification": "Security testing is partially implemented through existing CodeQL, container vulnerability scans and functional/security tests. The saved evidence does not establish architecture-relevant active vulnerability and fuzz-testing procedures, settings and results. Human review on 2026-11-10 confirmed Needs work with verification first: locate existing active/fuzz assessment evidence before assigning new testing, fill confirmed coverage gaps and track findings. Static analysis and image scans alone do not satisfy the explicit active/fuzz testing check.",
       "evidence_ids": [
         "re-governance-release-build",
         "re-governance-release-codeql",
         "re-governance-review"
       ],
-      "next_step": "Add or attach a scoped active/fuzz security assessment for web/API and relevant parsers, reusing the existing CI artifacts and defect process.",
+      "next_step": "In the post-classification verification pass, locate existing active vulnerability and fuzz-testing procedures, scanner settings and results for the assessed architecture/release. Check relevant web/API and parser/component coverage and the official requirement concerning critical vulnerabilities 21 business days or older. Credit supported existing tests; arrange or implement only missing assessment coverage, retain results/settings and track findings through the existing defect process. Confirm responsibility and approved test scope before any active deployment testing.",
       "owner": "Gallatin engineering/security; MPN mission owner for site approvals",
       "category": "security test coverage",
       "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",

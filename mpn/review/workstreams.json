@@ -871,7 +871,7 @@
     {
       "vuln_id": "V-222624",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Add or attach a scoped active/fuzz security assessment for web/API and relevant parsers, reusing the existing CI artifacts and defect process."
+      "next_step": "In the post-classification verification pass, locate existing active vulnerability and fuzz-testing procedures, scanner settings and results for the assessed architecture/release. Check relevant web/API and parser/component coverage and the official requirement concerning critical vulnerabilities 21 business days or older. Credit supported existing tests; arrange or implement only missing assessment coverage, retain results/settings and track findings through the existing defect process. Confirm responsibility and approved test scope before any active deployment testing."
     },
     {
       "vuln_id": "V-222647",
