@@ -3365,7 +3365,7 @@
       "CCI-002361"
     ],
     "status": "Needs work",
-    "justification": "Actual shared UDS realm defaults ssoSessionMaxLifespan36000seconds(10hours), while this web rule requires an absolute maximum28800seconds(8hours). Configure the shared provider/client limit or retain an approved profile override. Core maximum defaults36000seconds, longer than this check allows; Gallatin can change an existing field to28800, rather than seek a provider attestation.",
+    "justification": "Actual shared UDS realm defaults ssoSessionMaxLifespan36000seconds(10hours), while this web rule requires an absolute maximum28800seconds(8hours). Configure the shared provider/client limit or retain an approved profile override. Core maximum defaults36000seconds, longer than this check allows; Gallatin can change an existing field to28800, rather than seek a provider attestation. Human review on 2026-11-10 confirmed Needs work and authorized the same decision for remaining controls resolved through existing UDS settings. Verify current effective configuration first, confirm applicable policy/scope, persist desired configuration and update existing realm settings through controlled changes where needed. This is an assessment action, not evidence that the setting has been applied.",
     "evidence_ids": [
       "re-web-actual-release",
       "re-web-realm",
@@ -3375,7 +3375,7 @@
       "mpn-identity-realm",
       "mpn-identity-init-only"
     ],
-    "next_step": "Gallatin sets realmInitEnv.SSO_SESSION_MAX_LIFESPAN=\"28800\" (eight hours) while retaining idle600, and updates RealmSettings > Sessions on an existing uds realm via controlled AdminConsole/API migration. Keep client limits <=realm. No vendor proof or new application timer is required.",
+    "next_step": "Verify effective shared realm/client absolute session limits. Where needed, configure SSO_SESSION_MAX_LIFESPAN=28800 seconds (eight hours) or less, retain the separate idle limit, and update persisted existing-realm session settings through a controlled change. Verify activity/silent renewal cannot extend the absolute maximum; retain configuration and enforcement evidence.",
     "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
     "category": "identity configuration",
     "components": "Delivered static nginx-FIPS, Istio ingress and shared UDS identity (separate roles)",
@@ -5440,7 +5440,7 @@
       "CCI-000765"
     ],
     "status": "Needs work",
-    "justification": "Shared UDS supplies CAC/PIV/X509 mechanisms. However default browser flow also allows username/password, the password branch requires OTP via chart-generated MFA_FLOW_ENABLED/OTP_FLOW_ENABLED=REQUIRED, while X509_MFA_ENABLED=false; no deliveredprofile requires smartcard authentication for the applicable privileged/nonprivileged paths. Required PIV/CAC enforcement remains a provider-policy choice, not missing application code. Core implements CAC/PIV/X509 and required OTP on password paths, but defaults still permit password alternatives. Gallatin owns the required-card flow policy.",
+    "justification": "Shared UDS supplies CAC/PIV/X509 mechanisms. However default browser flow also allows username/password, the password branch requires OTP via chart-generated MFA_FLOW_ENABLED/OTP_FLOW_ENABLED=REQUIRED, while X509_MFA_ENABLED=false; no deliveredprofile requires smartcard authentication for the applicable privileged/nonprivileged paths. Required PIV/CAC enforcement remains a provider-policy choice, not missing application code. Core implements CAC/PIV/X509 and required OTP on password paths, but defaults still permit password alternatives. Gallatin owns the required-card flow policy. Human review on 2026-11-10 confirmed Needs work and authorized the same decision for remaining controls resolved through existing UDS settings. Verify current effective configuration first, confirm applicable policy/scope, persist desired configuration and update existing realm settings through controlled changes where needed. This is an assessment action, not evidence that the setting has been applied.",
     "evidence_ids": [
       "re-aaa-release",
       "re-aaa-realm",
@@ -5452,7 +5452,7 @@
       "mpn-identity-mapping",
       "mpn-identity-init-only"
     ],
-    "next_step": "Gallatin configures the approved required-card authentication path in Core: X509_AUTH_ENABLED=true and, for a certificate-only policy, USERNAME_PASSWORD_AUTH_ENABLED=false and SOCIAL_AUTH_ENABLED=false; apply equivalent existing-realm flow changes through controlled AdminConsole/API. Preserve approved emergency access and distinguish privileged PIV-card eligibility from personal CAC. These are existing provider flows, not new Horizon authentication features.",
+    "next_step": "Verify the applicable privileged/nonprivileged PIV/CAC authentication policy, current UDS realm flows and any approved emergency-access exceptions. Use existing X509/PIV/CAC and MFA settings to enforce the required card-based path and remove unauthorized alternative flows for that scope. Persist desired values and apply equivalent existing-realm changes through a controlled update. Verify card-required authentication and required multifactor behavior rather than assuming enabling X509 alone proves MFA. Retain configuration, policy and test evidence; do not build another authentication service.",
     "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
     "category": "source/configuration",
     "components": "UDS Core 1.14 shared Keycloak realm and Horizon OIDC clients; no bundled application Keycloak",
@@ -5477,7 +5477,7 @@
       "CCI-000766"
     ],
     "status": "Needs work",
-    "justification": "Shared UDS supplies CAC/PIV/X509 mechanisms. However default browser flow also allows username/password, the password branch requires OTP via chart-generated MFA_FLOW_ENABLED/OTP_FLOW_ENABLED=REQUIRED, while X509_MFA_ENABLED=false; no deliveredprofile requires smartcard authentication for the applicable privileged/nonprivileged paths. Required PIV/CAC enforcement remains a provider-policy choice, not missing application code. Core implements CAC/PIV/X509 and required OTP on password paths, but defaults still permit password alternatives. Gallatin owns the required-card flow policy.",
+    "justification": "Shared UDS supplies CAC/PIV/X509 mechanisms. However default browser flow also allows username/password, the password branch requires OTP via chart-generated MFA_FLOW_ENABLED/OTP_FLOW_ENABLED=REQUIRED, while X509_MFA_ENABLED=false; no deliveredprofile requires smartcard authentication for the applicable privileged/nonprivileged paths. Required PIV/CAC enforcement remains a provider-policy choice, not missing application code. Core implements CAC/PIV/X509 and required OTP on password paths, but defaults still permit password alternatives. Gallatin owns the required-card flow policy. Human review on 2026-11-10 confirmed Needs work and authorized the same decision for remaining controls resolved through existing UDS settings. Verify current effective configuration first, confirm applicable policy/scope, persist desired configuration and update existing realm settings through controlled changes where needed. This is an assessment action, not evidence that the setting has been applied.",
     "evidence_ids": [
       "re-aaa-release",
       "re-aaa-realm",
@@ -5489,7 +5489,7 @@
       "mpn-identity-mapping",
       "mpn-identity-init-only"
     ],
-    "next_step": "Gallatin configures the approved required-card authentication path in Core: X509_AUTH_ENABLED=true and, for a certificate-only policy, USERNAME_PASSWORD_AUTH_ENABLED=false and SOCIAL_AUTH_ENABLED=false; apply equivalent existing-realm flow changes through controlled AdminConsole/API. Preserve approved emergency access and distinguish privileged PIV-card eligibility from personal CAC. These are existing provider flows, not new Horizon authentication features.",
+    "next_step": "Verify the applicable privileged/nonprivileged PIV/CAC authentication policy, current UDS realm flows and any approved emergency-access exceptions. Use existing X509/PIV/CAC and MFA settings to enforce the required card-based path and remove unauthorized alternative flows for that scope. Persist desired values and apply equivalent existing-realm changes through a controlled update. Verify card-required authentication and required multifactor behavior rather than assuming enabling X509 alone proves MFA. Retain configuration, policy and test evidence; do not build another authentication service.",
     "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
     "category": "source/configuration",
     "components": "UDS Core 1.14 shared Keycloak realm and Horizon OIDC clients; no bundled application Keycloak",

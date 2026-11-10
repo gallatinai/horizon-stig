@@ -758,12 +758,12 @@
     {
       "vuln_id": "V-204661",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Gallatin configures the approved required-card authentication path in Core: X509_AUTH_ENABLED=true and, for a certificate-only policy, USERNAME_PASSWORD_AUTH_ENABLED=false and SOCIAL_AUTH_ENABLED=false; apply equivalent existing-realm flow changes through controlled AdminConsole/API. Preserve approved emergency access and distinguish privileged PIV-card eligibility from personal CAC. These are existing provider flows, not new Horizon authentication features."
+      "next_step": "Verify the applicable privileged/nonprivileged PIV/CAC authentication policy, current UDS realm flows and any approved emergency-access exceptions. Use existing X509/PIV/CAC and MFA settings to enforce the required card-based path and remove unauthorized alternative flows for that scope. Persist desired values and apply equivalent existing-realm changes through a controlled update. Verify card-required authentication and required multifactor behavior rather than assuming enabling X509 alone proves MFA. Retain configuration, policy and test evidence; do not build another authentication service."
     },
     {
       "vuln_id": "V-204662",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Gallatin configures the approved required-card authentication path in Core: X509_AUTH_ENABLED=true and, for a certificate-only policy, USERNAME_PASSWORD_AUTH_ENABLED=false and SOCIAL_AUTH_ENABLED=false; apply equivalent existing-realm flow changes through controlled AdminConsole/API. Preserve approved emergency access and distinguish privileged PIV-card eligibility from personal CAC. These are existing provider flows, not new Horizon authentication features."
+      "next_step": "Verify the applicable privileged/nonprivileged PIV/CAC authentication policy, current UDS realm flows and any approved emergency-access exceptions. Use existing X509/PIV/CAC and MFA settings to enforce the required card-based path and remove unauthorized alternative flows for that scope. Persist desired values and apply equivalent existing-realm changes through a controlled update. Verify card-required authentication and required multifactor behavior rather than assuming enabling X509 alone proves MFA. Retain configuration, policy and test evidence; do not build another authentication service."
     }
   ],
   "pki-trust": [
@@ -918,7 +918,7 @@
     {
       "vuln_id": "V-206414",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Gallatin sets realmInitEnv.SSO_SESSION_MAX_LIFESPAN=\"28800\" (eight hours) while retaining idle600, and updates RealmSettings > Sessions on an existing uds realm via controlled AdminConsole/API migration. Keep client limits <=realm. No vendor proof or new application timer is required."
+      "next_step": "Verify effective shared realm/client absolute session limits. Where needed, configure SSO_SESSION_MAX_LIFESPAN=28800 seconds (eight hours) or less, retain the separate idle limit, and update persisted existing-realm session settings through a controlled change. Verify activity/silent renewal cannot extend the absolute maximum; retain configuration and enforcement evidence."
     },
     {
       "vuln_id": "V-264361",
