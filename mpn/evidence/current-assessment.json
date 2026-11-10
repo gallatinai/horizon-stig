@@ -521,14 +521,14 @@
     },
     "V-222419": {
       "status": "Needs work",
-      "justification": "UDS identity supplies the source account-change records and optional alert templates, but detailed alert routing is disabled/default unspecified. Audit records alone do not notify required SA/ISSO recipients. The remaining action belongs in central alerting, not duplicated application account code.",
+      "justification": "UDS identity supplies the source account-change records and optional alert templates, but detailed alert routing is disabled/default unspecified. Audit records alone do not notify required SA/ISSO recipients. The remaining action belongs in central alerting, not duplicated application account code. Human review on 2026-11-10 confirmed Needs work under the instruction to apply this decision to SA/ISSO account-change notification requirements. Source logs and optional alert templates do not establish notifications to the required recipients.",
       "evidence_ids": [
         "re-asd-release",
         "re-asd-id-events",
         "re-asd-id-alerts",
         "re-asd-core-id"
       ],
-      "next_step": "Enable the relevant centralized account-change alerts and map named SA/ISSO routes, or retain existing accepted operator routing evidence.",
+      "next_step": "Enable centralized account-disabling notifications for the assessed component and configure named SA and ISSO recipients. Confirm that alert rules cover the relevant identity event; add or adjust a rule where the existing templates do not. Disable a test account and verify notification reaches both recipients. Retain routing configuration and delivery-test evidence. Include automatic inactivity disabling in notification coverage.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "central monitoring configuration",
       "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
@@ -537,14 +537,14 @@
     },
     "V-222420": {
       "status": "Needs work",
-      "justification": "UDS identity supplies the source account-change records and optional alert templates, but detailed alert routing is disabled/default unspecified. Audit records alone do not notify required SA/ISSO recipients. The remaining action belongs in central alerting, not duplicated application account code.",
+      "justification": "UDS identity supplies the source account-change records and optional alert templates, but detailed alert routing is disabled/default unspecified. Audit records alone do not notify required SA/ISSO recipients. The remaining action belongs in central alerting, not duplicated application account code. Human review on 2026-11-10 confirmed Needs work under the instruction to apply this decision to SA/ISSO account-change notification requirements. Source logs and optional alert templates do not establish notifications to the required recipients.",
       "evidence_ids": [
         "re-asd-release",
         "re-asd-id-events",
         "re-asd-id-alerts",
         "re-asd-core-id"
       ],
-      "next_step": "Enable the relevant centralized account-change alerts and map named SA/ISSO routes, or retain existing accepted operator routing evidence.",
+      "next_step": "Enable centralized account-removal notifications for the assessed component and configure named SA and ISSO recipients. Confirm that alert rules cover the relevant identity event; add or adjust a rule where the existing templates do not. Remove a test account and verify notification reaches both recipients. Retain routing configuration and delivery-test evidence.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "central monitoring configuration",
       "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
@@ -570,14 +570,14 @@
     },
     "V-222422": {
       "status": "Needs work",
-      "justification": "UDS identity supplies the source account-change records and optional alert templates, but detailed alert routing is disabled/default unspecified. Audit records alone do not notify required SA/ISSO recipients. The remaining action belongs in central alerting, not duplicated application account code.",
+      "justification": "UDS identity supplies the source account-change records and optional alert templates, but detailed alert routing is disabled/default unspecified. Audit records alone do not notify required SA/ISSO recipients. The remaining action belongs in central alerting, not duplicated application account code. Human review on 2026-11-10 confirmed Needs work under the instruction to apply this decision to SA/ISSO account-change notification requirements. Source logs and optional alert templates do not establish notifications to the required recipients.",
       "evidence_ids": [
         "re-asd-release",
         "re-asd-id-events",
         "re-asd-id-alerts",
         "re-asd-core-id"
       ],
-      "next_step": "Enable the relevant centralized account-change alerts and map named SA/ISSO routes, or retain existing accepted operator routing evidence.",
+      "next_step": "Enable centralized account-enabling notifications for the assessed component and configure named SA and ISSO recipients. Confirm that alert rules cover the relevant identity event; add or adjust a rule where the existing templates do not. Disable and then enable a test account and verify notification reaches both recipients. Retain routing configuration and delivery-test evidence.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "central monitoring configuration",
       "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
@@ -7257,7 +7257,7 @@
     },
     "V-233143": {
       "status": "Needs work",
-      "justification": "UDS identity emits the required account events into the central logging system. Core also supplies account/admin alert templates, but detailedObservability.alerts.enabled is false by default and no SA/ISSO receiver is selected by the application artifact. Only platform notification enablement/routing remains.",
+      "justification": "UDS identity emits the required account events into the central logging system. Core also supplies account/admin alert templates, but detailedObservability.alerts.enabled is false by default and no SA/ISSO receiver is selected by the application artifact. Only platform notification enablement/routing remains. Human review on 2026-11-10 confirmed Needs work under the instruction to apply this decision to SA/ISSO account-change notification requirements. Source logs and optional alert templates do not establish notifications to the required recipients.",
       "evidence_ids": [
         "re-platform-delivered-profile",
         "re-platform-id-audit",
@@ -7267,7 +7267,7 @@
         "mpn-core-known-identity-settings",
         "mpn-core-account-alerts"
       ],
-      "next_step": "Gallatin enables Keycloak detailedObservability.alerts.enabled=true, keeps existing structured logging, and sets its own Alertmanager receiver/routes for responsible security/operations staff.",
+      "next_step": "Enable centralized account-creation notifications for the assessed component and configure named SA and ISSO recipients. Confirm that alert rules cover the relevant identity event; add or adjust a rule where the existing templates do not. Create a test account and verify notification reaches both recipients. Retain routing configuration and delivery-test evidence.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "platform configuration/integration",
       "components": "UDS platform: registry, runtime, Pepr, Istio, logging; delivered workloads",
@@ -7276,7 +7276,7 @@
     },
     "V-233144": {
       "status": "Needs work",
-      "justification": "UDS identity emits the required account events into the central logging system. Core also supplies account/admin alert templates, but detailedObservability.alerts.enabled is false by default and no SA/ISSO receiver is selected by the application artifact. Only platform notification enablement/routing remains.",
+      "justification": "UDS identity emits the required account events into the central logging system. Core also supplies account/admin alert templates, but detailedObservability.alerts.enabled is false by default and no SA/ISSO receiver is selected by the application artifact. Only platform notification enablement/routing remains. Human review on 2026-11-10 confirmed Needs work under the instruction to apply this decision to SA/ISSO account-change notification requirements. Source logs and optional alert templates do not establish notifications to the required recipients.",
       "evidence_ids": [
         "re-platform-delivered-profile",
         "re-platform-id-audit",
@@ -7286,7 +7286,7 @@
         "mpn-core-known-identity-settings",
         "mpn-core-account-alerts"
       ],
-      "next_step": "Gallatin enables Keycloak detailedObservability.alerts.enabled=true, keeps existing structured logging, and sets its own Alertmanager receiver/routes for responsible security/operations staff.",
+      "next_step": "Enable centralized account-modification notifications for the assessed component and configure named SA and ISSO recipients. Confirm that alert rules cover the relevant identity event; add or adjust a rule where the existing templates do not. Modify a test account and verify notification reaches both recipients. Retain routing configuration and delivery-test evidence.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "platform configuration/integration",
       "components": "UDS platform: registry, runtime, Pepr, Istio, logging; delivered workloads",
@@ -7295,7 +7295,7 @@
     },
     "V-233145": {
       "status": "Needs work",
-      "justification": "UDS identity emits the required account events into the central logging system. Core also supplies account/admin alert templates, but detailedObservability.alerts.enabled is false by default and no SA/ISSO receiver is selected by the application artifact. Only platform notification enablement/routing remains.",
+      "justification": "UDS identity emits the required account events into the central logging system. Core also supplies account/admin alert templates, but detailedObservability.alerts.enabled is false by default and no SA/ISSO receiver is selected by the application artifact. Only platform notification enablement/routing remains. Human review on 2026-11-10 confirmed Needs work under the instruction to apply this decision to SA/ISSO account-change notification requirements. Source logs and optional alert templates do not establish notifications to the required recipients.",
       "evidence_ids": [
         "re-platform-delivered-profile",
         "re-platform-id-audit",
@@ -7305,7 +7305,7 @@
         "mpn-core-known-identity-settings",
         "mpn-core-account-alerts"
       ],
-      "next_step": "Gallatin enables Keycloak detailedObservability.alerts.enabled=true, keeps existing structured logging, and sets its own Alertmanager receiver/routes for responsible security/operations staff.",
+      "next_step": "Enable centralized account-disabling notifications for the assessed component and configure named SA and ISSO recipients. Confirm that alert rules cover the relevant identity event; add or adjust a rule where the existing templates do not. Disable a test account and verify notification reaches both recipients. Retain routing configuration and delivery-test evidence. Include automatic inactivity disabling in notification coverage.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "platform configuration/integration",
       "components": "UDS platform: registry, runtime, Pepr, Istio, logging; delivered workloads",
@@ -7314,7 +7314,7 @@
     },
     "V-233146": {
       "status": "Needs work",
-      "justification": "UDS identity emits the required account events into the central logging system. Core also supplies account/admin alert templates, but detailedObservability.alerts.enabled is false by default and no SA/ISSO receiver is selected by the application artifact. Only platform notification enablement/routing remains.",
+      "justification": "UDS identity emits the required account events into the central logging system. Core also supplies account/admin alert templates, but detailedObservability.alerts.enabled is false by default and no SA/ISSO receiver is selected by the application artifact. Only platform notification enablement/routing remains. Human review on 2026-11-10 confirmed Needs work under the instruction to apply this decision to SA/ISSO account-change notification requirements. Source logs and optional alert templates do not establish notifications to the required recipients.",
       "evidence_ids": [
         "re-platform-delivered-profile",
         "re-platform-id-audit",
@@ -7324,7 +7324,7 @@
         "mpn-core-known-identity-settings",
         "mpn-core-account-alerts"
       ],
-      "next_step": "Gallatin enables Keycloak detailedObservability.alerts.enabled=true, keeps existing structured logging, and sets its own Alertmanager receiver/routes for responsible security/operations staff.",
+      "next_step": "Enable centralized account-removal notifications for the assessed component and configure named SA and ISSO recipients. Confirm that alert rules cover the relevant identity event; add or adjust a rule where the existing templates do not. Remove a test account and verify notification reaches both recipients. Retain routing configuration and delivery-test evidence.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "platform configuration/integration",
       "components": "UDS platform: registry, runtime, Pepr, Istio, logging; delivered workloads",
@@ -7377,7 +7377,7 @@
     },
     "V-233158": {
       "status": "Needs work",
-      "justification": "UDS identity emits the required account events into the central logging system. Core also supplies account/admin alert templates, but detailedObservability.alerts.enabled is false by default and no SA/ISSO receiver is selected by the application artifact. Only platform notification enablement/routing remains.",
+      "justification": "UDS identity emits the required account events into the central logging system. Core also supplies account/admin alert templates, but detailedObservability.alerts.enabled is false by default and no SA/ISSO receiver is selected by the application artifact. Only platform notification enablement/routing remains. Human review on 2026-11-10 confirmed Needs work under the instruction to apply this decision to SA/ISSO account-change notification requirements. Source logs and optional alert templates do not establish notifications to the required recipients.",
       "evidence_ids": [
         "re-platform-delivered-profile",
         "re-platform-id-audit",
@@ -7387,7 +7387,7 @@
         "mpn-core-known-identity-settings",
         "mpn-core-account-alerts"
       ],
-      "next_step": "Gallatin enables Keycloak detailedObservability.alerts.enabled=true, keeps existing structured logging, and sets its own Alertmanager receiver/routes for responsible security/operations staff.",
+      "next_step": "Enable centralized account-enabling notifications for the assessed component and configure named SA and ISSO recipients. Confirm that alert rules cover the relevant identity event; add or adjust a rule where the existing templates do not. Disable and then enable a test account and verify notification reaches both recipients. Retain routing configuration and delivery-test evidence.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "platform configuration/integration",
       "components": "UDS platform: registry, runtime, Pepr, Istio, logging; delivered workloads",
@@ -16035,7 +16035,7 @@
     },
     "V-204682": {
       "status": "Needs work",
-      "justification": "Delivered UDS JSON listener already emits the relevant user/admin events to centralLoki, so no Horizon eventforwarder is required. The remaining gap is narrower: Core modification alert rules are optionaldisabled by default, with no profile establishing SA/ISSO delivery. An auditable event/searchable dashboard is not a configured account-event notification route. Gallatin operates UDS monitoring and can enable shipped rules/receivers directly; DU managedclusters are a different authorization boundary.",
+      "justification": "Delivered UDS JSON listener already emits the relevant user/admin events to centralLoki, so no Horizon eventforwarder is required. The remaining gap is narrower: Core modification alert rules are optionaldisabled by default, with no profile establishing SA/ISSO delivery. An auditable event/searchable dashboard is not a configured account-event notification route. Gallatin operates UDS monitoring and can enable shipped rules/receivers directly; DU managedclusters are a different authorization boundary. Human review on 2026-11-10 confirmed Needs work under the instruction to apply this decision to SA/ISSO account-change notification requirements. Source logs and optional alert templates do not establish notifications to the required recipients.",
       "evidence_ids": [
         "re-aaa-release",
         "re-aaa-json-events",
@@ -16048,7 +16048,7 @@
         "mpn-core-known-identity-settings",
         "mpn-core-account-alerts"
       ],
-      "next_step": "Gallatin enables Core Keycloak detailedObservability.alerts.enabled=true and configures kube-prometheus-stack alertmanager.config.receivers/route plus matching notification egress. Gallatin security selects actual SA/ISSO recipients; do not put webhook credentials in this tracker. For audit-processing failure, also define the required pipeline-health alert; modification rules alone are insufficient.",
+      "next_step": "Enable centralized account-creation notifications for the assessed component and configure named SA and ISSO recipients. Confirm that alert rules cover the relevant identity event; add or adjust a rule where the existing templates do not. Create a test account and verify notification reaches both recipients. Retain routing configuration and delivery-test evidence.",
       "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
       "category": "source/configuration",
       "components": "UDS Core 1.14 shared Keycloak realm and Horizon OIDC clients; no bundled application Keycloak",
@@ -16057,7 +16057,7 @@
     },
     "V-204683": {
       "status": "Needs work",
-      "justification": "Delivered UDS JSON listener already emits the relevant user/admin events to centralLoki, so no Horizon eventforwarder is required. The remaining gap is narrower: Core modification alert rules are optionaldisabled by default, with no profile establishing SA/ISSO delivery. An auditable event/searchable dashboard is not a configured account-event notification route. Gallatin operates UDS monitoring and can enable shipped rules/receivers directly; DU managedclusters are a different authorization boundary.",
+      "justification": "Delivered UDS JSON listener already emits the relevant user/admin events to centralLoki, so no Horizon eventforwarder is required. The remaining gap is narrower: Core modification alert rules are optionaldisabled by default, with no profile establishing SA/ISSO delivery. An auditable event/searchable dashboard is not a configured account-event notification route. Gallatin operates UDS monitoring and can enable shipped rules/receivers directly; DU managedclusters are a different authorization boundary. Human review on 2026-11-10 confirmed Needs work under the instruction to apply this decision to SA/ISSO account-change notification requirements. Source logs and optional alert templates do not establish notifications to the required recipients.",
       "evidence_ids": [
         "re-aaa-release",
         "re-aaa-json-events",
@@ -16070,7 +16070,7 @@
         "mpn-core-known-identity-settings",
         "mpn-core-account-alerts"
       ],
-      "next_step": "Gallatin enables Core Keycloak detailedObservability.alerts.enabled=true and configures kube-prometheus-stack alertmanager.config.receivers/route plus matching notification egress. Gallatin security selects actual SA/ISSO recipients; do not put webhook credentials in this tracker. For audit-processing failure, also define the required pipeline-health alert; modification rules alone are insufficient.",
+      "next_step": "Enable centralized account-modification notifications for the assessed component and configure named SA and ISSO recipients. Confirm that alert rules cover the relevant identity event; add or adjust a rule where the existing templates do not. Modify a test account and verify notification reaches both recipients. Retain routing configuration and delivery-test evidence.",
       "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
       "category": "source/configuration",
       "components": "UDS Core 1.14 shared Keycloak realm and Horizon OIDC clients; no bundled application Keycloak",
@@ -16079,7 +16079,7 @@
     },
     "V-204684": {
       "status": "Needs work",
-      "justification": "Delivered UDS JSON listener already emits the relevant user/admin events to centralLoki, so no Horizon eventforwarder is required. The remaining gap is narrower: Core modification alert rules are optionaldisabled by default, with no profile establishing SA/ISSO delivery. An auditable event/searchable dashboard is not a configured account-event notification route. Gallatin operates UDS monitoring and can enable shipped rules/receivers directly; DU managedclusters are a different authorization boundary.",
+      "justification": "Delivered UDS JSON listener already emits the relevant user/admin events to centralLoki, so no Horizon eventforwarder is required. The remaining gap is narrower: Core modification alert rules are optionaldisabled by default, with no profile establishing SA/ISSO delivery. An auditable event/searchable dashboard is not a configured account-event notification route. Gallatin operates UDS monitoring and can enable shipped rules/receivers directly; DU managedclusters are a different authorization boundary. Human review on 2026-11-10 confirmed Needs work under the instruction to apply this decision to SA/ISSO account-change notification requirements. Source logs and optional alert templates do not establish notifications to the required recipients.",
       "evidence_ids": [
         "re-aaa-release",
         "re-aaa-json-events",
@@ -16092,7 +16092,7 @@
         "mpn-core-known-identity-settings",
         "mpn-core-account-alerts"
       ],
-      "next_step": "Gallatin enables Core Keycloak detailedObservability.alerts.enabled=true and configures kube-prometheus-stack alertmanager.config.receivers/route plus matching notification egress. Gallatin security selects actual SA/ISSO recipients; do not put webhook credentials in this tracker. For audit-processing failure, also define the required pipeline-health alert; modification rules alone are insufficient.",
+      "next_step": "Enable centralized account-disabling notifications for the assessed component and configure named SA and ISSO recipients. Confirm that alert rules cover the relevant identity event; add or adjust a rule where the existing templates do not. Disable a test account and verify notification reaches both recipients. Retain routing configuration and delivery-test evidence. Include automatic inactivity disabling in notification coverage.",
       "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
       "category": "source/configuration",
       "components": "UDS Core 1.14 shared Keycloak realm and Horizon OIDC clients; no bundled application Keycloak",
@@ -16101,7 +16101,7 @@
     },
     "V-204685": {
       "status": "Needs work",
-      "justification": "Delivered UDS JSON listener already emits the relevant user/admin events to centralLoki, so no Horizon eventforwarder is required. The remaining gap is narrower: Core modification alert rules are optionaldisabled by default, with no profile establishing SA/ISSO delivery. An auditable event/searchable dashboard is not a configured account-event notification route. Gallatin operates UDS monitoring and can enable shipped rules/receivers directly; DU managedclusters are a different authorization boundary.",
+      "justification": "Delivered UDS JSON listener already emits the relevant user/admin events to centralLoki, so no Horizon eventforwarder is required. The remaining gap is narrower: Core modification alert rules are optionaldisabled by default, with no profile establishing SA/ISSO delivery. An auditable event/searchable dashboard is not a configured account-event notification route. Gallatin operates UDS monitoring and can enable shipped rules/receivers directly; DU managedclusters are a different authorization boundary. Human review on 2026-11-10 confirmed Needs work under the instruction to apply this decision to SA/ISSO account-change notification requirements. Source logs and optional alert templates do not establish notifications to the required recipients.",
       "evidence_ids": [
         "re-aaa-release",
         "re-aaa-json-events",
@@ -16114,7 +16114,7 @@
         "mpn-core-known-identity-settings",
         "mpn-core-account-alerts"
       ],
-      "next_step": "Gallatin enables Core Keycloak detailedObservability.alerts.enabled=true and configures kube-prometheus-stack alertmanager.config.receivers/route plus matching notification egress. Gallatin security selects actual SA/ISSO recipients; do not put webhook credentials in this tracker. For audit-processing failure, also define the required pipeline-health alert; modification rules alone are insufficient.",
+      "next_step": "Enable centralized account-removal notifications for the assessed component and configure named SA and ISSO recipients. Confirm that alert rules cover the relevant identity event; add or adjust a rule where the existing templates do not. Remove a test account and verify notification reaches both recipients. Retain routing configuration and delivery-test evidence.",
       "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
       "category": "source/configuration",
       "components": "UDS Core 1.14 shared Keycloak realm and Horizon OIDC clients; no bundled application Keycloak",
@@ -16140,7 +16140,7 @@
     },
     "V-204687": {
       "status": "Needs work",
-      "justification": "Delivered UDS JSON listener already emits the relevant user/admin events to centralLoki, so no Horizon eventforwarder is required. The remaining gap is narrower: Core modification alert rules are optionaldisabled by default, with no profile establishing SA/ISSO delivery. An auditable event/searchable dashboard is not a configured account-event notification route. Gallatin operates UDS monitoring and can enable shipped rules/receivers directly; DU managedclusters are a different authorization boundary.",
+      "justification": "Delivered UDS JSON listener already emits the relevant user/admin events to centralLoki, so no Horizon eventforwarder is required. The remaining gap is narrower: Core modification alert rules are optionaldisabled by default, with no profile establishing SA/ISSO delivery. An auditable event/searchable dashboard is not a configured account-event notification route. Gallatin operates UDS monitoring and can enable shipped rules/receivers directly; DU managedclusters are a different authorization boundary. Human review on 2026-11-10 confirmed Needs work under the instruction to apply this decision to SA/ISSO account-change notification requirements. Source logs and optional alert templates do not establish notifications to the required recipients.",
       "evidence_ids": [
         "re-aaa-release",
         "re-aaa-json-events",
@@ -16153,7 +16153,7 @@
         "mpn-core-known-identity-settings",
         "mpn-core-account-alerts"
       ],
-      "next_step": "Gallatin enables Core Keycloak detailedObservability.alerts.enabled=true and configures kube-prometheus-stack alertmanager.config.receivers/route plus matching notification egress. Gallatin security selects actual SA/ISSO recipients; do not put webhook credentials in this tracker. For audit-processing failure, also define the required pipeline-health alert; modification rules alone are insufficient.",
+      "next_step": "Enable centralized account-enabling notifications for the assessed component and configure named SA and ISSO recipients. Confirm that alert rules cover the relevant identity event; add or adjust a rule where the existing templates do not. Disable and then enable a test account and verify notification reaches both recipients. Retain routing configuration and delivery-test evidence.",
       "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
       "category": "source/configuration",
       "components": "UDS Core 1.14 shared Keycloak realm and Horizon OIDC clients; no bundled application Keycloak",

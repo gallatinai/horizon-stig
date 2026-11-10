@@ -231,17 +231,17 @@
     {
       "vuln_id": "V-222419",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Enable the relevant centralized account-change alerts and map named SA/ISSO routes, or retain existing accepted operator routing evidence."
+      "next_step": "Enable centralized account-disabling notifications for the assessed component and configure named SA and ISSO recipients. Confirm that alert rules cover the relevant identity event; add or adjust a rule where the existing templates do not. Disable a test account and verify notification reaches both recipients. Retain routing configuration and delivery-test evidence. Include automatic inactivity disabling in notification coverage."
     },
     {
       "vuln_id": "V-222420",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Enable the relevant centralized account-change alerts and map named SA/ISSO routes, or retain existing accepted operator routing evidence."
+      "next_step": "Enable centralized account-removal notifications for the assessed component and configure named SA and ISSO recipients. Confirm that alert rules cover the relevant identity event; add or adjust a rule where the existing templates do not. Remove a test account and verify notification reaches both recipients. Retain routing configuration and delivery-test evidence."
     },
     {
       "vuln_id": "V-222422",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Enable the relevant centralized account-change alerts and map named SA/ISSO routes, or retain existing accepted operator routing evidence."
+      "next_step": "Enable centralized account-enabling notifications for the assessed component and configure named SA and ISSO recipients. Confirm that alert rules cover the relevant identity event; add or adjust a rule where the existing templates do not. Disable and then enable a test account and verify notification reaches both recipients. Retain routing configuration and delivery-test evidence."
     },
     {
       "vuln_id": "V-222483",
@@ -261,27 +261,27 @@
     {
       "vuln_id": "V-233143",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Gallatin enables Keycloak detailedObservability.alerts.enabled=true, keeps existing structured logging, and sets its own Alertmanager receiver/routes for responsible security/operations staff."
+      "next_step": "Enable centralized account-creation notifications for the assessed component and configure named SA and ISSO recipients. Confirm that alert rules cover the relevant identity event; add or adjust a rule where the existing templates do not. Create a test account and verify notification reaches both recipients. Retain routing configuration and delivery-test evidence."
     },
     {
       "vuln_id": "V-233144",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Gallatin enables Keycloak detailedObservability.alerts.enabled=true, keeps existing structured logging, and sets its own Alertmanager receiver/routes for responsible security/operations staff."
+      "next_step": "Enable centralized account-modification notifications for the assessed component and configure named SA and ISSO recipients. Confirm that alert rules cover the relevant identity event; add or adjust a rule where the existing templates do not. Modify a test account and verify notification reaches both recipients. Retain routing configuration and delivery-test evidence."
     },
     {
       "vuln_id": "V-233145",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Gallatin enables Keycloak detailedObservability.alerts.enabled=true, keeps existing structured logging, and sets its own Alertmanager receiver/routes for responsible security/operations staff."
+      "next_step": "Enable centralized account-disabling notifications for the assessed component and configure named SA and ISSO recipients. Confirm that alert rules cover the relevant identity event; add or adjust a rule where the existing templates do not. Disable a test account and verify notification reaches both recipients. Retain routing configuration and delivery-test evidence. Include automatic inactivity disabling in notification coverage."
     },
     {
       "vuln_id": "V-233146",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Gallatin enables Keycloak detailedObservability.alerts.enabled=true, keeps existing structured logging, and sets its own Alertmanager receiver/routes for responsible security/operations staff."
+      "next_step": "Enable centralized account-removal notifications for the assessed component and configure named SA and ISSO recipients. Confirm that alert rules cover the relevant identity event; add or adjust a rule where the existing templates do not. Remove a test account and verify notification reaches both recipients. Retain routing configuration and delivery-test evidence."
     },
     {
       "vuln_id": "V-233158",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Gallatin enables Keycloak detailedObservability.alerts.enabled=true, keeps existing structured logging, and sets its own Alertmanager receiver/routes for responsible security/operations staff."
+      "next_step": "Enable centralized account-enabling notifications for the assessed component and configure named SA and ISSO recipients. Confirm that alert rules cover the relevant identity event; add or adjust a rule where the existing templates do not. Disable and then enable a test account and verify notification reaches both recipients. Retain routing configuration and delivery-test evidence."
     },
     {
       "vuln_id": "V-233170",
@@ -361,27 +361,27 @@
     {
       "vuln_id": "V-204682",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Gallatin enables Core Keycloak detailedObservability.alerts.enabled=true and configures kube-prometheus-stack alertmanager.config.receivers/route plus matching notification egress. Gallatin security selects actual SA/ISSO recipients; do not put webhook credentials in this tracker. For audit-processing failure, also define the required pipeline-health alert; modification rules alone are insufficient."
+      "next_step": "Enable centralized account-creation notifications for the assessed component and configure named SA and ISSO recipients. Confirm that alert rules cover the relevant identity event; add or adjust a rule where the existing templates do not. Create a test account and verify notification reaches both recipients. Retain routing configuration and delivery-test evidence."
     },
     {
       "vuln_id": "V-204683",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Gallatin enables Core Keycloak detailedObservability.alerts.enabled=true and configures kube-prometheus-stack alertmanager.config.receivers/route plus matching notification egress. Gallatin security selects actual SA/ISSO recipients; do not put webhook credentials in this tracker. For audit-processing failure, also define the required pipeline-health alert; modification rules alone are insufficient."
+      "next_step": "Enable centralized account-modification notifications for the assessed component and configure named SA and ISSO recipients. Confirm that alert rules cover the relevant identity event; add or adjust a rule where the existing templates do not. Modify a test account and verify notification reaches both recipients. Retain routing configuration and delivery-test evidence."
     },
     {
       "vuln_id": "V-204684",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Gallatin enables Core Keycloak detailedObservability.alerts.enabled=true and configures kube-prometheus-stack alertmanager.config.receivers/route plus matching notification egress. Gallatin security selects actual SA/ISSO recipients; do not put webhook credentials in this tracker. For audit-processing failure, also define the required pipeline-health alert; modification rules alone are insufficient."
+      "next_step": "Enable centralized account-disabling notifications for the assessed component and configure named SA and ISSO recipients. Confirm that alert rules cover the relevant identity event; add or adjust a rule where the existing templates do not. Disable a test account and verify notification reaches both recipients. Retain routing configuration and delivery-test evidence. Include automatic inactivity disabling in notification coverage."
     },
     {
       "vuln_id": "V-204685",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Gallatin enables Core Keycloak detailedObservability.alerts.enabled=true and configures kube-prometheus-stack alertmanager.config.receivers/route plus matching notification egress. Gallatin security selects actual SA/ISSO recipients; do not put webhook credentials in this tracker. For audit-processing failure, also define the required pipeline-health alert; modification rules alone are insufficient."
+      "next_step": "Enable centralized account-removal notifications for the assessed component and configure named SA and ISSO recipients. Confirm that alert rules cover the relevant identity event; add or adjust a rule where the existing templates do not. Remove a test account and verify notification reaches both recipients. Retain routing configuration and delivery-test evidence."
     },
     {
       "vuln_id": "V-204687",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Gallatin enables Core Keycloak detailedObservability.alerts.enabled=true and configures kube-prometheus-stack alertmanager.config.receivers/route plus matching notification egress. Gallatin security selects actual SA/ISSO recipients; do not put webhook credentials in this tracker. For audit-processing failure, also define the required pipeline-health alert; modification rules alone are insufficient."
+      "next_step": "Enable centralized account-enabling notifications for the assessed component and configure named SA and ISSO recipients. Confirm that alert rules cover the relevant identity event; add or adjust a rule where the existing templates do not. Disable and then enable a test account and verify notification reaches both recipients. Retain routing configuration and delivery-test evidence."
     }
   ],
   "audit-review-procedure": [
