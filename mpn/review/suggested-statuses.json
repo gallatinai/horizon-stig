@@ -11932,7 +11932,7 @@
       "CCI-000017"
     ],
     "status": "Needs work",
-    "justification": "Actual delivered identity is UDS, so this belongs to the shared platform provider rather than a bundled Horizon realm. Pinned UDS identity0.32 explicitly disables its35-day inactivity workflow unless ACCOUNT_INACTIVITY_DAYS is supplied. The delivered application profile supplies no such Core override; group/device certificate exceptions may tailor scope but do not turn disabled user automation on. Inactivity implementation already exists in Core and is Gallatin-operated; the source-known disabled default needs Gallatin configuration, not documentation from an external provider.",
+    "justification": "Actual delivered identity is UDS, so this belongs to the shared platform provider rather than a bundled Horizon realm. Pinned UDS identity0.32 explicitly disables its35-day inactivity workflow unless ACCOUNT_INACTIVITY_DAYS is supplied. The delivered application profile supplies no such Core override; group/device certificate exceptions may tailor scope but do not turn disabled user automation on. Inactivity implementation already exists in Core and is Gallatin-operated; the source-known disabled default needs Gallatin configuration, not documentation from an external provider. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the same 35-day inactivity decision to similar requirements. Share V-222411 configuration and verification work; confirm current configuration first and preserve only applicable authorized exceptions. The user-account workflow alone does not establish coverage for every group, role or device identifier in broader rules.",
     "evidence_ids": [
       "re-platform-delivered-profile",
       "re-platform-realm",
@@ -11943,7 +11943,7 @@
       "mpn-identity-init-only",
       "mpn-core-inactivity-setting"
     ],
-    "next_step": "Gallatin sets Core Keycloak realmInitEnv.ACCOUNT_INACTIVITY_DAYS=\"35\" in its MPN Core override. For an existing uds realm, enable Workflows > disable-inactive-users and set disable-user.after=35d through a controlled AdminConsole/API migration; redeploying the import Secret alone does not apply it. Preserve approved emergency/service exceptions; no duplicate Horizon lifecycle service.",
+    "next_step": "Verify current identity/directory inactivity controls and ownership, then configure the existing 35-day workflow for in-scope human accounts if not already enabled, coordinated with V-222411. Persist the Core override and update the existing realm through a controlled change where needed; verify effective disablement. Confirm permitted emergency/infrequently-used account exceptions against the exact rule and retain configuration and test evidence. Credit an existing compliant directory service only where supported by the rule and deployment evidence.",
     "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
     "category": "platform configuration/delegation",
     "components": "UDS platform: registry, runtime, Pepr, Istio, logging; delivered workloads",
@@ -13603,7 +13603,7 @@
       "CCI-003627"
     ],
     "status": "Needs work",
-    "justification": "Actual delivered identity is UDS, so this belongs to the shared platform provider rather than a bundled Horizon realm. Pinned UDS identity0.32 explicitly disables its35-day inactivity workflow unless ACCOUNT_INACTIVITY_DAYS is supplied. The delivered application profile supplies no such Core override; group/device certificate exceptions may tailor scope but do not turn disabled user automation on. Inactivity implementation already exists in Core and is Gallatin-operated; the source-known disabled default needs Gallatin configuration, not documentation from an external provider.",
+    "justification": "Actual delivered identity is UDS, so this belongs to the shared platform provider rather than a bundled Horizon realm. Pinned UDS identity0.32 explicitly disables its35-day inactivity workflow unless ACCOUNT_INACTIVITY_DAYS is supplied. The delivered application profile supplies no such Core override; group/device certificate exceptions may tailor scope but do not turn disabled user automation on. Inactivity implementation already exists in Core and is Gallatin-operated; the source-known disabled default needs Gallatin configuration, not documentation from an external provider. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the same 35-day inactivity decision to similar requirements. Share V-222411 configuration and verification work; confirm current configuration first and preserve only applicable authorized exceptions. The user-account workflow alone does not establish coverage for every group, role or device identifier in broader rules.",
     "evidence_ids": [
       "re-platform-delivered-profile",
       "re-platform-realm",
@@ -13614,7 +13614,7 @@
       "mpn-identity-init-only",
       "mpn-core-inactivity-setting"
     ],
-    "next_step": "Gallatin sets Core Keycloak realmInitEnv.ACCOUNT_INACTIVITY_DAYS=\"35\" in its MPN Core override. For an existing uds realm, enable Workflows > disable-inactive-users and set disable-user.after=35d through a controlled AdminConsole/API migration; redeploying the import Secret alone does not apply it. Preserve approved emergency/service exceptions; no duplicate Horizon lifecycle service.",
+    "next_step": "Verify current identity/directory inactivity controls and ownership, then configure the existing 35-day workflow for in-scope human accounts if not already enabled, coordinated with V-222411. Persist the Core override and update the existing realm through a controlled change where needed; verify effective disablement. For this broader identifier rule, separately map individuals, groups, roles and devices to appropriate lifecycle controls or justified scope decisions; do not assume disabling human accounts covers all identifier types. Confirm permitted emergency/infrequently-used account exceptions against the exact rule and retain configuration and test evidence. Credit an existing compliant directory service only where supported by the rule and deployment evidence.",
     "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
     "category": "platform configuration/delegation",
     "components": "UDS platform: registry, runtime, Pepr, Istio, logging; delivered workloads",
@@ -22570,7 +22570,7 @@
       "CCI-003627"
     ],
     "status": "Needs work",
-    "justification": "Actual UDS identity has an inactivity-disable workflow, but Core leaves ACCOUNT_INACTIVITY_DAYS unset and workflowdisabled by default; administrativeexceptions are explicit. This can be solved by selecting existing provider policy or accepted inheriteddirectorypolicy, not by duplicating lifecycle in API. Inactivity implementation already exists in Core and is Gallatin-operated; the source-known disabled default needs Gallatin configuration, not documentation from an external provider.",
+    "justification": "Actual UDS identity has an inactivity-disable workflow, but Core leaves ACCOUNT_INACTIVITY_DAYS unset and workflowdisabled by default; administrativeexceptions are explicit. This can be solved by selecting existing provider policy or accepted inheriteddirectorypolicy, not by duplicating lifecycle in API. Inactivity implementation already exists in Core and is Gallatin-operated; the source-known disabled default needs Gallatin configuration, not documentation from an external provider. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the same 35-day inactivity decision to similar requirements. Share V-222411 configuration and verification work; confirm current configuration first and preserve only applicable authorized exceptions. The user-account workflow alone does not establish coverage for every group, role or device identifier in broader rules.",
     "evidence_ids": [
       "re-appserver-release",
       "re-appserver-coreidentity",
@@ -22581,7 +22581,7 @@
       "mpn-identity-init-only",
       "mpn-core-inactivity-setting"
     ],
-    "next_step": "Gallatin sets Core Keycloak realmInitEnv.ACCOUNT_INACTIVITY_DAYS=\"35\" in its MPN Core override. For an existing uds realm, enable Workflows > disable-inactive-users and set disable-user.after=35d through a controlled AdminConsole/API migration; redeploying the import Secret alone does not apply it. Preserve approved emergency/service exceptions; no duplicate Horizon lifecycle service.",
+    "next_step": "Verify current identity/directory inactivity controls and ownership, then configure the existing 35-day workflow for in-scope human accounts if not already enabled, coordinated with V-222411. Persist the Core override and update the existing realm through a controlled change where needed; verify effective disablement. For this broader identifier rule, separately map individuals, groups, roles and devices to appropriate lifecycle controls or justified scope decisions; do not assume disabling human accounts covers all identifier types. Confirm permitted emergency/infrequently-used account exceptions against the exact rule and retain configuration and test evidence. Credit an existing compliant directory service only where supported by the rule and deployment evidence.",
     "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
     "category": "provider configuration",
     "components": "Delivered Horizon API, workers, chat, ingestion and storage; delegated UDS identity/gateway/mesh",
@@ -30261,7 +30261,7 @@
       "CCI-000017"
     ],
     "status": "Needs work",
-    "justification": "Delivered path is sharedUDS, not bundledHorizon. Core supplies a disable-inactive-users workflow with35-day default, but workflow enabled flag is false unless ACCOUNT_INACTIVITY_DAYS is selected. No releaseprofile sets that platform override. This is a small UDS identity configuration/inheritance item, not a new application lifecycle service. Inactivity implementation already exists in Core and is Gallatin-operated; the source-known disabled default needs Gallatin configuration, not documentation from an external provider.",
+    "justification": "Delivered path is sharedUDS, not bundledHorizon. Core supplies a disable-inactive-users workflow with35-day default, but workflow enabled flag is false unless ACCOUNT_INACTIVITY_DAYS is selected. No releaseprofile sets that platform override. This is a small UDS identity configuration/inheritance item, not a new application lifecycle service. Inactivity implementation already exists in Core and is Gallatin-operated; the source-known disabled default needs Gallatin configuration, not documentation from an external provider. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the same 35-day inactivity decision to similar requirements. Share V-222411 configuration and verification work; confirm current configuration first and preserve only applicable authorized exceptions. The user-account workflow alone does not establish coverage for every group, role or device identifier in broader rules.",
     "evidence_ids": [
       "re-aaa-release",
       "re-aaa-realm",
@@ -30271,7 +30271,7 @@
       "mpn-identity-inactivity",
       "mpn-identity-init-only"
     ],
-    "next_step": "Gallatin sets Core Keycloak realmInitEnv.ACCOUNT_INACTIVITY_DAYS=\"35\" in its MPN Core override. For an existing uds realm, enable Workflows > disable-inactive-users and set disable-user.after=35d through a controlled AdminConsole/API migration; redeploying the import Secret alone does not apply it. Preserve approved emergency/service exceptions; no duplicate Horizon lifecycle service.",
+    "next_step": "Verify current identity/directory inactivity controls and ownership, then configure the existing 35-day workflow for in-scope human accounts if not already enabled, coordinated with V-222411. Persist the Core override and update the existing realm through a controlled change where needed; verify effective disablement. Confirm permitted emergency/infrequently-used account exceptions against the exact rule and retain configuration and test evidence. Credit an existing compliant directory service only where supported by the rule and deployment evidence.",
     "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
     "category": "source/configuration",
     "components": "UDS Core 1.14 shared Keycloak realm and Horizon OIDC clients; no bundled application Keycloak",

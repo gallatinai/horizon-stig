@@ -15,17 +15,17 @@
     {
       "vuln_id": "V-233021",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Gallatin sets Core Keycloak realmInitEnv.ACCOUNT_INACTIVITY_DAYS=\"35\" in its MPN Core override. For an existing uds realm, enable Workflows > disable-inactive-users and set disable-user.after=35d through a controlled AdminConsole/API migration; redeploying the import Secret alone does not apply it. Preserve approved emergency/service exceptions; no duplicate Horizon lifecycle service."
+      "next_step": "Verify current identity/directory inactivity controls and ownership, then configure the existing 35-day workflow for in-scope human accounts if not already enabled, coordinated with V-222411. Persist the Core override and update the existing realm through a controlled change where needed; verify effective disablement. Confirm permitted emergency/infrequently-used account exceptions against the exact rule and retain configuration and test evidence. Credit an existing compliant directory service only where supported by the rule and deployment evidence."
     },
     {
       "vuln_id": "V-233087",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Gallatin sets Core Keycloak realmInitEnv.ACCOUNT_INACTIVITY_DAYS=\"35\" in its MPN Core override. For an existing uds realm, enable Workflows > disable-inactive-users and set disable-user.after=35d through a controlled AdminConsole/API migration; redeploying the import Secret alone does not apply it. Preserve approved emergency/service exceptions; no duplicate Horizon lifecycle service."
+      "next_step": "Verify current identity/directory inactivity controls and ownership, then configure the existing 35-day workflow for in-scope human accounts if not already enabled, coordinated with V-222411. Persist the Core override and update the existing realm through a controlled change where needed; verify effective disablement. For this broader identifier rule, separately map individuals, groups, roles and devices to appropriate lifecycle controls or justified scope decisions; do not assume disabling human accounts covers all identifier types. Confirm permitted emergency/infrequently-used account exceptions against the exact rule and retain configuration and test evidence. Credit an existing compliant directory service only where supported by the rule and deployment evidence."
     },
     {
       "vuln_id": "V-204750",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Gallatin sets Core Keycloak realmInitEnv.ACCOUNT_INACTIVITY_DAYS=\"35\" in its MPN Core override. For an existing uds realm, enable Workflows > disable-inactive-users and set disable-user.after=35d through a controlled AdminConsole/API migration; redeploying the import Secret alone does not apply it. Preserve approved emergency/service exceptions; no duplicate Horizon lifecycle service."
+      "next_step": "Verify current identity/directory inactivity controls and ownership, then configure the existing 35-day workflow for in-scope human accounts if not already enabled, coordinated with V-222411. Persist the Core override and update the existing realm through a controlled change where needed; verify effective disablement. For this broader identifier rule, separately map individuals, groups, roles and devices to appropriate lifecycle controls or justified scope decisions; do not assume disabling human accounts covers all identifier types. Confirm permitted emergency/infrequently-used account exceptions against the exact rule and retain configuration and test evidence. Credit an existing compliant directory service only where supported by the rule and deployment evidence."
     },
     {
       "vuln_id": "V-263549",
@@ -35,7 +35,7 @@
     {
       "vuln_id": "V-204639",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Gallatin sets Core Keycloak realmInitEnv.ACCOUNT_INACTIVITY_DAYS=\"35\" in its MPN Core override. For an existing uds realm, enable Workflows > disable-inactive-users and set disable-user.after=35d through a controlled AdminConsole/API migration; redeploying the import Secret alone does not apply it. Preserve approved emergency/service exceptions; no duplicate Horizon lifecycle service."
+      "next_step": "Verify current identity/directory inactivity controls and ownership, then configure the existing 35-day workflow for in-scope human accounts if not already enabled, coordinated with V-222411. Persist the Core override and update the existing realm through a controlled change where needed; verify effective disablement. Confirm permitted emergency/infrequently-used account exceptions against the exact rule and retain configuration and test evidence. Credit an existing compliant directory service only where supported by the rule and deployment evidence."
     }
   ],
   "account-recovery-procedure": [
