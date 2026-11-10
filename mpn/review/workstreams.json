@@ -492,7 +492,7 @@
     {
       "vuln_id": "V-222643",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Set the MPN data classification and provide the required application/report markings or exact permitted manual procedure/tailoring."
+      "next_step": "In the post-classification verification pass, obtain the mission classification guide and inspect actual screen, report and print/export marking capabilities and configuration. Verify the required top/bottom markings for common sensitive-data transactions and report output; apply the official highest-system-classification rule when a guide is absent. Credit existing supported capability and implement only confirmed gaps. Check any manual printed-output procedures against the exact technical-limit conditions and availability to users. Retain function-specific evidence and coordinate required labels with the data owner."
     }
   ],
   "database-account-policy": [

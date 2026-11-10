@@ -4046,12 +4046,12 @@
     },
     "V-222643": {
       "status": "Needs work",
-      "justification": "Corporate classification policy requires CUI marking; actual web/source inspection found no configurable top/bottom classification marking for screens/reports. The login consent banner is a different control and cannot mark application output. For the intended CUI profile, implement/document marking or accepted manual printed-output procedures; a nonsensitive-only profile can instead record N/A.",
+      "justification": "The saved assessment does not establish complete classification markings on the assessed Horizon screens, reports and printed output. Human review on 2026-11-10 selected Needs work pending verification and directed the same verification-first treatment for similar marking requirements. Inspect the actual release and mission configuration before assigning implementation. Stored classification metadata and the login consent banner do not establish output marking coverage; manual printed-output procedures apply only under the technical-limit conditions in the official check.",
       "evidence_ids": [
         "re-governance-policy-classification",
         "app-web-image"
       ],
-      "next_step": "Set the MPN data classification and provide the required application/report markings or exact permitted manual procedure/tailoring.",
+      "next_step": "In the post-classification verification pass, obtain the mission classification guide and inspect actual screen, report and print/export marking capabilities and configuration. Verify the required top/bottom markings for common sensitive-data transactions and report output; apply the official highest-system-classification rule when a guide is absent. Credit existing supported capability and implement only confirmed gaps. Check any manual printed-output procedures against the exact technical-limit conditions and availability to users. Retain function-specific evidence and coordinate required labels with the data owner.",
       "owner": "Gallatin engineering/security; MPN mission owner for site approvals",
       "category": "conditional product configuration/documentation",
       "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
