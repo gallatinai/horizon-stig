@@ -30,7 +30,7 @@
     {
       "vuln_id": "V-263549",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Gallatin records its authoritative user-deassociation/offboarding source and uses the existing UDS user enabled-state/group-entitlement controls for the required disablement. Add an integration only if the chosen policy requires automation; do not duplicate account management in Horizon or await DU operations."
+      "next_step": "In the post-classification verification pass, identify the authoritative offboarding/deassociation source, responsible account owner/operator and current directory or administrator workflow. Verify the actual assessed identity accounts are disabled when association ends, using controlled test evidence or appropriate retained records. Credit existing accepted coverage and close only missing process/integration steps through central identity administration. Coordinate effective access revocation with the separate session-revocation controls; retain controlled evidence references rather than personnel details."
     },
     {
       "vuln_id": "V-204639",

@@ -4371,7 +4371,7 @@
       "CCI-003628"
     ],
     "status": "Needs work",
-    "justification": "Actual UDS provider centralizes accounts and exposes administration, but no authoritative departure/deassociation feed or enabled account cleanup workflow is selected in deliveredprofile. Existing userprovisioning creates/updates identities onlogin and APIofflineJWTverification does not itself establish disablement when directoryassociationends. Configure this in the provider/directory lifecycle integration. The selected human lifecycle policy and Gallatin offboarding execution remain; the provider mechanisms are already available.",
+    "justification": "UDS already supports account disablement, but the saved evidence does not establish how authoritative user-deassociation/offboarding reaches the deployed identity system. Existing directory integration or administrator procedures may supply coverage. Human review on 2026-11-10 confirmed Needs work with verification first: identify offboarding ownership and existing disablement records/processes, then close only confirmed process/integration gaps. The separate 35-day inactivity policy does not establish disablement when a user association ends; no duplicate Horizon account-management implementation is required.",
     "evidence_ids": [
       "re-appserver-release",
       "re-appserver-auth",
@@ -4381,7 +4381,7 @@
       "mpn-identity-values",
       "mpn-identity-override"
     ],
-    "next_step": "Gallatin records its authoritative user-deassociation/offboarding source and uses the existing UDS user enabled-state/group-entitlement controls for the required disablement. Add an integration only if the chosen policy requires automation; do not duplicate account management in Horizon or await DU operations.",
+    "next_step": "In the post-classification verification pass, identify the authoritative offboarding/deassociation source, responsible account owner/operator and current directory or administrator workflow. Verify the actual assessed identity accounts are disabled when association ends, using controlled test evidence or appropriate retained records. Credit existing accepted coverage and close only missing process/integration steps through central identity administration. Coordinate effective access revocation with the separate session-revocation controls; retain controlled evidence references rather than personnel details.",
     "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
     "category": "provider lifecycle integration",
     "components": "Delivered Horizon API, workers, chat, ingestion and storage; delegated UDS identity/gateway/mesh",
