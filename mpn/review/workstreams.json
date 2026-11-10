@@ -852,7 +852,7 @@
     {
       "vuln_id": "V-242415",
       "benchmark": "U_Kubernetes_V2R6_STIG",
-      "next_step": "Move affected secret consumers to protected file/vault delivery, or retain a formally accepted environment-delivery exception with the corresponding protection rationale. Reuse the shared secret-delivery workstream."
+      "next_step": "In the post-classification verification pass, confirm current secret delivery and retrieve applicable MPN and other customer credential-delivery requirements to verify the reported possible conflict. Check consumer support for protected file/vault delivery and define customer-specific profiles if necessary. For the assessed MPN scope, migrate affected secret-as-environment consumers while preserving authentication, or retain a formally accepted exception with its rationale. Do not change shared defaults for every customer without resolving the conflicting requirements. Retain requirement references, profile scope and verification evidence."
     },
     {
       "vuln_id": "V-274883",

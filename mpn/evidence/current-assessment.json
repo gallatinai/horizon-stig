@@ -5079,13 +5079,13 @@
     },
     "V-242415": {
       "status": "Needs work",
-      "justification": "Actual pushed UDS profile still renders POSTGRES_USER/POSTGRES_PASSWORD as env.valueFrom.secretKeyRef. The official requirement is specifically about secret delivery: using a Kubernetes Secret as the source does not satisfy its prohibition on environment variables. Pepr admission, encrypted mesh and RBAC protect other attack paths but do not remove secret values from the process environment. Use protected credential delivery or document an accepted exception.",
+      "justification": "Actual pushed UDS profile still renders POSTGRES_USER/POSTGRES_PASSWORD as env.valueFrom.secretKeyRef. The official requirement is specifically about secret delivery: using a Kubernetes Secret as the source does not satisfy its prohibition on environment variables. Pepr admission, encrypted mesh and RBAC protect other attack paths but do not remove secret values from the process environment. Use protected credential delivery or document an accepted exception. Human review on 2026-11-10 confirmed Needs work and noted a possible conflict between different customers' credential-delivery requirements; that conflict is recalled but not yet verified. Confirm the applicable MPN/customer requirements before changing shared defaults. Use an appropriate deployment profile where requirements differ, and retain any approved exception rather than assuming one universal delivery method.",
       "evidence_ids": [
         "re-kubernetes-release",
         "re-kubernetes-postgres-env",
         "re-kubernetes-profile-transform"
       ],
-      "next_step": "Move affected secret consumers to protected file/vault delivery, or retain a formally accepted environment-delivery exception with the corresponding protection rationale. Reuse the shared secret-delivery workstream.",
+      "next_step": "In the post-classification verification pass, confirm current secret delivery and retrieve applicable MPN and other customer credential-delivery requirements to verify the reported possible conflict. Check consumer support for protected file/vault delivery and define customer-specific profiles if necessary. For the assessed MPN scope, migrate affected secret-as-environment consumers while preserving authentication, or retain a formally accepted exception with its rationale. Do not change shared defaults for every customer without resolving the conflicting requirements. Retain requirement references, profile scope and verification evidence.",
       "owner": "Gallatin SRE (UDS Core); MPN node/control-plane owner for host configuration",
       "category": "configuration / credential delivery",
       "components": "MPN cluster and nodes; Gallatin horizon-uds workloads",
