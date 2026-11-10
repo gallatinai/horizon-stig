@@ -54,7 +54,7 @@
     {
       "vuln_id": "V-222449",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
+      "next_step": "With the V-222431 audit-control review, confirm the required application audit events and map existing user-attributed records. Add the responsible username or user ID to missing required event records, correlate with central collection where needed, and verify representative application activity records the responsible user alongside the event. Reuse existing UDS, role-audit and database-provenance coverage."
     },
     {
       "vuln_id": "V-222450",
