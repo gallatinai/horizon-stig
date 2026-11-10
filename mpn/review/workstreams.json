@@ -52,11 +52,6 @@
       "next_step": "Confirm the desired privileged-function audit controls and event catalog, including the STIG minimum of the specific action and event date/time. Map each selected operation to existing UDS, role-audit and database-provenance records. Implement missing desired controls and actor/target/outcome records where required, correlate them with central collection, and verify the selected privileged operations produce the required records."
     },
     {
-      "vuln_id": "V-222438",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
-    },
-    {
       "vuln_id": "V-222449",
       "benchmark": "U_ASD_V6R5_STIG",
       "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."

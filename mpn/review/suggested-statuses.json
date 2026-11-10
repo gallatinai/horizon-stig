@@ -1648,8 +1648,8 @@
       "SV-83979",
       "CCI-000166"
     ],
-    "status": "Needs work",
-    "justification": "Credit existing UDS identity/admin events, append-only actor-aware role grants/revocations and database change provenance. Remaining gap is selected app-domain successful/denied protected operations: the permission enforcer throws403 without emitting a structured actor/target/operation event, and generic HTTP logs omit actor. Central proxy identity records do not carry all tenant/object decisions. This is a targeted event-catalog/attribution integration, not an absence of auditing or a requirement to add actors to every diagnostic/request log.",
+    "status": "Needs N/A justification",
+    "justification": "Human review on 2026-11-10 proposed N/A because user non-repudiation services, such as digitally signed approvals or orders, are not considered necessary for Horizon and are proposed to be outside its application design. The user explicitly requested that the PR reviewer confirm or reject this applicability determination. The official check permits N/A when application documentation specifically states that user non-repudiation services are not defined as part of the application design. General audit coverage gaps alone do not establish applicability of this requirement. This is a proposed design-scope statement pending reviewer confirmation, not a final accepted N/A disposition.",
     "evidence_ids": [
       "re-asd-release",
       "re-asd-id-events",
@@ -1657,14 +1657,14 @@
       "re-asd-logging",
       "re-asd-guard"
     ],
-    "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover.",
+    "next_step": "PR reviewer must confirm or reject the proposed exclusion of user non-repudiation services from Horizon application design and mission requirements. If confirmed, retain the explicit design statement and record the accepted N/A disposition. If rejected, identify the organization-defined actions requiring non-repudiation and assess or implement the required signature/proof controls. Assess ordinary audit coverage separately.",
     "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
-    "category": "targeted application-domain audit coverage",
+    "category": "applicability/design confirmation",
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
-    "task": "application-auditing",
+    "task": "",
     "evidence_state": "source-inferred",
     "evidence": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685; https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/plugin/src/main/java/com/defenseunicorns/uds/keycloak/plugin/eventListeners/JSONLogEventListenerProvider.java; https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/schema/permission_audit.pg.hcl; https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/core/observability/logging.ts; https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/api/auth/auth.guard.ts",
-    "human_review": true
+    "human_review": false
   },
   {
     "benchmark": "U_ASD_V6R5_STIG",
