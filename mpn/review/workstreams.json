@@ -1,11 +1,6 @@
 {
   "account-access-certification": [
     {
-      "vuln_id": "V-222412",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Gallatin SRE exports the scoped UDS/Horizon human-account list to a controlled record; the mission account owner marks each retained/removed with a business justification and date, and the authorized operator carries out approved removals."
-    },
-    {
       "vuln_id": "V-222631",
       "benchmark": "U_ASD_V6R5_STIG",
       "next_step": "The GitHub organization owner and Horizon engineering owner certify the protected Nov10 entitlement snapshot, justify each privileged role, record approved changes and review again within three months."

@@ -795,13 +795,13 @@
       "SV-83925",
       "CCI-000017"
     ],
-    "status": "Needs work",
-    "justification": "The product uses UDS identity and individual accounts; no additional account-discovery implementation is needed. Complete the mission human-account certification against the current approved personnel list. Required service accounts are excluded by the official check. This is a defined account-owner review action rather than an unresolved runtime behavior.",
+    "status": "Likely covered",
+    "justification": "Human review on 2026-11-10 selected Likely covered based on Horizon not shipping preset human user accounts and delegating identity to UDS. The delivered platform contract confirms UDS identity rather than bundled Keycloak. The reviewed deployment manifests bootstrap a tenant and reference required NATS service credentials; neither establishes preset human accounts. A missing certification record alone does not establish that unnecessary accounts exist. This source-level recommendation does not certify the live mission account roster.",
     "evidence_ids": [
       "solution-governance-account-policy",
       "re-governance-delivered-contract"
     ],
-    "next_step": "Gallatin SRE exports the scoped UDS/Horizon human-account list to a controlled record; the mission account owner marks each retained/removed with a business justification and date, and the authorized operator carries out approved removals.",
+    "next_step": "Confirm the assessed release has no preset human user accounts and retain the UDS account-management mapping. Review mission-created human accounts through the existing access-review process and disable or delete any identified as unnecessary. Required service accounts are excluded by the official check.",
     "owner": "Gallatin SRE operator and MPN mission account owner",
     "category": "operational procedure/certification",
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
@@ -809,7 +809,7 @@
     "evidence_state": "source-inferred",
     "solution_ref": "../solutions/operating-procedures.md",
     "evidence": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-AC-access-control.md; https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685",
-    "human_review": true
+    "human_review": false
   },
   {
     "benchmark": "U_ASD_V6R5_STIG",

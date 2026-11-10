@@ -72,37 +72,6 @@
   },
   {
     "benchmark": "U_ASD_V6R5_STIG",
-    "vuln_id": "V-222412",
-    "rule_id": "SV-222412r960774_rule",
-    "version": "APSC-DV-000330",
-    "title": "Unnecessary application accounts must be disabled, or deleted.",
-    "severity": "medium",
-    "description": "<VulnDiscussion>Test or demonstration accounts are sometimes created during the application installation process. This creates a security risk as these accounts often remain after the initial installation process and can be used to gain unauthorized access to the application. Applications must be designed and configured to disable or delete any unnecessary accounts that may be created. \n\nCare must be taken to ensure valid accounts used for valid application operations are not disabled or deleted when this requirement is applied.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
-    "check": "Review the system documentation and identify any valid application accounts that are required in order for the application to operate. Accounts the application itself uses in order to function are not in scope for this requirement.\n\nHave the application administrator generate a list of all application users. This should include relevant user metadata such as phone numbers or department identifiers.\n\nHave the application administrator identify and validate all user accounts.\n\nIf any accounts cannot be validated and are deemed to be unnecessary, this is a finding.",
-    "fix": "Design the application so unessential user accounts are not created during installation. Disable or delete all unnecessary application user accounts.",
-    "references": [
-      "V-69303",
-      "SV-83925",
-      "CCI-000017"
-    ],
-    "status": "Needs work",
-    "justification": "The product uses UDS identity and individual accounts; no additional account-discovery implementation is needed. Complete the mission human-account certification against the current approved personnel list. Required service accounts are excluded by the official check. This is a defined account-owner review action rather than an unresolved runtime behavior.",
-    "evidence_ids": [
-      "solution-governance-account-policy",
-      "re-governance-delivered-contract"
-    ],
-    "next_step": "Gallatin SRE exports the scoped UDS/Horizon human-account list to a controlled record; the mission account owner marks each retained/removed with a business justification and date, and the authorized operator carries out approved removals.",
-    "owner": "Gallatin SRE operator and MPN mission account owner",
-    "category": "operational procedure/certification",
-    "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
-    "task": "account-access-certification",
-    "evidence_state": "source-inferred",
-    "solution_ref": "../solutions/operating-procedures.md",
-    "evidence": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-AC-access-control.md; https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685",
-    "human_review": true
-  },
-  {
-    "benchmark": "U_ASD_V6R5_STIG",
     "vuln_id": "V-222417",
     "rule_id": "SV-222417r1015684_rule",
     "version": "APSC-DV-000380",

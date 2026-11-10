@@ -4,7 +4,7 @@ Repeated requirements are grouped here; each linked benchmark table has the full
 
 | Workstream | Needs-work rules | First action |
 |---|---:|---|
-| account-access-certification | 2 | Gallatin SRE exports the scoped UDS/Horizon human-account list to a controlled record; the mission account owner marks each retained/removed with a business justification and date, and the authorized operator carries out approved removals. |
+| account-access-certification | 1 | The GitHub organization owner and Horizon engineering owner certify the protected Nov10 entitlement snapshot, justify each privileged role, record approved changes and review again within three months. |
 | account-lifecycle | 6 | Gallatin sets Core Keycloak realmInitEnv.ACCOUNT_INACTIVITY_DAYS="35" in its MPN Core override. For an existing uds realm, enable Workflows > disable-inactive-users and set disable-user.after=35d through a controlled AdminConsole/API migration; redeploying the import Secret alone does not apply it. Preserve approved emergency/service exceptions; no duplicate Horizon lifecycle service. |
 | account-recovery-procedure | 1 | Adopt the prepared identity-verification, authorized-unlock and audit-record procedure for Gallatin-operated UDS; obtain named MPN ISSO/ISSM acceptance and retain its version. |
 | application-auditing | 34 | Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover. |
