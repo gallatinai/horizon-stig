@@ -85,19 +85,20 @@
       "SV-83925",
       "CCI-000017"
     ],
-    "status": "Unclear",
-    "justification": "Official check expressly excludes required service accounts and requires validation of the actual human account list. Code defines provisioning and permissions, but cannot identify which real mission personnel still require access. No current MPN user roster/certification was found; this is a specific external identity-ownership record, not a request to run an unexplained runtime test.",
+    "status": "Needs work",
+    "justification": "The product uses UDS identity and individual accounts; no additional account-discovery implementation is needed. Complete the mission human-account certification against the current approved personnel list. Required service accounts are excluded by the official check. This is a defined account-owner review action rather than an unresolved runtime behavior.",
     "evidence_ids": [
-      "re-governance-policy-ac",
-      "app-jwt"
+      "solution-governance-account-policy",
+      "re-governance-delivered-contract"
     ],
-    "next_step": "Attach current MPN human-account certification or approved roster comparison; exclude necessary service identities.",
-    "owner": "Gallatin engineering/security; MPN mission owner for site approvals",
-    "category": "external account-owner record",
+    "next_step": "Gallatin SRE exports the scoped UDS/Horizon human-account list to a controlled record; the mission account owner marks each retained/removed with a business justification and date, and the authorized operator carries out approved removals.",
+    "owner": "Gallatin SRE operator and MPN mission account owner",
+    "category": "operational procedure/certification",
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
-    "task": "",
+    "task": "account-access-certification",
     "evidence_state": "source-inferred",
-    "evidence": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-AC-access-control.md; https://github.com/gallatinai/horizon/blob/3f3b51d454197c077b33896caf93de72b94eafda/apps/api/src/api/auth/auth.oidc-jwt.service.ts",
+    "solution_ref": "../solutions/operating-procedures.md",
+    "evidence": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-AC-access-control.md; https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685",
     "human_review": true
   },
   {
@@ -375,19 +376,21 @@
       "V-69347",
       "CCI-002238"
     ],
-    "status": "Unclear",
-    "justification": "Identity-verified recovery administration is documented, and UDS provides administrator account controls. The official check specifically requires the unlock process to carry ISSO/ISSM approval. Corporate policy is still Draft / Effective TBD and no MPN-specific signed or otherwise recorded acceptance was found; source cannot confer that authority.",
+    "status": "Needs work",
+    "justification": "UDS Keycloak already provides account lockout and administrator recovery, and corporate policy requires identity verification. Complete the short operational unlock procedure and its explicit ISSO/ISSM approval; do not build a second unlock API.",
     "evidence_ids": [
-      "re-governance-policy-ia",
-      "core-keycloak"
+      "solution-governance-recovery-policy",
+      "core-keycloak",
+      "core-id-realm"
     ],
-    "next_step": "Record ISSO/ISSM acceptance of the actual UDS/MPN account-unlock procedure; no separate Horizon unlock implementation is implied.",
-    "owner": "Gallatin engineering/security; MPN mission owner for site approvals",
-    "category": "external approval",
+    "next_step": "Adopt the prepared identity-verification, authorized-unlock and audit-record procedure for Gallatin-operated UDS; obtain named MPN ISSO/ISSM acceptance and retain its version.",
+    "owner": "Gallatin UDS identity administrator; MPN ISSO and ISSM",
+    "category": "operational procedure/certification",
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
-    "task": "",
+    "task": "account-recovery-procedure",
     "evidence_state": "source-inferred",
-    "evidence": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-IA-identification-and-authentication.md; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/values.yaml",
+    "solution_ref": "../solutions/operating-procedures.md",
+    "evidence": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-IA-identification-and-authentication.md; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/values.yaml; https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/realm.json5",
     "human_review": true
   },
   {
@@ -1666,19 +1669,24 @@
       "V-70225",
       "CCI-001199"
     ],
-    "status": "Unclear",
-    "justification": "Reviewed actual release images/values define PostgreSQL/PVC and S3 data paths, but choose no MPN storage class/backend encryption/key policy. Mesh protection and FIPS-capable images do not encrypt an unspecified external volume/object-store automatically. This remaining boundary is an actual environment/service selection, not a request to observe code-defined behavior at runtime.",
+    "status": "Needs work",
+    "justification": "The recommended baseline protects all persistent/scratch/configuration data through the shared encrypted-host/PVC layer, existing object AES-GCM and access-controlled database writes; application-local encryption is not universally required. Gallatin operates MPN Core and storage. A concrete lower-layer solution can be specified now, so this is a shared configuration/implementation backlog item rather than an unknown UDS setting. No deployed compliance result is claimed.",
     "evidence_ids": [
-      "re-asd-release",
-      "re-asd-db"
+      "sol-storage-postgres-pvc",
+      "sol-storage-seaweed-chart",
+      "sol-storage-pg-official",
+      "sol-storage-core-boundary",
+      "sol-storage-seaweed-aead",
+      "sol-storage-seaweed-flags"
     ],
-    "next_step": "Identify the MPN storage/backend/KMS configuration or accepted physical protection so source/configuration encryption can be assessed; no arbitrary app encryption implementation is proposed.",
-    "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
-    "category": "external storage service selection",
+    "next_step": "Create one Gallatin-owned mpn-encrypted StorageClass backed by approved encrypted disks/volumes; set PostgreSQL persistence.storageClassName (not storageClass), bind SeaweedFS PVC explicitly and protect Core identity database/PVCs. Encrypt node OS/temp/cache and API Secret/datastore storage too. Keep the existing database/object-store products; use the selected host provider rather than a new storage cluster. Enable the existing SeaweedFS4.52 server flags -filer.encryptVolumeData and -s3.encryptVolumeData; retain filer metadata/keys on the encrypted protected volume. New writes use the existing AES-GCM path; migrate/rewrite existing objects deliberately. This supplements encrypted host/PVC storage and does not require every API to implement encryption. Apply the separate integrity step to the defined protected data set.",
+    "owner": "Gallatin SRE / MPN platform engineering; application security for integrity scope",
+    "category": "shared storage protection implementation",
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
-    "task": "",
+    "task": "mpn-storage-protection",
     "evidence_state": "source-inferred",
-    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685; https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/values/postgres.yaml",
+    "solution_ref": "../solutions/storage-protection.md",
+    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-postgres/templates/statefulset.yaml; https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/seaweedfs/templates/deployment.yaml; https://www.postgresql.org/docs/18/encryption-options.html; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/getting-started/production/prerequisites.mdx; https://github.com/seaweedfs/seaweedfs/blob/4.52/weed/util/cipher.go; https://github.com/seaweedfs/seaweedfs/blob/4.52/weed/command/server.go",
     "human_review": true
   },
   {
@@ -1696,19 +1704,22 @@
       "V-70227",
       "CCI-002475"
     ],
-    "status": "Unclear",
-    "justification": "Reviewed actual release images/values define PostgreSQL/PVC and S3 data paths, but choose no MPN storage class/backend encryption/key policy. Mesh protection and FIPS-capable images do not encrypt an unspecified external volume/object-store automatically. This remaining boundary is an actual environment/service selection, not a request to observe code-defined behavior at runtime.",
+    "status": "Needs work",
+    "justification": "Cryptographic protection from modification needs authenticated integrity, not merely an unspecified encrypted disk. Existing object AES-GCM handles object ciphertext authentication; defined DB fields/labels need an integrity boundary . Gallatin operates MPN Core and storage. A concrete lower-layer solution can be specified now, so this is a shared configuration/implementation backlog item rather than an unknown UDS setting. No deployed compliance result is claimed.",
     "evidence_ids": [
-      "re-asd-release",
-      "re-asd-db"
+      "sol-storage-seaweed-aead",
+      "sol-storage-dm-auth-integrity",
+      "sol-storage-pg-official",
+      "sol-storage-dm-auth-modes"
     ],
-    "next_step": "Identify the MPN storage/backend/KMS configuration or accepted physical protection so source/configuration encryption can be assessed; no arbitrary app encryption implementation is proposed.",
-    "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
-    "category": "external storage service selection",
+    "next_step": "Define the sensitive/PII/classification data scope and select an approved authenticated-integrity storage boundary for its live database volume; a supported host dm-crypt+dm-integrity authenticated mode is one existing implementation option, not an instruction to reformat the current disk. Use existing AES-GCM object storage for object ciphertext and signed authenticated backup manifests for offline archives. Retain DB role restrictions separately. Do not credit plain diskSSE/AES-XTS, PostgreSQL page checksums or RBAC as cryptographic integrity, and do not build custom encryption for every database page. Keep this work open until the selected provider/host integrity setting or accepted scope mapping is committed.",
+    "owner": "Gallatin SRE / MPN platform engineering; application security for integrity scope",
+    "category": "shared storage protection implementation",
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
-    "task": "",
+    "task": "mpn-storage-integrity",
     "evidence_state": "source-inferred",
-    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685; https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/values/postgres.yaml",
+    "solution_ref": "../solutions/storage-protection.md",
+    "evidence": "https://github.com/seaweedfs/seaweedfs/blob/4.52/weed/util/cipher.go; https://www.kernel.org/doc/html/latest/admin-guide/device-mapper/dm-integrity.html; https://www.postgresql.org/docs/18/encryption-options.html; https://www.kernel.org/doc/html/latest/admin-guide/device-mapper/dm-crypt.html",
     "human_review": true
   },
   {
@@ -1726,48 +1737,24 @@
       "V-70229",
       "CCI-002476"
     ],
-    "status": "Unclear",
-    "justification": "Reviewed actual release images/values define PostgreSQL/PVC and S3 data paths, but choose no MPN storage class/backend encryption/key policy. Mesh protection and FIPS-capable images do not encrypt an unspecified external volume/object-store automatically. This remaining boundary is an actual environment/service selection, not a request to observe code-defined behavior at runtime.",
+    "status": "Needs work",
+    "justification": "A shared encrypted storage and approved-module design is feasible without rewriting application crypto. The exact classified-data branch still requires the mission cryptographic boundary; ordinary FIPS/AES is not automatically NSA-approved classified protection. Gallatin operates MPN Core and storage. A concrete lower-layer solution can be specified now, so this is a shared configuration/implementation backlog item rather than an unknown UDS setting. No deployed compliance result is claimed.",
     "evidence_ids": [
-      "re-asd-release",
-      "re-asd-db"
+      "sol-storage-postgres-pvc",
+      "sol-storage-seaweed-chart",
+      "sol-storage-pg-official",
+      "sol-storage-core-boundary",
+      "sol-storage-seaweed-aead",
+      "sol-storage-fips-mode"
     ],
-    "next_step": "Identify the MPN storage/backend/KMS configuration or accepted physical protection so source/configuration encryption can be assessed; no arbitrary app encryption implementation is proposed.",
-    "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
-    "category": "external storage service selection",
+    "next_step": "Create one Gallatin-owned mpn-encrypted StorageClass backed by approved encrypted disks/volumes; set PostgreSQL persistence.storageClassName (not storageClass), bind SeaweedFS PVC explicitly and protect Core identity database/PVCs. Encrypt node OS/temp/cache and API Secret/datastore storage too. Keep the existing database/object-store products; use the selected host provider rather than a new storage cluster. Enable the existing SeaweedFS4.52 server flags -filer.encryptVolumeData and -s3.encryptVolumeData; retain filer metadata/keys on the encrypted protected volume. New writes use the existing AES-GCM path; migrate/rewrite existing objects deliberately. This supplements encrypted host/PVC storage and does not require every API to implement encryption. For CUI/unclassified approved-mode protection pin the actual validated module/build. If classified processing is selected, use the mission-approved NSA/storage protection boundary before storing that data; do not waive this based only on FIPS naming.",
+    "owner": "Gallatin SRE / MPN platform engineering; application security for integrity scope",
+    "category": "shared storage protection implementation",
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
-    "task": "",
+    "task": "mpn-storage-protection",
     "evidence_state": "source-inferred",
-    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685; https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/values/postgres.yaml",
-    "human_review": true
-  },
-  {
-    "benchmark": "U_ASD_V6R5_STIG",
-    "vuln_id": "V-222595",
-    "rule_id": "SV-222595r961155_rule",
-    "version": "APSC-DV-002410",
-    "title": "The web service design must include redundancy mechanisms when used with high-availability systems.",
-    "severity": "medium",
-    "description": "<VulnDiscussion>DoS is a condition when a resource is not available for legitimate users. When this occurs, the organization either cannot accomplish its mission or must operate at degraded capacity.\n\nIn the case of application DoS attacks, care must be taken when designing the application to ensure the application makes the best use of system resources. SQL queries have the potential to consume large amounts of CPU cycles if they are not tuned for optimal performance. Web services containing complex calculations requiring large amounts of time to complete can bog down if too many requests for the service are encountered within a short period of time.\n\nThe methods employed to meet this requirement will vary depending upon the technology the application utilizes. However, a variety of technologies exist to limit or, in some cases, eliminate the effects of application related DoS attacks. Employing increased capacity and bandwidth combined with specialized application layer protection devices and service redundancy may reduce the susceptibility to some DoS attacks.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
-    "check": "Interview the application administrator and review the system documentation to determine if the application has been designated as a high availability system and if the application is designed to operate in a high availability environment.\n\nIf the application has not been designated as a high availability system, this requirement is not applicable.\n\nReview the application architecture documentation and identify solutions that provide application DoS protections. \n\nVerify the application has been built to work in a clustered or otherwise high availability environment in accordance with documented availability requirements.\n\nThis includes:\n\n- load balancers\n- redundant systems such as multiple web, application servers or DB servers\n- high bandwidth or redundant data circuits\n- multiple data centers (geographic dispersal)\n- server clusters\n\nIf the application has been designated as high availability but the architecture is not built to high availability standards, this is a finding.",
-    "fix": "Build the application to address issues that are found in a redundant environment and utilize redundancy mechanisms to provide high availability.",
-    "references": [
-      "SV-84863",
-      "V-70241",
-      "CCI-001095"
-    ],
-    "status": "Unclear",
-    "justification": "The exact check depends on the actual mission high-availability designation, DMZ topology or classified-data boundary. Product code supports classification labels and connected documents discuss partner/IL6-equivalent delivery, so unclassified-only/private-only applicability cannot be inferred. The relevant mission/environment designation has not been selected in the delivered app package; this is a policy input, not an uninvestigated runtime behavior.",
-    "evidence_ids": [
-      "re-asd-release"
-    ],
-    "next_step": "Obtain the explicit mission classification/availability/network designation; assess the applicable product/platform control or submit supported N/A only after that condition is established.",
-    "owner": "Mission owner/security assessor; MPN operator",
-    "category": "mission applicability decision",
-    "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
-    "task": "",
-    "evidence_state": "source-inferred",
-    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685",
+    "solution_ref": "../solutions/storage-protection.md",
+    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-postgres/templates/statefulset.yaml; https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/seaweedfs/templates/deployment.yaml; https://www.postgresql.org/docs/18/encryption-options.html; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/getting-started/production/prerequisites.mdx; https://github.com/seaweedfs/seaweedfs/blob/4.52/weed/util/cipher.go; https://docs.openssl.org/3.5/man7/fips_module/",
     "human_review": true
   },
   {
@@ -1786,17 +1773,21 @@
       "CCI-002225"
     ],
     "status": "Unclear",
-    "justification": "The exact check depends on the actual mission high-availability designation, DMZ topology or classified-data boundary. Product code supports classification labels and connected documents discuss partner/IL6-equivalent delivery, so unclassified-only/private-only applicability cannot be inferred. The relevant mission/environment designation has not been selected in the delivered app package; this is a policy input, not an uninvestigated runtime behavior.",
+    "justification": "Applicability depends on whether the mission hosts this tiered application in the DoW DMZ. Existing gateway routing and broad intra-namespace allowances do not establish separation between web, application and database tiers. The conditional solution removes broad allowances and places the tiers in separate default-deny namespaces/Packages with explicit peer/port rules and no web-to-database path. If the system is outside the DoW DMZ, the exact check permits N/A.",
     "evidence_ids": [
-      "re-asd-release"
+      "solution-topology-tiers",
+      "solution-topology-default-deny",
+      "solution-topology-k8-seg",
+      "solution-topology-nsa-seg"
     ],
-    "next_step": "Obtain the explicit mission classification/availability/network designation; assess the applicable product/platform control or submit supported N/A only after that condition is established.",
-    "owner": "Mission owner/security assessor; MPN operator",
-    "category": "mission applicability decision",
+    "next_step": "Record the DoW DMZ applicability decision. If true, implement the documented three-tier policy and approved diagram; if false, record accepted N/A. Gallatin owns Core network policy configuration.",
+    "owner": "Gallatin SRE / Gallatin-operated MPN Core platform; mission authority only for mission applicability and CA issuance approval",
+    "category": "mission topology applicability with defined implementation",
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
-    "task": "",
+    "task": "mpn-network-profile",
     "evidence_state": "source-inferred",
-    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685",
+    "solution_ref": "../solutions/pki-and-topology.md",
+    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-uds-package/templates/package.yaml; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/pepr/operator/controllers/network/defaults/default-deny-all.ts; https://kubernetes.io/docs/concepts/services-networking/network-policies/; https://media.defense.gov/2022/Aug/29/2003066362/-1/-1/0/CTR_KUBERNETES_HARDENING_GUIDANCE_1.2_20220829.PDF",
     "human_review": true
   },
   {
@@ -1814,18 +1805,22 @@
       "V-70297",
       "CCI-001872"
     ],
-    "status": "Unclear",
-    "justification": "A concrete quarterly audit-review policy and responsible security role were found, resolving the missing-procedure question. The exact check also asks when logs were last reviewed; no dated MPN review was found in source or connected evidence. Retain the required completed audit-review record.",
+    "status": "Needs work",
+    "justification": "The review tooling and quarterly procedure exist. Establish and record the first scoped MPN audit review, then follow the same cadence and event-driven reviews. A Grafana dashboard is an enabling mechanism, not a dated security review.",
     "evidence_ids": [
-      "re-governance-policy-au"
+      "solution-governance-audit-policy",
+      "core-vector",
+      "core-loki",
+      "core-grafana"
     ],
-    "next_step": "Attach the latest MPN/UDS audit review result/date and confirm it satisfies the documented cadence.",
-    "owner": "Gallatin engineering/security; MPN mission owner for site approvals",
-    "category": "external historical execution record",
+    "next_step": "Gallatin SRE and the designated security reviewer perform the prepared Loki/Grafana event review, disposition exceptions, record its date and set the next review due under the quarterly policy.",
+    "owner": "Gallatin SRE; designated MPN ISSO/security reviewer",
+    "category": "operational procedure/certification",
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
-    "task": "",
+    "task": "audit-review-procedure",
     "evidence_state": "source-inferred",
-    "evidence": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-AU-audit-and-accountability.md",
+    "solution_ref": "../solutions/operating-procedures.md",
+    "evidence": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-AU-audit-and-accountability.md; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/vector/values/values.yaml; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/loki/chart/templates/uds-package.yaml; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/grafana/values/values.yaml",
     "human_review": true
   },
   {
@@ -1874,20 +1869,22 @@
       "V-70313",
       "CCI-000388"
     ],
-    "status": "Unclear",
-    "justification": "Source identifies the actual service/gateway/mesh ports, so port discovery is not unfinished. The remaining official condition is external-enclave PPSM/CAL approval; the reviewed sources do not identify the MPN approving authority decision/current allowable-use record for those flows. Local product config cannot grant that approval.",
+    "status": "Needs work",
+    "justification": "Delivered configuration and existing System Impact Assessment identify the network flows. Complete the MPN-specific external-enclave ports/protocols classification and authority submission; reuse the flow inventory and default-deny policy rather than redesign networking or register every pod port as external.",
     "evidence_ids": [
+      "solution-governance-mpn-scope",
+      "solution-governance-ppsm-routing",
       "core-network",
-      "core-gateway",
-      "app-model-profile"
+      "core-gateway"
     ],
-    "next_step": "Attach the approved external-enclave ports/protocols mapping; internal pod ports need not all be treated as external PPSM registrations.",
-    "owner": "Gallatin engineering/security; MPN mission owner for site approvals",
-    "category": "external network approval",
+    "next_step": "Ian/Gallatin SRE derives the external-enclave flow rows from the selected MPN overlay and existing System Impact Assessment; the security lead routes them to the MPN network/PPSM authority for CAL compliance review and approval.",
+    "owner": "Gallatin SRE/Ian; security lead; MPN network/PPSM approving authority",
+    "category": "operational procedure/certification",
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
-    "task": "",
+    "task": "ppsm-authorization",
     "evidence_state": "source-inferred",
-    "evidence": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/pepr/operator/controllers/network/defaults/default-deny-all.ts; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/istio/charts/uds-istio-config/templates/gateway.yaml; https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-uds-package/templates/package.yaml",
+    "solution_ref": "../solutions/operating-procedures.md",
+    "evidence": "https://docs.google.com/document/d/1RzBd9YPzJSYk8LDI126LbvRBiaF3uJjfN4T5V8-0Pbw/edit; https://grid-gallatin-ai.enterprise.slack.com/archives/C0AL2QNMGG3/p1793127354624349; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/pepr/operator/controllers/network/defaults/default-deny-all.ts; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/istio/charts/uds-istio-config/templates/gateway.yaml",
     "human_review": true
   },
   {
@@ -1905,49 +1902,20 @@
       "V-70317",
       "CCI-000388"
     ],
-    "status": "Unclear",
-    "justification": "The rule tests actual production registration when required, not whether source can enumerate ports. No MPN PPSM registration identifier or authority-issued exemption was found. This is an external administrative record and can be resolved without a runtime check.",
+    "status": "Needs work",
+    "justification": "A source-controlled flow table cannot itself create the production registration required by this check. Complete a concrete MPN registration action using the same approved flow set; retain an authority-issued registration identifier or explicit exemption, without treating a draft from another program as completion.",
     "evidence_ids": [
-      "core-gateway",
-      "uds"
+      "solution-governance-ppsm-routing",
+      "solution-governance-mpn-scope"
     ],
-    "next_step": "Attach the actual production PPSM record or registration exemption.",
-    "owner": "Gallatin engineering/security; MPN mission owner for site approvals",
-    "category": "external registration",
+    "next_step": "The Gallatin security lead and MPN sponsor submit the approved Horizon MPN flow set through the applicable PPSM/eMASS process and record the resulting identifier or written registration exemption in the controlled authorization packet.",
+    "owner": "Gallatin security lead and MPN Government sponsor/PPSM authority",
+    "category": "operational procedure/certification",
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
-    "task": "",
+    "task": "ppsm-authorization",
     "evidence_state": "source-inferred",
-    "evidence": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/istio/charts/uds-istio-config/templates/gateway.yaml; https://gallatin.atlassian.net/wiki/spaces/GG/pages/733085804/WIP+STIG+SRG+Compliance+Scope+MPN",
-    "human_review": true
-  },
-  {
-    "benchmark": "U_ASD_V6R5_STIG",
-    "vuln_id": "V-222630",
-    "rule_id": "SV-222630r961863_rule",
-    "version": "APSC-DV-002995",
-    "title": "The Configuration Management (CM) repository must be properly patched and STIG compliant.",
-    "severity": "medium",
-    "description": "<VulnDiscussion>A Configuration Management (CM) repository is used to manage application code versions and to securely store application code.\n\nFailure to properly apply security patches and secure the software Configuration Management system could affect the confidentiality and integrity of the application source-code.  \n\nCompromise of the Configuration Management system could lead to unauthorized changes to applications including the addition of malware, root kits, back doors, logic bombs or other malicious functions into valid application code.   \n\nThis requirement is intended to be applied to application developers or organizations responsible for code management or who have and operate an application CM repository.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
-    "check": "Review the application system documentation and interview the application administrator.\n\nIdentify if the STIG is being applied to application developers or organizations responsible for code management or who have and operate an application CM repository. If this is not the case, the requirement is not applicable.\n\nReview CM patch management processes and procedures.  Have the system and CM admins demonstrate their patch management processes and verify the system has the latest security patches applied.  \n\nReview the ATO documentation and verify the system that operates the CM repository software has had all relevant STIGs applied.\n\nIf CM repository is not at the latest security patch level and is not operating on a STIG compliant system, this is a finding.",
-    "fix": "Patch the CM system when new security patches are made available and apply the relevant STIGs.",
-    "references": [
-      "SV-84961",
-      "V-70339",
-      "CCI-001795"
-    ],
-    "status": "Unclear",
-    "justification": "GitHub is the managed source service and live ruleset proves repository controls; there is no customer-operated Git server in this source to patch. However the check also asks for repository-service platform authorization/STIG inheritance, and no applicable GitHub service compliance/accepted inheritance record was found. Do not remediate a nonexistent local CM server.",
-    "evidence_ids": [
-      "re-governance-rules",
-      "re-governance-scm"
-    ],
-    "next_step": "Attach accepted GitHub managed-service security/CM inheritance for the development boundary, or obtain scoped N/A for the site assessment.",
-    "owner": "Gallatin engineering/security; MPN mission owner for site approvals",
-    "category": "managed-service authorization",
-    "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
-    "task": "",
-    "evidence_state": "source-inferred",
-    "evidence": "https://github.com/gallatinai/horizon/rules/11323811; https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/docs/rfcs/RFC-057-release-management-and-change-tracking.md",
+    "solution_ref": "../solutions/operating-procedures.md",
+    "evidence": "https://grid-gallatin-ai.enterprise.slack.com/archives/C0AL2QNMGG3/p1793127354624349; https://docs.google.com/document/d/1RzBd9YPzJSYk8LDI126LbvRBiaF3uJjfN4T5V8-0Pbw/edit",
     "human_review": true
   },
   {
@@ -1965,19 +1933,22 @@
       "V-70341",
       "CCI-001795"
     ],
-    "status": "Unclear",
-    "justification": "Corporate policy now supplies a quarterly access-review process, and source service has controlled membership/review gates. The exact check requires evidence the last repository access certification occurred within 3 months; no dated GitHub certification was found. Other-environment access reviews are not substituted.",
+    "status": "Needs work",
+    "justification": "A complete read-only effective-entitlement snapshot has been prepared for the actual Horizon repository. Finish the existing quarterly access-certification workflow with accountable owner decisions; no new discovery integration or retrospective claim of review is needed.",
     "evidence_ids": [
-      "re-governance-policy-ac",
+      "solution-governance-access-snapshot",
+      "solution-governance-github-audit-log",
+      "solution-governance-account-policy",
       "re-governance-rules"
     ],
-    "next_step": "Attach a dated GitHub repository/organization entitlement review covering the assessed development team.",
-    "owner": "Gallatin engineering/security; MPN mission owner for site approvals",
-    "category": "external historical execution record",
+    "next_step": "The GitHub organization owner and Horizon engineering owner certify the protected Nov10 entitlement snapshot, justify each privileged role, record approved changes and review again within three months.",
+    "owner": "GitHub organization owner; Horizon engineering owner; security reviewer",
+    "category": "operational procedure/certification",
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
-    "task": "",
+    "task": "account-access-certification",
     "evidence_state": "source-inferred",
-    "evidence": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-AC-access-control.md; https://github.com/gallatinai/horizon/rules/11323811",
+    "solution_ref": "../solutions/operating-procedures.md",
+    "evidence": "https://docs.github.com/en/rest/collaborators/collaborators?apiVersion=2022-11-28#list-repository-collaborators; https://docs.github.com/en/organizations/keeping-your-organization-secure/managing-security-settings-for-your-organization/reviewing-the-audit-log-for-your-organization; https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-AC-access-control.md; https://github.com/gallatinai/horizon/rules/11323811",
     "human_review": true
   },
   {
@@ -2207,17 +2178,21 @@
       "CCI-003124"
     ],
     "status": "Unclear",
-    "justification": "The exact check depends on the actual mission high-availability designation, DMZ topology or classified-data boundary. Product code supports classification labels and connected documents discuss partner/IL6-equivalent delivery, so unclassified-only/private-only applicability cannot be inferred. The relevant mission/environment designation has not been selected in the delivered app package; this is a policy input, not an uninvestigated runtime behavior.",
+    "justification": "The product has classification metadata, but no identified governing program SCG/data-element mapping establishes the mission classification. The exact check permits an existing higher-level guide; a new Gallatin-authored classification authority or an unclassified assumption would be unsupported. This is one documentation/mission-owner decision, not an uninvestigated runtime check.",
     "evidence_ids": [
-      "re-asd-release"
+      "re-mission-classification-model",
+      "solution-asd-scg-check",
+      "re-docs-mpn-decision-boundary",
+      "re-docs-mpn-scope-not-unclassified"
     ],
-    "next_step": "Obtain the explicit mission classification/availability/network designation; assess the applicable product/platform control or submit supported N/A only after that condition is established.",
-    "owner": "Mission owner/security assessor; MPN operator",
-    "category": "mission applicability decision",
+    "next_step": "Draft the data-element-to-existing-SCG matrix below; have the Government mission/security owner supply the controlling guide identifier/version/paragraphs and OCA approval reference. Mark nonclassified branch N/A only when that mission restriction is confirmed. Do not put a classified guide or its contents in the public tracker.",
+    "owner": "Gallatin security lead/ISSO + Government mission data owner; Gallatin SRE for boundary implementation",
+    "category": "mission documentation/decision",
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
-    "task": "",
+    "task": "mission-data-protection-mapping",
     "evidence_state": "source-inferred",
-    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685",
+    "solution_ref": "../solutions/mission-data.md",
+    "evidence": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/typescript/src/schema/schema.ts; https://github.com/gallatinai/horizon-stig/blob/main/mpn/benchmarks/U_ASD_V6R5_STIG/benchmark.xml; https://drive.google.com/file/d/1p5zQe7lko71bWNfBd2B6clzJK52Rl0U5/view; https://grid-gallatin-ai.enterprise.slack.com/archives/C0AL2QNMGG3/p1793201707357709",
     "human_review": true
   },
   {
@@ -2235,19 +2210,19 @@
       "V-70425",
       "CCI-002052"
     ],
-    "status": "Unclear",
-    "justification": "Annual awareness/role-based training program and assigned 2026 courses are documented; this is stronger than missing policy. The official rule requires annual secure SDLC training for all management/design/development/test roles in addition to general awareness. Neither the source policy nor the connected findings provide that complete course completion record; do not substitute generic awareness assignments.",
+    "status": "Needs work",
+    "justification": "The corporate annual training platform and general awareness courses exist. Assign and record role-appropriate secure-development instruction for every application manager, designer, developer and tester; general awareness or CAC/SIPR training alone does not meet this explicit SDLC requirement.",
     "evidence_ids": [
-      "re-governance-policy-training",
-      "re-governance-policy-backlog"
+      "solution-governance-training-policy"
     ],
-    "next_step": "Attach annual secure-development training completion by role from the training record system; no runtime check is required.",
-    "owner": "Gallatin engineering/security; MPN mission owner for site approvals",
-    "category": "external training execution record",
+    "next_step": "Program management and security training owners add the prepared role-specific secure-SDLC module to ThreatSwitch, assign all application roles, record completion/assessment and refresh annually.",
+    "owner": "Program manager; security training owner/FSO; engineering managers",
+    "category": "operational procedure/certification",
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
-    "task": "",
+    "task": "secure-development-training",
     "evidence_state": "source-inferred",
-    "evidence": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-AT-awareness-and-training.md; https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/BACKLOG.md",
+    "solution_ref": "../solutions/operating-procedures.md",
+    "evidence": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-AT-awareness-and-training.md",
     "human_review": true
   },
   {
@@ -2266,17 +2241,21 @@
       "CCI-002450"
     ],
     "status": "Unclear",
-    "justification": "The exact check depends on the actual mission high-availability designation, DMZ topology or classified-data boundary. Product code supports classification labels and connected documents discuss partner/IL6-equivalent delivery, so unclassified-only/private-only applicability cannot be inferred. The relevant mission/environment designation has not been selected in the delivered app package; this is a policy input, not an uninvestigated runtime behavior.",
+    "justification": "Delivered FIPS mechanisms can protect normal application hops, but the source/package does not select a mission-approved classified-data cryptographic boundary. The required outcome may be supplied by MPN network/storage protection around Gallatin-managed UDS; it need not be reimplemented independently by every named service. Approval/classification and the actual protected storage/path map remain one shared mission input, not proof of a missing crypto feature. The exact ASD check distinguishes non-SAMI stored data and SAMI Type1 requirements; do not replace that decision with a blanket FIPS-or-CNSA assertion.",
     "evidence_ids": [
-      "re-asd-release"
+      "re-mission-nsa-system-solutions",
+      "re-mission-nsa-registration",
+      "re-mission-nsa-cp",
+      "re-docs-mpn-decision-boundary"
     ],
-    "next_step": "Obtain the explicit mission classification/availability/network designation; assess the applicable product/platform control or submit supported N/A only after that condition is established.",
-    "owner": "Mission owner/security assessor; MPN operator",
-    "category": "mission applicability decision",
+    "next_step": "Prepare one mission data/protection matrix covering identities, mission records, source files/chunks, derived assertions/embeddings, generated artifacts and backups/logs. Map each to the controlling program SCG or handling authority, permitted recipients/REL TO rules, SAMI applicability, at-rest and in-transit protection and the responsible implemented boundary. Have the mission owner select the actual classification/handling branch. For classified data, attach the existing approved MPN boundary protection evidence and map every data path; only engineer a missing boundary after that mapping. For unclassified scope, record the supported classified-rule N/A. Do not impose independent app-level CNSA/Type1 TLS merely because the benchmark names the application.",
+    "owner": "Gallatin security lead/ISSO + Government mission data owner; Gallatin SRE for boundary implementation",
+    "category": "mission crypto boundary/decision",
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
-    "task": "",
+    "task": "mission-data-protection-mapping",
     "evidence_state": "source-inferred",
-    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685",
+    "solution_ref": "../solutions/mission-data.md",
+    "evidence": "https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/faq/; https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/solution-registration/; https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/Capability-Packages/; https://drive.google.com/file/d/1p5zQe7lko71bWNfBd2B6clzJK52Rl0U5/view",
     "human_review": true
   },
   {
@@ -2906,19 +2885,21 @@
       "CCI-002450"
     ],
     "status": "Unclear",
-    "justification": "The actual UDS release supplies FIPS-oriented controls, but FIPS validation alone is not evidence of the NSA-approved classified-data cryptographic boundary required by this check. Platform/host external protection may supply it; classification and approved boundary must be identified before source can determine applicability.",
+    "justification": "Delivered FIPS mechanisms can protect normal application hops, but the source/package does not select a mission-approved classified-data cryptographic boundary. The required outcome may be supplied by MPN network/storage protection around Gallatin-managed UDS; it need not be reimplemented independently by every named service. Approval/classification and the actual protected storage/path map remain one shared mission input, not proof of a missing crypto feature.",
     "evidence_ids": [
-      "re-platform-delivered-profile",
-      "re-platform-external-storage",
-      "core-flavors"
+      "re-mission-nsa-system-solutions",
+      "re-mission-nsa-registration",
+      "re-mission-nsa-cp",
+      "re-docs-mpn-decision-boundary"
     ],
-    "next_step": "Identify the MPN mission classification and approved NSA/CSfC/platform cryptographic boundary. Assess that inherited boundary or record a supported unclassified N/A; do not infer classification from product naming.",
-    "owner": "MPN mission/security authority and platform operator",
-    "category": "mission classification/crypto boundary input",
+    "next_step": "Prepare one mission data/protection matrix covering identities, mission records, source files/chunks, derived assertions/embeddings, generated artifacts and backups/logs. Map each to the controlling program SCG or handling authority, permitted recipients/REL TO rules, SAMI applicability, at-rest and in-transit protection and the responsible implemented boundary. Have the mission owner select the actual classification/handling branch. For classified data, attach the existing approved MPN boundary protection evidence and map every data path; only engineer a missing boundary after that mapping. For unclassified scope, record the supported classified-rule N/A. Do not impose independent app-level CNSA/Type1 TLS merely because the benchmark names the application.",
+    "owner": "Gallatin security lead/ISSO + Government mission data owner; Gallatin SRE for boundary implementation",
+    "category": "mission crypto boundary/decision",
     "components": "UDS platform: registry, runtime, Pepr, Istio, logging; delivered workloads",
-    "task": "",
+    "task": "mission-data-protection-mapping",
     "evidence_state": "source-inferred",
-    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/getting-started/production/provision-services.mdx; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/concepts/platform/flavors.mdx",
+    "solution_ref": "../solutions/mission-data.md",
+    "evidence": "https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/faq/; https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/solution-registration/; https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/Capability-Packages/; https://drive.google.com/file/d/1p5zQe7lko71bWNfBd2B6clzJK52Rl0U5/view",
     "human_review": true
   },
   {
@@ -2934,20 +2915,21 @@
     "references": [
       "CCI-002476"
     ],
-    "status": "Unclear",
-    "justification": "Core source fully describes its own behavior but intentionally does not provision or choose MPN\u2019s Kubernetes control-plane datastore and encrypted storage implementation. Keycloak PVCs can select a storage class; Core does not enable host Secret encryption or encrypted disks by itself. The remaining unknown is Gallatin\u2019s as-yet-unselected MPN host/storage design, not an unknown UDS setting or a request for vendor proof.",
+    "status": "Needs work",
+    "justification": "Core and package key material can be protected through encrypted Kubernetes Secret/datastore storage plus encrypted Core identity database/PVC/node disks; Core does not itself configure those layers. Gallatin operates MPN Core and storage. A concrete lower-layer solution can be specified now, so this is a shared configuration/implementation backlog item rather than an unknown UDS setting. No deployed compliance result is claimed.",
     "evidence_ids": [
-      "mpn-core-storage-boundary",
-      "mpn-core-keycloak-pvc",
-      "mpn-host-secret-encryption"
+      "sol-storage-k8-encryption",
+      "sol-storage-core-keystore",
+      "sol-storage-core-boundary"
     ],
-    "next_step": "Gallatin selects the MPN Kubernetes distribution and encrypted storage/key-management design. Configure API Secret encryption through that distribution\u2019s supported mechanism (upstream API server: --encryption-provider-config with nonidentity provider first), protect control-plane/datastore disks, and select encrypted storage for identity database/PVC data. Then map this rule to those committed infrastructure settings. Core has no universal storage-encryption flag that can substitute for this host choice.",
-    "owner": "Gallatin SRE / MPN platform engineering",
-    "category": "unselected Gallatin host/storage implementation",
+    "next_step": "Commit the MPN control-plane EncryptionConfiguration (nonidentity encryption provider first) or supported distribution equivalent, rotate/migrate existing Secret storage after enablement, and bind Core identity database/PVC/node disks to the same encrypted-host design. Separate key administration from application identities.",
+    "owner": "Gallatin SRE / MPN platform engineering; application security for integrity scope",
+    "category": "shared storage protection implementation",
     "components": "UDS platform: registry, runtime, Pepr, Istio, logging; delivered workloads",
     "task": "mpn-host-storage-encryption",
     "evidence_state": "source-inferred",
-    "evidence": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/getting-started/production/prerequisites.mdx; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/templates/pvc.yaml; https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/",
+    "solution_ref": "../solutions/storage-protection.md",
+    "evidence": "https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/templates/pvc.yaml; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/getting-started/production/prerequisites.mdx",
     "human_review": true
   },
   {
@@ -3678,20 +3660,20 @@
       "CCI-002450"
     ],
     "status": "Unclear",
-    "justification": "The original unclassified-MPN exclusion was unsupported: this rule includes sensitive/need-to-know compartmentalized data, not only formally classified data. Delivered FIPS images/Core mechanisms are now identified, but source does not specify the mission compartmentation policy and required protection profile for NATO/partner/IL6-equivalent use. Do not invent either an NSA-Type1 obligation or an unclassified exclusion.",
+    "justification": "This rule includes sensitive/need-to-know compartments, so a classified-only N/A is too narrow. Delivered FIPS gateway/mesh protection can supply the cryptographic mechanism for ordinary sensitive web data; the missing item is the compartment/data-owner protection profile and mapping to that existing boundary. A new nginx encryption layer is not justified by this evidence.",
     "evidence_ids": [
-      "re-web-actual-release",
-      "re-web-base-pin",
-      "re-web-realm",
-      "re-web-trust"
+      "re-mission-nsa-system-solutions",
+      "re-docs-mpn-decision-boundary",
+      "re-mission-classification-model"
     ],
-    "next_step": "Record the authoritative compartmentation/classification protection profile, then map the identified modules and boundary to that profile.",
-    "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
-    "category": "mission crypto policy/applicability",
+    "next_step": "Add web requests/responses, generated artifacts and relevant compartment/releasability labels to the same mission protection matrix. Reuse the existing gateway/mesh module evidence when it meets the selected policy; add storage/enclave protection only for an actual uncovered requirement. Record the accepted existing-boundary justification.",
+    "owner": "Gallatin security lead/ISSO + Government mission data owner; Gallatin SRE for boundary implementation",
+    "category": "mission policy-to-existing-control mapping",
     "components": "Delivered static nginx-FIPS, Istio ingress and shared UDS identity (separate roles)",
-    "task": "",
+    "task": "mission-data-protection-mapping",
     "evidence_state": "source-inferred",
-    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685; https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/compose.yml; https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/realm.json5; https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/truststore/ca-to-jks.sh",
+    "solution_ref": "../solutions/mission-data.md",
+    "evidence": "https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/faq/; https://drive.google.com/file/d/1p5zQe7lko71bWNfBd2B6clzJK52Rl0U5/view; https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/typescript/src/schema/schema.ts",
     "human_review": true
   },
   {
@@ -4247,19 +4229,25 @@
       "V-57555",
       "CCI-001199"
     ],
-    "status": "Unclear",
-    "justification": "The deliveredprofile selects UDS identity/Core but no MPN CSI/storage class, host disk encryption or offline backup target. Applicationpostgresvalues use default/empty storageClass and object storage is platform-provided. At-restcrypto can and should be supplied by that lowerlayer; source cannot identify an encryption backend that the deliveredcontract does not select. No new application-level crypto requirement is inferred.",
+    "status": "Needs work",
+    "justification": "All application-server data can inherit protected host/PVC/object storage, with authentication tags for defined integrity-sensitive data and restricted writers; another API encryption layer is not the default solution. Gallatin operates MPN Core and storage. A concrete lower-layer solution can be specified now, so this is a shared configuration/implementation backlog item rather than an unknown UDS setting. No deployed compliance result is claimed.",
     "evidence_ids": [
-      "re-appserver-release",
-      "re-appserver-storage"
+      "sol-storage-postgres-pvc",
+      "sol-storage-seaweed-chart",
+      "sol-storage-pg-official",
+      "sol-storage-core-boundary",
+      "sol-storage-seaweed-aead",
+      "sol-storage-dm-auth-integrity",
+      "sol-storage-dm-auth-modes"
     ],
-    "next_step": "Attach or select the MPNstorage class/host/objectstore and backupencryption contract/configuration; assess that provider mechanism, not APIcrypto code.",
-    "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
-    "category": "unselected platform storage input",
+    "next_step": "Create one Gallatin-owned mpn-encrypted StorageClass backed by approved encrypted disks/volumes; set PostgreSQL persistence.storageClassName (not storageClass), bind SeaweedFS PVC explicitly and protect Core identity database/PVCs. Encrypt node OS/temp/cache and API Secret/datastore storage too. Keep the existing database/object-store products; use the selected host provider rather than a new storage cluster. Enable the existing SeaweedFS4.52 server flags -filer.encryptVolumeData and -s3.encryptVolumeData; retain filer metadata/keys on the encrypted protected volume. New writes use the existing AES-GCM path; migrate/rewrite existing objects deliberately. This supplements encrypted host/PVC storage and does not require every API to implement encryption. For cryptographic modification protection, use the defined authenticated-integrity storage boundary (for example supported approved dm-crypt+dm-integrity), not custom application crypto. Keep RBAC and page checksums as separate controls.",
+    "owner": "Gallatin SRE / MPN platform engineering; application security for integrity scope",
+    "category": "shared storage protection implementation",
     "components": "Delivered Horizon API, workers, chat, ingestion and storage; delegated UDS identity/gateway/mesh",
-    "task": "",
+    "task": "mpn-storage-protection",
     "evidence_state": "source-inferred",
-    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685; https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/values/postgres.yaml",
+    "solution_ref": "../solutions/storage-protection.md",
+    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-postgres/templates/statefulset.yaml; https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/seaweedfs/templates/deployment.yaml; https://www.postgresql.org/docs/18/encryption-options.html; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/getting-started/production/prerequisites.mdx; https://github.com/seaweedfs/seaweedfs/blob/4.52/weed/util/cipher.go; https://www.kernel.org/doc/html/latest/admin-guide/device-mapper/dm-integrity.html; https://www.kernel.org/doc/html/latest/admin-guide/device-mapper/dm-crypt.html",
     "human_review": true
   },
   {
@@ -4277,19 +4265,22 @@
       "V-35426",
       "CCI-001199"
     ],
-    "status": "Unclear",
-    "justification": "The deliveredprofile selects UDS identity/Core but no MPN CSI/storage class, host disk encryption or offline backup target. Applicationpostgresvalues use default/empty storageClass and object storage is platform-provided. At-restcrypto can and should be supplied by that lowerlayer; source cannot identify an encryption backend that the deliveredcontract does not select. No new application-level crypto requirement is inferred.",
+    "status": "Needs work",
+    "justification": "Offline copies lose transparent provider encryption when exported unless they are encrypted before copying. An authenticated encrypted backup envelope solves this at the backup boundary. Gallatin operates MPN Core and storage. A concrete lower-layer solution can be specified now, so this is a shared configuration/implementation backlog item rather than an unknown UDS setting. No deployed compliance result is claimed.",
     "evidence_ids": [
-      "re-appserver-release",
-      "re-appserver-storage"
+      "sol-storage-cms-aead",
+      "sol-storage-fips-mode",
+      "sol-storage-offline-key-limits",
+      "sol-storage-azure-objects"
     ],
-    "next_step": "Attach or select the MPNstorage class/host/objectstore and backupencryption contract/configuration; assess that provider mechanism, not APIcrypto code.",
-    "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
-    "category": "unselected platform storage input",
+    "next_step": "Add a backup export wrapper that collects consistent PostgreSQL backup/WAL and SeaweedFS data+filer metadata, writes only to encrypted scratch, then produces an authenticated AES256-GCM CMS envelope plus signed version/hash manifest using a pinned approved provider before any offline copy. Store recovery private keys separately under a recoverable offline key/HSM procedure; verify/decrypt into isolated encrypted scratch on restore. ProviderSSE alone does not keep downloaded files encrypted.",
+    "owner": "Gallatin SRE / MPN platform engineering; application security for integrity scope",
+    "category": "shared storage protection implementation",
     "components": "Delivered Horizon API, workers, chat, ingestion and storage; delegated UDS identity/gateway/mesh",
-    "task": "",
+    "task": "data-backup-restore",
     "evidence_state": "source-inferred",
-    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685; https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/values/postgres.yaml",
+    "solution_ref": "../solutions/storage-protection.md",
+    "evidence": "https://docs.openssl.org/3.5/man1/openssl-cms/; https://docs.openssl.org/3.5/man7/fips_module/; https://learn.microsoft.com/en-us/azure/key-vault/general/backup; https://learn.microsoft.com/en-us/azure/storage/common/storage-service-encryption",
     "human_review": true
   },
   {
@@ -4411,21 +4402,24 @@
       "V-57551",
       "CCI-002470"
     ],
-    "status": "Unclear",
-    "justification": "UDS supplies DoD-approvedidentitytrust chains and meshworkloadcertificates, but this rule concerns the CA/class of the presented protected sessioncertificate. Gateway references an operator-suppliedTLS Secret; the deliveredHorizonprofile names host/issuer but contains no suppliedleaf certificate chain/class. Reusing identitytruststore evidence would conflate two differentcertificates.",
+    "status": "Needs work",
+    "justification": "This check restricts the CAs accepted when verifying protected sessions; it is not solely a question about the gateway leaf certificate class. UDS supplies approved DoD identity trust and configurable trust distribution. Complete the MPN profile with an approved root allow-list at the actual client/gateway verification boundaries, including API JWKS HTTPS. Replace default Node trust rather than only adding CAs. This is a defined Gallatin-owned configuration task; it requires no new TLS implementation inside each API and no DU-managed cluster.",
     "evidence_ids": [
-      "re-appserver-release",
-      "re-appserver-trust",
-      "re-appserver-gwtls",
-      "re-appserver-identitygateway"
+      "solution-topology-trust-doc",
+      "solution-topology-trust-source",
+      "solution-topology-app-jwks",
+      "solution-topology-node-ca",
+      "solution-topology-istio-secret",
+      "solution-topology-dod-ca"
     ],
-    "next_step": "Attach/select the gateway TLSissuance configuration/certificate policy and map its CA and class to the exact protected session requirement.",
-    "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
-    "category": "unselected gateway certificate input",
+    "next_step": "Implement the documented approved-root profile and restrictive verifier settings. Retain CA fingerprints/approval and tests showing an unrelated CA is rejected.",
+    "owner": "Gallatin SRE / Gallatin-operated MPN Core platform; mission authority only for mission applicability and CA issuance approval",
+    "category": "deployment trust configuration",
     "components": "Delivered Horizon API, workers, chat, ingestion and storage; delegated UDS identity/gateway/mesh",
-    "task": "",
+    "task": "pki-trust",
     "evidence_state": "source-inferred",
-    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685; https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/truststore/ca-to-jks.sh; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/istio/charts/uds-istio-config/templates/gateway.yaml; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/templates/uds-package.yaml",
+    "solution_ref": "../solutions/pki-and-topology.md",
+    "evidence": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/how-to-guides/networking/manage-trust-bundles.mdx; https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/truststore/ca-to-jks.sh; https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/api/auth/auth.oidc-jwt.service.ts; https://nodejs.org/api/cli.html#--use-bundled-ca---use-openssl-ca; https://istio.io/latest/docs/reference/config/networking/gateway/; https://dl.dod.cyber.mil/wp-content/uploads/pki-pke/pdf/unclass-dod_approved_external_pkis_master_document.pdf",
     "human_review": true
   },
   {
@@ -4443,19 +4437,22 @@
       "V-57557",
       "CCI-002475"
     ],
-    "status": "Unclear",
-    "justification": "The deliveredprofile selects UDS identity/Core but no MPN CSI/storage class, host disk encryption or offline backup target. Applicationpostgresvalues use default/empty storageClass and object storage is platform-provided. At-restcrypto can and should be supplied by that lowerlayer; source cannot identify an encryption backend that the deliveredcontract does not select. No new application-level crypto requirement is inferred.",
+    "status": "Needs work",
+    "justification": "Existing object-store AES-GCM can authenticate stored content, while protected database records need an explicitly selected authenticated-integrity boundary. Disk encryption alone should not be credited for every modification threat. Gallatin operates MPN Core and storage. A concrete lower-layer solution can be specified now, so this is a shared configuration/implementation backlog item rather than an unknown UDS setting. No deployed compliance result is claimed.",
     "evidence_ids": [
-      "re-appserver-release",
-      "re-appserver-storage"
+      "sol-storage-seaweed-aead",
+      "sol-storage-dm-auth-integrity",
+      "sol-storage-pg-official",
+      "sol-storage-dm-auth-modes"
     ],
-    "next_step": "Attach or select the MPNstorage class/host/objectstore and backupencryption contract/configuration; assess that provider mechanism, not APIcrypto code.",
-    "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
-    "category": "unselected platform storage input",
+    "next_step": "Define the sensitive/PII/classification data scope and select an approved authenticated-integrity storage boundary for its live database volume; a supported host dm-crypt+dm-integrity authenticated mode is one existing implementation option, not an instruction to reformat the current disk. Use existing AES-GCM object storage for object ciphertext and signed authenticated backup manifests for offline archives. Retain DB role restrictions separately. Do not credit plain diskSSE/AES-XTS, PostgreSQL page checksums or RBAC as cryptographic integrity, and do not build custom encryption for every database page. Keep this work open until the selected provider/host integrity setting or accepted scope mapping is committed.",
+    "owner": "Gallatin SRE / MPN platform engineering; application security for integrity scope",
+    "category": "shared storage protection implementation",
     "components": "Delivered Horizon API, workers, chat, ingestion and storage; delegated UDS identity/gateway/mesh",
-    "task": "",
+    "task": "mpn-storage-integrity",
     "evidence_state": "source-inferred",
-    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685; https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/values/postgres.yaml",
+    "solution_ref": "../solutions/storage-protection.md",
+    "evidence": "https://github.com/seaweedfs/seaweedfs/blob/4.52/weed/util/cipher.go; https://www.kernel.org/doc/html/latest/admin-guide/device-mapper/dm-integrity.html; https://www.postgresql.org/docs/18/encryption-options.html; https://www.kernel.org/doc/html/latest/admin-guide/device-mapper/dm-crypt.html",
     "human_review": true
   },
   {
@@ -4473,19 +4470,24 @@
       "SV-71835",
       "CCI-002476"
     ],
-    "status": "Unclear",
-    "justification": "The deliveredprofile selects UDS identity/Core but no MPN CSI/storage class, host disk encryption or offline backup target. Applicationpostgresvalues use default/empty storageClass and object storage is platform-provided. At-restcrypto can and should be supplied by that lowerlayer; source cannot identify an encryption backend that the deliveredcontract does not select. No new application-level crypto requirement is inferred.",
+    "status": "Needs work",
+    "justification": "Unauthorized disclosure of stored application data can be addressed at the existing volume/object/keystore layers with separated key access, without adding encryption independently to every server. Gallatin operates MPN Core and storage. A concrete lower-layer solution can be specified now, so this is a shared configuration/implementation backlog item rather than an unknown UDS setting. No deployed compliance result is claimed.",
     "evidence_ids": [
-      "re-appserver-release",
-      "re-appserver-storage"
+      "sol-storage-postgres-pvc",
+      "sol-storage-seaweed-chart",
+      "sol-storage-pg-official",
+      "sol-storage-core-boundary",
+      "sol-storage-seaweed-aead",
+      "sol-storage-seaweed-flags"
     ],
-    "next_step": "Attach or select the MPNstorage class/host/objectstore and backupencryption contract/configuration; assess that provider mechanism, not APIcrypto code.",
-    "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
-    "category": "unselected platform storage input",
+    "next_step": "Create one Gallatin-owned mpn-encrypted StorageClass backed by approved encrypted disks/volumes; set PostgreSQL persistence.storageClassName (not storageClass), bind SeaweedFS PVC explicitly and protect Core identity database/PVCs. Encrypt node OS/temp/cache and API Secret/datastore storage too. Keep the existing database/object-store products; use the selected host provider rather than a new storage cluster. Enable the existing SeaweedFS4.52 server flags -filer.encryptVolumeData and -s3.encryptVolumeData; retain filer metadata/keys on the encrypted protected volume. New writes use the existing AES-GCM path; migrate/rewrite existing objects deliberately. This supplements encrypted host/PVC storage and does not require every API to implement encryption.",
+    "owner": "Gallatin SRE / MPN platform engineering; application security for integrity scope",
+    "category": "shared storage protection implementation",
     "components": "Delivered Horizon API, workers, chat, ingestion and storage; delegated UDS identity/gateway/mesh",
-    "task": "",
+    "task": "mpn-storage-protection",
     "evidence_state": "source-inferred",
-    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685; https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/values/postgres.yaml",
+    "solution_ref": "../solutions/storage-protection.md",
+    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-postgres/templates/statefulset.yaml; https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/seaweedfs/templates/deployment.yaml; https://www.postgresql.org/docs/18/encryption-options.html; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/getting-started/production/prerequisites.mdx; https://github.com/seaweedfs/seaweedfs/blob/4.52/weed/util/cipher.go; https://github.com/seaweedfs/seaweedfs/blob/4.52/weed/command/server.go",
     "human_review": true
   },
   {
@@ -4504,19 +4506,21 @@
       "CCI-002385"
     ],
     "status": "Unclear",
-    "justification": "The official check expressly depends on MAC I designation. The actual release contract identifies the identity/Core integration but does not declare mission criticality or required failover topology. Neither a universal HA finding nor N/A is justified by a source default replica count.",
+    "justification": "Applicability still depends on the mission declaring MAC I; code cannot select that designation. The implementation is now defined: a MAC I profile needs multiple failure domains, at least two web/API replicas with disruption/placement controls, and HA stateful, storage and identity dependencies. Current source describes single-node PostgreSQL and does not declare a completed MAC I HA cluster. If MAC I applies, the specified profile needs implementation; otherwise the exact check permits N/A.",
     "evidence_ids": [
-      "re-appserver-release",
-      "re-appserver-clustering",
-      "re-appserver-privateinputs"
+      "solution-topology-deploy",
+      "solution-topology-ha-values",
+      "solution-topology-pdb",
+      "solution-topology-postgres"
     ],
-    "next_step": "Record MPN mission/MAC availability designation and its selected redundancy topology; assess that declared requirement.",
-    "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
-    "category": "mission designation input",
+    "next_step": "Record the single MAC I applicability decision. If true, implement the concrete HA profile; if false, record accepted N/A. Gallatin operates Core and owns the configuration.",
+    "owner": "Gallatin SRE / Gallatin-operated MPN Core platform; mission authority only for mission applicability and CA issuance approval",
+    "category": "mission applicability with defined implementation",
     "components": "Delivered Horizon API, workers, chat, ingestion and storage; delegated UDS identity/gateway/mesh",
-    "task": "",
+    "task": "ha-deployment-profile",
     "evidence_state": "source-inferred",
-    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685; https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-service/templates/hpa.yaml; https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685",
+    "solution_ref": "../solutions/pki-and-topology.md",
+    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-service/templates/deployment.yaml; https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-service/values.yaml; https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-service/templates/pdb.yaml; https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/values/postgres.yaml",
     "human_review": true
   },
   {
@@ -4600,21 +4604,24 @@
       "V-57545",
       "CCI-002450"
     ],
-    "status": "Unclear",
-    "justification": "UDS supplies DoD-approvedidentitytrust chains and meshworkloadcertificates, but this rule concerns the CA/class of the presented protected sessioncertificate. Gateway references an operator-suppliedTLS Secret; the deliveredHorizonprofile names host/issuer but contains no suppliedleaf certificate chain/class. Reusing identitytruststore evidence would conflate two differentcertificates.",
+    "status": "Needs work",
+    "justification": "Core already terminates application TLS using operator-supplied Secrets. Provision a mission-approved DoW/CNSS Class 3 or Class 4 NPE/server certificate, or an explicitly accepted equivalent, for the actual tenant/admin SANs; deliver its chain/key through protected gateway Secrets and set tls.credentialName. The app release does not select that production issuance/assurance profile. This is an actionable Gallatin PKI provisioning task, not an unresolved software behavior or a finding that an unseen deployed certificate is bad.",
     "evidence_ids": [
-      "re-appserver-release",
-      "re-appserver-trust",
-      "re-appserver-gwtls",
-      "re-appserver-identitygateway"
+      "solution-topology-tls-doc",
+      "solution-topology-tls-template",
+      "solution-topology-istio-secret",
+      "solution-topology-dod-ca",
+      "solution-topology-dod-commercial",
+      "solution-topology-dod-npe"
     ],
-    "next_step": "Attach/select the gateway TLSissuance configuration/certificate policy and map its CA and class to the exact protected session requirement.",
-    "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
-    "category": "unselected gateway certificate input",
+    "next_step": "Approve the mission certificate issuance profile; provision gateway Secrets; retain issuer, certificate policy/assurance, SANs, validity, public fingerprints and rotation owner.",
+    "owner": "Gallatin SRE / Gallatin-operated MPN Core platform; mission authority only for mission applicability and CA issuance approval",
+    "category": "PKI issuance and deployment configuration",
     "components": "Delivered Horizon API, workers, chat, ingestion and storage; delegated UDS identity/gateway/mesh",
-    "task": "",
+    "task": "pki-trust",
     "evidence_state": "source-inferred",
-    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685; https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/truststore/ca-to-jks.sh; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/istio/charts/uds-istio-config/templates/gateway.yaml; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/templates/uds-package.yaml",
+    "solution_ref": "../solutions/pki-and-topology.md",
+    "evidence": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/how-to-guides/networking/configure-tls-certificates.mdx; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/istio/charts/uds-istio-config/templates/gateway.yaml; https://istio.io/latest/docs/reference/config/networking/gateway/; https://dl.dod.cyber.mil/wp-content/uploads/pki-pke/pdf/unclass-dod_approved_external_pkis_master_document.pdf; https://dl.dod.cyber.mil/wp-content/uploads/pki-pke/pdf/unclass-ss_using_commercial_pki_certificates.pdf; https://www.cyber.mil/pki-pke",
     "human_review": true
   },
   {
@@ -4633,18 +4640,21 @@
       "CCI-002450"
     ],
     "status": "Unclear",
-    "justification": "The actual artifact does not establish that MPN is unclassified. NSA-approved classified protection depends on the mission data classification and processing boundary, which are absent from the release contract. UDS FIPS cryptography alone does not establish NSA approval for a classified use case.",
+    "justification": "Delivered FIPS mechanisms can protect normal application hops, but the source/package does not select a mission-approved classified-data cryptographic boundary. The required outcome may be supplied by MPN network/storage protection around Gallatin-managed UDS; it need not be reimplemented independently by every named service. Approval/classification and the actual protected storage/path map remain one shared mission input, not proof of a missing crypto feature.",
     "evidence_ids": [
-      "re-appserver-release",
-      "re-appserver-privateinputs"
+      "re-mission-nsa-system-solutions",
+      "re-mission-nsa-registration",
+      "re-mission-nsa-cp",
+      "re-docs-mpn-decision-boundary"
     ],
-    "next_step": "Obtain the MPN data classification and cryptographic protection boundary decision; assess required NSA-approved protection or record accepted N/A.",
-    "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
-    "category": "classification and cryptographic policy input",
+    "next_step": "Prepare one mission data/protection matrix covering identities, mission records, source files/chunks, derived assertions/embeddings, generated artifacts and backups/logs. Map each to the controlling program SCG or handling authority, permitted recipients/REL TO rules, SAMI applicability, at-rest and in-transit protection and the responsible implemented boundary. Have the mission owner select the actual classification/handling branch. For classified data, attach the existing approved MPN boundary protection evidence and map every data path; only engineer a missing boundary after that mapping. For unclassified scope, record the supported classified-rule N/A. Do not impose independent app-level CNSA/Type1 TLS merely because the benchmark names the application.",
+    "owner": "Gallatin security lead/ISSO + Government mission data owner; Gallatin SRE for boundary implementation",
+    "category": "mission crypto boundary/decision",
     "components": "Delivered Horizon API, workers, chat, ingestion and storage; delegated UDS identity/gateway/mesh",
-    "task": "",
+    "task": "mission-data-protection-mapping",
     "evidence_state": "source-inferred",
-    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685; https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685",
+    "solution_ref": "../solutions/mission-data.md",
+    "evidence": "https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/faq/; https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/solution-registration/; https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/Capability-Packages/; https://drive.google.com/file/d/1p5zQe7lko71bWNfBd2B6clzJK52Rl0U5/view",
     "human_review": true
   },
   {
@@ -4726,20 +4736,22 @@
       "CCI-004544",
       "CCI-000366"
     ],
-    "status": "Unclear",
-    "justification": "Users/profiledata are tenant-bound and protected, but these exact rules ask for tags identifying organization-defined authorizedPIIprocessing and processing purposes. Neither the release contract nor users schema defines those legal/policy tags or the in-scopePII elements. Tenant_id is an accesssecurityattribute, not automatically an authorized-processing-purpose tag. This remaining item is a policy/applicabilitydefinition, not uninvestigated runtimebehavior.",
+    "status": "Needs work",
+    "justification": "The candidate PII elements are identifiable in the delivered identity schema, and file/chunk tag propagation already exists. The missing authorized processing association is a bounded policy/configuration integration, not a reason to invent a new general tagging subsystem. Tenant_id and security classification do not encode this semantic purpose by themselves.",
     "evidence_ids": [
-      "re-appserver-release",
-      "re-appserver-piiprofile",
-      "re-appserver-schemaattributes"
+      "re-mission-user-fields",
+      "re-mission-upload-tags",
+      "re-mission-ingestion-tags",
+      "re-docs-classification-policy"
     ],
-    "next_step": "Define in-scopePII elements and approvedprocessing/purposes, then record supportedN/A/delegation or map/add the requiredtags.",
-    "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
-    "category": "PII policy/applicability decision",
+    "next_step": "Have the privacy/mission data owner approve the PII element/purpose matrix below. Reuse files.tags and propagated chunk metadata for document-level tags such as privacy.profile, privacy.authorized_processing and privacy.processing_purpose. Attach a versioned schema-level privacy profile to account identity fields in the API/schema data dictionary; implement and validate only the missing association/propagation needed by the approved scope. If field-level tags are required, add narrow schema metadata or a field-to-policy mapping, not a wholesale per-row schema rewrite. Verify the exact data-tag interpretation with the assessor before treating a standalone document as an attached tag.",
+    "owner": "Gallatin privacy/security lead + mission data owner; API/ingestion maintainers",
+    "category": "bounded metadata/policy configuration",
     "components": "Delivered Horizon API, workers, chat, ingestion and storage; delegated UDS identity/gateway/mesh",
-    "task": "",
+    "task": "pii-processing-metadata",
     "evidence_state": "source-inferred",
-    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685; https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/schema/users.pg.hcl; https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/schema/branches.pg.hcl",
+    "solution_ref": "../solutions/mission-data.md",
+    "evidence": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/api/users/users.schema.ts; https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/api/files/files.schema.ts; https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/workers/artifact-ingestion/artifact_ingestion/processor.py; https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-CUI-data-classification.md",
     "human_review": true
   },
   {
@@ -4756,20 +4768,22 @@
       "CCI-004558",
       "CCI-000366"
     ],
-    "status": "Unclear",
-    "justification": "Users/profiledata are tenant-bound and protected, but these exact rules ask for tags identifying organization-defined authorizedPIIprocessing and processing purposes. Neither the release contract nor users schema defines those legal/policy tags or the in-scopePII elements. Tenant_id is an accesssecurityattribute, not automatically an authorized-processing-purpose tag. This remaining item is a policy/applicabilitydefinition, not uninvestigated runtimebehavior.",
+    "status": "Needs work",
+    "justification": "The candidate PII elements are identifiable in the delivered identity schema, and file/chunk tag propagation already exists. The missing processing purposes association is a bounded policy/configuration integration, not a reason to invent a new general tagging subsystem. Tenant_id and security classification do not encode this semantic purpose by themselves.",
     "evidence_ids": [
-      "re-appserver-release",
-      "re-appserver-piiprofile",
-      "re-appserver-schemaattributes"
+      "re-mission-user-fields",
+      "re-mission-upload-tags",
+      "re-mission-ingestion-tags",
+      "re-docs-classification-policy"
     ],
-    "next_step": "Define in-scopePII elements and approvedprocessing/purposes, then record supportedN/A/delegation or map/add the requiredtags.",
-    "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
-    "category": "PII policy/applicability decision",
+    "next_step": "Have the privacy/mission data owner approve the PII element/purpose matrix below. Reuse files.tags and propagated chunk metadata for document-level tags such as privacy.profile, privacy.authorized_processing and privacy.processing_purpose. Attach a versioned schema-level privacy profile to account identity fields in the API/schema data dictionary; implement and validate only the missing association/propagation needed by the approved scope. If field-level tags are required, add narrow schema metadata or a field-to-policy mapping, not a wholesale per-row schema rewrite. Verify the exact data-tag interpretation with the assessor before treating a standalone document as an attached tag.",
+    "owner": "Gallatin privacy/security lead + mission data owner; API/ingestion maintainers",
+    "category": "bounded metadata/policy configuration",
     "components": "Delivered Horizon API, workers, chat, ingestion and storage; delegated UDS identity/gateway/mesh",
-    "task": "",
+    "task": "pii-processing-metadata",
     "evidence_state": "source-inferred",
-    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685; https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/schema/users.pg.hcl; https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/schema/branches.pg.hcl",
+    "solution_ref": "../solutions/mission-data.md",
+    "evidence": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/api/users/users.schema.ts; https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/api/files/files.schema.ts; https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/workers/artifact-ingestion/artifact_ingestion/processor.py; https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-CUI-data-classification.md",
     "human_review": true
   },
   {
@@ -4949,21 +4963,23 @@
       "V-32534",
       "CCI-001199"
     ],
-    "status": "Unclear",
-    "justification": "DB-local encryption is not required when the MPN host/storage layer supplies the required at-rest protection. PostgreSQL uses a default-class PVC, but neither the release contract nor UDS chart selects the actual MPN storage encryption/key settings; MPN documentation still leaves host/storage decisions pending. This is a precise operator storage input, not an application encryption-code defect or a demand to observe runtime.",
+    "status": "Needs work",
+    "justification": "PostgreSQL officially supports block/filesystem encryption, so the existing database can inherit encrypted PGDATA/WAL/temporary storage. Restricted writer/admin roles and the defined integrity layer cover access/modification separately; no replacement DB/TDE product is required. Gallatin operates MPN Core and storage. A concrete lower-layer solution can be specified now, so this is a shared configuration/implementation backlog item rather than an unknown UDS setting. No deployed compliance result is claimed.",
     "evidence_ids": [
-      "re-database-postgres-values",
-      "re-database-postgres-pod",
-      "re-database-storage",
-      "re-database-actual-image"
+      "sol-storage-postgres-pvc",
+      "sol-storage-seaweed-chart",
+      "sol-storage-pg-official",
+      "sol-storage-core-boundary",
+      "sol-storage-dm-auth-integrity"
     ],
-    "next_step": "Attach the selected MPN storage/IaC encryption and key-management record, or accepted data-owner exemption/physical protection. Do not substitute unrelated Gallatin AWS storage.",
-    "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
-    "category": "external MPN storage selection",
+    "next_step": "Create one Gallatin-owned mpn-encrypted StorageClass backed by approved encrypted disks/volumes; set PostgreSQL persistence.storageClassName (not storageClass), bind SeaweedFS PVC explicitly and protect Core identity database/PVCs. Encrypt node OS/temp/cache and API Secret/datastore storage too. Keep the existing database/object-store products; use the selected host provider rather than a new storage cluster. Include PGDATA,WAL,tablespaces,temporary files and backups; retain database-role restrictions and signed/authenticated backup records.",
+    "owner": "Gallatin SRE / MPN platform engineering; application security for integrity scope",
+    "category": "shared storage protection implementation",
     "components": "Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database",
-    "task": "",
+    "task": "mpn-storage-protection",
     "evidence_state": "source-inferred",
-    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/values/postgres.yaml; https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-postgres/templates/statefulset.yaml; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/getting-started/production/provision-services.mdx; https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685",
+    "solution_ref": "../solutions/storage-protection.md",
+    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-postgres/templates/statefulset.yaml; https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/seaweedfs/templates/deployment.yaml; https://www.postgresql.org/docs/18/encryption-options.html; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/getting-started/production/prerequisites.mdx; https://www.kernel.org/doc/html/latest/admin-guide/device-mapper/dm-integrity.html",
     "human_review": true
   },
   {
@@ -5043,21 +5059,22 @@
       "V-58169",
       "CCI-002475"
     ],
-    "status": "Unclear",
-    "justification": "DB-local encryption is not required when the MPN host/storage layer supplies the required at-rest protection. PostgreSQL uses a default-class PVC, but neither the release contract nor UDS chart selects the actual MPN storage encryption/key settings; MPN documentation still leaves host/storage decisions pending. This is a precise operator storage input, not an application encryption-code defect or a demand to observe runtime.",
+    "status": "Needs work",
+    "justification": "The database modification rule explicitly permits OS/filesystem/additional software controls. A chosen cryptographic integrity boundary supplies the needed mechanism; encryption-only disks do not establish the entire integrity property. Gallatin operates MPN Core and storage. A concrete lower-layer solution can be specified now, so this is a shared configuration/implementation backlog item rather than an unknown UDS setting. No deployed compliance result is claimed.",
     "evidence_ids": [
-      "re-database-postgres-values",
-      "re-database-postgres-pod",
-      "re-database-storage",
-      "re-database-actual-image"
+      "sol-storage-pg-official",
+      "sol-storage-dm-auth-integrity",
+      "sol-storage-seaweed-aead",
+      "sol-storage-dm-auth-modes"
     ],
-    "next_step": "Attach the selected MPN storage/IaC encryption and key-management record, or accepted data-owner exemption/physical protection. Do not substitute unrelated Gallatin AWS storage.",
-    "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
-    "category": "external MPN storage selection",
+    "next_step": "Define the sensitive/PII/classification data scope and select an approved authenticated-integrity storage boundary for its live database volume; a supported host dm-crypt+dm-integrity authenticated mode is one existing implementation option, not an instruction to reformat the current disk. Use existing AES-GCM object storage for object ciphertext and signed authenticated backup manifests for offline archives. Retain DB role restrictions separately. Do not credit plain diskSSE/AES-XTS, PostgreSQL page checksums or RBAC as cryptographic integrity, and do not build custom encryption for every database page. Keep this work open until the selected provider/host integrity setting or accepted scope mapping is committed.",
+    "owner": "Gallatin SRE / MPN platform engineering; application security for integrity scope",
+    "category": "shared storage protection implementation",
     "components": "Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database",
-    "task": "",
+    "task": "mpn-storage-integrity",
     "evidence_state": "source-inferred",
-    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/values/postgres.yaml; https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-postgres/templates/statefulset.yaml; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/getting-started/production/provision-services.mdx; https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685",
+    "solution_ref": "../solutions/storage-protection.md",
+    "evidence": "https://www.postgresql.org/docs/18/encryption-options.html; https://www.kernel.org/doc/html/latest/admin-guide/device-mapper/dm-integrity.html; https://github.com/seaweedfs/seaweedfs/blob/4.52/weed/util/cipher.go; https://www.kernel.org/doc/html/latest/admin-guide/device-mapper/dm-crypt.html",
     "human_review": true
   },
   {
@@ -5075,21 +5092,23 @@
       "V-58171",
       "CCI-002476"
     ],
-    "status": "Unclear",
-    "justification": "DB-local encryption is not required when the MPN host/storage layer supplies the required at-rest protection. PostgreSQL uses a default-class PVC, but neither the release contract nor UDS chart selects the actual MPN storage encryption/key settings; MPN documentation still leaves host/storage decisions pending. This is a precise operator storage input, not an application encryption-code defect or a demand to observe runtime.",
+    "status": "Needs work",
+    "justification": "The DBMS disclosure check permits lower-layer encryption and appropriately secured premises/media. Recommend encrypted storage as the default Gallatin baseline rather than relying on a speculative physical exemption. Gallatin operates MPN Core and storage. A concrete lower-layer solution can be specified now, so this is a shared configuration/implementation backlog item rather than an unknown UDS setting. No deployed compliance result is claimed.",
     "evidence_ids": [
-      "re-database-postgres-values",
-      "re-database-postgres-pod",
-      "re-database-storage",
-      "re-database-actual-image"
+      "sol-storage-postgres-pvc",
+      "sol-storage-seaweed-chart",
+      "sol-storage-pg-official",
+      "sol-storage-core-boundary",
+      "sol-storage-k8-encryption"
     ],
-    "next_step": "Attach the selected MPN storage/IaC encryption and key-management record, or accepted data-owner exemption/physical protection. Do not substitute unrelated Gallatin AWS storage.",
-    "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
-    "category": "external MPN storage selection",
+    "next_step": "Create one Gallatin-owned mpn-encrypted StorageClass backed by approved encrypted disks/volumes; set PostgreSQL persistence.storageClassName (not storageClass), bind SeaweedFS PVC explicitly and protect Core identity database/PVCs. Encrypt node OS/temp/cache and API Secret/datastore storage too. Keep the existing database/object-store products; use the selected host provider rather than a new storage cluster. Separate key access from data readers and preserve encryption for backup/export copies. Record physical safeguards as additional protection, not evidence that the current unspecified storage is already compliant.",
+    "owner": "Gallatin SRE / MPN platform engineering; application security for integrity scope",
+    "category": "shared storage protection implementation",
     "components": "Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database",
-    "task": "",
+    "task": "mpn-storage-protection",
     "evidence_state": "source-inferred",
-    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/values/postgres.yaml; https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-postgres/templates/statefulset.yaml; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/getting-started/production/provision-services.mdx; https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685",
+    "solution_ref": "../solutions/storage-protection.md",
+    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-postgres/templates/statefulset.yaml; https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/seaweedfs/templates/deployment.yaml; https://www.postgresql.org/docs/18/encryption-options.html; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/getting-started/production/prerequisites.mdx; https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/",
     "human_review": true
   },
   {
@@ -5686,18 +5705,21 @@
       "CCI-002450"
     ],
     "status": "Unclear",
-    "justification": "Source supports classification metadata but does not determine whether the delivered MPN data requires NSA-approved classified cryptography. This is a mission-owner cryptographic applicability input; ordinary FIPS evidence alone cannot close a classified-data requirement.",
+    "justification": "Delivered FIPS mechanisms can protect normal application hops, but the source/package does not select a mission-approved classified-data cryptographic boundary. The required outcome may be supplied by MPN network/storage protection around Gallatin-managed UDS; it need not be reimplemented independently by every named service. Approval/classification and the actual protected storage/path map remain one shared mission input, not proof of a missing crypto feature.",
     "evidence_ids": [
-      "re-database-labels",
-      "re-database-release"
+      "re-mission-nsa-system-solutions",
+      "re-mission-nsa-registration",
+      "re-mission-nsa-cp",
+      "re-docs-mpn-decision-boundary"
     ],
-    "next_step": "Record actual MPN data classification and required NSA cryptographic protection boundary; apply N/A only to a documented unclassified deployment.",
-    "owner": "MPN mission owner/AO",
-    "category": "external mission classification decision",
+    "next_step": "Prepare one mission data/protection matrix covering identities, mission records, source files/chunks, derived assertions/embeddings, generated artifacts and backups/logs. Map each to the controlling program SCG or handling authority, permitted recipients/REL TO rules, SAMI applicability, at-rest and in-transit protection and the responsible implemented boundary. Have the mission owner select the actual classification/handling branch. For classified data, attach the existing approved MPN boundary protection evidence and map every data path; only engineer a missing boundary after that mapping. For unclassified scope, record the supported classified-rule N/A. Do not impose independent app-level CNSA/Type1 TLS merely because the benchmark names the application.",
+    "owner": "Gallatin security lead/ISSO + Government mission data owner; Gallatin SRE for boundary implementation",
+    "category": "mission crypto boundary/decision",
     "components": "Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database",
-    "task": "",
+    "task": "mission-data-protection-mapping",
     "evidence_state": "source-inferred",
-    "evidence": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/schema/files.pg.hcl; https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685",
+    "solution_ref": "../solutions/mission-data.md",
+    "evidence": "https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/faq/; https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/solution-registration/; https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/Capability-Packages/; https://drive.google.com/file/d/1p5zQe7lko71bWNfBd2B6clzJK52Rl0U5/view",
     "human_review": true
   },
   {

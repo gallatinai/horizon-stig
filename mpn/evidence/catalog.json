@@ -4,11 +4,6 @@
     "observation": "Current scope assigns control plane/node OS to MPN; no host assessment or live configuration was supplied.",
     "url": "https://gallatin.atlassian.net/wiki/spaces/GG/pages/733085804/WIP+STIG+SRG+Compliance+Scope+MPN"
   },
-  "uds": {
-    "title": "UDS architecture",
-    "observation": "Current scope names Pepr, Istio, Falco, Velero and centralized logging; architecture supplies a mechanism, not observed enforcement.",
-    "url": "https://gallatin.atlassian.net/wiki/spaces/GG/pages/733085804/WIP+STIG+SRG+Compliance+Scope+MPN"
-  },
   "realm": {
     "title": "Bundled realm",
     "observation": "Realm defaults: failureFactor=5, permanentLockout=false, idle=900s, max=28800s, password policy includes hashing only, events/admin events enabled with 90-day local event retention.",
@@ -429,11 +424,6 @@
     "observation": "Corporate draft identity policy prohibits shared interactive CUI accounts, mandates unique users and identity-verified administrator recovery; header Draft / Effective TBD means no approval or completed recovery event is asserted.",
     "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-IA-identification-and-authentication.md"
   },
-  "re-governance-policy-ac": {
-    "title": "re-governance-policy-ac",
-    "observation": "Corporate draft access policy defines quarterly access certification and retained review evidence; it does not provide a dated GitHub repository certification result.",
-    "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-AC-access-control.md"
-  },
   "re-governance-policy-ir": {
     "title": "re-governance-policy-ir",
     "observation": "Written corporate incident/violation reporting procedure defines severity, reporting, containment, preservation, responsibilities and review; draft header and follow-on runbook/contact-sheetTBD retained as limitations.",
@@ -444,20 +434,10 @@
     "observation": "Corporate draft explicitly leaves per-system RTO/RPO, backup configuration/test schedule and actual BCP/DRP TBD. A general commitment is not an application recovery plan or protected-assets procedure.",
     "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-CP-business-continuity-disaster-recovery.md"
   },
-  "re-governance-policy-au": {
-    "title": "re-governance-policy-au",
-    "observation": "Draft corporate audit policy specifies quarterly review, retained reports and responsible security roles; no completed MPN audit-review report/date found.",
-    "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-AU-audit-and-accountability.md"
-  },
   "re-governance-policy-classification": {
     "title": "re-governance-policy-classification",
     "observation": "Written corporate classification policy defines broad sensitivity tiers and handling/marking obligations; approved systems list isTODO and contract-specific CUI categories remain an open SSP decision.",
     "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-CUI-data-classification.md"
-  },
-  "re-governance-policy-training": {
-    "title": "re-governance-policy-training",
-    "observation": "Corporate policy identifies recurring security/awareness courses in ThreatSwitch and annual/role-based training requirements. It does not establish annual SDLC security-course completion by every application manager/designer/developer/tester.",
-    "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-AT-awareness-and-training.md"
   },
   "re-governance-policy-backlog": {
     "title": "re-governance-policy-backlog",
@@ -874,11 +854,6 @@
     "observation": "UDS identity transformation clears migrations.extraDatabases and removes bundled Keycloak/provisioner components, thereby removing create-databases and wait-for-Keycloak init containers. Reproduced delivered chart captures contain16 main/init containers, all with nonempty resource settings.",
     "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/scripts/ci/platform_identity.py"
   },
-  "re-platform-external-storage": {
-    "title": "re-platform-external-storage",
-    "observation": "Production UDS requires operator-provisioned storage, TLS and identity database. The Horizon profile does not specify MPN cluster datastore/keystore disk encryption or Zarf-init settings; commercial Gallatin AWS IaC is a different deployment boundary.",
-    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/getting-started/production/provision-services.mdx"
-  },
   "re-platform-id-audit": {
     "title": "re-platform-id-audit",
     "observation": "JSON listener emits platform user/admin events to stdout for Vector/Loki collection. UDS identity selected by delivered artifact makes this applicable to Horizon rather than requiring its own duplicated forwarding.",
@@ -1139,11 +1114,6 @@
     "observation": "Branch records automatically derive tenant_id from trusted app.tenant_id context; composite ancestry/tenantkeys and user audit fields preserve objectsecurity context. Application tenancy is an actual security attribute, not merely an arbitrary label.",
     "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/schema/branches.pg.hcl"
   },
-  "re-appserver-piiprofile": {
-    "title": "re-appserver-piiprofile",
-    "observation": "Users have tenant/identity and ordinary profile fields under RLS. No explicit per-PII-element authorized-processing or processing-purpose tag is configured in this schema.",
-    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/schema/users.pg.hcl"
-  },
   "re-appserver-roleaudit": {
     "title": "re-appserver-roleaudit",
     "observation": "Role grant/revocation writes an actor+subject+tenant+action+role audit record, transactionally coupled with mutation. Failed preconditions throw before insert; failed transaction paths do not retain successful audit rows.",
@@ -1204,16 +1174,6 @@
     "observation": "ProtectedAPI verifies JWTsignature/issuer/audience/expiry offline. There is no per-request session revocation check; immediate bearer credential invalidation is a residual beyond ending the IdP/browser interactive session.",
     "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/api/auth/auth.oidc-jwt.service.ts"
   },
-  "re-appserver-storage": {
-    "title": "re-appserver-storage",
-    "observation": "Application package requests a persistentvolume with empty/default storageClass; this source does not choose the MPN host disk/CSI encryption or offline backupimplementation.",
-    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/values/postgres.yaml"
-  },
-  "re-appserver-gwtls": {
-    "title": "re-appserver-gwtls",
-    "observation": "UDS HTTPS ingress uses operator-supplied TLS Secret and rootminimumTLS; actual leaf certificate issuer/class is supplied outside Horizon package.",
-    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/istio/charts/uds-istio-config/templates/gateway.yaml"
-  },
   "re-appserver-webmobile": {
     "title": "re-appserver-webmobile",
     "observation": "Multistage immutable frontend image copies compiled assets; clientJavaScript is served to browser, not installed/executed by an application server plugin/mobile code interface.",
@@ -1223,11 +1183,6 @@
     "title": "re-appserver-clustering",
     "observation": "The generic service chart implements Kubernetes Deployment replicaCount, optional autoscaling/v2 HPA, readiness/liveness probes and Service routing. This is a clustering/failover capability; MAC I actual redundancy requires its selected deployment configuration.",
     "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-service/templates/hpa.yaml"
-  },
-  "re-appserver-privateinputs": {
-    "title": "re-appserver-privateinputs",
-    "observation": "Delivered platform-contract defines Core and identity but no data classification/MAC designation, MPN storage provider or gateway certificate chain. These organizational/provider selections cannot be recovered by treating the unused source template as the final deployment.",
-    "url": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685"
   },
   "re-appserver-idlistener": {
     "title": "re-appserver-idlistener",
@@ -1511,14 +1466,6 @@
     "url": "https://github.com/zarf-dev/zarf/blob/v0.86.0/site/src/content/docs/commands/zarf_tools_registry_prune.md",
     "observation": "Zarf0.86 includes tools registry prune, which deletes images not referenced by any current Zarf package; --confirm explicitly authorizes pruning. It is an executable maintenance action, not a Core automatic upgrade hook."
   },
-  "mpn-core-storage-boundary": {
-    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/getting-started/production/prerequisites.mdx",
-    "observation": "Core production prerequisites require an existing Kubernetes cluster and default storage class. Core does not select the MPN control-plane distribution, storage encryption provider or node volume encryption implementation."
-  },
-  "mpn-core-keycloak-pvc": {
-    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/templates/pvc.yaml",
-    "observation": "Keycloak PVCs set storageClassName only if persistence.storageClassName is selected; templates configure capacity/access but not storage encryption or host datastore encryption. Default Core cannot establish MPN keystore/data volume protection without a host-storage choice."
-  },
   "mpn-core-inactivity-setting": {
     "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/how-to-guides/identity-and-authorization/configure-account-inactivity-disable.mdx",
     "observation": "Gallatin can set keycloak realmInitEnv.ACCOUNT_INACTIVITY_DAYS=35 to enable initial realm workflow. Source warns realm import is initial-only; existing realm requires directly enabling/updating disable-inactive-users workflow with after35d. Admin accounts are excepted and never-used accounts require handling."
@@ -1535,8 +1482,216 @@
     "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/falco/values/values.yaml",
     "observation": "Falco sends structured events to Loki by default. falcosidekick.config.alertmanager.hostport/endpoint are documented but commented; Gallatin can enable the route to monitoring Alertmanager and configure receivers itself."
   },
-  "mpn-host-secret-encryption": {
+  "sol-storage-postgres-pvc": {
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-postgres/templates/statefulset.yaml",
+    "observation": "PostgreSQL mounts PGDATA on its own PVC and renders persistence.storageClassName when nonempty. Correct chart key is storageClassName; source/values/postgres.yaml uses storageClass, so changing that unmatched field would not select an encrypted class."
+  },
+  "sol-storage-seaweed-chart": {
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/seaweedfs/templates/deployment.yaml",
+    "observation": "Current chart runs weed server -s3 -s3.config=... without data-encryption flags; a mounted dataPVC supplies its persistence. Its PVC template currently has no storageClassName field, so add optional class binding or deliberately choose the cluster default."
+  },
+  "sol-storage-seaweed-aead": {
+    "url": "https://github.com/seaweedfs/seaweedfs/blob/4.52/weed/util/cipher.go",
+    "observation": "Exact delivered SeaweedFS4.52 cipher code generates32-byte random keys, AES-GCM encryption/nonces and authenticated gcm.Open decryption. This is an existing object-storage mechanism, not new API cryptography."
+  },
+  "sol-storage-seaweed-flags": {
+    "url": "https://github.com/seaweedfs/seaweedfs/blob/4.52/weed/command/server.go",
+    "observation": "Exact4.52 server exposes filer.encryptVolumeData and s3.encryptVolumeData flags, both defaultfalse. Enabling these existing paths provides volume-data encryption for filer and S3 uploads; it does not encrypt all filer metadata automatically."
+  },
+  "sol-storage-pg-official": {
+    "url": "https://www.postgresql.org/docs/18/encryption-options.html",
+    "observation": "PostgreSQL18 explicitly supports filesystem/block/full-disk encryption as a data-partition protection layer. Mounted filesystem access still returns plaintext; this does not defeat privileged server access or replace authorization/integrity controls."
+  },
+  "sol-storage-core-boundary": {
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/getting-started/production/prerequisites.mdx",
+    "observation": "Core expects an existing cluster and defaultStorageClass; it does not provision MPN host disk encryption. Gallatin owns this infrastructure choice and can bind the app/CorePVCs to a selected encrypted storage class."
+  },
+  "sol-storage-core-keystore": {
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/templates/pvc.yaml",
+    "observation": "Core Keycloak PVCs optionally use persistence.storageClassName; storage encryption and identity database protection are supplied below the chart. Protect Kubernetes Secrets/control-plane datastore separately."
+  },
+  "sol-storage-k8-encryption": {
     "url": "https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/",
-    "observation": "Kubernetes API Secrets are plaintext in etcd unless the selected API-server --encryption-provider-config uses a nonidentity encryption provider first. This is a host/control-plane configuration, separate from Core workload manifests and encrypted PVC selection."
+    "observation": "Kubernetes Secret storage is plaintext unless API server uses an EncryptionConfiguration with a nonidentity provider first. Configure --encryption-provider-config or the distribution equivalent; existing values need rewriting to migrate stored Secret data after enablement."
+  },
+  "sol-storage-azure-objects": {
+    "url": "https://learn.microsoft.com/en-us/azure/storage/common/storage-service-encryption",
+    "observation": "If Azure storage is selected, service encryption protects data at rest transparently; client downloads receive plaintext, so providerSSE does not by itself preserve offline exported-backup encryption. Do not redirect the existing S3 client to native AzureBlob API without a supported adapter."
+  },
+  "sol-storage-cms-aead": {
+    "url": "https://docs.openssl.org/3.5/man1/openssl-cms/",
+    "observation": "OpenSSL CMS supports encryption/decryption, signing/verification and AES-GCM authenticated encryption. An approved pinned provider can supply encrypted authenticated backup envelopes without inventing a cryptographic format; exact validated module/mode selection is separate from algorithm availability."
+  },
+  "sol-storage-fips-mode": {
+    "url": "https://docs.openssl.org/3.5/man7/fips_module/",
+    "observation": "OpenSSL FIPS use requires configuring the actual validated provider and approved operation selection; simply naming AES or an image FIPS does not establish an approved module boundary for every operation."
+  },
+  "sol-storage-offline-key-limits": {
+    "url": "https://learn.microsoft.com/en-us/azure/key-vault/general/backup",
+    "observation": "Azure KeyVault object backup is an encrypted blob that restores only into Azure within the documented subscription/geography boundary. It is not by itself a portable disconnected private-key escrow or an offline application-data backup."
+  },
+  "sol-storage-dm-auth-integrity": {
+    "url": "https://www.kernel.org/doc/html/latest/admin-guide/device-mapper/dm-integrity.html",
+    "observation": "Linux dm-integrity with dm-crypt supports authenticated disk encryption that rejects modified encrypted sectors with I/O error. Standalone CRC mode only detects accidental corruption; journal/mode choices affect consistency and performance. Distribution/FIPS-module support must be selected, not assumed."
+  },
+  "sol-storage-dm-auth-modes": {
+    "url": "https://www.kernel.org/doc/html/latest/admin-guide/device-mapper/dm-crypt.html",
+    "observation": "Kernel dm-crypt documents authenticated modes such as gcm(aes) and authenc(hmac(sha256),xts(aes)) using integrity:aead metadata. Plain AES-XTS is not this authenticated mode. Existing host functionality can supply integrity without adding custom DB crypto, when supported in the selected approved platform."
+  },
+  "solution-topology-tls-doc": {
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/how-to-guides/networking/configure-tls-certificates.mdx",
+    "observation": "Core1.14supports operator-provisioned PEMfullchain+key via deploytimeTLSvariables or existing gateway-namespace KubernetesSecret selected by tls.credentialName. Both tenant/admin gateways can be configured by Gallatin; no DefenseUnicorns-managedcluster or certificate service is required."
+  },
+  "solution-topology-tls-template": {
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/istio/charts/uds-istio-config/templates/gateway.yaml",
+    "observation": "Gateway HTTPS443 references explicit tls.credentialName and supportsSIMPLE/MUTUAL/OPTIONAL_MUTUAL TLS modes with minimumTLS1.3. Per-servercredentialName also supported. Secret reference is not a claim about the CA/class of its unseen leaf certificate."
+  },
+  "solution-topology-trust-doc": {
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/how-to-guides/networking/manage-trust-bundles.mdx",
+    "observation": "Core distributes uds-trust-bundle ConfigMaps using CA_BUNDLE_CERTS,CA_BUNDLE_INCLUDE_DOD_CERTS,CA_BUNDLE_INCLUDE_PUBLIC_CERTS. Both include flags defaultfalse; settingDoDtrue/publicfalse selectsDoD trustmaterial. Application custommounts are explicit; additive CA configuration does not remove systemroots."
+  },
+  "solution-topology-trust-source": {
+    "url": "https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/truststore/ca-to-jks.sh",
+    "observation": "Shared identity image builds a checksum-pinnedDoD-approvedCA bundle, excluding expired/email/software certs. This is client-certificateidentity trust evidence, not proof of presented gatewayleafClass3/4."
+  },
+  "solution-topology-app-jwks": {
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/api/auth/auth.oidc-jwt.service.ts",
+    "observation": "Delivered API uses createRemoteJWKSet(newURL(jwksUrl)); it does not supply a per-clientexplicitCA option. Configuring only Keycloakclienttrust is not sufficient to prove APIoutboundTLS restrictedCAroots."
+  },
+  "solution-topology-deploy": {
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-service/templates/deployment.yaml",
+    "observation": "Common web/API/worker Deployment supports replicas/HPA, readiness/liveness, affinity and topologySpreadConstraints, with customenv+volume mounts for concrete profile configurations."
+  },
+  "solution-topology-ha-values": {
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-service/values.yaml",
+    "observation": "Common chart defaults replicaCount1,autoscalingdisabled,pdbdisabled but supportsreplicaCount,HPAminimums,pdb.minAvailable,affinity and topologySpreadConstraints. Built-in redundancy capability is distinct from a currentlyconfiguredHAdeployment."
+  },
+  "solution-topology-pdb": {
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-service/templates/pdb.yaml",
+    "observation": "PDB template supports minimumAvailable or maximumUnavailable for selected applicationpods. Budgetonlylimitsvoluntarydisruption; itdoesnotmake a singlepodhighavailable."
+  },
+  "solution-topology-postgres": {
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/values/postgres.yaml",
+    "observation": "Selected source explicitly describes single-nodein-clusterPostgreSQL; adding statelessreplicas alone cannot establish statefuldatafailover or MACIclusteravailability."
+  },
+  "solution-topology-tiers": {
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-uds-package/templates/package.yaml",
+    "observation": "Current HorizonPackage deploys into horizon-uds and includes broad IntraNamespace ingress/egressallow. Gateway routes distinguish web/API/NATS but do not create defaultisolation between every tier in thatnamespace."
+  },
+  "solution-topology-default-deny": {
+    "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/pepr/operator/controllers/network/defaults/default-deny-all.ts",
+    "observation": "Core creates namespace ingress+egress defaultdeny. Explicitbroadallowrulesaddpermissions; a new narrowerpolicycannot subtract permissions from an existing broadallow."
+  },
+  "solution-topology-istio-secret": {
+    "url": "https://istio.io/latest/docs/reference/config/networking/gateway/",
+    "observation": "Official GatewayAPI supports serverTLS Secret keys tls.crt,tls.key and trustedclientCA/cacert plus CRL; credentialName selects namespace-local certificate material. TLSterminationcanstayatthegateway instead of duplicating in everyAPIcontainer."
+  },
+  "solution-topology-node-ca": {
+    "url": "https://nodejs.org/api/cli.html#--use-bundled-ca---use-openssl-ca",
+    "observation": "Node can replace its defaultCA source using --use-openssl-ca and SSL_CERT_FILE/SSL_CERT_DIR; NODE_EXTRA_CA_CERTS only extends built-intrust. Explicit clientTLS ca also replaces roots for thatclient. This is a source-defined enforcement path for APIoutboundverification."
+  },
+  "solution-topology-dod-ca": {
+    "url": "https://dl.dod.cyber.mil/wp-content/uploads/pki-pke/pdf/unclass-dod_approved_external_pkis_master_document.pdf",
+    "observation": "DoD publishes approvedexternalPKI assurance profiles; approvalmustmaptoactual issuer/policy rather than assume any publicDVcertificate or FIPSimage is an approved servercertificate."
+  },
+  "solution-topology-dod-commercial": {
+    "url": "https://dl.dod.cyber.mil/wp-content/uploads/pki-pke/pdf/unclass-ss_using_commercial_pki_certificates.pdf",
+    "observation": "OfficialDoD guidance permits selectedcommercialPKI forpublicfacingservers subjecttoDoDapprovedexternalPKI policy; commercialissuername alone neither proves nor disproves approval. Productionissuance/assurance mustbe recorded."
+  },
+  "solution-topology-dod-npe": {
+    "url": "https://www.cyber.mil/pki-pke",
+    "observation": "DoD PKI/PKE provides Non-PersonEntity device/servicecertificate issuance guidance. Gallatin can prepare keys/CSRs and route issuance through the missionauthorizedRA/NPEprocess; no requestforDUclusterattestation is needed."
+  },
+  "solution-topology-k8-seg": {
+    "url": "https://kubernetes.io/docs/concepts/services-networking/network-policies/",
+    "observation": "NetworkPolicy supports namespaceSelector+podSelector conjunctivepeerselectors and defaultdeny; allowrulesadd. Namespace/tier separation must remove broad oldallowrules and include explicitDNS/serviceflows."
+  },
+  "solution-topology-nsa-seg": {
+    "url": "https://media.defense.gov/2022/Aug/29/2003066362/-1/-1/0/CTR_KUBERNETES_HARDENING_GUIDANCE_1.2_20220829.PDF",
+    "observation": "NSA/CISA KubernetesHardeningGuidance identifies networksegmentation using defaultdeny plus pod/namespace selectors to limit attack surface. LogicalKubernetes isolation is an implementationmechanism; the DoWDMZ authorization boundary remains mission-specific."
+  },
+  "solution-governance-managed-service": {
+    "url": "https://docs.github.com/en/enterprise-cloud@latest/admin/overview/about-github-enterprise-cloud",
+    "observation": "Primary GitHub documentation distinguishes GitHub Enterprise Cloud from customer-operated Enterprise Server. Actual Horizon origin is GitHub.com with internal visibility, active repository rules and Code Security. Server OS patching is provider-managed; organization access and review configuration remain customer responsibilities."
+  },
+  "solution-governance-provider-assurance": {
+    "url": "https://docs.github.com/en/enterprise-cloud@latest/organizations/keeping-your-organization-secure/managing-security-settings-for-your-organization/accessing-compliance-reports-for-your-organization",
+    "observation": "GitHub organization owners can obtain current SOC 1/2 Type2, ISO27001, CSA assurance and continuity/incident reports from organization Settings\u2192Security\u2192Compliance. Those reports support a scoped provider-control inheritance/tailoring record; they are not asserted to be a DISA STIG certification."
+  },
+  "solution-governance-access-snapshot": {
+    "url": "https://docs.github.com/en/rest/collaborators/collaborators?apiVersion=2022-11-28#list-repository-collaborators",
+    "observation": "The documented read-only effective collaborator endpoint includes individual, team, default-organization and owner grants and returns highest effective role. A complete paginated read retrieved the effective Horizon entitlement inventory for owner review. A protected local snapshot is prepared, not owner-certified; no usernames or personnel records are included in this public-facing observation."
+  },
+  "solution-governance-github-audit-log": {
+    "url": "https://docs.github.com/en/organizations/keeping-your-organization-secure/managing-security-settings-for-your-organization/reviewing-the-audit-log-for-your-organization",
+    "observation": "GitHub organization owners can review/export member actions with actor/action/time. Default UI shows3months; retained organization audit history covers180days. Use retained audit exports to support the quarterly entitlement review rather than treating current membership as a historical certification."
+  },
+  "solution-governance-mpn-scope": {
+    "url": "https://docs.google.com/document/d/1RzBd9YPzJSYk8LDI126LbvRBiaF3uJjfN4T5V8-0Pbw/edit",
+    "observation": "Hydrated Oct27 containerized MPN design: protected ingress and interface flow documentation exist; external mission-data interfaces require approval. Proposed maintenance assigns Gallatin SRE operations/security coordination. This is a proposed design, not evidence of completed PPSM registration or a personnel certification. Current user direction controls: Gallatin self-manages UDS Core on MPN."
+  },
+  "solution-governance-ppsm-routing": {
+    "url": "https://grid-gallatin-ai.enterprise.slack.com/archives/C0AL2QNMGG3/p1793127354624349",
+    "observation": "Hydrated Oct27 MPN correspondence thread identifies the System Impact Assessment as the PPSM source and routes deployment/security artifacts through the MPN Government interface. Existing DU-onboarding workbooks and III Corps IATT drafts are distinct authorization packages and cannot establish MPN approval by themselves."
+  },
+  "solution-governance-account-policy": {
+    "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-AC-access-control.md",
+    "observation": "Corporate access procedure requires quarterly access certification, prompt separation/role-change handling and retained review records. A written cadence is available; searches did not yield a current MPN human-account or GitHub-quarterly certification."
+  },
+  "solution-governance-recovery-policy": {
+    "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-IA-identification-and-authentication.md",
+    "observation": "Identity-verified administrator recovery is documented. Approval headers remain draft/effectiveTBD; the approved MPN unlock procedure is a specific authorization action to complete, not missing Horizon code."
+  },
+  "solution-governance-audit-policy": {
+    "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-AU-audit-and-accountability.md",
+    "observation": "Corporate policy specifies quarterly audit review and retention of review reports. Existing UDS Vector/Loki/Grafana supports review execution; a dated MPN review cannot be invented from configuration."
+  },
+  "solution-governance-training-policy": {
+    "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-AT-awareness-and-training.md",
+    "observation": "ThreatSwitch is the corporate training completion system; written policy requires annual and role-based training. Available assigned awareness courses do not establish secure-SDLC completion for all application management, design, development and test roles."
+  },
+  "re-mission-classification-model": {
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/typescript/src/schema/schema.ts",
+    "observation": "Delivered source defines classification_level and persistent classification on files, chunks, ingestion jobs and assertions; these are real product security metadata mechanisms. Users contain identifiable identity fields but no authorized-processing or processing-purpose properties."
+  },
+  "re-mission-upload-tags": {
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/api/files/files.schema.ts",
+    "observation": "UploadMetadataSchema accepts classification and arbitrary string-key/string-value tags; file PUT/PATCH/output schemas preserve tags. Existing object metadata can carry approved privacy-purpose labels without introducing a parallel per-object metadata table."
+  },
+  "re-mission-ingestion-tags": {
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/workers/artifact-ingestion/artifact_ingestion/processor.py",
+    "observation": "Ingestion copies caller tags into resolved_tags and passes classification/tags to persisted jobs and downstream chunk preparation. This supports propagation of approved metadata but does not itself define legal processing purposes or field-level PII scope."
+  },
+  "re-mission-user-fields": {
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/api/users/users.schema.ts",
+    "observation": "Identity schemas expose email, display/given/family names and preferred username with tenant identity and role context. These are concrete candidate PII elements; the schema lacks defined authorized-processing/purpose metadata."
+  },
+  "re-mission-nsa-system-solutions": {
+    "url": "https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/faq/",
+    "observation": "NSA describes approved classified solutions as properly configured layered system designs, and cautions that partner/non-US implementations follow the applicable national authority. Ordinary product FIPS images are not themselves a registered CSfC system or evidence of an approved classified boundary."
+  },
+  "re-mission-nsa-registration": {
+    "url": "https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/solution-registration/",
+    "observation": "NSA solution registration requires system diagrams, selected components, CONOPS and the relevant approved solution package/authority artifacts. This supports one boundary-level evidence package rather than an invented requirement to add independent classified encryption inside each application service."
+  },
+  "re-mission-nsa-cp": {
+    "url": "https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/Capability-Packages/",
+    "observation": "NSA publishes distinct classified data-in-transit and data-at-rest capability packages with architecture/component/configuration requirements; an approved storage or network boundary must be mapped to its own use case, not assumed from a TLS version or FIPS image label."
+  },
+  "re-docs-classification-policy": {
+    "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-CUI-data-classification.md",
+    "observation": "Company data-classification guidance exists; contract-specific applicable CUI categories and approved systems by tier remain explicit decision inputs. This is distinct from source-level classification enums or enforcement mechanisms and does not justify claiming no taxonomy exists."
+  },
+  "re-docs-mpn-decision-boundary": {
+    "url": "https://drive.google.com/file/d/1p5zQe7lko71bWNfBd2B6clzJK52Rl0U5/view",
+    "observation": "October27 MPN deployment/assessment record explicitly distinguishes proposed architecture from selected/approved boundary, capacity, trust/storage/local model settings and release evidence. Host/Government decisions are recorded when made; these cannot be invented from generic application code."
+  },
+  "re-docs-mpn-scope-not-unclassified": {
+    "url": "https://grid-gallatin-ai.enterprise.slack.com/archives/C0AL2QNMGG3/p1793201707357709",
+    "observation": "October28 source discussion describes MPN as NATO-partner network with IL6-equivalent discussion; no source here establishes an unclassified-only MPN designation. Any classified-only N/A must remain conditional on the actual mission/data boundary."
+  },
+  "solution-asd-scg-check": {
+    "url": "https://github.com/gallatinai/horizon-stig/blob/main/mpn/benchmarks/U_ASD_V6R5_STIG/benchmark.xml",
+    "observation": "ASD V-222664 requires a security classification guide when the application contains classified data and permits a higher-level guide that covers the application data. The mission authority determines classification and approval; a proposed matrix does not confer authority."
   }
 }

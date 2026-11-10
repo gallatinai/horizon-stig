@@ -14,7 +14,7 @@ def write_rows(path, rows):
     path.write_text(json.dumps(rows, indent=2) + '\n')
     fields = ['benchmark', 'vuln_id', 'rule_id', 'version', 'severity', 'title',
               'components', 'status', 'justification', 'evidence', 'next_step',
-              'owner', 'category', 'human_review', 'task', 'evidence_state']
+              'owner', 'category', 'human_review', 'task', 'evidence_state', 'solution_ref']
     with path.with_suffix('.csv').open('w', newline='') as stream:
         writer = csv.DictWriter(stream, fieldnames=fields, extrasaction='ignore', lineterminator='\n')
         writer.writeheader()
@@ -45,6 +45,8 @@ def main():
             return str(value).replace('|', '\\|').replace('\n', ' ')
         for row in current:
             evidence = ' '.join(f"[{key}]({catalog[key]['url']})" for key in row['evidence_ids'])
+            if row.get('solution_ref'):
+                evidence += f" [Implementation plan]({row['solution_ref']})"
             cells = [row['vuln_id'] + ' / ' + row['version'], row['title'], row['status'],
                      row['justification'], evidence + ' ' + row['next_step']]
             lines.append('| ' + ' | '.join(clean(cell) for cell in cells) + ' |')
