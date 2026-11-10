@@ -8256,13 +8256,13 @@
       "CCI-003182"
     ],
     "status": "Needs work",
-    "justification": "Committed authorization/E2E and failure-mode tests plus the Nov 5 successful CI demonstrate repeated testing. However the exact official scope includes secure initialization, shutdown and aborts locally/remotely; reviewed source suites and procedure documents do not establish that full lifecycle matrix. The gap is targeted test-plan/coverage work using existing infrastructure, not a requirement to manually repeat every runtime check.",
+    "justification": "Existing authorization, failure-mode and CI tests provide partial security-test coverage, but the saved evidence does not establish the full initialization/shutdown/abort matrix or dated execution within the last year. Human review on 2026-11-10 confirmed Needs work with verification first for this and similar security-test coverage issues: map existing procedures and dated test/assessment results to the exact required scenarios, then add and execute only missing coverage. Existing test infrastructure should be reused.",
     "evidence_ids": [
       "app-ci",
       "re-governance-release-build",
       "app-enforcer"
     ],
-    "next_step": "Extend/map existing test cases to initialization/shutdown/abort unauthorized access conditions, or attach an existing dated annual assessment covering those conditions.",
+    "next_step": "In the post-classification verification pass, map current procedures and dated CI/assessment results to secure initialization, shutdown and abort scenarios, including access to application and configuration without credentials or with improper credentials, locally and remotely. Confirm procedures require execution at least annually and evidence shows execution within the last year. Credit existing coverage, add and execute only missing cases in the appropriate test environment, and retain the coverage map and dated results.",
     "owner": "Gallatin engineering/security; MPN mission owner for site approvals",
     "category": "specific lifecycle security-test coverage",
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",

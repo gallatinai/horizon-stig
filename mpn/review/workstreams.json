@@ -876,7 +876,7 @@
     {
       "vuln_id": "V-222647",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Extend/map existing test cases to initialization/shutdown/abort unauthorized access conditions, or attach an existing dated annual assessment covering those conditions."
+      "next_step": "In the post-classification verification pass, map current procedures and dated CI/assessment results to secure initialization, shutdown and abort scenarios, including access to application and configuration without credentials or with improper credentials, locally and remotely. Confirm procedures require execution at least annually and evidence shows execution within the last year. Credit existing coverage, add and execute only missing cases in the appropriate test environment, and retain the coverage map and dated results."
     }
   ],
   "session-policy": [
