@@ -21110,14 +21110,14 @@
       "CCI-002418"
     ],
     "status": "Needs work",
-    "justification": "Official Istio behavior forwards to the declared http backend usingHTTP1.1 unless explicitly selected otherwise; nginx upstream isHTTP1. The client-facing gateway supportsH2, but translation is operationally used. The official check explicitly allows operational necessity with validatedHTTP1 rewriting as CATIII, so recommend a documented translation/security disposition rather than automatically convert every backend toH2.",
+    "justification": "The saved assessment identifies client-facing HTTP/2 with HTTP/1.1 backend translation, which requires verification against actual deployed protocol settings. Human review on 2026-11-10 confirmed Needs work: verify actual downgrade behavior before either disabling it or documenting operational necessity and validating rewritten HTTP/1.x requests. The official operational-necessity/validated-rewrite alternative remains a CAT III finding, not an automatic pass or N/A.",
     "evidence_ids": [
       "re-web-actual-release",
       "re-web-service",
       "re-web-web-values",
       "re-web-http2"
     ],
-    "next_step": "Document operationally necessary translation, HTTP1 request validation/smuggling controls and CATIII/accepted tailoring, or configure end-to-endH2 if required.",
+    "next_step": "In the post-classification verification pass, inspect effective gateway/backend protocol selection and confirm whether HTTP/2 requests are downgraded. If so, determine whether downgrading can be disabled safely. If operationally necessary, document that necessity and test rejection of the malformed requests specified by the official check, including header newlines, colons in header names and spaces in methods. Retain configuration/test evidence and propose the supported CAT III disposition or accepted tailoring for review; do not silently classify it as compliant.",
     "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
     "category": "protocol tailoring/configuration",
     "components": "Delivered static nginx-FIPS, Istio ingress and shared UDS identity (separate roles)",

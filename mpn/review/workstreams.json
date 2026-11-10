@@ -942,7 +942,7 @@
     {
       "vuln_id": "V-264363",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Document operationally necessary translation, HTTP1 request validation/smuggling controls and CATIII/accepted tailoring, or configure end-to-endH2 if required."
+      "next_step": "In the post-classification verification pass, inspect effective gateway/backend protocol selection and confirm whether HTTP/2 requests are downgraded. If so, determine whether downgrading can be disabled safely. If operationally necessary, document that necessity and test rejection of the malformed requests specified by the official check, including header newlines, colons in header names and spaces in methods. Retain configuration/test evidence and propose the supported CAT III disposition or accepted tailoring for review; do not silently classify it as compliant."
     }
   ]
 }
