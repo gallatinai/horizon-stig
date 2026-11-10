@@ -7732,7 +7732,7 @@
     },
     "V-233201": {
       "status": "Needs work",
-      "justification": "The actual shared UDS X509 provider supports CRL files and fail-closed OCSP. Its pinned config defaults local CRL checking to false, however; online OCSP capability alone does not implement the specific disconnected local-cache check. This belongs to the shared IdP/trust boundary, not the Horizon API. The cache implementation and delivery recipe already exist in Core; the shipped checking flag is off and Gallatin owns mounting/enabling/refreshing it.",
+      "justification": "The actual shared UDS X509 provider supports CRL files and fail-closed OCSP. Its pinned config defaults local CRL checking to false, however; online OCSP capability alone does not implement the specific disconnected local-cache check. This belongs to the shared IdP/trust boundary, not the Horizon API. The cache implementation and delivery recipe already exist in Core; the shipped checking flag is off and Gallatin owns mounting/enabling/refreshing it. Human review on 2026-11-10 authorized applying the earlier non-platform decision to matching counterparts. Keep Needs work and share V-222553 verification/remediation where it covers this component. Preserve the exact component scope and applicability rather than treating a shared control as automatic compliance.",
       "evidence_ids": [
         "re-platform-delivered-profile",
         "re-platform-realm",
@@ -7745,7 +7745,7 @@
         "mpn-identity-init-only",
         "mpn-core-known-identity-settings"
       ],
-      "next_step": "Gallatin uses Core CRL packaging/mount support, sets realmInitEnv.X509_CRL_CHECKING_ENABLED=\"true\", X509_CRL_ABORT_IF_NON_UPDATED=\"true\" and X509_CRL_RELATIVE_PATH to mounted approved files, and updates the existing dod-cac authenticator where necessary. Refresh the CRL data image/volume before expiry. Keep OCSP fail-closed; disable OCSP only for an approved disconnected CRL alternative. No custom Keycloak cache or API code.",
+      "next_step": "Share V-222553 local CRL configuration, refresh/freshness controls and disconnected-validation tests. First verify current PKI-authentication paths and existing cache coverage for this component. Enable/update the existing shared IdP mechanism only where missing and retain effective configuration and valid/revoked/stale-data test evidence. Apply exceptions only where this exact rule supports them; do not copy an ASD-only exception to every component.",
       "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
       "category": "platform PKI configuration/tailoring",
       "components": "UDS platform: registry, runtime, Pepr, Istio, logging; delivered workloads",
@@ -9533,7 +9533,7 @@
     },
     "V-206396": {
       "status": "Needs work",
-      "justification": "Actual release delegates signout to shared UDS and browser auth store clears state, so logout is implemented. Delivered protected API nevertheless validates existing JWTs offline without revocation/introspection; an outstanding access token can remain usable until expiry after IdP session logout. That is a product-wide token-revocation residual, not a need for nginx to maintain its own session database.",
+      "justification": "Actual release delegates signout to shared UDS and browser auth store clears state, so logout is implemented. Delivered protected API nevertheless validates existing JWTs offline without revocation/introspection; an outstanding access token can remain usable until expiry after IdP session logout. That is a product-wide token-revocation residual, not a need for nginx to maintain its own session database. Human review on 2026-11-10 authorized applying the earlier non-platform decision to matching counterparts. Keep Needs work and share V-222578 verification/remediation where it covers this component. Preserve the exact component scope and applicability rather than treating a shared control as automatic compliance.",
       "evidence_ids": [
         "re-web-actual-release",
         "re-web-auth",
@@ -9541,7 +9541,7 @@
         "mpn-identity-values",
         "mpn-identity-override"
       ],
-      "next_step": "Resolve the accepted revocation window or add effective session/token revocation at API/gateway; retain delegated logout behavior. Gallatin owns this policy/integration; Core default settings are source-known.",
+      "next_step": "Share V-222578 logout/session-state verification and V-222549 token-revocation work. Verify logout and other applicable session termination invalidate session identifiers and outstanding credentials at the effective gateway/API boundary. Preserve existing shared logout and implement only confirmed residuals; token expiry alone does not establish invalidation upon termination. Retain component-specific results.",
       "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
       "category": "code/configuration or accepted tailoring",
       "components": "Delivered static nginx-FIPS, Istio ingress and shared UDS identity (separate roles)",
@@ -10571,7 +10571,7 @@
     },
     "V-264354": {
       "status": "Needs work",
-      "justification": "The actual shared provider supports a mounted local CRL/cache and fails closed on OCSP by default, but CRL checking defaultsfalse and the selected contract does not enable/distribute a local cache. Online OCSP alone does not implement the precise disconnected/cache outcome. Reuse the platform PKI configuration task. The cache implementation and delivery recipe already exist in Core; the shipped checking flag is off and Gallatin owns mounting/enabling/refreshing it.",
+      "justification": "The actual shared provider supports a mounted local CRL/cache and fails closed on OCSP by default, but CRL checking defaultsfalse and the selected contract does not enable/distribute a local cache. Online OCSP alone does not implement the precise disconnected/cache outcome. Reuse the platform PKI configuration task. The cache implementation and delivery recipe already exist in Core; the shipped checking flag is off and Gallatin owns mounting/enabling/refreshing it. Human review on 2026-11-10 authorized applying the earlier non-platform decision to matching counterparts. Keep Needs work and share V-222553 verification/remediation where it covers this component. Preserve the exact component scope and applicability rather than treating a shared control as automatic compliance.",
       "evidence_ids": [
         "re-web-actual-release",
         "re-web-realm",
@@ -10582,7 +10582,7 @@
         "mpn-identity-crl-script",
         "mpn-identity-init-only"
       ],
-      "next_step": "Gallatin uses Core CRL packaging/mount support, sets realmInitEnv.X509_CRL_CHECKING_ENABLED=\"true\", X509_CRL_ABORT_IF_NON_UPDATED=\"true\" and X509_CRL_RELATIVE_PATH to mounted approved files, and updates the existing dod-cac authenticator where necessary. Refresh the CRL data image/volume before expiry. Keep OCSP fail-closed; disable OCSP only for an approved disconnected CRL alternative. No custom Keycloak cache or API code.",
+      "next_step": "Share V-222553 local CRL configuration, refresh/freshness controls and disconnected-validation tests. First verify current PKI-authentication paths and existing cache coverage for this component. Enable/update the existing shared IdP mechanism only where missing and retain effective configuration and valid/revoked/stale-data test evidence. Apply exceptions only where this exact rule supports them; do not copy an ASD-only exception to every component.",
       "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
       "category": "identity configuration",
       "components": "Delivered static nginx-FIPS, Istio ingress and shared UDS identity (separate roles)",
@@ -10806,7 +10806,7 @@
     },
     "V-204708": {
       "status": "Needs work",
-      "justification": "The actual release delegates sessions to UDS Keycloak, not bundled Keycloak. Core adds an enforcing user-session-limits authenticator, but its realm default is explicitly0/unlimited. The official check expressly treats unlimited as a finding, so this is a provider configuration gap, not API code work. The session limiter is implemented by Core; only Gallatin policy value and applied operator configuration remain.",
+      "justification": "The actual release delegates sessions to UDS Keycloak, not bundled Keycloak. Core adds an enforcing user-session-limits authenticator, but its realm default is explicitly0/unlimited. The official check expressly treats unlimited as a finding, so this is a provider configuration gap, not API code work. The session limiter is implemented by Core; only Gallatin policy value and applied operator configuration remain. Human review on 2026-11-10 authorized applying the earlier non-platform decision to matching counterparts. Keep Needs work and share V-222387 verification/remediation where it covers this component. Preserve the exact component scope and applicability rather than treating a shared control as automatic compliance.",
       "evidence_ids": [
         "re-appserver-release",
         "re-appserver-coreidentity",
@@ -10817,7 +10817,7 @@
         "mpn-identity-realm",
         "mpn-core-known-identity-settings"
       ],
-      "next_step": "Gallatin security selects the positive concurrent-session maximum; Gallatin SRE sets realmInitEnv.SSO_SESSION_MAX_PER_USER to that value and updates the existing uds-user-session-count authenticator config through AdminConsole/API where needed. Default0 is unlimited; do not copy an arbitrary examplemaximum. No Horizon session-limiter code.",
+      "next_step": "Share V-222387 concurrent-session policy work: one concurrent session per user is proposed, not yet approved or applied. Confirm the organization-defined limits and account types for this application-server scope, verify current effective limits and whether the same shared IdP control covers them, then configure missing approved limits. Preserve justified service-account distinctions and verify limit enforcement; do not apply a human-browser maximum blindly to all service connections.",
       "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
       "category": "provider configuration",
       "components": "Delivered Horizon API, workers, chat, ingestion and storage; delegated UDS identity/gateway/mesh",
@@ -12247,7 +12247,7 @@
     },
     "V-204805": {
       "status": "Needs work",
-      "justification": "UDSX509path enables OCSPfailclosed, but its localCRL/cache check is false by default. This exact disconnectedrevocationcache requirement is not met merely by onlineOCSPsupport. It is a provider trustconfiguration task, not API code. The cache implementation and delivery recipe already exist in Core; the shipped checking flag is off and Gallatin owns mounting/enabling/refreshing it.",
+      "justification": "UDSX509path enables OCSPfailclosed, but its localCRL/cache check is false by default. This exact disconnectedrevocationcache requirement is not met merely by onlineOCSPsupport. It is a provider trustconfiguration task, not API code. The cache implementation and delivery recipe already exist in Core; the shipped checking flag is off and Gallatin owns mounting/enabling/refreshing it. Human review on 2026-11-10 authorized applying the earlier non-platform decision to matching counterparts. Keep Needs work and share V-222553 verification/remediation where it covers this component. Preserve the exact component scope and applicability rather than treating a shared control as automatic compliance.",
       "evidence_ids": [
         "re-appserver-release",
         "re-appserver-realm",
@@ -12258,7 +12258,7 @@
         "mpn-identity-crl-script",
         "mpn-identity-init-only"
       ],
-      "next_step": "Gallatin uses Core CRL packaging/mount support, sets realmInitEnv.X509_CRL_CHECKING_ENABLED=\"true\", X509_CRL_ABORT_IF_NON_UPDATED=\"true\" and X509_CRL_RELATIVE_PATH to mounted approved files, and updates the existing dod-cac authenticator where necessary. Refresh the CRL data image/volume before expiry. Keep OCSP fail-closed; disable OCSP only for an approved disconnected CRL alternative. No custom Keycloak cache or API code.",
+      "next_step": "Share V-222553 local CRL configuration, refresh/freshness controls and disconnected-validation tests. First verify current PKI-authentication paths and existing cache coverage for this component. Enable/update the existing shared IdP mechanism only where missing and retain effective configuration and valid/revoked/stale-data test evidence. Apply exceptions only where this exact rule supports them; do not copy an ASD-only exception to every component.",
       "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
       "category": "provider trust configuration",
       "components": "Delivered Horizon API, workers, chat, ingestion and storage; delegated UDS identity/gateway/mesh",
@@ -16613,7 +16613,7 @@
     },
     "V-263538": {
       "status": "Needs work",
-      "justification": "Actual UDS supports an explicit CRL file/cache path, but x509-cert-auth.crl-checking-enabled defaultsfalse and CRLdistribution-point checkingfalse. OCSP defaults enabled/failclosed, satisfying online revocation but not this distinct local-cache requirement. Configure cache or document approved offline/revocation tailoring at IdP. The cache implementation and delivery recipe already exist in Core; the shipped checking flag is off and Gallatin owns mounting/enabling/refreshing it.",
+      "justification": "Actual UDS supports an explicit CRL file/cache path, but x509-cert-auth.crl-checking-enabled defaultsfalse and CRLdistribution-point checkingfalse. OCSP defaults enabled/failclosed, satisfying online revocation but not this distinct local-cache requirement. Configure cache or document approved offline/revocation tailoring at IdP. The cache implementation and delivery recipe already exist in Core; the shipped checking flag is off and Gallatin owns mounting/enabling/refreshing it. Human review on 2026-11-10 authorized applying the earlier non-platform decision to matching counterparts. Keep Needs work and share V-222553 verification/remediation where it covers this component. Preserve the exact component scope and applicability rather than treating a shared control as automatic compliance.",
       "evidence_ids": [
         "re-aaa-release",
         "re-aaa-realm",
@@ -16624,7 +16624,7 @@
         "mpn-identity-crl-script",
         "mpn-identity-init-only"
       ],
-      "next_step": "Gallatin uses Core CRL packaging/mount support, sets realmInitEnv.X509_CRL_CHECKING_ENABLED=\"true\", X509_CRL_ABORT_IF_NON_UPDATED=\"true\" and X509_CRL_RELATIVE_PATH to mounted approved files, and updates the existing dod-cac authenticator where necessary. Refresh the CRL data image/volume before expiry. Keep OCSP fail-closed; disable OCSP only for an approved disconnected CRL alternative. No custom Keycloak cache or API code.",
+      "next_step": "Share V-222553 local CRL configuration, refresh/freshness controls and disconnected-validation tests. First verify current PKI-authentication paths and existing cache coverage for this component. Enable/update the existing shared IdP mechanism only where missing and retain effective configuration and valid/revoked/stale-data test evidence. Apply exceptions only where this exact rule supports them; do not copy an ASD-only exception to every component.",
       "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
       "category": "source/configuration",
       "components": "UDS Core 1.14 shared Keycloak realm and Horizon OIDC clients; no bundled application Keycloak",

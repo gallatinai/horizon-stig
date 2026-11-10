@@ -775,17 +775,17 @@
     {
       "vuln_id": "V-233201",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Gallatin uses Core CRL packaging/mount support, sets realmInitEnv.X509_CRL_CHECKING_ENABLED=\"true\", X509_CRL_ABORT_IF_NON_UPDATED=\"true\" and X509_CRL_RELATIVE_PATH to mounted approved files, and updates the existing dod-cac authenticator where necessary. Refresh the CRL data image/volume before expiry. Keep OCSP fail-closed; disable OCSP only for an approved disconnected CRL alternative. No custom Keycloak cache or API code."
+      "next_step": "Share V-222553 local CRL configuration, refresh/freshness controls and disconnected-validation tests. First verify current PKI-authentication paths and existing cache coverage for this component. Enable/update the existing shared IdP mechanism only where missing and retain effective configuration and valid/revoked/stale-data test evidence. Apply exceptions only where this exact rule supports them; do not copy an ASD-only exception to every component."
     },
     {
       "vuln_id": "V-264354",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Gallatin uses Core CRL packaging/mount support, sets realmInitEnv.X509_CRL_CHECKING_ENABLED=\"true\", X509_CRL_ABORT_IF_NON_UPDATED=\"true\" and X509_CRL_RELATIVE_PATH to mounted approved files, and updates the existing dod-cac authenticator where necessary. Refresh the CRL data image/volume before expiry. Keep OCSP fail-closed; disable OCSP only for an approved disconnected CRL alternative. No custom Keycloak cache or API code."
+      "next_step": "Share V-222553 local CRL configuration, refresh/freshness controls and disconnected-validation tests. First verify current PKI-authentication paths and existing cache coverage for this component. Enable/update the existing shared IdP mechanism only where missing and retain effective configuration and valid/revoked/stale-data test evidence. Apply exceptions only where this exact rule supports them; do not copy an ASD-only exception to every component."
     },
     {
       "vuln_id": "V-204805",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Gallatin uses Core CRL packaging/mount support, sets realmInitEnv.X509_CRL_CHECKING_ENABLED=\"true\", X509_CRL_ABORT_IF_NON_UPDATED=\"true\" and X509_CRL_RELATIVE_PATH to mounted approved files, and updates the existing dod-cac authenticator where necessary. Refresh the CRL data image/volume before expiry. Keep OCSP fail-closed; disable OCSP only for an approved disconnected CRL alternative. No custom Keycloak cache or API code."
+      "next_step": "Share V-222553 local CRL configuration, refresh/freshness controls and disconnected-validation tests. First verify current PKI-authentication paths and existing cache coverage for this component. Enable/update the existing shared IdP mechanism only where missing and retain effective configuration and valid/revoked/stale-data test evidence. Apply exceptions only where this exact rule supports them; do not copy an ASD-only exception to every component."
     },
     {
       "vuln_id": "V-204811",
@@ -800,7 +800,7 @@
     {
       "vuln_id": "V-263538",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Gallatin uses Core CRL packaging/mount support, sets realmInitEnv.X509_CRL_CHECKING_ENABLED=\"true\", X509_CRL_ABORT_IF_NON_UPDATED=\"true\" and X509_CRL_RELATIVE_PATH to mounted approved files, and updates the existing dod-cac authenticator where necessary. Refresh the CRL data image/volume before expiry. Keep OCSP fail-closed; disable OCSP only for an approved disconnected CRL alternative. No custom Keycloak cache or API code."
+      "next_step": "Share V-222553 local CRL configuration, refresh/freshness controls and disconnected-validation tests. First verify current PKI-authentication paths and existing cache coverage for this component. Enable/update the existing shared IdP mechanism only where missing and retain effective configuration and valid/revoked/stale-data test evidence. Apply exceptions only where this exact rule supports them; do not copy an ASD-only exception to every component."
     }
   ],
   "ppsm-authorization": [
@@ -913,7 +913,7 @@
     {
       "vuln_id": "V-206396",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Resolve the accepted revocation window or add effective session/token revocation at API/gateway; retain delegated logout behavior. Gallatin owns this policy/integration; Core default settings are source-known."
+      "next_step": "Share V-222578 logout/session-state verification and V-222549 token-revocation work. Verify logout and other applicable session termination invalidate session identifiers and outstanding credentials at the effective gateway/API boundary. Preserve existing shared logout and implement only confirmed residuals; token expiry alone does not establish invalidation upon termination. Retain component-specific results."
     },
     {
       "vuln_id": "V-206414",
@@ -928,7 +928,7 @@
     {
       "vuln_id": "V-204708",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Gallatin security selects the positive concurrent-session maximum; Gallatin SRE sets realmInitEnv.SSO_SESSION_MAX_PER_USER to that value and updates the existing uds-user-session-count authenticator config through AdminConsole/API where needed. Default0 is unlimited; do not copy an arbitrary examplemaximum. No Horizon session-limiter code."
+      "next_step": "Share V-222387 concurrent-session policy work: one concurrent session per user is proposed, not yet approved or applied. Confirm the organization-defined limits and account types for this application-server scope, verify current effective limits and whether the same shared IdP control covers them, then configure missing approved limits. Preserve justified service-account distinctions and verify limit enforcement; do not apply a human-browser maximum blindly to all service connections."
     }
   ],
   "web-hardening": [
