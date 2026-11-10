@@ -3997,7 +3997,7 @@
       "CCI-000803"
     ],
     "status": "Needs work",
-    "justification": "UDS login uses strict-FIPS BC provider and OIDC token verification uses actual jose6.2.13 WebCrypto in the CMVP5132 Node image. However, the delivered API also authenticates NATS processes and issues NATS account/user JWTs through @nats-io/nkeys2.0.3->tweetnacl1.0.3 pure-JavaScript Ed25519/signature hashing, as confirmed in actual image files. A FIPS base does not validate vendored pure-JavaScript crypto. Keep only this concrete NATS authentication module-boundary residual, not a missing UDS/user-login crypto finding.",
+    "justification": "Authentication cryptographic coverage is partially established by saved UDS FIPS-provider and Horizon OIDC/WebCrypto evidence. A separate NATS authentication-signing path uses pure-JavaScript cryptography that does not automatically inherit base-image module validation. However, the official check focuses on TLS during authentication and disabled nonapproved SSL versions, so the NATS concern must be mapped to the exact requirement before prescribing changes. Human review on 2026-11-10 confirmed Needs work with verification first: confirm actual authentication transport/module coverage and the NATS cryptographic boundary, then address only confirmed gaps or document an explicitly accepted scope determination.",
     "evidence_ids": [
       "re-images-release",
       "re-images-core-identity",
@@ -4009,7 +4009,7 @@
       "re-images-nats-purejs",
       "re-images-jose-webcrypto"
     ],
-    "next_step": "Route the NATS client/callout authentication signature operations through a validated approved-mode implementation, or obtain explicit accepted cryptographic-boundary tailoring for the existing protected mesh path. Credit current UDS/OIDC FIPS controls.",
+    "next_step": "In the post-classification verification pass, inspect assessed authentication paths and effective TLS/module configuration, including UDS user login, OIDC verification and NATS process/client/callout authentication. Verify TLS use and disabled nonapproved SSL versions against the official check; separately trace NATS signature operations and module provenance and determine their applicability to the requirement. Credit existing validated controls, retain scope/transport/module evidence, and recommend changes only for supported residuals or obtain explicit accepted tailoring. Do not infer validation of vendored JavaScript crypto from the image label.",
     "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
     "category": "source-confirmed crypto module boundary",
     "components": "Delivered Horizon API, workers, chat, ingestion and storage; delegated UDS identity/gateway/mesh",
