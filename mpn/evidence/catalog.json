@@ -1830,5 +1830,20 @@
   "nsa-mpn-release-contract-boundary": {
     "url": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685",
     "observation": "Downloaded release platform-contract.json establishes UDS identity/Core version but does not select cluster OS, storage class, network encryptor, Type1 module or CSfC solution. Application package evidence cannot establish an absent underlying MPN protection inventory."
+  },
+  "review-asd-classifier-flow-gate": {
+    "title": "Assessed-release classification gate before document-type LLM transfer",
+    "observation": "At assessed Horizon commit b84b9af, classify_document_type invokes the LLM only when enabled, a client exists and classification_level.lower() equals unclassified; other classification levels return unknown without that call. This is a label-dependent information-flow control for this classifier path, not proof of coverage for every model or export path.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/workers/artifact-ingestion/artifact_ingestion/doc_classifier.py#L108"
+  },
+  "review-asd-classifier-flow-input": {
+    "title": "Ingestion passes file classification to the LLM classifier gate",
+    "observation": "The ingestion processor passes classification_level=classification to classify_document_type. File classification is thus an input to the transfer decision, rather than only stored metadata.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/workers/artifact-ingestion/artifact_ingestion/processor.py#L345"
+  },
+  "review-asd-classifier-flow-client": {
+    "title": "Classifier sends a content sample to the configured model service",
+    "observation": "ClassifierLLMClient.classify builds a prompt containing the content sample and selects its configured OpenAI or Anthropic-compatible call. Combined with the caller gate, this establishes a controlled transfer path; it does not establish approved MPN destinations or deployment configuration.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/workers/artifact-ingestion/artifact_ingestion/llm_client.py#L187"
   }
 }

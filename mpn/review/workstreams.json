@@ -707,7 +707,7 @@
     {
       "vuln_id": "V-222428",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Select the local model service and approved destination/port profile, then encode it in the existing UDS Package policies or document accepted changed scope."
+      "next_step": "Define the approved MPN classification-to-destination information-flow policy and local model service. Configure allowed destinations and ports in the existing UDS Package policies and model settings. Inventory relevant classifier, inference and export paths; verify they enforce the approved flow policy, and address uncovered paths where required. Test labeled data against allowed and prohibited destinations and retain results. Do not treat the one classifier gate as proof of complete coverage."
     },
     {
       "vuln_id": "V-222519",

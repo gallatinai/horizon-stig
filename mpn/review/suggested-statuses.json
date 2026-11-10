@@ -1315,19 +1315,22 @@
       "CCI-001414"
     ],
     "status": "Needs work",
-    "justification": "UDS supplies enforceable service/network authorizations, but the delivered general profile permits hosted LLM endpoints while the MPN meeting requirement selects local inference. Remaining work is choosing and encoding the accepted MPN flow/model profile, not building an API-local network control.",
+    "justification": "Source inspection of assessed Horizon commit b84b9af establishes an application information-flow-control function: the ingestion processor passes the file security classification to classify_document_type, which permits the document-type LLM call only for unclassified files. The client sends a content sample to the configured model service. This specific label-dependent transfer gate supports applicability; classification metadata or UDS networking alone would not establish it. It does not prove coverage of every inference or export path. The delivered general profile permits hosted model endpoints while MPN requires local inference, and the approved MPN destination/flow profile remains unestablished. Human review on 2026-11-10 authorized Needs work if this function exists; source inspection confirms it.",
     "evidence_ids": [
       "re-asd-release",
       "re-asd-network",
-      "re-asd-package"
+      "re-asd-package",
+      "review-asd-classifier-flow-gate",
+      "review-asd-classifier-flow-input",
+      "review-asd-classifier-flow-client"
     ],
-    "next_step": "Select the local model service and approved destination/port profile, then encode it in the existing UDS Package policies or document accepted changed scope.",
+    "next_step": "Define the approved MPN classification-to-destination information-flow policy and local model service. Configure allowed destinations and ports in the existing UDS Package policies and model settings. Inventory relevant classifier, inference and export paths; verify they enforce the approved flow policy, and address uncovered paths where required. Test labeled data against allowed and prohibited destinations and retain results. Do not treat the one classifier gate as proof of complete coverage.",
     "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
     "category": "MPN profile configuration",
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
     "task": "mpn-network-profile",
     "evidence_state": "source-inferred",
-    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/pepr/operator/controllers/network/defaults/default-deny-all.ts; https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-uds-package/templates/package.yaml",
+    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/pepr/operator/controllers/network/defaults/default-deny-all.ts; https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-uds-package/templates/package.yaml; https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/workers/artifact-ingestion/artifact_ingestion/doc_classifier.py#L108; https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/workers/artifact-ingestion/artifact_ingestion/processor.py#L345; https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/workers/artifact-ingestion/artifact_ingestion/llm_client.py#L187",
     "human_review": true
   },
   {
