@@ -10680,7 +10680,7 @@
     },
     "V-264361": {
       "status": "Needs work",
-      "justification": "Neither selected gateway nor shared identity/API token path binds a user session to its initial sourceIP. MFA, meshTLS and namespace policy provide other protections but do not implement this particular property. The result can be closed by accepted mobile/proxy deployment tailoring if appropriate; no new nginx-specific session system is assumed.",
+      "justification": "The saved assessment does not establish binding of an authenticated user session to a consistent inbound source IP. TLS, MFA and network policies provide other protections but do not establish this exact behavior. Human review on 2026-11-10 confirmed Needs work with verification first: inspect actual gateway/session behavior and trusted client-IP handling before selecting missing enforcement or an explicitly accepted deployment exception. Account for legitimate proxy/NAT/mobile network behavior rather than introducing unexamined IP binding.",
       "evidence_ids": [
         "re-web-actual-release",
         "re-web-jwt",
@@ -10689,7 +10689,7 @@
         "mpn-identity-values",
         "mpn-identity-override"
       ],
-      "next_step": "Obtain accepted source-IP-binding equivalence/tailoring or enforce it at the actual session/gateway boundary. Gallatin owns this policy/integration; Core default settings are source-known.",
+      "next_step": "In the post-classification verification pass, identify the trusted inbound client-IP source and proxy chain, inspect effective gateway/session policies, and test whether an authenticated session remains usable after a source-IP change. Credit existing enforcement. For a confirmed gap, define appropriate session-bound enforcement or obtain an explicitly accepted exception/equivalence for the actual deployment, documenting legitimate network changes and proxy trust. Retain configuration, test and disposition evidence.",
       "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
       "category": "configuration or accepted tailoring",
       "components": "Delivered static nginx-FIPS, Istio ingress and shared UDS identity (separate roles)",
