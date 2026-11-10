@@ -2651,7 +2651,7 @@
       "CCI-002038"
     ],
     "status": "Needs work",
-    "justification": "Delivered authentication uses shared UDS identity with60-second access tokens,600-second idle and10-hour maximum sessions, but expiry/silent renewal is not the minimum required fresh authentication on role change or privilege escalation. The pinned realm has no configured step-up/role-change reauthentication action and the delivered client does not request it. Reuse provider policy or a central authorization transition hook; no second password prompt/login service belongs in the API.",
+    "justification": "Delivered authentication uses shared UDS identity with60-second access tokens,600-second idle and10-hour maximum sessions, but expiry/silent renewal is not the minimum required fresh authentication on role change or privilege escalation. The pinned realm has no configured step-up/role-change reauthentication action and the delivered client does not request it. Reuse provider policy or a central authorization transition hook; no second password prompt/login service belongs in the API. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the same decision to similar reauthentication requirements. Share V-222520 policy and enforcement work, verify current triggers across applicable platform/administrative entry points, and implement only missing coverage. Ordinary expiry or silent renewal is not proof of fresh user authentication.",
     "evidence_ids": [
       "re-platform-delivered-profile",
       "re-platform-realm",
@@ -2660,7 +2660,7 @@
       "mpn-identity-values",
       "mpn-identity-override"
     ],
-    "next_step": "Configure/document fresh authentication for role changes and privilege escalation at the Gallatin-operated shared IdP/administrative transition boundary; link the shared session-policy workstream. Gallatin owns this policy/integration; Core default settings are source-known.",
+    "next_step": "Verify current platform and administrative reauthentication policies and actual role-change/privilege-escalation behavior. Share V-222520 organization-defined policy, including the required minimum circumstances, and enforce missing fresh-authentication triggers at the appropriate shared identity/client/API transition boundary. Verify existing sessions cannot exercise changed/elevated rights without required reauthentication. Retain policy, configuration and test evidence; do not create a duplicate login service.",
     "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
     "category": "shared identity step-up configuration/integration",
     "components": "UDS platform: registry, runtime, Pepr, Istio, logging; delivered workloads",
