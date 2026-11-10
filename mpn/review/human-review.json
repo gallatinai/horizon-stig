@@ -1595,76 +1595,6 @@
   },
   {
     "benchmark": "U_ASD_V6R5_STIG",
-    "vuln_id": "V-222587",
-    "rule_id": "SV-222587r1263591_rule",
-    "version": "APSC-DV-002330",
-    "title": "The application must protect the confidentiality and integrity of stored information when required by DoW policy or the information owner.",
-    "severity": "medium",
-    "description": "<VulnDiscussion>Information at rest refers to the state of information when it is located on a secondary storage device (e.g., disk drive and tape drive) within an organizational information system. Mobile devices, laptops, desktops, and storage devices can be either lost or stolen, and the contents of their data storage (e.g., hard drives and non-volatile memory) can be read, copied, or altered. \n\nApplications and application users generate information throughout the course of their application use, including data that is stored in areas of volatile memory. Volatile memory must not be overlooked when assigning protections.\n\nThis requirement addresses protection of user-generated data as well as operating system-specific configuration data. \n\nApplications must employ mechanisms to achieve confidentiality and integrity protections, as appropriate, in accordance with the security category and/or classification of the information.\n\nThis can include segmenting and controlling access to the data, such as using file permissions to restrict access, using role-based controls to restrict access, or applying a cryptographic hash to the data and evaluating hash values for changes made to data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
-    "check": "Review the application documentation and interview the application administrator.\n\nIdentify the data processed by the application and the accompanying data protection requirements.\n\nDetermine if the data owner has specified stored data protection requirements.\n\nDetermine if the application is processing publicly releasable, CUI, or classified stored data.\n\nDetermine if the application configuration information contains sensitive information.\n\nAccess the data repository and have the application administrator, application developer, or designer identify the data integrity and confidentiality protections used to protect stored data.\n\nIf the application processes classified data or the data owner has specified data protection requirements and the application administrator is unable to demonstrate how the data is protected, this is a finding.",
-    "fix": "Identify data elements that require protection. Document the data types and specify protection requirements and methods used.",
-    "references": [
-      "SV-84847",
-      "V-70225",
-      "CCI-001199"
-    ],
-    "status": "Needs work",
-    "justification": "Stored-information protection is partially implemented through Horizon access controls and available platform/storage encryption mechanisms, but the saved evidence does not establish actual MPN confidentiality and integrity coverage across application, identity, configuration/secrets and temporary storage. Human review on 2026-11-10 confirmed Needs work with verification first: map data-owner requirements to existing storage protections and configure only confirmed gaps, coordinated with V-222423. Appropriate platform protection can satisfy the requirement without universal application-local encryption; encryption alone does not establish all integrity requirements.",
-    "evidence_ids": [
-      "sol-storage-postgres-pvc",
-      "sol-storage-seaweed-chart",
-      "sol-storage-pg-official",
-      "sol-storage-core-boundary",
-      "sol-storage-seaweed-aead",
-      "sol-storage-seaweed-flags"
-    ],
-    "next_step": "In the post-classification verification pass, map the V-222423 data-owner protection requirements to actual MPN PostgreSQL, object, identity, configuration/secret and temporary-storage controls. Inspect the selected host/storage provider, volume bindings, encryption configuration, key protection and required integrity mechanisms. Credit existing controls and implement only confirmed confidentiality/integrity gaps. Retain configuration, provider and verification evidence; do not assume a new storage class or object-encryption layer is needed before checking existing protection.",
-    "owner": "Gallatin SRE / MPN platform engineering; application security for integrity scope",
-    "category": "shared storage protection implementation",
-    "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
-    "task": "mpn-storage-protection",
-    "evidence_state": "source-inferred",
-    "solution_ref": "../solutions/storage-protection.md",
-    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-postgres/templates/statefulset.yaml; https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/seaweedfs/templates/deployment.yaml; https://www.postgresql.org/docs/18/encryption-options.html; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/getting-started/production/prerequisites.mdx; https://github.com/seaweedfs/seaweedfs/blob/4.52/weed/util/cipher.go; https://github.com/seaweedfs/seaweedfs/blob/4.52/weed/command/server.go",
-    "human_review": true
-  },
-  {
-    "benchmark": "U_ASD_V6R5_STIG",
-    "vuln_id": "V-222589",
-    "rule_id": "SV-222589r1263595_rule",
-    "version": "APSC-DV-002350",
-    "title": "The application must use appropriate cryptography in order to protect stored DoW information when required by the information owner or DoW policy.",
-    "severity": "high",
-    "description": "<VulnDiscussion>Applications handling data requiring \"data at rest\" protections must employ cryptographic mechanisms to prevent unauthorized disclosure and modification of the information at rest.\n\nSelection of a cryptographic mechanism is based on the need to protect the confidentiality of organizational information. The strength of mechanism is commensurate with the security category and/or classification of the information. Organizations have the flexibility to either encrypt all information on storage devices (i.e., full disk encryption) or encrypt specific data structures (e.g., files, records, or fields).\n\nSpecial care must be taken to cryptographically protect classified data.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
-    "check": "Review the application documentation and interview the application administrator.\n\nIdentify the data processed by the application and the accompanying data protection requirements.\n\nDetermine if the application is processing publicly releasable, SBU, CUI, or classified data.\n\nIf the data is strictly publicly releasable information with no SBU, CUI, or classified and system documentation specifies no data encryption is required for any hosted application data, this requirement is not applicable.\n\nHave the application administrator identify the encryption protections that are utilized.\n\nValidate the application is using encryption protections that are commensurate with the data being protected.\n\nIf the application is processing classified data, type 1, suite B cryptography, or hardware-based encryption solutions; meeting NSA encryption requirements for classified data processing and storage is required.\n\nIf the application processes classified data or if the data owner has specified encryption requirements and the application administrator is unable to demonstrate the type of encryption used or if the application processes classified and does not use type 1, suite B, or NSA-approved hardware-based encryption, this is a finding.",
-    "fix": "Identify data elements that require protection.\n\nDocument the data types and specify encryption requirements.\n\nEncrypt classified data using Type 1, Suite B, or other NSA-approved encryption solutions.",
-    "references": [
-      "SV-84851",
-      "V-70229",
-      "CCI-002476"
-    ],
-    "status": "Needs work",
-    "justification": "A shared encrypted storage and approved-module design is feasible without rewriting application crypto. The exact classified-data branch still requires the mission cryptographic boundary; ordinary FIPS/AES is not automatically NSA-approved classified protection. Gallatin operates MPN Core and storage. A concrete lower-layer solution can be specified now, so this is a shared configuration/implementation backlog item rather than an unknown UDS setting. No deployed compliance result is claimed.",
-    "evidence_ids": [
-      "sol-storage-postgres-pvc",
-      "sol-storage-seaweed-chart",
-      "sol-storage-pg-official",
-      "sol-storage-core-boundary",
-      "sol-storage-seaweed-aead",
-      "sol-storage-fips-mode"
-    ],
-    "next_step": "Create one Gallatin-owned mpn-encrypted StorageClass backed by approved encrypted disks/volumes; set PostgreSQL persistence.storageClassName (not storageClass), bind SeaweedFS PVC explicitly and protect Core identity database/PVCs. Encrypt node OS/temp/cache and API Secret/datastore storage too. Keep the existing database/object-store products; use the selected host provider rather than a new storage cluster. Enable the existing SeaweedFS4.52 server flags -filer.encryptVolumeData and -s3.encryptVolumeData; retain filer metadata/keys on the encrypted protected volume. New writes use the existing AES-GCM path; migrate/rewrite existing objects deliberately. This supplements encrypted host/PVC storage and does not require every API to implement encryption. For CUI/unclassified approved-mode protection pin the actual validated module/build. If classified processing is selected, use the mission-approved NSA/storage protection boundary before storing that data; do not waive this based only on FIPS naming.",
-    "owner": "Gallatin SRE / MPN platform engineering; application security for integrity scope",
-    "category": "shared storage protection implementation",
-    "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
-    "task": "mpn-storage-protection",
-    "evidence_state": "source-inferred",
-    "solution_ref": "../solutions/storage-protection.md",
-    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-postgres/templates/statefulset.yaml; https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/seaweedfs/templates/deployment.yaml; https://www.postgresql.org/docs/18/encryption-options.html; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/getting-started/production/prerequisites.mdx; https://github.com/seaweedfs/seaweedfs/blob/4.52/weed/util/cipher.go; https://docs.openssl.org/3.5/man7/fips_module/",
-    "human_review": true
-  },
-  {
-    "benchmark": "U_ASD_V6R5_STIG",
     "vuln_id": "V-222620",
     "rule_id": "SV-222620r1263602_rule",
     "version": "APSC-DV-002890",
@@ -2804,36 +2734,6 @@
     "evidence_state": "source-inferred",
     "solution_ref": "../solutions/mission-data.md",
     "evidence": "https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/faq/; https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/solution-registration/; https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/Capability-Packages/; https://csrc.nist.gov/glossary/term/NSA_approved_cryptography",
-    "human_review": true
-  },
-  {
-    "benchmark": "U_Container_Platform_V2R5_SRG",
-    "vuln_id": "V-233220",
-    "rule_id": "SV-233220r1050650_rule",
-    "version": "SRG-APP-000429-CTR-001060",
-    "title": "The container platform keystore must implement encryption to prevent unauthorized disclosure of information at rest within the container platform.",
-    "severity": "high",
-    "description": "<VulnDiscussion>Container platform keystore is used for container deployments for persistent storage of all its REST API objects. These objects are sensitive in nature and should be encrypted at rest to avoid any unauthorized disclosure. Selection of a cryptographic mechanism is based on the need to protect the confidentiality of organizational information. The strength of mechanism is commensurate with the security category and/or classification of the information.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
-    "check": "Review container platform keystore documentation and configuration to verify encryption levels meet the information sensitivity level. \n\nIf the container platform keystore encryption configuration does not meet system requirements, this is a finding.",
-    "fix": "Configure the container platform keystore encryption to maintain the confidentiality and integrity of information for applicable sensitivity level.",
-    "references": [
-      "CCI-002476"
-    ],
-    "status": "Needs work",
-    "justification": "Core and package key material can be protected through encrypted Kubernetes Secret/datastore storage plus encrypted Core identity database/PVC/node disks; Core does not itself configure those layers. Gallatin operates MPN Core and storage. A concrete lower-layer solution can be specified now, so this is a shared configuration/implementation backlog item rather than an unknown UDS setting. No deployed compliance result is claimed.",
-    "evidence_ids": [
-      "sol-storage-k8-encryption",
-      "sol-storage-core-keystore",
-      "sol-storage-core-boundary"
-    ],
-    "next_step": "Commit the MPN control-plane EncryptionConfiguration (nonidentity encryption provider first) or supported distribution equivalent, rotate/migrate existing Secret storage after enablement, and bind Core identity database/PVC/node disks to the same encrypted-host design. Separate key administration from application identities.",
-    "owner": "Gallatin SRE / MPN platform engineering; application security for integrity scope",
-    "category": "shared storage protection implementation",
-    "components": "UDS platform: registry, runtime, Pepr, Istio, logging; delivered workloads",
-    "task": "mpn-host-storage-encryption",
-    "evidence_state": "source-inferred",
-    "solution_ref": "../solutions/storage-protection.md",
-    "evidence": "https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/templates/pvc.yaml; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/getting-started/production/prerequisites.mdx",
     "human_review": true
   },
   {
@@ -4120,42 +4020,6 @@
   },
   {
     "benchmark": "U_Application_Server_V4R6_SRG",
-    "vuln_id": "V-204770",
-    "rule_id": "SV-204770r1265177_rule",
-    "version": "SRG-APP-000231-AS-000133",
-    "title": "The application server must protect the confidentiality and integrity of all information at rest.",
-    "severity": "medium",
-    "description": "<VulnDiscussion>When data is written to digital media such as hard drives, mobile computers, external/removable hard drives, personal digital assistants, flash/thumb drives, etc., there is risk of data loss and data compromise.\n\nFewer protection measures are needed for media containing information determined by the organization to be in the public domain, to be publicly releasable, or to have limited or no adverse impact if accessed by other than authorized personnel. In these situations, it is assumed the physical access controls where the media resides provide adequate protection.\n\nAs part of a defense-in-depth strategy, data owners and the DoW should consider routinely encrypting information at rest on selected secondary storage devices. The employment of cryptography is at the discretion of the information owner/steward. The selection of the cryptographic mechanisms used is based upon maintaining the confidentiality and integrity of the information.\n\nThe strength of mechanisms is commensurate with the classification and sensitivity of the information.\n\nThe application server must directly provide, or provide access to, cryptographic libraries and functionality that allow applications to encrypt data when it is stored.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
-    "check": "Review the application server documentation and configuration to ensure the application server is protecting the confidentiality and integrity of all information at rest.\n\nIf the confidentiality and integrity of all information at rest is not protected, this is a finding.",
-    "fix": "Configure the application server to protect the confidentiality and integrity of all information at rest.",
-    "references": [
-      "SV-71831",
-      "V-57555",
-      "CCI-001199"
-    ],
-    "status": "Needs work",
-    "justification": "All application-server data can inherit protected host/PVC/object storage, with authentication tags for defined integrity-sensitive data and restricted writers; another API encryption layer is not the default solution. Gallatin operates MPN Core and storage. A concrete lower-layer solution can be specified now, so this is a shared configuration/implementation backlog item rather than an unknown UDS setting. No deployed compliance result is claimed.",
-    "evidence_ids": [
-      "sol-storage-postgres-pvc",
-      "sol-storage-seaweed-chart",
-      "sol-storage-pg-official",
-      "sol-storage-core-boundary",
-      "sol-storage-seaweed-aead",
-      "sol-storage-dm-auth-integrity",
-      "sol-storage-dm-auth-modes"
-    ],
-    "next_step": "Create one Gallatin-owned mpn-encrypted StorageClass backed by approved encrypted disks/volumes; set PostgreSQL persistence.storageClassName (not storageClass), bind SeaweedFS PVC explicitly and protect Core identity database/PVCs. Encrypt node OS/temp/cache and API Secret/datastore storage too. Keep the existing database/object-store products; use the selected host provider rather than a new storage cluster. Enable the existing SeaweedFS4.52 server flags -filer.encryptVolumeData and -s3.encryptVolumeData; retain filer metadata/keys on the encrypted protected volume. New writes use the existing AES-GCM path; migrate/rewrite existing objects deliberately. This supplements encrypted host/PVC storage and does not require every API to implement encryption. For cryptographic modification protection, use the defined authenticated-integrity storage boundary (for example supported approved dm-crypt+dm-integrity), not custom application crypto. Keep RBAC and page checksums as separate controls.",
-    "owner": "Gallatin SRE / MPN platform engineering; application security for integrity scope",
-    "category": "shared storage protection implementation",
-    "components": "Delivered Horizon API, workers, chat, ingestion and storage; delegated UDS identity/gateway/mesh",
-    "task": "mpn-storage-protection",
-    "evidence_state": "source-inferred",
-    "solution_ref": "../solutions/storage-protection.md",
-    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-postgres/templates/statefulset.yaml; https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/seaweedfs/templates/deployment.yaml; https://www.postgresql.org/docs/18/encryption-options.html; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/getting-started/production/prerequisites.mdx; https://github.com/seaweedfs/seaweedfs/blob/4.52/weed/util/cipher.go; https://www.kernel.org/doc/html/latest/admin-guide/device-mapper/dm-integrity.html; https://www.kernel.org/doc/html/latest/admin-guide/device-mapper/dm-crypt.html",
-    "human_review": true
-  },
-  {
-    "benchmark": "U_Application_Server_V4R6_SRG",
     "vuln_id": "V-204771",
     "rule_id": "SV-204771r961128_rule",
     "version": "SRG-APP-000231-AS-000156",
@@ -4324,74 +4188,6 @@
     "evidence_state": "source-inferred",
     "solution_ref": "../solutions/pki-and-topology.md",
     "evidence": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/how-to-guides/networking/manage-trust-bundles.mdx; https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/truststore/ca-to-jks.sh; https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/api/auth/auth.oidc-jwt.service.ts; https://nodejs.org/api/cli.html#--use-bundled-ca---use-openssl-ca; https://istio.io/latest/docs/reference/config/networking/gateway/; https://dl.dod.cyber.mil/wp-content/uploads/pki-pke/pdf/unclass-dod_approved_external_pkis_master_document.pdf",
-    "human_review": true
-  },
-  {
-    "benchmark": "U_Application_Server_V4R6_SRG",
-    "vuln_id": "V-204812",
-    "rule_id": "SV-204812r1067567_rule",
-    "version": "SRG-APP-000428-AS-000265",
-    "title": "The application server must implement cryptographic mechanisms to prevent unauthorized modification of organization-defined information at rest on organization-defined information system components.",
-    "severity": "high",
-    "description": "<VulnDiscussion>Information at rest refers to the state of information when it is located on a secondary storage device (e.g., disk drive, tape drive) within an application server. Alternative physical protection measures include protected distribution systems.\n\nTo prevent unauthorized disclosure or modification of the information, application servers must protect data at rest by using cryptographic mechanisms.\n\nSelection of a cryptographic mechanism is based on the need to protect the integrity of organizational information. The strength of the mechanism is commensurate with the security category and/or classification of the information. Organizations have the flexibility to either encrypt all information on storage devices (i.e., full disk encryption) or encrypt specific data structures (e.g., files, records, or fields).</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
-    "check": "Review application server documentation and configuration to determine if the application server implements cryptographic mechanisms to prevent unauthorized modification of organization-defined information at rest on organization-defined information system components.\n\nIf the application server does not implement cryptographic mechanisms to prevent unauthorized modification, this is a finding.",
-    "fix": "Configure the application server to implement cryptographic mechanisms to prevent unauthorized modification of organization-defined information at rest on organization-defined information system components.",
-    "references": [
-      "SV-71833",
-      "V-57557",
-      "CCI-002475"
-    ],
-    "status": "Needs work",
-    "justification": "Existing object-store AES-GCM can authenticate stored content, while protected database records need an explicitly selected authenticated-integrity boundary. Disk encryption alone should not be credited for every modification threat. Gallatin operates MPN Core and storage. A concrete lower-layer solution can be specified now, so this is a shared configuration/implementation backlog item rather than an unknown UDS setting. No deployed compliance result is claimed.",
-    "evidence_ids": [
-      "sol-storage-seaweed-aead",
-      "sol-storage-dm-auth-integrity",
-      "sol-storage-pg-official",
-      "sol-storage-dm-auth-modes"
-    ],
-    "next_step": "Define the sensitive/PII/classification data scope and select an approved authenticated-integrity storage boundary for its live database volume; a supported host dm-crypt+dm-integrity authenticated mode is one existing implementation option, not an instruction to reformat the current disk. Use existing AES-GCM object storage for object ciphertext and signed authenticated backup manifests for offline archives. Retain DB role restrictions separately. Do not credit plain diskSSE/AES-XTS, PostgreSQL page checksums or RBAC as cryptographic integrity, and do not build custom encryption for every database page. Keep this work open until the selected provider/host integrity setting or accepted scope mapping is committed.",
-    "owner": "Gallatin SRE / MPN platform engineering; application security for integrity scope",
-    "category": "shared storage protection implementation",
-    "components": "Delivered Horizon API, workers, chat, ingestion and storage; delegated UDS identity/gateway/mesh",
-    "task": "mpn-storage-integrity",
-    "evidence_state": "source-inferred",
-    "solution_ref": "../solutions/storage-protection.md",
-    "evidence": "https://github.com/seaweedfs/seaweedfs/blob/4.52/weed/util/cipher.go; https://www.kernel.org/doc/html/latest/admin-guide/device-mapper/dm-integrity.html; https://www.postgresql.org/docs/18/encryption-options.html; https://www.kernel.org/doc/html/latest/admin-guide/device-mapper/dm-crypt.html",
-    "human_review": true
-  },
-  {
-    "benchmark": "U_Application_Server_V4R6_SRG",
-    "vuln_id": "V-204813",
-    "rule_id": "SV-204813r1067568_rule",
-    "version": "SRG-APP-000429-AS-000157",
-    "title": "The application must implement cryptographic mechanisms to prevent unauthorized disclosure of organization-defined information at rest on organization-defined information system components.",
-    "severity": "high",
-    "description": "<VulnDiscussion>Information at rest refers to the state of information when it is located on a secondary storage device (e.g., disk drive, tape drive) within an application server. Alternative physical protection measures include protected distribution systems.\n\nTo prevent unauthorized disclosure or modification of the information, application servers must protect data at rest by using cryptographic mechanisms.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
-    "check": "Review application server documentation and configuration to determine if the application server implements cryptographic mechanisms to prevent unauthorized disclosure of organization-defined information at rest on organization-defined information system components.\n\nIf the application server does not implement cryptographic mechanisms to prevent unauthorized disclosure, this is a finding.",
-    "fix": "Configure the application server to implement cryptographic mechanisms to prevent unauthorized disclosure of organization-defined information at rest on organization-defined information system components.",
-    "references": [
-      "V-57559",
-      "SV-71835",
-      "CCI-002476"
-    ],
-    "status": "Needs work",
-    "justification": "Unauthorized disclosure of stored application data can be addressed at the existing volume/object/keystore layers with separated key access, without adding encryption independently to every server. Gallatin operates MPN Core and storage. A concrete lower-layer solution can be specified now, so this is a shared configuration/implementation backlog item rather than an unknown UDS setting. No deployed compliance result is claimed.",
-    "evidence_ids": [
-      "sol-storage-postgres-pvc",
-      "sol-storage-seaweed-chart",
-      "sol-storage-pg-official",
-      "sol-storage-core-boundary",
-      "sol-storage-seaweed-aead",
-      "sol-storage-seaweed-flags"
-    ],
-    "next_step": "Create one Gallatin-owned mpn-encrypted StorageClass backed by approved encrypted disks/volumes; set PostgreSQL persistence.storageClassName (not storageClass), bind SeaweedFS PVC explicitly and protect Core identity database/PVCs. Encrypt node OS/temp/cache and API Secret/datastore storage too. Keep the existing database/object-store products; use the selected host provider rather than a new storage cluster. Enable the existing SeaweedFS4.52 server flags -filer.encryptVolumeData and -s3.encryptVolumeData; retain filer metadata/keys on the encrypted protected volume. New writes use the existing AES-GCM path; migrate/rewrite existing objects deliberately. This supplements encrypted host/PVC storage and does not require every API to implement encryption.",
-    "owner": "Gallatin SRE / MPN platform engineering; application security for integrity scope",
-    "category": "shared storage protection implementation",
-    "components": "Delivered Horizon API, workers, chat, ingestion and storage; delegated UDS identity/gateway/mesh",
-    "task": "mpn-storage-protection",
-    "evidence_state": "source-inferred",
-    "solution_ref": "../solutions/storage-protection.md",
-    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-postgres/templates/statefulset.yaml; https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/seaweedfs/templates/deployment.yaml; https://www.postgresql.org/docs/18/encryption-options.html; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/getting-started/production/prerequisites.mdx; https://github.com/seaweedfs/seaweedfs/blob/4.52/weed/util/cipher.go; https://github.com/seaweedfs/seaweedfs/blob/4.52/weed/command/server.go",
     "human_review": true
   },
   {
@@ -4854,40 +4650,6 @@
   },
   {
     "benchmark": "U_Database_V4R6_SRG",
-    "vuln_id": "V-206570",
-    "rule_id": "SV-206570r961128_rule",
-    "version": "SRG-APP-000231-DB-000154",
-    "title": "The DBMS must protect the confidentiality and integrity of all information at rest.",
-    "severity": "high",
-    "description": "<VulnDiscussion>This control is intended to address the confidentiality and integrity of information at rest in non-mobile devices and covers user information and system information. Information at rest refers to the state of information when it is located on a secondary storage device (e.g., disk drive, tape drive) within an organizational information system. Applications and application users generate information throughout the course of their application use. \n\nUser data generated, as well as application-specific configuration data, needs to be protected. Organizations may choose to employ different mechanisms to achieve confidentiality and integrity protections, as appropriate. \n\nIf the confidentiality and integrity of application data is not protected, the data will be open to compromise and unauthorized modification.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
-    "check": "If the application owner and Authorizing Official have determined that encryption of data at rest is NOT required, this is not a finding.\n\nReview DBMS settings to determine whether controls exist to protect the confidentiality and integrity of data at rest in the database.\n\nIf controls do not exist or are not enabled, this is a finding.",
-    "fix": "Apply appropriate controls to protect the confidentiality and integrity of data at rest in the database.",
-    "references": [
-      "SV-42871",
-      "V-32534",
-      "CCI-001199"
-    ],
-    "status": "Needs work",
-    "justification": "PostgreSQL officially supports block/filesystem encryption, so the existing database can inherit encrypted PGDATA/WAL/temporary storage. Restricted writer/admin roles and the defined integrity layer cover access/modification separately; no replacement DB/TDE product is required. Gallatin operates MPN Core and storage. A concrete lower-layer solution can be specified now, so this is a shared configuration/implementation backlog item rather than an unknown UDS setting. No deployed compliance result is claimed.",
-    "evidence_ids": [
-      "sol-storage-postgres-pvc",
-      "sol-storage-seaweed-chart",
-      "sol-storage-pg-official",
-      "sol-storage-core-boundary",
-      "sol-storage-dm-auth-integrity"
-    ],
-    "next_step": "Create one Gallatin-owned mpn-encrypted StorageClass backed by approved encrypted disks/volumes; set PostgreSQL persistence.storageClassName (not storageClass), bind SeaweedFS PVC explicitly and protect Core identity database/PVCs. Encrypt node OS/temp/cache and API Secret/datastore storage too. Keep the existing database/object-store products; use the selected host provider rather than a new storage cluster. Include PGDATA,WAL,tablespaces,temporary files and backups; retain database-role restrictions and signed/authenticated backup records.",
-    "owner": "Gallatin SRE / MPN platform engineering; application security for integrity scope",
-    "category": "shared storage protection implementation",
-    "components": "Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database",
-    "task": "mpn-storage-protection",
-    "evidence_state": "source-inferred",
-    "solution_ref": "../solutions/storage-protection.md",
-    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-postgres/templates/statefulset.yaml; https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/seaweedfs/templates/deployment.yaml; https://www.postgresql.org/docs/18/encryption-options.html; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/getting-started/production/prerequisites.mdx; https://www.kernel.org/doc/html/latest/admin-guide/device-mapper/dm-integrity.html",
-    "human_review": true
-  },
-  {
-    "benchmark": "U_Database_V4R6_SRG",
     "vuln_id": "V-206592",
     "rule_id": "SV-206592r961398_rule",
     "version": "SRG-APP-000359-DB-000319",
@@ -4946,73 +4708,6 @@
     "task": "audit-alert-routing",
     "evidence_state": "source-inferred",
     "evidence": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/prometheus-stack/values/kube-prometheus-stack-values.yaml; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/vector/values/values.yaml; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/grafana/values/values.yaml",
-    "human_review": true
-  },
-  {
-    "benchmark": "U_Database_V4R6_SRG",
-    "vuln_id": "V-206604",
-    "rule_id": "SV-206604r1018552_rule",
-    "version": "SRG-APP-000428-DB-000386",
-    "title": "The DBMS must implement cryptographic mechanisms to prevent unauthorized modification of organization-defined information at rest (to include, at a minimum, PII and classified information) on organization-defined information system components.",
-    "severity": "high",
-    "description": "<VulnDiscussion>DBMSs handling data requiring \"data at rest\" protections must employ cryptographic mechanisms to prevent unauthorized disclosure and modification of the information at rest. These cryptographic mechanisms may be native to the DBMS or implemented via additional software or operating system/file system settings, as appropriate to the situation.\n\nSelection of a cryptographic mechanism is based on the need to protect the integrity of organizational information. The strength of the mechanism is commensurate with the security category and/or classification of the information. Organizations have the flexibility to either encrypt all information on storage devices (i.e., full disk encryption) or encrypt specific data structures (e.g., files, records, or fields). \n\nThe decision whether and what to encrypt rests with the data owner and is also influenced by the physical measures taken to secure the equipment and media on which the information resides.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
-    "check": "Review the system documentation to determine whether the organization has defined the information at rest that is to be protected from modification, which must include, at a minimum, PII and classified information.\n\nIf no information is identified as requiring such protection, this is not a finding.\n\nReview the configuration of the DBMS, operating system/file system, and additional software as relevant.\n\nIf any of the information defined as requiring cryptographic protection from modification is not encrypted in a manner that provides the required level of protection, this is a finding.",
-    "fix": "Configure the DBMS, operating system/file system, and additional software as relevant, to provide the required level of cryptographic protection.",
-    "references": [
-      "SV-72599",
-      "V-58169",
-      "CCI-002475"
-    ],
-    "status": "Needs work",
-    "justification": "The database modification rule explicitly permits OS/filesystem/additional software controls. A chosen cryptographic integrity boundary supplies the needed mechanism; encryption-only disks do not establish the entire integrity property. Gallatin operates MPN Core and storage. A concrete lower-layer solution can be specified now, so this is a shared configuration/implementation backlog item rather than an unknown UDS setting. No deployed compliance result is claimed.",
-    "evidence_ids": [
-      "sol-storage-pg-official",
-      "sol-storage-dm-auth-integrity",
-      "sol-storage-seaweed-aead",
-      "sol-storage-dm-auth-modes"
-    ],
-    "next_step": "Define the sensitive/PII/classification data scope and select an approved authenticated-integrity storage boundary for its live database volume; a supported host dm-crypt+dm-integrity authenticated mode is one existing implementation option, not an instruction to reformat the current disk. Use existing AES-GCM object storage for object ciphertext and signed authenticated backup manifests for offline archives. Retain DB role restrictions separately. Do not credit plain diskSSE/AES-XTS, PostgreSQL page checksums or RBAC as cryptographic integrity, and do not build custom encryption for every database page. Keep this work open until the selected provider/host integrity setting or accepted scope mapping is committed.",
-    "owner": "Gallatin SRE / MPN platform engineering; application security for integrity scope",
-    "category": "shared storage protection implementation",
-    "components": "Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database",
-    "task": "mpn-storage-integrity",
-    "evidence_state": "source-inferred",
-    "solution_ref": "../solutions/storage-protection.md",
-    "evidence": "https://www.postgresql.org/docs/18/encryption-options.html; https://www.kernel.org/doc/html/latest/admin-guide/device-mapper/dm-integrity.html; https://github.com/seaweedfs/seaweedfs/blob/4.52/weed/util/cipher.go; https://www.kernel.org/doc/html/latest/admin-guide/device-mapper/dm-crypt.html",
-    "human_review": true
-  },
-  {
-    "benchmark": "U_Database_V4R6_SRG",
-    "vuln_id": "V-206605",
-    "rule_id": "SV-206605r1018553_rule",
-    "version": "SRG-APP-000429-DB-000387",
-    "title": "The DBMS must implement cryptographic mechanisms preventing the unauthorized disclosure of organization-defined information at rest on organization-defined information system components.",
-    "severity": "high",
-    "description": "<VulnDiscussion>DBMSs handling data requiring \"data at rest\" protections must employ cryptographic mechanisms to prevent unauthorized disclosure and modification of the information at rest. These cryptographic mechanisms may be native to the DBMS or implemented via additional software or operating system/file system settings, as appropriate to the situation.\n\nSelection of a cryptographic mechanism is based on the need to protect the integrity of organizational information. The strength of the mechanism is commensurate with the security category and/or classification of the information. Organizations have the flexibility to either encrypt all information on storage devices (i.e., full disk encryption) or encrypt specific data structures (e.g., files, records, or fields). \n\nThe decision whether and what to encrypt rests with the data owner and is also influenced by the physical measures taken to secure the equipment and media on which the information resides.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
-    "check": "Review the system documentation to determine whether the organization has defined the information at rest that is to be protected from disclosure, which must include, at a minimum, PII and classified information.\n\nIf the documentation indicates no information requires such protections, this is not a finding.\n\nReview the configuration of the DBMS, operating system/file system, and additional software as relevant.\n\nIf any of the information defined as requiring protection is not encrypted in a manner that provides the required level of protection and is not physically secured to the required level, this is a finding.",
-    "fix": "Configure the DBMS, operating system/file system, and additional software as relevant, to provide the required level of cryptographic protection for information requiring cryptographic protection against disclosure.\n\nSecure the premises, equipment, and media to provide the required level of physical protection.",
-    "references": [
-      "SV-72601",
-      "V-58171",
-      "CCI-002476"
-    ],
-    "status": "Needs work",
-    "justification": "The DBMS disclosure check permits lower-layer encryption and appropriately secured premises/media. Recommend encrypted storage as the default Gallatin baseline rather than relying on a speculative physical exemption. Gallatin operates MPN Core and storage. A concrete lower-layer solution can be specified now, so this is a shared configuration/implementation backlog item rather than an unknown UDS setting. No deployed compliance result is claimed.",
-    "evidence_ids": [
-      "sol-storage-postgres-pvc",
-      "sol-storage-seaweed-chart",
-      "sol-storage-pg-official",
-      "sol-storage-core-boundary",
-      "sol-storage-k8-encryption"
-    ],
-    "next_step": "Create one Gallatin-owned mpn-encrypted StorageClass backed by approved encrypted disks/volumes; set PostgreSQL persistence.storageClassName (not storageClass), bind SeaweedFS PVC explicitly and protect Core identity database/PVCs. Encrypt node OS/temp/cache and API Secret/datastore storage too. Keep the existing database/object-store products; use the selected host provider rather than a new storage cluster. Separate key access from data readers and preserve encryption for backup/export copies. Record physical safeguards as additional protection, not evidence that the current unspecified storage is already compliant.",
-    "owner": "Gallatin SRE / MPN platform engineering; application security for integrity scope",
-    "category": "shared storage protection implementation",
-    "components": "Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database",
-    "task": "mpn-storage-protection",
-    "evidence_state": "source-inferred",
-    "solution_ref": "../solutions/storage-protection.md",
-    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-postgres/templates/statefulset.yaml; https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/seaweedfs/templates/deployment.yaml; https://www.postgresql.org/docs/18/encryption-options.html; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/getting-started/production/prerequisites.mdx; https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/",
     "human_review": true
   },
   {

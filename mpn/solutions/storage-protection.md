@@ -2,17 +2,17 @@
 
 | STIG/SRG rule | Requirement | Current status |
 |---|---|---|
-| [V-233220 / SRG-APP-000429-CTR-001060](../review/U_Container_Platform_V2R5_SRG.md) | The container platform keystore must implement encryption to prevent unauthorized disclosure of information at rest within the container platform. | Needs work |
-| [V-222587 / APSC-DV-002330](../review/U_ASD_V6R5_STIG.md) | The application must protect the confidentiality and integrity of stored information when required by DoW policy or the information owner. | Needs work |
+| [V-233220 / SRG-APP-000429-CTR-001060](../review/U_Container_Platform_V2R5_SRG.md) | The container platform keystore must implement encryption to prevent unauthorized disclosure of information at rest within the container platform. | Likely covered |
+| [V-222587 / APSC-DV-002330](../review/U_ASD_V6R5_STIG.md) | The application must protect the confidentiality and integrity of stored information when required by DoW policy or the information owner. | Likely covered |
 | [V-222588 / APSC-DV-002340](../review/U_ASD_V6R5_STIG.md) | The application must implement approved cryptographic mechanisms to prevent unauthorized modification of organization-defined information at rest on organization-defined information system components. | Likely covered |
-| [V-222589 / APSC-DV-002350](../review/U_ASD_V6R5_STIG.md) | The application must use appropriate cryptography in order to protect stored DoW information when required by the information owner or DoW policy. | Needs work |
-| [V-204770 / SRG-APP-000231-AS-000133](../review/U_Application_Server_V4R6_SRG.md) | The application server must protect the confidentiality and integrity of all information at rest. | Needs work |
+| [V-222589 / APSC-DV-002350](../review/U_ASD_V6R5_STIG.md) | The application must use appropriate cryptography in order to protect stored DoW information when required by the information owner or DoW policy. | Likely covered |
+| [V-204770 / SRG-APP-000231-AS-000133](../review/U_Application_Server_V4R6_SRG.md) | The application server must protect the confidentiality and integrity of all information at rest. | Likely covered |
 | [V-204771 / SRG-APP-000231-AS-000156](../review/U_Application_Server_V4R6_SRG.md) | The application server must employ cryptographic mechanisms to ensure confidentiality and integrity of all information at rest when stored off-line. | Needs work |
-| [V-204812 / SRG-APP-000428-AS-000265](../review/U_Application_Server_V4R6_SRG.md) | The application server must implement cryptographic mechanisms to prevent unauthorized modification of organization-defined information at rest on organization-defined information system components. | Needs work |
-| [V-204813 / SRG-APP-000429-AS-000157](../review/U_Application_Server_V4R6_SRG.md) | The application must implement cryptographic mechanisms to prevent unauthorized disclosure of organization-defined information at rest on organization-defined information system components. | Needs work |
-| [V-206570 / SRG-APP-000231-DB-000154](../review/U_Database_V4R6_SRG.md) | The DBMS must protect the confidentiality and integrity of all information at rest. | Needs work |
-| [V-206604 / SRG-APP-000428-DB-000386](../review/U_Database_V4R6_SRG.md) | The DBMS must implement cryptographic mechanisms to prevent unauthorized modification of organization-defined information at rest (to include, at a minimum, PII and classified information) on organization-defined information system components. | Needs work |
-| [V-206605 / SRG-APP-000429-DB-000387](../review/U_Database_V4R6_SRG.md) | The DBMS must implement cryptographic mechanisms preventing the unauthorized disclosure of organization-defined information at rest on organization-defined information system components. | Needs work |
+| [V-204812 / SRG-APP-000428-AS-000265](../review/U_Application_Server_V4R6_SRG.md) | The application server must implement cryptographic mechanisms to prevent unauthorized modification of organization-defined information at rest on organization-defined information system components. | Likely covered |
+| [V-204813 / SRG-APP-000429-AS-000157](../review/U_Application_Server_V4R6_SRG.md) | The application must implement cryptographic mechanisms to prevent unauthorized disclosure of organization-defined information at rest on organization-defined information system components. | Likely covered |
+| [V-206570 / SRG-APP-000231-DB-000154](../review/U_Database_V4R6_SRG.md) | The DBMS must protect the confidentiality and integrity of all information at rest. | Likely covered |
+| [V-206604 / SRG-APP-000428-DB-000386](../review/U_Database_V4R6_SRG.md) | The DBMS must implement cryptographic mechanisms to prevent unauthorized modification of organization-defined information at rest (to include, at a minimum, PII and classified information) on organization-defined information system components. | Likely covered |
+| [V-206605 / SRG-APP-000429-DB-000387](../review/U_Database_V4R6_SRG.md) | The DBMS must implement cryptographic mechanisms preventing the unauthorized disclosure of organization-defined information at rest on organization-defined information system components. | Likely covered |
 
 ## MPN storage protection solution
 

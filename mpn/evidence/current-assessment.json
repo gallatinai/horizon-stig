@@ -3165,8 +3165,8 @@
       "evidence_state": "source-inferred"
     },
     "V-222587": {
-      "status": "Needs work",
-      "justification": "Stored-information protection is partially implemented through Horizon access controls and available platform/storage encryption mechanisms, but the saved evidence does not establish actual MPN confidentiality and integrity coverage across application, identity, configuration/secrets and temporary storage. Human review on 2026-11-10 confirmed Needs work with verification first: map data-owner requirements to existing storage protections and configure only confirmed gaps, coordinated with V-222423. Appropriate platform protection can satisfy the requirement without universal application-local encryption; encryption alone does not establish all integrity requirements.",
+      "status": "Likely covered",
+      "justification": "Human review on 2026-11-10 selected provisional Likely covered through inherited MPN/platform storage controls under the instruction to apply the same recommendation to similar storage-protection requirements. PR reviewer must confirm or reject platform ownership and the mapping for storage confidentiality and integrity as required by the exact rule. Actual platform protection and the authoritative responsibility boundary remain unverified; this is not an accepted compliance result or an N/A determination. Gallatin retains application data requirements, use of approved protected storage and any application/configuration residuals. This supersedes any earlier assumption that Gallatin must provision a new storage layer.",
       "evidence_ids": [
         "sol-storage-postgres-pvc",
         "sol-storage-seaweed-chart",
@@ -3175,9 +3175,9 @@
         "sol-storage-seaweed-aead",
         "sol-storage-seaweed-flags"
       ],
-      "next_step": "In the post-classification verification pass, map the V-222423 data-owner protection requirements to actual MPN PostgreSQL, object, identity, configuration/secret and temporary-storage controls. Inspect the selected host/storage provider, volume bindings, encryption configuration, key protection and required integrity mechanisms. Credit existing controls and implement only confirmed confidentiality/integrity gaps. Retain configuration, provider and verification evidence; do not assume a new storage class or object-encryption layer is needed before checking existing protection.",
-      "owner": "Gallatin SRE / MPN platform engineering; application security for integrity scope",
-      "category": "shared storage protection implementation",
+      "next_step": "PR reviewer must confirm or reject MPN/platform ownership and inherited coverage for storage confidentiality and integrity as required by the exact rule. In the post-classification verification pass, obtain the responsibility agreement and evidence for the actual protection, map all data/components covered by this exact rule, and verify Horizon uses the protected boundary correctly. Identify any Gallatin application/configuration residual separately and revise the recommendation if inheritance or protection is unsupported. Do not prescribe new storage infrastructure before that verification.",
+      "owner": "MPN/platform storage owner (proposed; reviewer confirmation required); Gallatin for application requirements/configuration and residuals",
+      "category": "inherited platform protection; boundary verification",
       "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
       "task": "mpn-storage-protection",
       "evidence_state": "source-inferred",
@@ -3201,8 +3201,8 @@
       "solution_ref": "../solutions/storage-protection.md"
     },
     "V-222589": {
-      "status": "Needs work",
-      "justification": "A shared encrypted storage and approved-module design is feasible without rewriting application crypto. The exact classified-data branch still requires the mission cryptographic boundary; ordinary FIPS/AES is not automatically NSA-approved classified protection. Gallatin operates MPN Core and storage. A concrete lower-layer solution can be specified now, so this is a shared configuration/implementation backlog item rather than an unknown UDS setting. No deployed compliance result is claimed.",
+      "status": "Likely covered",
+      "justification": "Human review on 2026-11-10 selected provisional Likely covered through inherited MPN/platform storage controls under the instruction to apply the same recommendation to similar storage-protection requirements. PR reviewer must confirm or reject platform ownership and the mapping for storage confidentiality and integrity as required by the exact rule. Actual platform protection and the authoritative responsibility boundary remain unverified; this is not an accepted compliance result or an N/A determination. Gallatin retains application data requirements, use of approved protected storage and any application/configuration residuals. This supersedes any earlier assumption that Gallatin must provision a new storage layer.",
       "evidence_ids": [
         "sol-storage-postgres-pvc",
         "sol-storage-seaweed-chart",
@@ -3211,9 +3211,9 @@
         "sol-storage-seaweed-aead",
         "sol-storage-fips-mode"
       ],
-      "next_step": "Create one Gallatin-owned mpn-encrypted StorageClass backed by approved encrypted disks/volumes; set PostgreSQL persistence.storageClassName (not storageClass), bind SeaweedFS PVC explicitly and protect Core identity database/PVCs. Encrypt node OS/temp/cache and API Secret/datastore storage too. Keep the existing database/object-store products; use the selected host provider rather than a new storage cluster. Enable the existing SeaweedFS4.52 server flags -filer.encryptVolumeData and -s3.encryptVolumeData; retain filer metadata/keys on the encrypted protected volume. New writes use the existing AES-GCM path; migrate/rewrite existing objects deliberately. This supplements encrypted host/PVC storage and does not require every API to implement encryption. For CUI/unclassified approved-mode protection pin the actual validated module/build. If classified processing is selected, use the mission-approved NSA/storage protection boundary before storing that data; do not waive this based only on FIPS naming.",
-      "owner": "Gallatin SRE / MPN platform engineering; application security for integrity scope",
-      "category": "shared storage protection implementation",
+      "next_step": "PR reviewer must confirm or reject MPN/platform ownership and inherited coverage for storage confidentiality and integrity as required by the exact rule. In the post-classification verification pass, obtain the responsibility agreement and evidence for the actual protection, map all data/components covered by this exact rule, and verify Horizon uses the protected boundary correctly. Identify any Gallatin application/configuration residual separately and revise the recommendation if inheritance or protection is unsupported. Do not prescribe new storage infrastructure before that verification. Verify the actual classified-data cryptographic boundary meets the specific official check; a generic FIPS label alone is insufficient.",
+      "owner": "MPN/platform storage owner (proposed; reviewer confirmation required); Gallatin for application requirements/configuration and residuals",
+      "category": "inherited platform protection; boundary verification",
       "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
       "task": "mpn-storage-protection",
       "evidence_state": "source-inferred",
@@ -7845,16 +7845,16 @@
       "solution_ref": "../solutions/mission-data.md"
     },
     "V-233220": {
-      "status": "Needs work",
-      "justification": "Core and package key material can be protected through encrypted Kubernetes Secret/datastore storage plus encrypted Core identity database/PVC/node disks; Core does not itself configure those layers. Gallatin operates MPN Core and storage. A concrete lower-layer solution can be specified now, so this is a shared configuration/implementation backlog item rather than an unknown UDS setting. No deployed compliance result is claimed.",
+      "status": "Likely covered",
+      "justification": "Human review on 2026-11-10 selected provisional Likely covered through inherited MPN/platform storage controls under the instruction to apply the same recommendation to similar storage-protection requirements. PR reviewer must confirm or reject platform ownership and the mapping for keystore/Secret/datastore encryption. Actual platform protection and the authoritative responsibility boundary remain unverified; this is not an accepted compliance result or an N/A determination. Gallatin retains application data requirements, use of approved protected storage and any application/configuration residuals. This supersedes any earlier assumption that Gallatin must provision a new storage layer.",
       "evidence_ids": [
         "sol-storage-k8-encryption",
         "sol-storage-core-keystore",
         "sol-storage-core-boundary"
       ],
-      "next_step": "Commit the MPN control-plane EncryptionConfiguration (nonidentity encryption provider first) or supported distribution equivalent, rotate/migrate existing Secret storage after enablement, and bind Core identity database/PVC/node disks to the same encrypted-host design. Separate key administration from application identities.",
-      "owner": "Gallatin SRE / MPN platform engineering; application security for integrity scope",
-      "category": "shared storage protection implementation",
+      "next_step": "PR reviewer must confirm or reject MPN/platform ownership and inherited coverage for keystore/Secret/datastore encryption. In the post-classification verification pass, obtain the responsibility agreement and evidence for the actual protection, map all data/components covered by this exact rule, and verify Horizon uses the protected boundary correctly. Identify any Gallatin application/configuration residual separately and revise the recommendation if inheritance or protection is unsupported. Do not prescribe new storage infrastructure before that verification. Confirm Kubernetes Secret/datastore encryption and key-management ownership explicitly; do not infer that encrypted data volumes cover this distinct scope.",
+      "owner": "MPN/platform storage owner (proposed; reviewer confirmation required); Gallatin for application requirements/configuration and residuals",
+      "category": "inherited platform protection; boundary verification",
       "components": "UDS platform: registry, runtime, Pepr, Istio, logging; delivered workloads",
       "task": "mpn-host-storage-encryption",
       "evidence_state": "source-inferred",
@@ -11769,8 +11769,8 @@
       "evidence_state": "source-inferred"
     },
     "V-204770": {
-      "status": "Needs work",
-      "justification": "All application-server data can inherit protected host/PVC/object storage, with authentication tags for defined integrity-sensitive data and restricted writers; another API encryption layer is not the default solution. Gallatin operates MPN Core and storage. A concrete lower-layer solution can be specified now, so this is a shared configuration/implementation backlog item rather than an unknown UDS setting. No deployed compliance result is claimed.",
+      "status": "Likely covered",
+      "justification": "Human review on 2026-11-10 selected provisional Likely covered through inherited MPN/platform storage controls under the instruction to apply the same recommendation to similar storage-protection requirements. PR reviewer must confirm or reject platform ownership and the mapping for storage confidentiality and integrity as required by the exact rule. Actual platform protection and the authoritative responsibility boundary remain unverified; this is not an accepted compliance result or an N/A determination. Gallatin retains application data requirements, use of approved protected storage and any application/configuration residuals. This supersedes any earlier assumption that Gallatin must provision a new storage layer.",
       "evidence_ids": [
         "sol-storage-postgres-pvc",
         "sol-storage-seaweed-chart",
@@ -11780,9 +11780,9 @@
         "sol-storage-dm-auth-integrity",
         "sol-storage-dm-auth-modes"
       ],
-      "next_step": "Create one Gallatin-owned mpn-encrypted StorageClass backed by approved encrypted disks/volumes; set PostgreSQL persistence.storageClassName (not storageClass), bind SeaweedFS PVC explicitly and protect Core identity database/PVCs. Encrypt node OS/temp/cache and API Secret/datastore storage too. Keep the existing database/object-store products; use the selected host provider rather than a new storage cluster. Enable the existing SeaweedFS4.52 server flags -filer.encryptVolumeData and -s3.encryptVolumeData; retain filer metadata/keys on the encrypted protected volume. New writes use the existing AES-GCM path; migrate/rewrite existing objects deliberately. This supplements encrypted host/PVC storage and does not require every API to implement encryption. For cryptographic modification protection, use the defined authenticated-integrity storage boundary (for example supported approved dm-crypt+dm-integrity), not custom application crypto. Keep RBAC and page checksums as separate controls.",
-      "owner": "Gallatin SRE / MPN platform engineering; application security for integrity scope",
-      "category": "shared storage protection implementation",
+      "next_step": "PR reviewer must confirm or reject MPN/platform ownership and inherited coverage for storage confidentiality and integrity as required by the exact rule. In the post-classification verification pass, obtain the responsibility agreement and evidence for the actual protection, map all data/components covered by this exact rule, and verify Horizon uses the protected boundary correctly. Identify any Gallatin application/configuration residual separately and revise the recommendation if inheritance or protection is unsupported. Do not prescribe new storage infrastructure before that verification.",
+      "owner": "MPN/platform storage owner (proposed; reviewer confirmation required); Gallatin for application requirements/configuration and residuals",
+      "category": "inherited platform protection; boundary verification",
       "components": "Delivered Horizon API, workers, chat, ingestion and storage; delegated UDS identity/gateway/mesh",
       "task": "mpn-storage-protection",
       "evidence_state": "source-inferred",
@@ -12365,25 +12365,25 @@
       "solution_ref": "../solutions/pki-and-topology.md"
     },
     "V-204812": {
-      "status": "Needs work",
-      "justification": "Existing object-store AES-GCM can authenticate stored content, while protected database records need an explicitly selected authenticated-integrity boundary. Disk encryption alone should not be credited for every modification threat. Gallatin operates MPN Core and storage. A concrete lower-layer solution can be specified now, so this is a shared configuration/implementation backlog item rather than an unknown UDS setting. No deployed compliance result is claimed.",
+      "status": "Likely covered",
+      "justification": "Human review on 2026-11-10 selected provisional Likely covered through inherited MPN/platform storage controls under the instruction to apply the same recommendation to similar storage-protection requirements. PR reviewer must confirm or reject platform ownership and the mapping for cryptographic integrity. Actual platform protection and the authoritative responsibility boundary remain unverified; this is not an accepted compliance result or an N/A determination. Gallatin retains application data requirements, use of approved protected storage and any application/configuration residuals. This supersedes any earlier assumption that Gallatin must provision a new storage layer.",
       "evidence_ids": [
         "sol-storage-seaweed-aead",
         "sol-storage-dm-auth-integrity",
         "sol-storage-pg-official",
         "sol-storage-dm-auth-modes"
       ],
-      "next_step": "Define the sensitive/PII/classification data scope and select an approved authenticated-integrity storage boundary for its live database volume; a supported host dm-crypt+dm-integrity authenticated mode is one existing implementation option, not an instruction to reformat the current disk. Use existing AES-GCM object storage for object ciphertext and signed authenticated backup manifests for offline archives. Retain DB role restrictions separately. Do not credit plain diskSSE/AES-XTS, PostgreSQL page checksums or RBAC as cryptographic integrity, and do not build custom encryption for every database page. Keep this work open until the selected provider/host integrity setting or accepted scope mapping is committed.",
-      "owner": "Gallatin SRE / MPN platform engineering; application security for integrity scope",
-      "category": "shared storage protection implementation",
+      "next_step": "PR reviewer must confirm or reject MPN/platform ownership and inherited coverage for cryptographic integrity. In the post-classification verification pass, obtain the responsibility agreement and evidence for the actual protection, map all data/components covered by this exact rule, and verify Horizon uses the protected boundary correctly. Identify any Gallatin application/configuration residual separately and revise the recommendation if inheritance or protection is unsupported. Do not prescribe new storage infrastructure before that verification.",
+      "owner": "MPN/platform storage owner (proposed; reviewer confirmation required); Gallatin for application requirements/configuration and residuals",
+      "category": "inherited platform protection; boundary verification",
       "components": "Delivered Horizon API, workers, chat, ingestion and storage; delegated UDS identity/gateway/mesh",
       "task": "mpn-storage-integrity",
       "evidence_state": "source-inferred",
       "solution_ref": "../solutions/storage-protection.md"
     },
     "V-204813": {
-      "status": "Needs work",
-      "justification": "Unauthorized disclosure of stored application data can be addressed at the existing volume/object/keystore layers with separated key access, without adding encryption independently to every server. Gallatin operates MPN Core and storage. A concrete lower-layer solution can be specified now, so this is a shared configuration/implementation backlog item rather than an unknown UDS setting. No deployed compliance result is claimed.",
+      "status": "Likely covered",
+      "justification": "Human review on 2026-11-10 selected provisional Likely covered through inherited MPN/platform storage controls under the instruction to apply the same recommendation to similar storage-protection requirements. PR reviewer must confirm or reject platform ownership and the mapping for storage confidentiality and integrity as required by the exact rule. Actual platform protection and the authoritative responsibility boundary remain unverified; this is not an accepted compliance result or an N/A determination. Gallatin retains application data requirements, use of approved protected storage and any application/configuration residuals. This supersedes any earlier assumption that Gallatin must provision a new storage layer.",
       "evidence_ids": [
         "sol-storage-postgres-pvc",
         "sol-storage-seaweed-chart",
@@ -12392,9 +12392,9 @@
         "sol-storage-seaweed-aead",
         "sol-storage-seaweed-flags"
       ],
-      "next_step": "Create one Gallatin-owned mpn-encrypted StorageClass backed by approved encrypted disks/volumes; set PostgreSQL persistence.storageClassName (not storageClass), bind SeaweedFS PVC explicitly and protect Core identity database/PVCs. Encrypt node OS/temp/cache and API Secret/datastore storage too. Keep the existing database/object-store products; use the selected host provider rather than a new storage cluster. Enable the existing SeaweedFS4.52 server flags -filer.encryptVolumeData and -s3.encryptVolumeData; retain filer metadata/keys on the encrypted protected volume. New writes use the existing AES-GCM path; migrate/rewrite existing objects deliberately. This supplements encrypted host/PVC storage and does not require every API to implement encryption.",
-      "owner": "Gallatin SRE / MPN platform engineering; application security for integrity scope",
-      "category": "shared storage protection implementation",
+      "next_step": "PR reviewer must confirm or reject MPN/platform ownership and inherited coverage for storage confidentiality and integrity as required by the exact rule. In the post-classification verification pass, obtain the responsibility agreement and evidence for the actual protection, map all data/components covered by this exact rule, and verify Horizon uses the protected boundary correctly. Identify any Gallatin application/configuration residual separately and revise the recommendation if inheritance or protection is unsupported. Do not prescribe new storage infrastructure before that verification.",
+      "owner": "MPN/platform storage owner (proposed; reviewer confirmation required); Gallatin for application requirements/configuration and residuals",
+      "category": "inherited platform protection; boundary verification",
       "components": "Delivered Horizon API, workers, chat, ingestion and storage; delegated UDS identity/gateway/mesh",
       "task": "mpn-storage-protection",
       "evidence_state": "source-inferred",
@@ -13800,8 +13800,8 @@
       "evidence_state": "source-inferred"
     },
     "V-206570": {
-      "status": "Needs work",
-      "justification": "PostgreSQL officially supports block/filesystem encryption, so the existing database can inherit encrypted PGDATA/WAL/temporary storage. Restricted writer/admin roles and the defined integrity layer cover access/modification separately; no replacement DB/TDE product is required. Gallatin operates MPN Core and storage. A concrete lower-layer solution can be specified now, so this is a shared configuration/implementation backlog item rather than an unknown UDS setting. No deployed compliance result is claimed.",
+      "status": "Likely covered",
+      "justification": "Human review on 2026-11-10 selected provisional Likely covered through inherited MPN/platform storage controls under the instruction to apply the same recommendation to similar storage-protection requirements. PR reviewer must confirm or reject platform ownership and the mapping for storage confidentiality and integrity as required by the exact rule. Actual platform protection and the authoritative responsibility boundary remain unverified; this is not an accepted compliance result or an N/A determination. Gallatin retains application data requirements, use of approved protected storage and any application/configuration residuals. This supersedes any earlier assumption that Gallatin must provision a new storage layer.",
       "evidence_ids": [
         "sol-storage-postgres-pvc",
         "sol-storage-seaweed-chart",
@@ -13809,9 +13809,9 @@
         "sol-storage-core-boundary",
         "sol-storage-dm-auth-integrity"
       ],
-      "next_step": "Create one Gallatin-owned mpn-encrypted StorageClass backed by approved encrypted disks/volumes; set PostgreSQL persistence.storageClassName (not storageClass), bind SeaweedFS PVC explicitly and protect Core identity database/PVCs. Encrypt node OS/temp/cache and API Secret/datastore storage too. Keep the existing database/object-store products; use the selected host provider rather than a new storage cluster. Include PGDATA,WAL,tablespaces,temporary files and backups; retain database-role restrictions and signed/authenticated backup records.",
-      "owner": "Gallatin SRE / MPN platform engineering; application security for integrity scope",
-      "category": "shared storage protection implementation",
+      "next_step": "PR reviewer must confirm or reject MPN/platform ownership and inherited coverage for storage confidentiality and integrity as required by the exact rule. In the post-classification verification pass, obtain the responsibility agreement and evidence for the actual protection, map all data/components covered by this exact rule, and verify Horizon uses the protected boundary correctly. Identify any Gallatin application/configuration residual separately and revise the recommendation if inheritance or protection is unsupported. Do not prescribe new storage infrastructure before that verification.",
+      "owner": "MPN/platform storage owner (proposed; reviewer confirmation required); Gallatin for application requirements/configuration and residuals",
+      "category": "inherited platform protection; boundary verification",
       "components": "Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database",
       "task": "mpn-storage-protection",
       "evidence_state": "source-inferred",
@@ -14274,25 +14274,25 @@
       "evidence_state": "source-inferred"
     },
     "V-206604": {
-      "status": "Needs work",
-      "justification": "The database modification rule explicitly permits OS/filesystem/additional software controls. A chosen cryptographic integrity boundary supplies the needed mechanism; encryption-only disks do not establish the entire integrity property. Gallatin operates MPN Core and storage. A concrete lower-layer solution can be specified now, so this is a shared configuration/implementation backlog item rather than an unknown UDS setting. No deployed compliance result is claimed.",
+      "status": "Likely covered",
+      "justification": "Human review on 2026-11-10 selected provisional Likely covered through inherited MPN/platform storage controls under the instruction to apply the same recommendation to similar storage-protection requirements. PR reviewer must confirm or reject platform ownership and the mapping for cryptographic integrity. Actual platform protection and the authoritative responsibility boundary remain unverified; this is not an accepted compliance result or an N/A determination. Gallatin retains application data requirements, use of approved protected storage and any application/configuration residuals. This supersedes any earlier assumption that Gallatin must provision a new storage layer.",
       "evidence_ids": [
         "sol-storage-pg-official",
         "sol-storage-dm-auth-integrity",
         "sol-storage-seaweed-aead",
         "sol-storage-dm-auth-modes"
       ],
-      "next_step": "Define the sensitive/PII/classification data scope and select an approved authenticated-integrity storage boundary for its live database volume; a supported host dm-crypt+dm-integrity authenticated mode is one existing implementation option, not an instruction to reformat the current disk. Use existing AES-GCM object storage for object ciphertext and signed authenticated backup manifests for offline archives. Retain DB role restrictions separately. Do not credit plain diskSSE/AES-XTS, PostgreSQL page checksums or RBAC as cryptographic integrity, and do not build custom encryption for every database page. Keep this work open until the selected provider/host integrity setting or accepted scope mapping is committed.",
-      "owner": "Gallatin SRE / MPN platform engineering; application security for integrity scope",
-      "category": "shared storage protection implementation",
+      "next_step": "PR reviewer must confirm or reject MPN/platform ownership and inherited coverage for cryptographic integrity. In the post-classification verification pass, obtain the responsibility agreement and evidence for the actual protection, map all data/components covered by this exact rule, and verify Horizon uses the protected boundary correctly. Identify any Gallatin application/configuration residual separately and revise the recommendation if inheritance or protection is unsupported. Do not prescribe new storage infrastructure before that verification.",
+      "owner": "MPN/platform storage owner (proposed; reviewer confirmation required); Gallatin for application requirements/configuration and residuals",
+      "category": "inherited platform protection; boundary verification",
       "components": "Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database",
       "task": "mpn-storage-integrity",
       "evidence_state": "source-inferred",
       "solution_ref": "../solutions/storage-protection.md"
     },
     "V-206605": {
-      "status": "Needs work",
-      "justification": "The DBMS disclosure check permits lower-layer encryption and appropriately secured premises/media. Recommend encrypted storage as the default Gallatin baseline rather than relying on a speculative physical exemption. Gallatin operates MPN Core and storage. A concrete lower-layer solution can be specified now, so this is a shared configuration/implementation backlog item rather than an unknown UDS setting. No deployed compliance result is claimed.",
+      "status": "Likely covered",
+      "justification": "Human review on 2026-11-10 selected provisional Likely covered through inherited MPN/platform storage controls under the instruction to apply the same recommendation to similar storage-protection requirements. PR reviewer must confirm or reject platform ownership and the mapping for storage confidentiality and integrity as required by the exact rule. Actual platform protection and the authoritative responsibility boundary remain unverified; this is not an accepted compliance result or an N/A determination. Gallatin retains application data requirements, use of approved protected storage and any application/configuration residuals. This supersedes any earlier assumption that Gallatin must provision a new storage layer.",
       "evidence_ids": [
         "sol-storage-postgres-pvc",
         "sol-storage-seaweed-chart",
@@ -14300,9 +14300,9 @@
         "sol-storage-core-boundary",
         "sol-storage-k8-encryption"
       ],
-      "next_step": "Create one Gallatin-owned mpn-encrypted StorageClass backed by approved encrypted disks/volumes; set PostgreSQL persistence.storageClassName (not storageClass), bind SeaweedFS PVC explicitly and protect Core identity database/PVCs. Encrypt node OS/temp/cache and API Secret/datastore storage too. Keep the existing database/object-store products; use the selected host provider rather than a new storage cluster. Separate key access from data readers and preserve encryption for backup/export copies. Record physical safeguards as additional protection, not evidence that the current unspecified storage is already compliant.",
-      "owner": "Gallatin SRE / MPN platform engineering; application security for integrity scope",
-      "category": "shared storage protection implementation",
+      "next_step": "PR reviewer must confirm or reject MPN/platform ownership and inherited coverage for storage confidentiality and integrity as required by the exact rule. In the post-classification verification pass, obtain the responsibility agreement and evidence for the actual protection, map all data/components covered by this exact rule, and verify Horizon uses the protected boundary correctly. Identify any Gallatin application/configuration residual separately and revise the recommendation if inheritance or protection is unsupported. Do not prescribe new storage infrastructure before that verification.",
+      "owner": "MPN/platform storage owner (proposed; reviewer confirmation required); Gallatin for application requirements/configuration and residuals",
+      "category": "inherited platform protection; boundary verification",
       "components": "Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database",
       "task": "mpn-storage-protection",
       "evidence_state": "source-inferred",

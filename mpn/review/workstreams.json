@@ -691,13 +691,6 @@
       "next_step": "Gallatin mounts its approved maintained denylist at /opt/keycloak/data/password-blacklists, appends passwordBlacklist(filename) to the existing Core realmInitEnv.PASSWORD_POLICY without dropping current FIPS KDF/length/classes/history/expiry, and updates the live realm password policy if already imported. Configure Gallatin-owned corpus cadence/incident updates; Keycloak natively reloads changed files (default60s), so no new API or custom validator service is needed."
     }
   ],
-  "mpn-host-storage-encryption": [
-    {
-      "vuln_id": "V-233220",
-      "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Commit the MPN control-plane EncryptionConfiguration (nonidentity encryption provider first) or supported distribution equivalent, rotate/migrate existing Secret storage after enablement, and bind Core identity database/PVC/node disks to the same encrypted-host design. Separate key administration from application identities."
-    }
-  ],
   "mpn-network-profile": [
     {
       "vuln_id": "V-222428",
@@ -708,50 +701,6 @@
       "vuln_id": "V-222519",
       "benchmark": "U_ASD_V6R5_STIG",
       "next_step": "Inventory the actual MPN application functions, services, TCP/UDP ports and protocols from the selected deployment profile and observed configuration. Confirm applicable PPSM CAL entries and permitted-use conditions with the responsible MPN network/PPSM authority. Record the mapping and any required approvals, remove or restrict nonpermitted services, and verify deployment matches the accepted inventory. Reuse existing UDS default-deny policies and the interface-register procedure; coordinate local model flows with V-222428."
-    }
-  ],
-  "mpn-storage-integrity": [
-    {
-      "vuln_id": "V-204812",
-      "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Define the sensitive/PII/classification data scope and select an approved authenticated-integrity storage boundary for its live database volume; a supported host dm-crypt+dm-integrity authenticated mode is one existing implementation option, not an instruction to reformat the current disk. Use existing AES-GCM object storage for object ciphertext and signed authenticated backup manifests for offline archives. Retain DB role restrictions separately. Do not credit plain diskSSE/AES-XTS, PostgreSQL page checksums or RBAC as cryptographic integrity, and do not build custom encryption for every database page. Keep this work open until the selected provider/host integrity setting or accepted scope mapping is committed."
-    },
-    {
-      "vuln_id": "V-206604",
-      "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Define the sensitive/PII/classification data scope and select an approved authenticated-integrity storage boundary for its live database volume; a supported host dm-crypt+dm-integrity authenticated mode is one existing implementation option, not an instruction to reformat the current disk. Use existing AES-GCM object storage for object ciphertext and signed authenticated backup manifests for offline archives. Retain DB role restrictions separately. Do not credit plain diskSSE/AES-XTS, PostgreSQL page checksums or RBAC as cryptographic integrity, and do not build custom encryption for every database page. Keep this work open until the selected provider/host integrity setting or accepted scope mapping is committed."
-    }
-  ],
-  "mpn-storage-protection": [
-    {
-      "vuln_id": "V-222587",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "In the post-classification verification pass, map the V-222423 data-owner protection requirements to actual MPN PostgreSQL, object, identity, configuration/secret and temporary-storage controls. Inspect the selected host/storage provider, volume bindings, encryption configuration, key protection and required integrity mechanisms. Credit existing controls and implement only confirmed confidentiality/integrity gaps. Retain configuration, provider and verification evidence; do not assume a new storage class or object-encryption layer is needed before checking existing protection."
-    },
-    {
-      "vuln_id": "V-222589",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Create one Gallatin-owned mpn-encrypted StorageClass backed by approved encrypted disks/volumes; set PostgreSQL persistence.storageClassName (not storageClass), bind SeaweedFS PVC explicitly and protect Core identity database/PVCs. Encrypt node OS/temp/cache and API Secret/datastore storage too. Keep the existing database/object-store products; use the selected host provider rather than a new storage cluster. Enable the existing SeaweedFS4.52 server flags -filer.encryptVolumeData and -s3.encryptVolumeData; retain filer metadata/keys on the encrypted protected volume. New writes use the existing AES-GCM path; migrate/rewrite existing objects deliberately. This supplements encrypted host/PVC storage and does not require every API to implement encryption. For CUI/unclassified approved-mode protection pin the actual validated module/build. If classified processing is selected, use the mission-approved NSA/storage protection boundary before storing that data; do not waive this based only on FIPS naming."
-    },
-    {
-      "vuln_id": "V-204770",
-      "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Create one Gallatin-owned mpn-encrypted StorageClass backed by approved encrypted disks/volumes; set PostgreSQL persistence.storageClassName (not storageClass), bind SeaweedFS PVC explicitly and protect Core identity database/PVCs. Encrypt node OS/temp/cache and API Secret/datastore storage too. Keep the existing database/object-store products; use the selected host provider rather than a new storage cluster. Enable the existing SeaweedFS4.52 server flags -filer.encryptVolumeData and -s3.encryptVolumeData; retain filer metadata/keys on the encrypted protected volume. New writes use the existing AES-GCM path; migrate/rewrite existing objects deliberately. This supplements encrypted host/PVC storage and does not require every API to implement encryption. For cryptographic modification protection, use the defined authenticated-integrity storage boundary (for example supported approved dm-crypt+dm-integrity), not custom application crypto. Keep RBAC and page checksums as separate controls."
-    },
-    {
-      "vuln_id": "V-204813",
-      "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Create one Gallatin-owned mpn-encrypted StorageClass backed by approved encrypted disks/volumes; set PostgreSQL persistence.storageClassName (not storageClass), bind SeaweedFS PVC explicitly and protect Core identity database/PVCs. Encrypt node OS/temp/cache and API Secret/datastore storage too. Keep the existing database/object-store products; use the selected host provider rather than a new storage cluster. Enable the existing SeaweedFS4.52 server flags -filer.encryptVolumeData and -s3.encryptVolumeData; retain filer metadata/keys on the encrypted protected volume. New writes use the existing AES-GCM path; migrate/rewrite existing objects deliberately. This supplements encrypted host/PVC storage and does not require every API to implement encryption."
-    },
-    {
-      "vuln_id": "V-206570",
-      "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Create one Gallatin-owned mpn-encrypted StorageClass backed by approved encrypted disks/volumes; set PostgreSQL persistence.storageClassName (not storageClass), bind SeaweedFS PVC explicitly and protect Core identity database/PVCs. Encrypt node OS/temp/cache and API Secret/datastore storage too. Keep the existing database/object-store products; use the selected host provider rather than a new storage cluster. Include PGDATA,WAL,tablespaces,temporary files and backups; retain database-role restrictions and signed/authenticated backup records."
-    },
-    {
-      "vuln_id": "V-206605",
-      "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Create one Gallatin-owned mpn-encrypted StorageClass backed by approved encrypted disks/volumes; set PostgreSQL persistence.storageClassName (not storageClass), bind SeaweedFS PVC explicitly and protect Core identity database/PVCs. Encrypt node OS/temp/cache and API Secret/datastore storage too. Keep the existing database/object-store products; use the selected host provider rather than a new storage cluster. Separate key access from data readers and preserve encryption for backup/export copies. Record physical safeguards as additional protection, not evidence that the current unspecified storage is already compliant."
     }
   ],
   "nats-auth-crypto-module": [
