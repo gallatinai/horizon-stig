@@ -404,22 +404,22 @@
     {
       "vuln_id": "V-265634",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Check the actual encryption against the official non-SAMI/SAMI requirements. Credit the delivered validated modules where allowed; use NSA-validated Type1 protection where the check requires it."
+      "next_step": "In the post-classification verification pass, confirm the mission data classification and protection requirements and identify the MPN/Gallatin responsibility boundary. Inspect actual module/solution/configuration evidence for the cryptographic tasks and data covered by this exact rule, credit supported inherited protection, and identify only uncovered application/configuration responsibilities. Check the actual encryption against the official non-SAMI/SAMI requirements. Credit the delivered validated modules where allowed; use NSA-validated Type1 protection where the check requires it. Retain a controlled scope/protection mapping and revise the recommendation where coverage is supported."
     },
     {
       "vuln_id": "V-233211",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Use NSA-approved encryption for the platform data and traffic covered by this rule; verify the chosen implementation, approval and settings. Reuse the host/storage/network controls that implement it."
+      "next_step": "In the post-classification verification pass, confirm the mission data classification and protection requirements and identify the MPN/Gallatin responsibility boundary. Inspect actual module/solution/configuration evidence for the cryptographic tasks and data covered by this exact rule, credit supported inherited protection, and identify only uncovered application/configuration responsibilities. Use NSA-approved encryption for the platform data and traffic covered by this rule; verify the chosen implementation, approval and settings. Reuse the host/storage/network controls that implement it. Retain a controlled scope/protection mapping and revise the recommendation where coverage is supported."
     },
     {
       "vuln_id": "V-239371",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Check the actual gateway/web encryption modules and settings against the classified data protection requirement; configure an approved implementation wherever needed."
+      "next_step": "In the post-classification verification pass, confirm the mission data classification and protection requirements and identify the MPN/Gallatin responsibility boundary. Inspect actual module/solution/configuration evidence for the cryptographic tasks and data covered by this exact rule, credit supported inherited protection, and identify only uncovered application/configuration responsibilities. Check the actual gateway/web encryption modules and settings against the classified data protection requirement; configure an approved implementation wherever needed. Retain a controlled scope/protection mapping and revise the recommendation where coverage is supported."
     },
     {
       "vuln_id": "V-240925",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Check the encryption protecting application-server data against the NSA-approved requirement and configure any missing protection. Record the approved implementation and settings."
+      "next_step": "In the post-classification verification pass, confirm the mission data classification and protection requirements and identify the MPN/Gallatin responsibility boundary. Inspect actual module/solution/configuration evidence for the cryptographic tasks and data covered by this exact rule, credit supported inherited protection, and identify only uncovered application/configuration responsibilities. Check the encryption protecting application-server data against the NSA-approved requirement and configure any missing protection. Record the approved implementation and settings. Retain a controlled scope/protection mapping and revise the recommendation where coverage is supported."
     }
   ],
   "compliance-package": [

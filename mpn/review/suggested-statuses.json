@@ -9107,15 +9107,15 @@
       "CCI-002450"
     ],
     "status": "Needs work",
-    "justification": "The deployment is classified, so this rule applies. The official check distinguishes stored non-SAMI data, for which it permits NIST-certified cryptography as required by the owner, from stored SAMI data, which requires NSA-validated Type1 encryption. Apply that distinction to the identified modules instead of assuming FIPS validation covers every classified use.",
+    "justification": "The deployment is classified, so this rule applies. The official check distinguishes stored non-SAMI data, for which it permits NIST-certified cryptography as required by the owner, from stored SAMI data, which requires NSA-validated Type1 encryption. Apply that distinction to the identified modules instead of assuming FIPS validation covers every classified use. Human review on 2026-11-10 confirmed Needs work pending verification for this and similar classified-cryptography requirements. Confirm mission data scope and the actual inherited MPN storage/transport cryptographic boundary before assigning new implementation. Preserve this rule's exact cryptographic requirements; do not infer blanket classified approval from FIPS naming or duplicate platform protection inside Horizon.",
     "evidence_ids": [
       "re-mission-nsa-system-solutions",
       "re-mission-nsa-registration",
       "re-mission-nsa-cp",
       "classified-crypto-definition"
     ],
-    "next_step": "Check the actual encryption against the official non-SAMI/SAMI requirements. Credit the delivered validated modules where allowed; use NSA-validated Type1 protection where the check requires it.",
-    "owner": "Gallatin SRE/security",
+    "next_step": "In the post-classification verification pass, confirm the mission data classification and protection requirements and identify the MPN/Gallatin responsibility boundary. Inspect actual module/solution/configuration evidence for the cryptographic tasks and data covered by this exact rule, credit supported inherited protection, and identify only uncovered application/configuration responsibilities. Check the actual encryption against the official non-SAMI/SAMI requirements. Credit the delivered validated modules where allowed; use NSA-validated Type1 protection where the check requires it. Retain a controlled scope/protection mapping and revise the recommendation where coverage is supported.",
+    "owner": "Mission data/security authority and MPN cryptographic-boundary owner; Gallatin for application mapping/configuration residuals",
     "category": "classified encryption implementation/configuration",
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
     "task": "classified-crypto",
@@ -15462,15 +15462,15 @@
       "CCI-002450"
     ],
     "status": "Needs work",
-    "justification": "The deployment is classified, so this rule applies. Check the actual cryptography protecting container-platform data, including stored Secrets and persistent data. Core FIPS support alone does not establish NSA approval of the configured encryption.",
+    "justification": "The deployment is classified, so this rule applies. Check the actual cryptography protecting container-platform data, including stored Secrets and persistent data. Core FIPS support alone does not establish NSA approval of the configured encryption. Human review on 2026-11-10 confirmed Needs work pending verification for this and similar classified-cryptography requirements. Confirm mission data scope and the actual inherited MPN storage/transport cryptographic boundary before assigning new implementation. Preserve this rule's exact cryptographic requirements; do not infer blanket classified approval from FIPS naming or duplicate platform protection inside Horizon.",
     "evidence_ids": [
       "re-mission-nsa-system-solutions",
       "re-mission-nsa-registration",
       "re-mission-nsa-cp",
       "classified-crypto-definition"
     ],
-    "next_step": "Use NSA-approved encryption for the platform data and traffic covered by this rule; verify the chosen implementation, approval and settings. Reuse the host/storage/network controls that implement it.",
-    "owner": "Gallatin SRE/security",
+    "next_step": "In the post-classification verification pass, confirm the mission data classification and protection requirements and identify the MPN/Gallatin responsibility boundary. Inspect actual module/solution/configuration evidence for the cryptographic tasks and data covered by this exact rule, credit supported inherited protection, and identify only uncovered application/configuration responsibilities. Use NSA-approved encryption for the platform data and traffic covered by this rule; verify the chosen implementation, approval and settings. Reuse the host/storage/network controls that implement it. Retain a controlled scope/protection mapping and revise the recommendation where coverage is supported.",
+    "owner": "Mission data/security authority and MPN cryptographic-boundary owner; Gallatin for application mapping/configuration residuals",
     "category": "classified encryption implementation/configuration",
     "components": "UDS platform: registry, runtime, Pepr, Istio, logging; delivered workloads",
     "task": "classified-crypto",
@@ -20296,14 +20296,14 @@
       "CCI-002450"
     ],
     "status": "Needs work",
-    "justification": "Classified data requires checking the web/gateway encryption against its required protection profile. Existing FIPS modules and mesh/gateway TLS provide implementations to assess; classification is no longer an unresolved applicability question.",
+    "justification": "Classified data requires checking the web/gateway encryption against its required protection profile. Existing FIPS modules and mesh/gateway TLS provide implementations to assess; classification is no longer an unresolved applicability question. Human review on 2026-11-10 confirmed Needs work pending verification for this and similar classified-cryptography requirements. Confirm mission data scope and the actual inherited MPN storage/transport cryptographic boundary before assigning new implementation. Preserve this rule's exact cryptographic requirements; do not infer blanket classified approval from FIPS naming or duplicate platform protection inside Horizon.",
     "evidence_ids": [
       "re-mission-nsa-system-solutions",
       "re-mission-classification-model",
       "classified-crypto-definition"
     ],
-    "next_step": "Check the actual gateway/web encryption modules and settings against the classified data protection requirement; configure an approved implementation wherever needed.",
-    "owner": "Gallatin SRE/security",
+    "next_step": "In the post-classification verification pass, confirm the mission data classification and protection requirements and identify the MPN/Gallatin responsibility boundary. Inspect actual module/solution/configuration evidence for the cryptographic tasks and data covered by this exact rule, credit supported inherited protection, and identify only uncovered application/configuration responsibilities. Check the actual gateway/web encryption modules and settings against the classified data protection requirement; configure an approved implementation wherever needed. Retain a controlled scope/protection mapping and revise the recommendation where coverage is supported.",
+    "owner": "Mission data/security authority and MPN cryptographic-boundary owner; Gallatin for application mapping/configuration residuals",
     "category": "classified encryption implementation/configuration",
     "components": "Delivered static nginx-FIPS, Istio ingress and shared UDS identity (separate roles)",
     "task": "classified-crypto",
@@ -25128,15 +25128,15 @@
       "CCI-002450"
     ],
     "status": "Needs work",
-    "justification": "The deployment is classified, so this rule applies. Delivered application FIPS modules are identified, but the configured storage and transport encryption still need to meet the NSA-approved requirement.",
+    "justification": "The deployment is classified, so this rule applies. Delivered application FIPS modules are identified, but the configured storage and transport encryption still need to meet the NSA-approved requirement. Human review on 2026-11-10 confirmed Needs work pending verification for this and similar classified-cryptography requirements. Confirm mission data scope and the actual inherited MPN storage/transport cryptographic boundary before assigning new implementation. Preserve this rule's exact cryptographic requirements; do not infer blanket classified approval from FIPS naming or duplicate platform protection inside Horizon.",
     "evidence_ids": [
       "re-mission-nsa-system-solutions",
       "re-mission-nsa-registration",
       "re-mission-nsa-cp",
       "classified-crypto-definition"
     ],
-    "next_step": "Check the encryption protecting application-server data against the NSA-approved requirement and configure any missing protection. Record the approved implementation and settings.",
-    "owner": "Gallatin SRE/security",
+    "next_step": "In the post-classification verification pass, confirm the mission data classification and protection requirements and identify the MPN/Gallatin responsibility boundary. Inspect actual module/solution/configuration evidence for the cryptographic tasks and data covered by this exact rule, credit supported inherited protection, and identify only uncovered application/configuration responsibilities. Check the encryption protecting application-server data against the NSA-approved requirement and configure any missing protection. Record the approved implementation and settings. Retain a controlled scope/protection mapping and revise the recommendation where coverage is supported.",
+    "owner": "Mission data/security authority and MPN cryptographic-boundary owner; Gallatin for application mapping/configuration residuals",
     "category": "classified encryption implementation/configuration",
     "components": "Delivered Horizon API, workers, chat, ingestion and storage; delegated UDS identity/gateway/mesh",
     "task": "classified-crypto",
