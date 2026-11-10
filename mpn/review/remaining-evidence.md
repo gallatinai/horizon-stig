@@ -58,9 +58,9 @@ Each decision includes the exact STIG/SRG requirement and official check that es
 
 **Requirement:** The DBMS must use NSA-approved cryptography to protect classified information in accordance with the data owner's requirements.
 
-**Decision / action needed:** Identify the NSA-approved encryption protecting PostgreSQL and confirm the DB paths use it. Credit that protection here; add database crypto work only if an actual gap is found.
+**Decision / action needed:** Identify or select the actual NSA-approved protection for PostgreSQL storage and relevant network boundaries. Record the product/model, version and approved configuration covering the DB. Reuse existing MPN protection where present; add a new layer only where needed.
 
-**Reason:** The deployment is classified, so this rule applies. Its discussion specifically addresses DBMS compatibility with NSA-approved encryption devices; it does not require a separate NSA certificate for PostgreSQL. The actual MPN encryption-device/control coverage is not identified in this package. FIPS5132 establishes the software module validation but does not determine whether that infrastructure requirement is met.
+**Reason:** The classified-deployment rule concerns DBMS compatibility with NSA-approved encryption devices. PostgreSQL can use transparent platform protection, but the checked UDS/PostgreSQL/SeaweedFS products have no exact match in the reviewed public CSfC component categories. The release and available MPN architecture do not name the selected approved storage/network protection. That missing selection prevents a supported pass; it does not prove PostgreSQL requires replacement or its own NSA certificate.
 
 <details>
 <summary>Official check — SV-233495r1117186_rule</summary>

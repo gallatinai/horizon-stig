@@ -32,6 +32,11 @@ Approve the permitted processing and purposes for the actual PII fields. Reuse d
 Use the mission-data protection record template for the field/purpose associations and the governing guide references. A proposed tag profile is not an implemented control or an approved guide.
 
 
+## Checked products and viable protection layers
+
+[The component comparison](../NSA-COMPONENT-CHECK.md) identifies exact checked products, listed storage/network candidates and their evaluated-configuration restrictions. The available MPN sources do not select a qualifying layer. Retain the database and map or select the approved protection rather than inferring approval from a FIPS image label.
+
+
 ## Source references
 
 - [re-mission-classification-model](https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/typescript/src/schema/schema.ts)
@@ -42,6 +47,10 @@ Use the mission-data protection record template for the field/purpose associatio
 - [classified-crypto-definition](https://csrc.nist.gov/glossary/term/NSA_approved_cryptography)
 - [db-nsa-rule-discussion](https://github.com/gallatinai/horizon-stig/blob/main/mpn/benchmarks/U_Database_V4R6_SRG/benchmark.xml)
 - [postgres-delivered-crypto](https://github.com/gallatinai/horizon-stig/blob/main/mpn/evidence/database-image-provenance.json)
+- [nsa-storage-current-list](https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/Components-List/)
+- [nsa-network-msc-boundary](https://www.nsa.gov/Portals/75/documents/CSfC%20CP%20Updates%202026/(U)%20Multi-Site%20Connectivity%20Capability%20Package%20v1.3.0.pdf?ver=mJWYHsX8a0wSY6bOPdCrZA%3D%3D)
+- [nsa-mpn-notional-abd](https://drive.google.com/file/d/1rOyMxUBWdnwfrpnv-gvCWyne0drA5iZ5/view)
+- [nsa-mpn-release-contract-boundary](https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685)
 - [re-mission-user-fields](https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/api/users/users.schema.ts)
 - [re-mission-upload-tags](https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/api/files/files.schema.ts)
 - [re-mission-ingestion-tags](https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/workers/artifact-ingestion/artifact_ingestion/processor.py)

@@ -17,3 +17,5 @@ The PostgreSQL 16 implementation of the same SRG provides an example: it checks 
 ## Apply each check's scope
 
 Some checks address software modules, some encryption devices, and some the approved system solution. NSA's CSfC program permits appropriately configured commercial solutions as an alternative to Type1 protection; a product supporting a CNSA algorithm is not the entire solution. Do not require every component to obtain separate NSA product approval, and do not assume a FIPS image alone establishes classified-system protection. [NSA guidance](https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/faq/).
+
+[Component comparison and protection options](NSA-COMPONENT-CHECK.md) records the actual UDS/Horizon products checked against the public list and the exact candidate versions and limitations.

@@ -1,0 +1,300 @@
+{
+  "date": "2026-11-10",
+  "baseline": {
+    "version": "2026.45.4-uds.1",
+    "horizon_commit": "b84b9afcd6983d553b6b8406317b6592ec90cb7c",
+    "package_commit": "d528b7febf1ce8bb5ccf99661dade6ae09a84381",
+    "identity": {
+      "browserOrigin": "https://horizon.uds.dev",
+      "cliClientId": "gallatin-horizon-cli",
+      "coreVersion": "1.14.0",
+      "issuer": "https://sso.uds.dev/realms/uds",
+      "mode": "uds",
+      "tenant": "gallatin",
+      "tenantGroupPrefix": "/gallatin/tenants/",
+      "webClientId": "gallatin-horizon-web",
+      "network": {
+        "host": "sso.uds.dev",
+        "port": 443
+      },
+      "audience": "urn:gallatin:horizon"
+    },
+    "image_count": 12,
+    "release_run": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685"
+  },
+  "conclusion": "The checked release establishes FIPS/TLS mechanisms, not a matched NSA CSfC-listed protection solution. No exact listed component match was found for its PostgreSQL/OpenSSL, SeaweedFS or UDS mesh products in the reviewed public categories. This is not a universal claim of absent NSA approval: Type1 and the surrounding MPN infrastructure are separate paths. Available MPN sources do not identify that selected protection inventory.",
+  "storage_findings": [
+    {
+      "area": "Exact-match result",
+      "result": "No matched listed DAR product was found for the delivered PostgreSQL18/SeaweedFS4.52/UDSCore1.14/OpenSSL-module5132 stack. An OpenSSL validation number and FIPS image label are not an exact component-list match.",
+      "evidence_ids": [
+        "nsa-storage-current-list",
+        "nsa-storage-actual-release"
+      ]
+    },
+    {
+      "area": "DB/PVC applicability",
+      "result": "A listed storage layer could protect existing PostgreSQL files transparently; replacing PostgreSQL is not inherently required. No compatible evaluated MPN storage/host is selected yet.",
+      "evidence_ids": [
+        "nsa-storage-netapp-toe",
+        "nsa-storage-archon-toe",
+        "nsa-storage-netapp-csi"
+      ]
+    },
+    {
+      "area": "Running service limitation",
+      "result": "A DAR-powered-off claim does not establish protection of a mounted running database or its client traffic.",
+      "evidence_ids": [
+        "nsa-storage-dar-scope",
+        "nsa-storage-dar-unattended"
+      ]
+    },
+    {
+      "area": "Layer independence",
+      "result": "Do not count SeaweedAES-GCM plus encryptedPVC,or two OpenSSL-backed layers,as an approved CSfC composition merely because both encrypt.",
+      "evidence_ids": [
+        "nsa-storage-dar-layers"
+      ]
+    }
+  ],
+  "network_findings": [
+    {
+      "topic": "Current product comparison",
+      "conclusion": "No exact active NSA Components List match was found for the UDS mesh or Horizon Node/nginx/PostgreSQL components. Do not label their FIPS/mTLS mechanisms NSA-CSfC approved.",
+      "evidence_ids": [
+        "nsa-network-list",
+        "nsa-network-ztunnel-version",
+        "nsa-network-envoy-version",
+        "nsa-network-web-source"
+      ]
+    },
+    {
+      "topic": "Algorithm/configuration comparison",
+      "conclusion": "Source establishes ordinary TLS/FIPS mechanisms, not a constrained CNSA/CSfC profile. MinTLS1.3 and STRICT mTLS do not establish product listing, prescribed key sizes/groups, independent layers or solution registration.",
+      "evidence_ids": [
+        "nsa-network-gateway",
+        "nsa-network-ztunnel-ciphers",
+        "nsa-network-ztunnel-csr",
+        "nsa-network-ma-algorithms",
+        "nsa-network-msc-algorithms"
+      ]
+    },
+    {
+      "topic": "PostgreSQL hop",
+      "conclusion": "Do not create a false missing-encryption finding from sslmode:disable: selected ambient mesh supplies hop encryption. If that hop stays inside the authorized trusted Red enclave, MSC does not require classifying each pod as its own site or replacing every internal hop with listed VPN appliances.",
+      "evidence_ids": [
+        "nsa-network-db-client",
+        "nsa-network-mesh",
+        "nsa-network-msc-boundary"
+      ]
+    },
+    {
+      "topic": "Boundary decision",
+      "conclusion": "The actual MPN physical/network encryptor inventory and authorized Red/Gray/Black boundary are not selected by the app push artifact. Gallatin must map its deployment to the existing authorized network protection, or select a complete approved design where classified traffic crosses an untrusted transport. This is an architecture/inventory decision, not an inference that can be made from a container FIPS label.",
+      "evidence_ids": [
+        "nsa-network-msc-boundary",
+        "nsa-network-ma-boundary"
+      ]
+    },
+    {
+      "topic": "Conditional choices",
+      "conclusion": "Only if a new CSfC site-to-site boundary is needed, compare the two listed gateway examples to the customer inventory and required evaluated configuration. They could be candidates for different layers after interoperability/independence/configuration review; this file does not approve a pair or recommend purchasing either. Each site needs its complete selected layer architecture.",
+      "evidence_ids": [
+        "nsa-network-list",
+        "nsa-network-msc-boundary"
+      ]
+    }
+  ],
+  "conditional_storage_candidates": [
+    {
+      "vendor_product_version": "NetApp Volume Encryption (NVE),ONTAP9.16.1",
+      "category": "Software Full Drive Encryption",
+      "niap_vid": "11574",
+      "list_source": "https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/Components-List/",
+      "evaluation_source": "https://www.niap-ccevs.org/api/file/get_public_file/?file_id=37652",
+      "candidate_use": "Existing enumerated NetApp appliance-backed volumes could serve PostgreSQL PVCs without DB crypto changes.",
+      "constraints": "Exact evaluated FAS/AFF/ASA configuration required; the evaluated TOE excludes cloud environments. Do not equate AzureNetAppFiles/CloudVolumesONTAP with this listing. No completed independent-layer pairing is asserted.",
+      "selected_for_mpn": false
+    },
+    {
+      "vendor_product_version": "CACI Archon Linux Unified Key Setup (LUKS),v3.0.0.2",
+      "category": "Software Full Drive Encryption",
+      "niap_vid": "11568",
+      "list_source": "https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/Components-List/",
+      "evaluation_source": "https://www.niap-ccevs.org/api/file/get_public_file/?file_id=34448",
+      "candidate_use": "Transparent block encryption can cover arbitrary filesystem contents on the evaluated Archon host.",
+      "constraints": "Specific ArchonOS/RHEL8.10-derived build and listed Dellhardware/boot configuration; not blanket approval for LinuxLUKS or AzureVMs. Check actual MPN host compatibility before considering it.",
+      "selected_for_mpn": false
+    }
+  ],
+  "conditional_network_candidates": [
+    {
+      "vendor": "Juniper",
+      "product": "SRX1600",
+      "software": "Junos OS23.4R1",
+      "role": "IPsec VPN gateway",
+      "nsa_listing_url": "https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/Components-List/",
+      "niap_url": "https://www.niap-ccevs.org/products/international-product/2025.1096",
+      "note": "Conditional boundary candidate only; use evaluated hardware/software and configuration scope."
+    },
+    {
+      "vendor": "Cisco",
+      "product": "Secure Firewall3105/3110/3120/3130/3140 running ASA",
+      "software": "ASA9.20",
+      "role": "IPsec VPN gateway",
+      "nsa_listing_url": "https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/Components-List/",
+      "niap_url": "https://www.niap-ccevs.org/products/11459",
+      "note": "Conditional boundary candidate only; this is the ASA listing, not an interchangeable FTD or arbitrary newer release."
+    }
+  ],
+  "facts": [
+    {
+      "id": "nsa-storage-current-list",
+      "url": "https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/Components-List/",
+      "observation": "Active SoftwareFDE,HardwareFDE,FileEncryption and general-purposeOS categories were reviewed. Exact searches found no PostgreSQL,SeaweedFS,UDS,OpenSSL,Chainguard or Azure names. This is a bounded current-list result, not a search of every NSA approval mechanism."
+    },
+    {
+      "id": "nsa-storage-existing-candidates",
+      "url": "https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/Components-List/",
+      "observation": "Listed SoftwareFDE candidates include NetApp Volume Encryption ONTAP9.16.1 (AA+EE,VID11574) and CACI ArchonLUKS3.0.0.2 (AA+EE,VID11568). A listing is component eligibility, not approval of an arbitrary composed deployment."
+    },
+    {
+      "id": "nsa-storage-dar-scope",
+      "url": "https://www.nsa.gov/Portals/75/documents/CSfC%20CP%20Updates%202026/%28U%29%20Approved%20DAR%20CP%20v5.1.0%20-%20March%202026.pdf",
+      "observation": "DAR CP5.1.0 (25March2026) sections1,4.3.1,5.5 protect off/unauthenticated states. Section5.5 explicitly limits SAN/NAS-drive protection to powered-off operation; running server/storage access remains a separate protection boundary."
+    },
+    {
+      "id": "nsa-storage-dar-unattended",
+      "url": "https://www.nsa.gov/Portals/75/documents/CSfC%20CP%20Updates%202026/%28U%29%20Approved%20DAR%20CP%20v5.1.0%20-%20March%202026.pdf",
+      "observation": "Section7.4 permits unattended/datacenter use with managed dualDAR, secure-power response and anti-tamper/physical-control provisions. It does not convert ordinary always-mounted database storage into a complete approved DAR solution."
+    },
+    {
+      "id": "nsa-storage-dar-layers",
+      "url": "https://www.nsa.gov/Portals/75/documents/CSfC%20CP%20Updates%202026/%28U%29%20Approved%20DAR%20CP%20v5.1.0%20-%20March%202026.pdf",
+      "observation": "CP sections4.2,6,9 require a selected solution design and independent eligible layers. Two arbitrary AES implementations or FIPS certificates do not establish the full architecture; exact component configuration and registration remain relevant."
+    },
+    {
+      "id": "nsa-storage-netapp-toe",
+      "url": "https://www.niap-ccevs.org/api/file/get_public_file/?file_id=37652",
+      "observation": "VID11574 SecurityTarget1.9 covers ONTAP9.16.1 NVE on enumerated NetApp FAS/AFF/ASA appliances. Volume encryption is transparent to block/file consumers. Section2.4 excludes cloud environments,VMware,protocol-security evaluation,HA,KMIP,SnapLock; evaluated management is serialCLI rather than SSH. Listed software cannot be transplanted to arbitrary cloud hardware."
+    },
+    {
+      "id": "nsa-storage-archon-toe",
+      "url": "https://www.niap-ccevs.org/api/file/get_public_file/?file_id=34448",
+      "observation": "VID11568 ST2.10 covers ArchonLUKS3.0.0.2 integrated into ArchonOS/RHEL8.10-derived environment, with boot passphrase. Evaluated hardware is specific Dell Latitude/Precision models (e.g.Latitude5430/i7-1265U,Precision3260/i7-12700). Generic distribution LUKS,server hardware or AKSVM use is not this evaluated configuration."
+    },
+    {
+      "id": "nsa-storage-netapp-csi",
+      "url": "https://docs.netapp.com/us-en/trident/trident-use/ontap-nas.html",
+      "observation": "Vendor Trident documents ONTAP NAS backends and Kubernetes RWO/ROX/RWX/RWOP access modes. This supports technical PVC integration; CSI transport compatibility does not expand the NVE evaluation boundary."
+    },
+    {
+      "id": "nsa-storage-actual-release",
+      "url": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685",
+      "observation": "Actual2026.45.4-uds.1 package pins Core1.14.0, horizon-postgres platform digest3431665ea7f0c2dfe4bef9673aac6221a58bdf910251857123b7fb363cbb030e and SeaweedFS-FIPS4.52 platform digestde137817b16c0d1711c3b9a9075325cd6b6bd5fd8eaed5eebdb5d3032871313b. No NetApp/CACI DAR storage component is selected in this artifact."
+    },
+    {
+      "id": "nsa-network-list",
+      "url": "https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/Components-List/",
+      "observation": "Searched current published Components List for Istio, Envoy, ztunnel, Chainguard, Node.js, NGINX and PostgreSQL: no matching entry. Relevant categories inspected: TLS software applications/protected servers, IPsec gateways and MACsec. Product listing is distinct from FIPS validation; evaluated identity/version and CP configuration matter."
+    },
+    {
+      "id": "nsa-network-msc-boundary",
+      "url": "https://www.nsa.gov/Portals/75/documents/CSfC%20CP%20Updates%202026/(U)%20Multi-Site%20Connectivity%20Capability%20Package%20v1.3.0.pdf?ver=mJWYHsX8a0wSY6bOPdCrZA%3D%3D",
+      "observation": "MSC1.3 \u00a74.1.1 places the Red network behind the inner encryption component; it permits unencrypted classified traffic there. \u00a7\u00a74/4.2 protect same-security-level sites across untrusted transport using two independent nested IPsec/MACsec tunnels. This is a network-boundary architecture, not a mandate to insert two CSfC layers between every pair of pods within one authorized Red enclave."
+    },
+    {
+      "id": "nsa-network-msc-algorithms",
+      "url": "https://www.nsa.gov/Portals/75/documents/CSfC%20CP%20Updates%202026/(U)%20Multi-Site%20Connectivity%20Capability%20Package%20v1.3.0.pdf?ver=mJWYHsX8a0wSY6bOPdCrZA%3D%3D",
+      "observation": "MSC1.3 tables6/7 distinguish current CNSA1 threshold suites from CNSA2 objectives: AES256, P384/RSA3072 and SHA384/512 are not equivalent to an unrestricted FIPS algorithm set. Product, protocol and topology requirements still apply; selecting a cipher is not a complete CSfC solution."
+    },
+    {
+      "id": "nsa-network-ma-boundary",
+      "url": "https://www.nsa.gov/Portals/75/(U)%20Mobile%20Access%20Capability%20Package%20v2_8_0.pdf",
+      "observation": "MA2.8 \u00a75.6 permits a specifically selected TLS-protected server as the inner encryption component for a TLS end-user-device design; \u00a7\u00a712.2 tables16/17 define TLS algorithm requirements. This differs from the MSC IPsec/MACsec site-to-site architecture and does not make arbitrary application TLS an approved inner component."
+    },
+    {
+      "id": "nsa-network-ma-algorithms",
+      "url": "https://www.nsa.gov/Portals/75/(U)%20Mobile%20Access%20Capability%20Package%20v2_8_0.pdf",
+      "observation": "MA2.8 table16 specifies CNSA1 TLS encryption AES256-GCM, authentication RSA3072 or ECDSA P384/SHA384, and key establishment ECDH P384 or DH3072; table17 adds CNSA2 algorithms as applicable. TLS1.3 by itself does not constrain all these selections."
+    },
+    {
+      "id": "nsa-network-gateway",
+      "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/istio/charts/uds-istio-config/templates/gateway.yaml",
+      "observation": "Actual candidate Core1.14 gateway template sets minimumTLS1.3(default), optionalTLS1.2, and referenced server certificate Secrets; it does not set an explicit CNSA-only cipher/curve/key-assurance profile."
+    },
+    {
+      "id": "nsa-network-mesh",
+      "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/istio/common/chart/templates/peer-authentication.yaml",
+      "observation": "Root PeerAuthentication selects STRICT workload mTLS. This is product transport protection within the enrolled mesh; no CSfC registration or listed network-component identity is established by this setting."
+    },
+    {
+      "id": "nsa-network-ztunnel-version",
+      "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/istio/values/unicorn/ztunnel.yaml",
+      "observation": "Core1.14 unicorn values select ztunnel-fips:v1.30.3. Core package version1.14 is not Istio/ztunnel version1.14; its mesh software baseline is1.30.3."
+    },
+    {
+      "id": "nsa-network-envoy-version",
+      "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/istio/values/unicorn/istiod.yaml",
+      "observation": "Core1.14 unicorn values select Istio pilot/proxy FIPS1.30.3. A vendor-supported FIPS variant is useful evidence for ordinary FIPS controls but is not a current NSA-listed product match."
+    },
+    {
+      "id": "nsa-network-ztunnel-ciphers",
+      "url": "https://github.com/istio/ztunnel/blob/1.30.3/src/tls/lib.rs",
+      "observation": "Upstream matching1.30.3 provider code permits TLS13_AES_256_GCM_SHA384 and TLS13_AES_128_GCM_SHA256. The tls-boring FIPS-only branch comment explicitly lists both; tls-openssl/aws-lc/ring branches also include both. This establishes that the ordinary baseline is not an AES256-only CNSA profile, without claiming a particular connection negotiated AES128 or that vendor image patches were independently reproduced."
+    },
+    {
+      "id": "nsa-network-ztunnel-csr",
+      "url": "https://github.com/istio/ztunnel/blob/1.30.3/src/tls/csr.rs",
+      "observation": "Upstream matching1.30.3 CSR branches generate P256 keys (PRIME256V1 or PKCS_ECDSA_P256_SHA256). No Core source override to a P384-only CNSA certificate profile was found. Vendor build identity still needs to be matched before asserting its exact negotiated runtime profile."
+    },
+    {
+      "id": "nsa-network-db-client",
+      "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/values/api.yaml",
+      "observation": "Selected source API connects to PostgreSQL with sslmode:disable and stunnel disabled. Protection of that workload hop is intentionally delegated to ambient mTLS, not proof of a missing wire-encryption mechanism. It is nevertheless not an independently listed CSfC database/TLS component."
+    },
+    {
+      "id": "nsa-network-db-source",
+      "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/deploy/charts/horizon-postgres/docker/Dockerfile",
+      "observation": "Delivered PostgreSQL build definition is an application database image, not a listed IPsec/MACsec gateway or MA TLS-protected-server product. Native PG OpenSSL/FIPS capability does not change that component identity."
+    },
+    {
+      "id": "nsa-network-web-source",
+      "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/compose.yml",
+      "observation": "Delivered source pins Chainguard nginx-fips:1.31.8 base sha256:72d1e862659a14e95b0a47cd85e1cfc3ecd44ce890215be1ea4a3bcc961b0d7f; runtime remains the separately named Horizon web image. Neither that exact application identity nor Chainguard nginx appears in the inspected NSA categories."
+    },
+    {
+      "id": "nsa-mpn-notional-abd",
+      "url": "https://drive.google.com/file/d/1rOyMxUBWdnwfrpnv-gvCWyne0drA5iZ5/view",
+      "observation": "Visually inspected MPN ABDv1.1 dated2026-11-02. It prominently states notional architecture requiring validation, shows AKS, Azure Blob, AzureOpenAI, MPN firewall and CNAP/BCAP-equivalent access point, and identifies no specific encryptor/storage-encryption product or NSA approval. The document UNCLASSIFIED marking describes the diagram, not proof that deployed application data is unclassified."
+    },
+    {
+      "id": "nsa-mpn-notional-confirmation",
+      "url": "https://grid-gallatin-ai.enterprise.slack.com/archives/C0CCQJ121PU/p1793580006961909",
+      "observation": "Nov1 deployment channel owner says architecture diagram is notional and storage, AzureOpenAI and callable models must be validated in the next host discussion. This prevents treating diagram product choices as an approved MPN inventory."
+    },
+    {
+      "id": "nsa-mpn-selfhosted-storage-decision",
+      "url": "https://grid-gallatin-ai.enterprise.slack.com/archives/C0B97R9NCQ3/p1793686356058199",
+      "observation": "Nov3 deployment owner explicitly says the ABD will replace Azure Blob with self-hosted S3-compatible storage and AzureOpenAI with self-hosted models. This is a concrete design-direction change beyond the Oct27 Azure proposal, but supplies no physical storage/encryption product, exact model/runtime or approved cryptographic boundary."
+    },
+    {
+      "id": "nsa-mpn-sia-112",
+      "url": "https://drive.google.com/file/d/1NXtCOlib0C8mdEmBXvXczSjrU_sE4zh4/view",
+      "observation": "Read Nov2 SIA PDF AcroForm fields (not just flattened text): operational environment MPE, organization-maintained app, HTTPS443/TLS boundary and Istio TLS1.3 internal claims, AKS/Azure services described. No exact Type1/CSfC/approved storage-encryption product/version identified. Approval signature fields are empty. The form marks ProcessesPII=No; this is a mission submission assertion needing reconciliation with actual account identity fields, not proof that the product processes no PII.",
+      "local_sha256": "b0f48b75d70904aa93f8def7951f6cf4c133732b3df590448bd640a62766e871"
+    },
+    {
+      "id": "nsa-mpn-release-contract-boundary",
+      "url": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685",
+      "observation": "Downloaded release platform-contract.json establishes UDS identity/Core version but does not select cluster OS, storage class, network encryptor, Type1 module or CSfC solution. Application package evidence cannot establish an absent underlying MPN protection inventory."
+    }
+  ],
+  "inventory_scope": "No MPN-specific TACLANE/HAIPE/Type1/CSfC registration, approved storage-encryption module/device model/version, encrypted storage class or node OS selection was identified in the available sources searched. This is not a claim that MPN has no such controls; the selected protection inventory is absent from these materials.",
+  "required_configuration_record": [
+    "actual encryption product/model and version",
+    "evaluated configuration and applicable approval/solution",
+    "which database volume, backup media or network boundary it protects"
+  ],
+  "recommendation": "Retain PostgreSQL and UDS. First map the actual MPN-approved storage and network protection; if absent, select a supported complete Type1 or applicable CSfC design. Do not treat FIPS modules, ordinary cloud disk encryption or two arbitrary AES layers as that design."
+}

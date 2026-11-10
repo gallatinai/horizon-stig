@@ -20,7 +20,7 @@ The 188 needs-work recommendations group into **36 shared workstreams**. Every r
 - [Suggested workstreams](mpn/review/workstreams.md) · [Remaining evidence decisions](mpn/review/remaining-evidence.md)
 - [Implementation plans and operating procedures](mpn/EVIDENCE-ACTIONS.md)
 - [Gallatin UDS configuration actions](mpn/UDS-CONFIGURATION.md)
-- [NSA-approved cryptography: applying the STIG wording](mpn/NSA-CRYPTOGRAPHY.md)
+- [NSA-approved cryptography: applying the STIG wording](mpn/NSA-CRYPTOGRAPHY.md) · [Checked components and protection options](mpn/NSA-COMPONENT-CHECK.md)
 - [Assessment decisions](mpn/evidence/current-assessment.json)
 - [Requirements found in Slack and Gemini meeting notes](mpn/REQUIREMENTS.md)
 - [Improvement priorities and effort estimate](mpn/FINDINGS.md)
