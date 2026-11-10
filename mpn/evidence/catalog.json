@@ -1693,5 +1693,21 @@
   "solution-asd-scg-check": {
     "url": "https://github.com/gallatinai/horizon-stig/blob/main/mpn/benchmarks/U_ASD_V6R5_STIG/benchmark.xml",
     "observation": "ASD V-222664 requires a security classification guide when the application contains classified data and permits a higher-level guide that covers the application data. The mission authority determines classification and approval; a proposed matrix does not confer authority."
+  },
+  "classified-crypto-definition": {
+    "url": "https://csrc.nist.gov/glossary/term/NSA_approved_cryptography",
+    "observation": "NSA-approved cryptography includes an approved algorithm, an implementation approved for the relevant environment and supporting key management. A FIPS validation certificate by itself does not establish that full approval."
+  },
+  "postgres-cmvp-5132": {
+    "url": "https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5132",
+    "observation": "Certificate5132 validates the Chainguard FIPS Provider for OpenSSL under FIPS140-3 in approved mode. The delivered PostgreSQL image SBOM and provider configuration identify this module; the certificate is a FIPS validation, not a claim of NSA classified-use approval."
+  },
+  "postgres-delivered-crypto": {
+    "url": "https://github.com/gallatinai/horizon-stig/blob/main/mpn/evidence/database-image-provenance.json",
+    "observation": "The exact delivered PostgreSQL image inspection identifies NIST-CMVP-5132, openssl-provider-fips-3.4.0 and FIPS provider configuration. This establishes the delivered module identity, not NSA approval for its classified use."
+  },
+  "postgres-volume-selection": {
+    "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-postgres/templates/statefulset.yaml",
+    "observation": "The database template mounts PGDATA on a persistent volume and optionally selects persistence.storageClassName. It does not itself configure an NSA-approved volume-encryption implementation."
   }
 }

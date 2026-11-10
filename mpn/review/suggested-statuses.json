@@ -8789,22 +8789,20 @@
       "V-70407",
       "CCI-003124"
     ],
-    "status": "Unclear",
-    "justification": "The product has classification metadata, but no identified governing program SCG/data-element mapping establishes the mission classification. The exact check permits an existing higher-level guide; a new Gallatin-authored classification authority or an unclassified assumption would be unsupported. This is one documentation/mission-owner decision, not an uninvestigated runtime check.",
+    "status": "Needs work",
+    "justification": "The deployment processes classified data, so a security classification guide must cover its data elements. The official check allows an existing higher-level program guide; a new application-specific guide is unnecessary if that guide covers Horizon.",
     "evidence_ids": [
       "re-mission-classification-model",
-      "solution-asd-scg-check",
-      "re-docs-mpn-decision-boundary",
-      "re-docs-mpn-scope-not-unclassified"
+      "solution-asd-scg-check"
     ],
-    "next_step": "Draft the data-element-to-existing-SCG matrix below; have the Government mission/security owner supply the controlling guide identifier/version/paragraphs and OCA approval reference. Mark nonclassified branch N/A only when that mission restriction is confirmed. Do not put a classified guide or its contents in the public tracker.",
-    "owner": "Gallatin security lead/ISSO + Government mission data owner; Gallatin SRE for boundary implementation",
-    "category": "mission documentation/decision",
+    "next_step": "Identify the existing program/mission classification guide and the sections covering Horizon data. Add application-specific guidance only for uncovered data elements, then record the guide reference.",
+    "owner": "Mission classification authority; Gallatin security for the application reference",
+    "category": "applicable classification guide",
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
-    "task": "mission-data-protection-mapping",
+    "task": "classification-guide",
     "evidence_state": "source-inferred",
     "solution_ref": "../solutions/mission-data.md",
-    "evidence": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/typescript/src/schema/schema.ts; https://github.com/gallatinai/horizon-stig/blob/main/mpn/benchmarks/U_ASD_V6R5_STIG/benchmark.xml; https://drive.google.com/file/d/1p5zQe7lko71bWNfBd2B6clzJK52Rl0U5/view; https://grid-gallatin-ai.enterprise.slack.com/archives/C0AL2QNMGG3/p1793201707357709",
+    "evidence": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/typescript/src/schema/schema.ts; https://github.com/gallatinai/horizon-stig/blob/main/mpn/benchmarks/U_ASD_V6R5_STIG/benchmark.xml",
     "human_review": true
   },
   {
@@ -9105,22 +9103,22 @@
       "V-70189",
       "CCI-002450"
     ],
-    "status": "Unclear",
-    "justification": "Delivered FIPS mechanisms can protect normal application hops, but the source/package does not select a mission-approved classified-data cryptographic boundary. The required outcome may be supplied by MPN network/storage protection around Gallatin-managed UDS; it need not be reimplemented independently by every named service. Approval/classification and the actual protected storage/path map remain one shared mission input, not proof of a missing crypto feature. The exact ASD check distinguishes non-SAMI stored data and SAMI Type1 requirements; do not replace that decision with a blanket FIPS-or-CNSA assertion.",
+    "status": "Needs work",
+    "justification": "The deployment is classified, so this rule applies. The official check distinguishes stored non-SAMI data, for which it permits NIST-certified cryptography as required by the owner, from stored SAMI data, which requires NSA-validated Type1 encryption. Apply that distinction to the identified modules instead of assuming FIPS validation covers every classified use.",
     "evidence_ids": [
       "re-mission-nsa-system-solutions",
       "re-mission-nsa-registration",
       "re-mission-nsa-cp",
-      "re-docs-mpn-decision-boundary"
+      "classified-crypto-definition"
     ],
-    "next_step": "Prepare one mission data/protection matrix covering identities, mission records, source files/chunks, derived assertions/embeddings, generated artifacts and backups/logs. Map each to the controlling program SCG or handling authority, permitted recipients/REL TO rules, SAMI applicability, at-rest and in-transit protection and the responsible implemented boundary. Have the mission owner select the actual classification/handling branch. For classified data, attach the existing approved MPN boundary protection evidence and map every data path; only engineer a missing boundary after that mapping. For unclassified scope, record the supported classified-rule N/A. Do not impose independent app-level CNSA/Type1 TLS merely because the benchmark names the application.",
-    "owner": "Gallatin security lead/ISSO + Government mission data owner; Gallatin SRE for boundary implementation",
-    "category": "mission crypto boundary/decision",
+    "next_step": "Check the actual encryption against the official non-SAMI/SAMI requirements. Credit the delivered validated modules where allowed; use NSA-validated Type1 protection where the check requires it.",
+    "owner": "Gallatin SRE/security",
+    "category": "classified encryption implementation/configuration",
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
-    "task": "mission-data-protection-mapping",
+    "task": "classified-crypto",
     "evidence_state": "source-inferred",
     "solution_ref": "../solutions/mission-data.md",
-    "evidence": "https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/faq/; https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/solution-registration/; https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/Capability-Packages/; https://drive.google.com/file/d/1p5zQe7lko71bWNfBd2B6clzJK52Rl0U5/view",
+    "evidence": "https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/faq/; https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/solution-registration/; https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/Capability-Packages/; https://csrc.nist.gov/glossary/term/NSA_approved_cryptography",
     "human_review": true
   },
   {
@@ -15460,22 +15458,22 @@
     "references": [
       "CCI-002450"
     ],
-    "status": "Unclear",
-    "justification": "Delivered FIPS mechanisms can protect normal application hops, but the source/package does not select a mission-approved classified-data cryptographic boundary. The required outcome may be supplied by MPN network/storage protection around Gallatin-managed UDS; it need not be reimplemented independently by every named service. Approval/classification and the actual protected storage/path map remain one shared mission input, not proof of a missing crypto feature.",
+    "status": "Needs work",
+    "justification": "The deployment is classified, so this rule applies. Check the actual cryptography protecting container-platform data, including stored Secrets and persistent data. Core FIPS support alone does not establish NSA approval of the configured encryption.",
     "evidence_ids": [
       "re-mission-nsa-system-solutions",
       "re-mission-nsa-registration",
       "re-mission-nsa-cp",
-      "re-docs-mpn-decision-boundary"
+      "classified-crypto-definition"
     ],
-    "next_step": "Prepare one mission data/protection matrix covering identities, mission records, source files/chunks, derived assertions/embeddings, generated artifacts and backups/logs. Map each to the controlling program SCG or handling authority, permitted recipients/REL TO rules, SAMI applicability, at-rest and in-transit protection and the responsible implemented boundary. Have the mission owner select the actual classification/handling branch. For classified data, attach the existing approved MPN boundary protection evidence and map every data path; only engineer a missing boundary after that mapping. For unclassified scope, record the supported classified-rule N/A. Do not impose independent app-level CNSA/Type1 TLS merely because the benchmark names the application.",
-    "owner": "Gallatin security lead/ISSO + Government mission data owner; Gallatin SRE for boundary implementation",
-    "category": "mission crypto boundary/decision",
+    "next_step": "Use NSA-approved encryption for the platform data and traffic covered by this rule; verify the chosen implementation, approval and settings. Reuse the host/storage/network controls that implement it.",
+    "owner": "Gallatin SRE/security",
+    "category": "classified encryption implementation/configuration",
     "components": "UDS platform: registry, runtime, Pepr, Istio, logging; delivered workloads",
-    "task": "mission-data-protection-mapping",
+    "task": "classified-crypto",
     "evidence_state": "source-inferred",
     "solution_ref": "../solutions/mission-data.md",
-    "evidence": "https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/faq/; https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/solution-registration/; https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/Capability-Packages/; https://drive.google.com/file/d/1p5zQe7lko71bWNfBd2B6clzJK52Rl0U5/view",
+    "evidence": "https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/faq/; https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/solution-registration/; https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/Capability-Packages/; https://csrc.nist.gov/glossary/term/NSA_approved_cryptography",
     "human_review": true
   },
   {
@@ -20294,21 +20292,21 @@
       "V-56017",
       "CCI-002450"
     ],
-    "status": "Unclear",
-    "justification": "This rule includes sensitive/need-to-know compartments, so a classified-only N/A is too narrow. Delivered FIPS gateway/mesh protection can supply the cryptographic mechanism for ordinary sensitive web data; the missing item is the compartment/data-owner protection profile and mapping to that existing boundary. A new nginx encryption layer is not justified by this evidence.",
+    "status": "Needs work",
+    "justification": "Classified data requires checking the web/gateway encryption against its required protection profile. Existing FIPS modules and mesh/gateway TLS provide implementations to assess; classification is no longer an unresolved applicability question.",
     "evidence_ids": [
       "re-mission-nsa-system-solutions",
-      "re-docs-mpn-decision-boundary",
-      "re-mission-classification-model"
+      "re-mission-classification-model",
+      "classified-crypto-definition"
     ],
-    "next_step": "Add web requests/responses, generated artifacts and relevant compartment/releasability labels to the same mission protection matrix. Reuse the existing gateway/mesh module evidence when it meets the selected policy; add storage/enclave protection only for an actual uncovered requirement. Record the accepted existing-boundary justification.",
-    "owner": "Gallatin security lead/ISSO + Government mission data owner; Gallatin SRE for boundary implementation",
-    "category": "mission policy-to-existing-control mapping",
+    "next_step": "Check the actual gateway/web encryption modules and settings against the classified data protection requirement; configure an approved implementation wherever needed.",
+    "owner": "Gallatin SRE/security",
+    "category": "classified encryption implementation/configuration",
     "components": "Delivered static nginx-FIPS, Istio ingress and shared UDS identity (separate roles)",
-    "task": "mission-data-protection-mapping",
+    "task": "classified-crypto",
     "evidence_state": "source-inferred",
     "solution_ref": "../solutions/mission-data.md",
-    "evidence": "https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/faq/; https://drive.google.com/file/d/1p5zQe7lko71bWNfBd2B6clzJK52Rl0U5/view; https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/typescript/src/schema/schema.ts",
+    "evidence": "https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/faq/; https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/typescript/src/schema/schema.ts; https://csrc.nist.gov/glossary/term/NSA_approved_cryptography",
     "human_review": true
   },
   {
@@ -25126,22 +25124,22 @@
       "V-57541",
       "CCI-002450"
     ],
-    "status": "Unclear",
-    "justification": "Delivered FIPS mechanisms can protect normal application hops, but the source/package does not select a mission-approved classified-data cryptographic boundary. The required outcome may be supplied by MPN network/storage protection around Gallatin-managed UDS; it need not be reimplemented independently by every named service. Approval/classification and the actual protected storage/path map remain one shared mission input, not proof of a missing crypto feature.",
+    "status": "Needs work",
+    "justification": "The deployment is classified, so this rule applies. Delivered application FIPS modules are identified, but the configured storage and transport encryption still need to meet the NSA-approved requirement.",
     "evidence_ids": [
       "re-mission-nsa-system-solutions",
       "re-mission-nsa-registration",
       "re-mission-nsa-cp",
-      "re-docs-mpn-decision-boundary"
+      "classified-crypto-definition"
     ],
-    "next_step": "Prepare one mission data/protection matrix covering identities, mission records, source files/chunks, derived assertions/embeddings, generated artifacts and backups/logs. Map each to the controlling program SCG or handling authority, permitted recipients/REL TO rules, SAMI applicability, at-rest and in-transit protection and the responsible implemented boundary. Have the mission owner select the actual classification/handling branch. For classified data, attach the existing approved MPN boundary protection evidence and map every data path; only engineer a missing boundary after that mapping. For unclassified scope, record the supported classified-rule N/A. Do not impose independent app-level CNSA/Type1 TLS merely because the benchmark names the application.",
-    "owner": "Gallatin security lead/ISSO + Government mission data owner; Gallatin SRE for boundary implementation",
-    "category": "mission crypto boundary/decision",
+    "next_step": "Check the encryption protecting application-server data against the NSA-approved requirement and configure any missing protection. Record the approved implementation and settings.",
+    "owner": "Gallatin SRE/security",
+    "category": "classified encryption implementation/configuration",
     "components": "Delivered Horizon API, workers, chat, ingestion and storage; delegated UDS identity/gateway/mesh",
-    "task": "mission-data-protection-mapping",
+    "task": "classified-crypto",
     "evidence_state": "source-inferred",
     "solution_ref": "../solutions/mission-data.md",
-    "evidence": "https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/faq/; https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/solution-registration/; https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/Capability-Packages/; https://drive.google.com/file/d/1p5zQe7lko71bWNfBd2B6clzJK52Rl0U5/view",
+    "evidence": "https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/faq/; https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/solution-registration/; https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/Capability-Packages/; https://csrc.nist.gov/glossary/term/NSA_approved_cryptography",
     "human_review": true
   },
   {
@@ -29489,22 +29487,22 @@
       "V-58157",
       "CCI-002450"
     ],
-    "status": "Unclear",
-    "justification": "Delivered FIPS mechanisms can protect normal application hops, but the source/package does not select a mission-approved classified-data cryptographic boundary. The required outcome may be supplied by MPN network/storage protection around Gallatin-managed UDS; it need not be reimplemented independently by every named service. Approval/classification and the actual protected storage/path map remain one shared mission input, not proof of a missing crypto feature.",
+    "status": "Needs work",
+    "justification": "The deployment is classified, so this rule applies. The PostgreSQL image contains the FIPS-validated OpenSSL provider (CMVP5132), but that does not establish NSA approval for the database encryption. The package also does not select approved data-volume encryption.",
     "evidence_ids": [
-      "re-mission-nsa-system-solutions",
-      "re-mission-nsa-registration",
-      "re-mission-nsa-cp",
-      "re-docs-mpn-decision-boundary"
+      "postgres-delivered-crypto",
+      "postgres-volume-selection",
+      "postgres-cmvp-5132",
+      "classified-crypto-definition"
     ],
-    "next_step": "Prepare one mission data/protection matrix covering identities, mission records, source files/chunks, derived assertions/embeddings, generated artifacts and backups/logs. Map each to the controlling program SCG or handling authority, permitted recipients/REL TO rules, SAMI applicability, at-rest and in-transit protection and the responsible implemented boundary. Have the mission owner select the actual classification/handling branch. For classified data, attach the existing approved MPN boundary protection evidence and map every data path; only engineer a missing boundary after that mapping. For unclassified scope, record the supported classified-rule N/A. Do not impose independent app-level CNSA/Type1 TLS merely because the benchmark names the application.",
-    "owner": "Gallatin security lead/ISSO + Government mission data owner; Gallatin SRE for boundary implementation",
-    "category": "mission crypto boundary/decision",
+    "next_step": "Verify or configure NSA-approved encryption for database files, backups and connections. Record the implementation approval and required settings. Reuse approved platform/storage encryption that already protects PostgreSQL.",
+    "owner": "Gallatin SRE/security",
+    "category": "classified encryption implementation/configuration",
     "components": "Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database",
-    "task": "mission-data-protection-mapping",
+    "task": "classified-crypto",
     "evidence_state": "source-inferred",
     "solution_ref": "../solutions/mission-data.md",
-    "evidence": "https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/faq/; https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/solution-registration/; https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/Capability-Packages/; https://drive.google.com/file/d/1p5zQe7lko71bWNfBd2B6clzJK52Rl0U5/view",
+    "evidence": "https://github.com/gallatinai/horizon-stig/blob/main/mpn/evidence/database-image-provenance.json; https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-postgres/templates/statefulset.yaml; https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5132; https://csrc.nist.gov/glossary/term/NSA_approved_cryptography",
     "human_review": true
   },
   {

@@ -19,4 +19,4 @@ Rebuild with `python3 scripts/build_review.py`, `python3 scripts/summarize_revie
 
 `python3 scripts/render_delivered.py <bundle-checkout-at-d528b7f>` applies the package's identity and immutable image transformations, then renders 12 charts and 16 containers to `rendered-delivered/`. It requires Helm and PyYAML and uses placeholders without registry pulls, secret generation or deployment.
 
-UDS source defaults supply the platform behavior used for recommendations. MPN-specific storage/KMS, network/registry, certificate and mission choices must be selected in Gallatin's deployment configuration. Final CKLB acceptance also requires the stated organizational decisions and records.
+UDS source defaults supply the platform behavior used for recommendations. The deployment is classified. MPN-specific storage/KMS, network/registry, certificate and availability/topology choices must be selected in Gallatin's deployment configuration. Final CKLB acceptance also requires the stated organizational decisions and records.

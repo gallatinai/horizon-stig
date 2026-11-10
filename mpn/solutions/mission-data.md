@@ -2,49 +2,47 @@
 
 | STIG/SRG rule | Requirement | Current status |
 |---|---|---|
-| [V-222664 / APSC-DV-003290](../review/U_ASD_V6R5_STIG.md) | If the application contains classified data, a Security Classification Guide must exist containing data elements and their classification. | Unclear |
-| [V-265634 / APSC-DV-002010](../review/U_ASD_V6R5_STIG.md) | The application must implement NSA-approved cryptography to protect classified information in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, and standards. | Unclear |
-| [V-233211 / SRG-APP-000416-CTR-001015](../review/U_Container_Platform_V2R5_SRG.md) | The container platform must implement NSA-approved cryptography to protect classified information in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, and standards. | Unclear |
-| [V-240925 / SRG-APP-000416-AS-000140](../review/U_Application_Server_V4R6_SRG.md) | The application server must implement NSA-approved cryptography to protect classified information in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, and standards. | Unclear |
-| [V-233495 / SRG-APP-000416-DB-000380](../review/U_Database_V4R6_SRG.md) | The DBMS must use NSA-approved cryptography to protect classified information in accordance with the data owner's requirements. | Unclear |
-| [V-239371 / SRG-APP-000416-WSR-000118](../review/U_Web_Server_V4R5_SRG.md) | The web server must implement required cryptographic protections using cryptographic modules complying with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance when encrypting data that must be compartmentalized. | Unclear |
+| [V-222664 / APSC-DV-003290](../review/U_ASD_V6R5_STIG.md) | If the application contains classified data, a Security Classification Guide must exist containing data elements and their classification. | Needs work |
+| [V-265634 / APSC-DV-002010](../review/U_ASD_V6R5_STIG.md) | The application must implement NSA-approved cryptography to protect classified information in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, and standards. | Needs work |
+| [V-233211 / SRG-APP-000416-CTR-001015](../review/U_Container_Platform_V2R5_SRG.md) | The container platform must implement NSA-approved cryptography to protect classified information in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, and standards. | Needs work |
+| [V-240925 / SRG-APP-000416-AS-000140](../review/U_Application_Server_V4R6_SRG.md) | The application server must implement NSA-approved cryptography to protect classified information in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, and standards. | Needs work |
+| [V-233495 / SRG-APP-000416-DB-000380](../review/U_Database_V4R6_SRG.md) | The DBMS must use NSA-approved cryptography to protect classified information in accordance with the data owner's requirements. | Needs work |
+| [V-239371 / SRG-APP-000416-WSR-000118](../review/U_Web_Server_V4R5_SRG.md) | The web server must implement required cryptographic protections using cryptographic modules complying with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance when encrypting data that must be compartmentalized. | Needs work |
 | [V-278962 / SRG-APP-001045-AS-000325](../review/U_Application_Server_V4R6_SRG.md) | The application server must attach data tags containing organization-defined authorized processing to organization-defined elements of personally identifiable information. | Needs work |
 | [V-278963 / SRG-APP-001050-AS-000326](../review/U_Application_Server_V4R6_SRG.md) | The application server must attach data tags containing organization-defined processing purposes to organization-defined elements of personally identifiable information. | Needs work |
 
-### Mission data and protection mapping
+## Classified encryption
 
-Prepare one matrix rather than separate classified-crypto changes for each server benchmark. Gallatin owns its UDS configuration on MPN; do not inherit the separate DU-managed IL5/IL6 service package by name.
+MPN will process classified data. The classified-encryption rules apply.
 
-| Data element family | Existing source association | Mission-owner fields to complete |
-|---|---|---|
-| Account identity: email, names, username, subject | Users schema; tenant and role context | PII determination, authorized processing, purpose, recipients, retention, controlling policy |
-| Mission planning records | Tenant/domain authorization | Governing program SCG/paragraph, classification, caveats/REL TO, aggregation rules |
-| Uploaded files, chunks and ingestion jobs | Classification field and tags | Source marking, allowed processing, purpose, derivative marking, permitted inference boundary |
-| Assertions, embeddings and retrieved context | Classification/tenant metadata | Derivative/aggregation rule, retrieval/export permission and recipients |
-| Generated artifacts and exports | Application content and delivery boundary | Required markings, recipients, export policy and allowed navigation/delivery |
-| Audit logs, database/object backups and temporary files | Producing service/storage association | Inherited sensitivity, minimum necessary content, retention and protection boundary |
+For each relevant component, identify the encryption implementation protecting its data, check whether it meets the rule's NSA-approved requirement, and configure missing protection. Record the product/module, approval reference and required settings. Reuse approved encryption already supplied by the host, storage or network; no duplicate application crypto is required.
 
-Record the governing guide identifier/version, original authority reference, element/paragraph mapping, reasons/declassification/handling reference, scope/caveats, owner and decision date. Use the existing higher-level program SCG where it covers these elements. This is a draft mapping for the mission owner's completion, not an approved classification guide; do not put sensitive guide contents or decisions in a public repo.
+For PostgreSQL, the delivered image uses the Chainguard OpenSSL FIPS provider, CMVP5132. That establishes FIPS validation, not NSA classified-use approval. The package does not select an NSA-approved database-volume encryption configuration. Verify or configure the database files, backups and connection protection against the actual requirement.
 
-For unclassified scope, record the mission restriction and conditional N/A for classified-only checks. For classified scope, identify whether each data/path is already within an approved MPN cryptographic protection boundary and attach its authority/module/configuration evidence. Map at-rest, backup and network crossings separately. Use the exact ASD SAMI/non-SAMI distinction where applicable. NSA's CSfC guidance treats approved protection as a configured system solution; FIPS container names, modern TLS or a CNSA cipher list alone do not establish that solution. Partner/national-authority constraints must be part of the same map. Do not start a new CSfC registration or add Type1/app-local encryption unless the actual mission protection gap calls for it. [NSA solution guidance](https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/faq/), [registration requirements](https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/solution-registration/), [capability packages](https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/Capability-Packages/).
+The ASD V-265634 check has a specific non-SAMI/SAMI distinction: it permits NIST-certified cryptography for stored non-SAMI data as required by the owner and requires NSA-validated Type1 for stored SAMI. Use that wording when checking the implementation; do not impose Type1 on every component merely because the environment is classified.
 
-### PII processing metadata
+## Classification guide
 
-Use a versioned profile such as `mission-account-identity/v1`, with the data owner approving scope and values. Suggested draft field associations are email/subject/name → account administration and authorized identity display; the authorized processing and purpose wording must be approved, not inferred as a legal basis. Document uploads require a separate mission-document profile if they contain PII. Avoid tagging all mission records as PII by default.
+Use the existing program/mission classification guide if it covers Horizon's data elements, as V-222664 permits. Record its identifier and applicable sections. Extend the guide only for uncovered data; the guide requirement is separate from checking whether a cryptographic implementation is approved.
 
-Reuse existing `files.tags` and downstream metadata for document-level attributes. Proposed keys are `privacy.profile`, `privacy.authorized_processing`, `privacy.processing_purpose` and `privacy.policy_ref`; they are proposed labels, not a current configured behavior. Keep field-level account associations in versioned API/schema metadata tied to the actual identity fields. If the required interpretation demands field-attached machine-readable tags, add that narrow mapping at the schema/API boundary. Validate required presence, allowed values, propagation to chunks/exports and preservation across updates; prevent ordinary callers from stripping required policy labels. General-purpose tags already exist, so a new database-wide tagging subsystem is not the first step.
+## PII processing metadata
 
-Acceptance artifacts are the approved PII element/purpose profile and an example source-derived metadata/export record showing the approved associations. Security classification and tenant labels remain separate from processing purpose.
+Approve the permitted processing and purposes for the actual PII fields. Reuse document `files.tags` and propagated metadata for `privacy.profile`, `privacy.authorized_processing`, `privacy.processing_purpose` and `privacy.policy_ref`. Add only the missing schema/API associations for account identity fields. Validate presence, allowed values, propagation and protection against unauthorized tag removal.
+
+Use the mission-data protection record template for the field/purpose associations and the governing guide references. A proposed tag profile is not an implemented control or an approved guide.
+
 
 ## Source references
 
 - [re-mission-classification-model](https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/typescript/src/schema/schema.ts)
 - [solution-asd-scg-check](https://github.com/gallatinai/horizon-stig/blob/main/mpn/benchmarks/U_ASD_V6R5_STIG/benchmark.xml)
-- [re-docs-mpn-decision-boundary](https://drive.google.com/file/d/1p5zQe7lko71bWNfBd2B6clzJK52Rl0U5/view)
-- [re-docs-mpn-scope-not-unclassified](https://grid-gallatin-ai.enterprise.slack.com/archives/C0AL2QNMGG3/p1793201707357709)
 - [re-mission-nsa-system-solutions](https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/faq/)
 - [re-mission-nsa-registration](https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/solution-registration/)
 - [re-mission-nsa-cp](https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/Capability-Packages/)
+- [classified-crypto-definition](https://csrc.nist.gov/glossary/term/NSA_approved_cryptography)
+- [postgres-delivered-crypto](https://github.com/gallatinai/horizon-stig/blob/main/mpn/evidence/database-image-provenance.json)
+- [postgres-volume-selection](https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-postgres/templates/statefulset.yaml)
+- [postgres-cmvp-5132](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5132)
 - [re-mission-user-fields](https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/api/users/users.schema.ts)
 - [re-mission-upload-tags](https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/api/files/files.schema.ts)
 - [re-mission-ingestion-tags](https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/workers/artifact-ingestion/artifact_ingestion/processor.py)

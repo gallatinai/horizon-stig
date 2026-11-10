@@ -1,6 +1,6 @@
 # MPN requirements
 
-Gallatin deploys and manages Horizon on UDS Core for MPN. Defense Unicorns supplies UDS Core software; DU's managed IL5/IL6 clusters are a separate deployment. UDS settings are established from the pinned Core source and Gallatin's configuration.
+Gallatin deploys and manages Horizon on UDS Core for MPN. The deployment will process classified data. Defense Unicorns supplies UDS Core software; DU's managed IL5/IL6 clusters are a separate deployment. UDS settings are established from the pinned Core source and Gallatin's configuration.
 
 | Requirement | Source | Action |
 |---|---|---|
@@ -15,7 +15,7 @@ Gallatin deploys and manages Horizon on UDS Core for MPN. Defense Unicorns suppl
 | Include scans, image SBOMs, control mappings and POA&M dates | [MPN compliance scope](https://gallatin.atlassian.net/wiki/spaces/GG/pages/733085804/WIP+STIG+SRG+Compliance+Scope+MPN) | Bind the evidence and open actions to the selected release. |
 | Use local inference, hardened images and Gallatin SRE monitoring | [MPN Documentation Sync](https://docs.google.com/document/d/1v7i80F7MixkY0DapjTXHImD3s7hD4N0IMR4-iw9h30M/edit) | Select the local model runtime and configure required flows, storage and monitoring. |
 | Exclude MSS/Scale external data connections from the initial MPN release | [Initial-release scope](https://grid-gallatin-ai.enterprise.slack.com/archives/C0AL2QNMGG3/p1793201190378669) | Keep these integrations outside the required initial-release backlog. |
-| Identify MPN mission classification, availability and network boundary | [Mission-boundary discussion](https://grid-gallatin-ai.enterprise.slack.com/archives/C0AL2QNMGG3/p1793201707357709), [deployment assessment](https://drive.google.com/file/d/1p5zQe7lko71bWNfBd2B6clzJK52Rl0U5/view) | Apply the required classified/compartmented, HA and boundary controls to the actual mission designation. |
+| Apply classified-data requirements; identify MPN availability and network boundary | [Mission-boundary discussion](https://grid-gallatin-ai.enterprise.slack.com/archives/C0AL2QNMGG3/p1793201707357709), [deployment assessment](https://drive.google.com/file/d/1p5zQe7lko71bWNfBd2B6clzJK52Rl0U5/view) | MPN will process classified data. Apply classified-data controls and identify any additional MAC I, compartmentation or DMZ conditions. |
 | Record source commits, digests, configuration, scan dates and checklist versions | [Applicability record](https://drive.google.com/file/d/1tErFKvZH7On0WGKQtqEeMf2BEYTgjuYO/view) | Refresh affected mappings when those inputs change. |
 | Apply company security procedures to MPN | [Company policies](https://github.com/gallatinai/gallatin-company-policies/tree/e5b6ec5a2862cc3880c2ccc011d57698f14611e9) | Complete contract-specific details, approvals and required execution records. Policies are draft where the register says so. |
 

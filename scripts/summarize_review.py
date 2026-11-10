@@ -29,7 +29,7 @@ for r in unknown:
  lines += [('> '+html.escape(line.rstrip(),quote=False)).rstrip() for line in r['check'].splitlines()]
  lines += ['','</details>','']
 (ROOT/'mpn/review/remaining-evidence.md').write_text('\n'.join(lines).rstrip()+'\n')
-lines=['# Horizon STIG tracking','','Suggested statuses and reasons for all **1,048 rules across seven benchmarks**, updated 10 November 2026. The OS benchmark is an eighth family pending MPN distribution/version selection. Gallatin manages this UDS Core deployment on MPN.','','| Benchmark | Rules | Needs work | Likely covered | Unclear | N/A justification | Source-only Compliant |','|---|---:|---:|---:|---:|---:|---:|']
+lines=['# Horizon STIG tracking','','Suggested statuses and reasons for all **1,048 rules across seven benchmarks**, updated 10 November 2026. The OS benchmark is an eighth family pending MPN distribution/version selection. Gallatin manages this UDS Core deployment on MPN, which will process classified data.','','| Benchmark | Rules | Needs work | Likely covered | Unclear | N/A justification | Source-only Compliant |','|---|---:|---:|---:|---:|---:|---:|']
 for name in dict.fromkeys(r['benchmark'] for r in rows):
  group=[r for r in rows if r['benchmark']==name];c=Counter(r['status'] for r in group)
  lines.append(f"| [{name.removeprefix('U_')}](mpn/review/{name}.md) | {len(group)} | {c['Needs work']} | {c['Likely covered']} | {c['Unclear']} | {c['Needs N/A justification']} | {c['Compliant']} |")

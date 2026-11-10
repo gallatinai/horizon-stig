@@ -1,18 +1,18 @@
 {
   "total": 1048,
   "by_status": {
-    "Needs work": 183,
+    "Needs work": 189,
     "Likely covered": 781,
     "Needs N/A justification": 72,
-    "Unclear": 8,
+    "Unclear": 2,
     "Compliant": 4
   },
   "by_benchmark": {
     "U_ASD_V6R5_STIG": {
-      "Needs work": 66,
+      "Needs work": 68,
       "Likely covered": 186,
       "Needs N/A justification": 31,
-      "Unclear": 3
+      "Unclear": 1
     },
     "U_Kubernetes_V2R6_STIG": {
       "Likely covered": 89,
@@ -20,30 +20,27 @@
       "Needs work": 2
     },
     "U_Container_Platform_V2R5_SRG": {
-      "Needs work": 33,
+      "Needs work": 34,
       "Likely covered": 152,
-      "Needs N/A justification": 2,
-      "Unclear": 1
+      "Needs N/A justification": 2
     },
     "U_Web_Server_V4R5_SRG": {
       "Likely covered": 102,
-      "Needs work": 15,
+      "Needs work": 16,
       "Compliant": 2,
-      "Needs N/A justification": 6,
-      "Unclear": 1
+      "Needs N/A justification": 6
     },
     "U_Application_Server_V4R6_SRG": {
-      "Needs work": 24,
+      "Needs work": 25,
       "Likely covered": 107,
       "Needs N/A justification": 4,
-      "Unclear": 2
+      "Unclear": 1
     },
     "U_Database_V4R6_SRG": {
-      "Needs work": 27,
+      "Needs work": 28,
       "Likely covered": 95,
       "Needs N/A justification": 18,
-      "Compliant": 1,
-      "Unclear": 1
+      "Compliant": 1
     },
     "U_AAA_Services_V2R3_SRG": {
       "Likely covered": 50,
