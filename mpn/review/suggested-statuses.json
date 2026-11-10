@@ -7760,14 +7760,14 @@
       "CCI-001795"
     ],
     "status": "Needs work",
-    "justification": "A complete read-only effective-entitlement snapshot has been prepared for the actual Horizon repository. Finish the existing quarterly access-certification workflow with accountable owner decisions; no new discovery integration or retrospective claim of review is needed.",
+    "justification": "Corporate policy requires quarterly access certification, and saved evidence describes a prepared effective-entitlement snapshot for the Horizon repository. Neither establishes an accountable owner completed a review within the last three months. Human review on 2026-11-10 confirmed Needs work with verification first for this and similar access-review requirements: find existing dated review records, confirm owner and cadence, and arrange a review only if absent or overdue. Branch protection and code review do not replace repository-access certification.",
     "evidence_ids": [
       "solution-governance-access-snapshot",
       "solution-governance-github-audit-log",
       "solution-governance-account-policy",
       "re-governance-rules"
     ],
-    "next_step": "The GitHub organization owner and Horizon engineering owner certify the protected Nov10 entitlement snapshot, justify each privileged role, record approved changes and review again within three months.",
+    "next_step": "In the post-classification verification pass, locate the latest accountable-owner certification of Horizon repository access, its date, scope and recorded decisions. Confirm reviews occur at least every three months and cover effective grants, including inherited/team privileges. Credit an existing current review; if absent or overdue, have the accountable owner review access, record retention/removal decisions and approved changes, and set the next review date. Retain controlled references rather than publishing personnel details.",
     "owner": "GitHub organization owner; Horizon engineering owner; security reviewer",
     "category": "operational procedure/certification",
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
