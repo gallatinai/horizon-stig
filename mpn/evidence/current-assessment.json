@@ -1013,7 +1013,7 @@
     },
     "V-222450": {
       "status": "Needs work",
-      "justification": "Credit existing UDS identity/admin events, append-only actor-aware role grants/revocations and database change provenance. Remaining gap is selected app-domain successful/denied protected operations: the permission enforcer throws403 without emitting a structured actor/target/operation event, and generic HTTP logs omit actor. Central proxy identity records do not carry all tenant/object decisions. This is a targeted event-catalog/attribution integration, not an absence of auditing or a requirement to add actors to every diagnostic/request log.",
+      "justification": "Privilege-grant auditing is partially implemented through actor-aware Horizon role-grant records and UDS identity/admin events. Human review on 2026-11-10 confirmed Needs work: confirm successful and failed privilege-grant coverage, add missing audit records, and test both outcomes. The saved source assessment identifies denied protected operations without a structured actor/target/operation event; generic HTTP failure logs do not establish the required user and privilege details. This shares the application audit-control work for V-222431.",
       "evidence_ids": [
         "re-asd-release",
         "re-asd-id-events",
@@ -1021,7 +1021,7 @@
         "re-asd-logging",
         "re-asd-guard"
       ],
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover.",
+      "next_step": "Confirm existing audit coverage for successful and unsuccessful privilege-grant attempts. Add missing records that identify the actor, intended recipient, privilege and outcome. Verify an authorized grant and a failed grant, including an unauthorized attempt or invalid recipient, produce the required audit records. Reuse existing role-audit and UDS events and retain verification evidence.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "targeted application-domain audit coverage",
       "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",

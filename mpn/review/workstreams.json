@@ -59,7 +59,7 @@
     {
       "vuln_id": "V-222450",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
+      "next_step": "Confirm existing audit coverage for successful and unsuccessful privilege-grant attempts. Add missing records that identify the actor, intended recipient, privilege and outcome. Verify an authorized grant and a failed grant, including an unauthorized attempt or invalid recipient, produce the required audit records. Reuse existing role-audit and UDS events and retain verification evidence."
     },
     {
       "vuln_id": "V-222451",
