@@ -69,147 +69,147 @@
     {
       "vuln_id": "V-222452",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Add targeted classification/security-domain access/change/delete audit events with actor/outcome and accepted N/A for nonexistent operations. This shares the domain audit workstream."
+      "next_step": "Identify applicable role and elevated-access paths, map existing audit coverage, and implement missing successful and failed access-attempt records. Test both outcomes and retain evidence; do not add nonexistent privilege-escalation functionality merely to satisfy a test. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-222453",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Add targeted classification/security-domain access/change/delete audit events with actor/outcome and accepted N/A for nonexistent operations. This shares the domain audit workstream."
+      "next_step": "Add targeted classification/security-domain access/change/delete audit events with actor/outcome and accepted N/A for nonexistent operations. This shares the domain audit workstream. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-222454",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-222455",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-222456",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Add targeted classification/security-domain access/change/delete audit events with actor/outcome and accepted N/A for nonexistent operations. This shares the domain audit workstream."
+      "next_step": "Map the security-level operation in this requirement to actual role or authorization-capability operations and existing records. Implement missing required successful and unsuccessful attempt records, verify both outcomes and retain evidence. Record a scoped applicability decision for operations absent from the component rather than inventing them. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-222457",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Add targeted classification/security-domain access/change/delete audit events with actor/outcome and accepted N/A for nonexistent operations. This shares the domain audit workstream."
+      "next_step": "Add targeted classification/security-domain access/change/delete audit events with actor/outcome and accepted N/A for nonexistent operations. This shares the domain audit workstream. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-222458",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-222459",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Add targeted classification/security-domain access/change/delete audit events with actor/outcome and accepted N/A for nonexistent operations. This shares the domain audit workstream."
+      "next_step": "Map the security-level operation in this requirement to actual role or authorization-capability operations and existing records. Implement missing required successful and unsuccessful attempt records, verify both outcomes and retain evidence. Record a scoped applicability decision for operations absent from the component rather than inventing them. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-222460",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-222461",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Add targeted classification/security-domain access/change/delete audit events with actor/outcome and accepted N/A for nonexistent operations. This shares the domain audit workstream."
+      "next_step": "Add targeted classification/security-domain access/change/delete audit events with actor/outcome and accepted N/A for nonexistent operations. This shares the domain audit workstream. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-222463",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-222465",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-222466",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-222471",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-222472",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-222477",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-222478",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-222512",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-233038",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Complete the shared event-source map and missing domain/DB events; credit existing UDS user/admin/runtime sources and avoid a duplicate remediation ticket."
+      "next_step": "Complete the shared event-source map and missing domain/DB events; credit existing UDS user/admin/runtime sources and avoid a duplicate remediation ticket. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-233253",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Map each security-level/category operation to application or database audit events; reuse the central stream and existing classification fields. Apply scoped N/A only to platform components that perform no such operation."
+      "next_step": "Map the security-level operation in this requirement to actual role or authorization-capability operations and existing records. Implement missing required successful and unsuccessful attempt records, verify both outcomes and retain evidence. Record a scoped applicability decision for operations absent from the component rather than inventing them. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-233254",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Map each security-level/category operation to application or database audit events; reuse the central stream and existing classification fields. Apply scoped N/A only to platform components that perform no such operation."
+      "next_step": "Map each security-level/category operation to application or database audit events; reuse the central stream and existing classification fields. Apply scoped N/A only to platform components that perform no such operation. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-233257",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Map each security-level/category operation to application or database audit events; reuse the central stream and existing classification fields. Apply scoped N/A only to platform components that perform no such operation."
+      "next_step": "Map the security-level operation in this requirement to actual role or authorization-capability operations and existing records. Implement missing required successful and unsuccessful attempt records, verify both outcomes and retain evidence. Record a scoped applicability decision for operations absent from the component rather than inventing them. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-233258",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Map each security-level/category operation to application or database audit events; reuse the central stream and existing classification fields. Apply scoped N/A only to platform components that perform no such operation."
+      "next_step": "Map each security-level/category operation to application or database audit events; reuse the central stream and existing classification fields. Apply scoped N/A only to platform components that perform no such operation. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-233260",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Map each security-level/category operation to application or database audit events; reuse the central stream and existing classification fields. Apply scoped N/A only to platform components that perform no such operation."
+      "next_step": "Map the security-level operation in this requirement to actual role or authorization-capability operations and existing records. Implement missing required successful and unsuccessful attempt records, verify both outcomes and retain evidence. Record a scoped applicability decision for operations absent from the component rather than inventing them. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-233262",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Map each security-level/category operation to application or database audit events; reuse the central stream and existing classification fields. Apply scoped N/A only to platform components that perform no such operation."
+      "next_step": "Map each security-level/category operation to application or database audit events; reuse the central stream and existing classification fields. Apply scoped N/A only to platform components that perform no such operation. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-206365",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Complete actor-attributed protected API/security-event records and their correlation in the existing UDS log pipeline."
+      "next_step": "Complete actor-attributed protected API/security-event records and their correlation in the existing UDS log pipeline. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-204719",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Add narrowly-scoped actor-attributed denied/failed privilege events and forward them through the existing logging path; reuse existing successful audit."
+      "next_step": "Add narrowly-scoped actor-attributed denied/failed privilege events and forward them through the existing logging path; reuse existing successful audit. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-204824",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Add narrowly-scoped actor-attributed denied/failed privilege events and forward them through the existing logging path; reuse existing successful audit."
+      "next_step": "Add narrowly-scoped actor-attributed denied/failed privilege events and forward them through the existing logging path; reuse existing successful audit. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-204825",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Add narrowly-scoped actor-attributed denied/failed privilege events and forward them through the existing logging path; reuse existing successful audit."
+      "next_step": "Add narrowly-scoped actor-attributed denied/failed privilege events and forward them through the existing logging path; reuse existing successful audit. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     }
   ],
   "audit-alert-routing": [

@@ -1047,14 +1047,14 @@
     },
     "V-222452": {
       "status": "Needs work",
-      "justification": "The product has real classification attributes and protected security domains, so these cannot remain unknown on the premise that no taxonomy exists. Files can be filtered/reclassified through authorized APIs, but common request records omit actor and the reviewed code has no complete successful/denied security-level/category-change event catalog. UDS identity events cannot substitute for domain-data label operations it does not observe.",
+      "justification": "Security-level access auditing is partially implemented through existing role-change records and UDS identity/admin events. In this rule, security levels refer to permissions or authorization capabilities, commonly user roles; file classification labels alone do not establish applicability or coverage. The saved source assessment does not establish complete successful and denied elevated-access event coverage. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the partially implemented recommendation to similar audit-coverage requirements. Confirm required controls, credit existing coverage and implement only the missing required event coverage; this is not a final compliance finding.",
       "evidence_ids": [
         "re-asd-files",
         "re-asd-file-dto",
         "re-asd-logging",
         "re-asd-roles"
       ],
-      "next_step": "Add targeted classification/security-domain access/change/delete audit events with actor/outcome and accepted N/A for nonexistent operations. This shares the domain audit workstream.",
+      "next_step": "Identify applicable role and elevated-access paths, map existing audit coverage, and implement missing successful and failed access-attempt records. Test both outcomes and retain evidence; do not add nonexistent privilege-escalation functionality merely to satisfy a test. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "application-domain audit coverage",
       "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
@@ -1063,14 +1063,14 @@
     },
     "V-222453": {
       "status": "Needs work",
-      "justification": "The product has real classification attributes and protected security domains, so these cannot remain unknown on the premise that no taxonomy exists. Files can be filtered/reclassified through authorized APIs, but common request records omit actor and the reviewed code has no complete successful/denied security-level/category-change event catalog. UDS identity events cannot substitute for domain-data label operations it does not observe.",
+      "justification": "Audit coverage is partially implemented. The product has real classification attributes and protected security domains, so these cannot remain unknown on the premise that no taxonomy exists. Files can be filtered/reclassified through authorized APIs, but common request records omit actor and the reviewed code has no complete successful/denied security-level/category-change event catalog. UDS identity events cannot substitute for domain-data label operations it does not observe. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the partially implemented recommendation to similar audit-coverage requirements. Confirm required controls, credit existing coverage and implement only the missing required event coverage; this is not a final compliance finding.",
       "evidence_ids": [
         "re-asd-files",
         "re-asd-file-dto",
         "re-asd-logging",
         "re-asd-roles"
       ],
-      "next_step": "Add targeted classification/security-domain access/change/delete audit events with actor/outcome and accepted N/A for nonexistent operations. This shares the domain audit workstream.",
+      "next_step": "Add targeted classification/security-domain access/change/delete audit events with actor/outcome and accepted N/A for nonexistent operations. This shares the domain audit workstream. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "application-domain audit coverage",
       "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
@@ -1079,7 +1079,7 @@
     },
     "V-222454": {
       "status": "Needs work",
-      "justification": "Credit existing UDS identity/admin events, append-only actor-aware role grants/revocations and database change provenance. Remaining gap is selected app-domain successful/denied protected operations: the permission enforcer throws403 without emitting a structured actor/target/operation event, and generic HTTP logs omit actor. Central proxy identity records do not carry all tenant/object decisions. This is a targeted event-catalog/attribution integration, not an absence of auditing or a requirement to add actors to every diagnostic/request log.",
+      "justification": "Audit coverage is partially implemented. Credit existing UDS identity/admin events, append-only actor-aware role grants/revocations and database change provenance. Remaining gap is selected app-domain successful/denied protected operations: the permission enforcer throws403 without emitting a structured actor/target/operation event, and generic HTTP logs omit actor. Central proxy identity records do not carry all tenant/object decisions. This is a targeted event-catalog/attribution integration, not an absence of auditing or a requirement to add actors to every diagnostic/request log. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the partially implemented recommendation to similar audit-coverage requirements. Confirm required controls, credit existing coverage and implement only the missing required event coverage; this is not a final compliance finding.",
       "evidence_ids": [
         "re-asd-release",
         "re-asd-id-events",
@@ -1087,7 +1087,7 @@
         "re-asd-logging",
         "re-asd-guard"
       ],
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover.",
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "targeted application-domain audit coverage",
       "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
@@ -1096,7 +1096,7 @@
     },
     "V-222455": {
       "status": "Needs work",
-      "justification": "Credit existing UDS identity/admin events, append-only actor-aware role grants/revocations and database change provenance. Remaining gap is selected app-domain successful/denied protected operations: the permission enforcer throws403 without emitting a structured actor/target/operation event, and generic HTTP logs omit actor. Central proxy identity records do not carry all tenant/object decisions. This is a targeted event-catalog/attribution integration, not an absence of auditing or a requirement to add actors to every diagnostic/request log.",
+      "justification": "Audit coverage is partially implemented. Credit existing UDS identity/admin events, append-only actor-aware role grants/revocations and database change provenance. Remaining gap is selected app-domain successful/denied protected operations: the permission enforcer throws403 without emitting a structured actor/target/operation event, and generic HTTP logs omit actor. Central proxy identity records do not carry all tenant/object decisions. This is a targeted event-catalog/attribution integration, not an absence of auditing or a requirement to add actors to every diagnostic/request log. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the partially implemented recommendation to similar audit-coverage requirements. Confirm required controls, credit existing coverage and implement only the missing required event coverage; this is not a final compliance finding.",
       "evidence_ids": [
         "re-asd-release",
         "re-asd-id-events",
@@ -1104,7 +1104,7 @@
         "re-asd-logging",
         "re-asd-guard"
       ],
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover.",
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "targeted application-domain audit coverage",
       "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
@@ -1113,14 +1113,14 @@
     },
     "V-222456": {
       "status": "Needs work",
-      "justification": "The product has real classification attributes and protected security domains, so these cannot remain unknown on the premise that no taxonomy exists. Files can be filtered/reclassified through authorized APIs, but common request records omit actor and the reviewed code has no complete successful/denied security-level/category-change event catalog. UDS identity events cannot substitute for domain-data label operations it does not observe.",
+      "justification": "Audit coverage is partially implemented through role-change records, UDS identity/admin events and platform audit sources as applicable. Confirm the permissions or authorization-level operations performed by the assessed component and their successful/unsuccessful audit coverage; file classification labels alone do not establish role or elevated-access coverage. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the partially implemented recommendation to similar audit-coverage requirements. Confirm required controls, credit existing coverage and implement only the missing required event coverage; this is not a final compliance finding.",
       "evidence_ids": [
         "re-asd-files",
         "re-asd-file-dto",
         "re-asd-logging",
         "re-asd-roles"
       ],
-      "next_step": "Add targeted classification/security-domain access/change/delete audit events with actor/outcome and accepted N/A for nonexistent operations. This shares the domain audit workstream.",
+      "next_step": "Map the security-level operation in this requirement to actual role or authorization-capability operations and existing records. Implement missing required successful and unsuccessful attempt records, verify both outcomes and retain evidence. Record a scoped applicability decision for operations absent from the component rather than inventing them. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "application-domain audit coverage",
       "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
@@ -1129,14 +1129,14 @@
     },
     "V-222457": {
       "status": "Needs work",
-      "justification": "The product has real classification attributes and protected security domains, so these cannot remain unknown on the premise that no taxonomy exists. Files can be filtered/reclassified through authorized APIs, but common request records omit actor and the reviewed code has no complete successful/denied security-level/category-change event catalog. UDS identity events cannot substitute for domain-data label operations it does not observe.",
+      "justification": "Audit coverage is partially implemented. The product has real classification attributes and protected security domains, so these cannot remain unknown on the premise that no taxonomy exists. Files can be filtered/reclassified through authorized APIs, but common request records omit actor and the reviewed code has no complete successful/denied security-level/category-change event catalog. UDS identity events cannot substitute for domain-data label operations it does not observe. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the partially implemented recommendation to similar audit-coverage requirements. Confirm required controls, credit existing coverage and implement only the missing required event coverage; this is not a final compliance finding.",
       "evidence_ids": [
         "re-asd-files",
         "re-asd-file-dto",
         "re-asd-logging",
         "re-asd-roles"
       ],
-      "next_step": "Add targeted classification/security-domain access/change/delete audit events with actor/outcome and accepted N/A for nonexistent operations. This shares the domain audit workstream.",
+      "next_step": "Add targeted classification/security-domain access/change/delete audit events with actor/outcome and accepted N/A for nonexistent operations. This shares the domain audit workstream. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "application-domain audit coverage",
       "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
@@ -1145,7 +1145,7 @@
     },
     "V-222458": {
       "status": "Needs work",
-      "justification": "Credit existing UDS identity/admin events, append-only actor-aware role grants/revocations and database change provenance. Remaining gap is selected app-domain successful/denied protected operations: the permission enforcer throws403 without emitting a structured actor/target/operation event, and generic HTTP logs omit actor. Central proxy identity records do not carry all tenant/object decisions. This is a targeted event-catalog/attribution integration, not an absence of auditing or a requirement to add actors to every diagnostic/request log.",
+      "justification": "Audit coverage is partially implemented. Credit existing UDS identity/admin events, append-only actor-aware role grants/revocations and database change provenance. Remaining gap is selected app-domain successful/denied protected operations: the permission enforcer throws403 without emitting a structured actor/target/operation event, and generic HTTP logs omit actor. Central proxy identity records do not carry all tenant/object decisions. This is a targeted event-catalog/attribution integration, not an absence of auditing or a requirement to add actors to every diagnostic/request log. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the partially implemented recommendation to similar audit-coverage requirements. Confirm required controls, credit existing coverage and implement only the missing required event coverage; this is not a final compliance finding.",
       "evidence_ids": [
         "re-asd-release",
         "re-asd-id-events",
@@ -1153,7 +1153,7 @@
         "re-asd-logging",
         "re-asd-guard"
       ],
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover.",
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "targeted application-domain audit coverage",
       "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
@@ -1162,14 +1162,14 @@
     },
     "V-222459": {
       "status": "Needs work",
-      "justification": "The product has real classification attributes and protected security domains, so these cannot remain unknown on the premise that no taxonomy exists. Files can be filtered/reclassified through authorized APIs, but common request records omit actor and the reviewed code has no complete successful/denied security-level/category-change event catalog. UDS identity events cannot substitute for domain-data label operations it does not observe.",
+      "justification": "Audit coverage is partially implemented through role-change records, UDS identity/admin events and platform audit sources as applicable. Confirm the permissions or authorization-level operations performed by the assessed component and their successful/unsuccessful audit coverage; file classification labels alone do not establish role or elevated-access coverage. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the partially implemented recommendation to similar audit-coverage requirements. Confirm required controls, credit existing coverage and implement only the missing required event coverage; this is not a final compliance finding.",
       "evidence_ids": [
         "re-asd-files",
         "re-asd-file-dto",
         "re-asd-logging",
         "re-asd-roles"
       ],
-      "next_step": "Add targeted classification/security-domain access/change/delete audit events with actor/outcome and accepted N/A for nonexistent operations. This shares the domain audit workstream.",
+      "next_step": "Map the security-level operation in this requirement to actual role or authorization-capability operations and existing records. Implement missing required successful and unsuccessful attempt records, verify both outcomes and retain evidence. Record a scoped applicability decision for operations absent from the component rather than inventing them. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "application-domain audit coverage",
       "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
@@ -1178,7 +1178,7 @@
     },
     "V-222460": {
       "status": "Needs work",
-      "justification": "Credit existing UDS identity/admin events, append-only actor-aware role grants/revocations and database change provenance. Remaining gap is selected app-domain successful/denied protected operations: the permission enforcer throws403 without emitting a structured actor/target/operation event, and generic HTTP logs omit actor. Central proxy identity records do not carry all tenant/object decisions. This is a targeted event-catalog/attribution integration, not an absence of auditing or a requirement to add actors to every diagnostic/request log.",
+      "justification": "Audit coverage is partially implemented. Credit existing UDS identity/admin events, append-only actor-aware role grants/revocations and database change provenance. Remaining gap is selected app-domain successful/denied protected operations: the permission enforcer throws403 without emitting a structured actor/target/operation event, and generic HTTP logs omit actor. Central proxy identity records do not carry all tenant/object decisions. This is a targeted event-catalog/attribution integration, not an absence of auditing or a requirement to add actors to every diagnostic/request log. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the partially implemented recommendation to similar audit-coverage requirements. Confirm required controls, credit existing coverage and implement only the missing required event coverage; this is not a final compliance finding.",
       "evidence_ids": [
         "re-asd-release",
         "re-asd-id-events",
@@ -1186,7 +1186,7 @@
         "re-asd-logging",
         "re-asd-guard"
       ],
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover.",
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "targeted application-domain audit coverage",
       "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
@@ -1195,14 +1195,14 @@
     },
     "V-222461": {
       "status": "Needs work",
-      "justification": "The product has real classification attributes and protected security domains, so these cannot remain unknown on the premise that no taxonomy exists. Files can be filtered/reclassified through authorized APIs, but common request records omit actor and the reviewed code has no complete successful/denied security-level/category-change event catalog. UDS identity events cannot substitute for domain-data label operations it does not observe.",
+      "justification": "Audit coverage is partially implemented. The product has real classification attributes and protected security domains, so these cannot remain unknown on the premise that no taxonomy exists. Files can be filtered/reclassified through authorized APIs, but common request records omit actor and the reviewed code has no complete successful/denied security-level/category-change event catalog. UDS identity events cannot substitute for domain-data label operations it does not observe. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the partially implemented recommendation to similar audit-coverage requirements. Confirm required controls, credit existing coverage and implement only the missing required event coverage; this is not a final compliance finding.",
       "evidence_ids": [
         "re-asd-files",
         "re-asd-file-dto",
         "re-asd-logging",
         "re-asd-roles"
       ],
-      "next_step": "Add targeted classification/security-domain access/change/delete audit events with actor/outcome and accepted N/A for nonexistent operations. This shares the domain audit workstream.",
+      "next_step": "Add targeted classification/security-domain access/change/delete audit events with actor/outcome and accepted N/A for nonexistent operations. This shares the domain audit workstream. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "application-domain audit coverage",
       "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
@@ -1228,7 +1228,7 @@
     },
     "V-222463": {
       "status": "Needs work",
-      "justification": "Credit existing UDS identity/admin events, append-only actor-aware role grants/revocations and database change provenance. Remaining gap is selected app-domain successful/denied protected operations: the permission enforcer throws403 without emitting a structured actor/target/operation event, and generic HTTP logs omit actor. Central proxy identity records do not carry all tenant/object decisions. This is a targeted event-catalog/attribution integration, not an absence of auditing or a requirement to add actors to every diagnostic/request log.",
+      "justification": "Audit coverage is partially implemented. Credit existing UDS identity/admin events, append-only actor-aware role grants/revocations and database change provenance. Remaining gap is selected app-domain successful/denied protected operations: the permission enforcer throws403 without emitting a structured actor/target/operation event, and generic HTTP logs omit actor. Central proxy identity records do not carry all tenant/object decisions. This is a targeted event-catalog/attribution integration, not an absence of auditing or a requirement to add actors to every diagnostic/request log. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the partially implemented recommendation to similar audit-coverage requirements. Confirm required controls, credit existing coverage and implement only the missing required event coverage; this is not a final compliance finding.",
       "evidence_ids": [
         "re-asd-release",
         "re-asd-id-events",
@@ -1236,7 +1236,7 @@
         "re-asd-logging",
         "re-asd-guard"
       ],
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover.",
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "targeted application-domain audit coverage",
       "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
@@ -1262,7 +1262,7 @@
     },
     "V-222465": {
       "status": "Needs work",
-      "justification": "Credit existing UDS identity/admin events, append-only actor-aware role grants/revocations and database change provenance. Remaining gap is selected app-domain successful/denied protected operations: the permission enforcer throws403 without emitting a structured actor/target/operation event, and generic HTTP logs omit actor. Central proxy identity records do not carry all tenant/object decisions. This is a targeted event-catalog/attribution integration, not an absence of auditing or a requirement to add actors to every diagnostic/request log.",
+      "justification": "Audit coverage is partially implemented. Credit existing UDS identity/admin events, append-only actor-aware role grants/revocations and database change provenance. Remaining gap is selected app-domain successful/denied protected operations: the permission enforcer throws403 without emitting a structured actor/target/operation event, and generic HTTP logs omit actor. Central proxy identity records do not carry all tenant/object decisions. This is a targeted event-catalog/attribution integration, not an absence of auditing or a requirement to add actors to every diagnostic/request log. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the partially implemented recommendation to similar audit-coverage requirements. Confirm required controls, credit existing coverage and implement only the missing required event coverage; this is not a final compliance finding.",
       "evidence_ids": [
         "re-asd-release",
         "re-asd-id-events",
@@ -1270,7 +1270,7 @@
         "re-asd-logging",
         "re-asd-guard"
       ],
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover.",
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "targeted application-domain audit coverage",
       "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
@@ -1279,7 +1279,7 @@
     },
     "V-222466": {
       "status": "Needs work",
-      "justification": "Credit existing UDS identity/admin events, append-only actor-aware role grants/revocations and database change provenance. Remaining gap is selected app-domain successful/denied protected operations: the permission enforcer throws403 without emitting a structured actor/target/operation event, and generic HTTP logs omit actor. Central proxy identity records do not carry all tenant/object decisions. This is a targeted event-catalog/attribution integration, not an absence of auditing or a requirement to add actors to every diagnostic/request log.",
+      "justification": "Audit coverage is partially implemented. Credit existing UDS identity/admin events, append-only actor-aware role grants/revocations and database change provenance. Remaining gap is selected app-domain successful/denied protected operations: the permission enforcer throws403 without emitting a structured actor/target/operation event, and generic HTTP logs omit actor. Central proxy identity records do not carry all tenant/object decisions. This is a targeted event-catalog/attribution integration, not an absence of auditing or a requirement to add actors to every diagnostic/request log. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the partially implemented recommendation to similar audit-coverage requirements. Confirm required controls, credit existing coverage and implement only the missing required event coverage; this is not a final compliance finding.",
       "evidence_ids": [
         "re-asd-release",
         "re-asd-id-events",
@@ -1287,7 +1287,7 @@
         "re-asd-logging",
         "re-asd-guard"
       ],
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover.",
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "targeted application-domain audit coverage",
       "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
@@ -1359,7 +1359,7 @@
     },
     "V-222471": {
       "status": "Needs work",
-      "justification": "Credit existing UDS identity/admin events, append-only actor-aware role grants/revocations and database change provenance. Remaining gap is selected app-domain successful/denied protected operations: the permission enforcer throws403 without emitting a structured actor/target/operation event, and generic HTTP logs omit actor. Central proxy identity records do not carry all tenant/object decisions. This is a targeted event-catalog/attribution integration, not an absence of auditing or a requirement to add actors to every diagnostic/request log.",
+      "justification": "Audit coverage is partially implemented. Credit existing UDS identity/admin events, append-only actor-aware role grants/revocations and database change provenance. Remaining gap is selected app-domain successful/denied protected operations: the permission enforcer throws403 without emitting a structured actor/target/operation event, and generic HTTP logs omit actor. Central proxy identity records do not carry all tenant/object decisions. This is a targeted event-catalog/attribution integration, not an absence of auditing or a requirement to add actors to every diagnostic/request log. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the partially implemented recommendation to similar audit-coverage requirements. Confirm required controls, credit existing coverage and implement only the missing required event coverage; this is not a final compliance finding.",
       "evidence_ids": [
         "re-asd-release",
         "re-asd-id-events",
@@ -1367,7 +1367,7 @@
         "re-asd-logging",
         "re-asd-guard"
       ],
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover.",
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "targeted application-domain audit coverage",
       "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
@@ -1376,7 +1376,7 @@
     },
     "V-222472": {
       "status": "Needs work",
-      "justification": "Credit existing UDS identity/admin events, append-only actor-aware role grants/revocations and database change provenance. Remaining gap is selected app-domain successful/denied protected operations: the permission enforcer throws403 without emitting a structured actor/target/operation event, and generic HTTP logs omit actor. Central proxy identity records do not carry all tenant/object decisions. This is a targeted event-catalog/attribution integration, not an absence of auditing or a requirement to add actors to every diagnostic/request log.",
+      "justification": "Audit coverage is partially implemented. Credit existing UDS identity/admin events, append-only actor-aware role grants/revocations and database change provenance. Remaining gap is selected app-domain successful/denied protected operations: the permission enforcer throws403 without emitting a structured actor/target/operation event, and generic HTTP logs omit actor. Central proxy identity records do not carry all tenant/object decisions. This is a targeted event-catalog/attribution integration, not an absence of auditing or a requirement to add actors to every diagnostic/request log. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the partially implemented recommendation to similar audit-coverage requirements. Confirm required controls, credit existing coverage and implement only the missing required event coverage; this is not a final compliance finding.",
       "evidence_ids": [
         "re-asd-release",
         "re-asd-id-events",
@@ -1384,7 +1384,7 @@
         "re-asd-logging",
         "re-asd-guard"
       ],
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover.",
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "targeted application-domain audit coverage",
       "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
@@ -1453,7 +1453,7 @@
     },
     "V-222477": {
       "status": "Needs work",
-      "justification": "Credit existing UDS identity/admin events, append-only actor-aware role grants/revocations and database change provenance. Remaining gap is selected app-domain successful/denied protected operations: the permission enforcer throws403 without emitting a structured actor/target/operation event, and generic HTTP logs omit actor. Central proxy identity records do not carry all tenant/object decisions. This is a targeted event-catalog/attribution integration, not an absence of auditing or a requirement to add actors to every diagnostic/request log.",
+      "justification": "Audit coverage is partially implemented. Credit existing UDS identity/admin events, append-only actor-aware role grants/revocations and database change provenance. Remaining gap is selected app-domain successful/denied protected operations: the permission enforcer throws403 without emitting a structured actor/target/operation event, and generic HTTP logs omit actor. Central proxy identity records do not carry all tenant/object decisions. This is a targeted event-catalog/attribution integration, not an absence of auditing or a requirement to add actors to every diagnostic/request log. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the partially implemented recommendation to similar audit-coverage requirements. Confirm required controls, credit existing coverage and implement only the missing required event coverage; this is not a final compliance finding.",
       "evidence_ids": [
         "re-asd-release",
         "re-asd-id-events",
@@ -1461,7 +1461,7 @@
         "re-asd-logging",
         "re-asd-guard"
       ],
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover.",
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "targeted application-domain audit coverage",
       "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
@@ -1470,7 +1470,7 @@
     },
     "V-222478": {
       "status": "Needs work",
-      "justification": "Credit existing UDS identity/admin events, append-only actor-aware role grants/revocations and database change provenance. Remaining gap is selected app-domain successful/denied protected operations: the permission enforcer throws403 without emitting a structured actor/target/operation event, and generic HTTP logs omit actor. Central proxy identity records do not carry all tenant/object decisions. This is a targeted event-catalog/attribution integration, not an absence of auditing or a requirement to add actors to every diagnostic/request log.",
+      "justification": "Audit coverage is partially implemented. Credit existing UDS identity/admin events, append-only actor-aware role grants/revocations and database change provenance. Remaining gap is selected app-domain successful/denied protected operations: the permission enforcer throws403 without emitting a structured actor/target/operation event, and generic HTTP logs omit actor. Central proxy identity records do not carry all tenant/object decisions. This is a targeted event-catalog/attribution integration, not an absence of auditing or a requirement to add actors to every diagnostic/request log. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the partially implemented recommendation to similar audit-coverage requirements. Confirm required controls, credit existing coverage and implement only the missing required event coverage; this is not a final compliance finding.",
       "evidence_ids": [
         "re-asd-release",
         "re-asd-id-events",
@@ -1478,7 +1478,7 @@
         "re-asd-logging",
         "re-asd-guard"
       ],
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover.",
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "targeted application-domain audit coverage",
       "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
@@ -1980,7 +1980,7 @@
     },
     "V-222512": {
       "status": "Needs work",
-      "justification": "Credit existing UDS identity/admin events, append-only actor-aware role grants/revocations and database change provenance. Remaining gap is selected app-domain successful/denied protected operations: the permission enforcer throws403 without emitting a structured actor/target/operation event, and generic HTTP logs omit actor. Central proxy identity records do not carry all tenant/object decisions. This is a targeted event-catalog/attribution integration, not an absence of auditing or a requirement to add actors to every diagnostic/request log.",
+      "justification": "Audit coverage is partially implemented. Credit existing UDS identity/admin events, append-only actor-aware role grants/revocations and database change provenance. Remaining gap is selected app-domain successful/denied protected operations: the permission enforcer throws403 without emitting a structured actor/target/operation event, and generic HTTP logs omit actor. Central proxy identity records do not carry all tenant/object decisions. This is a targeted event-catalog/attribution integration, not an absence of auditing or a requirement to add actors to every diagnostic/request log. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the partially implemented recommendation to similar audit-coverage requirements. Confirm required controls, credit existing coverage and implement only the missing required event coverage; this is not a final compliance finding.",
       "evidence_ids": [
         "re-asd-release",
         "re-asd-id-events",
@@ -1988,7 +1988,7 @@
         "re-asd-logging",
         "re-asd-guard"
       ],
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover.",
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "targeted application-domain audit coverage",
       "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
@@ -6188,7 +6188,7 @@
     },
     "V-233038": {
       "status": "Needs work",
-      "justification": "Delivered UDS identity, Vector, Falco and inherited Kubernetes audit already supply platform event sources, so Horizon must not duplicate those mechanisms. However, the exact rule requires the complete defined event set across components: source review still identifies classification/data access/change events not emitted end to end by API/pgAudit defaults. This is a roll-up of the shared application/database audit work, not absence of platform logging or a separate platform subsystem.",
+      "justification": "Audit coverage is partially implemented. Delivered UDS identity, Vector, Falco and inherited Kubernetes audit already supply platform event sources, so Horizon must not duplicate those mechanisms. However, the exact rule requires the complete defined event set across components: source review still identifies classification/data access/change events not emitted end to end by API/pgAudit defaults. This is a roll-up of the shared application/database audit work, not absence of platform logging or a separate platform subsystem. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the partially implemented recommendation to similar audit-coverage requirements. Confirm required controls, credit existing coverage and implement only the missing required event coverage; this is not a final compliance finding.",
       "evidence_ids": [
         "re-platform-delivered-profile",
         "re-platform-id-audit",
@@ -6196,7 +6196,7 @@
         "core-falco",
         "host"
       ],
-      "next_step": "Complete the shared event-source map and missing domain/DB events; credit existing UDS user/admin/runtime sources and avoid a duplicate remediation ticket.",
+      "next_step": "Complete the shared event-source map and missing domain/DB events; credit existing UDS user/admin/runtime sources and avoid a duplicate remediation ticket. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "cross-component audit roll-up",
       "components": "UDS platform: registry, runtime, Pepr, Istio, logging; delivered workloads",
@@ -8090,7 +8090,7 @@
     },
     "V-233253": {
       "status": "Needs work",
-      "justification": "Application schema defines security classification levels and persists them on files/chunks/assertions. Platform resource changes are covered by inherited Kubernetes audit, but successful/denied application data classification access/change/deletion is not fully emitted by API/pgAudit defaults. Record these events once in the shared application/database audit workstream rather than demand a second container-platform classification engine.",
+      "justification": "Audit coverage is partially implemented through role-change records, UDS identity/admin events and platform audit sources as applicable. Confirm the permissions or authorization-level operations performed by the assessed component and their successful/unsuccessful audit coverage; file classification labels alone do not establish role or elevated-access coverage. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the partially implemented recommendation to similar audit-coverage requirements. Confirm required controls, credit existing coverage and implement only the missing required event coverage; this is not a final compliance finding.",
       "evidence_ids": [
         "re-platform-delivered-profile",
         "logging",
@@ -8101,7 +8101,7 @@
         "host",
         "re-platform-classification-fields"
       ],
-      "next_step": "Map each security-level/category operation to application or database audit events; reuse the central stream and existing classification fields. Apply scoped N/A only to platform components that perform no such operation.",
+      "next_step": "Map the security-level operation in this requirement to actual role or authorization-capability operations and existing records. Implement missing required successful and unsuccessful attempt records, verify both outcomes and retain evidence. Record a scoped applicability decision for operations absent from the component rather than inventing them. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "cross-component audit mapping",
       "components": "UDS platform: registry, runtime, Pepr, Istio, logging; delivered workloads",
@@ -8110,7 +8110,7 @@
     },
     "V-233254": {
       "status": "Needs work",
-      "justification": "Application schema defines security classification levels and persists them on files/chunks/assertions. Platform resource changes are covered by inherited Kubernetes audit, but successful/denied application data classification access/change/deletion is not fully emitted by API/pgAudit defaults. Record these events once in the shared application/database audit workstream rather than demand a second container-platform classification engine.",
+      "justification": "Audit coverage is partially implemented. Application schema defines security classification levels and persists them on files/chunks/assertions. Platform resource changes are covered by inherited Kubernetes audit, but successful/denied application data classification access/change/deletion is not fully emitted by API/pgAudit defaults. Record these events once in the shared application/database audit workstream rather than demand a second container-platform classification engine. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the partially implemented recommendation to similar audit-coverage requirements. Confirm required controls, credit existing coverage and implement only the missing required event coverage; this is not a final compliance finding.",
       "evidence_ids": [
         "re-platform-delivered-profile",
         "logging",
@@ -8121,7 +8121,7 @@
         "host",
         "re-platform-classification-fields"
       ],
-      "next_step": "Map each security-level/category operation to application or database audit events; reuse the central stream and existing classification fields. Apply scoped N/A only to platform components that perform no such operation.",
+      "next_step": "Map each security-level/category operation to application or database audit events; reuse the central stream and existing classification fields. Apply scoped N/A only to platform components that perform no such operation. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "cross-component audit mapping",
       "components": "UDS platform: registry, runtime, Pepr, Istio, logging; delivered workloads",
@@ -8161,7 +8161,7 @@
     },
     "V-233257": {
       "status": "Needs work",
-      "justification": "Application schema defines security classification levels and persists them on files/chunks/assertions. Platform resource changes are covered by inherited Kubernetes audit, but successful/denied application data classification access/change/deletion is not fully emitted by API/pgAudit defaults. Record these events once in the shared application/database audit workstream rather than demand a second container-platform classification engine.",
+      "justification": "Audit coverage is partially implemented through role-change records, UDS identity/admin events and platform audit sources as applicable. Confirm the permissions or authorization-level operations performed by the assessed component and their successful/unsuccessful audit coverage; file classification labels alone do not establish role or elevated-access coverage. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the partially implemented recommendation to similar audit-coverage requirements. Confirm required controls, credit existing coverage and implement only the missing required event coverage; this is not a final compliance finding.",
       "evidence_ids": [
         "re-platform-delivered-profile",
         "logging",
@@ -8172,7 +8172,7 @@
         "host",
         "re-platform-classification-fields"
       ],
-      "next_step": "Map each security-level/category operation to application or database audit events; reuse the central stream and existing classification fields. Apply scoped N/A only to platform components that perform no such operation.",
+      "next_step": "Map the security-level operation in this requirement to actual role or authorization-capability operations and existing records. Implement missing required successful and unsuccessful attempt records, verify both outcomes and retain evidence. Record a scoped applicability decision for operations absent from the component rather than inventing them. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "cross-component audit mapping",
       "components": "UDS platform: registry, runtime, Pepr, Istio, logging; delivered workloads",
@@ -8181,7 +8181,7 @@
     },
     "V-233258": {
       "status": "Needs work",
-      "justification": "Application schema defines security classification levels and persists them on files/chunks/assertions. Platform resource changes are covered by inherited Kubernetes audit, but successful/denied application data classification access/change/deletion is not fully emitted by API/pgAudit defaults. Record these events once in the shared application/database audit workstream rather than demand a second container-platform classification engine.",
+      "justification": "Audit coverage is partially implemented. Application schema defines security classification levels and persists them on files/chunks/assertions. Platform resource changes are covered by inherited Kubernetes audit, but successful/denied application data classification access/change/deletion is not fully emitted by API/pgAudit defaults. Record these events once in the shared application/database audit workstream rather than demand a second container-platform classification engine. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the partially implemented recommendation to similar audit-coverage requirements. Confirm required controls, credit existing coverage and implement only the missing required event coverage; this is not a final compliance finding.",
       "evidence_ids": [
         "re-platform-delivered-profile",
         "logging",
@@ -8192,7 +8192,7 @@
         "host",
         "re-platform-classification-fields"
       ],
-      "next_step": "Map each security-level/category operation to application or database audit events; reuse the central stream and existing classification fields. Apply scoped N/A only to platform components that perform no such operation.",
+      "next_step": "Map each security-level/category operation to application or database audit events; reuse the central stream and existing classification fields. Apply scoped N/A only to platform components that perform no such operation. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "cross-component audit mapping",
       "components": "UDS platform: registry, runtime, Pepr, Istio, logging; delivered workloads",
@@ -8216,7 +8216,7 @@
     },
     "V-233260": {
       "status": "Needs work",
-      "justification": "Application schema defines security classification levels and persists them on files/chunks/assertions. Platform resource changes are covered by inherited Kubernetes audit, but successful/denied application data classification access/change/deletion is not fully emitted by API/pgAudit defaults. Record these events once in the shared application/database audit workstream rather than demand a second container-platform classification engine.",
+      "justification": "Audit coverage is partially implemented through role-change records, UDS identity/admin events and platform audit sources as applicable. Confirm the permissions or authorization-level operations performed by the assessed component and their successful/unsuccessful audit coverage; file classification labels alone do not establish role or elevated-access coverage. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the partially implemented recommendation to similar audit-coverage requirements. Confirm required controls, credit existing coverage and implement only the missing required event coverage; this is not a final compliance finding.",
       "evidence_ids": [
         "re-platform-delivered-profile",
         "logging",
@@ -8227,7 +8227,7 @@
         "host",
         "re-platform-classification-fields"
       ],
-      "next_step": "Map each security-level/category operation to application or database audit events; reuse the central stream and existing classification fields. Apply scoped N/A only to platform components that perform no such operation.",
+      "next_step": "Map the security-level operation in this requirement to actual role or authorization-capability operations and existing records. Implement missing required successful and unsuccessful attempt records, verify both outcomes and retain evidence. Record a scoped applicability decision for operations absent from the component rather than inventing them. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "cross-component audit mapping",
       "components": "UDS platform: registry, runtime, Pepr, Istio, logging; delivered workloads",
@@ -8252,7 +8252,7 @@
     },
     "V-233262": {
       "status": "Needs work",
-      "justification": "Application schema defines security classification levels and persists them on files/chunks/assertions. Platform resource changes are covered by inherited Kubernetes audit, but successful/denied application data classification access/change/deletion is not fully emitted by API/pgAudit defaults. Record these events once in the shared application/database audit workstream rather than demand a second container-platform classification engine.",
+      "justification": "Audit coverage is partially implemented. Application schema defines security classification levels and persists them on files/chunks/assertions. Platform resource changes are covered by inherited Kubernetes audit, but successful/denied application data classification access/change/deletion is not fully emitted by API/pgAudit defaults. Record these events once in the shared application/database audit workstream rather than demand a second container-platform classification engine. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the partially implemented recommendation to similar audit-coverage requirements. Confirm required controls, credit existing coverage and implement only the missing required event coverage; this is not a final compliance finding.",
       "evidence_ids": [
         "re-platform-delivered-profile",
         "logging",
@@ -8263,7 +8263,7 @@
         "host",
         "re-platform-classification-fields"
       ],
-      "next_step": "Map each security-level/category operation to application or database audit events; reuse the central stream and existing classification fields. Apply scoped N/A only to platform components that perform no such operation.",
+      "next_step": "Map each security-level/category operation to application or database audit events; reuse the central stream and existing classification fields. Apply scoped N/A only to platform components that perform no such operation. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "cross-component audit mapping",
       "components": "UDS platform: registry, runtime, Pepr, Istio, logging; delivered workloads",
@@ -9067,14 +9067,14 @@
     },
     "V-206365": {
       "status": "Needs work",
-      "justification": "Delegating identity to shared UDS fixes authentication event attribution at SSO, but delivered API common request records still contain no authenticated subject and there is no configured subject field in gateway/nginx access logging. Static asset requests can be anonymous; add actor context to protected domain/API audit events rather than add duplicate authentication to nginx.",
+      "justification": "Audit coverage is partially implemented. Delegating identity to shared UDS fixes authentication event attribution at SSO, but delivered API common request records still contain no authenticated subject and there is no configured subject field in gateway/nginx access logging. Static asset requests can be anonymous; add actor context to protected domain/API audit events rather than add duplicate authentication to nginx. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the partially implemented recommendation to similar audit-coverage requirements. Confirm required controls, credit existing coverage and implement only the missing required event coverage; this is not a final compliance finding.",
       "evidence_ids": [
         "re-web-actual-release",
         "re-web-logs",
         "re-web-accesslog",
         "re-web-realm"
       ],
-      "next_step": "Complete actor-attributed protected API/security-event records and their correlation in the existing UDS log pipeline.",
+      "next_step": "Complete actor-attributed protected API/security-event records and their correlation in the existing UDS log pipeline. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "code/configuration",
       "components": "Delivered static nginx-FIPS, Istio ingress and shared UDS identity (separate roles)",
@@ -10995,7 +10995,7 @@
     },
     "V-204719": {
       "status": "Needs work",
-      "justification": "Successful grant/revoke operations already have append-only actor-attributed permission audit records and IdP admin actions have separate UDS logging. The remaining concrete application-domain gap is unsuccessful/denied privilegeaccess or mutation: the guard returns403 without recording actor, while transaction/precondition failures can occur before audit insert or roll it back. Generic HTTPstatus records do not recover that missing actor.",
+      "justification": "Audit coverage is partially implemented. Successful grant/revoke operations already have append-only actor-attributed permission audit records and IdP admin actions have separate UDS logging. The remaining concrete application-domain gap is unsuccessful/denied privilegeaccess or mutation: the guard returns403 without recording actor, while transaction/precondition failures can occur before audit insert or roll it back. Generic HTTPstatus records do not recover that missing actor. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the partially implemented recommendation to similar audit-coverage requirements. Confirm required controls, credit existing coverage and implement only the missing required event coverage; this is not a final compliance finding.",
       "evidence_ids": [
         "re-appserver-release",
         "re-appserver-roleaudit",
@@ -11003,7 +11003,7 @@
         "re-appserver-denials",
         "re-appserver-logger"
       ],
-      "next_step": "Add narrowly-scoped actor-attributed denied/failed privilege events and forward them through the existing logging path; reuse existing successful audit.",
+      "next_step": "Add narrowly-scoped actor-attributed denied/failed privilege events and forward them through the existing logging path; reuse existing successful audit. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "application audit gap",
       "components": "Delivered Horizon API, workers, chat, ingestion and storage; delegated UDS identity/gateway/mesh",
@@ -12554,7 +12554,7 @@
     },
     "V-204824": {
       "status": "Needs work",
-      "justification": "Successful grant/revoke operations already have append-only actor-attributed permission audit records and IdP admin actions have separate UDS logging. The remaining concrete application-domain gap is unsuccessful/denied privilegeaccess or mutation: the guard returns403 without recording actor, while transaction/precondition failures can occur before audit insert or roll it back. Generic HTTPstatus records do not recover that missing actor.",
+      "justification": "Audit coverage is partially implemented. Successful grant/revoke operations already have append-only actor-attributed permission audit records and IdP admin actions have separate UDS logging. The remaining concrete application-domain gap is unsuccessful/denied privilegeaccess or mutation: the guard returns403 without recording actor, while transaction/precondition failures can occur before audit insert or roll it back. Generic HTTPstatus records do not recover that missing actor. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the partially implemented recommendation to similar audit-coverage requirements. Confirm required controls, credit existing coverage and implement only the missing required event coverage; this is not a final compliance finding.",
       "evidence_ids": [
         "re-appserver-release",
         "re-appserver-roleaudit",
@@ -12562,7 +12562,7 @@
         "re-appserver-denials",
         "re-appserver-logger"
       ],
-      "next_step": "Add narrowly-scoped actor-attributed denied/failed privilege events and forward them through the existing logging path; reuse existing successful audit.",
+      "next_step": "Add narrowly-scoped actor-attributed denied/failed privilege events and forward them through the existing logging path; reuse existing successful audit. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "application audit gap",
       "components": "Delivered Horizon API, workers, chat, ingestion and storage; delegated UDS identity/gateway/mesh",
@@ -12571,7 +12571,7 @@
     },
     "V-204825": {
       "status": "Needs work",
-      "justification": "Successful grant/revoke operations already have append-only actor-attributed permission audit records and IdP admin actions have separate UDS logging. The remaining concrete application-domain gap is unsuccessful/denied privilegeaccess or mutation: the guard returns403 without recording actor, while transaction/precondition failures can occur before audit insert or roll it back. Generic HTTPstatus records do not recover that missing actor.",
+      "justification": "Audit coverage is partially implemented. Successful grant/revoke operations already have append-only actor-attributed permission audit records and IdP admin actions have separate UDS logging. The remaining concrete application-domain gap is unsuccessful/denied privilegeaccess or mutation: the guard returns403 without recording actor, while transaction/precondition failures can occur before audit insert or roll it back. Generic HTTPstatus records do not recover that missing actor. Human review on 2026-11-10 confirmed Needs work under the instruction to apply the partially implemented recommendation to similar audit-coverage requirements. Confirm required controls, credit existing coverage and implement only the missing required event coverage; this is not a final compliance finding.",
       "evidence_ids": [
         "re-appserver-release",
         "re-appserver-roleaudit",
@@ -12579,7 +12579,7 @@
         "re-appserver-denials",
         "re-appserver-logger"
       ],
-      "next_step": "Add narrowly-scoped actor-attributed denied/failed privilege events and forward them through the existing logging path; reuse existing successful audit.",
+      "next_step": "Add narrowly-scoped actor-attributed denied/failed privilege events and forward them through the existing logging path; reuse existing successful audit. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "application audit gap",
       "components": "Delivered Horizon API, workers, chat, ingestion and storage; delegated UDS identity/gateway/mesh",
