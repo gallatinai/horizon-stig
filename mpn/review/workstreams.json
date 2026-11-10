@@ -949,7 +949,7 @@
     {
       "vuln_id": "V-222387",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Gallatin security selects the positive concurrent-session maximum; Gallatin SRE sets realmInitEnv.SSO_SESSION_MAX_PER_USER to that value and updates the existing uds-user-session-count authenticator config through AdminConsole/API where needed. Default0 is unlimited; do not copy an arbitrary examplemaximum. No Horizon session-limiter code."
+      "next_step": "Gallatin security confirms the proposed maximum of one concurrent session per user. Gallatin SRE sets realmInitEnv.SSO_SESSION_MAX_PER_USER to the approved positive value and updates the existing uds-user-session-count authenticator config through AdminConsole/API where needed. Verify the applied realm enforces the approved maximum. The proposed value of 1 is not yet an approved or applied configuration. No Horizon session-limiter code is needed."
     },
     {
       "vuln_id": "V-222520",

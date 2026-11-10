@@ -15,7 +15,7 @@
       "CCI-000054"
     ],
     "status": "Needs work",
-    "justification": "UDS includes a deny-new-session limiter, but actual Core default SSO_SESSION_MAX_PER_USER=0 is unlimited. The official production check asks that the organization-defined maximum actually be configured; provider capability resolves implementation ownership but does not choose/set that maximum. The session limiter is implemented by Core; only Gallatin policy value and applied operator configuration remain.",
+    "justification": "UDS includes a deny-new-session limiter, but actual Core default SSO_SESSION_MAX_PER_USER=0 is unlimited. The official production check asks that the organization-defined maximum actually be configured; provider capability resolves implementation ownership but does not choose/set that maximum. The session limiter is implemented by Core; only Gallatin policy value and applied operator configuration remain. Human review on 2026-11-10 confirmed Needs work; one concurrent session per user is the proposed maximum, pending policy approval and configuration.",
     "evidence_ids": [
       "re-asd-release",
       "re-asd-realm",
@@ -26,7 +26,7 @@
       "mpn-identity-realm",
       "mpn-core-known-identity-settings"
     ],
-    "next_step": "Gallatin security selects the positive concurrent-session maximum; Gallatin SRE sets realmInitEnv.SSO_SESSION_MAX_PER_USER to that value and updates the existing uds-user-session-count authenticator config through AdminConsole/API where needed. Default0 is unlimited; do not copy an arbitrary examplemaximum. No Horizon session-limiter code.",
+    "next_step": "Gallatin security confirms the proposed maximum of one concurrent session per user. Gallatin SRE sets realmInitEnv.SSO_SESSION_MAX_PER_USER to the approved positive value and updates the existing uds-user-session-count authenticator config through AdminConsole/API where needed. Verify the applied realm enforces the approved maximum. The proposed value of 1 is not yet an approved or applied configuration. No Horizon session-limiter code is needed.",
     "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
     "category": "delegated provider configuration",
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
