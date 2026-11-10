@@ -5155,7 +5155,7 @@
       "CCI-002007"
     ],
     "status": "Needs work",
-    "justification": "UDS terminates IdP sessions and browser logout clears client state, so those controls get credit. The API nevertheless accepts an already-issued signed access token until expiry with no session/account revocation lookup; long-lived connections may also outlive session termination. If the mission accepts that bounded token lifetime, document tailoring; otherwise enforce revocation/teardown at the relevant gateway/API/stream boundary.",
+    "justification": "Account/session termination is partially implemented through UDS identity session termination and browser logout. The saved source assessment identifies a concrete residual: the API validates issued JWTs without a session/account revocation lookup, so an already-issued token may remain accepted until expiration. Active long-lived connection behavior also requires verification. Human review on 2026-11-10 confirmed Needs work: enforce deletion-triggered revocation across API requests and active connections and verify the deleted user loses access immediately. Retain existing identity/logout mechanisms.",
     "evidence_ids": [
       "re-asd-release",
       "re-asd-realm",
@@ -5164,7 +5164,7 @@
       "mpn-identity-values",
       "mpn-identity-override"
     ],
-    "next_step": "Decide accepted token-revocation window; configure a central session/introspection/revocation mechanism or implement minimal relevant API/stream enforcement. Do not replace working IdP logout. Gallatin owns this policy/integration; Core default settings are source-known.",
+    "next_step": "Verify the assessed account-deletion flow end to end with an existing user session, issued API token and applicable long-lived connections. Confirm whether any gateway or other deployed control already rejects revoked access. Implement missing account-deletion revocation and connection teardown at the appropriate boundary, reusing existing identity/logout mechanisms. Verify the deleted user immediately loses application access and retain implementation and test evidence; token expiry alone does not establish immediate termination.",
     "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
     "category": "cross-component session policy",
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",

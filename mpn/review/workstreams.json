@@ -949,7 +949,7 @@
     {
       "vuln_id": "V-222549",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Decide accepted token-revocation window; configure a central session/introspection/revocation mechanism or implement minimal relevant API/stream enforcement. Do not replace working IdP logout. Gallatin owns this policy/integration; Core default settings are source-known."
+      "next_step": "Verify the assessed account-deletion flow end to end with an existing user session, issued API token and applicable long-lived connections. Confirm whether any gateway or other deployed control already rejects revoked access. Implement missing account-deletion revocation and connection teardown at the appropriate boundary, reusing existing identity/logout mechanisms. Verify the deleted user immediately loses application access and retain implementation and test evidence; token expiry alone does not establish immediate termination."
     },
     {
       "vuln_id": "V-222568",
