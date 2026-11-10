@@ -959,7 +959,7 @@
     {
       "vuln_id": "V-222578",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Use approved session-bound state/credential lifetime or accepted browser-close tailoring and verify reopen behavior. Gallatin owns this policy/integration; Core default settings are source-known."
+      "next_step": "In the post-classification verification pass, inspect the assessed browser credential/session storage and IdP cookie lifetime, then test explicit logout and full browser close/reopen, including applicable session-restore behavior. Verify session identifiers and associated credentials are destroyed as required and cannot be reused. Address confirmed gaps in Horizon storage/credential lifecycle and shared SSO configuration; retain source, configuration and runtime evidence."
     },
     {
       "vuln_id": "V-233193",

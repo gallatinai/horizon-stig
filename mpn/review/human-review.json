@@ -1577,14 +1577,14 @@
       "CCI-001185"
     ],
     "status": "Needs work",
-    "justification": "Explicit logout removes persisted OIDC state, but the delivered browser userStore is localStorage, which survives browser close and can hold usable bearer/refresh state. The browser-close half of this check is not supplied by IdP logout on a different event. A storage/credential lifecycle change or accepted session-policy tailoring is indicated.",
+    "justification": "Session-state cleanup is partially implemented: explicit logout clears persisted OIDC state and invokes IdP logout. The assessed browser userStore uses localStorage, which survives browser close and may retain usable authentication state. Human review on 2026-11-10 confirmed Needs work: verify logout and browser-close/reopen behavior across Horizon and shared SSO state, then address surviving usable session credentials. Logout cleanup alone does not establish browser-close cleanup, and changing browser storage alone may not resolve shared SSO persistence.",
     "evidence_ids": [
       "re-asd-auth",
       "re-asd-logout",
       "mpn-identity-values",
       "mpn-identity-override"
     ],
-    "next_step": "Use approved session-bound state/credential lifetime or accepted browser-close tailoring and verify reopen behavior. Gallatin owns this policy/integration; Core default settings are source-known.",
+    "next_step": "In the post-classification verification pass, inspect the assessed browser credential/session storage and IdP cookie lifetime, then test explicit logout and full browser close/reopen, including applicable session-restore behavior. Verify session identifiers and associated credentials are destroyed as required and cannot be reused. Address confirmed gaps in Horizon storage/credential lifecycle and shared SSO configuration; retain source, configuration and runtime evidence.",
     "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
     "category": "browser credential lifecycle",
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
