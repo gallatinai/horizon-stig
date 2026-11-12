@@ -1830,5 +1830,47 @@
   "nsa-mpn-release-contract-boundary": {
     "url": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685",
     "observation": "Downloaded release platform-contract.json establishes UDS identity/Core version but does not select cluster OS, storage class, network encryptor, Type1 module or CSfC solution. Application package evidence cannot establish an absent underlying MPN protection inventory."
+  },
+  "review-asd-classifier-flow-gate": {
+    "title": "Assessed-release classification gate before document-type LLM transfer",
+    "observation": "At assessed Horizon commit b84b9af, classify_document_type invokes the LLM only when enabled, a client exists and classification_level.lower() equals unclassified; other classification levels return unknown without that call. This is a label-dependent information-flow control for this classifier path, not proof of coverage for every model or export path.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/workers/artifact-ingestion/artifact_ingestion/doc_classifier.py#L108"
+  },
+  "review-asd-classifier-flow-input": {
+    "title": "Ingestion passes file classification to the LLM classifier gate",
+    "observation": "The ingestion processor passes classification_level=classification to classify_document_type. File classification is thus an input to the transfer decision, rather than only stored metadata.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/workers/artifact-ingestion/artifact_ingestion/processor.py#L345"
+  },
+  "review-asd-classifier-flow-client": {
+    "title": "Classifier sends a content sample to the configured model service",
+    "observation": "ClassifierLLMClient.classify builds a prompt containing the content sample and selects its configured OpenAI or Anthropic-compatible call. Combined with the caller gate, this establishes a controlled transfer path; it does not establish approved MPN destinations or deployment configuration.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/workers/artifact-ingestion/artifact_ingestion/llm_client.py#L187"
+  },
+  "review-predeployment-verification": {
+    "title": "Follow-up verification of the original 188 Needs work rules",
+    "observation": "Per-rule coverage of the pinned source/document pass, findings, limitations and future acceptance tests. No MPN cluster exists and no live MPN checks are claimed.",
+    "path": "mpn/evidence/human-review-verification.json",
+    "url": "../evidence/human-review-verification.json"
+  },
+  "review-mpn-scope-v16": {
+    "title": "MPN scope draft version 16: ownership qualification",
+    "observation": "WIP scope assigns MPN node/control-plane but Gallatin application/database/UDS responsibilities; does not establish blanket storage inheritance.",
+    "url": "https://gallatin.atlassian.net/wiki/spaces/GG/pages/733085804/WIP+STIG+SRG+Compliance+Scope+MPN"
+  },
+  "review-existing-mpn-interfaces": {
+    "title": "Existing proposed MPN design interface table",
+    "observation": "Proposed design already documents principal interface protocols/ports and host-provided or approved services. It does not prove completed registration or a finalized deployed profile.",
+    "url": "https://docs.google.com/document/d/1RzBd9YPzJSYk8LDI126LbvRBiaF3uJjfN4T5V8-0Pbw/edit"
+  },
+  "review-witness-recheck": {
+    "title": "Exact Witness release checksum and build metadata recheck",
+    "observation": "Witness archive checksum matched; binary metadata and pinned wrapper do not establish approved FIPS mode. Existing signing is present; binary was not executed. See the follow-up report for hashes and scope.",
+    "path": "mpn/evidence/human-review-verification.json",
+    "url": "https://github.com/in-toto/witness/releases/tag/v0.12.0"
+  },
+  "review-existing-secret-task": {
+    "title": "Existing protected-file secret task in III Corps",
+    "observation": "Existing III Corps secret-to-projected-file task, hydrated read-only; no Jira mutation. Contrary customer requirement remains unconfirmed.",
+    "url": "https://gallatin.atlassian.net/browse/GAL-9426"
   }
 }

@@ -2,7 +2,7 @@
 
 | STIG/SRG rule | Requirement | Current status |
 |---|---|---|
-| [V-222412 / APSC-DV-000330](../review/U_ASD_V6R5_STIG.md) | Unnecessary application accounts must be disabled, or deleted. | Needs work |
+| [V-222412 / APSC-DV-000330](../review/U_ASD_V6R5_STIG.md) | Unnecessary application accounts must be disabled, or deleted. | Likely covered |
 | [V-222433 / APSC-DV-000540](../review/U_ASD_V6R5_STIG.md) | The application administrator must follow an approved process to unlock locked user accounts. | Needs work |
 | [V-222622 / APSC-DV-002910](../review/U_ASD_V6R5_STIG.md) | The ISSO must review audit trails periodically based on system documentation recommendations or immediately upon system security events. | Needs work |
 | [V-222628 / APSC-DV-002980](../review/U_ASD_V6R5_STIG.md) | New IP addresses, data services, and associated ports used by the application must be submitted to the appropriate approving authority for the organization, which in turn will be submitted through the DoW Ports, Protocols, and Services Management (DoW PPSM) | Needs work |

@@ -1,0 +1,2047 @@
+{
+  "date": "2026-11-10",
+  "purpose": "Predeployment source/document verification after human classification of the original 188 Needs work rules.",
+  "stage": "Predeployment submission assessment. The user confirmed there is no MPN cluster yet.",
+  "classification_complete": true,
+  "source_and_document_pass_complete": true,
+  "deployment_acceptance_complete": false,
+  "limits": [
+    "No MPN installation exists; no live MPN tests were claimed or attempted.",
+    "Source/default gaps apply to the pinned candidate, not an unseen deployment.",
+    "No configuration changes, active vulnerability scans, account operations or registry pruning were performed.",
+    "Owner approvals, course completion, classification decisions and authority registrations cannot be inferred from source; unresolved records are stated explicitly.",
+    "A complete predeployment source/document pass is not completion of all official runtime checks or proof of authorization to operate."
+  ],
+  "baseline": {
+    "horizon": "b84b9afcd6983d553b6b8406317b6592ec90cb7c",
+    "bundle": "d528b7febf1ce8bb5ccf99661dade6ae09a84381",
+    "core": "c15677633cffa17e99656a7d7ccd1f98d7cb6e4d",
+    "identity": "74480722e1cc8405b5e9b65ac7d7086ab7f4056d",
+    "policy": "e5b6ec5a2862cc3880c2ccc011d57698f14611e9",
+    "release": "2026.45.4-uds.1"
+  },
+  "source_inventory": {
+    "core-values": {
+      "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/values.yaml",
+      "sha256": "396816b5f01dad5637592e309f57a4783ab167a8b60375fe2ad8de9411aa3c04",
+      "matching_lines": [
+        51,
+        54,
+        56,
+        57,
+        58,
+        64,
+        69,
+        71,
+        86,
+        495
+      ],
+      "inspection": "Read pinned source; matching lines are navigation anchors, not a runtime test."
+    },
+    "core-alert-rules": {
+      "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/templates/keycloak-logging-alerting-rules.yaml",
+      "sha256": "8958bacec96d2e2c2086f95ea18295f306abf7c97770eb512debc64f492c9fe9",
+      "matching_lines": [
+        4,
+        20,
+        32,
+        45
+      ],
+      "inspection": "Read pinned source; matching lines are navigation anchors, not a runtime test."
+    },
+    "core-falco": {
+      "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/falco/values/values.yaml",
+      "sha256": "e2f8fc1ecec636606f01cc1702df36663e3c474db7a4ce8af8a76b8432b72d7a",
+      "matching_lines": [
+        105,
+        106,
+        107,
+        112
+      ],
+      "inspection": "Read pinned source; matching lines are navigation anchors, not a runtime test."
+    },
+    "core-backup": {
+      "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/velero/values/values.yaml",
+      "sha256": "492018cfaaab198615fba8d448a2a87d568eb18658dac3a4642bdd70ef6aa9a9",
+      "matching_lines": [
+        39,
+        49,
+        53,
+        56,
+        58,
+        62
+      ],
+      "inspection": "Read pinned source; matching lines are navigation anchors, not a runtime test."
+    },
+    "core-loki": {
+      "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/loki/values/values.yaml",
+      "sha256": "da84b2fb37e698cf3612fafd6fbdc22e736b039509591c5271df9854d0ea6996",
+      "matching_lines": [
+        37,
+        42,
+        59,
+        82,
+        95,
+        96,
+        123,
+        124
+      ],
+      "inspection": "Read pinned source; matching lines are navigation anchors, not a runtime test."
+    },
+    "core-vector": {
+      "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/vector/values/values.yaml",
+      "sha256": "9c2fd5178d822f554f6360eab3c04c248a06e9cf11b872f7747ea55007609940",
+      "matching_lines": [
+        40,
+        41,
+        79,
+        80,
+        82,
+        83,
+        95,
+        98,
+        99,
+        101,
+        102,
+        110,
+        115
+      ],
+      "inspection": "Read pinned source; matching lines are navigation anchors, not a runtime test."
+    },
+    "core-bootstrap": {
+      "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/tasks/setup.yaml",
+      "sha256": "6b2f48c4c583b9f8398a56753ea7c426350589cfde704df68f49e59054836e25",
+      "matching_lines": [
+        42
+      ],
+      "inspection": "Read pinned source; matching lines are navigation anchors, not a runtime test."
+    },
+    "core-trust": {
+      "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/how-to-guides/networking/manage-trust-bundles.mdx",
+      "sha256": "a83e68eb9da832d5e2f629ff50142881ce0bb45a98d348baea882e8754eacabc",
+      "matching_lines": [
+        44,
+        45,
+        56,
+        57
+      ],
+      "inspection": "Read pinned source; matching lines are navigation anchors, not a runtime test."
+    },
+    "core-tls": {
+      "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/istio/charts/uds-istio-config/templates/gateway.yaml",
+      "sha256": "a5d5cec7ad105ff71beb8d017cd36426c990e0a01d16e70c25f532a8c0454ae2",
+      "matching_lines": [
+        43,
+        44,
+        46,
+        48,
+        71,
+        72
+      ],
+      "inspection": "Read pinned source; matching lines are navigation anchors, not a runtime test."
+    },
+    "browser-auth": {
+      "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/web/src/auth/auth-service.ts",
+      "sha256": "42a9c309ad04f8c4346a09f497a4c0243c465df4206ef354c73e6f8a17eecc76",
+      "matching_lines": [
+        45,
+        46
+      ],
+      "inspection": "Read pinned source; matching lines are navigation anchors, not a runtime test."
+    },
+    "browser-logout": {
+      "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/web/src/auth/auth-store.ts",
+      "sha256": "e2d18b414d0caefd5af34e268a7452e29d194ecc5db04713bb4ca6481aaaf20c",
+      "matching_lines": [
+        34,
+        52,
+        59,
+        64,
+        99,
+        121,
+        122,
+        139,
+        149,
+        166,
+        173,
+        185,
+        188,
+        206
+      ],
+      "inspection": "Read pinned source; matching lines are navigation anchors, not a runtime test."
+    },
+    "browser-connections": {
+      "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/client-messaging/typescript/src/vue/useNatsConnection.ts",
+      "sha256": "8ebc96bd81778a0d03db5d78bc54eb9a961c66436722e1562c0c876f0bddc9f3",
+      "matching_lines": [
+        13,
+        81,
+        82,
+        91,
+        120,
+        137,
+        151,
+        152,
+        159,
+        162,
+        163,
+        167,
+        171,
+        172,
+        189,
+        201,
+        202,
+        203,
+        214,
+        278,
+        288
+      ],
+      "inspection": "Read pinned source; matching lines are navigation anchors, not a runtime test."
+    },
+    "browser-app": {
+      "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/web/src/app/App.vue",
+      "sha256": "50df115522d87c7a336823e3f3492f8fd06c78e393085a741a06a22d15d6575e",
+      "matching_lines": [
+        2,
+        5,
+        26,
+        30,
+        41
+      ],
+      "inspection": "Read pinned source; matching lines are navigation anchors, not a runtime test."
+    },
+    "jwt": {
+      "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/api/auth/auth.oidc-jwt.service.ts",
+      "sha256": "38a973e1bf4d16b3d55e3dbb61cee63f024072f70f95ef70ea9e15204ba09ba7",
+      "matching_lines": [
+        4,
+        6,
+        7,
+        15,
+        20,
+        21,
+        22,
+        29,
+        30,
+        33,
+        36,
+        42,
+        46,
+        47,
+        48
+      ],
+      "inspection": "Read pinned source; matching lines are navigation anchors, not a runtime test."
+    },
+    "role-grants": {
+      "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/api/users/user-roles.service.ts",
+      "sha256": "2e2aef4a3b401f33a87dcf7845c90b3b17690faf02bb0bd479ffa48bae933048",
+      "matching_lines": [
+        28,
+        79,
+        88,
+        101,
+        140,
+        148
+      ],
+      "inspection": "Read pinned source; matching lines are navigation anchors, not a runtime test."
+    },
+    "enforcer": {
+      "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/core/authorization/permission-enforcer.service.ts",
+      "sha256": "096797d4f1a8bec8a006a16b3a57fea56d8b4ea94bf63b663c8eb0d18ebde54b",
+      "matching_lines": [
+        1,
+        16,
+        30,
+        31,
+        35,
+        46,
+        59
+      ],
+      "inspection": "Read pinned source; matching lines are navigation anchors, not a runtime test."
+    },
+    "http-logging": {
+      "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/core/observability/logging.ts",
+      "sha256": "77effeb39c3a5ff78085828d50e9fdc582c8a5b6c01c9a2e98edb6a911a0dc36",
+      "matching_lines": [
+        8,
+        103,
+        105,
+        106,
+        117,
+        118,
+        164,
+        166,
+        170,
+        173,
+        183,
+        184,
+        223,
+        235,
+        236
+      ],
+      "inspection": "Read pinned source; matching lines are navigation anchors, not a runtime test."
+    },
+    "file-schema": {
+      "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/api/files/files.schema.ts",
+      "sha256": "051af1d5a9b20a4ac49fa75d1d0444d8cf83a531935133d66c89ed61a90604b0",
+      "matching_lines": [
+        16,
+        29,
+        40,
+        41,
+        61,
+        73,
+        76,
+        105,
+        115,
+        116,
+        134,
+        140,
+        176,
+        179,
+        208,
+        209
+      ],
+      "inspection": "Read pinned source; matching lines are navigation anchors, not a runtime test."
+    },
+    "user-schema": {
+      "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/api/users/users.schema.ts",
+      "sha256": "a011cf56497d5412337ac108e90f170d3d45cfb280ad599a3f75124f17b29e36",
+      "matching_lines": [
+        10,
+        20,
+        25,
+        26,
+        34,
+        47,
+        48,
+        68,
+        73,
+        77,
+        94,
+        153,
+        155,
+        156,
+        169,
+        175,
+        177,
+        178,
+        221
+      ],
+      "inspection": "Read pinned source; matching lines are navigation anchors, not a runtime test."
+    },
+    "file-service": {
+      "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/api/files/files.service.ts",
+      "sha256": "ec3c62ad6fece233bf54babca29e3d711ec439b6a2074320ad16befbccc4b9c4",
+      "matching_lines": [
+        32,
+        111,
+        121,
+        129,
+        138,
+        216,
+        278,
+        285,
+        310,
+        314
+      ],
+      "inspection": "Read pinned source; matching lines are navigation anchors, not a runtime test."
+    },
+    "flow-gate": {
+      "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/workers/artifact-ingestion/artifact_ingestion/doc_classifier.py",
+      "sha256": "b269bdcfc03b32085b0b71d9d852a28b891bfacd80136443a7a9338d0cd17216",
+      "matching_lines": [
+        114,
+        120,
+        127,
+        129,
+        140
+      ],
+      "inspection": "Read pinned source; matching lines are navigation anchors, not a runtime test."
+    },
+    "ingestion": {
+      "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/workers/artifact-ingestion/artifact_ingestion/processor.py",
+      "sha256": "92d2001ad58451ad3caceeb09b377ccf025d36c84cd1eefa9f764a0fe9b59df7",
+      "matching_lines": [
+        204,
+        207,
+        209,
+        226,
+        320,
+        350,
+        362,
+        377,
+        403,
+        423,
+        477,
+        1001,
+        1144,
+        1447,
+        1452
+      ],
+      "inspection": "Read pinned source; matching lines are navigation anchors, not a runtime test."
+    },
+    "nats-crypto": {
+      "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/core/nats-auth/nats-auth.jwt.service.ts",
+      "sha256": "97e04c63703fdc70799e93ba1a2da958391528de0a72558a9b7e0ad8ab6364f8",
+      "matching_lines": [
+        3,
+        4,
+        6,
+        7,
+        35,
+        36,
+        41,
+        168,
+        217
+      ],
+      "inspection": "Read pinned source; matching lines are navigation anchors, not a runtime test."
+    },
+    "db-role": {
+      "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/migrations/00000000000003_provision_app_role.sql",
+      "sha256": "15447165a50bbd780fd46d38f89e333ddc656bad25e8935ce03ae9a5f14aa5d3",
+      "matching_lines": [
+        17,
+        20,
+        44
+      ],
+      "inspection": "Read pinned source; matching lines are navigation anchors, not a runtime test."
+    },
+    "db-extension": {
+      "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/migrations/00000000000002_create_extensions.sql",
+      "sha256": "760595601123b1871af8e0323ec83636482092d2a60d781dd027dd030df3570c",
+      "matching_lines": [
+        4,
+        5,
+        9,
+        10,
+        11
+      ],
+      "inspection": "Read pinned source; matching lines are navigation anchors, not a runtime test."
+    },
+    "db-values": {
+      "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/values/postgres.yaml",
+      "sha256": "cf71789e1fd8b24ea37c0d2809fbdf4fadd4849924907c374fccf144f6077981",
+      "matching_lines": [
+        10,
+        14,
+        20,
+        21
+      ],
+      "inspection": "Read pinned source; matching lines are navigation anchors, not a runtime test."
+    },
+    "web-values": {
+      "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/values/web.yaml",
+      "sha256": "a0fc659fcadcb12b9c1a494093344574e2877d82787497afbfc5adec46edb4bb",
+      "matching_lines": [
+        37
+      ],
+      "inspection": "Read pinned source; matching lines are navigation anchors, not a runtime test."
+    },
+    "db-chart": {
+      "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-postgres/templates/statefulset.yaml",
+      "sha256": "1a5a9ac0398b45fb8f623b543573b33098bf1377c58d15a906e369f169a81ad5",
+      "matching_lines": [
+        81,
+        84,
+        86,
+        168,
+        169
+      ],
+      "inspection": "Read pinned source; matching lines are navigation anchors, not a runtime test."
+    },
+    "s3-chart": {
+      "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/seaweedfs/templates/configmap.yaml",
+      "sha256": "012c81f81b53053bb3a0d068718c1a4925307b125c378f6f0557d324b9b50eb3",
+      "matching_lines": [
+        2,
+        16,
+        17
+      ],
+      "inspection": "Read pinned source; matching lines are navigation anchors, not a runtime test."
+    },
+    "signer": {
+      "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/scripts/ci/attest.py",
+      "sha256": "c294284fa7359417287ad6fbdbed7879493f1e20ad8be8ed8e5ef57b0a969082",
+      "matching_lines": [
+        2,
+        22,
+        57,
+        59,
+        64,
+        65,
+        67,
+        70,
+        82,
+        123,
+        169,
+        171,
+        177,
+        178,
+        179,
+        191,
+        197,
+        200,
+        201,
+        216,
+        220
+      ],
+      "inspection": "Read pinned source; matching lines are navigation anchors, not a runtime test."
+    },
+    "package-network": {
+      "url": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-uds-package/templates/package.yaml",
+      "sha256": "6a45fdbd4ef9b38d2775fd786ed4d687e638d57d5605811b920810da949f267a",
+      "matching_lines": [
+        17,
+        39,
+        51,
+        52,
+        64,
+        75,
+        79,
+        83,
+        86,
+        88,
+        92,
+        95,
+        97,
+        102,
+        105,
+        107,
+        109,
+        115,
+        117,
+        123,
+        127,
+        131,
+        132,
+        133,
+        137,
+        138,
+        139,
+        143,
+        144
+      ],
+      "inspection": "Read pinned source; matching lines are navigation anchors, not a runtime test."
+    },
+    "build-workflow": {
+      "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/.github/workflows/build.yml",
+      "sha256": "ebeb0d9533f98447af417698666a8f6e2ca25bf7d7f26a3a60ae95cab72365b2",
+      "matching_lines": [
+        18,
+        19,
+        20,
+        21,
+        953,
+        957,
+        960,
+        968,
+        972,
+        973,
+        974,
+        976,
+        984,
+        1092,
+        1093,
+        1097,
+        1098,
+        1107,
+        1112,
+        1116,
+        1117,
+        1118,
+        1120,
+        1121,
+        1123,
+        1124,
+        1127,
+        1128,
+        1132,
+        1133,
+        1135,
+        1136,
+        1141,
+        1142,
+        1147,
+        1150,
+        1151,
+        1158,
+        1238,
+        1239,
+        1248,
+        1252,
+        1253,
+        1254,
+        1256,
+        1257,
+        1259,
+        1260,
+        1263,
+        1264,
+        1269,
+        1271,
+        1307,
+        1308,
+        1319,
+        1320,
+        1321,
+        1323,
+        1324,
+        1326,
+        1327,
+        1330,
+        1331,
+        1338,
+        1373,
+        1374,
+        1383,
+        1387,
+        1388,
+        1389,
+        1391,
+        1392,
+        1394,
+        1395,
+        1398,
+        1399,
+        1406,
+        1441,
+        1442,
+        1453,
+        1454,
+        1455,
+        1457,
+        1458,
+        1460,
+        1461,
+        1464,
+        1465,
+        1472,
+        1508,
+        1509,
+        1518,
+        1522,
+        1523,
+        1524,
+        1526,
+        1527,
+        1529,
+        1530,
+        1533,
+        1534,
+        1621,
+        1730,
+        1776,
+        1866,
+        1894,
+        1975,
+        2002,
+        2091,
+        2118,
+        2207,
+        2235,
+        2324,
+        2384,
+        2385,
+        2389,
+        2445,
+        2446,
+        2448,
+        2470,
+        2471,
+        2473,
+        2475,
+        2476,
+        2480,
+        2481,
+        2485,
+        2489,
+        2491,
+        2492,
+        2493,
+        2496,
+        2497,
+        2499,
+        2519,
+        2521,
+        2524,
+        2528,
+        2529,
+        2532,
+        2535,
+        2536,
+        2542,
+        2544,
+        2545,
+        2550,
+        2552,
+        2553,
+        2578,
+        2579,
+        2580,
+        2584,
+        2644,
+        2645,
+        2647,
+        2668,
+        2696,
+        2697,
+        2703,
+        2705,
+        2706,
+        2717,
+        2718,
+        2719,
+        2721,
+        2762,
+        2764,
+        2766,
+        2769,
+        2773,
+        2774,
+        2775,
+        2777,
+        2778,
+        2786,
+        2866,
+        2918,
+        2920,
+        2922,
+        2923,
+        2968,
+        2970,
+        2971,
+        2973,
+        2974,
+        2976,
+        2979,
+        2982,
+        2985,
+        2988,
+        2989,
+        2993,
+        3014,
+        3015,
+        3018,
+        3027,
+        3028,
+        3034,
+        3036,
+        3037,
+        3040,
+        3044,
+        3045,
+        3047,
+        3085,
+        3086,
+        3091,
+        3092,
+        3094,
+        3095,
+        3096,
+        3101,
+        3102,
+        3104,
+        3105,
+        3112,
+        3113,
+        3117,
+        3121,
+        3126,
+        3127,
+        3130,
+        3131,
+        3137,
+        3139,
+        3140,
+        3495,
+        3496,
+        3497,
+        3529,
+        3530,
+        3531,
+        4104,
+        4105,
+        4106,
+        4112
+      ],
+      "inspection": "Read pinned source; matching lines are navigation anchors, not a runtime test."
+    },
+    "realm": {
+      "url": "https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/realm.json5",
+      "sha256": "2a3622bf3eef4d99e975a1d54bc10d828fb781db3416f70a62dfcace0f4c6132",
+      "inspection": "Fetched exact pinned public source and read relevant configuration/control paths."
+    },
+    "consent-theme": {
+      "url": "https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/theme/login/terms.ftl",
+      "sha256": "a4148b554c9d6e8523cdb5e1f2cd57ad816a470130904d490daf9507dddd20ab",
+      "inspection": "Fetched exact pinned public source and read relevant configuration/control paths."
+    },
+    "registry-state": {
+      "url": "https://github.com/zarf-dev/zarf/blob/v0.86.0/src/pkg/state/state.go",
+      "sha256": "392e4e9e28b05ed42a5c2ac4c1f2a681f7e509c0e97d61a243f57d8b94657008",
+      "inspection": "Fetched exact pinned public source and read relevant configuration/control paths."
+    },
+    "registry-tls": {
+      "url": "https://github.com/zarf-dev/zarf/blob/v0.86.0/packages/zarf-registry/chart/templates/_helpers.tpl",
+      "sha256": "b686e1ea2daf0aa84d6a0e949d9ee193a5860d877e121590309d5abf9f139a3b",
+      "inspection": "Fetched exact pinned public source and read relevant configuration/control paths."
+    },
+    "policy-EVIDENCE-AC-application-access-policies": {
+      "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/EVIDENCE-AC-application-access-policies.md",
+      "sha256": "a5316e2c38d8f6c4bae3ad0d903162ef0885b27f90d5b53ae0c62d6a9ce6b913",
+      "inspection": "Read pinned policy/evidence document; draft text is not completed operational evidence."
+    },
+    "policy-EVIDENCE-AU-audit-architecture": {
+      "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/EVIDENCE-AU-audit-architecture.md",
+      "sha256": "5058efadd25d1e2b1666fecb9cf4a6ab7c3f8bfaa1ca5353b599ad956890bb08",
+      "inspection": "Read pinned policy/evidence document; draft text is not completed operational evidence."
+    },
+    "policy-POL-AC-access-control": {
+      "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-AC-access-control.md",
+      "sha256": "b84af715c817f41f83603b02aa2e068c74b5ddcdbddbba847dd325b36f5cffe8",
+      "inspection": "Read pinned policy/evidence document; draft text is not completed operational evidence."
+    },
+    "policy-POL-AM-asset-management": {
+      "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-AM-asset-management.md",
+      "sha256": "195f8494e6d060ae06614656de34524661dc593bb2d26d29a6dec99bb3f23939",
+      "inspection": "Read pinned policy/evidence document; draft text is not completed operational evidence."
+    },
+    "policy-POL-AT-awareness-and-training": {
+      "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-AT-awareness-and-training.md",
+      "sha256": "c84e3bce51cd21f8aa91325c9a7ffe1d1e32ea14e7261a8f7091226cd19ad9f5",
+      "inspection": "Read pinned policy/evidence document; draft text is not completed operational evidence."
+    },
+    "policy-POL-AU-audit-and-accountability": {
+      "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-AU-audit-and-accountability.md",
+      "sha256": "f7c2e347fcaddad292a5ccce537771cd3a65819aad98d2c4b61797705805bdec",
+      "inspection": "Read pinned policy/evidence document; draft text is not completed operational evidence."
+    },
+    "policy-POL-CP-business-continuity-disaster-recovery": {
+      "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-CP-business-continuity-disaster-recovery.md",
+      "sha256": "8fe6b51aa0b67fc3537c61e81e4bab48bab05b30793f76604f702a49244ecd6e",
+      "inspection": "Read pinned policy/evidence document; draft text is not completed operational evidence."
+    },
+    "policy-POL-CUI-data-classification": {
+      "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-CUI-data-classification.md",
+      "sha256": "2ab7073edc8afbe79f23f3cce9de566f21feb9237ccac3d10358cf5508b94303",
+      "inspection": "Read pinned policy/evidence document; draft text is not completed operational evidence."
+    },
+    "policy-POL-IA-identification-and-authentication": {
+      "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-IA-identification-and-authentication.md",
+      "sha256": "52c7fcbed25d61829e184a5ba263c3bbab7b7f756cf033c1a314c4b80436543a",
+      "inspection": "Read pinned policy/evidence document; draft text is not completed operational evidence."
+    },
+    "core-inactivity-guide": {
+      "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/docs/how-to-guides/identity-and-authorization/configure-account-inactivity-disable.mdx",
+      "sha256": "7c41532ccd829627b6adecfac041ac53fe7fd98c9e4f040efe2eedd0e0218c47",
+      "inspection": "Read pinned guide: first-authentication trigger, no retroactive evaluation, realm-admin exclusion and initial-import-only setting are source-level limits, not runtime test results."
+    }
+  },
+  "external_evidence": {
+    "mpn-scope": {
+      "url": "https://gallatin.atlassian.net/wiki/spaces/GG/pages/733085804/WIP+STIG+SRG+Compliance+Scope+MPN",
+      "version": 16,
+      "finding": "WIP scope assigns MPN node/control-plane but Gallatin application/database/UDS responsibilities; does not establish blanket storage inheritance."
+    },
+    "mpn-design": {
+      "url": "https://docs.google.com/document/d/1RzBd9YPzJSYk8LDI126LbvRBiaF3uJjfN4T5V8-0Pbw/edit",
+      "modified": "2026-10-27",
+      "finding": "Proposed design already documents principal interface protocols/ports and host-provided or approved services. It does not prove completed registration or a finalized deployed profile."
+    },
+    "mpn-submission": {
+      "url": "https://docs.google.com/document/d/1DYlP9M4ihQ8tfMQZnHIf_GjRQ52oVEtQ1kLqxV8kiOo/edit",
+      "finding": "Consolidated draft submission exists; proposed support/hosting commitments remain subject to Government/host agreement."
+    },
+    "secret-task": {
+      "url": "https://gallatin.atlassian.net/browse/GAL-9426",
+      "finding": "Existing III Corps secret-to-projected-file task, hydrated read-only; no Jira mutation. Contrary customer requirement remains unconfirmed."
+    },
+    "witness": {
+      "url": "https://github.com/in-toto/witness/releases/tag/v0.12.0",
+      "archive_sha256": "543d05898731fe5b9c176443ec596a0242bd27f0b327d73aff60f6f7398b7dd0",
+      "binary_sha256": "b345e958e507c10a1b05668fbf735b91884cfc984b01a3baf839e4f8fbf5fc11",
+      "binary_executed": false,
+      "checksum_matched": true,
+      "metadata": "go1.26.5; CGO_ENABLED=0; no GOFIPS140 or FIPS GODEBUG build selection recorded"
+    },
+    "go-fips": {
+      "url": "https://go.dev/doc/security/fips140",
+      "finding": "Approved mode defaults off without build/runtime selection; validated-module selection and operating environment remain separate requirements."
+    },
+    "istio-protocol": {
+      "url": "https://istio.io/latest/docs/ops/configuration/traffic-management/protocol-selection/",
+      "finding": "Gateway forwards HTTP/1.1 by default unless explicit upstream protocol selection is provided."
+    }
+  },
+  "search_scope": {
+    "services": [
+      "Rovo Jira/Confluence",
+      "Google Drive",
+      "Gmail",
+      "pinned GitHub policies/source",
+      "retained release evidence"
+    ],
+    "topics": [
+      "MPN SIA/PPSM submission and classification/storage ownership",
+      "secure-SDLC training",
+      "secret environment-variable customer constraints",
+      "active/fuzz security testing",
+      "quarterly repository access review",
+      "decommissioning procedure"
+    ],
+    "interpretation": "Bounded search did not yield final registration/approval, full secure-SDLC roster, current owner access certification or the recalled contrary customer requirement. This is unresolved evidence, not proof those records do not exist."
+  },
+  "groups": {
+    "session-policy": {
+      "source_result": "source-gaps-confirmed",
+      "sources_checked": [
+        "core-values",
+        "realm",
+        "browser-auth",
+        "browser-logout",
+        "browser-connections",
+        "browser-app",
+        "jwt",
+        "role-grants",
+        "enforcer"
+      ],
+      "finding": "Pinned realm has unlimited per-user sessions and a 36000-second maximum. Browser OIDC state uses localStorage. API verifies JWTs offline; role grants have no fresh-auth gate. NATS has explicit unmount/beforeunload disconnect support, so cleanup is partially present; logout/auth-expiry teardown and server-side invalidation are not proven by that support. No source-IP binding is established by the inspected paths.",
+      "deployment_or_owner_acceptance": "Use the approved candidate overrides; test session maximums, role-change step-up, revocation and active connection teardown in an authorized representative environment, then recheck the eventual deployment."
+    },
+    "account-lifecycle": {
+      "source_result": "configuration-and-process-work",
+      "sources_checked": [
+        "core-values",
+        "realm",
+        "core-inactivity-guide",
+        "browser-logout",
+        "jwt"
+      ],
+      "finding": "35-day workflow is present but enabled only by the inactivity setting and unconditionally excludes users with realm-management/realm-admin. Enabling it covers only non-realm-admin users after a user-authenticated event; never-authenticated accounts never start an instance, and accounts predating enablement are not retroactively evaluated. An administrator role alone does not qualify for the exact rule's exceptions. A disabled source default and gaps in excluded-administrator and never-authenticated-account coverage are candidate configuration/control gaps, not proof about an installation. Offboarding/group/device lifecycle requires the chosen authority and process; a human inactivity workflow does not cover all identifier types.",
+      "deployment_or_owner_acceptance": "Inventory excluded realm-admin accounts and justify any exceptions against each exact rule. Verify an existing compliant automatic 35-day inactivity control or a supported controlled shared-provider workflow change for every non-exempt administrator. For never-authenticated non-exempt accounts, verify an existing compliant automatic 35-day inactivity control or implement a supported, controlled shared-provider change that measures inactivity from an approved creation/enablement baseline. If enabling the workflow on an existing realm, reconcile pre-enable accounts and place every non-exempt account under automatic inactivity control. Exercise 35-day inactivity disablement for controlled authenticated ordinary, never-authenticated non-exempt and non-exempt administrator identities and preservation of justified exceptions. Confirm the authoritative offboarding source and exercise deassociation separately after candidate configuration."
+    },
+    "account-access-certification": {
+      "source_result": "operational-records-required",
+      "sources_checked": [
+        "policy-POL-AC-access-control"
+      ],
+      "finding": "Written quarterly access-review policy exists. It is not an owner-certified review. Horizon ships no preset human accounts according to the human decision and inspected bootstrap manifests; this does not certify a future mission roster.",
+      "deployment_or_owner_acceptance": "Repository owner supplies a dated effective-access review. Mission account certification is due at account enablement and the agreed cadence; no MPN user roster is expected before deployment."
+    },
+    "audit-alert-routing": {
+      "source_result": "default-routing-gap-confirmed",
+      "sources_checked": [
+        "core-values",
+        "core-alert-rules",
+        "core-falco",
+        "core-vector",
+        "core-loki"
+      ],
+      "finding": "Keycloak alert resources are gated by detailedObservability.alerts.enabled. Templates cover realm/user/admin modifications; they do not by themselves prove every create/delete/disable/enable event, capacity alarm, pipeline failure or tamper detector. Falco defaults route to Loki, not an access-response system. No actual SA/ISSO receiver selection is established by the checked candidate.",
+      "deployment_or_owner_acceptance": "Define required events, recipients, thresholds and real-time latency in the candidate. Exercise rule firing and notification delivery without using real operational incidents."
+    },
+    "compliance-package": {
+      "source_result": "scope-and-documentation-work",
+      "sources_checked": [
+        "package-network",
+        "policy-POL-CUI-data-classification",
+        "policy-POL-CP-business-continuity-disaster-recovery",
+        "policy-POL-AM-asset-management"
+      ],
+      "finding": "Mission design and corporate policies exist, but policies retain draft/system-specific TODO items. The current WIP MPN scope assigns container platform, application, database and AAA mapping to Gallatin and node/control-plane to MPN. Generic compliance roll-ups add mapping/closure work, not duplicate implementations.",
+      "deployment_or_owner_acceptance": "Retain accepted mission data requirements, availability/recovery/decommissioning procedures and component-specific control mappings; authorities confirm inheritance and open residuals."
+    },
+    "mpn-network-profile": {
+      "source_result": "candidate-flow-gap-confirmed",
+      "sources_checked": [
+        "package-network",
+        "flow-gate",
+        "ingestion"
+      ],
+      "finding": "The product has a real label-based gate: document-type LLM calls are skipped for non-unclassified files. This establishes that a flow-control function exists for that path, not all paths. The general package includes hosted-model flows while the MPN design specifies local inference. The existing MPN design already supplies a principal interface/port table.",
+      "deployment_or_owner_acceptance": "Choose local model/runtime and final destinations, align the candidate flow list with CAL conditions, and test prohibited transfers. Do not recreate the existing interface table or assume it is registered."
+    },
+    "application-auditing": {
+      "source_result": "partial-coverage-and-source-gaps",
+      "sources_checked": [
+        "role-grants",
+        "enforcer",
+        "http-logging",
+        "file-schema",
+        "file-service"
+      ],
+      "finding": "Role grant/revoke records include an actor. Normal denied permission checks throw 403 without a structured actor/target audit record; request serialization omits actor context. Security labels are stored/filtered/changed, but those operations do not establish a full auditable event catalog. Non-repudiation is a separate applicability question, not an ordinary audit gap.",
+      "deployment_or_owner_acceptance": "Define exact mandatory/mission events, map existing coverage and test retained success/failure records. Reviewer confirms the proposed non-repudiation exclusion."
+    },
+    "account-recovery-procedure": {
+      "source_result": "approval-records-required",
+      "sources_checked": [
+        "policy-POL-IA-identification-and-authentication",
+        "realm"
+      ],
+      "finding": "Identity-verified recovery policy and Keycloak mechanisms exist. Pinned policy is draft/effective TBD; this is not documented MPN ISSO/ISSM approval of an adopted unlock process.",
+      "deployment_or_owner_acceptance": "Obtain the approved operator procedure and demonstrate it with controlled identities before operational use."
+    },
+    "notice-banner": {
+      "source_result": "existing-capability-disabled-by-default",
+      "sources_checked": [
+        "realm",
+        "consent-theme",
+        "core-values"
+      ],
+      "finding": "The theme contains the USG notice and explicit acceptance UI. Realm required action defaults false. This is existing capability awaiting candidate configuration, not missing Horizon banner code.",
+      "deployment_or_owner_acceptance": "Compare exact benchmark text and test all applicable interactive entry paths and acceptance gates in the configured candidate."
+    },
+    "identity-policy": {
+      "source_result": "existing-provider-capability-and-policy-gaps",
+      "sources_checked": [
+        "core-values",
+        "realm",
+        "browser-auth"
+      ],
+      "finding": "Realm default password policy covers length/classes/history/expiry, but not the specified eight-character-change, 24-hour minimum-change interval or selected denylist. Keycloak list support is already documented in retained primary-source evidence; source enablement and corpus maintenance remain distinct. Source searches did not establish previous-successful-login display; absence from those searches is bounded, not proof about every possible upstream IdP.",
+      "deployment_or_owner_acceptance": "Confirm password/IdP scope and approved policy; verify missing exact controls after configuration, including previous-login UI and denylist updates. Do not substitute password reuse age for minimum lifetime."
+    },
+    "pki-trust": {
+      "source_result": "capability-present-profile-and-issuance-unresolved",
+      "sources_checked": [
+        "realm",
+        "core-values",
+        "core-trust",
+        "core-tls",
+        "jwt"
+      ],
+      "finding": "Local CRL checking defaults disabled while OCSP is enabled. Trust-bundle distribution and gateway certificate references exist. They do not prove restrictive trust at every verifier, actual issued certificate assurance or the eventual approved PKI profile.",
+      "deployment_or_owner_acceptance": "Define approved trust/certificate profiles and CRL refresh, provision candidate material, test unrelated/revoked/stale cases and record authorized issuance evidence without private keys."
+    },
+    "release-crypto-provider": {
+      "source_result": "signing-present-fips-gap-supported",
+      "sources_checked": [
+        "signer"
+      ],
+      "finding": "Re-downloaded Witness 0.12.0 Linux amd64 archive, matched upstream checksum, and read binary build metadata without executing it. Go 1.26.5, CGO_ENABLED=0; no GOFIPS140 or FIPS GODEBUG build setting was recorded. Wrapper allowlist excludes GODEBUG. Official Go documentation defaults approved mode off absent selection. Working signing is real, but not proof of validated approved-mode signing/hashing. Python/OpenSSL release hashing has a separate unbound module environment.",
+      "deployment_or_owner_acceptance": "Bind the exact signing/hashing process to validated module provenance, approved operation and applicable NSS scope. Do not replace working Witness solely because evidence was initially missing."
+    },
+    "mpn-storage-protection": {
+      "source_result": "inheritance-assumption-needs-review",
+      "sources_checked": [
+        "db-chart",
+        "db-values",
+        "s3-chart",
+        "core-backup"
+      ],
+      "finding": "Candidate PVC/default storage choices and available object encryption do not establish host protection. Re-read current WIP scope: MPN owns node/control-plane, but Gallatin owns in-cluster PostgreSQL and application/storage-service mapping. The proposed inherited Likely covered disposition is a human hypothesis awaiting confirmation, not verified storage protection. Secrets/datastore, confidentiality and authenticated integrity have distinct scopes.",
+      "deployment_or_owner_acceptance": "Agree the predeployment responsibility and protection contract. Map every data/component to the promised approved host or application control; verify deployed realization at acceptance. No nonexistent MPN volume is expected to be inspectable now."
+    },
+    "mpn-storage-integrity": {
+      "source_result": "inheritance-assumption-needs-review",
+      "sources_checked": [
+        "db-chart",
+        "db-values",
+        "s3-chart",
+        "core-backup"
+      ],
+      "finding": "Candidate PVC/default storage choices and available object encryption do not establish host protection. Re-read current WIP scope: MPN owns node/control-plane, but Gallatin owns in-cluster PostgreSQL and application/storage-service mapping. The proposed inherited Likely covered disposition is a human hypothesis awaiting confirmation, not verified storage protection. Secrets/datastore, confidentiality and authenticated integrity have distinct scopes.",
+      "deployment_or_owner_acceptance": "Agree the predeployment responsibility and protection contract. Map every data/component to the promised approved host or application control; verify deployed realization at acceptance. No nonexistent MPN volume is expected to be inspectable now."
+    },
+    "mpn-host-storage-encryption": {
+      "source_result": "inheritance-assumption-needs-review",
+      "sources_checked": [
+        "db-chart",
+        "db-values",
+        "s3-chart",
+        "core-backup"
+      ],
+      "finding": "Candidate PVC/default storage choices and available object encryption do not establish host protection. Re-read current WIP scope: MPN owns node/control-plane, but Gallatin owns in-cluster PostgreSQL and application/storage-service mapping. The proposed inherited Likely covered disposition is a human hypothesis awaiting confirmation, not verified storage protection. Secrets/datastore, confidentiality and authenticated integrity have distinct scopes.",
+      "deployment_or_owner_acceptance": "Agree the predeployment responsibility and protection contract. Map every data/component to the promised approved host or application control; verify deployed realization at acceptance. No nonexistent MPN volume is expected to be inspectable now."
+    },
+    "audit-review-procedure": {
+      "source_result": "operational-records-required",
+      "sources_checked": [
+        "policy-POL-AU-audit-and-accountability",
+        "core-vector",
+        "core-loki"
+      ],
+      "finding": "Quarterly policy and central review tools exist. No dated MPN review is expected before deployment; the submission needs an adopted schedule, owner and event-driven review procedure. Existing corporate records cannot automatically prove MPN operating reviews.",
+      "deployment_or_owner_acceptance": "Owner confirms adopted procedure; collect first review and subsequent cadence/event records once operational."
+    },
+    "security-assessment-coverage": {
+      "source_result": "partial-tests-full-matrix-unestablished",
+      "sources_checked": [
+        "build-workflow",
+        "enforcer"
+      ],
+      "finding": "Reviewed pinned CI and security-test inventory establishes functional/authorization/image/source scanning, not a complete active/fuzz report or annual startup/shutdown/abort access matrix. Search matches for fuzzy document matching are not security fuzz tests. Retrieved MPN design describes SAST/dependency checks and says formal runtime/host assessment remains pending.",
+      "deployment_or_owner_acceptance": "Map and execute missing active/fuzz/lifecycle tests in an authorized representative candidate environment; retain procedures, settings and dated results. Do not treat missing MPN deployment as a failed test."
+    },
+    "ppsm-authorization": {
+      "source_result": "existing-interface-documentation-confirmed",
+      "sources_checked": [
+        "package-network"
+      ],
+      "finding": "Re-read the existing consolidated MPN design and submission information: principal external/internal flows, protocols and ports are already documented. This supports the user expectation that information is supplied. These are proposed/draft documents; no authority-issued production registration identifier or completed approval was found in the bounded records search. Submission preparation and final registration are different milestones.",
+      "deployment_or_owner_acceptance": "Reconcile only changed/missing final-profile details; authority confirms submission receipt, registration or applicable exemption at the appropriate approval stage."
+    },
+    "data-backup-restore": {
+      "source_result": "resource-backup-present-data-plan-unresolved",
+      "sources_checked": [
+        "core-backup",
+        "db-values",
+        "policy-POL-CP-business-continuity-disaster-recovery"
+      ],
+      "finding": "Velero daily resource schedule and 240h TTL are present; snapshotsEnabled and snapshotVolumes are false. That is not proof of PostgreSQL/object data recovery. Draft policy explicitly leaves system RTO/RPO and backup configuration/test schedule TBD. Actual host backup service and offline-copy protection need a predeployment contract, not inspection of nonexistent MPN backups.",
+      "deployment_or_owner_acceptance": "Select/confirm data-backup service, required intervals, protected media/export and trusted restore procedures; test representative recovery before operational acceptance."
+    },
+    "data-label-policy": {
+      "source_result": "output-marking-coverage-unestablished",
+      "sources_checked": [
+        "file-schema",
+        "web-values"
+      ],
+      "finding": "File classification metadata exists. Targeted production web-source searches did not identify top/bottom screen/report classification marking implementation; the login consent UI is a different control. This does not replace testing every relevant output path.",
+      "deployment_or_owner_acceptance": "Mission classification authority supplies guide/labels; demonstrate configured screens/reports/printing and exact permitted manual-print exceptions."
+    },
+    "classification-guide": {
+      "source_result": "mission-authority-record-required",
+      "sources_checked": [
+        "file-schema",
+        "policy-POL-CUI-data-classification"
+      ],
+      "finding": "Data classification fields and generic corporate handling policy are present; neither is an approved mission Security Classification Guide. Bounded enterprise search found generic guidance, not a confirmed MPN guide covering all Horizon data.",
+      "deployment_or_owner_acceptance": "Mission authority identifies applicable approved higher-level guide and uncovered elements before classified use; retain controlled scope reference."
+    },
+    "secure-development-training": {
+      "source_result": "course-and-completion-evidence-required",
+      "sources_checked": [
+        "policy-POL-AT-awareness-and-training"
+      ],
+      "finding": "Annual and role-based corporate policy/training system exist. Bounded enterprise searches returned onboarding instructions rather than secure-SDLC completion evidence for every required role. No personnel completion claim was inferred or published.",
+      "deployment_or_owner_acceptance": "Training owner supplies role/content mapping and current controlled completion references; add only missing training."
+    },
+    "classified-crypto": {
+      "source_result": "mission-profile-and-solution-record-required",
+      "sources_checked": [
+        "core-tls",
+        "db-values"
+      ],
+      "finding": "No deployed MPN encryption solution exists to inspect yet. Product/runtime FIPS support is not an approved mission boundary by itself. Exact benchmark requirements differ, including ASD non-SAMI/SAMI distinctions; these cannot be collapsed into a generic NSA certificate request for every product.",
+      "deployment_or_owner_acceptance": "Mission owner defines classified data/tasks and approved solution contract; map existing validated modules and any required Type 1 protection to exact checks before classified processing."
+    },
+    "secret-delivery": {
+      "source_result": "rendered-candidate-gaps-confirmed",
+      "sources_checked": [
+        "db-chart",
+        "s3-chart"
+      ],
+      "finding": "Retained delivered render and pinned templates confirm PostgreSQL credentials in env.secretKeyRef and SeaweedFS credential-bearing s3.json in a ConfigMap. A mount does not change ConfigMap storage classification. Hydrated GAL-9426 is an existing III Corps task for secret-to-file migration; the recalled contrary customer requirement was not confirmed by the bounded search.",
+      "deployment_or_owner_acceptance": "Reuse existing issue, verify consumer support and exact customer profiles, and render/test Secret/vault file delivery without exposing credential values."
+    },
+    "registry-transport": {
+      "source_result": "default-is-not-final-production-profile",
+      "sources_checked": [
+        "core-bootstrap",
+        "registry-state",
+        "registry-tls"
+      ],
+      "finding": "Pinned Core local setup uses Zarf init without a mode override. Pinned Zarf defaults to nodeport/no mTLS and identifies that internal path as plain HTTP; its mTLS chart selects TLS 1.2 minimum. This establishes a default-profile concern, not the final host registry selection.",
+      "deployment_or_owner_acceptance": "Select and document secure registry/bootstrap path for proposed deployment; verify applicable transports in the candidate and eventual installation."
+    },
+    "registry-lifecycle": {
+      "source_result": "cleanup-capability-policy-record-required",
+      "sources_checked": [
+        "core-bootstrap"
+      ],
+      "finding": "Retained exact-source evidence identifies a prune capability. No deployed MPN registry exists; cleanup execution records are not expected. The current requirement is a defined owner, approved version/rollback retention policy and planned maintenance path.",
+      "deployment_or_owner_acceptance": "Document and test lifecycle behavior safely on a representative registry, preserving approved rollback artifacts; collect execution evidence after upgrades."
+    },
+    "continuous-vulnerability-management": {
+      "source_result": "build-scans-present-recurring-service-unbound",
+      "sources_checked": [
+        "build-workflow"
+      ],
+      "finding": "Build/image scanning exists in the assessed workflow and retained release evidence. It does not prove recurring scans of unchanged deployed inventory. Source-registry metadata is distinct from any future MPN scanning service.",
+      "deployment_or_owner_acceptance": "Bind a recurring inventory scanner/cadence and owner in the deployment contract, with sample candidate execution/results and later operating records."
+    },
+    "web-hardening": {
+      "source_result": "header-control-present-error-body-check-needed",
+      "sources_checked": [
+        "web-values"
+      ],
+      "finding": "The checked web server block has no server_tokens/error_page override. Retained UDS evidence shows header stripping, but base-image inherited configuration and external error bodies still need verification. A default server block alone is not a runtime disclosure finding.",
+      "deployment_or_owner_acceptance": "Inspect actual candidate nginx main configuration and representative external error headers/bodies, then address only confirmed disclosures."
+    },
+    "web-http-protocol": {
+      "source_result": "translation-supported-by-candidate-config",
+      "sources_checked": [
+        "web-values",
+        "package-network"
+      ],
+      "finding": "Candidate nginx listens without HTTP/2 upstream configuration. Re-read official Istio protocol selection: gateway forwards HTTP/1.1 without explicit upstream H2 selection. Malformed-request rejection was not executed; the official necessary-downgrade alternative remains a CAT III finding.",
+      "deployment_or_owner_acceptance": "Verify effective candidate protocol path, operational necessity and required rejection tests; disable downgrade or document supported disposition."
+    },
+    "central-log-integrity": {
+      "source_result": "centralization-not-retained-signing-proof",
+      "sources_checked": [
+        "core-loki",
+        "core-vector"
+      ],
+      "finding": "Checked central log configuration establishes collection/storage and transport/access mechanisms, not a retained log hash/sign policy. MPN central service or an explicitly accepted equivalent can supply it but must be selected/evidenced.",
+      "deployment_or_owner_acceptance": "Bind and test central retained-log integrity, key management and verification or obtain exact accepted equivalence; no duplicate per-API signer is implied."
+    },
+    "nats-auth-crypto-module": {
+      "source_result": "separate-path-confirmed-scope-review-required",
+      "sources_checked": [
+        "nats-crypto",
+        "jwt"
+      ],
+      "finding": "API uses nkeys/jwt for NATS account/user signing, separate from OIDC jose/WebCrypto. Retained image inspection identifies pure-JavaScript tweetnacl crypto. Exact official check focuses on authentication TLS, so a module concern must be scoped against that check rather than automatically used as a transport failure.",
+      "deployment_or_owner_acceptance": "Confirm TLS/module boundary and accepted rule interpretation; test actual protected candidate authentication paths and address supported residuals only."
+    },
+    "pii-processing-metadata": {
+      "source_result": "metadata-mechanism-present-semantics-unbound",
+      "sources_checked": [
+        "user-schema",
+        "file-schema",
+        "ingestion"
+      ],
+      "finding": "Candidate identity PII and file tags/propagation are present. Checked schemas do not define approved authorized-processing or processing-purpose associations. Those are distinct privacy-owner decisions, not inferred from tenant/classification fields.",
+      "deployment_or_owner_acceptance": "Approve element/processing/purpose scope and attached-tag interpretation, then test only required association/propagation changes."
+    },
+    "runtime-response": {
+      "source_result": "detection-present-automatic-response-unbound",
+      "sources_checked": [
+        "core-falco"
+      ],
+      "finding": "Falco output configuration sends events to Loki; Alertmanager route is commented. This does not establish an automated access-control responder. Separate Pepr prevention is not evidence of detection-driven response.",
+      "deployment_or_owner_acceptance": "Define approved responder policy and ownership; configure/test missing integration in a representative candidate environment."
+    },
+    "database-account-policy": {
+      "source_result": "native-source-limit-gap-confirmed",
+      "sources_checked": [
+        "db-role",
+        "db-values"
+      ],
+      "finding": "Pinned role creation/alteration does not select CONNECTION LIMIT. Application pooling is separate. Do not confuse the proposed one-browser-session limit with service-role pool requirements or assume privileged PostgreSQL roles obey every ordinary role limit.",
+      "deployment_or_owner_acceptance": "Approve account-type limits, configure technically enforceable native limits and test pool/admin behavior in a representative database."
+    },
+    "database-auditing": {
+      "source_result": "native-default-coverage-gap-confirmed",
+      "sources_checked": [
+        "db-values",
+        "db-extension",
+        "db-role",
+        "http-logging"
+      ],
+      "finding": "pgAudit is preloaded and extension creation attempted, but no pgaudit.log or explicit successful connection/disconnection selection appears in candidate values. Retained exact image/default evidence supports that gap. App actor audit covers some events, not direct administrator SQL; RLS-hidden rows/404 need not emit a PostgreSQL ERROR.",
+      "deployment_or_owner_acceptance": "Map every exact native event/field requirement, configure chosen audit classes/context with privacy/performance review, and test success/denial/direct access and reconstruction of concurrent sessions."
+    },
+    "pki-authentication": {
+      "source_result": "existing-flows-require-profile-selection",
+      "sources_checked": [
+        "core-values",
+        "realm"
+      ],
+      "finding": "X509 and password/social alternatives are enabled in defaults; X509_MFA is false. Existing card/OTP mechanisms do not prove the required card-based multifactor profile for every applicable user type.",
+      "deployment_or_owner_acceptance": "Approve and configure exact privileged/nonprivileged card/MFA scope and emergency exceptions, then test the selected flows."
+    }
+  },
+  "rules": {
+    "V-222387": {
+      "classification": "Needs work",
+      "verification_group": "session-policy"
+    },
+    "V-222411": {
+      "classification": "Needs work",
+      "verification_group": "account-lifecycle"
+    },
+    "V-222412": {
+      "classification": "Likely covered",
+      "verification_group": "account-access-certification"
+    },
+    "V-222417": {
+      "classification": "Needs work",
+      "verification_group": "audit-alert-routing"
+    },
+    "V-222418": {
+      "classification": "Needs work",
+      "verification_group": "audit-alert-routing"
+    },
+    "V-222419": {
+      "classification": "Needs work",
+      "verification_group": "audit-alert-routing"
+    },
+    "V-222420": {
+      "classification": "Needs work",
+      "verification_group": "audit-alert-routing"
+    },
+    "V-222422": {
+      "classification": "Needs work",
+      "verification_group": "audit-alert-routing"
+    },
+    "V-222423": {
+      "classification": "Needs work",
+      "verification_group": "compliance-package"
+    },
+    "V-222428": {
+      "classification": "Needs work",
+      "verification_group": "mpn-network-profile"
+    },
+    "V-222431": {
+      "classification": "Needs work",
+      "verification_group": "application-auditing"
+    },
+    "V-222433": {
+      "classification": "Needs work",
+      "verification_group": "account-recovery-procedure"
+    },
+    "V-222434": {
+      "classification": "Needs work",
+      "verification_group": "notice-banner"
+    },
+    "V-222435": {
+      "classification": "Needs work",
+      "verification_group": "notice-banner"
+    },
+    "V-222437": {
+      "classification": "Needs work",
+      "verification_group": "identity-policy"
+    },
+    "V-222438": {
+      "classification": "Needs N/A justification",
+      "verification_group": "application-auditing"
+    },
+    "V-222449": {
+      "classification": "Needs work",
+      "verification_group": "application-auditing"
+    },
+    "V-222450": {
+      "classification": "Needs work",
+      "verification_group": "application-auditing"
+    },
+    "V-222451": {
+      "classification": "Needs work",
+      "verification_group": "application-auditing"
+    },
+    "V-222452": {
+      "classification": "Needs work",
+      "verification_group": "application-auditing"
+    },
+    "V-222453": {
+      "classification": "Needs work",
+      "verification_group": "application-auditing"
+    },
+    "V-222454": {
+      "classification": "Needs work",
+      "verification_group": "application-auditing"
+    },
+    "V-222455": {
+      "classification": "Needs work",
+      "verification_group": "application-auditing"
+    },
+    "V-222456": {
+      "classification": "Needs work",
+      "verification_group": "application-auditing"
+    },
+    "V-222457": {
+      "classification": "Needs work",
+      "verification_group": "application-auditing"
+    },
+    "V-222458": {
+      "classification": "Needs work",
+      "verification_group": "application-auditing"
+    },
+    "V-222459": {
+      "classification": "Needs work",
+      "verification_group": "application-auditing"
+    },
+    "V-222460": {
+      "classification": "Needs work",
+      "verification_group": "application-auditing"
+    },
+    "V-222461": {
+      "classification": "Needs work",
+      "verification_group": "application-auditing"
+    },
+    "V-222463": {
+      "classification": "Needs work",
+      "verification_group": "application-auditing"
+    },
+    "V-222465": {
+      "classification": "Needs work",
+      "verification_group": "application-auditing"
+    },
+    "V-222466": {
+      "classification": "Needs work",
+      "verification_group": "application-auditing"
+    },
+    "V-222471": {
+      "classification": "Needs work",
+      "verification_group": "application-auditing"
+    },
+    "V-222472": {
+      "classification": "Needs work",
+      "verification_group": "application-auditing"
+    },
+    "V-222477": {
+      "classification": "Needs work",
+      "verification_group": "application-auditing"
+    },
+    "V-222478": {
+      "classification": "Needs work",
+      "verification_group": "application-auditing"
+    },
+    "V-222483": {
+      "classification": "Needs work",
+      "verification_group": "audit-alert-routing"
+    },
+    "V-222484": {
+      "classification": "Needs work",
+      "verification_group": "audit-alert-routing"
+    },
+    "V-222485": {
+      "classification": "Needs work",
+      "verification_group": "audit-alert-routing"
+    },
+    "V-222512": {
+      "classification": "Needs work",
+      "verification_group": "application-auditing"
+    },
+    "V-222519": {
+      "classification": "Needs work",
+      "verification_group": "mpn-network-profile"
+    },
+    "V-222520": {
+      "classification": "Needs work",
+      "verification_group": "session-policy"
+    },
+    "V-222541": {
+      "classification": "Needs work",
+      "verification_group": "identity-policy"
+    },
+    "V-222544": {
+      "classification": "Needs work",
+      "verification_group": "identity-policy"
+    },
+    "V-222549": {
+      "classification": "Needs work",
+      "verification_group": "session-policy"
+    },
+    "V-222553": {
+      "classification": "Needs work",
+      "verification_group": "pki-trust"
+    },
+    "V-222568": {
+      "classification": "Needs work",
+      "verification_group": "session-policy"
+    },
+    "V-222570": {
+      "classification": "Needs work",
+      "verification_group": "release-crypto-provider"
+    },
+    "V-222571": {
+      "classification": "Needs work",
+      "verification_group": "release-crypto-provider"
+    },
+    "V-222578": {
+      "classification": "Needs work",
+      "verification_group": "session-policy"
+    },
+    "V-222587": {
+      "classification": "Likely covered",
+      "verification_group": "mpn-storage-protection"
+    },
+    "V-222588": {
+      "classification": "Likely covered",
+      "verification_group": "mpn-storage-integrity"
+    },
+    "V-222589": {
+      "classification": "Likely covered",
+      "verification_group": "mpn-storage-protection"
+    },
+    "V-222622": {
+      "classification": "Needs work",
+      "verification_group": "audit-review-procedure"
+    },
+    "V-222624": {
+      "classification": "Needs work",
+      "verification_group": "security-assessment-coverage"
+    },
+    "V-222628": {
+      "classification": "Needs work",
+      "verification_group": "ppsm-authorization"
+    },
+    "V-222629": {
+      "classification": "Needs work",
+      "verification_group": "ppsm-authorization"
+    },
+    "V-222631": {
+      "classification": "Needs work",
+      "verification_group": "account-access-certification"
+    },
+    "V-222636": {
+      "classification": "Needs work",
+      "verification_group": "compliance-package"
+    },
+    "V-222637": {
+      "classification": "Needs work",
+      "verification_group": "data-backup-restore"
+    },
+    "V-222638": {
+      "classification": "Needs work",
+      "verification_group": "data-backup-restore"
+    },
+    "V-222640": {
+      "classification": "Needs work",
+      "verification_group": "data-backup-restore"
+    },
+    "V-222643": {
+      "classification": "Needs work",
+      "verification_group": "data-label-policy"
+    },
+    "V-222647": {
+      "classification": "Needs work",
+      "verification_group": "security-assessment-coverage"
+    },
+    "V-222660": {
+      "classification": "Needs work",
+      "verification_group": "compliance-package"
+    },
+    "V-222664": {
+      "classification": "Needs work",
+      "verification_group": "classification-guide"
+    },
+    "V-222673": {
+      "classification": "Needs work",
+      "verification_group": "secure-development-training"
+    },
+    "V-265634": {
+      "classification": "Needs work",
+      "verification_group": "classified-crypto"
+    },
+    "V-242415": {
+      "classification": "Needs work",
+      "verification_group": "secret-delivery"
+    },
+    "V-274883": {
+      "classification": "Needs work",
+      "verification_group": "secret-delivery"
+    },
+    "V-233015": {
+      "classification": "Needs work",
+      "verification_group": "registry-transport"
+    },
+    "V-233021": {
+      "classification": "Needs work",
+      "verification_group": "account-lifecycle"
+    },
+    "V-233032": {
+      "classification": "Needs work",
+      "verification_group": "notice-banner"
+    },
+    "V-233033": {
+      "classification": "Needs work",
+      "verification_group": "notice-banner"
+    },
+    "V-233038": {
+      "classification": "Needs work",
+      "verification_group": "application-auditing"
+    },
+    "V-233087": {
+      "classification": "Needs work",
+      "verification_group": "account-lifecycle"
+    },
+    "V-233094": {
+      "classification": "Needs work",
+      "verification_group": "identity-policy"
+    },
+    "V-233097": {
+      "classification": "Needs work",
+      "verification_group": "identity-policy"
+    },
+    "V-233143": {
+      "classification": "Needs work",
+      "verification_group": "audit-alert-routing"
+    },
+    "V-233144": {
+      "classification": "Needs work",
+      "verification_group": "audit-alert-routing"
+    },
+    "V-233145": {
+      "classification": "Needs work",
+      "verification_group": "audit-alert-routing"
+    },
+    "V-233146": {
+      "classification": "Needs work",
+      "verification_group": "audit-alert-routing"
+    },
+    "V-233158": {
+      "classification": "Needs work",
+      "verification_group": "audit-alert-routing"
+    },
+    "V-233170": {
+      "classification": "Needs work",
+      "verification_group": "audit-alert-routing"
+    },
+    "V-233171": {
+      "classification": "Needs work",
+      "verification_group": "audit-alert-routing"
+    },
+    "V-233193": {
+      "classification": "Needs work",
+      "verification_group": "session-policy"
+    },
+    "V-233201": {
+      "classification": "Needs work",
+      "verification_group": "pki-trust"
+    },
+    "V-233211": {
+      "classification": "Needs work",
+      "verification_group": "classified-crypto"
+    },
+    "V-233220": {
+      "classification": "Likely covered",
+      "verification_group": "mpn-host-storage-encryption"
+    },
+    "V-233231": {
+      "classification": "Needs work",
+      "verification_group": "registry-lifecycle"
+    },
+    "V-233244": {
+      "classification": "Needs work",
+      "verification_group": "audit-alert-routing"
+    },
+    "V-233253": {
+      "classification": "Needs work",
+      "verification_group": "application-auditing"
+    },
+    "V-233254": {
+      "classification": "Needs work",
+      "verification_group": "application-auditing"
+    },
+    "V-233257": {
+      "classification": "Needs work",
+      "verification_group": "application-auditing"
+    },
+    "V-233258": {
+      "classification": "Needs work",
+      "verification_group": "application-auditing"
+    },
+    "V-233260": {
+      "classification": "Needs work",
+      "verification_group": "application-auditing"
+    },
+    "V-233262": {
+      "classification": "Needs work",
+      "verification_group": "application-auditing"
+    },
+    "V-233273": {
+      "classification": "Needs work",
+      "verification_group": "compliance-package"
+    },
+    "V-233275": {
+      "classification": "Needs work",
+      "verification_group": "continuous-vulnerability-management"
+    },
+    "V-263588": {
+      "classification": "Needs work",
+      "verification_group": "audit-alert-routing"
+    },
+    "V-263591": {
+      "classification": "Needs work",
+      "verification_group": "identity-policy"
+    },
+    "V-263592": {
+      "classification": "Needs work",
+      "verification_group": "identity-policy"
+    },
+    "V-263593": {
+      "classification": "Needs work",
+      "verification_group": "identity-policy"
+    },
+    "V-263594": {
+      "classification": "Needs work",
+      "verification_group": "identity-policy"
+    },
+    "V-206365": {
+      "classification": "Needs work",
+      "verification_group": "application-auditing"
+    },
+    "V-206366": {
+      "classification": "Needs work",
+      "verification_group": "audit-alert-routing"
+    },
+    "V-206396": {
+      "classification": "Needs work",
+      "verification_group": "session-policy"
+    },
+    "V-206412": {
+      "classification": "Needs work",
+      "verification_group": "web-hardening"
+    },
+    "V-206414": {
+      "classification": "Needs work",
+      "verification_group": "session-policy"
+    },
+    "V-206424": {
+      "classification": "Needs work",
+      "verification_group": "audit-alert-routing"
+    },
+    "V-206445": {
+      "classification": "Needs work",
+      "verification_group": "compliance-package"
+    },
+    "V-239371": {
+      "classification": "Needs work",
+      "verification_group": "classified-crypto"
+    },
+    "V-264340": {
+      "classification": "Needs work",
+      "verification_group": "audit-alert-routing"
+    },
+    "V-264345": {
+      "classification": "Needs work",
+      "verification_group": "identity-policy"
+    },
+    "V-264346": {
+      "classification": "Needs work",
+      "verification_group": "identity-policy"
+    },
+    "V-264347": {
+      "classification": "Needs work",
+      "verification_group": "identity-policy"
+    },
+    "V-264348": {
+      "classification": "Needs work",
+      "verification_group": "identity-policy"
+    },
+    "V-264354": {
+      "classification": "Needs work",
+      "verification_group": "pki-trust"
+    },
+    "V-264361": {
+      "classification": "Needs work",
+      "verification_group": "session-policy"
+    },
+    "V-264363": {
+      "classification": "Needs work",
+      "verification_group": "web-http-protocol"
+    },
+    "V-204708": {
+      "classification": "Needs work",
+      "verification_group": "session-policy"
+    },
+    "V-204713": {
+      "classification": "Needs work",
+      "verification_group": "notice-banner"
+    },
+    "V-204714": {
+      "classification": "Needs work",
+      "verification_group": "notice-banner"
+    },
+    "V-204719": {
+      "classification": "Needs work",
+      "verification_group": "application-auditing"
+    },
+    "V-204728": {
+      "classification": "Needs work",
+      "verification_group": "audit-alert-routing"
+    },
+    "V-204739": {
+      "classification": "Needs work",
+      "verification_group": "central-log-integrity"
+    },
+    "V-204750": {
+      "classification": "Needs work",
+      "verification_group": "account-lifecycle"
+    },
+    "V-204758": {
+      "classification": "Needs work",
+      "verification_group": "nats-auth-crypto-module"
+    },
+    "V-204770": {
+      "classification": "Likely covered",
+      "verification_group": "mpn-storage-protection"
+    },
+    "V-204771": {
+      "classification": "Needs work",
+      "verification_group": "data-backup-restore"
+    },
+    "V-204790": {
+      "classification": "Needs work",
+      "verification_group": "audit-alert-routing"
+    },
+    "V-204791": {
+      "classification": "Needs work",
+      "verification_group": "audit-alert-routing"
+    },
+    "V-204805": {
+      "classification": "Needs work",
+      "verification_group": "pki-trust"
+    },
+    "V-204811": {
+      "classification": "Needs work",
+      "verification_group": "pki-trust"
+    },
+    "V-204812": {
+      "classification": "Likely covered",
+      "verification_group": "mpn-storage-integrity"
+    },
+    "V-204813": {
+      "classification": "Likely covered",
+      "verification_group": "mpn-storage-protection"
+    },
+    "V-204824": {
+      "classification": "Needs work",
+      "verification_group": "application-auditing"
+    },
+    "V-204825": {
+      "classification": "Needs work",
+      "verification_group": "application-auditing"
+    },
+    "V-204832": {
+      "classification": "Needs work",
+      "verification_group": "pki-trust"
+    },
+    "V-240925": {
+      "classification": "Needs work",
+      "verification_group": "classified-crypto"
+    },
+    "V-263549": {
+      "classification": "Needs work",
+      "verification_group": "account-lifecycle"
+    },
+    "V-263550": {
+      "classification": "Needs work",
+      "verification_group": "audit-alert-routing"
+    },
+    "V-278962": {
+      "classification": "Needs work",
+      "verification_group": "pii-processing-metadata"
+    },
+    "V-278963": {
+      "classification": "Needs work",
+      "verification_group": "pii-processing-metadata"
+    },
+    "V-278964": {
+      "classification": "Needs work",
+      "verification_group": "runtime-response"
+    },
+    "V-206519": {
+      "classification": "Needs work",
+      "verification_group": "database-account-policy"
+    },
+    "V-206523": {
+      "classification": "Needs work",
+      "verification_group": "database-auditing"
+    },
+    "V-206531": {
+      "classification": "Needs work",
+      "verification_group": "database-auditing"
+    },
+    "V-206533": {
+      "classification": "Needs work",
+      "verification_group": "database-auditing"
+    },
+    "V-206570": {
+      "classification": "Likely covered",
+      "verification_group": "mpn-storage-protection"
+    },
+    "V-206592": {
+      "classification": "Needs work",
+      "verification_group": "audit-alert-routing"
+    },
+    "V-206593": {
+      "classification": "Needs work",
+      "verification_group": "audit-alert-routing"
+    },
+    "V-206604": {
+      "classification": "Likely covered",
+      "verification_group": "mpn-storage-integrity"
+    },
+    "V-206605": {
+      "classification": "Likely covered",
+      "verification_group": "mpn-storage-protection"
+    },
+    "V-206612": {
+      "classification": "Needs work",
+      "verification_group": "database-auditing"
+    },
+    "V-206614": {
+      "classification": "Needs work",
+      "verification_group": "database-auditing"
+    },
+    "V-206615": {
+      "classification": "Needs work",
+      "verification_group": "database-auditing"
+    },
+    "V-206616": {
+      "classification": "Needs work",
+      "verification_group": "database-auditing"
+    },
+    "V-206620": {
+      "classification": "Needs work",
+      "verification_group": "database-auditing"
+    },
+    "V-206622": {
+      "classification": "Needs work",
+      "verification_group": "database-auditing"
+    },
+    "V-206623": {
+      "classification": "Needs work",
+      "verification_group": "database-auditing"
+    },
+    "V-206624": {
+      "classification": "Needs work",
+      "verification_group": "database-auditing"
+    },
+    "V-206626": {
+      "classification": "Needs work",
+      "verification_group": "database-auditing"
+    },
+    "V-206628": {
+      "classification": "Needs work",
+      "verification_group": "database-auditing"
+    },
+    "V-206629": {
+      "classification": "Needs work",
+      "verification_group": "database-auditing"
+    },
+    "V-206630": {
+      "classification": "Needs work",
+      "verification_group": "database-auditing"
+    },
+    "V-206632": {
+      "classification": "Needs work",
+      "verification_group": "database-auditing"
+    },
+    "V-206634": {
+      "classification": "Needs work",
+      "verification_group": "database-auditing"
+    },
+    "V-206635": {
+      "classification": "Needs work",
+      "verification_group": "database-auditing"
+    },
+    "V-206638": {
+      "classification": "Needs work",
+      "verification_group": "database-auditing"
+    },
+    "V-206643": {
+      "classification": "Needs work",
+      "verification_group": "compliance-package"
+    },
+    "V-263605": {
+      "classification": "Needs work",
+      "verification_group": "audit-alert-routing"
+    },
+    "V-204639": {
+      "classification": "Needs work",
+      "verification_group": "account-lifecycle"
+    },
+    "V-204652": {
+      "classification": "Needs work",
+      "verification_group": "audit-alert-routing"
+    },
+    "V-204661": {
+      "classification": "Needs work",
+      "verification_group": "pki-authentication"
+    },
+    "V-204662": {
+      "classification": "Needs work",
+      "verification_group": "pki-authentication"
+    },
+    "V-204670": {
+      "classification": "Needs work",
+      "verification_group": "identity-policy"
+    },
+    "V-204673": {
+      "classification": "Needs work",
+      "verification_group": "identity-policy"
+    },
+    "V-204682": {
+      "classification": "Needs work",
+      "verification_group": "audit-alert-routing"
+    },
+    "V-204683": {
+      "classification": "Needs work",
+      "verification_group": "audit-alert-routing"
+    },
+    "V-204684": {
+      "classification": "Needs work",
+      "verification_group": "audit-alert-routing"
+    },
+    "V-204685": {
+      "classification": "Needs work",
+      "verification_group": "audit-alert-routing"
+    },
+    "V-204687": {
+      "classification": "Needs work",
+      "verification_group": "audit-alert-routing"
+    },
+    "V-204704": {
+      "classification": "Needs work",
+      "verification_group": "compliance-package"
+    },
+    "V-263532": {
+      "classification": "Needs work",
+      "verification_group": "identity-policy"
+    },
+    "V-263533": {
+      "classification": "Needs work",
+      "verification_group": "identity-policy"
+    },
+    "V-263534": {
+      "classification": "Needs work",
+      "verification_group": "identity-policy"
+    },
+    "V-263538": {
+      "classification": "Needs work",
+      "verification_group": "pki-trust"
+    }
+  },
+  "counts": {
+    "rules": 188,
+    "workstreams": 36,
+    "classifications": {
+      "Needs work": 176,
+      "Likely covered": 11,
+      "Needs N/A justification": 1
+    },
+    "source_results": {
+      "source-gaps-confirmed": 10,
+      "configuration-and-process-work": 6,
+      "operational-records-required": 3,
+      "default-routing-gap-confirmed": 33,
+      "scope-and-documentation-work": 7,
+      "candidate-flow-gap-confirmed": 2,
+      "partial-coverage-and-source-gaps": 34,
+      "approval-records-required": 1,
+      "existing-capability-disabled-by-default": 6,
+      "existing-provider-capability-and-policy-gaps": 18,
+      "capability-present-profile-and-issuance-unresolved": 7,
+      "signing-present-fips-gap-supported": 2,
+      "inheritance-assumption-needs-review": 10,
+      "partial-tests-full-matrix-unestablished": 2,
+      "existing-interface-documentation-confirmed": 2,
+      "resource-backup-present-data-plan-unresolved": 4,
+      "output-marking-coverage-unestablished": 1,
+      "mission-authority-record-required": 1,
+      "course-and-completion-evidence-required": 1,
+      "mission-profile-and-solution-record-required": 4,
+      "rendered-candidate-gaps-confirmed": 2,
+      "default-is-not-final-production-profile": 1,
+      "cleanup-capability-policy-record-required": 1,
+      "build-scans-present-recurring-service-unbound": 1,
+      "header-control-present-error-body-check-needed": 1,
+      "translation-supported-by-candidate-config": 1,
+      "centralization-not-retained-signing-proof": 1,
+      "separate-path-confirmed-scope-review-required": 1,
+      "metadata-mechanism-present-semantics-unbound": 2,
+      "detection-present-automatic-response-unbound": 1,
+      "native-source-limit-gap-confirmed": 1,
+      "native-default-coverage-gap-confirmed": 19,
+      "existing-flows-require-profile-selection": 2
+    }
+  }
+}

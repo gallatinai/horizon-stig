@@ -1,20 +1,20 @@
 # Horizon STIG tracking
 
-Suggested statuses and reasons for all **1,048 rules across seven benchmarks**, updated 10 November 2026. The OS benchmark is an eighth family pending MPN distribution/version selection. Gallatin manages this UDS Core deployment on MPN, which will process classified data.
+Suggested statuses and reasons for all **1,048 rules across seven benchmarks**, updated 10 November 2026. The OS benchmark is an eighth family pending MPN distribution/version selection. Gallatin proposes a self-managed UDS Core deployment on MPN for classified data. No MPN cluster exists yet; these recommendations support the pre-deployment submission.
 
 | Benchmark | Rules | Needs work | Likely covered | Unclear | N/A justification | Source-only Compliant |
 |---|---:|---:|---:|---:|---:|---:|
-| [ASD_V6R5_STIG](mpn/review/U_ASD_V6R5_STIG.md) | 286 | 68 | 186 | 1 | 31 | 0 |
+| [ASD_V6R5_STIG](mpn/review/U_ASD_V6R5_STIG.md) | 286 | 63 | 190 | 1 | 32 | 0 |
 | [Kubernetes_V2R6_STIG](mpn/review/U_Kubernetes_V2R6_STIG.md) | 92 | 2 | 89 | 0 | 0 | 1 |
-| [Container_Platform_V2R5_SRG](mpn/review/U_Container_Platform_V2R5_SRG.md) | 188 | 34 | 152 | 0 | 2 | 0 |
+| [Container_Platform_V2R5_SRG](mpn/review/U_Container_Platform_V2R5_SRG.md) | 188 | 33 | 153 | 0 | 2 | 0 |
 | [Web_Server_V4R5_SRG](mpn/review/U_Web_Server_V4R5_SRG.md) | 126 | 16 | 102 | 0 | 6 | 2 |
-| [Application_Server_V4R6_SRG](mpn/review/U_Application_Server_V4R6_SRG.md) | 137 | 25 | 107 | 1 | 4 | 0 |
-| [Database_V4R6_SRG](mpn/review/U_Database_V4R6_SRG.md) | 142 | 27 | 95 | 1 | 18 | 1 |
+| [Application_Server_V4R6_SRG](mpn/review/U_Application_Server_V4R6_SRG.md) | 137 | 22 | 110 | 1 | 4 | 0 |
+| [Database_V4R6_SRG](mpn/review/U_Database_V4R6_SRG.md) | 142 | 24 | 98 | 1 | 18 | 1 |
 | [AAA_Services_V2R3_SRG](mpn/review/U_AAA_Services_V2R3_SRG.md) | 77 | 16 | 50 | 0 | 11 | 0 |
 
-**Totals:** 188 Needs work; 781 Likely covered; 3 Unclear; 72 Needs N/A justification; 4 source-only Compliant.
+**Totals:** 176 Needs work; 792 Likely covered; 3 Unclear; 73 Needs N/A justification; 4 source-only Compliant.
 
-The 188 needs-work recommendations group into **36 shared workstreams**. Every rule has a suggested status, justification, evidence links and next action. Final component checklists require acceptance of the stated evidence and applicability.
+The 176 needs-work recommendations group into **33 shared workstreams**. Every rule has a suggested status, justification, evidence links and next action. Final component checklists require acceptance of the stated evidence and applicability.
 
 - [All rules and reasons (CSV)](mpn/review/suggested-statuses.csv) · [JSON with complete official check/fix](mpn/review/suggested-statuses.json)
 - [Suggested workstreams](mpn/review/workstreams.md) · [Remaining evidence decisions](mpn/review/remaining-evidence.md)
@@ -22,6 +22,7 @@ The 188 needs-work recommendations group into **36 shared workstreams**. Every r
 - [Gallatin UDS configuration actions](mpn/UDS-CONFIGURATION.md)
 - [NSA-approved cryptography: applying the STIG wording](mpn/NSA-CRYPTOGRAPHY.md) · [Checked components and protection options](mpn/NSA-COMPONENT-CHECK.md)
 - [Assessment decisions](mpn/evidence/current-assessment.json)
+- [Follow-up verification of the original 188 Needs work rules](mpn/evidence/human-review-verification.json)
 - [Requirements found in Slack and Gemini meeting notes](mpn/REQUIREMENTS.md)
 - [Improvement priorities and effort estimate](mpn/FINDINGS.md)
 - [Evidence boundaries and exact source versions](mpn/evidence/README.md)

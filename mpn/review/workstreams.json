@@ -1,1014 +1,948 @@
 {
   "account-access-certification": [
     {
-      "vuln_id": "V-222412",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Gallatin SRE exports the scoped UDS/Horizon human-account list to a controlled record; the mission account owner marks each retained/removed with a business justification and date, and the authorized operator carries out approved removals."
-    },
-    {
       "vuln_id": "V-222631",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "The GitHub organization owner and Horizon engineering owner certify the protected Nov10 entitlement snapshot, justify each privileged role, record approved changes and review again within three months."
+      "next_step": "In the post-classification verification pass, locate the latest accountable-owner certification of Horizon repository access, its date, scope and recorded decisions. Confirm reviews occur at least every three months and cover effective grants, including inherited/team privileges. Credit an existing current review; if absent or overdue, have the accountable owner review access, record retention/removal decisions and approved changes, and set the next review date. Retain controlled references rather than publishing personnel details."
     }
   ],
   "account-lifecycle": [
     {
       "vuln_id": "V-222411",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Gallatin sets Core Keycloak realmInitEnv.ACCOUNT_INACTIVITY_DAYS=\"35\" in its MPN Core override. For an existing uds realm, enable Workflows > disable-inactive-users and set disable-user.after=35d through a controlled AdminConsole/API migration; redeploying the import Secret alone does not apply it. Preserve approved emergency/service exceptions; no duplicate Horizon lifecycle service."
+      "next_step": "Gallatin sets Core Keycloak realmInitEnv.ACCOUNT_INACTIVITY_DAYS=\"35\" in its MPN Core override. For an existing uds realm, enable Workflows > disable-inactive-users and set disable-user.after=35d through a controlled AdminConsole/API migration; redeploying the import Secret alone does not apply it. Preserve only exceptions supported by this exact rule; no duplicate Horizon lifecycle service. Inventory excluded realm-admin accounts and document which qualify for this rule's exceptions. For every non-exempt administrator, verify an existing compliant automatic 35-day inactivity control or implement a supported, controlled shared-provider workflow change. For never-authenticated non-exempt accounts, verify an existing compliant automatic 35-day inactivity control or implement a supported, controlled shared-provider change that measures inactivity from an approved creation/enablement baseline. If enabling the workflow on an existing realm, reconcile pre-enable accounts and place every non-exempt account under automatic inactivity control. Test effective 35-day disablement for authenticated ordinary, never-authenticated non-exempt and non-exempt administrator identities and preservation of justified exceptions; enabling the default workflow alone is insufficient."
     },
     {
       "vuln_id": "V-233021",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Gallatin sets Core Keycloak realmInitEnv.ACCOUNT_INACTIVITY_DAYS=\"35\" in its MPN Core override. For an existing uds realm, enable Workflows > disable-inactive-users and set disable-user.after=35d through a controlled AdminConsole/API migration; redeploying the import Secret alone does not apply it. Preserve approved emergency/service exceptions; no duplicate Horizon lifecycle service."
+      "next_step": "Verify current identity/directory inactivity controls and ownership, then configure the existing 35-day workflow for in-scope human accounts if not already enabled, coordinated with V-222411. Persist the Core override and update the existing realm through a controlled change where needed; verify effective disablement. Confirm permitted emergency/infrequently-used account exceptions against the exact rule and retain configuration and test evidence. Credit an existing compliant directory service only where supported by the rule and deployment evidence. Inventory excluded realm-admin accounts and document which qualify for this rule's exceptions. For every non-exempt administrator, verify an existing compliant automatic 35-day inactivity control or implement a supported, controlled shared-provider workflow change. For never-authenticated non-exempt accounts, verify an existing compliant automatic 35-day inactivity control or implement a supported, controlled shared-provider change that measures inactivity from an approved creation/enablement baseline. If enabling the workflow on an existing realm, reconcile pre-enable accounts and place every non-exempt account under automatic inactivity control. Test effective 35-day disablement for authenticated ordinary, never-authenticated non-exempt and non-exempt administrator identities and preservation of justified exceptions; enabling the default workflow alone is insufficient."
     },
     {
       "vuln_id": "V-233087",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Gallatin sets Core Keycloak realmInitEnv.ACCOUNT_INACTIVITY_DAYS=\"35\" in its MPN Core override. For an existing uds realm, enable Workflows > disable-inactive-users and set disable-user.after=35d through a controlled AdminConsole/API migration; redeploying the import Secret alone does not apply it. Preserve approved emergency/service exceptions; no duplicate Horizon lifecycle service."
+      "next_step": "Verify current identity/directory inactivity controls and ownership, then configure the existing 35-day workflow for in-scope human accounts if not already enabled, coordinated with V-222411. Persist the Core override and update the existing realm through a controlled change where needed; verify effective disablement. For this broader identifier rule, separately map individuals, groups, roles and devices to appropriate lifecycle controls or justified scope decisions; do not assume disabling human accounts covers all identifier types. Confirm permitted emergency/infrequently-used account exceptions against the exact rule and retain configuration and test evidence. Credit an existing compliant directory service only where supported by the rule and deployment evidence. Inventory excluded realm-admin accounts and document which qualify for this rule's exceptions. For every non-exempt administrator, verify an existing compliant automatic 35-day inactivity control or implement a supported, controlled shared-provider workflow change. For never-authenticated non-exempt accounts, verify an existing compliant automatic 35-day inactivity control or implement a supported, controlled shared-provider change that measures inactivity from an approved creation/enablement baseline. If enabling the workflow on an existing realm, reconcile pre-enable accounts and place every non-exempt account under automatic inactivity control. Test effective 35-day disablement for authenticated ordinary, never-authenticated non-exempt and non-exempt administrator identities and preservation of justified exceptions; enabling the default workflow alone is insufficient."
     },
     {
       "vuln_id": "V-204750",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Gallatin sets Core Keycloak realmInitEnv.ACCOUNT_INACTIVITY_DAYS=\"35\" in its MPN Core override. For an existing uds realm, enable Workflows > disable-inactive-users and set disable-user.after=35d through a controlled AdminConsole/API migration; redeploying the import Secret alone does not apply it. Preserve approved emergency/service exceptions; no duplicate Horizon lifecycle service."
+      "next_step": "Verify current identity/directory inactivity controls and ownership, then configure the existing 35-day workflow for in-scope human accounts if not already enabled, coordinated with V-222411. Persist the Core override and update the existing realm through a controlled change where needed; verify effective disablement. For this broader identifier rule, separately map individuals, groups, roles and devices to appropriate lifecycle controls or justified scope decisions; do not assume disabling human accounts covers all identifier types. Confirm permitted emergency/infrequently-used account exceptions against the exact rule and retain configuration and test evidence. Credit an existing compliant directory service only where supported by the rule and deployment evidence. Inventory excluded realm-admin accounts and document which qualify for this rule's exceptions. For every non-exempt administrator, verify an existing compliant automatic 35-day inactivity control or implement a supported, controlled shared-provider workflow change. For never-authenticated non-exempt accounts, verify an existing compliant automatic 35-day inactivity control or implement a supported, controlled shared-provider change that measures inactivity from an approved creation/enablement baseline. If enabling the workflow on an existing realm, reconcile pre-enable accounts and place every non-exempt account under automatic inactivity control. Test effective 35-day disablement for authenticated ordinary, never-authenticated non-exempt and non-exempt administrator identities and preservation of justified exceptions; enabling the default workflow alone is insufficient."
     },
     {
       "vuln_id": "V-263549",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Gallatin records its authoritative user-deassociation/offboarding source and uses the existing UDS user enabled-state/group-entitlement controls for the required disablement. Add an integration only if the chosen policy requires automation; do not duplicate account management in Horizon or await DU operations."
+      "next_step": "In the post-classification verification pass, identify the authoritative offboarding/deassociation source, responsible account owner/operator and current directory or administrator workflow. Verify the actual assessed identity accounts are disabled when association ends, using controlled test evidence or appropriate retained records. Credit existing accepted coverage and close only missing process/integration steps through central identity administration. Coordinate effective access revocation with the separate session-revocation controls; retain controlled evidence references rather than personnel details."
     },
     {
       "vuln_id": "V-204639",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Gallatin sets Core Keycloak realmInitEnv.ACCOUNT_INACTIVITY_DAYS=\"35\" in its MPN Core override. For an existing uds realm, enable Workflows > disable-inactive-users and set disable-user.after=35d through a controlled AdminConsole/API migration; redeploying the import Secret alone does not apply it. Preserve approved emergency/service exceptions; no duplicate Horizon lifecycle service."
+      "next_step": "Verify current identity/directory inactivity controls and ownership, then configure the existing 35-day workflow for in-scope human accounts if not already enabled, coordinated with V-222411. Persist the Core override and update the existing realm through a controlled change where needed; verify effective disablement. Confirm permitted emergency/infrequently-used account exceptions against the exact rule and retain configuration and test evidence. Credit an existing compliant directory service only where supported by the rule and deployment evidence. Inventory excluded realm-admin accounts and document which qualify for this rule's exceptions. For every non-exempt administrator, verify an existing compliant automatic 35-day inactivity control or implement a supported, controlled shared-provider workflow change. For never-authenticated non-exempt accounts, verify an existing compliant automatic 35-day inactivity control or implement a supported, controlled shared-provider change that measures inactivity from an approved creation/enablement baseline. If enabling the workflow on an existing realm, reconcile pre-enable accounts and place every non-exempt account under automatic inactivity control. Test effective 35-day disablement for authenticated ordinary, never-authenticated non-exempt and non-exempt administrator identities and preservation of justified exceptions; enabling the default workflow alone is insufficient."
     }
   ],
   "account-recovery-procedure": [
     {
       "vuln_id": "V-222433",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Adopt the prepared identity-verification, authorized-unlock and audit-record procedure for Gallatin-operated UDS; obtain named MPN ISSO/ISSM acceptance and retain its version."
+      "next_step": "Finalize and adopt the prepared identity-verification, authorized-unlock and audit-record procedure for Gallatin-operated UDS. Obtain documented MPN ISSO and ISSM approval and retain the approved version. Use the approved procedure for account unlocks and retain records showing identity verification and authorized recovery."
     }
   ],
   "application-auditing": [
     {
       "vuln_id": "V-222431",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
-    },
-    {
-      "vuln_id": "V-222438",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
+      "next_step": "Confirm the desired privileged-function audit controls and event catalog, including the STIG minimum of the specific action and event date/time. Map each selected operation to existing UDS, role-audit and database-provenance records. Implement missing desired controls and actor/target/outcome records where required, correlate them with central collection, and verify the selected privileged operations produce the required records."
     },
     {
       "vuln_id": "V-222449",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
+      "next_step": "With the V-222431 audit-control review, confirm the required application audit events and map existing user-attributed records. Add the responsible username or user ID to missing required event records, correlate with central collection where needed, and verify representative application activity records the responsible user alongside the event. Reuse existing UDS, role-audit and database-provenance coverage."
     },
     {
       "vuln_id": "V-222450",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
+      "next_step": "Confirm existing audit coverage for successful and unsuccessful privilege-grant attempts. Add missing records that identify the actor, intended recipient, privilege and outcome. Verify an authorized grant and a failed grant, including an unauthorized attempt or invalid recipient, produce the required audit records. Reuse existing role-audit and UDS events and retain verification evidence."
     },
     {
       "vuln_id": "V-222451",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
+      "next_step": "Identify permission-protected application objects and the access-attempt events required by this control. Map existing records to successful and unsuccessful access coverage, implement missing records with the relevant user, object, action and outcome, and verify both successful and denied access to the in-scope objects. Reuse existing audit mechanisms and retain verification evidence."
     },
     {
       "vuln_id": "V-222452",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Add targeted classification/security-domain access/change/delete audit events with actor/outcome and accepted N/A for nonexistent operations. This shares the domain audit workstream."
+      "next_step": "Identify applicable role and elevated-access paths, map existing audit coverage, and implement missing successful and failed access-attempt records. Test both outcomes and retain evidence; do not add nonexistent privilege-escalation functionality merely to satisfy a test. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-222453",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Add targeted classification/security-domain access/change/delete audit events with actor/outcome and accepted N/A for nonexistent operations. This shares the domain audit workstream."
+      "next_step": "Add targeted classification/security-domain access/change/delete audit events with actor/outcome and accepted N/A for nonexistent operations. This shares the domain audit workstream. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-222454",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-222455",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-222456",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Add targeted classification/security-domain access/change/delete audit events with actor/outcome and accepted N/A for nonexistent operations. This shares the domain audit workstream."
+      "next_step": "Map the security-level operation in this requirement to actual role or authorization-capability operations and existing records. Implement missing required successful and unsuccessful attempt records, verify both outcomes and retain evidence. Record a scoped applicability decision for operations absent from the component rather than inventing them. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-222457",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Add targeted classification/security-domain access/change/delete audit events with actor/outcome and accepted N/A for nonexistent operations. This shares the domain audit workstream."
+      "next_step": "Add targeted classification/security-domain access/change/delete audit events with actor/outcome and accepted N/A for nonexistent operations. This shares the domain audit workstream. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-222458",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-222459",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Add targeted classification/security-domain access/change/delete audit events with actor/outcome and accepted N/A for nonexistent operations. This shares the domain audit workstream."
+      "next_step": "Map the security-level operation in this requirement to actual role or authorization-capability operations and existing records. Implement missing required successful and unsuccessful attempt records, verify both outcomes and retain evidence. Record a scoped applicability decision for operations absent from the component rather than inventing them. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-222460",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-222461",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Add targeted classification/security-domain access/change/delete audit events with actor/outcome and accepted N/A for nonexistent operations. This shares the domain audit workstream."
+      "next_step": "Add targeted classification/security-domain access/change/delete audit events with actor/outcome and accepted N/A for nonexistent operations. This shares the domain audit workstream. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-222463",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-222465",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-222466",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-222471",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-222472",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-222477",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-222478",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-222512",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover."
+      "next_step": "Define required domain events and add only missing actor/target/outcome records and correlation to central collection. Reuse role/transaction/UDS events for operations they already cover. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-233038",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Complete the shared event-source map and missing domain/DB events; credit existing UDS user/admin/runtime sources and avoid a duplicate remediation ticket."
+      "next_step": "Complete the shared event-source map and missing domain/DB events; credit existing UDS user/admin/runtime sources and avoid a duplicate remediation ticket. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-233253",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Map each security-level/category operation to application or database audit events; reuse the central stream and existing classification fields. Apply scoped N/A only to platform components that perform no such operation."
+      "next_step": "Map the security-level operation in this requirement to actual role or authorization-capability operations and existing records. Implement missing required successful and unsuccessful attempt records, verify both outcomes and retain evidence. Record a scoped applicability decision for operations absent from the component rather than inventing them. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-233254",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Map each security-level/category operation to application or database audit events; reuse the central stream and existing classification fields. Apply scoped N/A only to platform components that perform no such operation."
+      "next_step": "Map each security-level/category operation to application or database audit events; reuse the central stream and existing classification fields. Apply scoped N/A only to platform components that perform no such operation. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-233257",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Map each security-level/category operation to application or database audit events; reuse the central stream and existing classification fields. Apply scoped N/A only to platform components that perform no such operation."
+      "next_step": "Map the security-level operation in this requirement to actual role or authorization-capability operations and existing records. Implement missing required successful and unsuccessful attempt records, verify both outcomes and retain evidence. Record a scoped applicability decision for operations absent from the component rather than inventing them. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-233258",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Map each security-level/category operation to application or database audit events; reuse the central stream and existing classification fields. Apply scoped N/A only to platform components that perform no such operation."
+      "next_step": "Map each security-level/category operation to application or database audit events; reuse the central stream and existing classification fields. Apply scoped N/A only to platform components that perform no such operation. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-233260",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Map each security-level/category operation to application or database audit events; reuse the central stream and existing classification fields. Apply scoped N/A only to platform components that perform no such operation."
+      "next_step": "Map the security-level operation in this requirement to actual role or authorization-capability operations and existing records. Implement missing required successful and unsuccessful attempt records, verify both outcomes and retain evidence. Record a scoped applicability decision for operations absent from the component rather than inventing them. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-233262",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Map each security-level/category operation to application or database audit events; reuse the central stream and existing classification fields. Apply scoped N/A only to platform components that perform no such operation."
+      "next_step": "Map each security-level/category operation to application or database audit events; reuse the central stream and existing classification fields. Apply scoped N/A only to platform components that perform no such operation. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-206365",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Complete actor-attributed protected API/security-event records and their correlation in the existing UDS log pipeline."
+      "next_step": "Complete actor-attributed protected API/security-event records and their correlation in the existing UDS log pipeline. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-204719",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Add narrowly-scoped actor-attributed denied/failed privilege events and forward them through the existing logging path; reuse existing successful audit."
+      "next_step": "Add narrowly-scoped actor-attributed denied/failed privilege events and forward them through the existing logging path; reuse existing successful audit. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-204824",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Add narrowly-scoped actor-attributed denied/failed privilege events and forward them through the existing logging path; reuse existing successful audit."
+      "next_step": "Add narrowly-scoped actor-attributed denied/failed privilege events and forward them through the existing logging path; reuse existing successful audit. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     },
     {
       "vuln_id": "V-204825",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Add narrowly-scoped actor-attributed denied/failed privilege events and forward them through the existing logging path; reuse existing successful audit."
+      "next_step": "Add narrowly-scoped actor-attributed denied/failed privilege events and forward them through the existing logging path; reuse existing successful audit. As part of the shared V-222431 audit-control review, confirm the required event catalog for this exact requirement, map existing coverage, implement missing desired controls consistent with the STIG minimum, and retain verification evidence. Preserve scoped applicability decisions for nonexistent operations."
     }
   ],
   "audit-alert-routing": [
     {
       "vuln_id": "V-222417",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Enable the relevant centralized account-change alerts and map named SA/ISSO routes, or retain existing accepted operator routing evidence."
+      "next_step": "Enable centralized account-creation alerts, configure named SA and ISSO recipients, and create a test account to verify both recipients receive notification. Retain the routing configuration and delivery-test evidence. Do not claim the enterprise user-management N/A exception without evidence that the assessed deployment satisfies that condition."
     },
     {
       "vuln_id": "V-222418",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Enable the relevant centralized account-change alerts and map named SA/ISSO routes, or retain existing accepted operator routing evidence."
+      "next_step": "Enable centralized account-modification alerts and configure named SA and ISSO recipients. Modify a test account and verify both recipients receive notification. Retain routing configuration and delivery-test evidence. Do not claim the enterprise user-management N/A exception without evidence that the assessed deployment satisfies that condition."
     },
     {
       "vuln_id": "V-222419",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Enable the relevant centralized account-change alerts and map named SA/ISSO routes, or retain existing accepted operator routing evidence."
+      "next_step": "Enable centralized account-disabling notifications for the assessed component and configure named SA and ISSO recipients. Confirm that alert rules cover the relevant identity event; add or adjust a rule where the existing templates do not. Disable a test account and verify notification reaches both recipients. Retain routing configuration and delivery-test evidence. Include automatic inactivity disabling in notification coverage."
     },
     {
       "vuln_id": "V-222420",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Enable the relevant centralized account-change alerts and map named SA/ISSO routes, or retain existing accepted operator routing evidence."
+      "next_step": "Enable centralized account-removal notifications for the assessed component and configure named SA and ISSO recipients. Confirm that alert rules cover the relevant identity event; add or adjust a rule where the existing templates do not. Remove a test account and verify notification reaches both recipients. Retain routing configuration and delivery-test evidence."
     },
     {
       "vuln_id": "V-222422",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Enable the relevant centralized account-change alerts and map named SA/ISSO routes, or retain existing accepted operator routing evidence."
+      "next_step": "Enable centralized account-enabling notifications for the assessed component and configure named SA and ISSO recipients. Confirm that alert rules cover the relevant identity event; add or adjust a rule where the existing templates do not. Disable and then enable a test account and verify notification reaches both recipients. Retain routing configuration and delivery-test evidence."
     },
     {
       "vuln_id": "V-222483",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Add/tune the central audit capacity/failure alerts and named required recipients or retain an accepted existing operator rule/route."
+      "next_step": "Identify the actual audit repository and its capacity metric. Configure prompt centralized capacity alerts at 75 percent utilization, or retain the SA/ISSO determination approving an alternative threshold that allows time for expansion. Configure named SA and ISSO recipients and test delivery to both using a controlled threshold test. Retain the rule, route, approval if applicable and delivery evidence, then reassess the centralized-logging N/A condition for this application rule."
     },
     {
       "vuln_id": "V-222484",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Add/tune the central audit capacity/failure alerts and named required recipients or retain an accepted existing operator rule/route."
+      "next_step": "Confirm and retain the application security impact categorization. For the applicable moderate/high-impact scope, identify audit capture, collector/backend, hardware/software and storage-exhaustion failure conditions; configure central alerts to named SA and ISSO recipients. Use controlled failure tests to verify coverage and delivery within the required real-time interval, and retain rules, routes and results. Reassess application-level N/A once the central alarm condition is established."
     },
     {
       "vuln_id": "V-222485",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Add/tune the central audit capacity/failure alerts and named required recipients or retain an accepted existing operator rule/route."
+      "next_step": "Identify the audit/log processing failures covered by this exact rule, including capture, hardware/software, collector/backend and storage failures as applicable. Configure the required alerts and named recipients using the existing central monitoring. Test coverage and delivery; verify real-time latency where the rule requires it. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine. Reassess the application-level centralized-logging N/A condition only after the required central alarms are established."
     },
     {
       "vuln_id": "V-233143",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Gallatin enables Keycloak detailedObservability.alerts.enabled=true, keeps existing structured logging, and sets its own Alertmanager receiver/routes for responsible security/operations staff."
+      "next_step": "Enable centralized account-creation notifications for the assessed component and configure named SA and ISSO recipients. Confirm that alert rules cover the relevant identity event; add or adjust a rule where the existing templates do not. Create a test account and verify notification reaches both recipients. Retain routing configuration and delivery-test evidence."
     },
     {
       "vuln_id": "V-233144",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Gallatin enables Keycloak detailedObservability.alerts.enabled=true, keeps existing structured logging, and sets its own Alertmanager receiver/routes for responsible security/operations staff."
+      "next_step": "Enable centralized account-modification notifications for the assessed component and configure named SA and ISSO recipients. Confirm that alert rules cover the relevant identity event; add or adjust a rule where the existing templates do not. Modify a test account and verify notification reaches both recipients. Retain routing configuration and delivery-test evidence."
     },
     {
       "vuln_id": "V-233145",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Gallatin enables Keycloak detailedObservability.alerts.enabled=true, keeps existing structured logging, and sets its own Alertmanager receiver/routes for responsible security/operations staff."
+      "next_step": "Enable centralized account-disabling notifications for the assessed component and configure named SA and ISSO recipients. Confirm that alert rules cover the relevant identity event; add or adjust a rule where the existing templates do not. Disable a test account and verify notification reaches both recipients. Retain routing configuration and delivery-test evidence. Include automatic inactivity disabling in notification coverage."
     },
     {
       "vuln_id": "V-233146",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Gallatin enables Keycloak detailedObservability.alerts.enabled=true, keeps existing structured logging, and sets its own Alertmanager receiver/routes for responsible security/operations staff."
+      "next_step": "Enable centralized account-removal notifications for the assessed component and configure named SA and ISSO recipients. Confirm that alert rules cover the relevant identity event; add or adjust a rule where the existing templates do not. Remove a test account and verify notification reaches both recipients. Retain routing configuration and delivery-test evidence."
     },
     {
       "vuln_id": "V-233158",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Gallatin enables Keycloak detailedObservability.alerts.enabled=true, keeps existing structured logging, and sets its own Alertmanager receiver/routes for responsible security/operations staff."
+      "next_step": "Enable centralized account-enabling notifications for the assessed component and configure named SA and ISSO recipients. Confirm that alert rules cover the relevant identity event; add or adjust a rule where the existing templates do not. Disable and then enable a test account and verify notification reaches both recipients. Retain routing configuration and delivery-test evidence."
     },
     {
       "vuln_id": "V-233170",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Configure or attach the platform audit-capacity/failure alert definitions and authorized notification route."
+      "next_step": "Identify the assessed audit/log repository and capacity metric; configure an immediate warning at 75 percent utilization to the recipients specified by this exact rule. Use a different threshold only where this rule expressly permits it and the required approval is retained. Test threshold triggering and delivery. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine."
     },
     {
       "vuln_id": "V-233171",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Configure or attach the platform audit-capacity/failure alert definitions and authorized notification route."
+      "next_step": "Identify the audit/log processing failures covered by this exact rule, including capture, hardware/software, collector/backend and storage failures as applicable. Configure the required alerts and named recipients using the existing central monitoring. Test coverage and delivery; verify real-time latency where the rule requires it. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine."
     },
     {
       "vuln_id": "V-233244",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Use Gallatin\u2019s existing Core Prometheus/Alertmanager. Enable falcosidekick.config.alertmanager.hostport/endpoint for Falco delivery where appropriate, define required audit failure/capacity rules (not just generic uptime) and set receiver routes."
+      "next_step": "Define the security-function anomalies and responsible system-administration/operations roles in the site security plan. Map existing detection sources, configure missing alert rules and routes, and test anomaly notifications to the designated roles. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine."
     },
     {
       "vuln_id": "V-263588",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Use Gallatin\u2019s existing Core Prometheus/Alertmanager. Enable falcosidekick.config.alertmanager.hostport/endpoint for Falco delivery where appropriate, define required audit failure/capacity rules (not just generic uptime) and set receiver routes."
+      "next_step": "Identify detection sources for unauthorized access, modification and deletion of audit information. Configure missing detection/alert rules and route notifications to organization-defined personnel or roles. Test each required event type and recipient delivery; general uptime or account-change rules do not establish tamper coverage. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine."
     },
     {
       "vuln_id": "V-206366",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Configure required logging health/capacity thresholds and platform alert recipients, or attach the selected existing platform override."
+      "next_step": "Identify the audit/log processing failures covered by this exact rule, including capture, hardware/software, collector/backend and storage failures as applicable. Configure the required alerts and named recipients using the existing central monitoring. Test coverage and delivery; verify real-time latency where the rule requires it. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine."
     },
     {
       "vuln_id": "V-206424",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Configure required logging health/capacity thresholds and platform alert recipients, or attach the selected existing platform override."
+      "next_step": "Identify the assessed audit/log repository and capacity metric; configure an immediate warning at 75 percent utilization to the recipients specified by this exact rule. Use a different threshold only where this rule expressly permits it and the required approval is retained. Test threshold triggering and delivery. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine."
     },
     {
       "vuln_id": "V-264340",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Complete audit tamper detection/notification routing in the platform policy."
+      "next_step": "Identify detection sources for unauthorized access, modification and deletion of audit information. Configure missing detection/alert rules and route notifications to organization-defined personnel or roles. Test each required event type and recipient delivery; general uptime or account-change rules do not establish tamper coverage. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine."
     },
     {
       "vuln_id": "V-204728",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Use Gallatin\u2019s existing Core Prometheus/Alertmanager. Enable falcosidekick.config.alertmanager.hostport/endpoint for Falco delivery where appropriate, define required audit failure/capacity rules (not just generic uptime) and set receiver routes."
+      "next_step": "Identify the audit/log processing failures covered by this exact rule, including capture, hardware/software, collector/backend and storage failures as applicable. Configure the required alerts and named recipients using the existing central monitoring. Test coverage and delivery; verify real-time latency where the rule requires it. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine."
     },
     {
       "vuln_id": "V-204790",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Use Gallatin\u2019s existing Core Prometheus/Alertmanager. Enable falcosidekick.config.alertmanager.hostport/endpoint for Falco delivery where appropriate, define required audit failure/capacity rules (not just generic uptime) and set receiver routes."
+      "next_step": "Identify the assessed audit/log repository and capacity metric; configure an immediate warning at 75 percent utilization to the recipients specified by this exact rule. Use a different threshold only where this rule expressly permits it and the required approval is retained. Test threshold triggering and delivery. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine."
     },
     {
       "vuln_id": "V-204791",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Use Gallatin\u2019s existing Core Prometheus/Alertmanager. Enable falcosidekick.config.alertmanager.hostport/endpoint for Falco delivery where appropriate, define required audit failure/capacity rules (not just generic uptime) and set receiver routes."
+      "next_step": "Identify the audit/log processing failures covered by this exact rule, including capture, hardware/software, collector/backend and storage failures as applicable. Configure the required alerts and named recipients using the existing central monitoring. Test coverage and delivery; verify real-time latency where the rule requires it. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine."
     },
     {
       "vuln_id": "V-263550",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Use Gallatin\u2019s existing Core Prometheus/Alertmanager. Enable falcosidekick.config.alertmanager.hostport/endpoint for Falco delivery where appropriate, define required audit failure/capacity rules (not just generic uptime) and set receiver routes."
+      "next_step": "Identify detection sources for unauthorized access, modification and deletion of audit information. Configure missing detection/alert rules and route notifications to organization-defined personnel or roles. Test each required event type and recipient delivery; general uptime or account-change rules do not establish tamper coverage. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine."
     },
     {
       "vuln_id": "V-206592",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Configure or attach operator-owned audit capacity/failure/tamper rules and recipients in the shared platform alert routing; no separate DB alert product required."
+      "next_step": "Identify the assessed audit/log repository and capacity metric; configure an immediate warning at 75 percent utilization to the recipients specified by this exact rule. Use a different threshold only where this rule expressly permits it and the required approval is retained. Test threshold triggering and delivery. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine."
     },
     {
       "vuln_id": "V-206593",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Configure or attach operator-owned audit capacity/failure/tamper rules and recipients in the shared platform alert routing; no separate DB alert product required."
+      "next_step": "Identify the audit/log processing failures covered by this exact rule, including capture, hardware/software, collector/backend and storage failures as applicable. Configure the required alerts and named recipients using the existing central monitoring. Test coverage and delivery; verify real-time latency where the rule requires it. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine."
     },
     {
       "vuln_id": "V-263605",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Configure or attach operator-owned audit capacity/failure/tamper rules and recipients in the shared platform alert routing; no separate DB alert product required."
+      "next_step": "Identify detection sources for unauthorized access, modification and deletion of audit information. Configure missing detection/alert rules and route notifications to organization-defined personnel or roles. Test each required event type and recipient delivery; general uptime or account-change rules do not establish tamper coverage. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine."
     },
     {
       "vuln_id": "V-204652",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Gallatin enables Core Keycloak detailedObservability.alerts.enabled=true and configures kube-prometheus-stack alertmanager.config.receivers/route plus matching notification egress. Gallatin security selects actual SA/ISSO recipients; do not put webhook credentials in this tracker. For audit-processing failure, also define the required pipeline-health alert; modification rules alone are insufficient."
+      "next_step": "Identify the audit/log processing failures covered by this exact rule, including capture, hardware/software, collector/backend and storage failures as applicable. Configure the required alerts and named recipients using the existing central monitoring. Test coverage and delivery; verify real-time latency where the rule requires it. Retain event-source mappings, rules, routes and delivery-test evidence. Reuse shared monitoring rather than create a separate application alert engine."
     },
     {
       "vuln_id": "V-204682",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Gallatin enables Core Keycloak detailedObservability.alerts.enabled=true and configures kube-prometheus-stack alertmanager.config.receivers/route plus matching notification egress. Gallatin security selects actual SA/ISSO recipients; do not put webhook credentials in this tracker. For audit-processing failure, also define the required pipeline-health alert; modification rules alone are insufficient."
+      "next_step": "Enable centralized account-creation notifications for the assessed component and configure named SA and ISSO recipients. Confirm that alert rules cover the relevant identity event; add or adjust a rule where the existing templates do not. Create a test account and verify notification reaches both recipients. Retain routing configuration and delivery-test evidence."
     },
     {
       "vuln_id": "V-204683",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Gallatin enables Core Keycloak detailedObservability.alerts.enabled=true and configures kube-prometheus-stack alertmanager.config.receivers/route plus matching notification egress. Gallatin security selects actual SA/ISSO recipients; do not put webhook credentials in this tracker. For audit-processing failure, also define the required pipeline-health alert; modification rules alone are insufficient."
+      "next_step": "Enable centralized account-modification notifications for the assessed component and configure named SA and ISSO recipients. Confirm that alert rules cover the relevant identity event; add or adjust a rule where the existing templates do not. Modify a test account and verify notification reaches both recipients. Retain routing configuration and delivery-test evidence."
     },
     {
       "vuln_id": "V-204684",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Gallatin enables Core Keycloak detailedObservability.alerts.enabled=true and configures kube-prometheus-stack alertmanager.config.receivers/route plus matching notification egress. Gallatin security selects actual SA/ISSO recipients; do not put webhook credentials in this tracker. For audit-processing failure, also define the required pipeline-health alert; modification rules alone are insufficient."
+      "next_step": "Enable centralized account-disabling notifications for the assessed component and configure named SA and ISSO recipients. Confirm that alert rules cover the relevant identity event; add or adjust a rule where the existing templates do not. Disable a test account and verify notification reaches both recipients. Retain routing configuration and delivery-test evidence. Include automatic inactivity disabling in notification coverage."
     },
     {
       "vuln_id": "V-204685",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Gallatin enables Core Keycloak detailedObservability.alerts.enabled=true and configures kube-prometheus-stack alertmanager.config.receivers/route plus matching notification egress. Gallatin security selects actual SA/ISSO recipients; do not put webhook credentials in this tracker. For audit-processing failure, also define the required pipeline-health alert; modification rules alone are insufficient."
+      "next_step": "Enable centralized account-removal notifications for the assessed component and configure named SA and ISSO recipients. Confirm that alert rules cover the relevant identity event; add or adjust a rule where the existing templates do not. Remove a test account and verify notification reaches both recipients. Retain routing configuration and delivery-test evidence."
     },
     {
       "vuln_id": "V-204687",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Gallatin enables Core Keycloak detailedObservability.alerts.enabled=true and configures kube-prometheus-stack alertmanager.config.receivers/route plus matching notification egress. Gallatin security selects actual SA/ISSO recipients; do not put webhook credentials in this tracker. For audit-processing failure, also define the required pipeline-health alert; modification rules alone are insufficient."
+      "next_step": "Enable centralized account-enabling notifications for the assessed component and configure named SA and ISSO recipients. Confirm that alert rules cover the relevant identity event; add or adjust a rule where the existing templates do not. Disable and then enable a test account and verify notification reaches both recipients. Retain routing configuration and delivery-test evidence."
     }
   ],
   "audit-review-procedure": [
     {
       "vuln_id": "V-222622",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Gallatin SRE and the designated security reviewer perform the prepared Loki/Grafana event review, disposition exceptions, record its date and set the next review due under the quarterly policy."
+      "next_step": "In the post-classification verification pass, confirm the designated ISSO/reviewer and responsibility boundary, obtain the applicable documented review cadence and existing dated MPN review records, and check that reviews occur within that interval and immediately upon system security events as required. Credit an existing accepted process. If absent, establish the scoped schedule/event-driven process, perform the review and retain reviewer/date/results and next-due records. Do not assign platform review execution to Gallatin without confirming ownership."
     }
   ],
   "central-log-integrity": [
     {
       "vuln_id": "V-204739",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Map an accepted immutable/authenticated centralized storage or log hash/sign control to the record lifecycle, or enable it centrally; do not implement per-API duplicate log signing."
+      "next_step": "In the post-classification verification pass, identify the actual central log-management/SIEM owner and retained-record lifecycle. Inspect configured hashing/signing, verification and key-management evidence, or an explicitly accepted equivalent mapped to the exact check. Credit supported existing centralized protection; configure only confirmed gaps at the appropriate central boundary. Retain configuration, integrity-verification and any accepted-equivalence records; do not treat generic immutability or transport TLS as automatically satisfying hashing/signing."
     }
   ],
   "classification-guide": [
     {
       "vuln_id": "V-222664",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Identify the existing program/mission classification guide and the sections covering Horizon data. Add application-specific guidance only for uncovered data elements, then record the guide reference."
+      "next_step": "In the post-classification verification pass, identify the approved mission/program security classification guide and confirm with the classification authority that it covers Horizon data elements and the required classification, handling and declassification guidance. Retain an appropriate controlled reference and scope mapping. Ask the authority to resolve only uncovered elements; do not create or approve classification guidance on its behalf. Update the recommendation when coverage is supported."
     }
   ],
   "classified-crypto": [
     {
       "vuln_id": "V-265634",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Check the actual encryption against the official non-SAMI/SAMI requirements. Credit the delivered validated modules where allowed; use NSA-validated Type1 protection where the check requires it."
+      "next_step": "In the post-classification verification pass, confirm the mission data classification and protection requirements and identify the MPN/Gallatin responsibility boundary. Inspect actual module/solution/configuration evidence for the cryptographic tasks and data covered by this exact rule, credit supported inherited protection, and identify only uncovered application/configuration responsibilities. Check the actual encryption against the official non-SAMI/SAMI requirements. Credit the delivered validated modules where allowed; use NSA-validated Type1 protection where the check requires it. Retain a controlled scope/protection mapping and revise the recommendation where coverage is supported."
     },
     {
       "vuln_id": "V-233211",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Use NSA-approved encryption for the platform data and traffic covered by this rule; verify the chosen implementation, approval and settings. Reuse the host/storage/network controls that implement it."
+      "next_step": "In the post-classification verification pass, confirm the mission data classification and protection requirements and identify the MPN/Gallatin responsibility boundary. Inspect actual module/solution/configuration evidence for the cryptographic tasks and data covered by this exact rule, credit supported inherited protection, and identify only uncovered application/configuration responsibilities. Use NSA-approved encryption for the platform data and traffic covered by this rule; verify the chosen implementation, approval and settings. Reuse the host/storage/network controls that implement it. Retain a controlled scope/protection mapping and revise the recommendation where coverage is supported."
     },
     {
       "vuln_id": "V-239371",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Check the actual gateway/web encryption modules and settings against the classified data protection requirement; configure an approved implementation wherever needed."
+      "next_step": "In the post-classification verification pass, confirm the mission data classification and protection requirements and identify the MPN/Gallatin responsibility boundary. Inspect actual module/solution/configuration evidence for the cryptographic tasks and data covered by this exact rule, credit supported inherited protection, and identify only uncovered application/configuration responsibilities. Check the actual gateway/web encryption modules and settings against the classified data protection requirement; configure an approved implementation wherever needed. Retain a controlled scope/protection mapping and revise the recommendation where coverage is supported."
     },
     {
       "vuln_id": "V-240925",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Check the encryption protecting application-server data against the NSA-approved requirement and configure any missing protection. Record the approved implementation and settings."
+      "next_step": "In the post-classification verification pass, confirm the mission data classification and protection requirements and identify the MPN/Gallatin responsibility boundary. Inspect actual module/solution/configuration evidence for the cryptographic tasks and data covered by this exact rule, credit supported inherited protection, and identify only uncovered application/configuration responsibilities. Check the encryption protecting application-server data against the NSA-approved requirement and configure any missing protection. Record the approved implementation and settings. Retain a controlled scope/protection mapping and revise the recommendation where coverage is supported."
     }
   ],
   "compliance-package": [
     {
       "vuln_id": "V-222423",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Complete the MPN data-element/protection requirements by applying the contract-specific categories to existing architecture/security design."
+      "next_step": "Document MPN application data elements and categories, the protection requirements for each, and the controls that implement those requirements. Apply mission/contract-specific classification and handling decisions to the existing architecture and corporate policies; retain the completed mapping and mission-owner confirmation."
     },
     {
       "vuln_id": "V-222636",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Complete the MPN-specific contingency/recovery plan with availability objectives, operator roles and existing platform mechanisms."
+      "next_step": "In the post-classification verification pass, locate current MPN and Gallatin contingency/recovery plans and their acceptance records. Confirm the application availability category, recovery objectives, essential mission functions, operator roles and inherited platform recovery services. Check plan provisions against the exact STIG availability-category requirements; complete only missing Horizon procedures and approvals and retain the accepted plan references. Do not duplicate platform-owned recovery services or infer database-data recovery from resource-only backup settings."
     },
     {
       "vuln_id": "V-222660",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Document who authorizes retirement, affected-user notification channels/timing and migration/support handoff; reuse existing release communications."
+      "next_step": "In the post-classification verification pass, inspect existing Gallatin customer/application-retirement and MPN operational procedures for decommissioning authority, affected-user identification, notice channels/timing and support or migration handoff. Credit existing accepted coverage. Document and adopt only missing responsibilities and user-notification steps, reusing established communication channels, and retain the applicable procedure reference."
     },
     {
       "vuln_id": "V-233273",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Complete or tailor the linked platform/package residuals and retain component hardening evidence. Do not create a duplicate roll-up remediation ticket."
+      "next_step": "Verify the assessed component inventory and applicable hardening guidance, responsibility boundaries and accepted inherited-control mappings. Link the specific configuration, implementation and verification residuals already tracked in this assessment, complete or formally disposition them with evidence, and retain the component-specific checklist. Do not create duplicate remediation work for this umbrella requirement or treat source-level inherited recommendations as final accepted compliance."
     },
     {
       "vuln_id": "V-206445",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Complete component-specific control mapping and close or tailor the remaining concrete findings."
+      "next_step": "Verify the assessed component inventory and applicable hardening guidance, responsibility boundaries and accepted inherited-control mappings. Link the specific configuration, implementation and verification residuals already tracked in this assessment, complete or formally disposition them with evidence, and retain the component-specific checklist. Do not create duplicate remediation work for this umbrella requirement or treat source-level inherited recommendations as final accepted compliance."
     },
     {
       "vuln_id": "V-206643",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Close the verified native audit/session-limit deltas and retain the full component mapping/tailoring package."
+      "next_step": "Verify the assessed component inventory and applicable hardening guidance, responsibility boundaries and accepted inherited-control mappings. Link the specific configuration, implementation and verification residuals already tracked in this assessment, complete or formally disposition them with evidence, and retain the component-specific checklist. Do not create duplicate remediation work for this umbrella requirement or treat source-level inherited recommendations as final accepted compliance."
     },
     {
       "vuln_id": "V-204704",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Complete the specific sharedidentity residuals and accepted tailoring, then finalize this rollup."
+      "next_step": "Verify the assessed component inventory and applicable hardening guidance, responsibility boundaries and accepted inherited-control mappings. Link the specific configuration, implementation and verification residuals already tracked in this assessment, complete or formally disposition them with evidence, and retain the component-specific checklist. Do not create duplicate remediation work for this umbrella requirement or treat source-level inherited recommendations as final accepted compliance."
     }
   ],
   "continuous-vulnerability-management": [
     {
       "vuln_id": "V-233275",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Map Gallatin\u2019s recurring MPN scanning service to the fixed delivered image inventory, or configure a scheduled rescan/cadence with retained results; do not duplicate the existing build scans."
+      "next_step": "In the post-classification verification pass, identify the actual deployed image/component inventory and responsible MPN/Gallatin vulnerability-management services. Inspect recurring scan configuration, coverage and dated results, including unchanged release images and applicable platform components. Credit existing services and CI scans; configure only confirmed recurring-coverage gaps, retain findings/results and link the existing remediation process. Do not infer continuous coverage from build scans alone or absence from a separate source ECR setting."
     }
   ],
   "data-backup-restore": [
     {
       "vuln_id": "V-222637",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Attach an accepted platform data-backup/restore service or configure PostgreSQL/PVC data protection and secure restore verification."
+      "next_step": "In the post-classification verification pass, locate existing MPN/Gallatin backup services, procedures, ownership agreements and execution/restore records. Credit supported existing coverage and assign only confirmed residuals to the responsible operator. Confirm the site disaster recovery plan includes Horizon-specific secure and verifiable recovery instructions, actual application-data restore coverage and special considerations inhibiting trusted recovery. Verify restore evidence and complete only missing procedures or mechanisms. Retain the applicable procedure, configuration and verification evidence, coordinated with V-222636."
     },
     {
       "vuln_id": "V-222638",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Attach an accepted platform data-backup/restore service or configure PostgreSQL/PVC data protection and secure restore verification."
+      "next_step": "In the post-classification verification pass, locate existing MPN/Gallatin backup services, procedures, ownership agreements and execution/restore records. Credit supported existing coverage and assign only confirmed residuals to the responsible operator. Confirm the application risk level and verify the exact required backup frequency, sampled successful execution, protected off-site storage, restoration testing and any required geographically separated redundancy/testing. Preserve the rule-specific weekly/daily/annual/six-month conditions rather than assuming a daily resource backup satisfies all cases. Retain the applicable procedure, configuration and verification evidence, coordinated with V-222636."
     },
     {
       "vuln_id": "V-222640",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Document actual backup/restore storage, IAM/encryption, recovery tooling and asset-protection responsibilities."
+      "next_step": "In the post-classification verification pass, locate existing MPN/Gallatin backup services, procedures, ownership agreements and execution/restore records. Credit supported existing coverage and assign only confirmed residuals to the responsible operator. Verify procedures cover physical and technical protection of backup data, media/directories, backup software and restoration equipment/system software. Complete only missing asset/protection coverage and retain accepted procedures. Retain the applicable procedure, configuration and verification evidence, coordinated with V-222636."
     },
     {
       "vuln_id": "V-204771",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Add a backup export wrapper that collects consistent PostgreSQL backup/WAL and SeaweedFS data+filer metadata, writes only to encrypted scratch, then produces an authenticated AES256-GCM CMS envelope plus signed version/hash manifest using a pinned approved provider before any offline copy. Store recovery private keys separately under a recoverable offline key/HSM procedure; verify/decrypt into isolated encrypted scratch on restore. ProviderSSE alone does not keep downloaded files encrypted."
+      "next_step": "In the post-classification verification pass, locate existing MPN/Gallatin backup services, procedures, ownership agreements and execution/restore records. Credit supported existing coverage and assign only confirmed residuals to the responsible operator. Confirm whether offline/exported application-server data copies exist and identify their actual cryptographic confidentiality and integrity protection and recovery-key custody. Verify protection remains effective outside live platform storage; implement only confirmed export/offline gaps rather than assume a new encryption wrapper is needed. Retain the applicable procedure, configuration and verification evidence, coordinated with V-222636."
     }
   ],
   "data-label-policy": [
     {
       "vuln_id": "V-222643",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Set the MPN data classification and provide the required application/report markings or exact permitted manual procedure/tailoring."
+      "next_step": "In the post-classification verification pass, obtain the mission classification guide and inspect actual screen, report and print/export marking capabilities and configuration. Verify the required top/bottom markings for common sensitive-data transactions and report output; apply the official highest-system-classification rule when a guide is absent. Credit existing supported capability and implement only confirmed gaps. Check any manual printed-output procedures against the exact technical-limit conditions and availability to users. Retain function-specific evidence and coordinate required labels with the data owner."
     }
   ],
   "database-account-policy": [
     {
       "vuln_id": "V-206519",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Set approved service/admin per-role connection limits, with service-pool allowances; do not force2 if approved service-account limits differ."
+      "next_step": "In the post-classification verification pass, inspect effective PostgreSQL role connection limits and identify all relevant account types and enforcement limitations. Obtain documented organization-approved administrator/service/user limits sized for actual pool and operational needs, applying the official defaults only where documentation is absent. Configure missing native limits where technically enforceable, verify behavior and retain policy/configuration/test evidence. Do not rely on application pooling alone or choose an arbitrary service-role maximum."
     }
   ],
   "database-auditing": [
     {
       "vuln_id": "V-206523",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Enable the required native connection/disconnection/privileged/direct-access event selection and contextual fields, with data/performance/redaction review; one shared audit workstream covers these rows."
+      "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Enable the required native connection/disconnection/privileged/direct-access event selection and contextual fields, with data/performance/redaction review; one shared audit workstream covers these rows. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream."
     },
     {
       "vuln_id": "V-206531",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Configure required native session/user/database/remote context and correlate application actor where shared service roles are used."
+      "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Configure required native session/user/database/remote context and correlate application actor where shared service roles are used. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream."
     },
     {
       "vuln_id": "V-206533",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Configure required native session/user/database/remote context and correlate application actor where shared service roles are used."
+      "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Configure required native session/user/database/remote context and correlate application actor where shared service roles are used. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream."
     },
     {
       "vuln_id": "V-206612",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Enable targeted native security-object audit selection or establish an accepted equivalent event mapping."
+      "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Enable targeted native security-object audit selection or establish an accepted equivalent event mapping. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream."
     },
     {
       "vuln_id": "V-206614",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Add or evidence category-specific read/change/delete success/denial events in the shared application/DB audit stream; preserve individual actor and classification context."
+      "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Add or evidence category-specific read/change/delete success/denial events in the shared application/DB audit stream; preserve individual actor and classification context. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream."
     },
     {
       "vuln_id": "V-206615",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Add or evidence category-specific read/change/delete success/denial events in the shared application/DB audit stream; preserve individual actor and classification context."
+      "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Add or evidence category-specific read/change/delete success/denial events in the shared application/DB audit stream; preserve individual actor and classification context. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream."
     },
     {
       "vuln_id": "V-206616",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Enable native ROLE/privilege event selection or retain accepted equivalent administrative change records; keep application records as existing coverage."
+      "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Enable native ROLE/privilege event selection or retain accepted equivalent administrative change records; keep application records as existing coverage. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream."
     },
     {
       "vuln_id": "V-206620",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Select DDL/ROLE security-object audit events or attach an equivalent privileged deployment/change trail with required event fields."
+      "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Select DDL/ROLE security-object audit events or attach an equivalent privileged deployment/change trail with required event fields. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream."
     },
     {
       "vuln_id": "V-206622",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Add or evidence category-specific read/change/delete success/denial events in the shared application/DB audit stream; preserve individual actor and classification context."
+      "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Add or evidence category-specific read/change/delete success/denial events in the shared application/DB audit stream; preserve individual actor and classification context. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream."
     },
     {
       "vuln_id": "V-206623",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Add or evidence category-specific read/change/delete success/denial events in the shared application/DB audit stream; preserve individual actor and classification context."
+      "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Add or evidence category-specific read/change/delete success/denial events in the shared application/DB audit stream; preserve individual actor and classification context. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream."
     },
     {
       "vuln_id": "V-206624",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Enable native ROLE/privilege event selection or retain accepted equivalent administrative change records; keep application records as existing coverage."
+      "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Enable native ROLE/privilege event selection or retain accepted equivalent administrative change records; keep application records as existing coverage. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream."
     },
     {
       "vuln_id": "V-206626",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Select DDL/ROLE security-object audit events or attach an equivalent privileged deployment/change trail with required event fields."
+      "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Select DDL/ROLE security-object audit events or attach an equivalent privileged deployment/change trail with required event fields. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream."
     },
     {
       "vuln_id": "V-206628",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Add or evidence category-specific read/change/delete success/denial events in the shared application/DB audit stream; preserve individual actor and classification context."
+      "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Add or evidence category-specific read/change/delete success/denial events in the shared application/DB audit stream; preserve individual actor and classification context. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream."
     },
     {
       "vuln_id": "V-206629",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Add or evidence category-specific read/change/delete success/denial events in the shared application/DB audit stream; preserve individual actor and classification context."
+      "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Add or evidence category-specific read/change/delete success/denial events in the shared application/DB audit stream; preserve individual actor and classification context. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream."
     },
     {
       "vuln_id": "V-206630",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Enable the required native connection/disconnection/privileged/direct-access event selection and contextual fields, with data/performance/redaction review; one shared audit workstream covers these rows."
+      "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Enable the required native connection/disconnection/privileged/direct-access event selection and contextual fields, with data/performance/redaction review; one shared audit workstream covers these rows. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream."
     },
     {
       "vuln_id": "V-206632",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Enable the required native connection/disconnection/privileged/direct-access event selection and contextual fields, with data/performance/redaction review; one shared audit workstream covers these rows."
+      "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Enable the required native connection/disconnection/privileged/direct-access event selection and contextual fields, with data/performance/redaction review; one shared audit workstream covers these rows. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream."
     },
     {
       "vuln_id": "V-206634",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Enable the required native connection/disconnection/privileged/direct-access event selection and contextual fields, with data/performance/redaction review; one shared audit workstream covers these rows."
+      "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Enable the required native connection/disconnection/privileged/direct-access event selection and contextual fields, with data/performance/redaction review; one shared audit workstream covers these rows. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream."
     },
     {
       "vuln_id": "V-206635",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Enable the required native connection/disconnection/privileged/direct-access event selection and contextual fields, with data/performance/redaction review; one shared audit workstream covers these rows."
+      "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Enable the required native connection/disconnection/privileged/direct-access event selection and contextual fields, with data/performance/redaction review; one shared audit workstream covers these rows. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream."
     },
     {
       "vuln_id": "V-206638",
       "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Enable the required native connection/disconnection/privileged/direct-access event selection and contextual fields, with data/performance/redaction review; one shared audit workstream covers these rows."
+      "next_step": "In the post-classification verification pass, inspect effective PostgreSQL/pgAudit settings and existing records against this exact rule. Enable the required native connection/disconnection/privileged/direct-access event selection and contextual fields, with data/performance/redaction review; one shared audit workstream covers these rows. Credit existing coverage, select only required missing events/fields, assess sensitive-data exposure, volume and performance, and verify representative required success/failure behavior. Correlate individual actors where a shared service role is used and preserve applicable built-in-object exclusions. Retain the event map, settings and test evidence in the shared audit workstream."
     }
   ],
   "identity-policy": [
     {
       "vuln_id": "V-222437",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Gallatin adds a supported shared-Keycloak theme/event-backed previous-successful-logon display or records accepted tailoring. Core0.32 has login events but no shipped previous-logon display switch; a generic provider-proof request cannot close this item."
+      "next_step": "Implement a supported previous-successful-logon date/time display through the shared UDS identity flow or Horizon UI, using existing login events where appropriate. Verify with successive successful logins that the displayed value identifies the preceding successful application access rather than the current login. Retain implementation and verification evidence."
     },
     {
       "vuln_id": "V-222541",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Gallatin resolves the exact eight-character difference or24-hour minimum-change requirement for permitted human-password accounts: use an approved central provider policy extension or accepted certificate-only/account-type tailoring. Core supplies no matching defaultflag; native passwordAge is password-reuse age, not a minimum changeinterval. Do not weaken existing password constraints or invent a supported Helm switch."
+      "next_step": "Confirm the assessed human password-authentication scope, including permitted exception paths. If passwords remain in use, select an approved central identity-provider policy or extension that enforces changing at least eight characters and verify changes of fewer than eight are rejected. Preserve existing password controls. If the scope uses no passwords, verify that configuration and record the supported N/A decision. Retain the scope determination, implementation and test evidence; do not invent an unsupported Core setting."
     },
     {
       "vuln_id": "V-222544",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Gallatin resolves the exact eight-character difference or24-hour minimum-change requirement for permitted human-password accounts: use an approved central provider policy extension or accepted certificate-only/account-type tailoring. Core supplies no matching defaultflag; native passwordAge is password-reuse age, not a minimum changeinterval. Do not weaken existing password constraints or invent a supported Helm switch."
+      "next_step": "Confirm human password-authentication scope, coordinated with V-222541. If passwords remain in use, select an approved central identity-provider policy or extension that enforces a 24-hour minimum password lifetime, and verify a second password change within 24 hours is rejected under the assessed policy. Preserve existing password controls and retain implementation and verification evidence. If the scope uses no passwords, verify the configuration and record supported N/A. Do not substitute historical-password reuse age for a minimum change interval."
     },
     {
       "vuln_id": "V-233094",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Gallatin resolves the exact eight-character difference or24-hour minimum-change requirement for permitted human-password accounts: use an approved central provider policy extension or accepted certificate-only/account-type tailoring. Core supplies no matching defaultflag; native passwordAge is password-reuse age, not a minimum changeinterval. Do not weaken existing password constraints or invent a supported Helm switch."
+      "next_step": "Confirm password-authentication scope, current effective policy and the responsible identity/directory provider for this assessed component. Share V-222541 verification and enforce changing at least eight characters centrally where passwords remain in use and the control is not already supplied. Verify the exact rejection behavior and retain evidence. Evaluate no-password or delegated-directory applicability only under the exact rule and actual configuration. Do not invent an unsupported Core flag or duplicate identity management in Horizon."
     },
     {
       "vuln_id": "V-233097",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Gallatin resolves the exact eight-character difference or24-hour minimum-change requirement for permitted human-password accounts: use an approved central provider policy extension or accepted certificate-only/account-type tailoring. Core supplies no matching defaultflag; native passwordAge is password-reuse age, not a minimum changeinterval. Do not weaken existing password constraints or invent a supported Helm switch."
+      "next_step": "Confirm password-authentication scope, current effective policy and the responsible identity/directory provider for this assessed component. Share V-222544 verification and enforce a 24-hour minimum password lifetime centrally where passwords remain in use and the control is not already supplied. Verify the exact rejection behavior and retain evidence. Evaluate no-password or delegated-directory applicability only under the exact rule and actual configuration. Do not invent an unsupported Core flag or duplicate identity management in Horizon. Historical-password reuse age is not the minimum interval before a new password change."
     },
     {
       "vuln_id": "V-263591",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Gallatin mounts its approved maintained denylist at /opt/keycloak/data/password-blacklists, appends passwordBlacklist(filename) to the existing Core realmInitEnv.PASSWORD_POLICY without dropping current FIPS KDF/length/classes/history/expiry, and updates the live realm password policy if already imported. Configure Gallatin-owned corpus cadence/incident updates; Keycloak natively reloads changed files (default60s), so no new API or custom validator service is needed."
+      "next_step": "Verify current password-authentication scope and existing upstream/shared-provider denylist coverage. Where missing, select an approved maintained list, establish organization-defined scheduled updates and updates on suspected compromise, and enable the existing central password-list validator without weakening other password controls. Verify list availability, scheduled/incident refresh and rejection of listed passwords during creation/change as required by this exact rule. Persist desired configuration and update existing realms through controlled changes. Retain policy, configuration and test evidence; scope exceptions per component and do not implement password handling in Horizon."
     },
     {
       "vuln_id": "V-263592",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Gallatin mounts its approved maintained denylist at /opt/keycloak/data/password-blacklists, appends passwordBlacklist(filename) to the existing Core realmInitEnv.PASSWORD_POLICY without dropping current FIPS KDF/length/classes/history/expiry, and updates the live realm password policy if already imported. Configure Gallatin-owned corpus cadence/incident updates; Keycloak natively reloads changed files (default60s), so no new API or custom validator service is needed."
+      "next_step": "Verify current password-authentication scope and existing upstream/shared-provider denylist coverage. Where missing, select an approved maintained list, establish organization-defined scheduled updates and updates on suspected compromise, and enable the existing central password-list validator without weakening other password controls. Verify list availability, scheduled/incident refresh and rejection of listed passwords during creation/change as required by this exact rule. Persist desired configuration and update existing realms through controlled changes. Retain policy, configuration and test evidence; scope exceptions per component and do not implement password handling in Horizon."
     },
     {
       "vuln_id": "V-263593",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Gallatin mounts its approved maintained denylist at /opt/keycloak/data/password-blacklists, appends passwordBlacklist(filename) to the existing Core realmInitEnv.PASSWORD_POLICY without dropping current FIPS KDF/length/classes/history/expiry, and updates the live realm password policy if already imported. Configure Gallatin-owned corpus cadence/incident updates; Keycloak natively reloads changed files (default60s), so no new API or custom validator service is needed."
+      "next_step": "Verify current password-authentication scope and existing upstream/shared-provider denylist coverage. Where missing, select an approved maintained list, establish organization-defined scheduled updates and updates on suspected compromise, and enable the existing central password-list validator without weakening other password controls. Verify list availability, scheduled/incident refresh and rejection of listed passwords during creation/change as required by this exact rule. Persist desired configuration and update existing realms through controlled changes. Retain policy, configuration and test evidence; scope exceptions per component and do not implement password handling in Horizon."
     },
     {
       "vuln_id": "V-263594",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Gallatin mounts its approved maintained denylist at /opt/keycloak/data/password-blacklists, appends passwordBlacklist(filename) to the existing Core realmInitEnv.PASSWORD_POLICY without dropping current FIPS KDF/length/classes/history/expiry, and updates the live realm password policy if already imported. Configure Gallatin-owned corpus cadence/incident updates; Keycloak natively reloads changed files (default60s), so no new API or custom validator service is needed."
+      "next_step": "Verify current password-authentication scope and existing upstream/shared-provider denylist coverage. Where missing, select an approved maintained list, establish organization-defined scheduled updates and updates on suspected compromise, and enable the existing central password-list validator without weakening other password controls. Verify list availability, scheduled/incident refresh and rejection of listed passwords during creation/change as required by this exact rule. Persist desired configuration and update existing realms through controlled changes. Retain policy, configuration and test evidence; scope exceptions per component and do not implement password handling in Horizon."
     },
     {
       "vuln_id": "V-264345",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Gallatin mounts its approved maintained denylist at /opt/keycloak/data/password-blacklists, appends passwordBlacklist(filename) to the existing Core realmInitEnv.PASSWORD_POLICY without dropping current FIPS KDF/length/classes/history/expiry, and updates the live realm password policy if already imported. Configure Gallatin-owned corpus cadence/incident updates; Keycloak natively reloads changed files (default60s), so no new API or custom validator service is needed."
+      "next_step": "Verify current password-authentication scope and existing upstream/shared-provider denylist coverage. Where missing, select an approved maintained list, establish organization-defined scheduled updates and updates on suspected compromise, and enable the existing central password-list validator without weakening other password controls. Verify list availability, scheduled/incident refresh and rejection of listed passwords during creation/change as required by this exact rule. Persist desired configuration and update existing realms through controlled changes. Retain policy, configuration and test evidence; scope exceptions per component and do not implement password handling in Horizon."
     },
     {
       "vuln_id": "V-264346",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Gallatin mounts its approved maintained denylist at /opt/keycloak/data/password-blacklists, appends passwordBlacklist(filename) to the existing Core realmInitEnv.PASSWORD_POLICY without dropping current FIPS KDF/length/classes/history/expiry, and updates the live realm password policy if already imported. Configure Gallatin-owned corpus cadence/incident updates; Keycloak natively reloads changed files (default60s), so no new API or custom validator service is needed."
+      "next_step": "Verify current password-authentication scope and existing upstream/shared-provider denylist coverage. Where missing, select an approved maintained list, establish organization-defined scheduled updates and updates on suspected compromise, and enable the existing central password-list validator without weakening other password controls. Verify list availability, scheduled/incident refresh and rejection of listed passwords during creation/change as required by this exact rule. Persist desired configuration and update existing realms through controlled changes. Retain policy, configuration and test evidence; scope exceptions per component and do not implement password handling in Horizon."
     },
     {
       "vuln_id": "V-264347",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Gallatin mounts its approved maintained denylist at /opt/keycloak/data/password-blacklists, appends passwordBlacklist(filename) to the existing Core realmInitEnv.PASSWORD_POLICY without dropping current FIPS KDF/length/classes/history/expiry, and updates the live realm password policy if already imported. Configure Gallatin-owned corpus cadence/incident updates; Keycloak natively reloads changed files (default60s), so no new API or custom validator service is needed."
+      "next_step": "Verify current password-authentication scope and existing upstream/shared-provider denylist coverage. Where missing, select an approved maintained list, establish organization-defined scheduled updates and updates on suspected compromise, and enable the existing central password-list validator without weakening other password controls. Verify list availability, scheduled/incident refresh and rejection of listed passwords during creation/change as required by this exact rule. Persist desired configuration and update existing realms through controlled changes. Retain policy, configuration and test evidence; scope exceptions per component and do not implement password handling in Horizon."
     },
     {
       "vuln_id": "V-264348",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Gallatin mounts its approved maintained denylist at /opt/keycloak/data/password-blacklists, appends passwordBlacklist(filename) to the existing Core realmInitEnv.PASSWORD_POLICY without dropping current FIPS KDF/length/classes/history/expiry, and updates the live realm password policy if already imported. Configure Gallatin-owned corpus cadence/incident updates; Keycloak natively reloads changed files (default60s), so no new API or custom validator service is needed."
+      "next_step": "Verify current password-authentication scope and existing upstream/shared-provider denylist coverage. Where missing, select an approved maintained list, establish organization-defined scheduled updates and updates on suspected compromise, and enable the existing central password-list validator without weakening other password controls. Verify list availability, scheduled/incident refresh and rejection of listed passwords during creation/change as required by this exact rule. Persist desired configuration and update existing realms through controlled changes. Retain policy, configuration and test evidence; scope exceptions per component and do not implement password handling in Horizon."
     },
     {
       "vuln_id": "V-204670",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Gallatin resolves the exact eight-character difference or24-hour minimum-change requirement for permitted human-password accounts: use an approved central provider policy extension or accepted certificate-only/account-type tailoring. Core supplies no matching defaultflag; native passwordAge is password-reuse age, not a minimum changeinterval. Do not weaken existing password constraints or invent a supported Helm switch."
+      "next_step": "Confirm password-authentication scope, current effective policy and the responsible identity/directory provider for this assessed component. Share V-222541 verification and enforce changing at least eight characters centrally where passwords remain in use and the control is not already supplied. Verify the exact rejection behavior and retain evidence. Evaluate no-password or delegated-directory applicability only under the exact rule and actual configuration. Do not invent an unsupported Core flag or duplicate identity management in Horizon."
     },
     {
       "vuln_id": "V-204673",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Gallatin resolves the exact eight-character difference or24-hour minimum-change requirement for permitted human-password accounts: use an approved central provider policy extension or accepted certificate-only/account-type tailoring. Core supplies no matching defaultflag; native passwordAge is password-reuse age, not a minimum changeinterval. Do not weaken existing password constraints or invent a supported Helm switch."
+      "next_step": "Confirm password-authentication scope, current effective policy and the responsible identity/directory provider for this assessed component. Share V-222544 verification and enforce a 24-hour minimum password lifetime centrally where passwords remain in use and the control is not already supplied. Verify the exact rejection behavior and retain evidence. Evaluate no-password or delegated-directory applicability only under the exact rule and actual configuration. Do not invent an unsupported Core flag or duplicate identity management in Horizon. Historical-password reuse age is not the minimum interval before a new password change."
     },
     {
       "vuln_id": "V-263532",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Gallatin mounts its approved maintained denylist at /opt/keycloak/data/password-blacklists, appends passwordBlacklist(filename) to the existing Core realmInitEnv.PASSWORD_POLICY without dropping current FIPS KDF/length/classes/history/expiry, and updates the live realm password policy if already imported. Configure Gallatin-owned corpus cadence/incident updates; Keycloak natively reloads changed files (default60s), so no new API or custom validator service is needed."
+      "next_step": "Verify current password-authentication scope and existing upstream/shared-provider denylist coverage. Where missing, select an approved maintained list, establish organization-defined scheduled updates and updates on suspected compromise, and enable the existing central password-list validator without weakening other password controls. Verify list availability, scheduled/incident refresh and rejection of listed passwords during creation/change as required by this exact rule. Persist desired configuration and update existing realms through controlled changes. Retain policy, configuration and test evidence; scope exceptions per component and do not implement password handling in Horizon."
     },
     {
       "vuln_id": "V-263533",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Gallatin mounts its approved maintained denylist at /opt/keycloak/data/password-blacklists, appends passwordBlacklist(filename) to the existing Core realmInitEnv.PASSWORD_POLICY without dropping current FIPS KDF/length/classes/history/expiry, and updates the live realm password policy if already imported. Configure Gallatin-owned corpus cadence/incident updates; Keycloak natively reloads changed files (default60s), so no new API or custom validator service is needed."
+      "next_step": "Verify current password-authentication scope and existing upstream/shared-provider denylist coverage. Where missing, select an approved maintained list, establish organization-defined scheduled updates and updates on suspected compromise, and enable the existing central password-list validator without weakening other password controls. Verify list availability, scheduled/incident refresh and rejection of listed passwords during creation/change as required by this exact rule. Persist desired configuration and update existing realms through controlled changes. Retain policy, configuration and test evidence; scope exceptions per component and do not implement password handling in Horizon."
     },
     {
       "vuln_id": "V-263534",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Gallatin mounts its approved maintained denylist at /opt/keycloak/data/password-blacklists, appends passwordBlacklist(filename) to the existing Core realmInitEnv.PASSWORD_POLICY without dropping current FIPS KDF/length/classes/history/expiry, and updates the live realm password policy if already imported. Configure Gallatin-owned corpus cadence/incident updates; Keycloak natively reloads changed files (default60s), so no new API or custom validator service is needed."
-    }
-  ],
-  "mpn-host-storage-encryption": [
-    {
-      "vuln_id": "V-233220",
-      "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Commit the MPN control-plane EncryptionConfiguration (nonidentity encryption provider first) or supported distribution equivalent, rotate/migrate existing Secret storage after enablement, and bind Core identity database/PVC/node disks to the same encrypted-host design. Separate key administration from application identities."
+      "next_step": "Verify current password-authentication scope and existing upstream/shared-provider denylist coverage. Where missing, select an approved maintained list, establish organization-defined scheduled updates and updates on suspected compromise, and enable the existing central password-list validator without weakening other password controls. Verify list availability, scheduled/incident refresh and rejection of listed passwords during creation/change as required by this exact rule. Persist desired configuration and update existing realms through controlled changes. Retain policy, configuration and test evidence; scope exceptions per component and do not implement password handling in Horizon."
     }
   ],
   "mpn-network-profile": [
     {
       "vuln_id": "V-222428",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Select the local model service and approved destination/port profile, then encode it in the existing UDS Package policies or document accepted changed scope."
+      "next_step": "Define the approved MPN classification-to-destination information-flow policy and local model service. Configure allowed destinations and ports in the existing UDS Package policies and model settings. Inventory relevant classifier, inference and export paths; verify they enforce the approved flow policy, and address uncovered paths where required. Test labeled data against allowed and prohibited destinations and retain results. Do not treat the one classifier gate as proof of complete coverage."
     },
     {
       "vuln_id": "V-222519",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Select the local model service and approved destination/port profile, then encode it in the existing UDS Package policies or document accepted changed scope."
-    }
-  ],
-  "mpn-storage-integrity": [
-    {
-      "vuln_id": "V-222588",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Define the sensitive/PII/classification data scope and select an approved authenticated-integrity storage boundary for its live database volume; a supported host dm-crypt+dm-integrity authenticated mode is one existing implementation option, not an instruction to reformat the current disk. Use existing AES-GCM object storage for object ciphertext and signed authenticated backup manifests for offline archives. Retain DB role restrictions separately. Do not credit plain diskSSE/AES-XTS, PostgreSQL page checksums or RBAC as cryptographic integrity, and do not build custom encryption for every database page. Keep this work open until the selected provider/host integrity setting or accepted scope mapping is committed."
-    },
-    {
-      "vuln_id": "V-204812",
-      "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Define the sensitive/PII/classification data scope and select an approved authenticated-integrity storage boundary for its live database volume; a supported host dm-crypt+dm-integrity authenticated mode is one existing implementation option, not an instruction to reformat the current disk. Use existing AES-GCM object storage for object ciphertext and signed authenticated backup manifests for offline archives. Retain DB role restrictions separately. Do not credit plain diskSSE/AES-XTS, PostgreSQL page checksums or RBAC as cryptographic integrity, and do not build custom encryption for every database page. Keep this work open until the selected provider/host integrity setting or accepted scope mapping is committed."
-    },
-    {
-      "vuln_id": "V-206604",
-      "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Define the sensitive/PII/classification data scope and select an approved authenticated-integrity storage boundary for its live database volume; a supported host dm-crypt+dm-integrity authenticated mode is one existing implementation option, not an instruction to reformat the current disk. Use existing AES-GCM object storage for object ciphertext and signed authenticated backup manifests for offline archives. Retain DB role restrictions separately. Do not credit plain diskSSE/AES-XTS, PostgreSQL page checksums or RBAC as cryptographic integrity, and do not build custom encryption for every database page. Keep this work open until the selected provider/host integrity setting or accepted scope mapping is committed."
-    }
-  ],
-  "mpn-storage-protection": [
-    {
-      "vuln_id": "V-222587",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Create one Gallatin-owned mpn-encrypted StorageClass backed by approved encrypted disks/volumes; set PostgreSQL persistence.storageClassName (not storageClass), bind SeaweedFS PVC explicitly and protect Core identity database/PVCs. Encrypt node OS/temp/cache and API Secret/datastore storage too. Keep the existing database/object-store products; use the selected host provider rather than a new storage cluster. Enable the existing SeaweedFS4.52 server flags -filer.encryptVolumeData and -s3.encryptVolumeData; retain filer metadata/keys on the encrypted protected volume. New writes use the existing AES-GCM path; migrate/rewrite existing objects deliberately. This supplements encrypted host/PVC storage and does not require every API to implement encryption. Apply the separate integrity step to the defined protected data set."
-    },
-    {
-      "vuln_id": "V-222589",
-      "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Create one Gallatin-owned mpn-encrypted StorageClass backed by approved encrypted disks/volumes; set PostgreSQL persistence.storageClassName (not storageClass), bind SeaweedFS PVC explicitly and protect Core identity database/PVCs. Encrypt node OS/temp/cache and API Secret/datastore storage too. Keep the existing database/object-store products; use the selected host provider rather than a new storage cluster. Enable the existing SeaweedFS4.52 server flags -filer.encryptVolumeData and -s3.encryptVolumeData; retain filer metadata/keys on the encrypted protected volume. New writes use the existing AES-GCM path; migrate/rewrite existing objects deliberately. This supplements encrypted host/PVC storage and does not require every API to implement encryption. For CUI/unclassified approved-mode protection pin the actual validated module/build. If classified processing is selected, use the mission-approved NSA/storage protection boundary before storing that data; do not waive this based only on FIPS naming."
-    },
-    {
-      "vuln_id": "V-204770",
-      "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Create one Gallatin-owned mpn-encrypted StorageClass backed by approved encrypted disks/volumes; set PostgreSQL persistence.storageClassName (not storageClass), bind SeaweedFS PVC explicitly and protect Core identity database/PVCs. Encrypt node OS/temp/cache and API Secret/datastore storage too. Keep the existing database/object-store products; use the selected host provider rather than a new storage cluster. Enable the existing SeaweedFS4.52 server flags -filer.encryptVolumeData and -s3.encryptVolumeData; retain filer metadata/keys on the encrypted protected volume. New writes use the existing AES-GCM path; migrate/rewrite existing objects deliberately. This supplements encrypted host/PVC storage and does not require every API to implement encryption. For cryptographic modification protection, use the defined authenticated-integrity storage boundary (for example supported approved dm-crypt+dm-integrity), not custom application crypto. Keep RBAC and page checksums as separate controls."
-    },
-    {
-      "vuln_id": "V-204813",
-      "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Create one Gallatin-owned mpn-encrypted StorageClass backed by approved encrypted disks/volumes; set PostgreSQL persistence.storageClassName (not storageClass), bind SeaweedFS PVC explicitly and protect Core identity database/PVCs. Encrypt node OS/temp/cache and API Secret/datastore storage too. Keep the existing database/object-store products; use the selected host provider rather than a new storage cluster. Enable the existing SeaweedFS4.52 server flags -filer.encryptVolumeData and -s3.encryptVolumeData; retain filer metadata/keys on the encrypted protected volume. New writes use the existing AES-GCM path; migrate/rewrite existing objects deliberately. This supplements encrypted host/PVC storage and does not require every API to implement encryption."
-    },
-    {
-      "vuln_id": "V-206570",
-      "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Create one Gallatin-owned mpn-encrypted StorageClass backed by approved encrypted disks/volumes; set PostgreSQL persistence.storageClassName (not storageClass), bind SeaweedFS PVC explicitly and protect Core identity database/PVCs. Encrypt node OS/temp/cache and API Secret/datastore storage too. Keep the existing database/object-store products; use the selected host provider rather than a new storage cluster. Include PGDATA,WAL,tablespaces,temporary files and backups; retain database-role restrictions and signed/authenticated backup records."
-    },
-    {
-      "vuln_id": "V-206605",
-      "benchmark": "U_Database_V4R6_SRG",
-      "next_step": "Create one Gallatin-owned mpn-encrypted StorageClass backed by approved encrypted disks/volumes; set PostgreSQL persistence.storageClassName (not storageClass), bind SeaweedFS PVC explicitly and protect Core identity database/PVCs. Encrypt node OS/temp/cache and API Secret/datastore storage too. Keep the existing database/object-store products; use the selected host provider rather than a new storage cluster. Separate key access from data readers and preserve encryption for backup/export copies. Record physical safeguards as additional protection, not evidence that the current unspecified storage is already compliant."
+      "next_step": "Reuse the existing MPN design interface table; reconcile only missing or changed flows against the selected candidate profile, distinguish external-enclave interfaces from internal service ports, and obtain the authority CAL/acceptance record. Retain any existing submission receipt before initiating a new submission. Confirm the eventual deployment matches the accepted table."
     }
   ],
   "nats-auth-crypto-module": [
     {
       "vuln_id": "V-204758",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Route the NATS client/callout authentication signature operations through a validated approved-mode implementation, or obtain explicit accepted cryptographic-boundary tailoring for the existing protected mesh path. Credit current UDS/OIDC FIPS controls."
+      "next_step": "In the post-classification verification pass, inspect assessed authentication paths and effective TLS/module configuration, including UDS user login, OIDC verification and NATS process/client/callout authentication. Verify TLS use and disabled nonapproved SSL versions against the official check; separately trace NATS signature operations and module provenance and determine their applicability to the requirement. Credit existing validated controls, retain scope/transport/module evidence, and recommend changes only for supported residuals or obtain explicit accepted tailoring. Do not infer validation of vendored JavaScript crypto from the image label."
     }
   ],
   "notice-banner": [
     {
       "vuln_id": "V-222434",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Gallatin sets Core realmInitEnv.TERMS_AND_CONDITIONS_ENABLED=true and enables the existing TermsAndConditions required action on an already-created uds realm. Use/review the shipped USG notice and acknowledgement theme; no new API/frontend banner. Persist desired values plus controlled realm migration."
+      "next_step": "Enable Core realmInitEnv.TERMS_AND_CONDITIONS_ENABLED=true and apply the equivalent TermsAndConditions required-action setting to the existing uds realm through a controlled update. Persist the desired configuration. Compare the shipped notice text with the official required wording and verify the banner is displayed before access through the assessed interactive login paths. Retain configuration and verification evidence; no new Horizon banner page is required."
     },
     {
       "vuln_id": "V-222435",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Gallatin sets Core realmInitEnv.TERMS_AND_CONDITIONS_ENABLED=true and enables the existing TermsAndConditions required action on an already-created uds realm. Use/review the shipped USG notice and acknowledgement theme; no new API/frontend banner. Persist desired values plus controlled realm migration."
+      "next_step": "Enable Core realmInitEnv.TERMS_AND_CONDITIONS_ENABLED=true and apply the equivalent TermsAndConditions required-action setting to the existing uds realm through a controlled update, shared with V-222434. Verify the notice remains displayed until explicit acceptance, that users cannot proceed without accepting, and that declining does not grant application access. Retain configuration and verification evidence; no new Horizon consent page is required."
     },
     {
       "vuln_id": "V-233032",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Gallatin sets Core realmInitEnv.TERMS_AND_CONDITIONS_ENABLED=true and enables the existing TermsAndConditions required action on an already-created uds realm. Use/review the shipped USG notice and acknowledgement theme; no new API/frontend banner. Persist desired values plus controlled realm migration."
+      "next_step": "Verify current UDS notice/consent settings and inventory applicable interactive entry points for this exact component or management interface. Reuse V-222434/V-222435 configuration: persist the approved Core terms setting and update the existing realm through a controlled change if needed. Verify the required banner text and display before access. Test each applicable entry path, retain configuration/results and credit existing coverage. Do not create a duplicate Horizon banner or assume one login test covers all interfaces."
     },
     {
       "vuln_id": "V-233033",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Gallatin sets Core realmInitEnv.TERMS_AND_CONDITIONS_ENABLED=true and enables the existing TermsAndConditions required action on an already-created uds realm. Use/review the shipped USG notice and acknowledgement theme; no new API/frontend banner. Persist desired values plus controlled realm migration."
+      "next_step": "Verify current UDS notice/consent settings and inventory applicable interactive entry points for this exact component or management interface. Reuse V-222434/V-222435 configuration: persist the approved Core terms setting and update the existing realm through a controlled change if needed. Verify the required banner text and display before access. Verify the banner remains until explicit acceptance and users cannot proceed without acknowledgement. Test each applicable entry path, retain configuration/results and credit existing coverage. Do not create a duplicate Horizon banner or assume one login test covers all interfaces."
     },
     {
       "vuln_id": "V-204713",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Gallatin sets Core realmInitEnv.TERMS_AND_CONDITIONS_ENABLED=true and enables the existing TermsAndConditions required action on an already-created uds realm. Use/review the shipped USG notice and acknowledgement theme; no new API/frontend banner. Persist desired values plus controlled realm migration."
+      "next_step": "Verify current UDS notice/consent settings and inventory applicable interactive entry points for this exact component or management interface. Reuse V-222434/V-222435 configuration: persist the approved Core terms setting and update the existing realm through a controlled change if needed. Verify the required banner text and display before access. Test each applicable entry path, retain configuration/results and credit existing coverage. Do not create a duplicate Horizon banner or assume one login test covers all interfaces."
     },
     {
       "vuln_id": "V-204714",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Gallatin sets Core realmInitEnv.TERMS_AND_CONDITIONS_ENABLED=true and enables the existing TermsAndConditions required action on an already-created uds realm. Use/review the shipped USG notice and acknowledgement theme; no new API/frontend banner. Persist desired values plus controlled realm migration."
+      "next_step": "Verify current UDS notice/consent settings and inventory applicable interactive entry points for this exact component or management interface. Reuse V-222434/V-222435 configuration: persist the approved Core terms setting and update the existing realm through a controlled change if needed. Verify the required banner text and display before access. Verify the banner remains until explicit acceptance and users cannot proceed without acknowledgement. Test each applicable entry path, retain configuration/results and credit existing coverage. Do not create a duplicate Horizon banner or assume one login test covers all interfaces."
     }
   ],
   "pii-processing-metadata": [
     {
       "vuln_id": "V-278962",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Have the privacy/mission data owner approve the PII element/purpose matrix below. Reuse files.tags and propagated chunk metadata for document-level tags such as privacy.profile, privacy.authorized_processing and privacy.processing_purpose. Attach a versioned schema-level privacy profile to account identity fields in the API/schema data dictionary; implement and validate only the missing association/propagation needed by the approved scope. If field-level tags are required, add narrow schema metadata or a field-to-policy mapping, not a wholesale per-row schema rewrite. Verify the exact data-tag interpretation with the assessor before treating a standalone document as an attached tag."
+      "next_step": "In the post-classification verification pass, confirm applicable PII elements and authorized-processing definitions with the privacy/mission data owner and inspect existing metadata/policy associations and propagation. Agree the required attached-tag interpretation with the assessor, credit supported existing coverage and reuse existing tags/schema metadata for confirmed gaps. Verify the association remains attached through relevant processing paths and retain the approved scope, implementation and test evidence. Do not invent processing authority or require a broad per-row schema rewrite before scope is established."
     },
     {
       "vuln_id": "V-278963",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Have the privacy/mission data owner approve the PII element/purpose matrix below. Reuse files.tags and propagated chunk metadata for document-level tags such as privacy.profile, privacy.authorized_processing and privacy.processing_purpose. Attach a versioned schema-level privacy profile to account identity fields in the API/schema data dictionary; implement and validate only the missing association/propagation needed by the approved scope. If field-level tags are required, add narrow schema metadata or a field-to-policy mapping, not a wholesale per-row schema rewrite. Verify the exact data-tag interpretation with the assessor before treating a standalone document as an attached tag."
+      "next_step": "In the post-classification verification pass, share V-278962 PII-scope and existing-metadata inspection. Have the privacy/mission data owner confirm organization-defined processing purposes and the assessor confirm the required attached-tag interpretation. Credit existing purpose associations, implement only missing links/propagation through relevant data paths and verify purpose tags remain associated with the applicable PII. Retain approved scope, metadata/configuration and test evidence without inventing legal processing purposes."
     }
   ],
   "pki-authentication": [
     {
       "vuln_id": "V-204661",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Gallatin configures the approved required-card authentication path in Core: X509_AUTH_ENABLED=true and, for a certificate-only policy, USERNAME_PASSWORD_AUTH_ENABLED=false and SOCIAL_AUTH_ENABLED=false; apply equivalent existing-realm flow changes through controlled AdminConsole/API. Preserve approved emergency access and distinguish privileged PIV-card eligibility from personal CAC. These are existing provider flows, not new Horizon authentication features."
+      "next_step": "Verify the applicable privileged/nonprivileged PIV/CAC authentication policy, current UDS realm flows and any approved emergency-access exceptions. Use existing X509/PIV/CAC and MFA settings to enforce the required card-based path and remove unauthorized alternative flows for that scope. Persist desired values and apply equivalent existing-realm changes through a controlled update. Verify card-required authentication and required multifactor behavior rather than assuming enabling X509 alone proves MFA. Retain configuration, policy and test evidence; do not build another authentication service."
     },
     {
       "vuln_id": "V-204662",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Gallatin configures the approved required-card authentication path in Core: X509_AUTH_ENABLED=true and, for a certificate-only policy, USERNAME_PASSWORD_AUTH_ENABLED=false and SOCIAL_AUTH_ENABLED=false; apply equivalent existing-realm flow changes through controlled AdminConsole/API. Preserve approved emergency access and distinguish privileged PIV-card eligibility from personal CAC. These are existing provider flows, not new Horizon authentication features."
+      "next_step": "Verify the applicable privileged/nonprivileged PIV/CAC authentication policy, current UDS realm flows and any approved emergency-access exceptions. Use existing X509/PIV/CAC and MFA settings to enforce the required card-based path and remove unauthorized alternative flows for that scope. Persist desired values and apply equivalent existing-realm changes through a controlled update. Verify card-required authentication and required multifactor behavior rather than assuming enabling X509 alone proves MFA. Retain configuration, policy and test evidence; do not build another authentication service."
     }
   ],
   "pki-trust": [
     {
       "vuln_id": "V-222553",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Gallatin uses Core CRL packaging/mount support, sets realmInitEnv.X509_CRL_CHECKING_ENABLED=\"true\", X509_CRL_ABORT_IF_NON_UPDATED=\"true\" and X509_CRL_RELATIVE_PATH to mounted approved files, and updates the existing dod-cac authenticator where necessary. Refresh the CRL data image/volume before expiry. Keep OCSP fail-closed; disable OCSP only for an approved disconnected CRL alternative. No custom Keycloak cache or API code."
+      "next_step": "Confirm PKI-authentication scope and whether the exact SIPRnet/no-root-CA-access exception applies. For applicable scope, use existing Core CRL packaging/mount support, enable X509_CRL_CHECKING_ENABLED, configure approved local CRL paths and strict freshness, and update the existing realm authenticator through a controlled change. Establish CRL refresh before expiry. Verify valid, revoked and stale-CRL behavior during network/OCSP unavailability using an approved disconnected profile; preserve fail-closed protections and retain configuration and test evidence."
     },
     {
       "vuln_id": "V-233201",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Gallatin uses Core CRL packaging/mount support, sets realmInitEnv.X509_CRL_CHECKING_ENABLED=\"true\", X509_CRL_ABORT_IF_NON_UPDATED=\"true\" and X509_CRL_RELATIVE_PATH to mounted approved files, and updates the existing dod-cac authenticator where necessary. Refresh the CRL data image/volume before expiry. Keep OCSP fail-closed; disable OCSP only for an approved disconnected CRL alternative. No custom Keycloak cache or API code."
+      "next_step": "Share V-222553 local CRL configuration, refresh/freshness controls and disconnected-validation tests. First verify current PKI-authentication paths and existing cache coverage for this component. Enable/update the existing shared IdP mechanism only where missing and retain effective configuration and valid/revoked/stale-data test evidence. Apply exceptions only where this exact rule supports them; do not copy an ASD-only exception to every component."
     },
     {
       "vuln_id": "V-264354",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Gallatin uses Core CRL packaging/mount support, sets realmInitEnv.X509_CRL_CHECKING_ENABLED=\"true\", X509_CRL_ABORT_IF_NON_UPDATED=\"true\" and X509_CRL_RELATIVE_PATH to mounted approved files, and updates the existing dod-cac authenticator where necessary. Refresh the CRL data image/volume before expiry. Keep OCSP fail-closed; disable OCSP only for an approved disconnected CRL alternative. No custom Keycloak cache or API code."
+      "next_step": "Share V-222553 local CRL configuration, refresh/freshness controls and disconnected-validation tests. First verify current PKI-authentication paths and existing cache coverage for this component. Enable/update the existing shared IdP mechanism only where missing and retain effective configuration and valid/revoked/stale-data test evidence. Apply exceptions only where this exact rule supports them; do not copy an ASD-only exception to every component."
     },
     {
       "vuln_id": "V-204805",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Gallatin uses Core CRL packaging/mount support, sets realmInitEnv.X509_CRL_CHECKING_ENABLED=\"true\", X509_CRL_ABORT_IF_NON_UPDATED=\"true\" and X509_CRL_RELATIVE_PATH to mounted approved files, and updates the existing dod-cac authenticator where necessary. Refresh the CRL data image/volume before expiry. Keep OCSP fail-closed; disable OCSP only for an approved disconnected CRL alternative. No custom Keycloak cache or API code."
+      "next_step": "Share V-222553 local CRL configuration, refresh/freshness controls and disconnected-validation tests. First verify current PKI-authentication paths and existing cache coverage for this component. Enable/update the existing shared IdP mechanism only where missing and retain effective configuration and valid/revoked/stale-data test evidence. Apply exceptions only where this exact rule supports them; do not copy an ASD-only exception to every component."
     },
     {
       "vuln_id": "V-204811",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Implement the documented approved-root profile and restrictive verifier settings. Retain CA fingerprints/approval and tests showing an unrelated CA is rejected."
+      "next_step": "In the post-classification verification pass, inventory applicable protected-session verifiers, including shared identity/gateway and Horizon outbound signing-key HTTPS. Confirm approved CA scope and ownership, inspect actual effective trust stores and client settings, and test rejection of an unrelated CA. Credit existing restrictive configuration; replace or restrict trust sources only where required rather than merely adding approved roots. Retain public CA fingerprints/approval, configuration and test evidence; reuse supported UDS/runtime trust configuration."
     },
     {
       "vuln_id": "V-204832",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Approve the mission certificate issuance profile; provision gateway Secrets; retain issuer, certificate policy/assurance, SANs, validity, public fingerprints and rotation owner."
+      "next_step": "In the post-classification verification pass, confirm certificate issuance/deployment ownership and the applicable DoW/CNSS Class 3/Class 4 or explicitly accepted profile. Inspect public certificate chains, issuer/policy identifiers, SANs, validity and approval records for applicable gateway/application-server uses. Credit supported existing certificates; arrange issuance or replacements only for confirmed gaps through the authorized mission process. Retain public fingerprints, approval and rotation-owner references without exporting private keys."
     },
     {
       "vuln_id": "V-263538",
       "benchmark": "U_AAA_Services_V2R3_SRG",
-      "next_step": "Gallatin uses Core CRL packaging/mount support, sets realmInitEnv.X509_CRL_CHECKING_ENABLED=\"true\", X509_CRL_ABORT_IF_NON_UPDATED=\"true\" and X509_CRL_RELATIVE_PATH to mounted approved files, and updates the existing dod-cac authenticator where necessary. Refresh the CRL data image/volume before expiry. Keep OCSP fail-closed; disable OCSP only for an approved disconnected CRL alternative. No custom Keycloak cache or API code."
+      "next_step": "Share V-222553 local CRL configuration, refresh/freshness controls and disconnected-validation tests. First verify current PKI-authentication paths and existing cache coverage for this component. Enable/update the existing shared IdP mechanism only where missing and retain effective configuration and valid/revoked/stale-data test evidence. Apply exceptions only where this exact rule supports them; do not copy an ASD-only exception to every component."
     }
   ],
   "ppsm-authorization": [
     {
       "vuln_id": "V-222628",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Ian/Gallatin SRE derives the external-enclave flow rows from the selected MPN overlay and existing System Impact Assessment; the security lead routes them to the MPN network/PPSM authority for CAL compliance review and approval."
+      "next_step": "Reuse the existing MPN design interface table; reconcile only missing or changed flows against the selected candidate profile, distinguish external-enclave interfaces from internal service ports, and obtain the authority CAL/acceptance record. Retain any existing submission receipt before initiating a new submission. Confirm the eventual deployment matches the accepted table."
     },
     {
       "vuln_id": "V-222629",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "The Gallatin security lead and MPN sponsor submit the approved Horizon MPN flow set through the applicable PPSM/eMASS process and record the resulting identifier or written registration exemption in the controlled authorization packet."
+      "next_step": "In the post-classification verification pass, inspect the existing MPN submission and confirm production registration status with the responsible authority. Retain the registration identifier/record and confirm it covers the assessed application and required ports, or retain an authority-confirmed registration exemption. Credit existing coverage and update the recommendation where supported. Supply only missing or changed details through the established authority route; do not duplicate an existing registration."
     }
   ],
   "registry-lifecycle": [
     {
       "vuln_id": "V-233231",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Add uds zarf tools registry prune to Gallatin\u2019s MPN post-upgrade maintenance procedure/job after successful deployment, with a deliberate retained rollback-package/image policy and explicit confirmation before deletion. The tool preserves images referenced by current Zarf packages; do not blindly prune unreferenced images still needed for rollback. Track this as one shared registry lifecycle task."
+      "next_step": "In the post-classification verification pass, identify the actual registry owner and inspect lifecycle/retention policy, current approved image versions, running digests and cleanup records. Confirm outdated organization-defined images are removed in accordance with the exact rule while preserving explicitly approved rollback artifacts. Credit existing operator maintenance; configure only missing controlled post-upgrade cleanup and verify results. Do not run destructive pruning or change initialization merely to inspect coverage."
     }
   ],
   "registry-transport": [
     {
       "vuln_id": "V-233015",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "In Gallatin\u2019s MPN bootstrap, choose Zarf init v0.86.0 proxy mode via uds zarf init --registry-mode=proxy (with the pinned init artifact); this enables built-in cross-node mTLS with minimumTLS1.2. If alpha proxy mode is unsuitable, configure an external trusted TLS1.2+ registry explicitly. Do not deploy the unchanged HTTP NodePort default. Plan an initialization migration for an existing cluster instead of treating this as an in-place harmless flag flip."
+      "next_step": "In the post-classification verification pass, identify the actual MPN image sources, staging/registry and node image-pull paths and their owners. Inspect deployed registry/runtime/bootstrap settings and verify TLS 1.2 or newer for the applicable transport paths from trusted sources. Credit an existing approved MPN registry. Configure only confirmed gaps using an appropriate supported secure path; assess migration impact before changing an initialized registry/bootstrap. Retain configuration and transport-verification evidence."
     }
   ],
   "release-crypto-provider": [
     {
       "vuln_id": "V-222570",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Use a verified validated/approved-mode signing implementation or record approved signing-scope/risk tailoring; retain tool module provenance."
+      "next_step": "Preserve Witness signing; select and substantiate a validated cryptographic boundary and approved mode for the actual signing path, or an approved remote signer. Retain exact build/module provenance and execution evidence. The checked candidate binary and wrapper do not establish approved-mode operation."
     },
     {
       "vuln_id": "V-222571",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Bind release component hashing/signing to a validated approved-mode provider and retain its exact tool/module evidence; do not change already-FIPS application hashing."
+      "next_step": "In the post-classification verification pass, map application and release/component cryptographic hashing to exact module provenance, validation and operating mode. Verify Witness and Python/OpenSSL release hashing alongside V-222570. Confirm NSS applicability and, where applicable, assess the official SHA-384 minimum for in-scope hashes rather than inferring coverage from a FIPS label. Retain scope and tool/module evidence, update the recommendation where supported, and implement only confirmed gaps."
     }
   ],
   "runtime-response": [
     {
       "vuln_id": "V-278964",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Configure an accepted Falco/security event-to-access-control response or record approvedtailoring for the exactautomated integration."
+      "next_step": "In the post-classification verification pass, identify the platform/security response owner and inspect actual intrusion-detection event routes and automated access-control responders. Map approved detection conditions to permitted response actions and verify existing integration with controlled tests. Credit supported MPN/platform automation; configure only confirmed gaps under an approved response policy and retain configuration/results. Do not introduce unapproved automatic lockout/quarantine actions or build a duplicate application IDS."
     }
   ],
   "secret-delivery": [
     {
       "vuln_id": "V-242415",
       "benchmark": "U_Kubernetes_V2R6_STIG",
-      "next_step": "Move affected secret consumers to protected file/vault delivery, or retain a formally accepted environment-delivery exception with the corresponding protection rationale. Reuse the shared secret-delivery workstream."
+      "next_step": "In the post-classification verification pass, confirm current secret delivery and retrieve applicable MPN and other customer credential-delivery requirements to verify the reported possible conflict. Check consumer support for protected file/vault delivery and define customer-specific profiles if necessary. For the assessed MPN scope, migrate affected secret-as-environment consumers while preserving authentication, or retain a formally accepted exception with its rationale. Do not change shared defaults for every customer without resolving the conflicting requirements. Retain requirement references, profile scope and verification evidence."
     },
     {
       "vuln_id": "V-274883",
       "benchmark": "U_Kubernetes_V2R6_STIG",
-      "next_step": "Store the S3 configuration in a protected Secret/external store and mount it as needed, or document an accepted compensating-control exception. No new S3 authentication implementation is required."
+      "next_step": "In the post-classification verification pass, confirm whether the assessed/current profile still stores credential-bearing SeaweedFS s3.json in a ConfigMap. Check applicable customer constraints alongside V-242415 without assuming the recalled delivery conflict also requires ConfigMap storage. Move confirmed sensitive configuration into a protected Kubernetes Secret/external secret store and preserve file mounting and S3 authentication, or retain a formally accepted exception. Credit existing fixes where present, scope shared-default changes appropriately and retain configuration/test evidence."
     }
   ],
   "secure-development-training": [
     {
       "vuln_id": "V-222673",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Program management and security training owners add the prepared role-specific secure-SDLC module to ThreatSwitch, assign all application roles, record completion/assessment and refresh annually."
+      "next_step": "In the post-classification verification pass, confirm the applicable development-team/program roles with the program manager and training owner. Map existing annual courses to role-appropriate secure-development/SDLC content and check dated completion evidence for each required role. Credit qualifying existing training, assign only missing content or overdue completions, and retain controlled completion references and the annual refresh schedule. Do not publish personnel training records in the tracker."
     }
   ],
   "security-assessment-coverage": [
     {
       "vuln_id": "V-222624",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Add or attach a scoped active/fuzz security assessment for web/API and relevant parsers, reusing the existing CI artifacts and defect process."
+      "next_step": "In the post-classification verification pass, locate existing active vulnerability and fuzz-testing procedures, scanner settings and results for the assessed architecture/release. Check relevant web/API and parser/component coverage and the official requirement concerning critical vulnerabilities 21 business days or older. Credit supported existing tests; arrange or implement only missing assessment coverage, retain results/settings and track findings through the existing defect process. Confirm responsibility and approved test scope before any active deployment testing."
     },
     {
       "vuln_id": "V-222647",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Extend/map existing test cases to initialization/shutdown/abort unauthorized access conditions, or attach an existing dated annual assessment covering those conditions."
+      "next_step": "In the post-classification verification pass, map current procedures and dated CI/assessment results to secure initialization, shutdown and abort scenarios, including access to application and configuration without credentials or with improper credentials, locally and remotely. Confirm procedures require execution at least annually and evidence shows execution within the last year. Credit existing coverage, add and execute only missing cases in the appropriate test environment, and retain the coverage map and dated results."
     }
   ],
   "session-policy": [
     {
       "vuln_id": "V-222387",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Gallatin security selects the positive concurrent-session maximum; Gallatin SRE sets realmInitEnv.SSO_SESSION_MAX_PER_USER to that value and updates the existing uds-user-session-count authenticator config through AdminConsole/API where needed. Default0 is unlimited; do not copy an arbitrary examplemaximum. No Horizon session-limiter code."
+      "next_step": "Gallatin security confirms the proposed maximum of one concurrent session per user. Gallatin SRE sets realmInitEnv.SSO_SESSION_MAX_PER_USER to the approved positive value and updates the existing uds-user-session-count authenticator config through AdminConsole/API where needed. Verify the applied realm enforces the approved maximum. The proposed value of 1 is not yet an approved or applied configuration. No Horizon session-limiter code is needed."
     },
     {
       "vuln_id": "V-222520",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Set the organization-defined sensitive-role-change/privilege-use reauthenticationpolicy and enforce a recent-auth/step-up requirement at the appropriate IdP/client/API boundary, or obtain explicit role-model tailoring for no user-selected active role. Reuse the shared session-policy workstream. Gallatin owns this policy/integration; Core default settings are source-known."
+      "next_step": "Define the organization-required reauthentication circumstances, including applicable role changes and privilege escalation required by the STIG. Enforce a fresh-authentication/step-up requirement through the shared identity flow and the appropriate client/API boundary before changed or elevated rights can be exercised. Verify an existing session cannot bypass the requirement after a role grant and retain policy, implementation and test evidence. Do not treat silent token renewal alone as user reauthentication."
     },
     {
       "vuln_id": "V-222549",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Decide accepted token-revocation window; configure a central session/introspection/revocation mechanism or implement minimal relevant API/stream enforcement. Do not replace working IdP logout. Gallatin owns this policy/integration; Core default settings are source-known."
+      "next_step": "Verify the assessed account-deletion flow end to end with an existing user session, issued API token and applicable long-lived connections. Confirm whether any gateway or other deployed control already rejects revoked access. Implement missing account-deletion revocation and connection teardown at the appropriate boundary, reusing existing identity/logout mechanisms. Verify the deleted user immediately loses application access and retain implementation and test evidence; token expiry alone does not establish immediate termination."
     },
     {
       "vuln_id": "V-222568",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Decide accepted token-revocation window; configure a central session/introspection/revocation mechanism or implement minimal relevant API/stream enforcement. Do not replace working IdP logout. Gallatin owns this policy/integration; Core default settings are source-known."
+      "next_step": "Credit the existing beforeunload/unmount NATS cleanup. Run focused logout, session-expiry and revocation acceptance tests in an authorized representative environment and recheck the eventual MPN deployment; verify subscriptions, active streams and reconnect behavior. Implement only confirmed gaps and retain results."
     },
     {
       "vuln_id": "V-222578",
       "benchmark": "U_ASD_V6R5_STIG",
-      "next_step": "Use approved session-bound state/credential lifetime or accepted browser-close tailoring and verify reopen behavior. Gallatin owns this policy/integration; Core default settings are source-known."
+      "next_step": "In the post-classification verification pass, inspect the assessed browser credential/session storage and IdP cookie lifetime, then test explicit logout and full browser close/reopen, including applicable session-restore behavior. Verify session identifiers and associated credentials are destroyed as required and cannot be reused. Address confirmed gaps in Horizon storage/credential lifecycle and shared SSO configuration; retain source, configuration and runtime evidence."
     },
     {
       "vuln_id": "V-233193",
       "benchmark": "U_Container_Platform_V2R5_SRG",
-      "next_step": "Configure/document fresh authentication for role changes and privilege escalation at the Gallatin-operated shared IdP/administrative transition boundary; link the shared session-policy workstream. Gallatin owns this policy/integration; Core default settings are source-known."
+      "next_step": "Verify current platform and administrative reauthentication policies and actual role-change/privilege-escalation behavior. Share V-222520 organization-defined policy, including the required minimum circumstances, and enforce missing fresh-authentication triggers at the appropriate shared identity/client/API transition boundary. Verify existing sessions cannot exercise changed/elevated rights without required reauthentication. Retain policy, configuration and test evidence; do not create a duplicate login service."
     },
     {
       "vuln_id": "V-206396",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Resolve the accepted revocation window or add effective session/token revocation at API/gateway; retain delegated logout behavior. Gallatin owns this policy/integration; Core default settings are source-known."
+      "next_step": "Share V-222578 logout/session-state verification and V-222549 token-revocation work. Verify logout and other applicable session termination invalidate session identifiers and outstanding credentials at the effective gateway/API boundary. Preserve existing shared logout and implement only confirmed residuals; token expiry alone does not establish invalidation upon termination. Retain component-specific results."
     },
     {
       "vuln_id": "V-206414",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Gallatin sets realmInitEnv.SSO_SESSION_MAX_LIFESPAN=\"28800\" (eight hours) while retaining idle600, and updates RealmSettings > Sessions on an existing uds realm via controlled AdminConsole/API migration. Keep client limits <=realm. No vendor proof or new application timer is required."
+      "next_step": "Verify effective shared realm/client absolute session limits. Where needed, configure SSO_SESSION_MAX_LIFESPAN=28800 seconds (eight hours) or less, retain the separate idle limit, and update persisted existing-realm session settings through a controlled change. Verify activity/silent renewal cannot extend the absolute maximum; retain configuration and enforcement evidence."
     },
     {
       "vuln_id": "V-264361",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Obtain accepted source-IP-binding equivalence/tailoring or enforce it at the actual session/gateway boundary. Gallatin owns this policy/integration; Core default settings are source-known."
+      "next_step": "In the post-classification verification pass, identify the trusted inbound client-IP source and proxy chain, inspect effective gateway/session policies, and test whether an authenticated session remains usable after a source-IP change. Credit existing enforcement. For a confirmed gap, define appropriate session-bound enforcement or obtain an explicitly accepted exception/equivalence for the actual deployment, documenting legitimate network changes and proxy trust. Retain configuration, test and disposition evidence."
     },
     {
       "vuln_id": "V-204708",
       "benchmark": "U_Application_Server_V4R6_SRG",
-      "next_step": "Gallatin security selects the positive concurrent-session maximum; Gallatin SRE sets realmInitEnv.SSO_SESSION_MAX_PER_USER to that value and updates the existing uds-user-session-count authenticator config through AdminConsole/API where needed. Default0 is unlimited; do not copy an arbitrary examplemaximum. No Horizon session-limiter code."
+      "next_step": "Share V-222387 concurrent-session policy work: one concurrent session per user is proposed, not yet approved or applied. Confirm the organization-defined limits and account types for this application-server scope, verify current effective limits and whether the same shared IdP control covers them, then configure missing approved limits. Preserve justified service-account distinctions and verify limit enforcement; do not apply a human-browser maximum blindly to all service connections."
     }
   ],
   "web-hardening": [
     {
       "vuln_id": "V-206412",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Disable nginx version disclosure in error bodies or use a generic error response while retaining existing gateway header stripping."
+      "next_step": "In the post-classification verification pass, inspect the assessed nginx/gateway configuration and representative externally visible warning/error responses. Check server/version, patch/module and internal path disclosures in both headers and bodies. Credit existing minimization; address confirmed residuals with supported settings or generic error responses while preserving useful client diagnostics. Retain configuration and response evidence; avoid claiming default behavior proves the actual external response."
     }
   ],
   "web-http-protocol": [
     {
       "vuln_id": "V-264363",
       "benchmark": "U_Web_Server_V4R5_SRG",
-      "next_step": "Document operationally necessary translation, HTTP1 request validation/smuggling controls and CATIII/accepted tailoring, or configure end-to-endH2 if required."
+      "next_step": "In the post-classification verification pass, inspect effective gateway/backend protocol selection and confirm whether HTTP/2 requests are downgraded. If so, determine whether downgrading can be disabled safely. If operationally necessary, document that necessity and test rejection of the malformed requests specified by the official check, including header newlines, colons in header names and spaces in methods. Retain configuration/test evidence and propose the supported CAT III disposition or accepted tailoring for review; do not silently classify it as compliant."
     }
   ]
 }
