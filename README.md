@@ -25,6 +25,7 @@ The 176 needs-work recommendations group into **33 shared workstreams**. Every r
 - [Follow-up verification of the original 188 Needs work rules](mpn/evidence/human-review-verification.json)
 - [Requirements found in Slack and Gemini meeting notes](mpn/REQUIREMENTS.md)
 - [Improvement priorities and effort estimate](mpn/FINDINGS.md)
+- [Open work by category and effort](mpn/OPEN-WORK-BY-CATEGORY.md)
 - [Evidence boundaries and exact source versions](mpn/evidence/README.md)
 - [John’s human-review queue](mpn/review/human-review.csv) · [Official packages and hashes](mpn/benchmarks/manifest.json)
 
