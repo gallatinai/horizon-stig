@@ -14,11 +14,12 @@ release and Horizon commit. Its `finding_details` comes only from the decision's
 `cklb_justification` and is empty when none is set. Recommendation, internal
 justification, owner, next action and evidence links are not exported. Generation
 fails if a `cklb_justification` contains a `slack.com`, `docs.google.com`,
-`drive.google.com` or `atlassian.net` URL, a `github.com/gallatinai/` URL, a `GAL-<n>`
-Jira key, or an in-house status string (Needs work, Likely covered, Needs N/A
-justification, Unclear). Internal analysis stays in the assessment and review
-files, which are not for external release. The complete check/fix text, discussion, identifiers and benchmark version come
-from the saved DISA XCCDF. UUIDs are deterministic so status changes produce
+`drive.google.com`, `atlassian.net` or `github.com/gallatinai/` reference, a
+`GAL-<n>` Jira key, an in-house status string (Needs work, Likely covered, Needs N/A
+justification, Unclear) or an internal label (Owner:, Next action, Evidence state),
+in any letter case. Internal analysis stays in the assessment and review files,
+which are not for external release. The complete check/fix text, discussion,
+identifiers and benchmark version come from the saved DISA XCCDF. UUIDs are deterministic so status changes produce
 small diffs.
 
 | Assessment recommendation | CKLB status |

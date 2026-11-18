@@ -29,10 +29,11 @@ DESCRIPTION_FIELDS = {
 
 # CKLB files go to external assessors; justifications must not carry in-house references.
 INTERNAL_PATTERNS = [
-    re.compile(r'https?://[^\s]*(slack\.com|docs\.google\.com|drive\.google\.com|atlassian\.net)', re.I),
+    re.compile(r'slack\.com|docs\.google\.com|drive\.google\.com|atlassian\.net', re.I),
     re.compile(r'github\.com/gallatinai/', re.I),
-    re.compile(r'\bGAL-\d+\b'),
-    re.compile(r'Needs work|Likely covered|Needs N/A justification|Unclear'),
+    re.compile(r'\bGAL-\d+\b', re.I),
+    # Fail closed on any case: an external justification must state a disposition, not a triage label.
+    re.compile(r'\b(needs work|likely covered|needs n/a justification|unclear|evidence state|next action|owner:)', re.I),
 ]
 
 
@@ -123,7 +124,8 @@ def build_checklist(package, benchmark, assessment):
             'target_type': 'Computing', 'host_name': 'Horizon-MPN',
             'ip_address': '', 'mac_address': '', 'fqdn': '',
             'comments': ('Product-level assessment for Gallatin-managed UDS Core on MPN. '
-                         'Logical target; deployment asset identifiers are not recorded here.'),
+                         'Logical target; deployment asset identifiers are not recorded here. '
+                         'Rule classification describes the public benchmark content.'),
             'role': 'None', 'is_web_database': False, 'technology_area': '',
             'web_db_site': '', 'web_db_instance': '',
         },

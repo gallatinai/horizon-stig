@@ -11,7 +11,7 @@
     "ip_address": "",
     "mac_address": "",
     "fqdn": "",
-    "comments": "Product-level assessment for Gallatin-managed UDS Core on MPN. Logical target; deployment asset identifiers are not recorded here.",
+    "comments": "Product-level assessment for Gallatin-managed UDS Core on MPN. Logical target; deployment asset identifiers are not recorded here. Rule classification describes the public benchmark content.",
     "role": "None",
     "is_web_database": false,
     "technology_area": "",

@@ -111,7 +111,9 @@ class Checklists(unittest.TestCase):
         for leak in ['See https://acme.slack.com/archives/C1', 'https://docs.google.com/document/d/1',
                      'https://drive.google.com/file/d/1', 'https://acme.atlassian.net/browse/X-1',
                      'https://github.com/gallatinai/horizon/pull/1', 'Tracked in GAL-123',
-                     'Status: Needs work', 'Likely covered', 'Needs N/A justification', 'Unclear']:
+                     'acme.slack.com/archives/C1', 'Tracked in gal-123', 'Status: Needs work',
+                     'needs work', 'Likely covered', 'Needs N/A justification', 'Unclear',
+                     'Next action: fix', 'Owner: someone', 'Evidence state: partial']:
             assessment = copy.deepcopy(self.assessment)
             assessment['decisions'][key]['cklb_justification'] = leak
             with self.subTest(leak=leak), self.assertRaisesRegex(ValueError, key):
