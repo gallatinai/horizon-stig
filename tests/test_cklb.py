@@ -68,10 +68,11 @@ class Checklists(unittest.TestCase):
                 self.assertEqual(row['group_tree'][0]['id'], row['group_id'])
                 self.assertIn(row['status'], {'open', 'not_reviewed', 'not_a_finding', 'not_applicable'})
                 decision = self.assessment['decisions'][row['group_id']]
-                self.assertIn(decision['justification'], row['comments'])
-                self.assertIn(decision['next_step'], row['comments'])
+                baseline = self.assessment['baseline']
+                self.assertEqual(row['comments'], f"Assessed release: {baseline['version']} "
+                                 f"(Horizon commit {baseline['horizon_commit']})")
+                self.assertEqual(row['finding_details'], decision.get('cklb_justification', '').strip())
                 self.assertTrue(row['discussion'])
-                self.assertTrue(row['finding_details'])
             total += len(stig['rules'])
         self.assertEqual(total, len(self.assessment['decisions']))
 
@@ -98,11 +99,23 @@ class Checklists(unittest.TestCase):
         xml = ET.parse(ROOT / 'mpn/benchmarks' / package['package'] / 'benchmark.xml').getroot()
         key = xml.find('x:Group', N).attrib['id']
         assessment['decisions'][key].update(decision, cklb_justification='This component does not expose this capability.')
-        catalog = json.loads((ROOT / 'mpn/evidence/catalog.json').read_text())
-        row = generator.build_checklist(package, xml, assessment, catalog)['stigs'][0]['rules'][0]
+        row = generator.build_checklist(package, xml, assessment)['stigs'][0]['rules'][0]
         self.assertEqual(row['status'], 'not_applicable')
         self.assertEqual(row['finding_details'], 'This component does not expose this capability.')
-        self.assertIn(row['finding_details'], row['comments'])
+        self.assertNotIn('This component', row['comments'])
+
+    def test_internal_content_in_cklb_justification_is_rejected(self):
+        package = self.manifest[0]
+        xml = ET.parse(ROOT / 'mpn/benchmarks' / package['package'] / 'benchmark.xml').getroot()
+        key = xml.find('x:Group', N).attrib['id']
+        for leak in ['See https://acme.slack.com/archives/C1', 'https://docs.google.com/document/d/1',
+                     'https://drive.google.com/file/d/1', 'https://acme.atlassian.net/browse/X-1',
+                     'https://github.com/gallatinai/horizon/pull/1', 'Tracked in GAL-123',
+                     'Status: Needs work', 'Likely covered', 'Needs N/A justification', 'Unclear']:
+            assessment = copy.deepcopy(self.assessment)
+            assessment['decisions'][key]['cklb_justification'] = leak
+            with self.subTest(leak=leak), self.assertRaisesRegex(ValueError, key):
+                generator.build_checklist(package, xml, assessment)
 
     def test_description_preserves_literal_prose(self):
         fields = generator.description_fields('<VulnDiscussion>x < 5 & y</VulnDiscussion><Documentable>false</Documentable>')
@@ -115,12 +128,11 @@ class Checklists(unittest.TestCase):
         assessment = copy.deepcopy(self.assessment)
         package = self.manifest[0]
         xml = ET.parse(ROOT / 'mpn/benchmarks' / package['package'] / 'benchmark.xml').getroot()
-        catalog = json.loads((ROOT / 'mpn/evidence/catalog.json').read_text())
-        before = generator.build_checklist(package, xml, assessment, catalog)
+        before = generator.build_checklist(package, xml, assessment)
         key = xml.find('x:Group', N).attrib['id']
         assessment['decisions'][key]['status'] = ('Compliant' if assessment['decisions'][key]['status'] == 'Needs work' else 'Needs work')
         assessment['decisions'][key].pop('cklb_status', None)
-        after = generator.build_checklist(package, xml, assessment, catalog)
+        after = generator.build_checklist(package, xml, assessment)
         self.assertNotEqual(before['stigs'][0]['rules'][0]['status'], after['stigs'][0]['rules'][0]['status'])
         self.assertEqual(before['stigs'][0]['rules'][1:], after['stigs'][0]['rules'][1:])
         self.assertEqual(before['id'], after['id'])

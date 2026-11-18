@@ -8,9 +8,16 @@ checklists, and commits changed CKLB files back to `main`. It can also be run wi
 use `GITHUB_TOKEN`, whose pushes do not start another workflow run.
 
 Edit [current-assessment.json](../evidence/current-assessment.json) and
-[catalog.json](../evidence/catalog.json), not these generated files. Each rule
-includes its recommendation, justification, evidence links, owner and next action.
-The complete check/fix text, discussion, identifiers and benchmark version come
+[catalog.json](../evidence/catalog.json), not these generated files. These
+files go to external assessors, so each rule's `comments` holds only the assessed
+release and Horizon commit. Its `finding_details` comes only from the decision's
+`cklb_justification` and is empty when none is set. Recommendation, internal
+justification, owner, next action and evidence links are not exported. Generation
+fails if a `cklb_justification` contains a `slack.com`, `docs.google.com`,
+`drive.google.com` or `atlassian.net` URL, a `github.com/gallatinai/` URL, a `GAL-<n>`
+Jira key, or an in-house status string (Needs work, Likely covered, Needs N/A
+justification, Unclear). Internal analysis stays in the assessment and review
+files, which are not for external release. The complete check/fix text, discussion, identifiers and benchmark version come
 from the saved DISA XCCDF. UUIDs are deterministic so status changes produce
 small diffs.
 
