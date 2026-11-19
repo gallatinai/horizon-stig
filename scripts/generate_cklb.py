@@ -27,6 +27,15 @@ DESCRIPTION_FIELDS = {
     'mitigations': 'Mitigations', 'mitigation_control': 'MitigationControl',
 }
 
+# CKLB files go to external assessors; justifications must not carry in-house references.
+INTERNAL_PATTERNS = [
+    re.compile(r'slack\.com|docs\.google\.com|drive\.google\.com|atlassian\.net', re.I),
+    re.compile(r'github\.com/gallatinai/', re.I),
+    re.compile(r'\bGAL-\d+\b', re.I),
+    # Fail closed on any case: an external justification must state a disposition, not a triage label.
+    re.compile(r'\b(needs work|likely covered|needs n/a justification|unclear|evidence state|next action|owner:)', re.I),
+]
+
 
 def stable_id(key):
     return str(uuid5(NAMESPACE_URL, 'https://github.com/gallatinai/horizon-stig/' + key))
@@ -46,6 +55,13 @@ def disposition(decision):
     return result
 
 
+def reject_internal_content(vuln_id, justification):
+    for pattern in INTERNAL_PATTERNS:
+        match = pattern.search(justification)
+        if match:
+            raise ValueError(f'{vuln_id}: cklb_justification contains internal-only content: {match.group(0)!r}')
+
+
 def description_fields(description):
     # XCCDF descriptions contain escaped markup. Extract the known wrappers
     # without parsing the embedded prose as XML (it may contain literal < or &).
@@ -60,7 +76,7 @@ def description_fields(description):
     return fields
 
 
-def build_checklist(package, benchmark, assessment, catalog):
+def build_checklist(package, benchmark, assessment):
     name = package['package']
     stig_uuid = stable_id(name + '/stig')
     rules = []
@@ -69,32 +85,11 @@ def build_checklist(package, benchmark, assessment, catalog):
             vuln_id = group.attrib['id']
             decision = assessment['decisions'][vuln_id]
             status = disposition(decision)
-            sources = []
-            for key in decision['evidence_ids']:
-                item = catalog[key]
-                sources.append(f"[{key}] {item.get('title', key)}\n"
-                               f"{item.get('observation', '')}\n{item['url']}")
-            comments = '\n\n'.join([
-                f"Assessment recommendation: {decision['status']}\n"
-                f"Evidence state: {decision.get('evidence_state', '')}\n"
-                f"Assessed release: {assessment['baseline']['version']}\n"
-                f"Horizon commit: {assessment['baseline']['horizon_commit']}",
-                'Justification: ' + decision['justification'],
-                'Components: ' + decision['components'],
-                'Owner: ' + decision['owner'],
-                'Next action: ' + decision['next_step'],
-                'Evidence:\n' + '\n\n'.join(sources),
-            ])
-            override = decision.get('cklb_justification', '').strip()
-            if override:
-                comments += '\n\nCKLB disposition justification: ' + override
-            if status == 'not_reviewed':
-                finding = (f"Recommendation: {decision['status']}. "
-                           f"{decision['justification']}\n\nNext action: {decision['next_step']}")
-            else:
-                finding = override or decision['justification']
-                if status == 'open':
-                    finding += '\n\nNext action: ' + decision['next_step']
+            justification = decision.get('cklb_justification', '').strip()
+            reject_internal_content(vuln_id, justification)
+            baseline = assessment['baseline']
+            comments = (f"Assessed release: {baseline['version']} "
+                        f"(Horizon commit {baseline['horizon_commit']})")
             check_ref = rule.find('x:check/x:check-content-ref', N)
             identifiers = [ident.text for ident in rule.findall('x:ident', N) if ident.text]
             reference = text(rule, 'x:reference/dc:identifier') or None
@@ -117,7 +112,7 @@ def build_checklist(package, benchmark, assessment, catalog):
                 'reference_identifier': reference,
                 'uuid': stable_id(name + '/' + rule_id), 'stig_uuid': stig_uuid,
                 'status': status, 'overrides': {}, 'comments': comments,
-                'finding_details': finding,
+                'finding_details': justification,
             })
     if len(rules) != package['rule_count']:
         raise ValueError(f"{name}: expected {package['rule_count']} rules, got {len(rules)}")
@@ -149,14 +144,13 @@ def build_checklist(package, benchmark, assessment, catalog):
 
 def outputs(root=ROOT):
     assessment = json.loads((root / 'mpn/evidence/current-assessment.json').read_text())
-    catalog = json.loads((root / 'mpn/evidence/catalog.json').read_text())
     manifest = json.loads((root / 'mpn/benchmarks/manifest.json').read_text())
     result = {}
     seen = set()
     for package in manifest:
         name = package['package']
         benchmark = ET.parse(root / 'mpn/benchmarks' / name / 'benchmark.xml').getroot()
-        checklist = build_checklist(package, benchmark, assessment, catalog)
+        checklist = build_checklist(package, benchmark, assessment)
         for rule in checklist['stigs'][0]['rules']:
             if rule['group_id'] in seen:
                 raise ValueError('Duplicate assessment rule: ' + rule['group_id'])
