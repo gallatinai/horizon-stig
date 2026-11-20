@@ -966,7 +966,7 @@
   },
   "re-web-identity-values": {
     "title": "re-web-identity-values",
-    "observation": "Selected Core realmAuthFlows defaults OTPtrue,X509true,USERNAME_PASSWORDtrue; account inactivity workflow opt-in, detailedObservability alerts off. Provider administration/flow settings\u2014not static nginx\u2014own identity security controls.",
+    "observation": "Selected Core realmAuthFlows defaults OTPtrue,X509true,USERNAME_PASSWORDtrue; account inactivity workflow opt-in, detailedObservability alerts off. Provider administration/flow settings—not static nginx—own identity security controls.",
     "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/values.yaml"
   },
   "re-web-identity-doc": {
@@ -1616,7 +1616,7 @@
   },
   "solution-governance-provider-assurance": {
     "url": "https://docs.github.com/en/enterprise-cloud@latest/organizations/keeping-your-organization-secure/managing-security-settings-for-your-organization/accessing-compliance-reports-for-your-organization",
-    "observation": "GitHub organization owners can obtain current SOC 1/2 Type2, ISO27001, CSA assurance and continuity/incident reports from organization Settings\u2192Security\u2192Compliance. Those reports support a scoped provider-control inheritance/tailoring record; they are not asserted to be a DISA STIG certification."
+    "observation": "GitHub organization owners can obtain current SOC 1/2 Type2, ISO27001, CSA assurance and continuity/incident reports from organization Settings→Security→Compliance. Those reports support a scoped provider-control inheritance/tailoring record; they are not asserted to be a DISA STIG certification."
   },
   "solution-governance-access-snapshot": {
     "url": "https://docs.github.com/en/rest/collaborators/collaborators?apiVersion=2022-11-28#list-repository-collaborators",
@@ -1760,7 +1760,7 @@
   },
   "nsa-network-msc-boundary": {
     "url": "https://www.nsa.gov/Portals/75/documents/CSfC%20CP%20Updates%202026/(U)%20Multi-Site%20Connectivity%20Capability%20Package%20v1.3.0.pdf?ver=mJWYHsX8a0wSY6bOPdCrZA%3D%3D",
-    "observation": "MSC1.3 \u00a74.1.1 places the Red network behind the inner encryption component; it permits unencrypted classified traffic there. \u00a7\u00a74/4.2 protect same-security-level sites across untrusted transport using two independent nested IPsec/MACsec tunnels. This is a network-boundary architecture, not a mandate to insert two CSfC layers between every pair of pods within one authorized Red enclave."
+    "observation": "MSC1.3 §4.1.1 places the Red network behind the inner encryption component; it permits unencrypted classified traffic there. §§4/4.2 protect same-security-level sites across untrusted transport using two independent nested IPsec/MACsec tunnels. This is a network-boundary architecture, not a mandate to insert two CSfC layers between every pair of pods within one authorized Red enclave."
   },
   "nsa-network-msc-algorithms": {
     "url": "https://www.nsa.gov/Portals/75/documents/CSfC%20CP%20Updates%202026/(U)%20Multi-Site%20Connectivity%20Capability%20Package%20v1.3.0.pdf?ver=mJWYHsX8a0wSY6bOPdCrZA%3D%3D",
@@ -1768,7 +1768,7 @@
   },
   "nsa-network-ma-boundary": {
     "url": "https://www.nsa.gov/Portals/75/(U)%20Mobile%20Access%20Capability%20Package%20v2_8_0.pdf",
-    "observation": "MA2.8 \u00a75.6 permits a specifically selected TLS-protected server as the inner encryption component for a TLS end-user-device design; \u00a7\u00a712.2 tables16/17 define TLS algorithm requirements. This differs from the MSC IPsec/MACsec site-to-site architecture and does not make arbitrary application TLS an approved inner component."
+    "observation": "MA2.8 §5.6 permits a specifically selected TLS-protected server as the inner encryption component for a TLS end-user-device design; §§12.2 tables16/17 define TLS algorithm requirements. This differs from the MSC IPsec/MACsec site-to-site architecture and does not make arbitrary application TLS an approved inner component."
   },
   "nsa-network-ma-algorithms": {
     "url": "https://www.nsa.gov/Portals/75/(U)%20Mobile%20Access%20Capability%20Package%20v2_8_0.pdf",
@@ -1874,28 +1874,28 @@
     "url": "https://gallatin.atlassian.net/browse/GAL-9426"
   },
   "horizon-marking-search": {
-    "title": "horizon-marking-search",
+    "title": "Search of release source for classification markings",
     "observation": "2026-11-20 search of Horizon release 2026.45.4-uds.1 (commit b84b9af) in apps, packages, workers and deploy for a classification banner, header, footer, marking text or marking color setting: none found. No route in the web application renders a banner.",
     "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/web/src/router/index.ts"
   },
   "horizon-marking-component": {
-    "title": "horizon-marking-component",
+    "title": "Marking component available to the release web application",
     "observation": "2026-11-20 read of release 2026.45.4-uds.1 (commit b84b9af): the web application depends on @gallatin/interface-system ^0.24.1, which exports a ClassificationBanner component. No file in the release imports it.",
     "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/web/package.json"
   },
   "horizon-output-paths": {
-    "title": "horizon-output-paths",
-    "observation": "2026-11-20 read of release 2026.45.4-uds.1 (commit b84b9af): the patient movement SITREP export to a .txt file and copy as markdown, the file download, the chat web artifact, the browser print of any page, API responses, command line output and the map coordinate copy add no marking. No print stylesheet or print call exists in the web application.",
+    "title": "Output paths of the release without a marking",
+    "observation": "2026-11-20 read of release 2026.45.4-uds.1 (commit b84b9af): no marking found on any on-screen page (index.html, router), the branch reports panel (HorizonReportsPanel.vue), the patient movement SITREP export to a .txt file and copy as markdown, the chat web artifact, browser print of any page, or command line output. No print stylesheet or print call found in the web application.",
     "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/web/src/components/dashboard/PatientMovementSitrepModal.vue"
   },
   "horizon-marking-procedure-search": {
-    "title": "horizon-marking-procedure-search",
-    "observation": "2026-11-20 search of project messaging, mail, shared-drive, wiki and ticket records for a user procedure to mark printed or exported output: none found.",
-    "url": "https://gallatin.atlassian.net/browse/GAL-12408"
+    "title": "Search for a user procedure to mark printed or exported output",
+    "observation": "2026-11-20 search of Slack, Gmail, Google Drive, Confluence and Jira for a user procedure to mark printed or exported output: none found. The record lists the places; the search terms were not recorded.",
+    "url": "https://github.com/gallatinai/horizon-stig/blob/GAL-12408-data-marking/mpn/evidence/marking-procedure-search-2026-11-20.md"
   },
   "horizon-data-marking-table": {
-    "title": "horizon-data-marking-table",
-    "observation": "2026-11-20 table of output paths in release 2026.45.4-uds.1 with the marking each carries and the marking the check requires.",
-    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/web/src/router/index.ts"
+    "title": "Table of output paths and the marking found on each",
+    "observation": "2026-11-20 table of seven output paths in release 2026.45.4-uds.1 and the marking found on each in the release source.",
+    "url": "https://github.com/gallatinai/horizon-stig/blob/GAL-12408-data-marking/mpn/evidence/data-marking.md"
   }
 }
