@@ -1729,6 +1729,10 @@
     "status": "Needs work",
     "justification": "Security testing is partially implemented through existing CodeQL, container vulnerability scans and functional/security tests. The saved evidence does not establish architecture-relevant active vulnerability and fuzz-testing procedures, settings and results. Human review on 2026-11-10 confirmed Needs work with verification first: locate existing active/fuzz assessment evidence before assigning new testing, fill confirmed coverage gaps and track findings. Static analysis and image scans alone do not satisfy the explicit active/fuzz testing check.",
     "evidence_ids": [
+      "re-governance-release-build",
+      "re-governance-release-codeql",
+      "re-governance-review",
+      "review-predeployment-verification",
       "testing-active-fuzz-none-found-2026-11-20",
       "scan-delivered-images-2026-11-05",
       "scan-postgres-2026-11-20",
@@ -1741,9 +1745,8 @@
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
     "task": "security-assessment-coverage",
     "evidence_state": "source-inferred",
-    "cklb_status": "open",
-    "cklb_justification": "The application test procedures and test results do not include active vulnerability and fuzz testing: none found in the Horizon source at commit b84b9af, its bundle and deployment repositories, or the team's ticket, wiki, document, mail and chat records on 2026-11-20 (testing-active-fuzz-none-found-2026-11-20). The scan results include noncritical results and no critical vulnerabilities 21 business days or older: 0 critical in the Grype 0.110.0 scans of 8 delivered images dated 2026-11-05 (scan-delivered-images-2026-11-05) and of horizon-postgres dated 2026-11-20 (scan-postgres-2026-11-20), as of 2026-11-20. For nats, openfga and seaweedfs the critical count is not known: no scan result at the delivered digests found on 2026-11-20 (scan-nats-openfga-seaweedfs-none-found-2026-11-20). The scanning tests are not relevant to the whole architecture of the application: the tests are container image scans with only-fixed false (scan-configuration-b84b9af), and no web-server or API vulnerability test was found on 2026-11-20 (testing-active-fuzz-none-found-2026-11-20).",
-    "evidence": "https://github.com/gallatinai/horizon/tree/b84b9afcd6983d553b6b8406317b6592ec90cb7c; https://github.com/gallatinai/horizon/actions/runs/42109769948; https://github.com/gallatinai/horizon/actions/runs/44710904072; https://github.com/gallatinai/horizon/actions/runs/42109769948; https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/.github/workflows/build.yml#L1097-L1131",
+    "cklb_justification": "The application test procedures and test results do not include active vulnerability and fuzz testing: none found in the Horizon source at commit b84b9af, its bundle and deployment repositories, or the team's ticket, wiki, document, mail and chat records, searched 2026-11-20 (testing-active-fuzz-none-found-2026-11-20). The scan results include noncritical results and no critical vulnerabilities 21 business days or older: 0 critical in the Grype 0.110.0 scans of 8 of the 12 delivered images dated 2026-11-05 (scan-delivered-images-2026-11-05) and of horizon-postgres dated 2026-11-20 (scan-postgres-2026-11-20). The vulnerability scanning tests are not relevant to the architecture of the application: they are container image scans (scan-configuration-b84b9af); no web-server or API vulnerability test was found, searched 2026-11-20 (testing-active-fuzz-none-found-2026-11-20); and nats 2.15.2, openfga 1.22.1 and seaweedfs 4.52 have no scan result at their delivered digests in the build run of 2026-11-05 or the image scan runs of 2026-11-14 to 2026-11-20 (scan-nats-openfga-seaweedfs-none-found-2026-11-20).",
+    "evidence": "https://github.com/gallatinai/horizon/actions/runs/42109769948; https://github.com/gallatinai/horizon/actions/runs/42102523542; https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/docs/security/scanner-suppression-review-process.md; ../evidence/human-review-verification.json; https://github.com/gallatinai/horizon/tree/b84b9afcd6983d553b6b8406317b6592ec90cb7c; https://github.com/gallatinai/horizon/actions/runs/42109769948; https://github.com/gallatinai/horizon/actions/runs/44710904072; https://github.com/gallatinai/horizon/actions/runs/42109769948; https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/.github/workflows/build.yml#L1097-L1131",
     "human_review": true
   },
   {
@@ -2020,6 +2023,10 @@
     "status": "Needs work",
     "justification": "Existing authorization, failure-mode and CI tests provide partial security-test coverage, but the saved evidence does not establish the full initialization/shutdown/abort matrix or dated execution within the last year. Human review on 2026-11-10 confirmed Needs work with verification first for this and similar security-test coverage issues: map existing procedures and dated test/assessment results to the exact required scenarios, then add and execute only missing coverage. Existing test infrastructure should be reused.",
     "evidence_ids": [
+      "app-ci",
+      "re-governance-release-build",
+      "app-enforcer",
+      "review-predeployment-verification",
       "testing-lifecycle-none-found-2026-11-20"
     ],
     "next_step": "In the post-classification verification pass, map current procedures and dated CI/assessment results to secure initialization, shutdown and abort scenarios, including access to application and configuration without credentials or with improper credentials, locally and remotely. Confirm procedures require execution at least annually and evidence shows execution within the last year. Credit existing coverage, add and execute only missing cases in the appropriate test environment, and retain the coverage map and dated results.",
@@ -2028,9 +2035,8 @@
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
     "task": "security-assessment-coverage",
     "evidence_state": "source-inferred",
-    "cklb_status": "open",
-    "cklb_justification": "Annual testing procedures for system initialization, shutdown and aborts, and testing dates within the last year: none found in the Horizon documentation at commit b84b9af or the team's ticket, wiki, document, mail and chat records on 2026-11-20 (testing-lifecycle-none-found-2026-11-20).",
-    "evidence": "https://github.com/gallatinai/horizon/tree/b84b9afcd6983d553b6b8406317b6592ec90cb7c/docs",
+    "cklb_justification": "Annual testing procedures for system initialization, shutdown and aborts, and testing dates within the last year: none found in the Horizon documentation at commit b84b9af or the team's ticket, wiki, document, mail and chat records, searched 2026-11-20 (testing-lifecycle-none-found-2026-11-20).",
+    "evidence": "https://github.com/gallatinai/horizon/blob/3f3b51d454197c077b33896caf93de72b94eafda/.github/workflows/build.yml; https://github.com/gallatinai/horizon/actions/runs/42109769948; https://github.com/gallatinai/horizon/blob/3f3b51d454197c077b33896caf93de72b94eafda/apps/api/src/core/authorization/permission-enforcer.service.ts; ../evidence/human-review-verification.json; https://github.com/gallatinai/horizon/tree/b84b9afcd6983d553b6b8406317b6592ec90cb7c/docs",
     "human_review": true
   },
   {
