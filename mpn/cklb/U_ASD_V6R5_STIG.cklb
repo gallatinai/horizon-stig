@@ -1883,7 +1883,7 @@
           "status": "open",
           "overrides": {},
           "comments": "Assessed release: 2026.45.4-uds.1 (Horizon commit b84b9afcd6983d553b6b8406317b6592ec90cb7c)",
-          "finding_details": "The data elements found in the database schema at Horizon source b84b9af are listed in three groups; the list is not confirmed complete (mpn-data-protection-table, 2026-11-20). Protection requirements per element are not documented: none found as of 2026-11-20 (mpn-data-protection-requirements-search), a finding under the check."
+          "finding_details": "The application data protection requirements are not documented: none found as of 2026-11-20 (mpn-data-protection-requirements-search, 2026-11-20)."
         },
         {
           "group_id_src": "V-222424",
@@ -13660,7 +13660,7 @@
           "status": "open",
           "overrides": {},
           "comments": "Assessed release: 2026.45.4-uds.1 (Horizon commit b84b9afcd6983d553b6b8406317b6592ec90cb7c)",
-          "finding_details": "Provisions to notify users when the application is decommissioned: none found as of 2026-11-20 (mpn-decommission-notice-search), a finding under the check. The notice procedure has no signature (mpn-decommission-notice, 2026-11-20), so it is not evidence of a provision."
+          "finding_details": "Provisions to notify users when the application is decommissioned: none found as of 2026-11-20 (mpn-decommission-notice-search, 2026-11-20)."
         },
         {
           "group_id_src": "V-222661",
