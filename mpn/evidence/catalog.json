@@ -1872,5 +1872,35 @@
     "title": "Existing protected-file secret task in III Corps",
     "observation": "Existing III Corps secret-to-projected-file task, hydrated read-only; no Jira mutation. Contrary customer requirement remains unconfirmed.",
     "url": "https://gallatin.atlassian.net/browse/GAL-9426"
+  },
+  "testing-active-fuzz-none-found-2026-11-20": {
+    "title": "Active vulnerability and fuzz testing: none found as of 2026-11-20",
+    "observation": "Searched on 2026-11-20 for an active vulnerability, fuzz, penetration or dynamic web scan tool, workflow or result: git grep of the Horizon source at commit b84b9af (tool names schemathesis, hypothesis, fast-check, zap, nuclei, pentest, restler, atheris, go-fuzz, jazzer, wapiti, dastardly; lockfiles excluded) found no security test; the 4 of 43 workflows that match scanner names are build, checkov, codeql and grype-db-completeness; the bundle and deployment repositories, the assessment repository, and the team ticket, wiki, document, mail and chat records returned no test result.",
+    "url": "https://github.com/gallatinai/horizon/tree/b84b9afcd6983d553b6b8406317b6592ec90cb7c"
+  },
+  "testing-lifecycle-none-found-2026-11-20": {
+    "title": "Initialization, shutdown and abort test procedures and dates: none found as of 2026-11-20",
+    "observation": "Searched on 2026-11-20: git grep of Horizon docs and Markdown files at commit b84b9af for annual test, shutdown procedure, abort test and secure state returned 0 files; the team ticket, wiki, document, mail and chat records hold no procedure and no dated test record. The API registers shutdown hooks (apps/api/src/main.ts line 57); that is code, not a test.",
+    "url": "https://github.com/gallatinai/horizon/tree/b84b9afcd6983d553b6b8406317b6592ec90cb7c/docs"
+  },
+  "scan-delivered-images-2026-11-05": {
+    "title": "Grype scan of the 8 delivered Horizon images, 2026-11-05",
+    "observation": "Grype 0.110.0, build run of 2026-11-05 at commit b84b9af. 20 results in 8 images (api, migrations, road-graph, web, artifact-ingestion, chat-agent, ops-readiness, simulation), none critical; highest security severity 8.5 (high). Each scanned digest equals the digest in delivered-image-evidence.json.",
+    "url": "https://github.com/gallatinai/horizon/actions/runs/42109769948"
+  },
+  "scan-postgres-2026-11-20": {
+    "title": "Grype scan of the delivered horizon-postgres image, 2026-11-20",
+    "observation": "Grype 0.110.0, Image Scan run of 2026-11-20, delivered digest f619c32b. 90 results, none critical; highest security severity 8.8.",
+    "url": "https://github.com/gallatinai/horizon/actions/runs/44710904072"
+  },
+  "scan-nats-openfga-seaweedfs-none-found-2026-11-20": {
+    "title": "Scan results for nats, openfga and seaweedfs: none found as of 2026-11-20",
+    "observation": "Searched on 2026-11-20 for a Grype result at the delivered digests of nats 2.15.2 (223a728c), openfga 1.22.1 (26ff761a) and seaweedfs 4.52 (ae1d6956): the build run of 2026-11-05 and the Image Scan runs of 2026-11-14 to 2026-11-20 hold no job or artifact for them.",
+    "url": "https://github.com/gallatinai/horizon/actions/runs/42109769948"
+  },
+  "scan-configuration-b84b9af": {
+    "title": "Grype scan configuration at the assessed commit",
+    "observation": "build.yml lines 1097-1131 at commit b84b9af: anchore/scan-action with only-fixed false and one OpenVEX file. .grype.yaml holds 10 ignore rules.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/.github/workflows/build.yml#L1097-L1131"
   }
 }
