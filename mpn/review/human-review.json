@@ -1988,7 +1988,12 @@
     "evidence_ids": [
       "re-governance-policy-classification",
       "app-web-image",
-      "review-predeployment-verification"
+      "review-predeployment-verification",
+      "horizon-marking-search",
+      "horizon-marking-component",
+      "horizon-output-paths",
+      "horizon-marking-procedure-search",
+      "horizon-data-marking-table"
     ],
     "next_step": "In the post-classification verification pass, obtain the mission classification guide and inspect actual screen, report and print/export marking capabilities and configuration. Verify the required top/bottom markings for common sensitive-data transactions and report output; apply the official highest-system-classification rule when a guide is absent. Credit existing supported capability and implement only confirmed gaps. Check any manual printed-output procedures against the exact technical-limit conditions and availability to users. Retain function-specific evidence and coordinate required labels with the data owner.",
     "owner": "Gallatin engineering/security; MPN mission owner for site approvals",
@@ -1996,7 +2001,9 @@
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
     "task": "data-label-policy",
     "evidence_state": "source-inferred",
-    "evidence": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-CUI-data-classification.md; https://github.com/gallatinai/horizon/blob/3f3b51d454197c077b33896caf93de72b94eafda/apps/web/Dockerfile; ../evidence/human-review-verification.json",
+    "cklb_status": "open",
+    "cklb_justification": "Markings are not present: none found on 2026-11-20 in the Horizon source for release 2026.45.4-uds.1 (commit b84b9af), in apps, packages, workers or deploy, for a classification banner, header, footer, or marking text or color setting, and no web route renders one (horizon-marking-search). Marking is technically possible: the web application in the release depends on @gallatin/interface-system 0.24.1, which exports a ClassificationBanner component that no file in the release imports (horizon-marking-component, 2026-11-20). The functions that produce unmarked output are every on-screen page, the patient movement SITREP export to .txt and copy as markdown, the branch reports panel, the chat web artifact, browser print of any page, API responses, command line output and the map coordinate copy; a file download returns the uploaded bytes unchanged (horizon-output-paths, 2026-11-20). No user procedure for marking printed or exported output was found in project messaging, mail, shared-drive, wiki or ticket records on 2026-11-20 (horizon-marking-procedure-search).",
+    "evidence": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-CUI-data-classification.md; https://github.com/gallatinai/horizon/blob/3f3b51d454197c077b33896caf93de72b94eafda/apps/web/Dockerfile; ../evidence/human-review-verification.json; https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/web/src/router/index.ts; https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/web/package.json; https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/web/src/components/dashboard/PatientMovementSitrepModal.vue; https://gallatin.atlassian.net/browse/GAL-12408; https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/web/src/router/index.ts",
     "human_review": true
   },
   {
