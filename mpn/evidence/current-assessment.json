@@ -11748,18 +11748,20 @@
       "evidence_state": "source-inferred"
     },
     "V-204760": {
-      "status": "Needs N/A justification",
-      "justification": "The assessed server executes packaged Node/Python service images, not downloaded browser mobile code, Javaapplets or a user-installable script/plugin runtime. FrontendJavaScript is compiled/deployed and served to the browser; document uploads are parsed as data by dedicated workers. Apply mobile code approval to the browser/releaseboundary rather than assume this server needs a mobile codeclassification engine.",
+      "status": "Needs work",
+      "justification": "Code review on 2026-11-20 rejected the proposed N/A: the delivered product does serve dynamically generated script, not only compiled frontend assets. The chat agent persists model-authored HTML artifacts that can contain inline JavaScript, the API returns them, and the web client executes them in an allow-scripts sandboxed iframe. Mobile-code protection is partially implemented: the client injects a restrictive CSP (object-src 'none', default-src 'none', form-action 'none') that blocks plugin/Category 1 content and egress. However, the application server itself performs no identification of prohibited mobile code in this content, and this exact check is against application server configuration. Credit the existing client-side CSP and sandbox; either add server-side identification or a server-delivered CSP for artifact content, or obtain an accepted decision that the client-side controls satisfy the requirement.",
       "evidence_ids": [
         "re-appserver-release",
-        "re-appserver-webmobile",
-        "re-appserver-podsecurity"
+        "re-appserver-agent-html",
+        "re-appserver-artifact-frame",
+        "re-appserver-artifact-csp",
+        "re-appserver-webmobile"
       ],
-      "next_step": "Document the absence of server-executed mobile code/plugininterfaces and the separate browsercode inventory.",
+      "next_step": "Inventory every path that returns agent- or user-authored HTML/script to the browser. Decide whether the existing client-side CSP and sandbox are accepted as the mobile-code control. If not, add server-side identification of prohibited mobile code (e.g. reject or strip <object>, <embed>, <applet> and plugin content when artifacts are stored) or deliver the CSP as a server response header for artifact content, and verify with the existing red-team browser test.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
-      "category": "component applicability",
+      "category": "configuration / mobile-code identification",
       "components": "Delivered Horizon API, workers, chat, ingestion and storage; delegated UDS identity/gateway/mesh",
-      "task": "",
+      "task": "mobile-code-identification",
       "evidence_state": "source-inferred"
     },
     "V-204761": {
@@ -13736,18 +13738,19 @@
       "evidence_state": "source-inferred"
     },
     "V-206555": {
-      "status": "Needs N/A justification",
-      "justification": "Actual SQL credentials are noninteractive deployment identities generated with192 bits of entropy, rather than human-selected passwords. Shared UDS handles human password/MFA policy. This provides a defensible machine-account alternative to literal character-class/history checks, but the official text includes noninteractive lifetimes, so accepted machine-account generation/rotation tailoring must be attached rather than claiming unconditional compliance.",
+      "status": "Needs work",
+      "justification": "Code review on 2026-11-20 rejected the proposed N/A: this check's only exemptions are that DBMS password authentication is not employed, or that rules are inherited from the OS or access-control program, and neither applies. PostgreSQL uses native password logins for the horizon_app role, the openfga role and the POSTGRES_PASSWORD superuser, with no VALID UNTIL, password-check hook or inherited policy. Machine-generated secrets (openssl rand -hex 24) are a defensible compensating control for complexity and reuse, but the official text also sets noninteractive lifetime limits (minimum 24 hours, maximum 365 days), and no rotation schedule or enforcement exists. Credit random generation; define and enforce a service-account rotation policy, or obtain an accepted compensating-control decision covering lifetime.",
       "evidence_ids": [
         "re-database-release",
         "re-database-machine-secrets",
-        "re-database-role"
+        "re-database-role",
+        "re-database-openfga-role"
       ],
-      "next_step": "Document approved machine-account password generation/rotation policy; if tailoring is rejected, implement the exact native password constraints and lifetime controls.",
+      "next_step": "In the post-classification verification pass, confirm the assessed release still generates DB secrets randomly and identify every native password role (horizon_app, openfga, superuser/admin). Document a rotation procedure that meets the 24-hour minimum and 365-day maximum noninteractive lifetime, rotate through the existing Secret/migration path (ALTER ROLE ... PASSWORD), and retain rotation records. If machine-account tailoring is proposed instead, obtain documented ISSO acceptance; if it is rejected, implement native password constraints.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
-      "category": "machine-account compensating-control tailoring",
+      "category": "machine-account password policy",
       "components": "Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database",
-      "task": "",
+      "task": "database-account-policy",
       "evidence_state": "source-inferred"
     },
     "V-206556": {
@@ -15157,18 +15160,19 @@
       "evidence_state": "source-inferred"
     },
     "V-263603": {
-      "status": "Needs N/A justification",
-      "justification": "The package provisions stable noninteractive service identities tied to workloads, not human SQL accounts whose employment or temporary access expires. Shared UDS owns human lifecycle. Native expiry/departure checks need an accepted service-account boundary and credential decommission/rotation procedure, not automatic deletion of live application roles after an individual user departure.",
+      "status": "Needs work",
+      "justification": "Code review on 2026-11-20 rejected the proposed N/A: this check has no N/A condition, and the DBMS has native login accounts that can outlive their purpose. PostgreSQL holds three password-authenticated roles (horizon_app, openfga and the superuser/admin), each associated with a workload or operator function rather than a human. No migration, chart or procedure disables, sets NOLOGIN on, or drops a role when its owning workload or component is retired, so disablement on loss of association is not established. Shared UDS owns human account lifecycle and is out of scope here. Do not automatically delete live application roles; define the service-account association and a decommission procedure.",
       "evidence_ids": [
         "re-database-release",
         "re-database-machine-secrets",
-        "re-database-role"
+        "re-database-role",
+        "re-database-openfga-role"
       ],
-      "next_step": "Record service-account owner/lifetime/decommission policy; assess any separately introduced human SQL accounts against native disablement requirements.",
+      "next_step": "Record the owner and associated workload for each native DB role. Document a decommission procedure that sets NOLOGIN on, or drops, a role and revokes its Secret when its workload or component is removed, and add it to release/teardown checklists. Verify with controlled test evidence that a retired role cannot authenticate, and assess any separately introduced human SQL accounts against native disablement.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
-      "category": "service-account lifecycle tailoring",
+      "category": "service-account lifecycle",
       "components": "Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database",
-      "task": "",
+      "task": "database-account-policy",
       "evidence_state": "source-inferred"
     },
     "V-263604": {
