@@ -11859,7 +11859,7 @@
           "status": "open",
           "overrides": {},
           "comments": "Assessed release: 2026.45.4-uds.1 (Horizon commit b84b9afcd6983d553b6b8406317b6592ec90cb7c)",
-          "finding_details": ""
+          "finding_details": "The application test procedures and test results do not include active vulnerability and fuzz testing: none found in the Horizon source at commit b84b9af, its bundle and deployment repositories, or the team's ticket, wiki, document, mail and chat records on 2026-11-20 (testing-active-fuzz-none-found-2026-11-20). The scan results include noncritical results and no critical vulnerabilities 21 business days or older: 0 critical in the Grype 0.110.0 scans of 8 delivered images dated 2026-11-05 (scan-delivered-images-2026-11-05) and of horizon-postgres dated 2026-11-20 (scan-postgres-2026-11-20), as of 2026-11-20. For nats, openfga and seaweedfs the critical count is not known: no scan result at the delivered digests found on 2026-11-20 (scan-nats-openfga-seaweedfs-none-found-2026-11-20). The scanning tests are not relevant to the whole architecture of the application: the tests are container image scans with only-fixed false (scan-configuration-b84b9af), and no web-server or API vulnerability test was found on 2026-11-20 (testing-active-fuzz-none-found-2026-11-20)."
         },
         {
           "group_id_src": "V-222625",
@@ -13010,7 +13010,7 @@
           "status": "open",
           "overrides": {},
           "comments": "Assessed release: 2026.45.4-uds.1 (Horizon commit b84b9afcd6983d553b6b8406317b6592ec90cb7c)",
-          "finding_details": ""
+          "finding_details": "Annual testing procedures for system initialization, shutdown and aborts, and testing dates within the last year: none found in the Horizon documentation at commit b84b9af or the team's ticket, wiki, document, mail and chat records on 2026-11-20 (testing-lifecycle-none-found-2026-11-20)."
         },
         {
           "group_id_src": "V-222648",
