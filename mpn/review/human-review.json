@@ -4147,6 +4147,39 @@
   },
   {
     "benchmark": "U_Application_Server_V4R6_SRG",
+    "vuln_id": "V-204760",
+    "rule_id": "SV-204760r961083_rule",
+    "version": "SRG-APP-000206-AS-000145",
+    "title": "The application server must identify prohibited mobile code.",
+    "severity": "medium",
+    "description": "<VulnDiscussion>Mobile code is defined as software modules obtained from remote systems, transferred across a network, and then downloaded and executed on a local system without explicit installation or execution by the recipient.\n\nMobile code technologies include: Java, JavaScript, ActiveX, PDF, Postscript, Shockwave movies, Flash animations, and VBScript. Usage restrictions and implementation guidance apply to both the selection and use of mobile code installed on organizational servers and mobile code downloaded and executed on individual workstations.\n\nApplication servers must meet policy requirements regarding the deployment and/or use of mobile code. This includes digitally signing applets in order to provide a means for the client to establish application authenticity and prohibit unauthorized code from being used.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+    "check": "Review the application server configuration to determine if the application server is configured to identify prohibited mobile code.\n\nIf the application server is not configured to identify prohibited mobile code, this is a finding.",
+    "fix": "Configure the application server to identify prohibited mobile code.",
+    "references": [
+      "V-57547",
+      "SV-71823",
+      "CCI-001166"
+    ],
+    "status": "Needs work",
+    "justification": "Code review on 2026-11-20 rejected the proposed N/A: the delivered product does serve dynamically generated script, not only compiled frontend assets. The chat agent persists model-authored HTML artifacts that can contain inline JavaScript, the API returns them, and the web client executes them in an allow-scripts sandboxed iframe. Mobile-code protection is partially implemented: the client injects a restrictive CSP (object-src 'none', default-src 'none', form-action 'none') that blocks plugin/Category 1 content and egress. However, the application server itself performs no identification of prohibited mobile code in this content, and this exact check is against application server configuration. Credit the existing client-side CSP and sandbox; either add server-side identification or a server-delivered CSP for artifact content, or obtain an accepted decision that the client-side controls satisfy the requirement.",
+    "evidence_ids": [
+      "re-appserver-release",
+      "re-appserver-agent-html",
+      "re-appserver-artifact-frame",
+      "re-appserver-artifact-csp",
+      "re-appserver-webmobile"
+    ],
+    "next_step": "Inventory every path that returns agent- or user-authored HTML/script to the browser. Decide whether the existing client-side CSP and sandbox are accepted as the mobile-code control. If not, add server-side identification of prohibited mobile code (e.g. reject or strip <object>, <embed>, <applet> and plugin content when artifacts are stored) or deliver the CSP as a server response header for artifact content, and verify with the existing red-team browser test.",
+    "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
+    "category": "configuration / mobile-code identification",
+    "components": "Delivered Horizon API, workers, chat, ingestion and storage; delegated UDS identity/gateway/mesh",
+    "task": "mobile-code-identification",
+    "evidence_state": "source-inferred",
+    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685; https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/workers/chat-agent/chat_agent/web_artifact_emit.py; https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/web/src/components/communications/WebArtifactFrame.vue#L33; https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/web/src/utils/webArtifactSrcdoc.ts; https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/web/Dockerfile",
+    "human_review": true
+  },
+  {
+    "benchmark": "U_Application_Server_V4R6_SRG",
     "vuln_id": "V-204771",
     "rule_id": "SV-204771r961128_rule",
     "version": "SRG-APP-000231-AS-000156",
@@ -4791,6 +4824,38 @@
     "task": "database-auditing",
     "evidence_state": "source-inferred",
     "evidence": "https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/values/postgres.yaml; https://www.postgresql.org/docs/18/runtime-config-logging.html; https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/core/cls/cls.adapter.ts; https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/schema/permission_audit.pg.hcl; https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685; ../evidence/human-review-verification.json",
+    "human_review": true
+  },
+  {
+    "benchmark": "U_Database_V4R6_SRG",
+    "vuln_id": "V-206555",
+    "rule_id": "SV-206555r1268160_rule",
+    "version": "SRG-APP-000164-DB-000401",
+    "title": "If DBMS authentication, using passwords, is employed, the DBMS must enforce the DoW standards for password complexity and lifetime.",
+    "severity": "high",
+    "description": "<VulnDiscussion>OS/enterprise authentication and identification must be used (SRG-APP-000023-DB-000001). Native DBMS authentication may be used only when circumstances make it unavoidable; and must be documented and authorizing official (AO) approved.\n\nThe DoW standard for authentication is DoW-approved Public Key Infrastructure (PKI) certificates. Authentication based on user ID and password may be used only when it is not possible to employ a PKI certificate, and requires AO approval.\n\nIn such cases, the DoW standards for password complexity and lifetime must be implemented. DBMS products that can inherit the rules for these from the operating system or access control program (e.g., Microsoft Active Directory) must be configured to do so. For other DBMSs, the rules must be enforced using available configuration parameters or custom code.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+    "check": "If DBMS authentication, using passwords, is not employed, this is not a finding.\n\nIf the DBMS is configured to inherit password complexity and lifetime rules from the operating system or access control program, this is not a finding.\n\nReview the DBMS settings relating to password complexity. Determine whether the following rules are enforced. If any are not, this is a finding.\na. minimum of 15 characters, including at least one of each of the following character sets:\n- Uppercase.\n- Lowercase.\n- Numerics.\n- Special characters (e.g., ~ ! @ # $ % ^ & * ( ) _ + = - ' [ ] / ? > <).\nb. Minimum number of characters changed from previous password: 50 percent of the minimum password length; that is, eight.\n\nReview the DBMS settings relating to password lifetime. Determine whether the following rules are enforced. If any are not, this is a finding.\na. Password lifetime limits for interactive accounts: Minimum 24 hours, maximum 180 days.\nb. Password lifetime limits for noninteractive accounts: Minimum 24 hours, maximum 365 days.\nc. Number of password changes before an old one may be reused: Minimum of five.",
+    "fix": "If the use of passwords is not needed, configure the DBMS to prevent their use if it is capable of this; if it is not, institute policies and procedures to prohibit their use.\n\nIf the DBMS can inherit password complexity rules from the operating system or access control program, configure it to do so.\n\nOtherwise, use DBMS configuration parameters and/or custom code to enforce the following rules for passwords:\na. Minimum of 15 characters, including at least one of each of the following character sets:\n- Uppercase.\n- Lowercase.\n- Numerics.\n- Special characters (e.g., ~ ! @ # $ % ^ & * ( ) _ + = - ' [ ] / ? > <).\nb. Minimum number of characters changed from previous password: 50 percent of the minimum password length; that is, eight.\nc. Password lifetime limits for interactive accounts: Minimum 24 hours, maximum 180 days.\nd. Password lifetime limits for non-interactive accounts: Minimum 24 hours, maximum 365 days.\ne. Number of password changes before an old one may be reused: Minimum of five.",
+    "references": [
+      "SV-75897",
+      "V-61407",
+      "CCI-004066"
+    ],
+    "status": "Needs work",
+    "justification": "Code review on 2026-11-20 rejected the proposed N/A: this check's only exemptions are that DBMS password authentication is not employed, or that rules are inherited from the OS or access-control program, and neither applies. PostgreSQL uses native password logins for the horizon_app role, the openfga role and the POSTGRES_PASSWORD superuser, with no VALID UNTIL, password-check hook or inherited policy. Machine-generated secrets (openssl rand -hex 24) are a defensible compensating control for complexity and reuse, but the official text also sets noninteractive lifetime limits (minimum 24 hours, maximum 365 days), and no rotation schedule or enforcement exists. Credit random generation; define and enforce a service-account rotation policy, or obtain an accepted compensating-control decision covering lifetime.",
+    "evidence_ids": [
+      "re-database-release",
+      "re-database-machine-secrets",
+      "re-database-role",
+      "re-database-openfga-role"
+    ],
+    "next_step": "In the post-classification verification pass, confirm the assessed release still generates DB secrets randomly and identify every native password role (horizon_app, openfga, superuser/admin). Document a rotation procedure that meets the 24-hour minimum and 365-day maximum noninteractive lifetime, rotate through the existing Secret/migration path (ALTER ROLE ... PASSWORD), and retain rotation records. If machine-account tailoring is proposed instead, obtain documented ISSO acceptance; if it is rejected, implement native password constraints.",
+    "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
+    "category": "machine-account password policy",
+    "components": "Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database",
+    "task": "database-account-policy",
+    "evidence_state": "source-inferred",
+    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685; https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/zarf.yaml; https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/migrations/00000000000003_provision_app_role.sql; https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/migrations/20260819160000_create_openfga_database.sql",
     "human_review": true
   },
   {
@@ -5486,6 +5551,36 @@
     "evidence_state": "source-inferred",
     "solution_ref": "../solutions/mission-data.md",
     "evidence": "https://github.com/gallatinai/horizon-stig/blob/main/mpn/benchmarks/U_Database_V4R6_SRG/benchmark.xml; https://github.com/gallatinai/horizon-stig/blob/main/mpn/evidence/database-image-provenance.json; https://csrc.nist.gov/glossary/term/NSA_approved_cryptography; https://www.nsa.gov/Resources/Commercial-Solutions-for-Classified-Program/Components-List/; https://www.nsa.gov/Portals/75/documents/CSfC%20CP%20Updates%202026/(U)%20Multi-Site%20Connectivity%20Capability%20Package%20v1.3.0.pdf?ver=mJWYHsX8a0wSY6bOPdCrZA%3D%3D; https://drive.google.com/file/d/1rOyMxUBWdnwfrpnv-gvCWyne0drA5iZ5/view; https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685",
+    "human_review": true
+  },
+  {
+    "benchmark": "U_Database_V4R6_SRG",
+    "vuln_id": "V-263603",
+    "rule_id": "SV-263603r982481_rule",
+    "version": "SRG-APP-000705-DB-000110",
+    "title": "The DBMS must disable accounts when the accounts are no longer associated to a user.",
+    "severity": "medium",
+    "description": "<VulnDiscussion>Disabling expired, inactive, or otherwise anomalous accounts supports the concepts of least privilege and least functionality, which reduce the attack surface of the system.</VulnDiscussion><FalsePositives></FalsePositives><FalseNegatives></FalseNegatives><Documentable>false</Documentable><Mitigations></Mitigations><SeverityOverrideGuidance></SeverityOverrideGuidance><PotentialImpacts></PotentialImpacts><ThirdPartyTools></ThirdPartyTools><MitigationControl></MitigationControl><Responsibility></Responsibility><IAControls></IAControls>",
+    "check": "Verify the DBMS is configured to disable accounts when the accounts are no longer associated to a user.\n\nIf the DBMS is not configured to disable accounts when the accounts are no longer associated to a user, this is a finding.",
+    "fix": "Configure the DBMS to disable accounts when the accounts are no longer associated to a user.",
+    "references": [
+      "CCI-003628"
+    ],
+    "status": "Needs work",
+    "justification": "Code review on 2026-11-20 rejected the proposed N/A: this check has no N/A condition, and the DBMS has native login accounts that can outlive their purpose. PostgreSQL holds three password-authenticated roles (horizon_app, openfga and the superuser/admin), each associated with a workload or operator function rather than a human. No migration, chart or procedure disables, sets NOLOGIN on, or drops a role when its owning workload or component is retired, so disablement on loss of association is not established. Shared UDS owns human account lifecycle and is out of scope here. Do not automatically delete live application roles; define the service-account association and a decommission procedure.",
+    "evidence_ids": [
+      "re-database-release",
+      "re-database-machine-secrets",
+      "re-database-role",
+      "re-database-openfga-role"
+    ],
+    "next_step": "Record the owner and associated workload for each native DB role. Document a decommission procedure that sets NOLOGIN on, or drops, a role and revokes its Secret when its workload or component is removed, and add it to release/teardown checklists. Verify with controlled test evidence that a retired role cannot authenticate, and assess any separately introduced human SQL accounts against native disablement.",
+    "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
+    "category": "service-account lifecycle",
+    "components": "Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database",
+    "task": "database-account-policy",
+    "evidence_state": "source-inferred",
+    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685; https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/zarf.yaml; https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/migrations/00000000000003_provision_app_role.sql; https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/migrations/20260819160000_create_openfga_database.sql",
     "human_review": true
   },
   {

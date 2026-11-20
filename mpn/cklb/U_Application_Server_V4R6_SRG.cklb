@@ -2574,7 +2574,7 @@
           "reference_identifier": "2900",
           "uuid": "7c803cb4-4b5f-5878-a0b5-5eb3e05f0382",
           "stig_uuid": "3817652a-d733-5ebb-b7dc-03a0b4466071",
-          "status": "not_reviewed",
+          "status": "open",
           "overrides": {},
           "comments": "Assessed release: 2026.45.4-uds.1 (Horizon commit b84b9afcd6983d553b6b8406317b6592ec90cb7c)",
           "finding_details": ""
