@@ -1880,7 +1880,7 @@
   },
   "testing-lifecycle-none-found-2026-11-20": {
     "title": "Initialization, shutdown and abort test procedures and dates: none found as of 2026-11-20",
-    "observation": "Searched on 2026-11-20: git grep of Horizon docs and Markdown files at commit b84b9af for annual test, shutdown procedure, abort test and secure state returned 0 files; the team ticket, wiki, document, mail and chat records hold no procedure and no dated test record. The API registers shutdown hooks (apps/api/src/main.ts line 57); that is code, not a test.",
+    "observation": "Searched on 2026-11-20: git grep of Horizon docs and Markdown files at commit b84b9af for annual test, shutdown procedure, abort test and secure state returned 0 files; the team ticket, wiki, document, mail and chat records hold no procedure and no dated test record.",
     "url": "https://github.com/gallatinai/horizon/tree/b84b9afcd6983d553b6b8406317b6592ec90cb7c/docs"
   },
   "scan-delivered-images-2026-11-05": {
