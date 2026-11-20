@@ -1872,5 +1872,30 @@
     "title": "Existing protected-file secret task in III Corps",
     "observation": "Existing III Corps secret-to-projected-file task, hydrated read-only; no Jira mutation. Contrary customer requirement remains unconfirmed.",
     "url": "https://gallatin.atlassian.net/browse/GAL-9426"
+  },
+  "horizon-marking-search": {
+    "title": "horizon-marking-search",
+    "observation": "2026-11-20 search of Horizon release 2026.45.4-uds.1 (commit b84b9af) in apps, packages, workers and deploy for a classification banner, header, footer, marking text or marking color setting: none found. No route in the web application renders a banner.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/web/src/router/index.ts"
+  },
+  "horizon-marking-component": {
+    "title": "horizon-marking-component",
+    "observation": "2026-11-20 read of release 2026.45.4-uds.1 (commit b84b9af): the web application depends on @gallatin/interface-system ^0.24.1, which exports a ClassificationBanner component. No file in the release imports it.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/web/package.json"
+  },
+  "horizon-output-paths": {
+    "title": "horizon-output-paths",
+    "observation": "2026-11-20 read of release 2026.45.4-uds.1 (commit b84b9af): the patient movement SITREP export to a .txt file and copy as markdown, the file download, the chat web artifact, the browser print of any page, API responses, command line output and the map coordinate copy add no marking. No print stylesheet or print call exists in the web application.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/web/src/components/dashboard/PatientMovementSitrepModal.vue"
+  },
+  "horizon-marking-procedure-search": {
+    "title": "horizon-marking-procedure-search",
+    "observation": "2026-11-20 search of project messaging, mail, shared-drive, wiki and ticket records for a user procedure to mark printed or exported output: none found.",
+    "url": "https://gallatin.atlassian.net/browse/GAL-12408"
+  },
+  "horizon-data-marking-table": {
+    "title": "horizon-data-marking-table",
+    "observation": "2026-11-20 table of output paths in release 2026.45.4-uds.1 with the marking each carries and the marking the check requires.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/web/src/router/index.ts"
   }
 }
