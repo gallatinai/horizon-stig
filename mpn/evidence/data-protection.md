@@ -1,11 +1,12 @@
 # Application data protection: Horizon on MPN
 
-| Data element group | Where stored | Classification and sensitivity | Protection in release `2026.45.4-uds.1` |
+Status: Open. Protection requirements per data element: none found as of 2026-11-20 (evidence `mpn-data-protection-requirements-search`).
+
+| Data element | Where stored (Horizon source `b84b9af`) | Protection requirement | Protection in release `2026.45.4-uds.1` |
 |---|---|---|---|
-| User identity: email, name, given name, family name, preferred username | Table `users` (Horizon source `b84b9af`) | The SIA form of 2026-11-02 (signature fields empty) states "Processes PII? No". | |
-| Contact event name and email | Table `contact_events` (Horizon source `b84b9af`) | | |
-| Content records: assertions, chunks, files, ingestion jobs | Tables `assertions`, `chunks`, `files`, `ingestion_jobs`, column `classification` (Horizon source `b84b9af`) | Column values: unclassified, classified, secret, top_secret. Default: unclassified. | |
+| User identity: email, name, given name, family name, preferred username | Table `users` | | |
+| Contact: name, email, phone, title, note | Table `contact_events` | | |
+| Casualty record: blood type, gender, identity key, injury mechanism, injury pattern, injury timestamp, triage, patient category, ambulatory status, disposition state, note | Table `casualty_events` | | |
+| Content records | Tables `assertions`, `chunks`, `files`, `ingestion_jobs`; each record carries a `classification` label (unclassified, classified, secret, top_secret; default unclassified) | | |
 
-Protection requirements per element: none found as of 2026-11-20 (evidence `mpn-data-protection-requirements-search`).
-
-Table source: evidence `mpn-data-protection-table`, 2026-11-20.
+Tables reviewed as of 2026-11-20: `users`, `contact_events`, `casualty_events`, `assertions`, `chunks`, `files`, `ingestion_jobs`. The schema holds 222 tables; the others are not reviewed (evidence `mpn-data-protection-table`).

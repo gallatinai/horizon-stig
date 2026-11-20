@@ -1875,8 +1875,8 @@
   },
   "mpn-data-protection-table": {
     "title": "Data protection table for Horizon on MPN",
-    "observation": "2026-11-20: table of data element groups, where stored and classification column values, read from the Horizon database schema at the assessed source commit. Protection cells are empty: no verified protection fact entered.",
-    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/typescript/src/schema/schema.ts"
+    "observation": "2026-11-20: data elements by table, from Horizon schema at b84b9af (packages/database/typescript/src/schema/schema.ts).",
+    "url": "../evidence/data-protection.md"
   },
   "mpn-data-protection-requirements-search": {
     "title": "Search for MPN data protection requirements",
@@ -1885,12 +1885,12 @@
   },
   "mpn-decommission-notice": {
     "title": "Decommission user notice procedure",
-    "observation": "2026-11-20: three-step notice procedure; roles not known; notice channel not known; no signature.",
-    "url": "https://github.com/gallatinai/horizon-stig/blob/f299fff1808fe277a61d2d198ec5cc684beac2cd/mpn/benchmarks/U_ASD_V6R5_STIG/benchmark.xml"
+    "observation": "2026-11-20: notice procedure, unsigned.",
+    "url": "../evidence/decommission-notice.md"
   },
   "mpn-decommission-notice-search": {
     "title": "Search for an MPN decommission user notice",
     "observation": "2026-11-20: none found as of 2026-11-20. Searched Slack, Gmail, Google Drive, Confluence, Jira and the gallatin-company-policies repository.",
-    "url": "https://github.com/gallatinai/horizon-stig/blob/f299fff1808fe277a61d2d198ec5cc684beac2cd/mpn/benchmarks/U_ASD_V6R5_STIG/benchmark.xml"
+    "url": "https://github.com/gallatinai/gallatin-company-policies/tree/b68314822bdfef13b4e12f92dfbd770a224efb5c"
   }
 }
