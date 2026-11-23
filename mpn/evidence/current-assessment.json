@@ -8532,16 +8532,14 @@
         "re-platform-realm-params",
         "re-platform-monitor",
         "re-platform-init-resource",
-        "review-predeployment-verification",
-        "mpn-checklist-open-counts"
+        "review-predeployment-verification"
       ],
       "next_step": "Verify the assessed component inventory and applicable hardening guidance, responsibility boundaries and accepted inherited-control mappings. Link the specific configuration, implementation and verification residuals already tracked in this assessment, complete or formally disposition them with evidence, and retain the component-specific checklist. Do not create duplicate remediation work for this umbrella requirement or treat source-level inherited recommendations as final accepted compliance.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "evidence/tailoring roll-up",
       "components": "UDS platform: registry, runtime, Pepr, Istio, logging; delivered workloads",
       "task": "compliance-package",
-      "evidence_state": "source-inferred",
-      "cklb_justification": "Residual settings: consent, inactivity, account notifications and password rules (re-platform-realm, re-platform-realm-params, 2026-11-10); 33 rules in the Container Platform checklist are Open as of 2026-11-10 (mpn-checklist-open-counts, 2026-11-20)."
+      "evidence_state": "source-inferred"
     },
     "V-233274": {
       "status": "Likely covered",
@@ -10395,16 +10393,14 @@
         "re-web-package",
         "re-web-web-values",
         "re-web-logs",
-        "review-predeployment-verification",
-        "mpn-checklist-open-counts"
+        "review-predeployment-verification"
       ],
       "next_step": "Verify the assessed component inventory and applicable hardening guidance, responsibility boundaries and accepted inherited-control mappings. Link the specific configuration, implementation and verification residuals already tracked in this assessment, complete or formally disposition them with evidence, and retain the component-specific checklist. Do not create duplicate remediation work for this umbrella requirement or treat source-level inherited recommendations as final accepted compliance.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "documentation and residual configuration",
       "components": "Delivered static nginx-FIPS, Istio ingress and shared UDS identity (separate roles)",
       "task": "compliance-package",
-      "evidence_state": "source-inferred",
-      "cklb_justification": "Web server as configured in release 2026.45.4-uds.1: static nginx-FIPS with Istio ingress and shared UDS identity (re-web-actual-release, 2026-11-10). Residual settings: audit, session, alert and web-body (re-web-web-values, re-web-logs, 2026-11-10); 16 rules in the Web Server checklist are Open as of 2026-11-10 (mpn-checklist-open-counts, 2026-11-20)."
+      "evidence_state": "source-inferred"
     },
     "V-239371": {
       "status": "Needs work",
@@ -15123,16 +15119,14 @@
         "re-database-postgres-values",
         "re-database-role",
         "re-database-actual-image",
-        "review-predeployment-verification",
-        "mpn-checklist-open-counts"
+        "review-predeployment-verification"
       ],
       "next_step": "Verify the assessed component inventory and applicable hardening guidance, responsibility boundaries and accepted inherited-control mappings. Link the specific configuration, implementation and verification residuals already tracked in this assessment, complete or formally disposition them with evidence, and retain the component-specific checklist. Do not create duplicate remediation work for this umbrella requirement or treat source-level inherited recommendations as final accepted compliance.",
       "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
       "category": "product-boundary source review",
       "components": "Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database",
       "task": "compliance-package",
-      "evidence_state": "source-inferred",
-      "cklb_justification": "DBMS as configured in release 2026.45.4-uds.1: delivered PostgreSQL service accounts and application database (re-database-release, re-database-role, 2026-11-10). Residual settings: native session limits and selected native audit events (re-database-postgres-values, 2026-11-10); 24 rules in the Database checklist are Open as of 2026-11-10 (mpn-checklist-open-counts, 2026-11-20)."
+      "evidence_state": "source-inferred"
     },
     "V-233495": {
       "status": "Unclear",
@@ -16620,16 +16614,14 @@
         "re-aaa-alerts",
         "mpn-identity-values",
         "mpn-identity-override",
-        "review-predeployment-verification",
-        "mpn-checklist-open-counts"
+        "review-predeployment-verification"
       ],
       "next_step": "Verify the assessed component inventory and applicable hardening guidance, responsibility boundaries and accepted inherited-control mappings. Link the specific configuration, implementation and verification residuals already tracked in this assessment, complete or formally disposition them with evidence, and retain the component-specific checklist. Do not create duplicate remediation work for this umbrella requirement or treat source-level inherited recommendations as final accepted compliance.",
       "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
       "category": "documentation/rollup",
       "components": "UDS Core 1.14 shared Keycloak realm and Horizon OIDC clients; no bundled application Keycloak",
       "task": "compliance-package",
-      "evidence_state": "source-inferred",
-      "cklb_justification": "AAA service as configured in release 2026.45.4-uds.1: UDS Core 1.14 shared Keycloak realm and Horizon OIDC clients (re-aaa-release, 2026-11-10). Residual settings: inactivity, minimum age, change distance, requiredsmartcard, alerts and cache (re-aaa-realm, re-aaa-values, re-aaa-alerts, 2026-11-10); 16 rules in the AAA Services checklist are Open as of 2026-11-10 (mpn-checklist-open-counts, 2026-11-20)."
+      "evidence_state": "source-inferred"
     },
     "V-263527": {
       "status": "Needs N/A justification",
