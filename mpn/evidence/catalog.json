@@ -1872,5 +1872,35 @@
     "title": "Existing protected-file secret task in III Corps",
     "observation": "Existing III Corps secret-to-projected-file task, hydrated read-only; no Jira mutation. Contrary customer requirement remains unconfirmed.",
     "url": "https://gallatin.atlassian.net/browse/GAL-9426"
+  },
+  "mpn-data-protection-table": {
+    "title": "Data protection table for Horizon on MPN",
+    "observation": "2026-11-20: data elements by table, from Horizon schema at b84b9af (packages/database/typescript/src/schema/schema.ts).",
+    "url": "../evidence/data-protection.md"
+  },
+  "mpn-data-protection-requirements-search": {
+    "title": "Search for MPN data protection requirements",
+    "observation": "2026-11-20: none found as of 2026-11-20. Searched Slack, Gmail, Google Drive, Confluence, Jira, the horizon-stig repository and Horizon docs/architecture.md at the assessed source commit. The working record mpn/templates/mission-data-protection.csv has a header and no rows.",
+    "url": "https://github.com/gallatinai/horizon-stig/blob/f299fff1808fe277a61d2d198ec5cc684beac2cd/mpn/templates/mission-data-protection.csv"
+  },
+  "mpn-decommission-notice": {
+    "title": "Decommission user notice procedure",
+    "observation": "2026-11-20: notice procedure, unsigned.",
+    "url": "../evidence/decommission-notice.md"
+  },
+  "mpn-decommission-notice-search": {
+    "title": "Search for an MPN decommission user notice",
+    "observation": "2026-11-20: none found as of 2026-11-20. Searched Slack, Gmail, Google Drive, Confluence, Jira and the gallatin-company-policies repository.",
+    "url": "https://github.com/gallatinai/gallatin-company-policies/tree/b68314822bdfef13b4e12f92dfbd770a224efb5c"
+  },
+  "mpn-contingency-plan-search": {
+    "title": "Search for an MPN contingency plan",
+    "observation": "2026-11-20: none found as of 2026-11-20. Searched Slack, Gmail, Google Drive, Confluence, Jira and the horizon-stig repository. The corporate continuity policy has no row for this application.",
+    "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-CP-business-continuity-disaster-recovery.md"
+  },
+  "mpn-data-protection-release-search": {
+    "title": "Search of rendered release manifests for data protection settings",
+    "observation": "2026-11-23: none found for encrypt, kms, storageClass, pgcrypto, luks or tde in the rendered manifests, workload summary and delivered-release files of release 2026.45.4-uds.1. The storage layer of MPN was not searched. POSTGRES_SSLMODE is disable for the API, four workers and five migration containers; OpenFGA uses sslmode=disable.",
+    "url": "https://github.com/gallatinai/horizon-stig/tree/f299fff1808fe277a61d2d198ec5cc684beac2cd/mpn/evidence/rendered-delivered"
   }
 }

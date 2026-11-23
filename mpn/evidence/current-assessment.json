@@ -599,14 +599,18 @@
         "re-governance-architecture",
         "re-governance-policy-classification",
         "re-governance-policy-backlog",
-        "review-predeployment-verification"
+        "review-predeployment-verification",
+        "mpn-data-protection-table",
+        "mpn-data-protection-requirements-search",
+        "mpn-data-protection-release-search"
       ],
       "next_step": "Document MPN application data elements and categories, the protection requirements for each, and the controls that implement those requirements. Apply mission/contract-specific classification and handling decisions to the existing architecture and corporate policies; retain the completed mapping and mission-owner confirmation.",
       "owner": "Gallatin engineering/security; MPN mission owner for site approvals",
       "category": "documentation",
       "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
       "task": "compliance-package",
-      "evidence_state": "source-inferred"
+      "evidence_state": "source-inferred",
+      "cklb_justification": "The application data protection requirements are not documented: none found as of 2026-11-20 (mpn-data-protection-requirements-search, 2026-11-20). In the rendered manifests of release 2026.45.4-uds.1, POSTGRES_SSLMODE is disable for the API, four workers and five migration containers, and OpenFGA uses sslmode=disable; application database connections set no TLS. Mesh mTLS mode STRICT is a UDS Core 1.14.0 default, not set in the release manifests. No encryption-at-rest term was found in the rendered manifests, workload summary or delivered-release files, searched 2026-11-23 (mpn-data-protection-release-search); the MPN storage layer was not searched."
     },
     "V-222424": {
       "status": "Needs N/A justification",
@@ -4014,14 +4018,16 @@
       "evidence_ids": [
         "re-governance-policy-cp",
         "core-velero",
-        "review-predeployment-verification"
+        "review-predeployment-verification",
+        "mpn-contingency-plan-search"
       ],
       "next_step": "In the post-classification verification pass, locate current MPN and Gallatin contingency/recovery plans and their acceptance records. Confirm the application availability category, recovery objectives, essential mission functions, operator roles and inherited platform recovery services. Check plan provisions against the exact STIG availability-category requirements; complete only missing Horizon procedures and approvals and retain the accepted plan references. Do not duplicate platform-owned recovery services or infer database-data recovery from resource-only backup settings.",
       "owner": "Gallatin engineering/security; MPN mission owner for site approvals",
       "category": "documentation/procedure",
       "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
       "task": "compliance-package",
-      "evidence_state": "source-inferred"
+      "evidence_state": "source-inferred",
+      "cklb_justification": "Contingency plan: none found as of 2026-11-20 (mpn-contingency-plan-search, 2026-11-20)."
     },
     "V-222637": {
       "status": "Needs work",
@@ -4386,14 +4392,16 @@
       "evidence_ids": [
         "re-governance-policy-asset",
         "re-governance-scm",
-        "review-predeployment-verification"
+        "review-predeployment-verification",
+        "mpn-decommission-notice-search"
       ],
       "next_step": "In the post-classification verification pass, inspect existing Gallatin customer/application-retirement and MPN operational procedures for decommissioning authority, affected-user identification, notice channels/timing and support or migration handoff. Credit existing accepted coverage. Document and adopt only missing responsibilities and user-notification steps, reusing established communication channels, and retain the applicable procedure reference.",
       "owner": "Gallatin engineering/security; MPN mission owner for site approvals",
       "category": "documentation/procedure",
       "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
       "task": "compliance-package",
-      "evidence_state": "source-inferred"
+      "evidence_state": "source-inferred",
+      "cklb_justification": "Provisions to notify users when the application is decommissioned: none found as of 2026-11-20 (mpn-decommission-notice-search, 2026-11-20)."
     },
     "V-222661": {
       "status": "Likely covered",
