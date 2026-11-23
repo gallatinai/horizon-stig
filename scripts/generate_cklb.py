@@ -62,15 +62,22 @@ def reject_internal_content(vuln_id, justification):
             raise ValueError(f'{vuln_id}: cklb_justification contains internal-only content: {match.group(0)!r}')
 
 
-def evidence_block(vuln_id, justification, evidence_ids, catalog):
+def cited_evidence(justification, catalog):
+    # Only parenthesised items count: prose words such as "images" and "host" are also catalog keys.
+    cited = []
     for group in re.findall(r'\(([^()]*)\)', justification):
-        for token in re.split(r'[,;]\s*', group):
-            if token.strip() in catalog and token.strip() not in evidence_ids:
-                raise ValueError(f'{vuln_id}: cklb_justification cites {token.strip()!r} but it is not in evidence_ids')
+        for token in re.split(r'[,;]', group):
+            token = token.strip()
+            if token in catalog and token not in cited:
+                cited.append(token)
+    return cited
+
+
+def evidence_block(vuln_id, justification, evidence_ids, catalog):
     lines = []
-    for evidence_id in evidence_ids:
-        if evidence_id not in justification:
-            continue
+    for evidence_id in cited_evidence(justification, catalog):
+        if evidence_id not in evidence_ids:
+            raise ValueError(f'{vuln_id}: cklb_justification cites {evidence_id!r} but it is not in evidence_ids')
         title = catalog[evidence_id]['title']
         for pattern in INTERNAL_PATTERNS:
             match = pattern.search(title)

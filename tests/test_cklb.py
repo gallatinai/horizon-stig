@@ -156,6 +156,16 @@ class Checklists(unittest.TestCase):
             self._build(key, package, xml, catalog, evidence_ids=['leaky'],
                         cklb_justification='Covered (leaky).')
 
+    def test_citation_with_date_and_prose_key_words(self):
+        package, xml, key = self._first_rule()
+        ids = [k for k in self.catalog if '-' in k][:2]
+        prose = next(k for k in self.catalog if '-' not in k)
+        row = self._build(key, package, xml, evidence_ids=ids,
+                          cklb_justification=f'The {prose} is covered ({ids[0]}, 2026-11-20; {ids[1]}).')
+        self.assertIn(f'\nEvidence:\n- {ids[0]}: {self.catalog[ids[0]]["title"]}\n'
+                      f'- {ids[1]}: {self.catalog[ids[1]]["title"]}', row['comments'])
+        self.assertNotIn(f'- {prose}:', row['comments'])
+
     def test_cited_but_unlisted_evidence_is_rejected(self):
         package, xml, key = self._first_rule()
         ids = list(self.catalog)[:2]
