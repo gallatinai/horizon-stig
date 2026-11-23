@@ -7594,7 +7594,7 @@
           "status": "open",
           "overrides": {},
           "comments": "Assessed release: 2026.45.4-uds.1 (Horizon commit b84b9afcd6983d553b6b8406317b6592ec90cb7c)",
-          "finding_details": "Residual settings: consent, inactivity, account notifications and password rules (re-platform-realm, re-platform-realm-params, 2026-11-10); 33 rules in the Container Platform checklist are Open as of 2026-11-10 (mpn-checklist-open-counts, 2026-11-20)."
+          "finding_details": ""
         },
         {
           "group_id_src": "V-233274",

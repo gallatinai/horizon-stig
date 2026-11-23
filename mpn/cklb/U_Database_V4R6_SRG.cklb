@@ -5977,7 +5977,7 @@
           "status": "open",
           "overrides": {},
           "comments": "Assessed release: 2026.45.4-uds.1 (Horizon commit b84b9afcd6983d553b6b8406317b6592ec90cb7c)",
-          "finding_details": "DBMS as configured in release 2026.45.4-uds.1: delivered PostgreSQL service accounts and application database (re-database-release, re-database-role, 2026-11-10). Residual settings: native session limits and selected native audit events (re-database-postgres-values, 2026-11-10); 24 rules in the Database checklist are Open as of 2026-11-10 (mpn-checklist-open-counts, 2026-11-20)."
+          "finding_details": ""
         },
         {
           "group_id_src": "V-233495",

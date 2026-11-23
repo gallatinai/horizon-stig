@@ -265,7 +265,8 @@
       "re-governance-policy-backlog",
       "review-predeployment-verification",
       "mpn-data-protection-table",
-      "mpn-data-protection-requirements-search"
+      "mpn-data-protection-requirements-search",
+      "mpn-data-protection-release-search"
     ],
     "next_step": "Document MPN application data elements and categories, the protection requirements for each, and the controls that implement those requirements. Apply mission/contract-specific classification and handling decisions to the existing architecture and corporate policies; retain the completed mapping and mission-owner confirmation.",
     "owner": "Gallatin engineering/security; MPN mission owner for site approvals",
@@ -273,8 +274,8 @@
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
     "task": "compliance-package",
     "evidence_state": "source-inferred",
-    "cklb_justification": "The application data protection requirements are not documented: none found as of 2026-11-20 (mpn-data-protection-requirements-search, 2026-11-20).",
-    "evidence": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/docs/architecture.md; https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-CUI-data-classification.md; https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/BACKLOG.md; ../evidence/human-review-verification.json; ../evidence/data-protection.md; https://github.com/gallatinai/horizon-stig/blob/f299fff1808fe277a61d2d198ec5cc684beac2cd/mpn/templates/mission-data-protection.csv",
+    "cklb_justification": "The application data protection requirements are not documented: none found as of 2026-11-20 (mpn-data-protection-requirements-search, 2026-11-20). In the rendered manifests of release 2026.45.4-uds.1, POSTGRES_SSLMODE is disable for the API, four workers and five migration containers, and OpenFGA uses sslmode=disable; application database connections set no TLS, and in-cluster traffic is encrypted by the platform's mesh mTLS (STRICT, ambient) as a UDS Core 1.14.0 default. No encryption-at-rest term was found in the rendered manifests, workload summary or delivered-release files, searched 2026-11-23 (mpn-data-protection-release-search); the MPN storage layer was not searched.",
+    "evidence": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/docs/architecture.md; https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-CUI-data-classification.md; https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/BACKLOG.md; ../evidence/human-review-verification.json; ../evidence/data-protection.md; https://github.com/gallatinai/horizon-stig/blob/f299fff1808fe277a61d2d198ec5cc684beac2cd/mpn/templates/mission-data-protection.csv; https://github.com/gallatinai/horizon-stig/tree/f299fff1808fe277a61d2d198ec5cc684beac2cd/mpn/evidence/rendered-delivered",
     "human_review": true
   },
   {
@@ -3122,8 +3123,7 @@
       "re-platform-realm-params",
       "re-platform-monitor",
       "re-platform-init-resource",
-      "review-predeployment-verification",
-      "mpn-checklist-open-counts"
+      "review-predeployment-verification"
     ],
     "next_step": "Verify the assessed component inventory and applicable hardening guidance, responsibility boundaries and accepted inherited-control mappings. Link the specific configuration, implementation and verification residuals already tracked in this assessment, complete or formally disposition them with evidence, and retain the component-specific checklist. Do not create duplicate remediation work for this umbrella requirement or treat source-level inherited recommendations as final accepted compliance.",
     "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
@@ -3131,8 +3131,7 @@
     "components": "UDS platform: registry, runtime, Pepr, Istio, logging; delivered workloads",
     "task": "compliance-package",
     "evidence_state": "source-inferred",
-    "cklb_justification": "Residual settings: consent, inactivity, account notifications and password rules (re-platform-realm, re-platform-realm-params, 2026-11-10); 33 rules in the Container Platform checklist are Open as of 2026-11-10 (mpn-checklist-open-counts, 2026-11-20).",
-    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685; https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/realm.json5; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/values.yaml; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/prometheus-stack/values/kube-prometheus-stack-values.yaml; https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/scripts/ci/platform_identity.py; ../evidence/human-review-verification.json; https://github.com/gallatinai/horizon-stig/blob/f299fff1808fe277a61d2d198ec5cc684beac2cd/mpn/review/counts.json",
+    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685; https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/realm.json5; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/values.yaml; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/prometheus-stack/values/kube-prometheus-stack-values.yaml; https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/scripts/ci/platform_identity.py; ../evidence/human-review-verification.json",
     "human_review": true
   },
   {
@@ -3556,8 +3555,7 @@
       "re-web-package",
       "re-web-web-values",
       "re-web-logs",
-      "review-predeployment-verification",
-      "mpn-checklist-open-counts"
+      "review-predeployment-verification"
     ],
     "next_step": "Verify the assessed component inventory and applicable hardening guidance, responsibility boundaries and accepted inherited-control mappings. Link the specific configuration, implementation and verification residuals already tracked in this assessment, complete or formally disposition them with evidence, and retain the component-specific checklist. Do not create duplicate remediation work for this umbrella requirement or treat source-level inherited recommendations as final accepted compliance.",
     "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
@@ -3565,8 +3563,7 @@
     "components": "Delivered static nginx-FIPS, Istio ingress and shared UDS identity (separate roles)",
     "task": "compliance-package",
     "evidence_state": "source-inferred",
-    "cklb_justification": "Web server as configured in release 2026.45.4-uds.1: static nginx-FIPS with Istio ingress and shared UDS identity (re-web-actual-release, 2026-11-10). Residual settings: audit, session, alert and web-body (re-web-web-values, re-web-logs, 2026-11-10); 16 rules in the Web Server checklist are Open as of 2026-11-10 (mpn-checklist-open-counts, 2026-11-20).",
-    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685; https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-uds-package/templates/package.yaml; https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/values/web.yaml; https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/core/observability/logging.ts; ../evidence/human-review-verification.json; https://github.com/gallatinai/horizon-stig/blob/f299fff1808fe277a61d2d198ec5cc684beac2cd/mpn/review/counts.json",
+    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685; https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/charts/horizon-uds-package/templates/package.yaml; https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/values/web.yaml; https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/api/src/core/observability/logging.ts; ../evidence/human-review-verification.json",
     "human_review": true
   },
   {
@@ -5452,8 +5449,7 @@
       "re-database-postgres-values",
       "re-database-role",
       "re-database-actual-image",
-      "review-predeployment-verification",
-      "mpn-checklist-open-counts"
+      "review-predeployment-verification"
     ],
     "next_step": "Verify the assessed component inventory and applicable hardening guidance, responsibility boundaries and accepted inherited-control mappings. Link the specific configuration, implementation and verification residuals already tracked in this assessment, complete or formally disposition them with evidence, and retain the component-specific checklist. Do not create duplicate remediation work for this umbrella requirement or treat source-level inherited recommendations as final accepted compliance.",
     "owner": "Gallatin engineering/SRE (Horizon and self-managed UDS Core on MPN)",
@@ -5461,8 +5457,7 @@
     "components": "Delivered PostgreSQL service accounts and application database; UDS mesh and shared identity; no bundled Keycloak database",
     "task": "compliance-package",
     "evidence_state": "source-inferred",
-    "cklb_justification": "DBMS as configured in release 2026.45.4-uds.1: delivered PostgreSQL service accounts and application database (re-database-release, re-database-role, 2026-11-10). Residual settings: native session limits and selected native audit events (re-database-postgres-values, 2026-11-10); 24 rules in the Database checklist are Open as of 2026-11-10 (mpn-checklist-open-counts, 2026-11-20).",
-    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685; https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/values/postgres.yaml; https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/migrations/00000000000003_provision_app_role.sql; https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685; ../evidence/human-review-verification.json; https://github.com/gallatinai/horizon-stig/blob/f299fff1808fe277a61d2d198ec5cc684beac2cd/mpn/review/counts.json",
+    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685; https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/source/values/postgres.yaml; https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/migrations/00000000000003_provision_app_role.sql; https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685; ../evidence/human-review-verification.json",
     "human_review": true
   },
   {
@@ -5971,8 +5966,7 @@
       "re-aaa-alerts",
       "mpn-identity-values",
       "mpn-identity-override",
-      "review-predeployment-verification",
-      "mpn-checklist-open-counts"
+      "review-predeployment-verification"
     ],
     "next_step": "Verify the assessed component inventory and applicable hardening guidance, responsibility boundaries and accepted inherited-control mappings. Link the specific configuration, implementation and verification residuals already tracked in this assessment, complete or formally disposition them with evidence, and retain the component-specific checklist. Do not create duplicate remediation work for this umbrella requirement or treat source-level inherited recommendations as final accepted compliance.",
     "owner": "Gallatin SRE (self-managed UDS Core on MPN)",
@@ -5980,8 +5974,7 @@
     "components": "UDS Core 1.14 shared Keycloak realm and Horizon OIDC clients; no bundled application Keycloak",
     "task": "compliance-package",
     "evidence_state": "source-inferred",
-    "cklb_justification": "AAA service as configured in release 2026.45.4-uds.1: UDS Core 1.14 shared Keycloak realm and Horizon OIDC clients (re-aaa-release, 2026-11-10). Residual settings: inactivity, minimum age, change distance, requiredsmartcard, alerts and cache (re-aaa-realm, re-aaa-values, re-aaa-alerts, 2026-11-10); 16 rules in the AAA Services checklist are Open as of 2026-11-10 (mpn-checklist-open-counts, 2026-11-20).",
-    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685; https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/realm.json5; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/values.yaml; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/templates/keycloak-logging-alerting-rules.yaml; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/values.yaml; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/common/zarf.yaml; ../evidence/human-review-verification.json; https://github.com/gallatinai/horizon-stig/blob/f299fff1808fe277a61d2d198ec5cc684beac2cd/mpn/review/counts.json",
+    "evidence": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685; https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/realm.json5; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/values.yaml; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/templates/keycloak-logging-alerting-rules.yaml; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/values.yaml; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/common/zarf.yaml; ../evidence/human-review-verification.json",
     "human_review": true
   },
   {

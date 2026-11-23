@@ -4677,7 +4677,7 @@
           "status": "open",
           "overrides": {},
           "comments": "Assessed release: 2026.45.4-uds.1 (Horizon commit b84b9afcd6983d553b6b8406317b6592ec90cb7c)",
-          "finding_details": "Web server as configured in release 2026.45.4-uds.1: static nginx-FIPS with Istio ingress and shared UDS identity (re-web-actual-release, 2026-11-10). Residual settings: audit, session, alert and web-body (re-web-web-values, re-web-logs, 2026-11-10); 16 rules in the Web Server checklist are Open as of 2026-11-10 (mpn-checklist-open-counts, 2026-11-20)."
+          "finding_details": ""
         },
         {
           "group_id_src": "V-239371",
