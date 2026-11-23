@@ -1882,7 +1882,7 @@
           "stig_uuid": "438a7929-8b97-5377-bc9b-196f24b3657d",
           "status": "open",
           "overrides": {},
-          "comments": "Assessed release: 2026.45.4-uds.1 (Horizon commit b84b9afcd6983d553b6b8406317b6592ec90cb7c)",
+          "comments": "Assessed release: 2026.45.4-uds.1 (Horizon commit b84b9afcd6983d553b6b8406317b6592ec90cb7c)\nEvidence:\n- mpn-data-protection-requirements-search: Search for MPN data protection requirements\n- mpn-data-protection-release-search: Search of rendered release manifests for data protection settings",
           "finding_details": "The application data protection requirements are not documented: none found as of 2026-11-20 (mpn-data-protection-requirements-search, 2026-11-20). In the rendered manifests of release 2026.45.4-uds.1, POSTGRES_SSLMODE is disable for the API, four workers and five migration containers, and OpenFGA uses sslmode=disable; application database connections set no TLS. Mesh mTLS mode STRICT is a UDS Core 1.14.0 default, not set in the release manifests. No encryption-at-rest term was found in the rendered manifests, workload summary or delivered-release files, searched 2026-11-23 (mpn-data-protection-release-search); the MPN storage layer was not searched."
         },
         {
@@ -12459,7 +12459,7 @@
           "stig_uuid": "438a7929-8b97-5377-bc9b-196f24b3657d",
           "status": "open",
           "overrides": {},
-          "comments": "Assessed release: 2026.45.4-uds.1 (Horizon commit b84b9afcd6983d553b6b8406317b6592ec90cb7c)",
+          "comments": "Assessed release: 2026.45.4-uds.1 (Horizon commit b84b9afcd6983d553b6b8406317b6592ec90cb7c)\nEvidence:\n- mpn-contingency-plan-search: Search for an MPN contingency plan",
           "finding_details": "Contingency plan: none found as of 2026-11-20 (mpn-contingency-plan-search, 2026-11-20)."
         },
         {
@@ -13659,7 +13659,7 @@
           "stig_uuid": "438a7929-8b97-5377-bc9b-196f24b3657d",
           "status": "open",
           "overrides": {},
-          "comments": "Assessed release: 2026.45.4-uds.1 (Horizon commit b84b9afcd6983d553b6b8406317b6592ec90cb7c)",
+          "comments": "Assessed release: 2026.45.4-uds.1 (Horizon commit b84b9afcd6983d553b6b8406317b6592ec90cb7c)\nEvidence:\n- mpn-decommission-notice-search: Search for an MPN decommission user notice",
           "finding_details": "Provisions to notify users when the application is decommissioned: none found as of 2026-11-20 (mpn-decommission-notice-search, 2026-11-20)."
         },
         {
