@@ -21,6 +21,7 @@ class Checklists(unittest.TestCase):
         cls.outputs = generator.outputs()
         cls.manifest = json.loads((ROOT / 'mpn/benchmarks/manifest.json').read_text())
         cls.assessment = json.loads((ROOT / 'mpn/evidence/current-assessment.json').read_text())
+        cls.catalog = json.loads((ROOT / 'mpn/evidence/catalog.json').read_text())
 
     def test_all_rules_and_official_metadata_preserved(self):
         self.assertEqual(set(self.outputs), {p['package'] + '.cklb' for p in self.manifest})
@@ -69,8 +70,9 @@ class Checklists(unittest.TestCase):
                 self.assertIn(row['status'], {'open', 'not_reviewed', 'not_a_finding', 'not_applicable'})
                 decision = self.assessment['decisions'][row['group_id']]
                 baseline = self.assessment['baseline']
-                self.assertEqual(row['comments'], f"Assessed release: {baseline['version']} "
-                                 f"(Horizon commit {baseline['horizon_commit']})")
+                release = (f"Assessed release: {baseline['version']} "
+                           f"(Horizon commit {baseline['horizon_commit']})")
+                self.assertEqual(row['comments'].split('\nEvidence:')[0], release)
                 self.assertEqual(row['finding_details'], decision.get('cklb_justification', '').strip())
                 self.assertTrue(row['discussion'])
             total += len(stig['rules'])
@@ -99,7 +101,7 @@ class Checklists(unittest.TestCase):
         xml = ET.parse(ROOT / 'mpn/benchmarks' / package['package'] / 'benchmark.xml').getroot()
         key = xml.find('x:Group', N).attrib['id']
         assessment['decisions'][key].update(decision, cklb_justification='This component does not expose this capability.')
-        row = generator.build_checklist(package, xml, assessment)['stigs'][0]['rules'][0]
+        row = generator.build_checklist(package, xml, assessment, self.catalog)['stigs'][0]['rules'][0]
         self.assertEqual(row['status'], 'not_applicable')
         self.assertEqual(row['finding_details'], 'This component does not expose this capability.')
         self.assertNotIn('This component', row['comments'])
@@ -117,7 +119,49 @@ class Checklists(unittest.TestCase):
             assessment = copy.deepcopy(self.assessment)
             assessment['decisions'][key]['cklb_justification'] = leak
             with self.subTest(leak=leak), self.assertRaisesRegex(ValueError, key):
-                generator.build_checklist(package, xml, assessment)
+                generator.build_checklist(package, xml, assessment, self.catalog)
+
+    def _first_rule(self):
+        package = self.manifest[0]
+        xml = ET.parse(ROOT / 'mpn/benchmarks' / package['package'] / 'benchmark.xml').getroot()
+        return package, xml, xml.find('x:Group', N).attrib['id']
+
+    def _build(self, key, package, xml, catalog=None, **decision):
+        assessment = copy.deepcopy(self.assessment)
+        assessment['decisions'][key].update(decision)
+        return generator.build_checklist(package, xml, assessment, catalog or self.catalog)['stigs'][0]['rules'][0]
+
+    def test_cited_evidence_titles_are_printed(self):
+        package, xml, key = self._first_rule()
+        ids = list(self.catalog)[:2]
+        row = self._build(key, package, xml, evidence_ids=ids,
+                          cklb_justification=f'Covered ({ids[0]}).')
+        self.assertIn(f'\nEvidence:\n- {ids[0]}: {self.catalog[ids[0]]["title"]}', row['comments'])
+        self.assertNotIn(ids[1], row['comments'])
+        self.assertNotIn(self.catalog[ids[0]]['observation'], row['comments'])
+        self.assertNotIn(self.catalog[ids[0]]['url'], row['comments'])
+
+    def test_no_evidence_block_without_citation_or_justification(self):
+        package, xml, key = self._first_rule()
+        ids = list(self.catalog)[:2]
+        row = self._build(key, package, xml, evidence_ids=ids, cklb_justification='No citation here.')
+        self.assertNotIn('Evidence:', row['comments'])
+        row = self._build(key, package, xml, evidence_ids=ids, cklb_justification='')
+        self.assertNotIn('Evidence:', row['comments'])
+
+    def test_leaking_evidence_title_is_rejected(self):
+        package, xml, key = self._first_rule()
+        catalog = {'leaky': {'title': 'Tracked in GAL-123', 'observation': '', 'url': ''}}
+        with self.assertRaisesRegex(ValueError, f'{key}.*leaky'):
+            self._build(key, package, xml, catalog, evidence_ids=['leaky'],
+                        cklb_justification='Covered (leaky).')
+
+    def test_cited_but_unlisted_evidence_is_rejected(self):
+        package, xml, key = self._first_rule()
+        ids = list(self.catalog)[:2]
+        with self.assertRaisesRegex(ValueError, ids[1]):
+            self._build(key, package, xml, evidence_ids=[ids[0]],
+                        cklb_justification=f'Covered ({ids[0]}, {ids[1]}).')
 
     def test_description_preserves_literal_prose(self):
         fields = generator.description_fields('<VulnDiscussion>x < 5 & y</VulnDiscussion><Documentable>false</Documentable>')
@@ -130,11 +174,11 @@ class Checklists(unittest.TestCase):
         assessment = copy.deepcopy(self.assessment)
         package = self.manifest[0]
         xml = ET.parse(ROOT / 'mpn/benchmarks' / package['package'] / 'benchmark.xml').getroot()
-        before = generator.build_checklist(package, xml, assessment)
+        before = generator.build_checklist(package, xml, assessment, self.catalog)
         key = xml.find('x:Group', N).attrib['id']
         assessment['decisions'][key]['status'] = ('Compliant' if assessment['decisions'][key]['status'] == 'Needs work' else 'Needs work')
         assessment['decisions'][key].pop('cklb_status', None)
-        after = generator.build_checklist(package, xml, assessment)
+        after = generator.build_checklist(package, xml, assessment, self.catalog)
         self.assertNotEqual(before['stigs'][0]['rules'][0]['status'], after['stigs'][0]['rules'][0]['status'])
         self.assertEqual(before['stigs'][0]['rules'][1:], after['stigs'][0]['rules'][1:])
         self.assertEqual(before['id'], after['id'])
