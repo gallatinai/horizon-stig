@@ -12460,7 +12460,7 @@
           "status": "open",
           "overrides": {},
           "comments": "Assessed release: 2026.45.4-uds.1 (Horizon commit b84b9afcd6983d553b6b8406317b6592ec90cb7c)",
-          "finding_details": ""
+          "finding_details": "A contingency plan for the application: none found in Slack, Gmail, Google Drive, Confluence, Jira and the horizon-stig repository on 2026-11-20 (mpn-contingency-plan-search, 2026-11-20). The availability level that selects the required recovery provision: none found in Jira on 2026-11-20 (mpn-availability-level-search, 2026-11-20)."
         },
         {
           "group_id_src": "V-222637",
