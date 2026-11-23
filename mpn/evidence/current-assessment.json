@@ -610,7 +610,7 @@
       "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
       "task": "compliance-package",
       "evidence_state": "source-inferred",
-      "cklb_justification": "The application data protection requirements are not documented: none found as of 2026-11-20 (mpn-data-protection-requirements-search, 2026-11-20). In the rendered manifests of release 2026.45.4-uds.1, POSTGRES_SSLMODE is disable for the API, four workers and five migration containers, and OpenFGA uses sslmode=disable; application database connections set no TLS, and in-cluster traffic is encrypted by the platform's mesh mTLS (STRICT, ambient) as a UDS Core 1.14.0 default. No encryption-at-rest term was found in the rendered manifests, workload summary or delivered-release files, searched 2026-11-23 (mpn-data-protection-release-search); the MPN storage layer was not searched."
+      "cklb_justification": "The application data protection requirements are not documented: none found as of 2026-11-20 (mpn-data-protection-requirements-search, 2026-11-20). In the rendered manifests of release 2026.45.4-uds.1, POSTGRES_SSLMODE is disable for the API, four workers and five migration containers, and OpenFGA uses sslmode=disable; application database connections set no TLS. Mesh mTLS mode STRICT is a UDS Core 1.14.0 default, not set in the release manifests. No encryption-at-rest term was found in the rendered manifests, workload summary or delivered-release files, searched 2026-11-23 (mpn-data-protection-release-search); the MPN storage layer was not searched."
     },
     "V-222424": {
       "status": "Needs N/A justification",
