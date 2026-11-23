@@ -1900,7 +1900,7 @@
   },
   "mpn-data-protection-release-search": {
     "title": "Search of rendered release manifests for data protection settings",
-    "observation": "2026-11-23: none found for encryption at rest, KMS or storage class in the rendered manifests of release 2026.45.4-uds.1 (searched terms: encrypt, kms, storageClass). The application-to-database SSL mode in the same manifests is disable.",
+    "observation": "2026-11-23: none found for encrypt, kms, storageClass, pgcrypto, luks or tde in the rendered manifests, workload summary and delivered-release files of release 2026.45.4-uds.1. The storage layer of MPN was not searched. POSTGRES_SSLMODE is disable for the API, four workers and five migration containers; OpenFGA uses sslmode=disable.",
     "url": "https://github.com/gallatinai/horizon-stig/tree/f299fff1808fe277a61d2d198ec5cc684beac2cd/mpn/evidence/rendered-delivered"
   }
 }
