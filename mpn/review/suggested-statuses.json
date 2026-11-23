@@ -7992,8 +7992,7 @@
       "re-governance-policy-cp",
       "core-velero",
       "review-predeployment-verification",
-      "mpn-contingency-plan-search",
-      "mpn-availability-level-search"
+      "mpn-contingency-plan-search"
     ],
     "next_step": "In the post-classification verification pass, locate current MPN and Gallatin contingency/recovery plans and their acceptance records. Confirm the application availability category, recovery objectives, essential mission functions, operator roles and inherited platform recovery services. Check plan provisions against the exact STIG availability-category requirements; complete only missing Horizon procedures and approvals and retain the accepted plan references. Do not duplicate platform-owned recovery services or infer database-data recovery from resource-only backup settings.",
     "owner": "Gallatin engineering/security; MPN mission owner for site approvals",
@@ -8001,8 +8000,8 @@
     "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
     "task": "compliance-package",
     "evidence_state": "source-inferred",
-    "cklb_justification": "A contingency plan for the application: none found in Slack, Gmail, Google Drive, Confluence, Jira and the horizon-stig repository on 2026-11-20 (mpn-contingency-plan-search, 2026-11-20). The availability level that selects the required recovery provision: none found in Jira on 2026-11-20 (mpn-availability-level-search, 2026-11-20).",
-    "evidence": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-CP-business-continuity-disaster-recovery.md; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/velero/values/values.yaml; ../evidence/human-review-verification.json; https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-CP-business-continuity-disaster-recovery.md; https://gallatin.atlassian.net/browse/GAL-12413",
+    "cklb_justification": "Contingency plan: none found as of 2026-11-20 (mpn-contingency-plan-search, 2026-11-20).",
+    "evidence": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-CP-business-continuity-disaster-recovery.md; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/velero/values/values.yaml; ../evidence/human-review-verification.json; https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-CP-business-continuity-disaster-recovery.md",
     "human_review": true
   },
   {
@@ -16679,7 +16678,7 @@
     "components": "UDS platform: registry, runtime, Pepr, Istio, logging; delivered workloads",
     "task": "compliance-package",
     "evidence_state": "source-inferred",
-    "cklb_justification": "Container platform services as configured in release 2026.45.4-uds.1: UDS Core 1.14.0 delivered profile with shared UDS identity (re-platform-delivered-profile, 2026-11-10). Residual settings: consent, inactivity, account notifications and password rules (re-platform-realm, re-platform-realm-params, 2026-11-10); 33 rules in the Container Platform checklist are Open as of 2026-11-10 (mpn-checklist-open-counts, 2026-11-20).",
+    "cklb_justification": "Residual settings: consent, inactivity, account notifications and password rules (re-platform-realm, re-platform-realm-params, 2026-11-10); 33 rules in the Container Platform checklist are Open as of 2026-11-10 (mpn-checklist-open-counts, 2026-11-20).",
     "evidence": "https://github.com/gallatinai/horizon-uds-bundle/actions/runs/42114745685; https://github.com/defenseunicorns/uds-identity-config/blob/74480722e1cc8405b5e9b65ac7d7086ab7f4056d/src/realm.json5; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/values.yaml; https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/prometheus-stack/values/kube-prometheus-stack-values.yaml; https://github.com/gallatinai/horizon-uds-bundle/blob/d528b7febf1ce8bb5ccf99661dade6ae09a84381/scripts/ci/platform_identity.py; ../evidence/human-review-verification.json; https://github.com/gallatinai/horizon-stig/blob/f299fff1808fe277a61d2d198ec5cc684beac2cd/mpn/review/counts.json",
     "human_review": true
   },
