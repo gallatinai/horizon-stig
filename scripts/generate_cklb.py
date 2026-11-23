@@ -62,6 +62,31 @@ def reject_internal_content(vuln_id, justification):
             raise ValueError(f'{vuln_id}: cklb_justification contains internal-only content: {match.group(0)!r}')
 
 
+def cited_evidence(justification, catalog):
+    # Only parenthesised items count: prose words such as "images" and "host" are also catalog keys.
+    cited = []
+    for group in re.findall(r'\(([^()]*)\)', justification):
+        for token in re.split(r'[,;]', group):
+            token = token.strip()
+            if token in catalog and token not in cited:
+                cited.append(token)
+    return cited
+
+
+def evidence_block(vuln_id, justification, evidence_ids, catalog):
+    lines = []
+    for evidence_id in cited_evidence(justification, catalog):
+        if evidence_id not in evidence_ids:
+            raise ValueError(f'{vuln_id}: cklb_justification cites {evidence_id!r} but it is not in evidence_ids')
+        title = catalog[evidence_id]['title']
+        for pattern in INTERNAL_PATTERNS:
+            match = pattern.search(title)
+            if match:
+                raise ValueError(f'{vuln_id}: evidence {evidence_id} title contains internal-only content: {match.group(0)!r}')
+        lines.append(f'- {evidence_id}: {title}')
+    return '\n'.join(['Evidence:'] + lines) if lines else ''
+
+
 def description_fields(description):
     # XCCDF descriptions contain escaped markup. Extract the known wrappers
     # without parsing the embedded prose as XML (it may contain literal < or &).
@@ -76,7 +101,7 @@ def description_fields(description):
     return fields
 
 
-def build_checklist(package, benchmark, assessment):
+def build_checklist(package, benchmark, assessment, catalog):
     name = package['package']
     stig_uuid = stable_id(name + '/stig')
     rules = []
@@ -90,6 +115,10 @@ def build_checklist(package, benchmark, assessment):
             baseline = assessment['baseline']
             comments = (f"Assessed release: {baseline['version']} "
                         f"(Horizon commit {baseline['horizon_commit']})")
+            if justification:
+                block = evidence_block(vuln_id, justification, decision.get('evidence_ids', []), catalog)
+                if block:
+                    comments += '\n' + block
             check_ref = rule.find('x:check/x:check-content-ref', N)
             identifiers = [ident.text for ident in rule.findall('x:ident', N) if ident.text]
             reference = text(rule, 'x:reference/dc:identifier') or None
@@ -144,13 +173,14 @@ def build_checklist(package, benchmark, assessment):
 
 def outputs(root=ROOT):
     assessment = json.loads((root / 'mpn/evidence/current-assessment.json').read_text())
+    catalog = json.loads((root / 'mpn/evidence/catalog.json').read_text())
     manifest = json.loads((root / 'mpn/benchmarks/manifest.json').read_text())
     result = {}
     seen = set()
     for package in manifest:
         name = package['package']
         benchmark = ET.parse(root / 'mpn/benchmarks' / name / 'benchmark.xml').getroot()
-        checklist = build_checklist(package, benchmark, assessment)
+        checklist = build_checklist(package, benchmark, assessment, catalog)
         for rule in checklist['stigs'][0]['rules']:
             if rule['group_id'] in seen:
                 raise ValueError('Duplicate assessment rule: ' + rule['group_id'])

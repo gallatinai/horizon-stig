@@ -9,8 +9,12 @@ use `GITHUB_TOKEN`, whose pushes do not start another workflow run.
 
 Edit [current-assessment.json](../evidence/current-assessment.json) and
 [catalog.json](../evidence/catalog.json), not these generated files. These
-files go to external assessors, so each rule's `comments` holds only the assessed
-release and Horizon commit. Its `finding_details` comes only from the decision's
+files go to external assessors, so each rule's `comments` holds the assessed
+release and Horizon commit. When a rule has a `cklb_justification`, `comments` also
+ends with an `Evidence:` block that lists the catalog title of each evidence ID the
+justification cites in parentheses, so an assessor can resolve the IDs. Generation
+fails if a cited ID is missing from the rule's `evidence_ids` or if a title carries
+internal content. Only the title is printed, never the observation or URL. Its `finding_details` comes only from the decision's
 `cklb_justification` and is empty when none is set. Recommendation, internal
 justification, owner, next action and evidence links are not exported. Generation
 fails if a `cklb_justification` contains a `slack.com`, `docs.google.com`,
