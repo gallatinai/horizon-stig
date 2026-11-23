@@ -12,7 +12,7 @@ Status: Open. Protection requirements per data element: none found as of 2026-11
 Tables reviewed as of 2026-11-20: `users`, `contact_events`, `casualty_events`, `assertions`, `chunks`, `files`, `ingestion_jobs`. The schema holds 225 tables; the others are not reviewed (evidence `mpn-data-protection-table`).
 
 Settings in the rendered manifests of release `2026.45.4-uds.1` (not tied to one data element):
-- The UDS Package `horizon` sets `network.serviceMesh.mode: ambient`. The sources do not show whether mTLS protects the connection to `horizon-postgres`.
+- The UDS Package `horizon` sets `network.serviceMesh.mode: ambient`. Application database connections set no TLS (next item); in-cluster traffic is encrypted by the platform's mesh mTLS (STRICT, ambient), a UDS Core 1.14.0 default.
 - `POSTGRES_SSLMODE` is `disable` for the API, chat-agent, artifact-ingestion, ops-readiness and simulation workloads and for the five migration containers. OpenFGA connects with `sslmode=disable` in its datastore URI. The tenant-bootstrap script sets `ssl: false`. `DATABASE_URL` sets no `sslmode`, and the PostgreSQL server arguments set no SSL term.
 - Database credentials for the API are read from the Kubernetes secret `horizon-postgres-secret` by `secretKeyRef`. The secret itself is not in the rendered manifests.
 - The PostgreSQL volume claim requests 50Gi `ReadWriteOnce` with no `storageClassName`. No `encrypt`, `kms`, `storageClass`, `pgcrypto`, `luks` or `tde` term was found in the rendered manifests, the workload summary or the delivered-release files, searched 2026-11-23 (evidence `mpn-data-protection-release-search`). The storage layer of MPN was not searched.
