@@ -966,7 +966,7 @@
   },
   "re-web-identity-values": {
     "title": "re-web-identity-values",
-    "observation": "Selected Core realmAuthFlows defaults OTPtrue,X509true,USERNAME_PASSWORDtrue; account inactivity workflow opt-in, detailedObservability alerts off. Provider administration/flow settings—not static nginx—own identity security controls.",
+    "observation": "Selected Core realmAuthFlows defaults OTPtrue,X509true,USERNAME_PASSWORDtrue; account inactivity workflow opt-in, detailedObservability alerts off. Provider administration/flow settings\u2014not static nginx\u2014own identity security controls.",
     "url": "https://github.com/defenseunicorns/uds-core/blob/c15677633cffa17e99656a7d7ccd1f98d7cb6e4d/src/keycloak/chart/values.yaml"
   },
   "re-web-identity-doc": {
@@ -1616,7 +1616,7 @@
   },
   "solution-governance-provider-assurance": {
     "url": "https://docs.github.com/en/enterprise-cloud@latest/organizations/keeping-your-organization-secure/managing-security-settings-for-your-organization/accessing-compliance-reports-for-your-organization",
-    "observation": "GitHub organization owners can obtain current SOC 1/2 Type2, ISO27001, CSA assurance and continuity/incident reports from organization Settings→Security→Compliance. Those reports support a scoped provider-control inheritance/tailoring record; they are not asserted to be a DISA STIG certification."
+    "observation": "GitHub organization owners can obtain current SOC 1/2 Type2, ISO27001, CSA assurance and continuity/incident reports from organization Settings\u2192Security\u2192Compliance. Those reports support a scoped provider-control inheritance/tailoring record; they are not asserted to be a DISA STIG certification."
   },
   "solution-governance-access-snapshot": {
     "url": "https://docs.github.com/en/rest/collaborators/collaborators?apiVersion=2022-11-28#list-repository-collaborators",
@@ -1760,7 +1760,7 @@
   },
   "nsa-network-msc-boundary": {
     "url": "https://www.nsa.gov/Portals/75/documents/CSfC%20CP%20Updates%202026/(U)%20Multi-Site%20Connectivity%20Capability%20Package%20v1.3.0.pdf?ver=mJWYHsX8a0wSY6bOPdCrZA%3D%3D",
-    "observation": "MSC1.3 §4.1.1 places the Red network behind the inner encryption component; it permits unencrypted classified traffic there. §§4/4.2 protect same-security-level sites across untrusted transport using two independent nested IPsec/MACsec tunnels. This is a network-boundary architecture, not a mandate to insert two CSfC layers between every pair of pods within one authorized Red enclave."
+    "observation": "MSC1.3 \u00a74.1.1 places the Red network behind the inner encryption component; it permits unencrypted classified traffic there. \u00a7\u00a74/4.2 protect same-security-level sites across untrusted transport using two independent nested IPsec/MACsec tunnels. This is a network-boundary architecture, not a mandate to insert two CSfC layers between every pair of pods within one authorized Red enclave."
   },
   "nsa-network-msc-algorithms": {
     "url": "https://www.nsa.gov/Portals/75/documents/CSfC%20CP%20Updates%202026/(U)%20Multi-Site%20Connectivity%20Capability%20Package%20v1.3.0.pdf?ver=mJWYHsX8a0wSY6bOPdCrZA%3D%3D",
@@ -1768,7 +1768,7 @@
   },
   "nsa-network-ma-boundary": {
     "url": "https://www.nsa.gov/Portals/75/(U)%20Mobile%20Access%20Capability%20Package%20v2_8_0.pdf",
-    "observation": "MA2.8 §5.6 permits a specifically selected TLS-protected server as the inner encryption component for a TLS end-user-device design; §§12.2 tables16/17 define TLS algorithm requirements. This differs from the MSC IPsec/MACsec site-to-site architecture and does not make arbitrary application TLS an approved inner component."
+    "observation": "MA2.8 \u00a75.6 permits a specifically selected TLS-protected server as the inner encryption component for a TLS end-user-device design; \u00a7\u00a712.2 tables16/17 define TLS algorithm requirements. This differs from the MSC IPsec/MACsec site-to-site architecture and does not make arbitrary application TLS an approved inner component."
   },
   "nsa-network-ma-algorithms": {
     "url": "https://www.nsa.gov/Portals/75/(U)%20Mobile%20Access%20Capability%20Package%20v2_8_0.pdf",
