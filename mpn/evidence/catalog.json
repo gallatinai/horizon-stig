@@ -1872,5 +1872,30 @@
     "title": "Existing protected-file secret task in III Corps",
     "observation": "Existing III Corps secret-to-projected-file task, hydrated read-only; no Jira mutation. Contrary customer requirement remains unconfirmed.",
     "url": "https://gallatin.atlassian.net/browse/GAL-9426"
+  },
+  "horizon-marking-search": {
+    "title": "Search of release source for classification markings",
+    "observation": "2026-11-20 search of Horizon release 2026.45.4-uds.1 (commit b84b9af) in apps, packages, workers and deploy for a classification banner, header, footer, marking text or marking color setting: none found. No route in the web application renders a banner.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/web/src/router/index.ts"
+  },
+  "horizon-marking-component": {
+    "title": "Marking component available to the release web application",
+    "observation": "2026-11-20 read of release 2026.45.4-uds.1 (commit b84b9af): the web application depends on @gallatin/interface-system ^0.24.1, which exports a ClassificationBanner component. No file in the release imports it.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/web/package.json"
+  },
+  "horizon-output-paths": {
+    "title": "Output paths of the release without a marking",
+    "observation": "2026-11-20 read of release 2026.45.4-uds.1 (commit b84b9af): no marking found on any on-screen page (index.html, router), the branch reports panel (HorizonReportsPanel.vue), the patient movement SITREP export to a .txt file and copy as markdown, the chat web artifact, browser print of any page, or command line output. No print stylesheet or print call found in the web application.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/web/src/components/dashboard/PatientMovementSitrepModal.vue"
+  },
+  "horizon-marking-procedure-search": {
+    "title": "Search for a user procedure to mark printed or exported output",
+    "observation": "2026-11-20 search of Slack, Gmail, Google Drive, Confluence and Jira for a user procedure to mark printed or exported output: none found. The record lists the places; the search terms were not recorded.",
+    "url": "https://github.com/gallatinai/horizon-stig/blob/GAL-12408-data-marking/mpn/evidence/marking-procedure-search-2026-11-20.md"
+  },
+  "horizon-data-marking-table": {
+    "title": "Table of output paths and the marking found on each",
+    "observation": "2026-11-20 table of seven output paths in release 2026.45.4-uds.1 and the marking found on each in the release source.",
+    "url": "https://github.com/gallatinai/horizon-stig/blob/GAL-12408-data-marking/mpn/evidence/data-marking.md"
   }
 }
