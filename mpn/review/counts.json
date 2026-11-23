@@ -1,9 +1,9 @@
 {
   "total": 1048,
   "by_status": {
-    "Needs work": 176,
+    "Needs work": 179,
     "Likely covered": 792,
-    "Needs N/A justification": 73,
+    "Needs N/A justification": 70,
     "Unclear": 3,
     "Compliant": 4
   },
@@ -31,15 +31,15 @@
       "Needs N/A justification": 6
     },
     "U_Application_Server_V4R6_SRG": {
-      "Needs work": 22,
+      "Needs work": 23,
       "Likely covered": 110,
-      "Needs N/A justification": 4,
+      "Needs N/A justification": 3,
       "Unclear": 1
     },
     "U_Database_V4R6_SRG": {
-      "Needs work": 24,
+      "Needs work": 26,
       "Likely covered": 98,
-      "Needs N/A justification": 18,
+      "Needs N/A justification": 16,
       "Compliant": 1,
       "Unclear": 1
     },

@@ -500,6 +500,16 @@
       "vuln_id": "V-206519",
       "benchmark": "U_Database_V4R6_SRG",
       "next_step": "In the post-classification verification pass, inspect effective PostgreSQL role connection limits and identify all relevant account types and enforcement limitations. Obtain documented organization-approved administrator/service/user limits sized for actual pool and operational needs, applying the official defaults only where documentation is absent. Configure missing native limits where technically enforceable, verify behavior and retain policy/configuration/test evidence. Do not rely on application pooling alone or choose an arbitrary service-role maximum."
+    },
+    {
+      "vuln_id": "V-206555",
+      "benchmark": "U_Database_V4R6_SRG",
+      "next_step": "In the post-classification verification pass, confirm the assessed release still generates DB secrets randomly and identify every native password role (horizon_app, openfga, superuser/admin). Document a rotation procedure that meets the 24-hour minimum and 365-day maximum noninteractive lifetime, rotate through the existing Secret/migration path (ALTER ROLE ... PASSWORD), and retain rotation records. If machine-account tailoring is proposed instead, obtain documented ISSO acceptance; if it is rejected, implement native password constraints."
+    },
+    {
+      "vuln_id": "V-263603",
+      "benchmark": "U_Database_V4R6_SRG",
+      "next_step": "Record the owner and associated workload for each native DB role. Document a decommission procedure that sets NOLOGIN on, or drops, a role and revokes its Secret when its workload or component is removed, and add it to release/teardown checklists. Verify with controlled test evidence that a retired role cannot authenticate, and assess any separately introduced human SQL accounts against native disablement."
     }
   ],
   "database-auditing": [
@@ -689,6 +699,13 @@
       "vuln_id": "V-263534",
       "benchmark": "U_AAA_Services_V2R3_SRG",
       "next_step": "Verify current password-authentication scope and existing upstream/shared-provider denylist coverage. Where missing, select an approved maintained list, establish organization-defined scheduled updates and updates on suspected compromise, and enable the existing central password-list validator without weakening other password controls. Verify list availability, scheduled/incident refresh and rejection of listed passwords during creation/change as required by this exact rule. Persist desired configuration and update existing realms through controlled changes. Retain policy, configuration and test evidence; scope exceptions per component and do not implement password handling in Horizon."
+    }
+  ],
+  "mobile-code-identification": [
+    {
+      "vuln_id": "V-204760",
+      "benchmark": "U_Application_Server_V4R6_SRG",
+      "next_step": "Inventory every path that returns agent- or user-authored HTML/script to the browser. Decide whether the existing client-side CSP and sandbox are accepted as the mobile-code control. If not, add server-side identification of prohibited mobile code (e.g. reject or strip <object>, <embed>, <applet> and plugin content when artifacts are stored) or deliver the CSP as a server response header for artifact content, and verify with the existing red-team browser test."
     }
   ],
   "mpn-network-profile": [

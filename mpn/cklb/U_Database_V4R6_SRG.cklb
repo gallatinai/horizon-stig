@@ -1774,7 +1774,7 @@
           "reference_identifier": "2902",
           "uuid": "d04b348a-4786-5a24-acfa-4b5f719d6b05",
           "stig_uuid": "20cc94ad-86d8-513a-b89a-6498204b9633",
-          "status": "not_reviewed",
+          "status": "open",
           "overrides": {},
           "comments": "Assessed release: 2026.45.4-uds.1 (Horizon commit b84b9afcd6983d553b6b8406317b6592ec90cb7c)",
           "finding_details": ""
@@ -6118,7 +6118,7 @@
           "reference_identifier": "2902",
           "uuid": "a2b87e6a-799b-5e69-a92a-0a64f4f8d3ea",
           "stig_uuid": "20cc94ad-86d8-513a-b89a-6498204b9633",
-          "status": "not_reviewed",
+          "status": "open",
           "overrides": {},
           "comments": "Assessed release: 2026.45.4-uds.1 (Horizon commit b84b9afcd6983d553b6b8406317b6592ec90cb7c)",
           "finding_details": ""

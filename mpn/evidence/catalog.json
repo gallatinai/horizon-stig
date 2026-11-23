@@ -1872,5 +1872,25 @@
     "title": "Existing protected-file secret task in III Corps",
     "observation": "Existing III Corps secret-to-projected-file task, hydrated read-only; no Jira mutation. Contrary customer requirement remains unconfirmed.",
     "url": "https://gallatin.atlassian.net/browse/GAL-9426"
+  },
+  "re-appserver-agent-html": {
+    "title": "re-appserver-agent-html",
+    "observation": "The chat agent stores model-authored HTML documents, which can contain inline script, in chat_artifacts (persist_web_artifact), and the API returns them to the client. No server-side component identifies or filters mobile code in this content.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/workers/chat-agent/chat_agent/web_artifact_emit.py"
+  },
+  "re-appserver-artifact-frame": {
+    "title": "re-appserver-artifact-frame",
+    "observation": "The web client renders agent HTML artifacts in an iframe with sandbox=\"allow-scripts\", so the script executes in the user's browser.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/web/src/components/communications/WebArtifactFrame.vue#L33"
+  },
+  "re-appserver-artifact-csp": {
+    "title": "re-appserver-artifact-csp",
+    "observation": "The client injects a CSP meta tag into each artifact (default-src 'none', script-src 'unsafe-inline', object-src 'none', form-action 'none', base-uri 'none'). This blocks plugin/object content and egress, but it is applied in the browser, not by the application server.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/apps/web/src/utils/webArtifactSrcdoc.ts"
+  },
+  "re-database-openfga-role": {
+    "title": "re-database-openfga-role",
+    "observation": "A migration creates or updates a separate openfga LOGIN password role. Together with horizon_app and the POSTGRES_PASSWORD superuser, this gives three password-authenticated native DB accounts. No migration or chart disables, sets NOLOGIN on, or drops a retired role.",
+    "url": "https://github.com/gallatinai/horizon/blob/b84b9afcd6983d553b6b8406317b6592ec90cb7c/packages/database/migrations/20260819160000_create_openfga_database.sql"
   }
 }
