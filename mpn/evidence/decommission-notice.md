@@ -10,7 +10,7 @@ Interval: each decommission event.
 
 | Step | Action | Responsible role | Record produced |
 |---|---|---|---|
-| 1 | Notify the users of the application that it is decommissioned. Channel: not known. | | Notice text, channel and date, held in controlled storage under a reference ID. |
+| 1 | Notify the users of the application that it is decommissioned. Channel: | | Notice text, channel and date, held in controlled storage under a reference ID. |
 
 ## Signature block
 
