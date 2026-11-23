@@ -1875,12 +1875,12 @@
   },
   "testing-active-fuzz-none-found-2026-11-20": {
     "title": "Active vulnerability and fuzz testing: none found as of 2026-11-20",
-    "observation": "Searched on 2026-11-20 for an active vulnerability, fuzz, penetration or dynamic web scan tool, workflow or result: git grep of the Horizon source at commit b84b9af (tool names schemathesis, hypothesis, fast-check, zap, nuclei, pentest, restler, atheris, go-fuzz, jazzer, wapiti, dastardly; lockfiles excluded) found no security test; the 4 of 43 workflows that match scanner names are build, checkov, codeql and grype-db-completeness; the bundle and deployment repositories, the assessment repository, and the team ticket, wiki, document, mail and chat records returned no test result.",
+    "observation": "Searched on 2026-11-20 for an active vulnerability, fuzz, penetration or dynamic web scan tool, workflow or result: git grep of the Horizon source at commit b84b9af (tool names schemathesis, hypothesis, fast-check, zap, nuclei, pentest, restler, atheris, go-fuzz, jazzer, wapiti, dastardly; lockfiles excluded) found no security test; the 4 of 43 workflows that match scanner names are build, checkov, codeql and grype-db-completeness; the bundle and deployment repositories, the assessment repository, and an issue-tracker search for fuzz, DAST, penetration, V-222624 and V-222647 returned no test result.",
     "url": "https://github.com/gallatinai/horizon/tree/b84b9afcd6983d553b6b8406317b6592ec90cb7c"
   },
   "testing-lifecycle-none-found-2026-11-20": {
     "title": "Initialization, shutdown and abort test procedures and dates: none found as of 2026-11-20",
-    "observation": "Searched on 2026-11-20: git grep of Horizon docs and Markdown files at commit b84b9af for annual test, shutdown procedure, abort test and secure state returned 0 files; the team ticket, wiki, document, mail and chat records hold no procedure and no dated test record.",
+    "observation": "Searched on 2026-11-20: git grep of Horizon docs and Markdown files at commit b84b9af for annual test, shutdown procedure, abort test and secure state returned 0 files; an issue-tracker search found no procedure and no dated test record.",
     "url": "https://github.com/gallatinai/horizon/tree/b84b9afcd6983d553b6b8406317b6592ec90cb7c/docs"
   },
   "scan-delivered-images-2026-11-05": {
