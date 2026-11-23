@@ -4018,8 +4018,7 @@
         "re-governance-policy-cp",
         "core-velero",
         "review-predeployment-verification",
-        "mpn-contingency-plan-search",
-        "mpn-availability-level-search"
+        "mpn-contingency-plan-search"
       ],
       "next_step": "In the post-classification verification pass, locate current MPN and Gallatin contingency/recovery plans and their acceptance records. Confirm the application availability category, recovery objectives, essential mission functions, operator roles and inherited platform recovery services. Check plan provisions against the exact STIG availability-category requirements; complete only missing Horizon procedures and approvals and retain the accepted plan references. Do not duplicate platform-owned recovery services or infer database-data recovery from resource-only backup settings.",
       "owner": "Gallatin engineering/security; MPN mission owner for site approvals",
@@ -4027,7 +4026,7 @@
       "components": "Delivered Horizon product plus UDS Core identity, gateway, mesh and logging; MPN-owned host/mission boundary",
       "task": "compliance-package",
       "evidence_state": "source-inferred",
-      "cklb_justification": "A contingency plan for the application: none found in Slack, Gmail, Google Drive, Confluence, Jira and the horizon-stig repository on 2026-11-20 (mpn-contingency-plan-search, 2026-11-20). The availability level that selects the required recovery provision: none found in Jira on 2026-11-20 (mpn-availability-level-search, 2026-11-20)."
+      "cklb_justification": "Contingency plan: none found as of 2026-11-20 (mpn-contingency-plan-search, 2026-11-20)."
     },
     "V-222637": {
       "status": "Needs work",

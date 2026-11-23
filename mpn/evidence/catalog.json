@@ -1895,18 +1895,13 @@
   },
   "mpn-contingency-plan": {
     "title": "Contingency plan for Horizon on MPN",
-    "observation": "2026-11-20: availability level, plan owner and plan approver blank; unsigned.",
+    "observation": "2026-11-20: contingency plan, unsigned.",
     "url": "../evidence/contingency-plan.md"
   },
   "mpn-contingency-plan-search": {
     "title": "Search for an MPN contingency plan",
     "observation": "2026-11-20: none found as of 2026-11-20. Searched Slack, Gmail, Google Drive, Confluence, Jira and the horizon-stig repository. The corporate continuity policy has no row for this application.",
     "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-CP-business-continuity-disaster-recovery.md"
-  },
-  "mpn-availability-level-search": {
-    "title": "Search for the availability level of Horizon on MPN",
-    "observation": "2026-11-20: none found as of 2026-11-20 in Jira. The request for the mission owner's decision has no answer.",
-    "url": "https://gallatin.atlassian.net/browse/GAL-12413"
   },
   "mpn-release-recovery-render": {
     "title": "Recovery-related resources in the rendered release",

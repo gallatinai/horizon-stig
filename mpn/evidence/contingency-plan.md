@@ -13,9 +13,9 @@
 
 | Level | Plan provision |
 |---|---|
-| High: smooth transfer of all mission or business essential functions to an alternate site for the duration of an event, with little or no loss of operational continuity | |
-| Moderate: resumption of mission or business essential functions within 12 hours of activation, or as the plan defines | |
-| Low: partial resumption of mission or business essential functions within 5 to 30 days of activation, as the plan defines | |
+| High: smooth transfer of all mission or business essential functions to an alternate site for the duration of an event with little or no loss of operational continuity | |
+| Moderate: resumption of mission or business essential functions within 12 hours activation or as defined in the contingency plan | |
+| Low: partial resumption of mission or business essential functions within 5 to 30 days of activation as defined in the contingency plan | |
 
 ## Essential mission and business functions
 
