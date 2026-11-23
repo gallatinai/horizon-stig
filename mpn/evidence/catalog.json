@@ -1903,11 +1903,6 @@
     "observation": "2026-11-20: none found as of 2026-11-20. Searched Slack, Gmail, Google Drive, Confluence, Jira and the horizon-stig repository. The corporate continuity policy has no row for this application.",
     "url": "https://github.com/gallatinai/gallatin-company-policies/blob/e5b6ec5a2862cc3880c2ccc011d57698f14611e9/POL-CP-business-continuity-disaster-recovery.md"
   },
-  "mpn-release-recovery-render": {
-    "title": "Recovery-related resources in the rendered release",
-    "observation": "2026-11-20: release 2026.45.4-uds.1 renders postgres.yaml (StatefulSet, 1 replica), nats.yaml (StatefulSet, 1 replica) and seaweedfs.yaml (Deployment, 1 replica). The rendered files contain no Backup, Schedule or VolumeSnapshot resource.",
-    "url": "https://github.com/gallatinai/horizon-stig/tree/f299fff1808fe277a61d2d198ec5cc684beac2cd/mpn/evidence/rendered-delivered"
-  },
   "mpn-checklist-open-counts": {
     "title": "Open rule counts per benchmark",
     "observation": "2026-11-20: counts from the assessment of 2026-11-10. Open rules: Container Platform 33, Web Server 16, Database 24, AAA Services 16.",
